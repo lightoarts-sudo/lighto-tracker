@@ -353,6 +353,13 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     uniq   = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks")
     unsubs = await db_val("SELECT COUNT(*) FROM unsubscribes")
     camps  = await db_fetch("SELECT campaign, COUNT(*) as cnt FROM clicks GROUP BY campaign ORDER BY cnt DESC")
+    # 取得各活動的信件標題
+    preview_subjects = {}
+    if camps:
+        camp_names = [r["campaign"] for r in camps]
+        ph = ",".join(f"${i+1}" for i in range(len(camp_names))) if USE_PG else ",".join("?" for _ in camp_names)
+        subj_rows = await db_fetch(f"SELECT campaign, subject FROM email_previews WHERE campaign IN ({ph})", *camp_names)
+        preview_subjects = {r["campaign"]: r["subject"] for r in subj_rows}
     prods  = await db_fetch("""SELECT product_id, product_name, COUNT(*) as cnt
                                FROM clicks GROUP BY product_id, product_name
                                ORDER BY cnt DESC LIMIT 20""")
@@ -376,12 +383,12 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     recent = await db_fetch("""SELECT ts, customer_id, product_id, product_name, content, campaign
                                FROM clicks ORDER BY ts DESC LIMIT 100""")
 
-    camp_rows = "".join(
+        camp_rows = "".join(
         f"<tr><td><a href='/campaign?pwd={pwd}&name={r['campaign']}'>{r['campaign']}</a></td>"
+        f"<td style='color:#555;font-size:13px;'>{preview_subjects.get(r['campaign'], '-')}</td>"
         f"<td><b>{r['cnt']}</b></td></tr>"
         for r in camps
-    )
-    prod_rows = "".join(
+    )    prod_rows = "".join(
         f"<tr><td>{r['product_id']}</td><td>{r['product_name'] or '-'}</td><td><b>{r['cnt']}</b></td></tr>"
         for r in prods
     )
@@ -438,7 +445,7 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
 </div>
 {search_section}
 <div class="card"><h2>各廣告活動 <span style="font-size:13px;color:#888;font-weight:normal;">（點擊活動名稱查看詳情）</span></h2>
-<table><tr><th>Campaign</th><th>點擊數</th></tr>{camp_rows}</table></div>
+<table><tr><th>活動標題</th><th>信件標題</th><th>點擊數</th></tr>{camp_rows}</table></div>
 <div class="card"><h2>各產品點擊</h2>
 <table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
 <div class="card">
@@ -521,8 +528,6 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
            GROUP BY customer_id ORDER BY clicks DESC LIMIT 200""",
         name
     )
-    preview_rows = await db_fetch("SELECT subject, html FROM email_previews WHERE campaign=$1", name)
-    preview = preview_rows[0] if preview_rows else None
 
     prod_rows = "".join(
         f"<tr><td>{r['product_id']}</td><td>{r['product_name'] or '-'}</td><td><b>{r['cnt']}</b></td></tr>"
@@ -535,16 +540,6 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
         f"<td style='color:#888;font-size:12px'>{tw_str(r['last_click'])}</td></tr>"
         for r in customers
     )
-    preview_section = f"""
-<div class="card"><h2>📧 信件內容預覽</h2>
-  <p style="color:#888;font-size:13px;margin:0 0 12px;">主旨：<b>{preview['subject']}</b></p>
-  <div style="border:1px solid #eee;border-radius:8px;overflow:hidden;">
-    <iframe srcdoc="{preview['html'].replace(chr(34), '&quot;')}"
-            style="width:100%;height:600px;border:none;" sandbox="allow-same-origin"></iframe>
-  </div></div>""" if preview else """
-<div class="card"><h2>📧 信件內容預覽</h2>
-  <p style="color:#aaa;font-size:14px;">尚未儲存此活動的信件預覽。</p></div>"""
-
     return HTMLResponse(html_head(f"活動詳情 - {name}") + f"""
 <a class="back-link" href="/dashboard?pwd={pwd}">← 返回儀表板</a>
 <div class="card">
@@ -554,7 +549,6 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
     <div class="stat"><div class="n">{uniq_customers}</div><div class="l">有點擊客戶數</div></div>
   </div>
 </div>
-{preview_section}
 <div class="card"><h2>各產品點擊</h2>
 <table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
 <div class="card"><h2>點擊客戶列表（前 200 名）<span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看詳情）</span></h2>
