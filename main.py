@@ -8,6 +8,7 @@ from datetime import datetime, timezone, timedelta
 from urllib.parse import unquote
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import asyncpg
 import aiosqlite
 
@@ -19,6 +20,12 @@ DASHBOARD_PASSWORD = os.environ.get("DASHBOARD_PASSWORD", "lighto2026")
 USE_PG = DATABASE_URL.startswith("postgresql://")
 
 app = FastAPI(docs_url=None, redoc_url=None)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 _pg_pool = None
 SQLITE_PATH = "/tmp/clicks.db"
 
