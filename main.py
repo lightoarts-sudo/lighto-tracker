@@ -442,7 +442,7 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
 </div>
 <script>
 async function delUnsub(email, btn) {{
-  if (!confirm('確定要從退訂名單中移除 ' + email + ' 嗎？\n移除後此客戶下次收到 EDM 時不會被過濾。')) return;
+  if (!confirm('確定要從退訂名單中移除 ' + email + ' 嗎？\\n移除後此客戶下次收到 EDM 時不會被過濾。')) return;
   btn.disabled = true; btn.textContent = '...';
   try {{
     const r = await fetch('/api/unsubscribes?pwd={pwd}&email=' + encodeURIComponent(email), {{method:'DELETE'}});
