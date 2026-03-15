@@ -221,7 +221,7 @@ async def track(
             "ip":           ip[:50],
             "ua":           request.headers.get("user-agent", "")[:500],
         })
-    except Exception ase:
+    except Exception as e:
         print(f"[tracker] DB error: {e}")
 
     return RedirectResponse(url=dest_url, status_code=302)
