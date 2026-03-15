@@ -383,12 +383,13 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     recent = await db_fetch("""SELECT ts, customer_id, product_id, product_name, content, campaign
                                FROM clicks ORDER BY ts DESC LIMIT 100""")
 
-        camp_rows = "".join(
+    camp_rows = "".join(
         f"<tr><td><a href='/campaign?pwd={pwd}&name={r['campaign']}'>{r['campaign']}</a></td>"
         f"<td style='color:#555;font-size:13px;'>{preview_subjects.get(r['campaign'], '-')}</td>"
         f"<td><b>{r['cnt']}</b></td></tr>"
         for r in camps
-    )    prod_rows = "".join(
+    )
+    prod_rows = "".join(
         f"<tr><td>{r['product_id']}</td><td>{r['product_name'] or '-'}</td><td><b>{r['cnt']}</b></td></tr>"
         for r in prods
     )
