@@ -210,7 +210,7 @@ async def track(
         ip = request.client.host
 
     try:
-        await db_insert(        {
+        await db_insert({
             "ts":           datetime.now(timezone.utc),
             "campaign":     campaign[:100],
             "customer_id":  customer_id[:200],
@@ -221,7 +221,7 @@ async def track(
             "ip":           ip[:50],
             "ua":           request.headers.get("user-agent", "")[:500],
         })
-    except Exception as e:
+    except Exception ase:
         print(f"[tracker] DB error: {e}")
 
     return RedirectResponse(url=dest_url, status_code=302)
@@ -287,7 +287,22 @@ async def api_unsubscribes(pwd: str = Query(""), fmt: str = Query("json")):
         return JSONResponse([r["email"] for r in rows])
     return rows
 
-# ── 儲存信件預覽（由 send_edm.py 呼叫）──────────────────────
+@app.delete("/api/unsubscribes")
+async def delete_unsubscribe(pwd: str = Query(""), email: str = Query("")):
+    if pwd != DASHBOARD_PASSWORD:
+        raise HTTPException(403)
+    if not email:
+        raise HTTPException(400, "email required")
+    if USE_PG:
+        async with _pg_pool.acquire() as conn:
+            await conn.execute("DELETE FROM unsubscribes WHERE email=$1", email)
+    else:
+        async with aiosqlite.connect(SQLITE_PATH) as db:
+            await db.execute("DELETE FROM unsubscribes WHERE email=?", (email,))
+            await db.commit()
+    return {"ok": True, "deleted": email}
+
+# ── 儲存信件預覽 ──────────────────────────────────────────────
 @app.post("/api/save_preview")
 async def save_preview(request: Request, pwd: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -372,7 +387,11 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     )
     unsub_rows = "".join(
         f"<tr><td style='color:#888;font-size:12px'>{tw_str(r['ts'])}</td>"
-        f"<td><b>{r['email']}</b></td><td>{r['campaign']}</td></tr>"
+        f"<td><b>{r['email']}</b></td>"
+        f"<td>{r['campaign']}</td>"
+        f"<td><button onclick=\"delUnsub('{r['email']}', this)\" "
+        f"style='background:#c0392b;color:#fff;border:none;border-radius:4px;"
+        f"padding:3px 10px;cursor:pointer;font-size:12px;'>刪除</button></td></tr>"
         for r in unsub_list
     )
 
@@ -418,10 +437,21 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
 <div class="card">
   <h2 style="color:#c0392b;">🚫 退訂名單（共 {unsubs} 人）</h2>
   {'<p style="color:#aaa;font-size:14px;">目前無退訂記錄</p>' if not unsub_list else f'''
-  <table><tr><th>退訂時間 (台灣)</th><th>Email</th><th>來源活動</th></tr>
+  <table><tr><th>退訂時間 (台灣)</th><th>Email</th><th>來源活動</th><th style="width:60px">操作</th></tr>
   {unsub_rows}</table>'''}
 </div>
-<div class="card"><h2>最近 100 筆點擊 <span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看該客戶所有記錄）</span></h2>
+<script>
+async function delUnsub(email, btn) {{
+  if (!confirm('確定要從退訂名單中移除 ' + email + ' 嗎？\n移除後此客戶下次收到 EDM 時不會被過濾。')) return;
+  btn.disabled = true; btn.textContent = '...';
+  try {{
+    const r = await fetch('/api/unsubscribes?pwd={pwd}&email=' + encodeURIComponent(email), {{method:'DELETE'}});
+    if (r.ok) {{ btn.closest('tr').remove(); }}
+    else {{ alert('刪除失敗'); btn.disabled = false; btn.textContent = '刪除'; }}
+  }} catch(e) {{ alert('網路錯誤'); btn.disabled = false; btn.textContent = '刪除'; }}
+}}
+</script>
+<div class="card"><h2>最近 100 筆點擊 <span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看記錄）</span></h2>
 <table>
   <tr><th>時間 (台灣)</th><th>客戶 Email</th><th>Product ID</th><th>產品名稱</th><th>內容</th><th>活動</th></tr>
   {rec_rows}
@@ -463,6 +493,7 @@ async def customer_detail(pwd: str = Query(""), email: str = Query("")):
   {click_rows}</table>'''}
 </div>
 </body></html>""")
+
 # ── Campaign 詳情頁 ────────────────────────────────────────────
 @app.get("/campaign", response_class=HTMLResponse)
 async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
@@ -498,18 +529,14 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
         for r in customers
     )
     preview_section = f"""
-<div class="card">
-  <h2>📧 信件內容預覽</h2>
+<div class="card"><h2>📧 信件內容預覽</h2>
   <p style="color:#888;font-size:13px;margin:0 0 12px;">主旨：<b>{preview['subject']}</b></p>
   <div style="border:1px solid #eee;border-radius:8px;overflow:hidden;">
     <iframe srcdoc="{preview['html'].replace(chr(34), '&quot;')}"
             style="width:100%;height:600px;border:none;" sandbox="allow-same-origin"></iframe>
-  </div>
-</div>""" if preview else """
-<div class="card">
-  <h2>📧 信件內容預覽</h2>
-  <p style="color:#aaa;font-size:14px;">尚未儲存此活動的信件預覽。</p>
-</div>"""
+  </div></div>""" if preview else """
+<div class="card"><h2>📧 信件內容預覽</h2>
+  <p style="color:#aaa;font-size:14px;">尚未儲存此活動的信件預覽。</p></div>"""
 
     return HTMLResponse(html_head(f"活動詳情 - {name}") + f"""
 <a class="back-link" href="/dashboard?pwd={pwd}">← 返回儀表板</a>
@@ -523,7 +550,7 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
 {preview_section}
 <div class="card"><h2>各產品點擊</h2>
 <table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
-<div class="card"><h2>點擊客戶列表（前 200 名）</h2>
+<div class="card"><h2>點擊客戶列表（前 200 名）<span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看詳情）</span></h2>
 <table><tr><th>客戶 Email</th><th>點擊次數</th><th>首次點擊</th><th>最後點擊</th></tr>
 {cust_rows}</table></div>
 </body></html>""")
