@@ -35,8 +35,18 @@ CREATE TABLE IF NOT EXISTS clicks (
     ip          TEXT,
     ua          TEXT
 );
+CREATE TABLE IF NOT EXISTS unsubscribes (
+    id          SERIAL PRIMARY KEY,
+    ts          TIMESTAMPTZ DEFAULT NOW(),
+    email       TEXT UNIQUE,
+    campaign    TEXT
+);
 """
-CREATE_SQL_LITE = CREATE_SQL.replace("SERIAL", "INTEGER").replace("TIMESTAMPTZ", "TEXT")
+CREATE_SQL_LITE = (
+    CREATE_SQL
+    .replace("SERIAL", "INTEGER")
+    .replace("TIMESTAMPTZ", "TEXT")
+)
 
 @app.on_event("startup")
 async def startup():
@@ -133,6 +143,61 @@ async def track(
 
     return RedirectResponse(url=dest_url, status_code=302)
 
+# ── 取消訂閱 ──────────────────────────────────────────────────
+@app.get("/unsubscribe", response_class=HTMLResponse)
+async def unsubscribe(c: str = Query(...), campaign: str = Query("")):
+    try:
+        email = base64.urlsafe_b64decode(c + "==").decode()
+    except Exception:
+        email = c
+
+    # 寫入退訂名單（重複退訂不報錯）
+    try:
+        if USE_PG:
+            async with _pg_pool.acquire() as conn:
+                await conn.execute(
+                    "INSERT INTO unsubscribes (ts, email, campaign) VALUES ($1,$2,$3) ON CONFLICT (email) DO NOTHING",
+                    datetime.now(timezone.utc), email[:200], campaign[:100]
+                )
+        else:
+            async with aiosqlite.connect(SQLITE_PATH) as db:
+                await db.execute(
+                    "INSERT OR IGNORE INTO unsubscribes (ts, email, campaign) VALUES (?,?,?)",
+                    (datetime.now(timezone.utc).isoformat(), email[:200], campaign[:100])
+                )
+                await db.commit()
+    except Exception as e:
+        print(f"[unsubscribe] DB error: {e}")
+
+    return HTMLResponse(f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>已取消訂閱 - Lighto 光印樣</title></head>
+<body style="margin:0;padding:0;background:#f5f5f0;font-family:'PingFang TC',sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0"><tr>
+<td align="center" style="padding:80px 16px;">
+<div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:480px;text-align:center;">
+  <p style="font-size:32px;margin:0 0 16px;">🌲</p>
+  <h1 style="font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">已取消訂閱</h1>
+  <p style="font-size:15px;color:#666;line-height:1.7;margin:0 0 24px;">
+    <b>{email}</b><br>已從 Lighto 光印樣 電子報名單中移除。<br>
+    我們不會再寄送活動通知給您。
+  </p>
+  <a href="https://www.lightochan.com"
+     style="display:inline-block;padding:12px 28px;background:#1a1a1a;color:#fff;
+            text-decoration:none;border-radius:6px;font-size:14px;">
+    回到 Lighto 光印樣
+  </a>
+</div>
+</td></tr></table>
+</body></html>""")
+
+@app.get("/api/unsubscribes")
+async def api_unsubscribes(pwd: str = Query("")):
+    if pwd != DASHBOARD_PASSWORD:
+        raise HTTPException(403)
+    rows = await db_fetch("SELECT ts, email, campaign FROM unsubscribes ORDER BY ts DESC")
+    return rows
+
 # ── 儀表板 ────────────────────────────────────────────────────
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(pwd: str = Query("")):
@@ -147,6 +212,7 @@ async def dashboard(pwd: str = Query("")):
 
     total    = await db_val("SELECT COUNT(*) FROM clicks")
     uniq     = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks")
+    unsubs   = await db_val("SELECT COUNT(*) FROM unsubscribes")
     camps    = await db_fetch("SELECT campaign, COUNT(*) as cnt FROM clicks GROUP BY campaign ORDER BY cnt DESC")
     prods    = await db_fetch("SELECT product_id, content, COUNT(*) as cnt FROM clicks GROUP BY product_id, content ORDER BY cnt DESC LIMIT 20")
     recent   = await db_fetch("SELECT ts, customer_id, product_id, content, campaign FROM clicks ORDER BY ts DESC LIMIT 100")
@@ -178,6 +244,7 @@ th{{background:#f0f0f0;padding:8px;text-align:left;}} td{{padding:7px 8px;border
   <div>
     <div class="stat"><div class="n">{total}</div><div class="l">總點擊數</div></div>
     <div class="stat"><div class="n">{uniq}</div><div class="l">不重複客戶</div></div>
+    <div class="stat" style="background:#c0392b;"><div class="n">{unsubs}</div><div class="l">退訂人數</div></div>
   </div>
 </div>
 <div class="card"><h2>各廣告活動</h2>
