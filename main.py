@@ -119,7 +119,7 @@ async def track(
 
     try:
         await db_insert({
-            "ts": datetime.now(timezone.utc).isoformat(),
+            "ts": datetime.now(timezone.utc),
             "campaign": campaign[:100],
             "customer_id": customer_id[:200],
             "product_id": p[:50],
