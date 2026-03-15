@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: lighto-tracker
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lighto-tracker-db
+          property: connectionString
+      - key: DASHBOARD_PASSWORD
+        value: lighto2026   # ← 部署後請在 Render 後台修改這個密碼
+
+databases:
+  - name: lighto-tracker-db
+    databaseName: lighto_tracker
+    plan: free
