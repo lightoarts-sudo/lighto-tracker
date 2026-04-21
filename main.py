@@ -1,6 +1,6 @@
 """
-Lighto åå°æ¨£ - EDM é»æè¿½è¹¤æå
-ä½¿ç¨ asyncpg (PostgreSQL) / aiosqlite (SQLite fallback)
+Lighto Ã¥ÂÂÃ¥ÂÂ°Ã¦Â¨Â£ - EDM Ã©Â»ÂÃ¦ÂÂÃ¨Â¿Â½Ã¨Â¹Â¤Ã¦ÂÂÃ¥ÂÂ
+Ã¤Â½Â¿Ã§ÂÂ¨ asyncpg (PostgreSQL) / aiosqlite (SQLite fallback)
 """
 
 import os, base64, asyncio
@@ -29,11 +29,11 @@ app.add_middleware(
 _pg_pool = None
 SQLITE_PATH = "/tmp/clicks.db"
 
-# å°ç£æå UTC+8
+# Ã¥ÂÂ°Ã§ÂÂ£Ã¦ÂÂÃ¥ÂÂ UTC+8
 TW_TZ = timezone(timedelta(hours=8))
 
 def tw_str(ts) -> str:
-    """æ datetime æå­ä¸²è½æå°ç£æéé¡¯ç¤º"""
+    """Ã¦ÂÂ datetime Ã¦ÂÂÃ¥Â­ÂÃ¤Â¸Â²Ã¨Â½ÂÃ¦ÂÂÃ¥ÂÂ°Ã§ÂÂ£Ã¦ÂÂÃ©ÂÂÃ©Â¡Â¯Ã§Â¤Âº"""
     if ts is None:
         return ""
     if isinstance(ts, str):
@@ -73,7 +73,7 @@ a{{color:#1a6aff;text-decoration:none;}} a:hover{{text-decoration:underline;}}
 .back-link{{margin-bottom:16px;display:inline-block;color:#888;font-size:13px;}}
 </style></head><body>"""
 
-# ââ åå§å ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¥ÂÂÃ¥Â§ÂÃ¥ÂÂ Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 CREATE_SQL = """
 CREATE TABLE IF NOT EXISTS clicks (
     id           SERIAL PRIMARY KEY,
@@ -143,7 +143,7 @@ async def shutdown():
     if _pg_pool:
         await _pg_pool.close()
 
-# ââ DB æä½ âââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ DB Ã¦ÂÂÃ¤Â½Â Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 async def db_insert(row: dict):
     sql = """INSERT INTO clicks
              (ts,campaign,customer_id,product_id,product_name,content,dest_url,ip,ua)
@@ -188,7 +188,7 @@ async def db_val(sql: str, *args):
                 row = await cur.fetchone()
                 return row[0] if row else 0
 
-# ââ è¿½è¹¤è½è·³ ââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¨Â¿Â½Ã¨Â¹Â¤Ã¨Â½ÂÃ¨Â·Â³ Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/t")
 async def track(
     request: Request,
@@ -233,7 +233,7 @@ async def track(
 
     return RedirectResponse(url=dest_url, status_code=302)
 
-# ââ åæ¶è¨é± ââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¥ÂÂÃ¦Â¶ÂÃ¨Â¨ÂÃ©ÂÂ± Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/unsubscribe", response_class=HTMLResponse)
 async def unsubscribe(c: str = Query(...), campaign: str = Query("")):
     try:
@@ -261,28 +261,28 @@ async def unsubscribe(c: str = Query(...), campaign: str = Query("")):
     tw_now = datetime.now(TW_TZ).strftime("%Y-%m-%d %H:%M")
     return HTMLResponse(f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
-<title>å·²åæ¶è¨é± - Lighto åå°æ¨£</title></head>
+<title>Ã¥Â·Â²Ã¥ÂÂÃ¦Â¶ÂÃ¨Â¨ÂÃ©ÂÂ± - Lighto Ã¥ÂÂÃ¥ÂÂ°Ã¦Â¨Â£</title></head>
 <body style="margin:0;padding:0;background:#f5f5f0;font-family:'PingFang TC',sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0"><tr>
 <td align="center" style="padding:80px 16px;">
 <div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:480px;text-align:center;">
-  <p style="font-size:32px;margin:0 0 16px;">ð²</p>
-  <h1 style="font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">å·²åæ¶è¨é±</h1>
+  <p style="font-size:32px;margin:0 0 16px;">Ã°ÂÂÂ²</p>
+  <h1 style="font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">Ã¥Â·Â²Ã¥ÂÂÃ¦Â¶ÂÃ¨Â¨ÂÃ©ÂÂ±</h1>
   <p style="font-size:15px;color:#666;line-height:1.7;margin:0 0 24px;">
-    <b>{email}</b><br>å·²å¾ Lighto åå°æ¨£ é»å­å ±åå®ä¸­ç§»é¤ã<br>
-    æåä¸æåå¯éæ´»åéç¥çµ¦æ¨ã<br>
-    <span style="font-size:13px;color:#aaa;">{tw_now} (å°ç£æé)</span>
+    <b>{email}</b><br>Ã¥Â·Â²Ã¥Â¾Â Lighto Ã¥ÂÂÃ¥ÂÂ°Ã¦Â¨Â£ Ã©ÂÂ»Ã¥Â­ÂÃ¥Â Â±Ã¥ÂÂÃ¥ÂÂ®Ã¤Â¸Â­Ã§Â§Â»Ã©ÂÂ¤Ã£ÂÂ<br>
+    Ã¦ÂÂÃ¥ÂÂÃ¤Â¸ÂÃ¦ÂÂÃ¥ÂÂÃ¥Â¯ÂÃ©ÂÂÃ¦Â´Â»Ã¥ÂÂÃ©ÂÂÃ§ÂÂ¥Ã§ÂµÂ¦Ã¦ÂÂ¨Ã£ÂÂ<br>
+    <span style="font-size:13px;color:#aaa;">{tw_now} (Ã¥ÂÂ°Ã§ÂÂ£Ã¦ÂÂÃ©ÂÂ)</span>
   </p>
   <a href="https://www.lightochan.com"
      style="display:inline-block;padding:12px 28px;background:#1a1a1a;color:#fff;
             text-decoration:none;border-radius:6px;font-size:14px;">
-    åå° Lighto åå°æ¨£
+    Ã¥ÂÂÃ¥ÂÂ° Lighto Ã¥ÂÂÃ¥ÂÂ°Ã¦Â¨Â£
   </a>
 </div>
 </td></tr></table>
 </body></html>""")
 
-# ââ éè¨ API ââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã©ÂÂÃ¨Â¨Â API Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/api/unsubscribes")
 async def api_unsubscribes(pwd: str = Query(""), fmt: str = Query("json")):
     if pwd != DASHBOARD_PASSWORD:
@@ -309,7 +309,7 @@ async def delete_unsubscribe(pwd: str = Query(""), email: str = Query("")):
             await db.commit()
     return {"ok": True, "deleted": email}
 
-# ââ å²å­ä¿¡ä»¶é è¦½ ââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¥ÂÂ²Ã¥Â­ÂÃ¤Â¿Â¡Ã¤Â»Â¶Ã©Â ÂÃ¨Â¦Â½ Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.post("/api/save_preview")
 async def save_preview(request: Request, pwd: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -337,23 +337,23 @@ async def save_preview(request: Request, pwd: str = Query("")):
             await db.commit()
     return {"ok": True}
 
-# ââ åè¡¨æ¿ ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿ Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(pwd: str = Query(""), search: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
         return HTMLResponse("""<html><body style="font-family:sans-serif;max-width:400px;
         margin:80px auto;text-align:center;">
-        <h2>ð Lighto EDM è¿½è¹¤åè¡¨æ¿</h2>
-        <form method="get"><input name="pwd" type="password" placeholder="å¯ç¢¼"
+        <h2>Ã°ÂÂÂ Lighto EDM Ã¨Â¿Â½Ã¨Â¹Â¤Ã¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿</h2>
+        <form method="get"><input name="pwd" type="password" placeholder="Ã¥Â¯ÂÃ§Â¢Â¼"
         style="padding:8px;width:200px;">
-        <button type="submit" style="padding:8px 16px;margin-left:8px;">ç»å¥</button>
+        <button type="submit" style="padding:8px 16px;margin-left:8px;">Ã§ÂÂ»Ã¥ÂÂ¥</button>
         </form></body></html>""", status_code=401)
 
     total  = await db_val("SELECT COUNT(*) FROM clicks")
     uniq   = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks")
     unsubs = await db_val("SELECT COUNT(*) FROM unsubscribes")
     camps  = await db_fetch("SELECT campaign, COUNT(*) as cnt FROM clicks GROUP BY campaign ORDER BY cnt DESC")
-    # åå¾åæ´»åçä¿¡ä»¶æ¨é¡
+    # Ã¥ÂÂÃ¥Â¾ÂÃ¥ÂÂÃ¦Â´Â»Ã¥ÂÂÃ§ÂÂÃ¤Â¿Â¡Ã¤Â»Â¶Ã¦Â¨ÂÃ©Â¡Â
     preview_subjects = {}
     if camps:
         camp_names = [r["campaign"] for r in camps]
@@ -406,7 +406,7 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
         f"<td>{r['campaign']}</td>"
         f"<td><button onclick=\"delUnsub('{r['email']}', this)\" "
         f"style='background:#c0392b;color:#fff;border:none;border-radius:4px;"
-        f"padding:3px 10px;cursor:pointer;font-size:12px;'>åªé¤</button></td></tr>"
+        f"padding:3px 10px;cursor:pointer;font-size:12px;'>Ã¥ÂÂªÃ©ÂÂ¤</button></td></tr>"
         for r in unsub_list
     )
 
@@ -414,66 +414,66 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     if search:
         search_section = f"""
 <div class="card">
-  <h2>ð æå°çµæï¼{search}ï¼å± {search_count} ç­é»æï¼</h2>
-  {'<p style="color:#aaa;font-size:14px;">ç¡é»æç´é</p>' if not search_count else f'''
-  <table><tr><th>æé (å°ç£)</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th></tr>
+  <h2>Ã°ÂÂÂ Ã¦ÂÂÃ¥Â°ÂÃ§ÂµÂÃ¦ÂÂÃ¯Â¼Â{search}Ã¯Â¼ÂÃ¥ÂÂ± {search_count} Ã§Â­ÂÃ©Â»ÂÃ¦ÂÂÃ¯Â¼Â</h2>
+  {'<p style="color:#aaa;font-size:14px;">Ã§ÂÂ¡Ã©Â»ÂÃ¦ÂÂÃ§Â´ÂÃ©ÂÂ</p>' if not search_count else f'''
+  <table><tr><th>Ã¦ÂÂÃ©ÂÂ (Ã¥ÂÂ°Ã§ÂÂ£)</th><th>Product ID</th><th>Ã§ÂÂ¢Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±</th><th>Ã¥ÂÂ§Ã¥Â®Â¹</th><th>Ã¦Â´Â»Ã¥ÂÂ</th></tr>
   {search_rows}</table>'''}
 </div>"""
 
-    return HTMLResponse(html_head("Lighto EDM åè¡¨æ¿") + f"""
+    return HTMLResponse(html_head("Lighto EDM Ã¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿") + f"""
 <div class="card">
-  <h1>Lighto åå°æ¨£ EDM è¿½è¹¤åè¡¨æ¿</h1>
+  <h1>Lighto Ã¥ÂÂÃ¥ÂÂ°Ã¦Â¨Â£ EDM Ã¨Â¿Â½Ã¨Â¹Â¤Ã¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿</h1>
   <p style="color:#888;margin:0 0 20px;font-size:13px;">
-    <a href="/api/clicks?pwd={pwd}">JSON API</a> Â·
-    <a href="/dashboard?pwd={pwd}">éæ°æ´ç</a> Â·
-    æææéåçºå°ç£æé (UTC+8)
+    <a href="/api/clicks?pwd={pwd}">JSON API</a> ÃÂ·
+    <a href="/dashboard?pwd={pwd}">Ã©ÂÂÃ¦ÂÂ°Ã¦ÂÂ´Ã§ÂÂ</a> ÃÂ·
+    Ã¦ÂÂÃ¦ÂÂÃ¦ÂÂÃ©ÂÂÃ¥ÂÂÃ§ÂÂºÃ¥ÂÂ°Ã§ÂÂ£Ã¦ÂÂÃ©ÂÂ (UTC+8)
   </p>
   <div>
-    <div class="stat"><div class="n">{total}</div><div class="l">ç¸½é»ææ¸</div></div>
-    <div class="stat"><div class="n">{uniq}</div><div class="l">ä¸éè¤å®¢æ¶</div></div>
-    <div class="stat unsub"><div class="n">{unsubs}</div><div class="l">éè¨äººæ¸</div></div>
+    <div class="stat"><div class="n">{total}</div><div class="l">Ã§Â¸Â½Ã©Â»ÂÃ¦ÂÂÃ¦ÂÂ¸</div></div>
+    <div class="stat"><div class="n">{uniq}</div><div class="l">Ã¤Â¸ÂÃ©ÂÂÃ¨Â¤ÂÃ¥Â®Â¢Ã¦ÂÂ¶</div></div>
+    <div class="stat unsub"><div class="n">{unsubs}</div><div class="l">Ã©ÂÂÃ¨Â¨ÂÃ¤ÂºÂºÃ¦ÂÂ¸</div></div>
   </div>
 </div>
 <div class="card">
-  <h2>ð æå°å®¢æ¶é»æè¨é</h2>
+  <h2>Ã°ÂÂÂ Ã¦ÂÂÃ¥Â°ÂÃ¥Â®Â¢Ã¦ÂÂ¶Ã©Â»ÂÃ¦ÂÂÃ¨Â¨ÂÃ©ÂÂ</h2>
   <form method="get" action="/dashboard">
     <input type="hidden" name="pwd" value="{pwd}">
     <div class="search-bar">
-      <input type="text" name="search" placeholder="è¼¸å¥å®¢æ¶ Email..." value="{search}">
-      <button type="submit">æå°</button>
+      <input type="text" name="search" placeholder="Ã¨Â¼Â¸Ã¥ÂÂ¥Ã¥Â®Â¢Ã¦ÂÂ¶ Email..." value="{search}">
+      <button type="submit">Ã¦ÂÂÃ¥Â°Â</button>
     </div>
   </form>
 </div>
 {search_section}
-<div class="card"><h2>åå»£åæ´»å <span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»ææ´»ååç¨±æ¥çè©³æï¼</span></h2>
-<table><tr><th>æ´»åæ¨é¡</th><th>ä¿¡ä»¶æ¨é¡</th><th>é»ææ¸</th></tr>{camp_rows}</table></div>
-<div class="card"><h2>åç¢åé»æ</h2>
-<table><tr><th>Product ID</th><th>ç¢ååç¨±</th><th>é»ææ¸</th></tr>{prod_rows}</table></div>
+<div class="card"><h2>Ã¥ÂÂÃ¥Â»Â£Ã¥ÂÂÃ¦Â´Â»Ã¥ÂÂ <span style="font-size:13px;color:#888;font-weight:normal;">Ã¯Â¼ÂÃ©Â»ÂÃ¦ÂÂÃ¦Â´Â»Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±Ã¦ÂÂ¥Ã§ÂÂÃ¨Â©Â³Ã¦ÂÂÃ¯Â¼Â</span></h2>
+<table><tr><th>Ã¦Â´Â»Ã¥ÂÂÃ¦Â¨ÂÃ©Â¡Â</th><th>Ã¤Â¿Â¡Ã¤Â»Â¶Ã¦Â¨ÂÃ©Â¡Â</th><th>Ã©Â»ÂÃ¦ÂÂÃ¦ÂÂ¸</th></tr>{camp_rows}</table></div>
+<div class="card"><h2>Ã¥ÂÂÃ§ÂÂ¢Ã¥ÂÂÃ©Â»ÂÃ¦ÂÂ</h2>
+<table><tr><th>Product ID</th><th>Ã§ÂÂ¢Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±</th><th>Ã©Â»ÂÃ¦ÂÂÃ¦ÂÂ¸</th></tr>{prod_rows}</table></div>
 <div class="card">
-  <h2 style="color:#c0392b;">ð« éè¨åå®ï¼å± {unsubs} äººï¼</h2>
-  {'<p style="color:#aaa;font-size:14px;">ç®åç¡éè¨è¨é</p>' if not unsub_list else f'''
-  <table><tr><th>éè¨æé (å°ç£)</th><th>Email</th><th>ä¾æºæ´»å</th><th style="width:60px">æä½</th></tr>
+  <h2 style="color:#c0392b;">Ã°ÂÂÂ« Ã©ÂÂÃ¨Â¨ÂÃ¥ÂÂÃ¥ÂÂ®Ã¯Â¼ÂÃ¥ÂÂ± {unsubs} Ã¤ÂºÂºÃ¯Â¼Â</h2>
+  {'<p style="color:#aaa;font-size:14px;">Ã§ÂÂ®Ã¥ÂÂÃ§ÂÂ¡Ã©ÂÂÃ¨Â¨ÂÃ¨Â¨ÂÃ©ÂÂ</p>' if not unsub_list else f'''
+  <table><tr><th>Ã©ÂÂÃ¨Â¨ÂÃ¦ÂÂÃ©ÂÂ (Ã¥ÂÂ°Ã§ÂÂ£)</th><th>Email</th><th>Ã¤Â¾ÂÃ¦ÂºÂÃ¦Â´Â»Ã¥ÂÂ</th><th style="width:60px">Ã¦ÂÂÃ¤Â½Â</th></tr>
   {unsub_rows}</table>'''}
 </div>
 <script>
 async function delUnsub(email, btn) {{
-  if (!confirm('ç¢ºå®è¦å¾éè¨åå®ä¸­ç§»é¤ ' + email + ' åï¼\\nç§»é¤å¾æ­¤å®¢æ¶ä¸æ¬¡æ¶å° EDM æä¸æè¢«éæ¿¾ã')) return;
+  if (!confirm('Ã§Â¢ÂºÃ¥Â®ÂÃ¨Â¦ÂÃ¥Â¾ÂÃ©ÂÂÃ¨Â¨ÂÃ¥ÂÂÃ¥ÂÂ®Ã¤Â¸Â­Ã§Â§Â»Ã©ÂÂ¤ ' + email + ' Ã¥ÂÂÃ¯Â¼Â\\nÃ§Â§Â»Ã©ÂÂ¤Ã¥Â¾ÂÃ¦Â­Â¤Ã¥Â®Â¢Ã¦ÂÂ¶Ã¤Â¸ÂÃ¦Â¬Â¡Ã¦ÂÂ¶Ã¥ÂÂ° EDM Ã¦ÂÂÃ¤Â¸ÂÃ¦ÂÂÃ¨Â¢Â«Ã©ÂÂÃ¦Â¿Â¾Ã£ÂÂ')) return;
   btn.disabled = true; btn.textContent = '...';
   try {{
     const r = await fetch('/api/unsubscribes?pwd={pwd}&email=' + encodeURIComponent(email), {{method:'DELETE'}});
     if (r.ok) {{ btn.closest('tr').remove(); }}
-    else {{ alert('åªé¤å¤±æ'); btn.disabled = false; btn.textContent = 'åªé¤'; }}
-  }} catch(e) {{ alert('ç¶²è·¯é¯èª¤'); btn.disabled = false; btn.textContent = 'åªé¤'; }}
+    else {{ alert('Ã¥ÂÂªÃ©ÂÂ¤Ã¥Â¤Â±Ã¦ÂÂ'); btn.disabled = false; btn.textContent = 'Ã¥ÂÂªÃ©ÂÂ¤'; }}
+  }} catch(e) {{ alert('Ã§Â¶Â²Ã¨Â·Â¯Ã©ÂÂ¯Ã¨ÂªÂ¤'); btn.disabled = false; btn.textContent = 'Ã¥ÂÂªÃ©ÂÂ¤'; }}
 }}
 </script>
-<div class="card"><h2>æè¿ 100 ç­é»æ <span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»æ Email æ¥çè¨éï¼</span></h2>
+<div class="card"><h2>Ã¦ÂÂÃ¨Â¿Â 100 Ã§Â­ÂÃ©Â»ÂÃ¦ÂÂ <span style="font-size:13px;color:#888;font-weight:normal;">Ã¯Â¼ÂÃ©Â»ÂÃ¦ÂÂ Email Ã¦ÂÂ¥Ã§ÂÂÃ¨Â¨ÂÃ©ÂÂÃ¯Â¼Â</span></h2>
 <table>
-  <tr><th>æé (å°ç£)</th><th>å®¢æ¶ Email</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th></tr>
+  <tr><th>Ã¦ÂÂÃ©ÂÂ (Ã¥ÂÂ°Ã§ÂÂ£)</th><th>Ã¥Â®Â¢Ã¦ÂÂ¶ Email</th><th>Product ID</th><th>Ã§ÂÂ¢Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±</th><th>Ã¥ÂÂ§Ã¥Â®Â¹</th><th>Ã¦Â´Â»Ã¥ÂÂ</th></tr>
   {rec_rows}
 </table></div>
 </body></html>""")
 
-# ââ å®¢æ¶è©³æé  ââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Ã¥Â®Â¢Ã¦ÂÂ¶Ã¨Â©Â³Ã¦ÂÂÃ©Â Â Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/customer", response_class=HTMLResponse)
 async def customer_detail(pwd: str = Query(""), email: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -486,7 +486,7 @@ async def customer_detail(pwd: str = Query(""), email: str = Query("")):
         email
     )
     is_unsub = await db_val("SELECT COUNT(*) FROM unsubscribes WHERE email=$1", email)
-    unsub_badge = '<span style="background:#c0392b;color:#fff;padding:2px 10px;border-radius:4px;font-size:13px;margin-left:8px;">å·²éè¨</span>' if is_unsub else ""
+    unsub_badge = '<span style="background:#c0392b;color:#fff;padding:2px 10px;border-radius:4px;font-size:13px;margin-left:8px;">Ã¥Â·Â²Ã©ÂÂÃ¨Â¨Â</span>' if is_unsub else ""
     click_rows = "".join(
         f"<tr><td style='color:#888;font-size:12px'>{tw_str(r['ts'])}</td>"
         f"<td>{r['product_id']}</td><td>{r['product_name'] or '-'}</td>"
@@ -494,22 +494,22 @@ async def customer_detail(pwd: str = Query(""), email: str = Query("")):
         f"<td style='font-size:12px;color:#888'>{r['dest_url'][:60]}...</td></tr>"
         for r in rows
     )
-    return HTMLResponse(html_head(f"å®¢æ¶è¨é - {email}") + f"""
-<a class="back-link" href="/dashboard?pwd={pwd}">â è¿ååè¡¨æ¿</a>
+    return HTMLResponse(html_head(f"Ã¥Â®Â¢Ã¦ÂÂ¶Ã¨Â¨ÂÃ©ÂÂ - {email}") + f"""
+<a class="back-link" href="/dashboard?pwd={pwd}">Ã¢ÂÂ Ã¨Â¿ÂÃ¥ÂÂÃ¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿</a>
 <div class="card">
   <h1>{email} {unsub_badge}</h1>
-  <p style="color:#888;font-size:13px;margin:8px 0 0;">å± {len(rows)} ç­é»æè¨é</p>
+  <p style="color:#888;font-size:13px;margin:8px 0 0;">Ã¥ÂÂ± {len(rows)} Ã§Â­ÂÃ©Â»ÂÃ¦ÂÂÃ¨Â¨ÂÃ©ÂÂ</p>
 </div>
-{'<div class="card" style="border:2px solid #c0392b;"><p style="color:#c0392b;margin:0;font-weight:600;">â ï¸ æ­¤å®¢æ¶å·²éè¨ï¼è«å¿åå¯é EDM</p></div>' if is_unsub else ''}
+{'<div class="card" style="border:2px solid #c0392b;"><p style="color:#c0392b;margin:0;font-weight:600;">Ã¢ÂÂ Ã¯Â¸Â Ã¦Â­Â¤Ã¥Â®Â¢Ã¦ÂÂ¶Ã¥Â·Â²Ã©ÂÂÃ¨Â¨ÂÃ¯Â¼ÂÃ¨Â«ÂÃ¥ÂÂ¿Ã¥ÂÂÃ¥Â¯ÂÃ©ÂÂ EDM</p></div>' if is_unsub else ''}
 <div class="card">
-  <h2>é»æè¨éï¼å°ç£æéï¼</h2>
-  {'<p style="color:#aaa;">ç¡é»æè¨é</p>' if not rows else f'''
-  <table><tr><th>æé</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th><th>é£çµ</th></tr>
+  <h2>Ã©Â»ÂÃ¦ÂÂÃ¨Â¨ÂÃ©ÂÂÃ¯Â¼ÂÃ¥ÂÂ°Ã§ÂÂ£Ã¦ÂÂÃ©ÂÂÃ¯Â¼Â</h2>
+  {'<p style="color:#aaa;">Ã§ÂÂ¡Ã©Â»ÂÃ¦ÂÂÃ¨Â¨ÂÃ©ÂÂ</p>' if not rows else f'''
+  <table><tr><th>Ã¦ÂÂÃ©ÂÂ</th><th>Product ID</th><th>Ã§ÂÂ¢Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±</th><th>Ã¥ÂÂ§Ã¥Â®Â¹</th><th>Ã¦Â´Â»Ã¥ÂÂ</th><th>Ã©ÂÂ£Ã§ÂµÂ</th></tr>
   {click_rows}</table>'''}
 </div>
 </body></html>""")
 
-# ââ Campaign è©³æé  ââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Campaign Ã¨Â©Â³Ã¦ÂÂÃ©Â Â Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/campaign", response_class=HTMLResponse)
 async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -541,23 +541,23 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
         f"<td style='color:#888;font-size:12px'>{tw_str(r['last_click'])}</td></tr>"
         for r in customers
     )
-    return HTMLResponse(html_head(f"æ´»åè©³æ - {name}") + f"""
-<a class="back-link" href="/dashboard?pwd={pwd}">â è¿ååè¡¨æ¿</a>
+    return HTMLResponse(html_head(f"Ã¦Â´Â»Ã¥ÂÂÃ¨Â©Â³Ã¦ÂÂ - {name}") + f"""
+<a class="back-link" href="/dashboard?pwd={pwd}">Ã¢ÂÂ Ã¨Â¿ÂÃ¥ÂÂÃ¥ÂÂÃ¨Â¡Â¨Ã¦ÂÂ¿</a>
 <div class="card">
-  <h1>ð¢ {name}</h1>
+  <h1>Ã°ÂÂÂ¢ {name}</h1>
   <div style="margin-top:16px;">
-    <div class="stat"><div class="n">{total_clicks}</div><div class="l">ç¸½é»ææ¸</div></div>
-    <div class="stat"><div class="n">{uniq_customers}</div><div class="l">æé»æå®¢æ¶æ¸</div></div>
+    <div class="stat"><div class="n">{total_clicks}</div><div class="l">Ã§Â¸Â½Ã©Â»ÂÃ¦ÂÂÃ¦ÂÂ¸</div></div>
+    <div class="stat"><div class="n">{uniq_customers}</div><div class="l">Ã¦ÂÂÃ©Â»ÂÃ¦ÂÂÃ¥Â®Â¢Ã¦ÂÂ¶Ã¦ÂÂ¸</div></div>
   </div>
 </div>
-<div class="card"><h2>åç¢åé»æ</h2>
-<table><tr><th>Product ID</th><th>ç¢ååç¨±</th><th>é»ææ¸</th></tr>{prod_rows}</table></div>
-<div class="card"><h2>é»æå®¢æ¶åè¡¨ï¼å 200 åï¼<span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»æ Email æ¥çè©³æï¼</span></h2>
-<table><tr><th>å®¢æ¶ Email</th><th>é»ææ¬¡æ¸</th><th>é¦æ¬¡é»æ</th><th>æå¾é»æ</th></tr>
+<div class="card"><h2>Ã¥ÂÂÃ§ÂÂ¢Ã¥ÂÂÃ©Â»ÂÃ¦ÂÂ</h2>
+<table><tr><th>Product ID</th><th>Ã§ÂÂ¢Ã¥ÂÂÃ¥ÂÂÃ§Â¨Â±</th><th>Ã©Â»ÂÃ¦ÂÂÃ¦ÂÂ¸</th></tr>{prod_rows}</table></div>
+<div class="card"><h2>Ã©Â»ÂÃ¦ÂÂÃ¥Â®Â¢Ã¦ÂÂ¶Ã¥ÂÂÃ¨Â¡Â¨Ã¯Â¼ÂÃ¥ÂÂ 200 Ã¥ÂÂÃ¯Â¼Â<span style="font-size:13px;color:#888;font-weight:normal;">Ã¯Â¼ÂÃ©Â»ÂÃ¦ÂÂ Email Ã¦ÂÂ¥Ã§ÂÂÃ¨Â©Â³Ã¦ÂÂÃ¯Â¼Â</span></h2>
+<table><tr><th>Ã¥Â®Â¢Ã¦ÂÂ¶ Email</th><th>Ã©Â»ÂÃ¦ÂÂÃ¦Â¬Â¡Ã¦ÂÂ¸</th><th>Ã©Â¦ÂÃ¦Â¬Â¡Ã©Â»ÂÃ¦ÂÂ</th><th>Ã¦ÂÂÃ¥Â¾ÂÃ©Â»ÂÃ¦ÂÂ</th></tr>
 {cust_rows}</table></div>
 </body></html>""")
 
-# ââ Clicks API ââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Clicks API Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 @app.get("/api/clicks")
 async def api_clicks(pwd: str = Query(""), campaign: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -576,7 +576,7 @@ async def health():
             "time": datetime.now(TW_TZ).strftime("%Y-%m-%d %H:%M:%S +08:00")}
 
 
-# ─── Product Recommendations ──────────────────────────────────────────────────
+# âââ Product Recommendations ââââââââââââââââââââââââââââââââââââââââââââââââââ
 import csv as _csv
 import io as _io
 import re as _re
@@ -626,7 +626,7 @@ def _extract_artist(title: str) -> str:
 
 def _parse_tags(cats: str, tag_str: str, artist: str) -> list:
     combined = cats + "," + tag_str
-    tags = [t.strip().lower() for t in _re.split(r"[,，;；|｜/\\]+", combined) if t.strip()]
+    tags = [t.strip().lower() for t in _re.split(r"[,ï¼;ï¼|ï½/\\]+", combined) if t.strip()]
     if artist:
         tags.append(_re.sub(r"\s+", "", artist.lower()))
     return list(dict.fromkeys(tags))
@@ -680,32 +680,38 @@ async def _load_products() -> list:
     return products
 
 
-def _recommend(products: list, current_slug: str, limit: int = 4) -> list:
+def _recommend(products: list, current_slug: str, limit: int = 4) -> dict:
     current = next((p for p in products if p["slug"] == current_slug), None)
     if not current:
-        return []
+        return {"byArtist": [], "byTag": []}
 
+    # ── Section 1: random works by the same artist ─────────────────────
+    same_artist = [p for p in products
+                   if p["slug"] != current_slug and p["artist"] == current["artist"]]
+    _random.shuffle(same_artist)
+    by_artist = same_artist[:limit]
+
+    # ── Section 2: tag-matched works (exclude artist picks) ────────────
+    used = {current_slug} | {p["slug"] for p in by_artist}
     scored = []
     for p in products:
-        if p["slug"] == current_slug:
+        if p["slug"] in used:
             continue
         score = sum(1 for t in current["tags"] if t in p["tags"])
-        if current["artist"] and p["artist"] == current["artist"]:
-            score += 2
         if score > 0:
             scored.append((score, _random.random(), p))
-
     scored.sort(key=lambda x: (-x[0], x[1]))
-    result = [x[2] for x in scored[:limit]]
+    by_tag = [x[2] for x in scored[:limit]]
 
-    if len(result) < limit:
-        used = {current_slug} | {p["slug"] for p in result}
-        rest = [p for p in products if p["slug"] not in used]
+    # Pad by_tag with random if not enough tag matches
+    if len(by_tag) < limit:
+        pad_used = used | {p["slug"] for p in by_tag}
+        rest = [p for p in products if p["slug"] not in pad_used]
         _random.shuffle(rest)
-        result.extend(rest[:limit - len(result)])
+        by_tag.extend(rest[:limit - len(by_tag)])
 
-    return [
-        {
+    def _fmt(p):
+        return {
             "title":    p["title"],
             "artTitle": p["artTitle"],
             "artist":   p["artist"],
@@ -713,8 +719,11 @@ def _recommend(products: list, current_slug: str, limit: int = 4) -> list:
             "url":      f"https://www.lightoarts.com/shop/p/{p['slug']}",
             "image":    p["image"],
         }
-        for p in result
-    ]
+
+    return {
+        "byArtist": [_fmt(p) for p in by_artist],
+        "byTag":    [_fmt(p) for p in by_tag],
+    }
 
 
 @app.get("/recommendations")
