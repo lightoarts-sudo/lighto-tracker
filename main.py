@@ -1,6 +1,6 @@
 """
-Lighto 光印樣 - EDM 點擊追蹤服務
-使用 asyncpg (PostgreSQL) / aiosqlite (SQLite fallback)
+Lighto åå°æ¨£ - EDM é»æè¿½è¹¤æå
+ä½¿ç¨ asyncpg (PostgreSQL) / aiosqlite (SQLite fallback)
 """
 
 import os, base64, asyncio
@@ -29,11 +29,11 @@ app.add_middleware(
 _pg_pool = None
 SQLITE_PATH = "/tmp/clicks.db"
 
-# 台灣時區 UTC+8
+# å°ç£æå UTC+8
 TW_TZ = timezone(timedelta(hours=8))
 
 def tw_str(ts) -> str:
-    """把 datetime 或字串轉成台灣時間顯示"""
+    """æ datetime æå­ä¸²è½æå°ç£æéé¡¯ç¤º"""
     if ts is None:
         return ""
     if isinstance(ts, str):
@@ -73,7 +73,7 @@ a{{color:#1a6aff;text-decoration:none;}} a:hover{{text-decoration:underline;}}
 .back-link{{margin-bottom:16px;display:inline-block;color:#888;font-size:13px;}}
 </style></head><body>"""
 
-# ── 初始化 ────────────────────────────────────────────────────
+# ââ åå§å ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 CREATE_SQL = """
 CREATE TABLE IF NOT EXISTS clicks (
     id           SERIAL PRIMARY KEY,
@@ -143,7 +143,7 @@ async def shutdown():
     if _pg_pool:
         await _pg_pool.close()
 
-# ── DB 操作 ───────────────────────────────────────────────────
+# ââ DB æä½ âââââââââââââââââââââââââââââââââââââââââââââââââââ
 async def db_insert(row: dict):
     sql = """INSERT INTO clicks
              (ts,campaign,customer_id,product_id,product_name,content,dest_url,ip,ua)
@@ -188,7 +188,7 @@ async def db_val(sql: str, *args):
                 row = await cur.fetchone()
                 return row[0] if row else 0
 
-# ── 追蹤轉跳 ──────────────────────────────────────────────────
+# ââ è¿½è¹¤è½è·³ ââââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/t")
 async def track(
     request: Request,
@@ -233,7 +233,7 @@ async def track(
 
     return RedirectResponse(url=dest_url, status_code=302)
 
-# ── 取消訂閱 ──────────────────────────────────────────────────
+# ââ åæ¶è¨é± ââââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/unsubscribe", response_class=HTMLResponse)
 async def unsubscribe(c: str = Query(...), campaign: str = Query("")):
     try:
@@ -261,28 +261,28 @@ async def unsubscribe(c: str = Query(...), campaign: str = Query("")):
     tw_now = datetime.now(TW_TZ).strftime("%Y-%m-%d %H:%M")
     return HTMLResponse(f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
-<title>已取消訂閱 - Lighto 光印樣</title></head>
+<title>å·²åæ¶è¨é± - Lighto åå°æ¨£</title></head>
 <body style="margin:0;padding:0;background:#f5f5f0;font-family:'PingFang TC',sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0"><tr>
 <td align="center" style="padding:80px 16px;">
 <div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:480px;text-align:center;">
-  <p style="font-size:32px;margin:0 0 16px;">🌲</p>
-  <h1 style="font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">已取消訂閱</h1>
+  <p style="font-size:32px;margin:0 0 16px;">ð²</p>
+  <h1 style="font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">å·²åæ¶è¨é±</h1>
   <p style="font-size:15px;color:#666;line-height:1.7;margin:0 0 24px;">
-    <b>{email}</b><br>已從 Lighto 光印樣 電子報名單中移除。<br>
-    我們不會再寄送活動通知給您。<br>
-    <span style="font-size:13px;color:#aaa;">{tw_now} (台灣時間)</span>
+    <b>{email}</b><br>å·²å¾ Lighto åå°æ¨£ é»å­å ±åå®ä¸­ç§»é¤ã<br>
+    æåä¸æåå¯éæ´»åéç¥çµ¦æ¨ã<br>
+    <span style="font-size:13px;color:#aaa;">{tw_now} (å°ç£æé)</span>
   </p>
   <a href="https://www.lightochan.com"
      style="display:inline-block;padding:12px 28px;background:#1a1a1a;color:#fff;
             text-decoration:none;border-radius:6px;font-size:14px;">
-    回到 Lighto 光印樣
+    åå° Lighto åå°æ¨£
   </a>
 </div>
 </td></tr></table>
 </body></html>""")
 
-# ── 退訂 API ──────────────────────────────────────────────────
+# ââ éè¨ API ââââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/api/unsubscribes")
 async def api_unsubscribes(pwd: str = Query(""), fmt: str = Query("json")):
     if pwd != DASHBOARD_PASSWORD:
@@ -309,7 +309,7 @@ async def delete_unsubscribe(pwd: str = Query(""), email: str = Query("")):
             await db.commit()
     return {"ok": True, "deleted": email}
 
-# ── 儲存信件預覽 ──────────────────────────────────────────────
+# ââ å²å­ä¿¡ä»¶é è¦½ ââââââââââââââââââââââââââââââââââââââââââââââ
 @app.post("/api/save_preview")
 async def save_preview(request: Request, pwd: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -337,23 +337,23 @@ async def save_preview(request: Request, pwd: str = Query("")):
             await db.commit()
     return {"ok": True}
 
-# ── 儀表板 ────────────────────────────────────────────────────
+# ââ åè¡¨æ¿ ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(pwd: str = Query(""), search: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
         return HTMLResponse("""<html><body style="font-family:sans-serif;max-width:400px;
         margin:80px auto;text-align:center;">
-        <h2>🔒 Lighto EDM 追蹤儀表板</h2>
-        <form method="get"><input name="pwd" type="password" placeholder="密碼"
+        <h2>ð Lighto EDM è¿½è¹¤åè¡¨æ¿</h2>
+        <form method="get"><input name="pwd" type="password" placeholder="å¯ç¢¼"
         style="padding:8px;width:200px;">
-        <button type="submit" style="padding:8px 16px;margin-left:8px;">登入</button>
+        <button type="submit" style="padding:8px 16px;margin-left:8px;">ç»å¥</button>
         </form></body></html>""", status_code=401)
 
     total  = await db_val("SELECT COUNT(*) FROM clicks")
     uniq   = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks")
     unsubs = await db_val("SELECT COUNT(*) FROM unsubscribes")
     camps  = await db_fetch("SELECT campaign, COUNT(*) as cnt FROM clicks GROUP BY campaign ORDER BY cnt DESC")
-    # 取得各活動的信件標題
+    # åå¾åæ´»åçä¿¡ä»¶æ¨é¡
     preview_subjects = {}
     if camps:
         camp_names = [r["campaign"] for r in camps]
@@ -406,7 +406,7 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
         f"<td>{r['campaign']}</td>"
         f"<td><button onclick=\"delUnsub('{r['email']}', this)\" "
         f"style='background:#c0392b;color:#fff;border:none;border-radius:4px;"
-        f"padding:3px 10px;cursor:pointer;font-size:12px;'>刪除</button></td></tr>"
+        f"padding:3px 10px;cursor:pointer;font-size:12px;'>åªé¤</button></td></tr>"
         for r in unsub_list
     )
 
@@ -414,66 +414,66 @@ async def dashboard(pwd: str = Query(""), search: str = Query("")):
     if search:
         search_section = f"""
 <div class="card">
-  <h2>🔍 搜尋結果：{search}（共 {search_count} 筆點擊）</h2>
-  {'<p style="color:#aaa;font-size:14px;">無點擊紀錄</p>' if not search_count else f'''
-  <table><tr><th>時間 (台灣)</th><th>Product ID</th><th>產品名稱</th><th>內容</th><th>活動</th></tr>
+  <h2>ð æå°çµæï¼{search}ï¼å± {search_count} ç­é»æï¼</h2>
+  {'<p style="color:#aaa;font-size:14px;">ç¡é»æç´é</p>' if not search_count else f'''
+  <table><tr><th>æé (å°ç£)</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th></tr>
   {search_rows}</table>'''}
 </div>"""
 
-    return HTMLResponse(html_head("Lighto EDM 儀表板") + f"""
+    return HTMLResponse(html_head("Lighto EDM åè¡¨æ¿") + f"""
 <div class="card">
-  <h1>Lighto 光印樣 EDM 追蹤儀表板</h1>
+  <h1>Lighto åå°æ¨£ EDM è¿½è¹¤åè¡¨æ¿</h1>
   <p style="color:#888;margin:0 0 20px;font-size:13px;">
-    <a href="/api/clicks?pwd={pwd}">JSON API</a> ·
-    <a href="/dashboard?pwd={pwd}">重新整理</a> ·
-    所有時間均為台灣時間 (UTC+8)
+    <a href="/api/clicks?pwd={pwd}">JSON API</a> Â·
+    <a href="/dashboard?pwd={pwd}">éæ°æ´ç</a> Â·
+    æææéåçºå°ç£æé (UTC+8)
   </p>
   <div>
-    <div class="stat"><div class="n">{total}</div><div class="l">總點擊數</div></div>
-    <div class="stat"><div class="n">{uniq}</div><div class="l">不重複客戶</div></div>
-    <div class="stat unsub"><div class="n">{unsubs}</div><div class="l">退訂人數</div></div>
+    <div class="stat"><div class="n">{total}</div><div class="l">ç¸½é»ææ¸</div></div>
+    <div class="stat"><div class="n">{uniq}</div><div class="l">ä¸éè¤å®¢æ¶</div></div>
+    <div class="stat unsub"><div class="n">{unsubs}</div><div class="l">éè¨äººæ¸</div></div>
   </div>
 </div>
 <div class="card">
-  <h2>🔍 搜尋客戶點擊記錄</h2>
+  <h2>ð æå°å®¢æ¶é»æè¨é</h2>
   <form method="get" action="/dashboard">
     <input type="hidden" name="pwd" value="{pwd}">
     <div class="search-bar">
-      <input type="text" name="search" placeholder="輸入客戶 Email..." value="{search}">
-      <button type="submit">搜尋</button>
+      <input type="text" name="search" placeholder="è¼¸å¥å®¢æ¶ Email..." value="{search}">
+      <button type="submit">æå°</button>
     </div>
   </form>
 </div>
 {search_section}
-<div class="card"><h2>各廣告活動 <span style="font-size:13px;color:#888;font-weight:normal;">（點擊活動名稱查看詳情）</span></h2>
-<table><tr><th>活動標題</th><th>信件標題</th><th>點擊數</th></tr>{camp_rows}</table></div>
-<div class="card"><h2>各產品點擊</h2>
-<table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
+<div class="card"><h2>åå»£åæ´»å <span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»ææ´»ååç¨±æ¥çè©³æï¼</span></h2>
+<table><tr><th>æ´»åæ¨é¡</th><th>ä¿¡ä»¶æ¨é¡</th><th>é»ææ¸</th></tr>{camp_rows}</table></div>
+<div class="card"><h2>åç¢åé»æ</h2>
+<table><tr><th>Product ID</th><th>ç¢ååç¨±</th><th>é»ææ¸</th></tr>{prod_rows}</table></div>
 <div class="card">
-  <h2 style="color:#c0392b;">🚫 退訂名單（共 {unsubs} 人）</h2>
-  {'<p style="color:#aaa;font-size:14px;">目前無退訂記錄</p>' if not unsub_list else f'''
-  <table><tr><th>退訂時間 (台灣)</th><th>Email</th><th>來源活動</th><th style="width:60px">操作</th></tr>
+  <h2 style="color:#c0392b;">ð« éè¨åå®ï¼å± {unsubs} äººï¼</h2>
+  {'<p style="color:#aaa;font-size:14px;">ç®åç¡éè¨è¨é</p>' if not unsub_list else f'''
+  <table><tr><th>éè¨æé (å°ç£)</th><th>Email</th><th>ä¾æºæ´»å</th><th style="width:60px">æä½</th></tr>
   {unsub_rows}</table>'''}
 </div>
 <script>
 async function delUnsub(email, btn) {{
-  if (!confirm('確定要從退訂名單中移除 ' + email + ' 嗎？\\n移除後此客戶下次收到 EDM 時不會被過濾。')) return;
+  if (!confirm('ç¢ºå®è¦å¾éè¨åå®ä¸­ç§»é¤ ' + email + ' åï¼\\nç§»é¤å¾æ­¤å®¢æ¶ä¸æ¬¡æ¶å° EDM æä¸æè¢«éæ¿¾ã')) return;
   btn.disabled = true; btn.textContent = '...';
   try {{
     const r = await fetch('/api/unsubscribes?pwd={pwd}&email=' + encodeURIComponent(email), {{method:'DELETE'}});
     if (r.ok) {{ btn.closest('tr').remove(); }}
-    else {{ alert('刪除失敗'); btn.disabled = false; btn.textContent = '刪除'; }}
-  }} catch(e) {{ alert('網路錯誤'); btn.disabled = false; btn.textContent = '刪除'; }}
+    else {{ alert('åªé¤å¤±æ'); btn.disabled = false; btn.textContent = 'åªé¤'; }}
+  }} catch(e) {{ alert('ç¶²è·¯é¯èª¤'); btn.disabled = false; btn.textContent = 'åªé¤'; }}
 }}
 </script>
-<div class="card"><h2>最近 100 筆點擊 <span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看記錄）</span></h2>
+<div class="card"><h2>æè¿ 100 ç­é»æ <span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»æ Email æ¥çè¨éï¼</span></h2>
 <table>
-  <tr><th>時間 (台灣)</th><th>客戶 Email</th><th>Product ID</th><th>產品名稱</th><th>內容</th><th>活動</th></tr>
+  <tr><th>æé (å°ç£)</th><th>å®¢æ¶ Email</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th></tr>
   {rec_rows}
 </table></div>
 </body></html>""")
 
-# ── 客戶詳情頁 ────────────────────────────────────────────────
+# ââ å®¢æ¶è©³æé  ââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/customer", response_class=HTMLResponse)
 async def customer_detail(pwd: str = Query(""), email: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -486,7 +486,7 @@ async def customer_detail(pwd: str = Query(""), email: str = Query("")):
         email
     )
     is_unsub = await db_val("SELECT COUNT(*) FROM unsubscribes WHERE email=$1", email)
-    unsub_badge = '<span style="background:#c0392b;color:#fff;padding:2px 10px;border-radius:4px;font-size:13px;margin-left:8px;">已退訂</span>' if is_unsub else ""
+    unsub_badge = '<span style="background:#c0392b;color:#fff;padding:2px 10px;border-radius:4px;font-size:13px;margin-left:8px;">å·²éè¨</span>' if is_unsub else ""
     click_rows = "".join(
         f"<tr><td style='color:#888;font-size:12px'>{tw_str(r['ts'])}</td>"
         f"<td>{r['product_id']}</td><td>{r['product_name'] or '-'}</td>"
@@ -494,22 +494,22 @@ async def customer_detail(pwd: str = Query(""), email: str = Query("")):
         f"<td style='font-size:12px;color:#888'>{r['dest_url'][:60]}...</td></tr>"
         for r in rows
     )
-    return HTMLResponse(html_head(f"客戶記錄 - {email}") + f"""
-<a class="back-link" href="/dashboard?pwd={pwd}">← 返回儀表板</a>
+    return HTMLResponse(html_head(f"å®¢æ¶è¨é - {email}") + f"""
+<a class="back-link" href="/dashboard?pwd={pwd}">â è¿ååè¡¨æ¿</a>
 <div class="card">
   <h1>{email} {unsub_badge}</h1>
-  <p style="color:#888;font-size:13px;margin:8px 0 0;">共 {len(rows)} 筆點擊記錄</p>
+  <p style="color:#888;font-size:13px;margin:8px 0 0;">å± {len(rows)} ç­é»æè¨é</p>
 </div>
-{'<div class="card" style="border:2px solid #c0392b;"><p style="color:#c0392b;margin:0;font-weight:600;">⚠️ 此客戶已退訂，請勿再寄送 EDM</p></div>' if is_unsub else ''}
+{'<div class="card" style="border:2px solid #c0392b;"><p style="color:#c0392b;margin:0;font-weight:600;">â ï¸ æ­¤å®¢æ¶å·²éè¨ï¼è«å¿åå¯é EDM</p></div>' if is_unsub else ''}
 <div class="card">
-  <h2>點擊記錄（台灣時間）</h2>
-  {'<p style="color:#aaa;">無點擊記錄</p>' if not rows else f'''
-  <table><tr><th>時間</th><th>Product ID</th><th>產品名稱</th><th>內容</th><th>活動</th><th>連結</th></tr>
+  <h2>é»æè¨éï¼å°ç£æéï¼</h2>
+  {'<p style="color:#aaa;">ç¡é»æè¨é</p>' if not rows else f'''
+  <table><tr><th>æé</th><th>Product ID</th><th>ç¢ååç¨±</th><th>å§å®¹</th><th>æ´»å</th><th>é£çµ</th></tr>
   {click_rows}</table>'''}
 </div>
 </body></html>""")
 
-# ── Campaign 詳情頁 ────────────────────────────────────────────
+# ââ Campaign è©³æé  ââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/campaign", response_class=HTMLResponse)
 async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -541,23 +541,23 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
         f"<td style='color:#888;font-size:12px'>{tw_str(r['last_click'])}</td></tr>"
         for r in customers
     )
-    return HTMLResponse(html_head(f"活動詳情 - {name}") + f"""
-<a class="back-link" href="/dashboard?pwd={pwd}">← 返回儀表板</a>
+    return HTMLResponse(html_head(f"æ´»åè©³æ - {name}") + f"""
+<a class="back-link" href="/dashboard?pwd={pwd}">â è¿ååè¡¨æ¿</a>
 <div class="card">
-  <h1>📢 {name}</h1>
+  <h1>ð¢ {name}</h1>
   <div style="margin-top:16px;">
-    <div class="stat"><div class="n">{total_clicks}</div><div class="l">總點擊數</div></div>
-    <div class="stat"><div class="n">{uniq_customers}</div><div class="l">有點擊客戶數</div></div>
+    <div class="stat"><div class="n">{total_clicks}</div><div class="l">ç¸½é»ææ¸</div></div>
+    <div class="stat"><div class="n">{uniq_customers}</div><div class="l">æé»æå®¢æ¶æ¸</div></div>
   </div>
 </div>
-<div class="card"><h2>各產品點擊</h2>
-<table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
-<div class="card"><h2>點擊客戶列表（前 200 名）<span style="font-size:13px;color:#888;font-weight:normal;">（點擊 Email 查看詳情）</span></h2>
-<table><tr><th>客戶 Email</th><th>點擊次數</th><th>首次點擊</th><th>最後點擊</th></tr>
+<div class="card"><h2>åç¢åé»æ</h2>
+<table><tr><th>Product ID</th><th>ç¢ååç¨±</th><th>é»ææ¸</th></tr>{prod_rows}</table></div>
+<div class="card"><h2>é»æå®¢æ¶åè¡¨ï¼å 200 åï¼<span style="font-size:13px;color:#888;font-weight:normal;">ï¼é»æ Email æ¥çè©³æï¼</span></h2>
+<table><tr><th>å®¢æ¶ Email</th><th>é»ææ¬¡æ¸</th><th>é¦æ¬¡é»æ</th><th>æå¾é»æ</th></tr>
 {cust_rows}</table></div>
 </body></html>""")
 
-# ── Clicks API ────────────────────────────────────────────────
+# ââ Clicks API ââââââââââââââââââââââââââââââââââââââââââââââââ
 @app.get("/api/clicks")
 async def api_clicks(pwd: str = Query(""), campaign: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
@@ -574,3 +574,161 @@ async def api_clicks(pwd: str = Query(""), campaign: str = Query("")):
 async def health():
     return {"status": "ok", "db": "postgresql" if USE_PG else "sqlite",
             "time": datetime.now(TW_TZ).strftime("%Y-%m-%d %H:%M:%S +08:00")}
+
+
+# ─── Product Recommendations ──────────────────────────────────────────────────
+import csv as _csv
+import io as _io
+import re as _re
+import time as _time
+import random as _random
+
+_SHEET_ID  = "1lSoeoHXI_0FQga-64ekIDcVwRv56ykq8egcLNUSp8R4"
+_SHEET_GID = "927689016"
+_SHEET_URL = (
+    f"https://docs.google.com/spreadsheets/d/{_SHEET_ID}"
+    f"/gviz/tq?tqx=out:csv&gid={_SHEET_GID}"
+)
+
+_products_cache: list = []
+_products_fetched: float = 0.0
+_PRODUCTS_TTL: int = 600  # 10 minutes
+
+_COL_URL   = 4
+_COL_TITLE = 5
+_COL_CATS  = 26
+_COL_TAGS  = 27
+_COL_IMGS  = 33
+
+
+def _title_to_slug(t: str) -> str:
+    t = t.lower()
+    t = _re.sub(r"\s*\|\s*", "-", t)
+    t = _re.sub(r"[^a-z0-9-]", "-", t)
+    t = _re.sub(r"-+", "-", t)
+    return t.strip("-")
+
+
+def _extract_slug(raw_url: str, title: str) -> str:
+    s = (raw_url or "").strip()
+    m = _re.search(r"/shop/p/([^/?#\s]+)", s)
+    if m:
+        return m.group(1)
+    if s and _re.match(r"^[a-z0-9]", s) and " " not in s:
+        return s
+    return _title_to_slug(title)
+
+
+def _extract_artist(title: str) -> str:
+    parts = title.split("|")
+    return parts[-1].strip() if len(parts) > 1 else ""
+
+
+def _parse_tags(cats: str, tag_str: str, artist: str) -> list:
+    combined = cats + "," + tag_str
+    tags = [t.strip().lower() for t in _re.split(r"[,，;；|｜/\\]+", combined) if t.strip()]
+    if artist:
+        tags.append(_re.sub(r"\s+", "", artist.lower()))
+    return list(dict.fromkeys(tags))
+
+
+async def _load_products() -> list:
+    global _products_cache, _products_fetched
+    now = _time.time()
+    if _products_cache and now - _products_fetched < _PRODUCTS_TTL:
+        return _products_cache
+
+    import httpx as _httpx
+    async with _httpx.AsyncClient(timeout=15) as client:
+        resp = await client.get(_SHEET_URL)
+        resp.raise_for_status()
+
+    reader = _csv.reader(_io.StringIO(resp.text))
+    rows = list(reader)
+    if len(rows) < 2:
+        raise ValueError("Spreadsheet appears to be empty.")
+
+    seen: set = set()
+    products: list = []
+    for row in rows[1:]:
+        if len(row) <= _COL_TITLE:
+            continue
+        title = row[_COL_TITLE].strip()
+        if not title:
+            continue
+        raw_url = row[_COL_URL].strip() if len(row) > _COL_URL else ""
+        slug = _extract_slug(raw_url, title)
+        if not slug or slug in seen:
+            continue
+        seen.add(slug)
+
+        artist    = _extract_artist(title)
+        art_title = "|".join(title.split("|")[:-1]).strip() if "|" in title else title
+        cats      = row[_COL_CATS] if len(row) > _COL_CATS else ""
+        tag_str   = row[_COL_TAGS] if len(row) > _COL_TAGS else ""
+        tags      = _parse_tags(cats, tag_str, artist)
+        imgs_cell = row[_COL_IMGS] if len(row) > _COL_IMGS else ""
+        image     = imgs_cell.strip().split()[0] if imgs_cell.strip() else ""
+
+        products.append({
+            "title": title, "artTitle": art_title, "artist": artist,
+            "slug": slug, "tags": tags, "image": image,
+        })
+
+    _products_cache = products
+    _products_fetched = now
+    return products
+
+
+def _recommend(products: list, current_slug: str, limit: int = 4) -> list:
+    current = next((p for p in products if p["slug"] == current_slug), None)
+    if not current:
+        return []
+
+    scored = []
+    for p in products:
+        if p["slug"] == current_slug:
+            continue
+        score = sum(1 for t in current["tags"] if t in p["tags"])
+        if current["artist"] and p["artist"] == current["artist"]:
+            score += 2
+        if score > 0:
+            scored.append((score, _random.random(), p))
+
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    result = [x[2] for x in scored[:limit]]
+
+    if len(result) < limit:
+        used = {current_slug} | {p["slug"] for p in result}
+        rest = [p for p in products if p["slug"] not in used]
+        _random.shuffle(rest)
+        result.extend(rest[:limit - len(result)])
+
+    return [
+        {
+            "title":    p["title"],
+            "artTitle": p["artTitle"],
+            "artist":   p["artist"],
+            "slug":     p["slug"],
+            "url":      f"https://www.lightoarts.com/shop/p/{p['slug']}",
+            "image":    p["image"],
+        }
+        for p in result
+    ]
+
+
+@app.get("/recommendations")
+async def recommendations(
+    slug: str = Query(..., description="Product slug"),
+    limit: int = Query(4, ge=1, le=12),
+):
+    products = await _load_products()
+    recs = _recommend(products, slug.lower().strip(), limit)
+    return JSONResponse(recs)
+
+
+@app.get("/products-list")
+async def products_list():
+    """Debug: full product catalogue with tags."""
+    products = await _load_products()
+    return JSONResponse(products)
