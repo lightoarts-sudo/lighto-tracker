@@ -713,7 +713,7 @@ def _recommend(products: list, current_slug: str, limit: int = 4) -> dict:
     same_artist = [p for p in products
                    if p["slug"] != current_slug and p["artist"] == current["artist"]]
     _random.shuffle(same_artist)
-    by_artist = same_artist[:limit]
+    by_artist = same_artist
 
     # ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Section 2: one random work per tag, diverse artists ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
     used_slugs = {current_slug} | {p["slug"] for p in by_artist}
@@ -770,7 +770,7 @@ def _recommend(products: list, current_slug: str, limit: int = 4) -> dict:
 @app.get("/recommendations")
 async def recommendations(
     slug: str = Query(..., description="Product slug"),
-    limit: int = Query(4, ge=1, le=12),
+    limit: int = Query(8, ge=1, le=24),
 ):
     products = await _load_products()
     recs = _recommend(products, slug.lower().strip(), limit)
