@@ -4,8 +4,9 @@ Lighto ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ�
 """
 
 import os, base64, asyncio
+import html as _html
 from datetime import datetime, timezone, timedelta
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -558,6 +559,244 @@ async def campaign_detail(pwd: str = Query(""), name: str = Query("")):
 </body></html>""")
 
 # ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Clicks API ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ
+# Clean replacements for legacy HTML pages whose text was mojibake-corrupted.
+for _route in list(app.router.routes):
+    if getattr(_route, "path", None) in {"/unsubscribe", "/dashboard", "/customer", "/campaign"}:
+        app.router.routes.remove(_route)
+
+
+def _e(value) -> str:
+    return _html.escape("" if value is None else str(value), quote=True)
+
+
+def _empty(text: str) -> str:
+    return f'<p style="color:#aaa;font-size:14px;">{_e(text)}</p>'
+
+
+@app.get("/unsubscribe", response_class=HTMLResponse)
+async def unsubscribe_clean(c: str = Query(...), campaign: str = Query("")):
+    try:
+        email = base64.urlsafe_b64decode(c + "==").decode()
+    except Exception:
+        email = c
+
+    try:
+        if USE_PG:
+            async with _pg_pool.acquire() as conn:
+                await conn.execute(
+                    "INSERT INTO unsubscribes (ts, email, campaign) VALUES ($1,$2,$3) ON CONFLICT (email) DO NOTHING",
+                    datetime.now(timezone.utc), email[:200], campaign[:100]
+                )
+        else:
+            async with aiosqlite.connect(SQLITE_PATH) as db:
+                await db.execute(
+                    "INSERT OR IGNORE INTO unsubscribes (ts, email, campaign) VALUES (?,?,?)",
+                    (datetime.now(timezone.utc).isoformat(), email[:200], campaign[:100])
+                )
+                await db.commit()
+    except Exception as e:
+        print(f"[unsubscribe] DB error: {e}")
+
+    tw_now = datetime.now(TW_TZ).strftime("%Y-%m-%d %H:%M")
+    return HTMLResponse(f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>已取消訂閱 - Lighto Arts</title></head>
+<body style="margin:0;padding:0;background:#f5f5f0;font-family:'PingFang TC',Helvetica,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:80px 16px;">
+<div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:520px;text-align:center;">
+  <h1 style="font-size:24px;font-weight:700;color:#1a1a1a;margin:0 0 12px;">已取消訂閱</h1>
+  <p style="font-size:15px;color:#666;line-height:1.7;margin:0 0 24px;">
+    <b>{_e(email)}</b><br>已從 Lighto Arts EDM 名單中標記為退訂。<br>
+    時間：{_e(tw_now)} (UTC+8)
+  </p>
+  <a href="https://www.lightoarts.com" style="color:#1a6aff;text-decoration:none;">回到 Lighto Arts</a>
+</div></td></tr></table></body></html>""")
+
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_clean(pwd: str = Query(""), search: str = Query("")):
+    if pwd != DASHBOARD_PASSWORD:
+        return HTMLResponse("""<html><body style="font-family:sans-serif;max-width:400px;margin:80px auto;text-align:center;">
+        <h2>Lighto EDM 追蹤後台</h2>
+        <form method="get"><input name="pwd" type="password" placeholder="請輸入密碼" style="padding:8px;width:200px;">
+        <button type="submit" style="padding:8px 16px;margin-left:8px;">登入</button></form>
+        </body></html>""", status_code=401)
+
+    total = await db_val("SELECT COUNT(*) FROM clicks")
+    uniq = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks")
+    unsubs = await db_val("SELECT COUNT(*) FROM unsubscribes")
+    camps = await db_fetch("SELECT campaign, COUNT(*) as cnt FROM clicks GROUP BY campaign ORDER BY cnt DESC")
+    preview_subjects = {}
+    if camps:
+        camp_names = [r["campaign"] for r in camps]
+        ph = ",".join(f"${i+1}" for i in range(len(camp_names))) if USE_PG else ",".join("?" for _ in camp_names)
+        subj_rows = await db_fetch(f"SELECT campaign, subject FROM email_previews WHERE campaign IN ({ph})", *camp_names)
+        preview_subjects = {r["campaign"]: r["subject"] for r in subj_rows}
+
+    prods = await db_fetch("""SELECT product_id, product_name, COUNT(*) as cnt
+                              FROM clicks GROUP BY product_id, product_name
+                              ORDER BY cnt DESC LIMIT 20""")
+    recent = await db_fetch("""SELECT ts, customer_id, product_id, product_name, content, campaign
+                               FROM clicks ORDER BY ts DESC LIMIT 100""")
+    unsub_list = await db_fetch("SELECT ts, email, campaign FROM unsubscribes ORDER BY ts DESC")
+
+    search_section = ""
+    if search:
+        search_results = await db_fetch(
+            "SELECT ts, customer_id, product_id, product_name, content, campaign FROM clicks WHERE customer_id=$1 ORDER BY ts DESC",
+            search.strip()
+        )
+        search_rows = "".join(
+            f"<tr><td>{_e(tw_str(r['ts']))}</td><td>{_e(r['product_id'])}</td>"
+            f"<td>{_e(r['product_name'] or '-')}</td><td>{_e(r['content'])}</td><td>{_e(r['campaign'])}</td></tr>"
+            for r in search_results
+        )
+        search_table = _empty("沒有找到這個 Email 的點擊紀錄") if not search_results else f"""
+        <table><tr><th>時間 (UTC+8)</th><th>Product ID</th><th>產品名稱</th><th>內容區塊</th><th>Campaign</th></tr>
+        {search_rows}</table>"""
+        search_section = f"""<div class="card"><h2>搜尋結果：{_e(search)}，共 {len(search_results)} 筆</h2>{search_table}</div>"""
+
+    camp_rows = "".join(
+        f"<tr><td><a href='/campaign?pwd={_e(pwd)}&name={quote(str(r['campaign']))}'>{_e(r['campaign'])}</a></td>"
+        f"<td>{_e(preview_subjects.get(r['campaign'], '-'))}</td><td><b>{_e(r['cnt'])}</b></td></tr>"
+        for r in camps
+    )
+    prod_rows = "".join(
+        f"<tr><td>{_e(r['product_id'])}</td><td>{_e(r['product_name'] or '-')}</td><td><b>{_e(r['cnt'])}</b></td></tr>"
+        for r in prods
+    )
+    recent_rows = "".join(
+        f"<tr><td>{_e(tw_str(r['ts']))}</td>"
+        f"<td><a href='/customer?pwd={_e(pwd)}&email={quote(str(r['customer_id']))}'>{_e(r['customer_id'])}</a></td>"
+        f"<td>{_e(r['product_id'])}</td><td>{_e(r['product_name'] or '-')}</td>"
+        f"<td>{_e(r['content'])}</td><td>{_e(r['campaign'])}</td></tr>"
+        for r in recent
+    )
+    unsub_rows = "".join(
+        f"<tr><td>{_e(tw_str(r['ts']))}</td><td><b>{_e(r['email'])}</b></td><td>{_e(r['campaign'])}</td>"
+        f"<td><button data-email='{_e(r['email'])}' onclick='delUnsub(this)' style='background:#c0392b;color:#fff;border:none;border-radius:4px;padding:3px 10px;cursor:pointer;font-size:12px;'>刪除</button></td></tr>"
+        for r in unsub_list
+    )
+
+    return HTMLResponse(html_head("Lighto EDM 追蹤後台") + f"""
+<div class="card">
+  <h1>Lighto Arts EDM 追蹤後台</h1>
+  <p style="color:#888;margin:0 0 20px;font-size:13px;">
+    <a href="/api/clicks?pwd={_e(pwd)}">JSON API</a> ·
+    <a href="/dashboard?pwd={_e(pwd)}">重新整理</a> ·
+    時區：UTC+8
+  </p>
+  <div>
+    <div class="stat"><div class="n">{_e(total)}</div><div class="l">總點擊數</div></div>
+    <div class="stat"><div class="n">{_e(uniq)}</div><div class="l">點擊客戶數</div></div>
+    <div class="stat unsub"><div class="n">{_e(unsubs)}</div><div class="l">退訂數</div></div>
+  </div>
+</div>
+<div class="card">
+  <form class="search-bar" method="get" action="/dashboard">
+    <input type="hidden" name="pwd" value="{_e(pwd)}">
+    <input name="search" value="{_e(search)}" placeholder="輸入 Email 查看單一客戶點擊紀錄">
+    <button type="submit">搜尋</button>
+  </form>
+</div>
+{search_section}
+<div class="card"><h2>Campaign 點擊排行</h2>
+<table><tr><th>Campaign</th><th>EDM 主旨</th><th>點擊數</th></tr>{camp_rows}</table></div>
+<div class="card"><h2>產品點擊排行 Top 20</h2>
+<table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
+<div class="card"><h2 style="color:#c0392b;">退訂名單，共 {unsubs} 筆</h2>
+{_empty("目前沒有退訂紀錄") if not unsub_list else f"<table><tr><th>時間 (UTC+8)</th><th>Email</th><th>Campaign</th><th>操作</th></tr>{unsub_rows}</table>"}
+</div>
+<script>
+async function delUnsub(btn) {{
+  const email = btn.dataset.email;
+  if (!confirm('確定要刪除退訂紀錄？\\n' + email + '\\n刪除後這個 Email 可能會再次收到 EDM。')) return;
+  btn.disabled = true; btn.textContent = '...';
+  try {{
+    const r = await fetch('/api/unsubscribes?pwd={_e(pwd)}&email=' + encodeURIComponent(email), {{method:'DELETE'}});
+    if (r.ok) btn.closest('tr').remove();
+    else {{ alert('刪除失敗'); btn.disabled = false; btn.textContent = '刪除'; }}
+  }} catch(e) {{ alert('網路錯誤'); btn.disabled = false; btn.textContent = '刪除'; }}
+}}
+</script>
+<div class="card"><h2>最近 100 筆點擊 <span style="font-size:13px;color:#888;font-weight:normal;">點 Email 可查看客戶明細</span></h2>
+<table><tr><th>時間 (UTC+8)</th><th>客戶 Email</th><th>Product ID</th><th>產品名稱</th><th>內容區塊</th><th>Campaign</th></tr>
+{recent_rows}</table></div>
+</body></html>""")
+
+
+@app.get("/customer", response_class=HTMLResponse)
+async def customer_detail_clean(pwd: str = Query(""), email: str = Query("")):
+    if pwd != DASHBOARD_PASSWORD:
+        raise HTTPException(403)
+    if not email:
+        raise HTTPException(400, "email required")
+
+    rows = await db_fetch(
+        "SELECT ts, product_id, product_name, content, campaign, dest_url FROM clicks WHERE customer_id=$1 ORDER BY ts DESC",
+        email
+    )
+    is_unsub = await db_val("SELECT COUNT(*) FROM unsubscribes WHERE email=$1", email)
+    unsub_badge = '<span style="background:#c0392b;color:#fff;padding:2px 10px;border-radius:4px;font-size:13px;margin-left:8px;">已退訂</span>' if is_unsub else ""
+    click_rows = "".join(
+        f"<tr><td>{_e(tw_str(r['ts']))}</td><td>{_e(r['product_id'])}</td><td>{_e(r['product_name'] or '-')}</td>"
+        f"<td>{_e(r['content'])}</td><td>{_e(r['campaign'])}</td><td style='font-size:12px;color:#888'>{_e((r['dest_url'] or '')[:80])}</td></tr>"
+        for r in rows
+    )
+    table = _empty("目前沒有點擊紀錄") if not rows else f"""
+<table><tr><th>時間 (UTC+8)</th><th>Product ID</th><th>產品名稱</th><th>內容區塊</th><th>Campaign</th><th>目的網址</th></tr>{click_rows}</table>"""
+    return HTMLResponse(html_head(f"客戶明細 - {email}") + f"""
+<a class="back-link" href="/dashboard?pwd={_e(pwd)}">返回追蹤後台</a>
+<div class="card"><h1>{_e(email)} {unsub_badge}</h1>
+<p style="color:#888;font-size:13px;margin:8px 0 0;">共 {len(rows)} 筆點擊紀錄</p></div>
+{('<div class="card" style="border:2px solid #c0392b;"><p style="color:#c0392b;margin:0;font-weight:600;">這位客戶已退訂，寄送 EDM 前請先排除。</p></div>' if is_unsub else '')}
+<div class="card"><h2>點擊紀錄</h2>{table}</div>
+</body></html>""")
+
+
+@app.get("/campaign", response_class=HTMLResponse)
+async def campaign_detail_clean(pwd: str = Query(""), name: str = Query("")):
+    if pwd != DASHBOARD_PASSWORD:
+        raise HTTPException(403)
+    if not name:
+        raise HTTPException(400, "name required")
+
+    total_clicks = await db_val("SELECT COUNT(*) FROM clicks WHERE campaign=$1", name)
+    uniq_customers = await db_val("SELECT COUNT(DISTINCT customer_id) FROM clicks WHERE campaign=$1", name)
+    prods = await db_fetch(
+        "SELECT product_id, product_name, COUNT(*) as cnt FROM clicks WHERE campaign=$1 GROUP BY product_id, product_name ORDER BY cnt DESC",
+        name
+    )
+    customers = await db_fetch(
+        """SELECT customer_id, COUNT(*) as clicks, MIN(ts) as first_click, MAX(ts) as last_click
+           FROM clicks WHERE campaign=$1
+           GROUP BY customer_id ORDER BY clicks DESC LIMIT 200""",
+        name
+    )
+
+    prod_rows = "".join(
+        f"<tr><td>{_e(r['product_id'])}</td><td>{_e(r['product_name'] or '-')}</td><td><b>{_e(r['cnt'])}</b></td></tr>"
+        for r in prods
+    )
+    cust_rows = "".join(
+        f"<tr><td><a href='/customer?pwd={_e(pwd)}&email={quote(str(r['customer_id']))}'>{_e(r['customer_id'])}</a></td>"
+        f"<td>{_e(r['clicks'])}</td><td>{_e(tw_str(r['first_click']))}</td><td>{_e(tw_str(r['last_click']))}</td></tr>"
+        for r in customers
+    )
+    return HTMLResponse(html_head(f"Campaign 明細 - {name}") + f"""
+<a class="back-link" href="/dashboard?pwd={_e(pwd)}">返回追蹤後台</a>
+<div class="card"><h1>Campaign：{_e(name)}</h1>
+<div style="margin-top:16px;">
+  <div class="stat"><div class="n">{_e(total_clicks)}</div><div class="l">總點擊數</div></div>
+  <div class="stat"><div class="n">{_e(uniq_customers)}</div><div class="l">點擊客戶數</div></div>
+</div></div>
+<div class="card"><h2>產品點擊排行</h2>
+<table><tr><th>Product ID</th><th>產品名稱</th><th>點擊數</th></tr>{prod_rows}</table></div>
+<div class="card"><h2>客戶點擊排行 Top 200 <span style="font-size:13px;color:#888;font-weight:normal;">點 Email 可查看客戶明細</span></h2>
+<table><tr><th>客戶 Email</th><th>點擊數</th><th>第一次點擊</th><th>最後點擊</th></tr>{cust_rows}</table></div>
+</body></html>""")
+
+
 @app.get("/api/clicks")
 async def api_clicks(pwd: str = Query(""), campaign: str = Query("")):
     if pwd != DASHBOARD_PASSWORD:
