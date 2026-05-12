@@ -620,9 +620,25 @@ def _extract_slug(raw_url: str, title: str) -> str:
     return _title_to_slug(title)
 
 
+def _tag_key(value: str) -> str:
+    return _re.sub(r"[^a-z0-9]", "", (value or "").lower())
+
+
+def _split_product_title(title: str, cats: str = "", tag_str: str = "") -> tuple:
+    parts = [p.strip() for p in title.split("|") if p.strip()]
+    if len(parts) >= 3:
+        tag_keys = {_tag_key(t) for t in _re.split(r"[,，;；|｜/\\]+", cats + "," + tag_str) if t.strip()}
+        first_key = _tag_key(parts[0])
+        if first_key and first_key in tag_keys:
+            return parts[0], parts[1]
+    if len(parts) > 1:
+        return parts[-1], "|".join(parts[:-1]).strip()
+    return "", title
+
+
 def _extract_artist(title: str) -> str:
-    parts = title.split("|")
-    return parts[-1].strip() if len(parts) > 1 else ""
+    artist, _ = _split_product_title(title)
+    return artist
 
 
 def _parse_tags(cats: str, tag_str: str, artist: str) -> list:
@@ -663,10 +679,9 @@ async def _load_products() -> list:
             continue
         seen.add(slug)
 
-        artist    = _extract_artist(title)
-        art_title = "|".join(title.split("|")[:-1]).strip() if "|" in title else title
         cats      = row[_COL_CATS] if len(row) > _COL_CATS else ""
         tag_str   = row[_COL_TAGS] if len(row) > _COL_TAGS else ""
+        artist, art_title = _split_product_title(title, cats, tag_str)
         tags      = _parse_tags(cats, tag_str, artist)
         imgs_cell = row[_COL_IMGS] if len(row) > _COL_IMGS else ""
         image     = imgs_cell.strip().split()[0] if imgs_cell.strip() else ""
