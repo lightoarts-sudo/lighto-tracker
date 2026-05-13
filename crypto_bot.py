@@ -10,7 +10,10 @@ from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse, JSONResponse
 
 
-BINANCE_BASE = "https://api.binance.com"
+BINANCE_BASES = [
+    os.environ.get("CRYPTO_BINANCE_BASE", "https://api.binance.com").rstrip("/"),
+    "https://api.binance.us",
+]
 TW_TZ = timezone(timedelta(hours=8))
 
 
@@ -296,8 +299,16 @@ def install_crypto_bot(app: FastAPI):
 
 async def fetch_klines(client, symbol, interval, limit):
     params = {"symbol": symbol, "interval": interval, "limit": str(limit)}
-    resp = await client.get(f"{BINANCE_BASE}/api/v3/klines", params=params)
-    resp.raise_for_status()
+    last_error = None
+    for base in dict.fromkeys(BINANCE_BASES):
+        try:
+            resp = await client.get(f"{base}/api/v3/klines", params=params)
+            resp.raise_for_status()
+            break
+        except Exception as exc:
+            last_error = exc
+    else:
+        raise last_error
     return [
         {"time": int(r[6]), "open": float(r[1]), "high": float(r[2]), "low": float(r[3]), "close": float(r[4]), "volume": float(r[5]), "closeTime": int(r[6])}
         for r in resp.json()
