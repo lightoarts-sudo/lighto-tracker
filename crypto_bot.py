@@ -10,10 +10,7 @@ from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse, JSONResponse
 
 
-BINANCE_BASES = [
-    os.environ.get("CRYPTO_BINANCE_BASE", "https://api.binance.com").rstrip("/"),
-    "https://api.binance.us",
-]
+OKX_BASE = os.environ.get("CRYPTO_OKX_BASE", "https://www.okx.com").rstrip("/")
 TW_TZ = timezone(timedelta(hours=8))
 
 
@@ -24,6 +21,7 @@ def _symbols():
 
 CONFIG = {
     "symbols": _symbols(),
+    "dataSource": "OKX",
     "interval": os.environ.get("CRYPTO_INTERVAL", "5m"),
     "higherInterval": os.environ.get("CRYPTO_HIGHER_INTERVAL", "15m"),
     "pollSeconds": int(os.environ.get("CRYPTO_POLL_SECONDS", "300")),
@@ -298,21 +296,35 @@ def install_crypto_bot(app: FastAPI):
 
 
 async def fetch_klines(client, symbol, interval, limit):
-    params = {"symbol": symbol, "interval": interval, "limit": str(limit)}
-    last_error = None
-    for base in dict.fromkeys(BINANCE_BASES):
-        try:
-            resp = await client.get(f"{base}/api/v3/klines", params=params)
-            resp.raise_for_status()
-            break
-        except Exception as exc:
-            last_error = exc
-    else:
-        raise last_error
+    inst_id = to_okx_inst_id(symbol)
+    params = {"instId": inst_id, "bar": interval, "limit": str(limit)}
+    resp = await client.get(f"{OKX_BASE}/api/v5/market/candles", params=params)
+    resp.raise_for_status()
+    payload = resp.json()
+    if payload.get("code") != "0":
+        raise RuntimeError(f"OKX candles error: {payload}")
     return [
-        {"time": int(r[6]), "open": float(r[1]), "high": float(r[2]), "low": float(r[3]), "close": float(r[4]), "volume": float(r[5]), "closeTime": int(r[6])}
-        for r in resp.json()
+        {
+            "time": int(r[0]),
+            "open": float(r[1]),
+            "high": float(r[2]),
+            "low": float(r[3]),
+            "close": float(r[4]),
+            "volume": float(r[5]),
+            "closeTime": int(r[0]),
+        }
+        for r in reversed(payload["data"])
     ]
+
+
+def to_okx_inst_id(symbol):
+    if "-" in symbol:
+        return symbol
+    if symbol.endswith("USDT"):
+        return f"{symbol[:-4]}-USDT"
+    if symbol.endswith("USDC"):
+        return f"{symbol[:-4]}-USDC"
+    return symbol
 
 
 def new_account():
