@@ -72,6 +72,18 @@ CREATE TABLE IF NOT EXISTS crypto_trades (
     quote_amount DOUBLE PRECISION,
     reason TEXT
 );
+CREATE TABLE IF NOT EXISTS crypto_candles (
+    symbol TEXT NOT NULL,
+    interval TEXT NOT NULL,
+    ts TIMESTAMPTZ NOT NULL,
+    open DOUBLE PRECISION,
+    high DOUBLE PRECISION,
+    low DOUBLE PRECISION,
+    close DOUBLE PRECISION,
+    volume DOUBLE PRECISION,
+    source TEXT,
+    PRIMARY KEY(symbol, interval, ts)
+);
 """
 
 
@@ -135,6 +147,7 @@ class CryptoPaperBot:
     async def _apply_symbol(self, symbol, candles, higher):
         price = candles[-1]["close"]
         close_time = candles[-1]["closeTime"]
+        await self._save_candles(symbol, CONFIG["interval"], candles)
         states = await self._load_states(symbol)
         rows = []
         for strategy in STRATEGIES:
@@ -237,6 +250,31 @@ class CryptoPaperBot:
                 symbol, strategy, side, price, qty, quote, reason,
             )
 
+    async def _save_candles(self, symbol, interval, candles):
+        rows = [
+            (
+                symbol,
+                interval,
+                datetime.fromtimestamp(candle["closeTime"] / 1000, tz=timezone.utc),
+                candle["open"],
+                candle["high"],
+                candle["low"],
+                candle["close"],
+                candle["volume"],
+                CONFIG["dataSource"],
+            )
+            for candle in candles
+        ]
+        async with self.pool.acquire() as conn:
+            await conn.executemany(
+                """INSERT INTO crypto_candles(symbol,interval,ts,open,high,low,close,volume,source)
+                   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+                   ON CONFLICT(symbol,interval,ts) DO UPDATE SET
+                   open=EXCLUDED.open, high=EXCLUDED.high, low=EXCLUDED.low,
+                   close=EXCLUDED.close, volume=EXCLUDED.volume, source=EXCLUDED.source""",
+                rows,
+            )
+
     def status(self):
         markets = []
         for symbol in CONFIG["symbols"]:
@@ -291,6 +329,26 @@ def install_crypto_bot(app: FastAPI):
         async with crypto_bot.pool.acquire() as conn:
             rows = [dict(row) for row in await conn.fetch(sql, *args)]
         rows = annotate_trade_pnl(rows)
+        for row in rows:
+            row["ts"] = row["ts"].isoformat()
+        return JSONResponse(rows)
+
+    @app.get("/api/crypto/candles")
+    async def crypto_candles(symbol: str = Query("BTCUSDT", max_length=20), interval: str = Query("5m", max_length=10), limit: int = Query(300, ge=1, le=2000)):
+        async with crypto_bot.pool.acquire() as conn:
+            rows = [
+                dict(row)
+                for row in await conn.fetch(
+                    """SELECT symbol,interval,ts,open,high,low,close,volume,source
+                       FROM crypto_candles
+                       WHERE symbol=$1 AND interval=$2
+                       ORDER BY ts DESC LIMIT $3""",
+                    symbol.upper(),
+                    interval,
+                    limit,
+                )
+            ]
+        rows.reverse()
         for row in rows:
             row["ts"] = row["ts"].isoformat()
         return JSONResponse(rows)
