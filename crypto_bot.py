@@ -132,6 +132,7 @@ class CryptoPaperBot:
         self.micro_last_run_at = None
         self.micro_last_error = ""
         self.micro_candidates = []
+        self.micro_ranking12h = []
         self.micro_positions = []
         self.last_error = ""
         self.last_run_at = None
@@ -407,7 +408,7 @@ class CryptoPaperBot:
             positions = []
             for ticker in shortlist:
                 inst_id = ticker["instId"]
-                candles = await fetch_okx_candles_by_inst(client, inst_id, CONFIG["interval"], 120)
+                candles = await fetch_okx_candles_by_inst(client, inst_id, CONFIG["interval"], 160)
                 if len(candles) < 61:
                     continue
                 signal = micro_trend_signal(ticker, candles)
@@ -427,8 +428,10 @@ class CryptoPaperBot:
                 candidates.append(signal)
                 await asyncio.sleep(0.08)
         candidates.sort(key=lambda row: (row["buy"], row["trendScore"]), reverse=True)
+        ranking12h = sorted(candidates, key=lambda row: row["pct12h"], reverse=True)
         positions.sort(key=lambda row: row["unrealizedPnlPct"], reverse=True)
         self.micro_candidates = candidates[:40]
+        self.micro_ranking12h = ranking12h[:40]
         self.micro_positions = positions
         self.micro_last_run_at = datetime.now(timezone.utc).isoformat()
 
@@ -498,6 +501,7 @@ class CryptoPaperBot:
             "lastRunAt": self.micro_last_run_at,
             "lastError": self.micro_last_error,
             "candidates": self.micro_candidates,
+            "ranking12h": getattr(self, "micro_ranking12h", []),
             "positions": self.micro_positions,
             "config": CONFIG,
         }
@@ -546,6 +550,10 @@ def install_crypto_bot(app: FastAPI):
     @app.get("/api/crypto/micro")
     async def crypto_micro_status():
         return JSONResponse(crypto_bot.micro_status())
+
+    @app.get("/api/crypto/micro/ranking12h")
+    async def crypto_micro_ranking12h():
+        return JSONResponse(getattr(crypto_bot, "micro_ranking12h", []))
 
     @app.post("/api/crypto/micro/run-once")
     async def crypto_micro_run_once():
@@ -871,9 +879,11 @@ def micro_trend_signal(ticker, candles):
     prev_close = candles[-2]["close"]
     close_15 = candles[-4]["close"] if len(candles) >= 4 else prev_close
     close_1h = candles[-13]["close"] if len(candles) >= 13 else prev_close
+    close_12h = candles[-145]["close"] if len(candles) >= 145 else candles[0]["close"]
     pct5 = ((close - prev_close) / prev_close) * 100 if prev_close else 0
     pct15 = ((close - close_15) / close_15) * 100 if close_15 else 0
     pct1h = ((close - close_1h) / close_1h) * 100 if close_1h else 0
+    pct12h = ((close - close_12h) / close_12h) * 100 if close_12h else 0
     volumes = [c["volume"] for c in candles]
     recent_vol = sma(volumes, 6) or candles[-1]["volume"]
     base_vol = sma(volumes[-36:-6], 30) or 0
@@ -908,6 +918,7 @@ def micro_trend_signal(ticker, candles):
         "pct5": rnd(pct5),
         "pct15": rnd(pct15),
         "pct1h": rnd(pct1h),
+        "pct12h": rnd(pct12h),
         "pct24": rnd(ticker.get("_pct24", 0)),
         "quoteVolume24h": rnd(ticker.get("_quoteVol", 0)),
         "volumeRatio": rnd(volume_ratio),
@@ -1301,9 +1312,9 @@ async function loadBacktest(){await loadBackfill();$("#backtestRows").innerHTML=
 function renderBacktest(rows){if(!rows.length){$("#backtestRows").innerHTML="<p>No backtest rows yet. Run Backfill 90d first.</p>";return}$("#backtestRows").innerHTML=`<table><thead><tr><th>Rank</th><th>Market</th><th>Strategy</th><th>Return</th><th>Equity</th><th>Realized</th><th>Unrealized</th><th>Trades</th><th>Win Rate</th><th>Max DD</th><th>Candles</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.symbol.replace("USDT","")}</td><td>${r.name}<br><span class="label">${r.id}</span></td><td class="${tone(r.returnPct)}">${pct(r.returnPct)}</td><td>${money(r.equity)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)}</td><td>${r.trades} / ${r.closedTrades}</td><td>${pct(r.winRate)}</td><td class="bad">${pct(-Math.abs(r.maxDrawdownPct||0))}</td><td>${r.candles||0} / ${r.higherCandles||0}</td></tr>`).join("")}</tbody></table>`}
 async function runMicroScan(){const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();renderMicro(data);await loadMicroTrades();}
 async function loadMicro(){const data=await (await fetch("/api/crypto/micro")).json();renderMicro(data);await loadMicroTrades();}
-function renderMicro(data){$("#microStatus").textContent=`Last scan: ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"waiting"} - ${data.running?"running":"stopped"}${data.lastError?" - "+data.lastError:""}`;renderMicroPositions(data.positions||[]);renderMicroCandidates(data.candidates||[]);}
+function renderMicro(data){$("#microStatus").textContent=`Last scan: ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"waiting"} - ${data.running?"running":"stopped"}${data.lastError?" - "+data.lastError:""}`;renderMicroPositions(data.positions||[]);renderMicroCandidates(data.ranking12h||data.candidates||[]);}
 function renderMicroPositions(rows){if(!rows.length){$("#microPositions").innerHTML="<h3>Open Micro Positions</h3><p>No open breakout positions.</p>";return}$("#microPositions").innerHTML=`<h3>Open Micro Positions</h3><table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>Distance</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.instId}</td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
-function renderMicroCandidates(rows){if(!rows.length){$("#microCandidates").innerHTML="<h3>Breakout Watchlist</h3><p>No candidates yet.</p>";return}$("#microCandidates").innerHTML=`<h3>Breakout Watchlist</h3><table><thead><tr><th>Coin</th><th>Buy</th><th>Price</th><th>5m</th><th>15m</th><th>1h</th><th>Vol x</th><th>24h Vol</th><th>MA60</th></tr></thead><tbody>${rows.slice(0,30).map(r=>`<tr><td>${r.instId}</td><td class="${r.buy?'good':'bad'}">${r.buy?'YES':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.quoteVolume24h)}</td><td>${money(r.ma60)}</td></tr>`).join("")}</tbody></table>`}
+function renderMicroCandidates(rows){if(!rows.length){$("#microCandidates").innerHTML="<h3>12h Ranking Watchlist</h3><p>No candidates yet.</p>";return}$("#microCandidates").innerHTML=`<h3>12h Ranking Watchlist</h3><table><thead><tr><th>Coin</th><th>Buy</th><th>Price</th><th>12h</th><th>1h</th><th>15m</th><th>Vol x</th><th>24h Vol</th><th>MA60</th></tr></thead><tbody>${rows.slice(0,30).map(r=>`<tr><td>${r.instId}</td><td class="${r.buy?'good':'bad'}">${r.buy?'YES':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.quoteVolume24h)}</td><td>${money(r.ma60)}</td></tr>`).join("")}</tbody></table>`}
 async function loadMicroTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderMicroTrades(rows);}
 function renderMicroTrades(rows){if(!rows.length){$("#microTrades").innerHTML="<h3>Micro Trades</h3><p>No micro trades yet.</p>";return}$("#microTrades").innerHTML=`<h3>Micro Trades</h3><table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Amount</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.slice(0,40).map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
 function stat(k,v){return `<div class="stat"><span>${k}</span><strong>${v}</strong></div>`} function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:2})} function qty(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:8})} function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`} function tone(v){return Number(v)>=0?'good':'bad'}
@@ -1313,15 +1324,15 @@ function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.get
 
 MICRO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Cap Radar</title>
 <style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>Watchlist</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>Recent Trend Candidates</h2><p>Uses OKX USDT perpetual ranking, then checks MA5 > MA20 > MA60, rising slope, and increasing volume.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on MA trend plus rising volume, then exit on close below MA20 or MA20 crossing below MA60.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
+<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>12h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>12h Gain Ranking</h2><p>Uses OKX USDT perpetual ranking, then computes 12h gain from 5m candles and checks MA trend state.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on MA trend plus rising volume, then exit on close below MA20 or MA20 crossing below MA60.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
 <script>
 const $=s=>document.querySelector(s);
 $("#scan").onclick=()=>scan();
 setInterval(load,10000); load();
 async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTrades();}
 async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();}
-function render(data){$("#marketType").textContent=data.config?.microInstType||"SWAP";$("#watchCount").textContent=(data.candidates||[]).length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(data.candidates||[]);renderPositions(data.positions||[]);}
-function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No trend candidates yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Coin</th><th>Status</th><th>Price</th><th>5m</th><th>15m</th><th>1h</th><th>Vol x</th><th>MA5</th><th>MA20</th><th>MA60</th><th>Score</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.ma5)}</td><td>${money(r.ma20)}<br><span class="label">${pct(r.ma20Slope)}</span></td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
+function render(data){let ranking=data.ranking12h||data.candidates||[];$("#marketType").textContent=data.config?.microInstType||"SWAP";$("#watchCount").textContent=ranking.length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(ranking);renderPositions(data.positions||[]);}
+function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No ranking data yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Rank</th><th>Coin</th><th>Status</th><th>Price</th><th>12h</th><th>1h</th><th>15m</th><th>Vol x</th><th>MA5</th><th>MA20</th><th>MA60</th><th>Score</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.ma5)}</td><td>${money(r.ma20)}<br><span class="label">${pct(r.ma20Slope)}</span></td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td></tr>`).join("")}</tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA20 Exit</th><th>MA60</th><th>To MA20</th><th>Value</th><th>Unrealized</th><th>Trades</th><th>Win Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma20)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa20Pct)}">${pct(r.distanceToMa20Pct)}</td><td>${money(r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td><td>${pct(r.winRate)}</td></tr>`).join("")}</tbody></table>`}
 async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
 function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Amount</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
