@@ -39,6 +39,7 @@ CONFIG = {
     "microMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_MIN_VOLUME_RATIO", "3")),
     "microMinBreakoutPct5m": float(os.environ.get("CRYPTO_MICRO_MIN_BREAKOUT_PCT_5M", "2")),
     "microMinBreakoutPct15m": float(os.environ.get("CRYPTO_MICRO_MIN_BREAKOUT_PCT_15M", "3")),
+    "microInstType": os.environ.get("CRYPTO_MICRO_INST_TYPE", "SWAP").upper(),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -395,7 +396,7 @@ class CryptoPaperBot:
 
     async def run_micro_once(self):
         async with httpx.AsyncClient(timeout=20) as client:
-            tickers = await fetch_spot_tickers(client)
+            tickers = await fetch_market_tickers(client, CONFIG["microInstType"])
             shortlist = shortlist_micro_tickers(tickers)
             states = await self._load_micro_states()
             open_count = sum(1 for state in states.values() if state.get("assetQty", 0) > 0)
@@ -798,8 +799,8 @@ async def fetch_history_klines(client, symbol, interval, limit, after=None):
     ]
 
 
-async def fetch_spot_tickers(client):
-    resp = await client.get(f"{OKX_BASE}/api/v5/market/tickers", params={"instType": "SPOT"})
+async def fetch_market_tickers(client, inst_type):
+    resp = await client.get(f"{OKX_BASE}/api/v5/market/tickers", params={"instType": inst_type})
     resp.raise_for_status()
     payload = resp.json()
     if payload.get("code") != "0":
@@ -835,7 +836,7 @@ def shortlist_micro_tickers(tickers):
     for ticker in tickers:
         inst_id = ticker.get("instId", "")
         parts = inst_id.split("-")
-        if len(parts) != 2 or parts[1] != "USDT" or parts[0] in MICRO_EXCLUDED_BASES:
+        if not is_micro_usdt_inst(parts):
             continue
         quote_vol = safe_float(ticker.get("volCcy24h"))
         if quote_vol < CONFIG["microMinQuoteVolume24h"] or quote_vol > CONFIG["microMaxQuoteVolume24h"]:
@@ -850,6 +851,16 @@ def shortlist_micro_tickers(tickers):
         rows.append({**ticker, "_quoteVol": quote_vol, "_pct24": pct24})
     rows.sort(key=lambda row: (row["_pct24"], row["_quoteVol"]), reverse=True)
     return rows[:60]
+
+
+def is_micro_usdt_inst(parts):
+    if len(parts) == 2:
+        base, quote = parts
+        return quote == "USDT" and base not in MICRO_EXCLUDED_BASES
+    if len(parts) == 3:
+        base, quote, contract = parts
+        return quote == "USDT" and contract == "SWAP" and base not in MICRO_EXCLUDED_BASES
+    return False
 
 
 def micro_breakout_signal(ticker, candles):
@@ -1270,14 +1281,14 @@ function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.get
 
 MICRO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Cap Radar</title>
 <style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>Small Cap Breakout Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Radar</span><strong id="runState">--</strong></div><div class="metric"><span>Watchlist</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>Recent Breakout Candidates</h2><p>Sorted by active buy flag, volume expansion, and short-term momentum.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on volume breakout and exit when 5m close falls below MA60.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
+<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>Watchlist</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>Recent Perp Breakouts</h2><p>Uses OKX USDT perpetual ticker ranking, then checks volume breakout and MA60 state.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on volume breakout and exit when 5m close falls below MA60.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
 <script>
 const $=s=>document.querySelector(s);
 $("#scan").onclick=()=>scan();
 setInterval(load,10000); load();
 async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTrades();}
 async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();}
-function render(data){$("#runState").textContent=data.running?"Running":"Stopped";$("#watchCount").textContent=(data.candidates||[]).length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(data.candidates||[]);renderPositions(data.positions||[]);}
+function render(data){$("#marketType").textContent=data.config?.microInstType||"SWAP";$("#watchCount").textContent=(data.candidates||[]).length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(data.candidates||[]);renderPositions(data.positions||[]);}
 function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No breakout candidates yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Coin</th><th>Status</th><th>Price</th><th>5m</th><th>15m</th><th>1h</th><th>24h</th><th>Vol x</th><th>24h Volume</th><th>MA60</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct24)}">${pct(r.pct24)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.quoteVolume24h)}</td><td>${money(r.ma60)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To Stop</th><th>Value</th><th>Unrealized</th><th>Trades</th><th>Win Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td><td>${pct(r.winRate)}</td></tr>`).join("")}</tbody></table>`}
 async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
