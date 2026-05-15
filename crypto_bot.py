@@ -41,9 +41,10 @@ CONFIG = {
     "microMinBreakoutPct15m": float(os.environ.get("CRYPTO_MICRO_MIN_BREAKOUT_PCT_15M", "3")),
     "microInstType": os.environ.get("CRYPTO_MICRO_INST_TYPE", "SWAP").upper(),
     "microTrendVolumeRatio": float(os.environ.get("CRYPTO_MICRO_TREND_VOLUME_RATIO", "1.35")),
-    "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "1.2")),
-    "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.4")),
+    "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "0.8")),
+    "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.2")),
     "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
+    "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -416,6 +417,7 @@ class CryptoPaperBot:
                 state = states.get(inst_id, new_micro_state())
                 price = candles[-1]["close"]
                 if state.get("assetQty", 0) > 0:
+                    update_micro_position_state(state, price, signal)
                     if micro_should_exit(signal, state, price):
                         await self._micro_sell(inst_id, state, price, signal, signal["exitReason"])
                         open_count = max(0, open_count - 1)
@@ -463,6 +465,8 @@ class CryptoPaperBot:
             "avgEntry": price,
             "entryTime": signal["time"],
             "entryReason": signal["reason"],
+            "peakPrice": price,
+            "belowMa60Count": 0,
             "trades": state.get("trades", 0) + 1,
         })
         await self._save_micro_state(inst_id, state)
@@ -474,6 +478,8 @@ class CryptoPaperBot:
         pnl = quote - qty * state.get("avgEntry", 0)
         state["assetQty"] = 0
         state["avgEntry"] = 0
+        state["peakPrice"] = 0
+        state["belowMa60Count"] = 0
         state["lastExitTime"] = signal["time"]
         state["realizedPnl"] = state.get("realizedPnl", 0) + pnl
         state["closedTrades"] = state.get("closedTrades", 0) + 1
@@ -889,29 +895,30 @@ def micro_trend_signal(ticker, candles):
     recent_vol = sma(volumes, 6) or candles[-1]["volume"]
     base_vol = sma(volumes[-36:-6], 30) or 0
     volume_ratio = recent_vol / base_vol if base_vol else 0
-    prior_high = max(c["high"] for c in candles[-25:-1])
+    prior_high = max(c["high"] for c in candles[-13:-1])
     closes = [c["close"] for c in candles]
     ma5 = sma(closes, 5) or close
     ma20 = sma(closes, 20) or close
     ma60 = sma(closes, 60) or close
     ma20_prev = sma(closes[:-12], 20) or ma20
     ma60_prev = sma(closes[:-12], 60) or ma60
+    ma60_prev24 = sma(closes[:-24], 60) or ma60
     ma20_slope = ((ma20 - ma20_prev) / ma20_prev) * 100 if ma20_prev else 0
     ma60_slope = ((ma60 - ma60_prev) / ma60_prev) * 100 if ma60_prev else 0
-    stacked = close > ma5 > ma20 > ma60
+    ma60_slope24 = ((ma60 - ma60_prev24) / ma60_prev24) * 100 if ma60_prev24 else 0
+    stacked = close > ma20 >= ma60 and ma5 > ma60
+    ma_crossing_up = ma20 >= ma60 or (ma20 >= ma60 * 0.995 and ma20_slope > ma60_slope)
     breakout = close > prior_high
     volume_rising = volume_ratio >= CONFIG["microTrendVolumeRatio"]
-    trend_ok = stacked and ma20_slope > 0 and ma60_slope >= 0 and pct1h >= CONFIG["microTrendMinPct1h"] and pct15 >= CONFIG["microTrendMinPct15m"]
+    trend_ok = close > ma60 and ma_crossing_up and ma60_slope > 0 and ma60_slope24 >= 0 and pct1h >= CONFIG["microTrendMinPct1h"] and pct15 >= CONFIG["microTrendMinPct15m"]
     buy = (
         trend_ok
         and volume_rising
         and breakout
     )
-    trend_score = (pct1h * 1.2) + (pct15 * 0.8) + (volume_ratio * 2) + (ma20_slope * 3) + (ma60_slope * 2)
+    trend_score = (pct1h * 1.2) + (pct15 * 0.8) + (volume_ratio * 2) + (ma20_slope * 2) + (ma60_slope * 4) + (ma60_slope24 * 2)
     exit_reason = ""
-    if close < ma20:
-        exit_reason = "close_below_ma20"
-    elif ma20 < ma60:
+    if ma20 < ma60:
         exit_reason = "ma20_below_ma60"
     return {
         "instId": ticker["instId"],
@@ -928,6 +935,7 @@ def micro_trend_signal(ticker, candles):
         "ma60": rnd(ma60, 8),
         "ma20Slope": rnd(ma20_slope),
         "ma60Slope": rnd(ma60_slope),
+        "ma60Slope24": rnd(ma60_slope24),
         "stacked": stacked,
         "breakout": breakout,
         "trendScore": rnd(trend_score),
@@ -938,15 +946,28 @@ def micro_trend_signal(ticker, candles):
     }
 
 
+def update_micro_position_state(state, price, signal):
+    state["peakPrice"] = max(state.get("peakPrice", state.get("avgEntry", price)), price)
+    state["belowMa60Count"] = state.get("belowMa60Count", 0) + 1 if price < signal["ma60"] else 0
+
+
 def micro_should_exit(signal, state, price):
     entry = state.get("avgEntry", 0)
     if entry and price <= entry * (1 - CONFIG["microStopLossPct"] / 100):
         signal["exitReason"] = "stop_loss_1pct"
+    elif state.get("belowMa60Count", 0) >= 2:
+        signal["exitReason"] = "two_closes_below_ma60"
+    else:
+        peak = state.get("peakPrice", price)
+        peak_gain = ((peak - entry) / entry) * 100 if entry else 0
+        giveback = ((peak - price) / peak) * 100 if peak else 0
+        if peak_gain > CONFIG["microTrailingGivebackPct"] and giveback >= CONFIG["microTrailingGivebackPct"]:
+            signal["exitReason"] = "trailing_giveback_2pct"
     return bool(signal.get("exitReason"))
 
 
 def new_micro_state():
-    return {"assetQty": 0.0, "avgEntry": 0.0, "realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0}
+    return {"assetQty": 0.0, "avgEntry": 0.0, "peakPrice": 0.0, "belowMa60Count": 0, "realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0}
 
 
 def micro_position_row(inst_id, state, price, signal):
@@ -966,6 +987,9 @@ def micro_position_row(inst_id, state, price, signal):
         "ma60": signal["ma60"],
         "distanceToMa20Pct": rnd(((price - signal["ma20"]) / signal["ma20"]) * 100 if signal["ma20"] else 0),
         "distanceToMa60Pct": rnd(((price - signal["ma60"]) / signal["ma60"]) * 100 if signal["ma60"] else 0),
+        "peakPrice": rnd(state.get("peakPrice", price), 8),
+        "givebackPct": rnd(((state.get("peakPrice", price) - price) / state.get("peakPrice", price)) * 100 if state.get("peakPrice", price) else 0),
+        "belowMa60Count": state.get("belowMa60Count", 0),
         "realizedPnl": rnd(state.get("realizedPnl", 0)),
         "trades": state.get("trades", 0),
         "closedTrades": state.get("closedTrades", 0),
@@ -1328,7 +1352,7 @@ function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.get
 
 MICRO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Cap Radar</title>
 <style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>12h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>12h Gain Ranking</h2><p>Uses OKX USDT perpetual ranking, then computes 12h gain from 5m candles and checks MA trend state.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on MA trend plus rising volume, then exit on close below MA20 or MA20 crossing below MA60.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
+<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>12h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>12h Gain Ranking</h2><p>Uses OKX USDT perpetual ranking, then computes 12h gain from 5m candles and checks MA60 trend state.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions enter on MA60 uptrend plus rising volume, then exit on 1% stop, two closes below MA60, or 2% trailing giveback.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
 <script>
 const $=s=>document.querySelector(s);
 $("#scan").onclick=()=>scan();
@@ -1337,7 +1361,7 @@ async function load(){const data=await (await fetch("/api/crypto/micro")).json()
 async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();}
 function render(data){let ranking=data.ranking12h||data.candidates||[];$("#marketType").textContent=data.config?.microInstType||"SWAP";$("#watchCount").textContent=ranking.length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(ranking);renderPositions(data.positions||[]);}
 function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No ranking data yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Rank</th><th>Coin</th><th>Status</th><th>Price</th><th>12h</th><th>1h</th><th>15m</th><th>Vol x</th><th>MA5</th><th>MA20</th><th>MA60</th><th>Score</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.ma5)}</td><td>${money(r.ma20)}<br><span class="label">${pct(r.ma20Slope)}</span></td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td></tr>`).join("")}</tbody></table>`}
-function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA20 Exit</th><th>MA60</th><th>To MA20</th><th>Value</th><th>Unrealized</th><th>Trades</th><th>Win Rate</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma20)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa20Pct)}">${pct(r.distanceToMa20Pct)}</td><td>${money(r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td><td>${pct(r.winRate)}</td></tr>`).join("")}</tbody></table>`}
+function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To MA60</th><th>Peak</th><th>Giveback</th><th>Value</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}<br><span class="label">${r.belowMa60Count||0}/2</span></td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.peakPrice)}</td><td>${pct(r.givebackPct)}</td><td>${money(r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
 async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
 function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Amount</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
 function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:6})}
