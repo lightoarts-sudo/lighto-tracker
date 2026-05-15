@@ -43,6 +43,7 @@ CONFIG = {
     "microTrendVolumeRatio": float(os.environ.get("CRYPTO_MICRO_TREND_VOLUME_RATIO", "1.35")),
     "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "1.2")),
     "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.4")),
+    "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -415,7 +416,7 @@ class CryptoPaperBot:
                 state = states.get(inst_id, new_micro_state())
                 price = candles[-1]["close"]
                 if state.get("assetQty", 0) > 0:
-                    if micro_should_exit(signal):
+                    if micro_should_exit(signal, state, price):
                         await self._micro_sell(inst_id, state, price, signal, signal["exitReason"])
                         open_count = max(0, open_count - 1)
                     else:
@@ -937,7 +938,10 @@ def micro_trend_signal(ticker, candles):
     }
 
 
-def micro_should_exit(signal):
+def micro_should_exit(signal, state, price):
+    entry = state.get("avgEntry", 0)
+    if entry and price <= entry * (1 - CONFIG["microStopLossPct"] / 100):
+        signal["exitReason"] = "stop_loss_1pct"
     return bool(signal.get("exitReason"))
 
 
