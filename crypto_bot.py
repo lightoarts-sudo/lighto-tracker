@@ -46,6 +46,9 @@ CONFIG = {
     "microEarlyVolumeRatio": float(os.environ.get("CRYPTO_MICRO_EARLY_VOLUME_RATIO", "1.12")),
     "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "0.8")),
     "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.2")),
+    "microTrendMaxPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_1H", "8")),
+    "microTrendMaxPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_15M", "4")),
+    "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "8")),
     "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
     "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
     "microInterval": os.environ.get("CRYPTO_MICRO_INTERVAL", "10m"),
@@ -53,6 +56,11 @@ CONFIG = {
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
+MICRO_EXCLUDED_SYNTHETIC_BASES = {
+    "AAPL", "AMD", "AMZN", "BABA", "CL", "COIN", "DIA", "GLD", "GOOGL", "HOOD",
+    "INTC", "IWM", "META", "MSTR", "MSFT", "NFLX", "NVDA", "ORCL", "PLTR",
+    "QQQ", "SNDK", "SLV", "SPY", "TSLA", "USO", "XLE",
+}
 
 STRATEGIES = [
     {"id": "mtf_trend_pullback", "name": "15m Trend Pullback", "description": "15m uptrend filter, 5m pullback recovery entry."},
@@ -123,6 +131,17 @@ CREATE TABLE IF NOT EXISTS crypto_micro_trades (
     pct5 DOUBLE PRECISION,
     pct15 DOUBLE PRECISION,
     reason TEXT
+);
+CREATE TABLE IF NOT EXISTS crypto_micro_trade_windows (
+    id SERIAL PRIMARY KEY,
+    trade_id INTEGER NOT NULL,
+    inst_id TEXT NOT NULL,
+    side TEXT NOT NULL,
+    window_type TEXT NOT NULL,
+    captured_at TIMESTAMPTZ DEFAULT NOW(),
+    candles JSONB NOT NULL,
+    signal JSONB,
+    UNIQUE(trade_id, window_type)
 );
 """
 
@@ -421,11 +440,13 @@ class CryptoPaperBot:
                     continue
                 signal = micro_trend_signal(ticker, candles)
                 state = states.get(inst_id, new_micro_state())
+                if await self._maybe_capture_exit_post_window(inst_id, state, candles, signal):
+                    states[inst_id] = state
                 price = candles[-1]["close"]
                 if state.get("assetQty", 0) > 0:
                     update_micro_position_state(state, price, signal)
                     if micro_should_exit(signal, state, price):
-                        await self._micro_sell(inst_id, state, price, signal, signal["exitReason"])
+                        await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"])
                         open_count = max(0, open_count - 1)
                     else:
                         positions.append(micro_position_row(inst_id, state, price, signal))
@@ -434,7 +455,9 @@ class CryptoPaperBot:
                     await self._micro_buy(inst_id, state, price, signal)
                     open_count += 1
                     positions.append(micro_position_row(inst_id, state, price, signal))
-                candidates.append(signal)
+                candidate = dict(signal)
+                candidate.pop("pre1hCandles", None)
+                candidates.append(candidate)
                 await asyncio.sleep(0.08)
         candidates.sort(key=lambda row: (row["buy"], row["trendScore"]), reverse=True)
         ranking12h = sorted(candidates, key=lambda row: row["pct12h"], reverse=True)
@@ -480,7 +503,8 @@ class CryptoPaperBot:
             "trades": state.get("trades", 0) + 1,
         })
         await self._save_micro_state(inst_id, state)
-        await self._log_micro_trade(inst_id, "BUY", price, qty, quote, signal, signal["reason"])
+        trade_id = await self._log_micro_trade(inst_id, "BUY", price, qty, quote, signal, signal["reason"])
+        await self._save_micro_trade_window(trade_id, inst_id, "BUY", "entry_pre_1h", signal["pre1hCandles"], signal)
 
     async def _micro_sell(self, inst_id, state, price, signal, reason):
         qty = state.get("assetQty", 0)
@@ -495,16 +519,49 @@ class CryptoPaperBot:
         state["closedTrades"] = state.get("closedTrades", 0) + 1
         state["wins"] = state.get("wins", 0) + (1 if pnl > 0 else 0)
         state["trades"] = state.get("trades", 0) + 1
+        state["pendingExitContextTradeId"] = None
+        state["pendingExitContextUntil"] = signal["time"] + 60 * 60 * 1000
         await self._save_micro_state(inst_id, state)
-        await self._log_micro_trade(inst_id, "SELL", price, qty, quote, signal, reason)
+        trade_id = await self._log_micro_trade(inst_id, "SELL", price, qty, quote, signal, reason)
+        await self._save_micro_trade_window(trade_id, inst_id, "SELL", "exit_pre_1h", signal["pre1hCandles"], signal)
+        state["pendingExitContextTradeId"] = trade_id
+        await self._save_micro_state(inst_id, state)
 
     async def _log_micro_trade(self, inst_id, side, price, qty, quote, signal, reason):
         async with self.pool.acquire() as conn:
-            await conn.execute(
+            row = await conn.fetchrow(
                 """INSERT INTO crypto_micro_trades(inst_id,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason)
-                   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)""",
+                   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+                   RETURNING id""",
                 inst_id, side, price, qty, quote, signal["ma60"], signal["volumeRatio"], signal["pct5"], signal["pct15"], reason,
             )
+        return row["id"]
+
+    async def _save_micro_trade_window(self, trade_id, inst_id, side, window_type, candles, signal):
+        payload = json.dumps([compact_candle(candle) for candle in candles])
+        signal_payload = json.dumps(compact_micro_signal(signal))
+        async with self.pool.acquire() as conn:
+            await conn.execute(
+                """INSERT INTO crypto_micro_trade_windows(trade_id,inst_id,side,window_type,candles,signal)
+                   VALUES($1,$2,$3,$4,$5::jsonb,$6::jsonb)
+                   ON CONFLICT(trade_id,window_type) DO UPDATE
+                   SET captured_at=NOW(), candles=$5::jsonb, signal=$6::jsonb""",
+                trade_id, inst_id, side, window_type, payload, signal_payload,
+            )
+
+    async def _maybe_capture_exit_post_window(self, inst_id, state, candles, signal):
+        trade_id = state.get("pendingExitContextTradeId")
+        until = state.get("pendingExitContextUntil")
+        if not trade_id or not until or signal["time"] < until:
+            return False
+        post_candles = [candle for candle in candles if state.get("lastExitTime", 0) < candle["closeTime"] <= until]
+        if len(post_candles) < 6:
+            return False
+        await self._save_micro_trade_window(trade_id, inst_id, "SELL", "exit_post_1h", post_candles[-6:], signal)
+        state["pendingExitContextTradeId"] = None
+        state["pendingExitContextUntil"] = None
+        await self._save_micro_state(inst_id, state)
+        return True
 
     async def prune_old_micro_records(self, cutoff_iso):
         cutoff = parse_datetime(cutoff_iso)
@@ -513,6 +570,10 @@ class CryptoPaperBot:
             deleted_trades = await conn.fetchval(
                 "WITH deleted AS (DELETE FROM crypto_micro_trades WHERE ts < $1 RETURNING 1) SELECT COUNT(*) FROM deleted",
                 cutoff,
+            )
+            await conn.execute(
+                """DELETE FROM crypto_micro_trade_windows w
+                   WHERE NOT EXISTS (SELECT 1 FROM crypto_micro_trades t WHERE t.id=w.trade_id)"""
             )
             trade_rows = await conn.fetch(
                 """SELECT inst_id,side,price,quantity,quote_amount
@@ -620,7 +681,7 @@ def install_crypto_bot(app: FastAPI):
 
     @app.get("/api/crypto/micro/trades")
     async def crypto_micro_trades(inst_id: str = Query("", max_length=30)):
-        sql = "SELECT ts,inst_id,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason FROM crypto_micro_trades"
+        sql = "SELECT id,ts,inst_id,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason FROM crypto_micro_trades"
         args = []
         if inst_id:
             sql += " WHERE inst_id=$1"
@@ -631,6 +692,25 @@ def install_crypto_bot(app: FastAPI):
         rows = annotate_micro_trade_pnl(rows)
         for row in rows:
             row["ts"] = row["ts"].isoformat()
+        return JSONResponse(rows)
+
+    @app.get("/api/crypto/micro/trade-windows")
+    async def crypto_micro_trade_windows(trade_id: int = Query(..., ge=1)):
+        async with crypto_bot.pool.acquire() as conn:
+            records = await conn.fetch(
+                """SELECT trade_id,inst_id,side,window_type,captured_at,candles,signal
+                   FROM crypto_micro_trade_windows
+                   WHERE trade_id=$1
+                   ORDER BY window_type""",
+                trade_id,
+            )
+        rows = [dict(row) for row in records]
+        for row in rows:
+            row["captured_at"] = row["captured_at"].isoformat()
+            if isinstance(row["candles"], str):
+                row["candles"] = json.loads(row["candles"])
+            if isinstance(row["signal"], str):
+                row["signal"] = json.loads(row["signal"])
         return JSONResponse(rows)
 
     @app.post("/api/crypto/micro/prune-old")
@@ -959,15 +1039,16 @@ def shortlist_micro_tickers(tickers):
 def is_micro_usdt_inst(parts):
     if len(parts) == 2:
         base, quote = parts
-        return quote == "USDT" and base not in MICRO_EXCLUDED_BASES
+        return quote == "USDT" and base not in MICRO_EXCLUDED_BASES and base not in MICRO_EXCLUDED_SYNTHETIC_BASES
     if len(parts) == 3:
         base, quote, contract = parts
-        return quote == "USDT" and contract == "SWAP" and base not in MICRO_EXCLUDED_BASES
+        return quote == "USDT" and contract == "SWAP" and base not in MICRO_EXCLUDED_BASES and base not in MICRO_EXCLUDED_SYNTHETIC_BASES
     return False
 
 
 def micro_trend_signal(ticker, candles):
     close = candles[-1]["close"]
+    last_low = candles[-1]["low"]
     prev_close = candles[-2]["close"]
     close_30m = candles[-4]["close"] if len(candles) >= 4 else prev_close
     close_1h = candles[-7]["close"] if len(candles) >= 7 else prev_close
@@ -987,6 +1068,7 @@ def micro_trend_signal(ticker, candles):
     ma5 = sma(closes, 5) or close
     ma20 = sma(closes, 20) or close
     ma60 = sma(closes, 60) or close
+    distance_ma60 = ((close - ma60) / ma60) * 100 if ma60 else 0
     ma20_prev = sma(closes[:-12], 20) or ma20
     ma60_prev = sma(closes[:-12], 60) or ma60
     ma60_prev24 = sma(closes[:-24], 60) or ma60
@@ -999,7 +1081,20 @@ def micro_trend_signal(ticker, candles):
     breakout = close > prior_high
     quiet_lift = compact_range < 4 and volume_ratio >= CONFIG["microEarlyVolumeRatio"] and volume_accel >= 1.05 and close > ma20
     volume_rising = volume_ratio >= CONFIG["microTrendVolumeRatio"] or quiet_lift
-    trend_ok = close > ma60 and ma_crossing_up and ma60_slope > 0 and ma60_slope24 >= 0 and pct1h >= CONFIG["microTrendMinPct1h"] and pct15 >= CONFIG["microTrendMinPct15m"]
+    not_overextended = (
+        pct1h <= CONFIG["microTrendMaxPct1h"]
+        and pct15 <= CONFIG["microTrendMaxPct15m"]
+        and distance_ma60 <= CONFIG["microMaxDistanceMa60Pct"]
+    )
+    trend_ok = (
+        close > ma60
+        and ma_crossing_up
+        and ma60_slope > 0
+        and ma60_slope24 >= 0
+        and pct1h >= CONFIG["microTrendMinPct1h"]
+        and pct15 >= CONFIG["microTrendMinPct15m"]
+        and not_overextended
+    )
     buy = (
         trend_ok
         and breakout
@@ -1011,6 +1106,7 @@ def micro_trend_signal(ticker, candles):
     return {
         "instId": ticker["instId"],
         "price": rnd(close, 8),
+        "lastLow": rnd(last_low, 8),
         "pct5": rnd(pct5),
         "pct15": rnd(pct15),
         "pct1h": rnd(pct1h),
@@ -1023,16 +1119,19 @@ def micro_trend_signal(ticker, candles):
         "ma5": rnd(ma5, 8),
         "ma20": rnd(ma20, 8),
         "ma60": rnd(ma60, 8),
+        "distanceMa60Pct": rnd(distance_ma60),
         "ma20Slope": rnd(ma20_slope),
         "ma60Slope": rnd(ma60_slope),
         "ma60Slope24": rnd(ma60_slope24),
         "stacked": stacked,
         "breakout": breakout,
         "quietLift": quiet_lift,
+        "notOverextended": not_overextended,
         "trendScore": rnd(trend_score),
         "exitReason": exit_reason,
         "buy": buy,
         "time": candles[-1]["closeTime"],
+        "pre1hCandles": candles[-7:-1],
         "reason": "ma_stack_volume_trend" if buy else "watch",
     }
 
@@ -1044,8 +1143,10 @@ def update_micro_position_state(state, price, signal):
 
 def micro_should_exit(signal, state, price):
     entry = state.get("avgEntry", 0)
-    if entry and price <= entry * (1 - CONFIG["microStopLossPct"] / 100):
+    stop_price = entry * (1 - CONFIG["microStopLossPct"] / 100) if entry else 0
+    if entry and signal.get("lastLow", price) <= stop_price:
         signal["exitReason"] = "stop_loss_1pct"
+        signal["exitPrice"] = stop_price
     elif state.get("belowMa60Count", 0) >= 2:
         signal["exitReason"] = "two_closes_below_ma60"
     else:
@@ -1152,6 +1253,28 @@ def parse_datetime(value):
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=timezone.utc)
     return parsed.astimezone(timezone.utc)
+
+
+def compact_candle(candle):
+    return {
+        "time": candle.get("time"),
+        "open": rnd(candle.get("open"), 8),
+        "high": rnd(candle.get("high"), 8),
+        "low": rnd(candle.get("low"), 8),
+        "close": rnd(candle.get("close"), 8),
+        "volume": rnd(candle.get("volume")),
+        "closeTime": candle.get("closeTime"),
+    }
+
+
+def compact_micro_signal(signal):
+    keys = [
+        "instId", "price", "lastLow", "pct5", "pct15", "pct1h", "pct12h", "volumeRatio",
+        "volumeAccel", "compactRangePct", "ma5", "ma20", "ma60", "distanceMa60Pct",
+        "ma20Slope", "ma60Slope", "ma60Slope24", "stacked", "breakout", "quietLift",
+        "notOverextended", "trendScore", "exitReason", "exitPrice", "buy", "time", "reason",
+    ]
+    return {key: signal.get(key) for key in keys if key in signal}
 
 
 def safe_float(value):
