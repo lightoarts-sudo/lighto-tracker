@@ -34,6 +34,7 @@ CONFIG = {
     "microPollSeconds": int(os.environ.get("CRYPTO_MICRO_POLL_SECONDS", "600")),
     "microMarginUSDT": float(os.environ.get("CRYPTO_MICRO_MARGIN_USDT", "10")),
     "microLeverage": float(os.environ.get("CRYPTO_MICRO_LEVERAGE", "5")),
+    "microStrategySince": os.environ.get("CRYPTO_MICRO_STRATEGY_SINCE", "2026-05-15T13:58:21+00:00"),
     "microMaxPositions": int(os.environ.get("CRYPTO_MICRO_MAX_POSITIONS", "8")),
     "microMinQuoteVolume24h": float(os.environ.get("CRYPTO_MICRO_MIN_QUOTE_VOLUME_24H", "0")),
     "microMaxQuoteVolume24h": float(os.environ.get("CRYPTO_MICRO_MAX_QUOTE_VOLUME_24H", "1000000000000")),
@@ -505,6 +506,47 @@ class CryptoPaperBot:
                 inst_id, side, price, qty, quote, signal["ma60"], signal["volumeRatio"], signal["pct5"], signal["pct15"], reason,
             )
 
+    async def prune_old_micro_records(self, cutoff_iso):
+        cutoff = parse_datetime(cutoff_iso)
+        cutoff_ms = int(cutoff.timestamp() * 1000)
+        async with self.pool.acquire() as conn:
+            deleted_trades = await conn.fetchval(
+                "WITH deleted AS (DELETE FROM crypto_micro_trades WHERE ts < $1 RETURNING 1) SELECT COUNT(*) FROM deleted",
+                cutoff,
+            )
+            trade_rows = await conn.fetch(
+                """SELECT inst_id,side,price,quantity,quote_amount
+                   FROM crypto_micro_trades
+                   ORDER BY ts ASC, id ASC"""
+            )
+            state_rows = await conn.fetch("SELECT inst_id,state FROM crypto_micro_state")
+            states = {
+                row["inst_id"]: row["state"] if isinstance(row["state"], dict) else json.loads(row["state"])
+                for row in state_rows
+            }
+            stats = rebuild_micro_stats(trade_rows)
+            reset_states = 0
+            for inst_id, state in list(states.items()):
+                entry_time = state.get("entryTime") or 0
+                if state.get("assetQty", 0) and entry_time and entry_time < cutoff_ms:
+                    state = new_micro_state()
+                    reset_states += 1
+                inst_stats = stats.get(inst_id, {})
+                state["realizedPnl"] = inst_stats.get("realizedPnl", 0.0)
+                state["trades"] = inst_stats.get("trades", 0)
+                state["closedTrades"] = inst_stats.get("closedTrades", 0)
+                state["wins"] = inst_stats.get("wins", 0)
+                states[inst_id] = state
+                await conn.execute(
+                    """INSERT INTO crypto_micro_state(inst_id,state,updated_at)
+                       VALUES($1,$2::jsonb,NOW())
+                       ON CONFLICT(inst_id) DO UPDATE SET state=$2::jsonb, updated_at=NOW()""",
+                    inst_id,
+                    json.dumps(state),
+                )
+        await self.run_micro_once()
+        return {"cutoff": cutoff.isoformat(), "deletedTrades": deleted_trades, "resetStates": reset_states}
+
     def status(self):
         markets = []
         for symbol in CONFIG["symbols"]:
@@ -590,6 +632,13 @@ def install_crypto_bot(app: FastAPI):
         for row in rows:
             row["ts"] = row["ts"].isoformat()
         return JSONResponse(rows)
+
+    @app.post("/api/crypto/micro/prune-old")
+    async def crypto_micro_prune_old(confirm: str = Query("", max_length=32)):
+        if confirm != "delete-old-micro-trades":
+            return JSONResponse({"error": "confirmation required"}, status_code=400)
+        result = await crypto_bot.prune_old_micro_records(CONFIG["microStrategySince"])
+        return JSONResponse(result)
 
     @app.post("/api/crypto/backfill")
     async def crypto_backfill(days: int = Query(90, ge=1, le=365)):
@@ -1068,6 +1117,41 @@ def annotate_micro_trade_pnl(rows):
             item["pnlRoePct"] = rnd((pnl / margin) * 100 if margin else 0)
         annotated.append(item)
     return list(reversed(annotated))
+
+
+def rebuild_micro_stats(rows):
+    stats = {}
+    open_lots = {}
+    for row in rows:
+        key = row["inst_id"]
+        item = stats.setdefault(key, {"realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0})
+        item["trades"] += 1
+        if row["side"] == "BUY":
+            open_lots[key] = row
+        elif row["side"] == "SELL":
+            buy_row = open_lots.pop(key, None)
+            if not buy_row:
+                continue
+            entry = float(buy_row["price"])
+            exit_price = float(row["price"])
+            quantity = float(row["quantity"])
+            pnl = (exit_price - entry) * quantity
+            item["realizedPnl"] += pnl
+            item["closedTrades"] += 1
+            item["wins"] += 1 if pnl > 0 else 0
+    for item in stats.values():
+        item["realizedPnl"] = rnd(item["realizedPnl"])
+    return stats
+
+
+def parse_datetime(value):
+    text = str(value).strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    parsed = datetime.fromisoformat(text)
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
 
 
 def safe_float(value):
