@@ -44,8 +44,11 @@ CONFIG = {
     "microInstType": os.environ.get("CRYPTO_MICRO_INST_TYPE", "SWAP").upper(),
     "microTrendVolumeRatio": float(os.environ.get("CRYPTO_MICRO_TREND_VOLUME_RATIO", "1.35")),
     "microEarlyVolumeRatio": float(os.environ.get("CRYPTO_MICRO_EARLY_VOLUME_RATIO", "1.12")),
+    "microEntryMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_ENTRY_MIN_VOLUME_RATIO", "1.2")),
     "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "0.8")),
     "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.2")),
+    "microNoChasePct1h": float(os.environ.get("CRYPTO_MICRO_NO_CHASE_PCT_1H", "3")),
+    "microNoChaseRangePct": float(os.environ.get("CRYPTO_MICRO_NO_CHASE_RANGE_PCT", "3")),
     "microTrendMaxPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_1H", "8")),
     "microTrendMaxPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_15M", "4")),
     "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "8")),
@@ -1095,10 +1098,13 @@ def micro_trend_signal(ticker, candles):
     breakout = close > prior_high
     quiet_lift = compact_range < 4 and volume_ratio >= CONFIG["microEarlyVolumeRatio"] and volume_accel >= 1.05 and close > ma20
     volume_rising = volume_ratio >= CONFIG["microTrendVolumeRatio"] or quiet_lift
+    entry_volume_ok = volume_ratio >= CONFIG["microEntryMinVolumeRatio"]
+    chase_risk = pct1h > CONFIG["microNoChasePct1h"] and compact_range > CONFIG["microNoChaseRangePct"]
     not_overextended = (
         pct1h <= CONFIG["microTrendMaxPct1h"]
         and pct15 <= CONFIG["microTrendMaxPct15m"]
         and distance_ma60 <= CONFIG["microMaxDistanceMa60Pct"]
+        and not chase_risk
     )
     trend_ok = (
         close > ma60
@@ -1107,6 +1113,7 @@ def micro_trend_signal(ticker, candles):
         and ma60_slope24 >= 0
         and pct1h >= CONFIG["microTrendMinPct1h"]
         and pct15 >= CONFIG["microTrendMinPct15m"]
+        and entry_volume_ok
         and not_overextended
     )
     buy = (
@@ -1140,6 +1147,9 @@ def micro_trend_signal(ticker, candles):
         "stacked": stacked,
         "breakout": breakout,
         "quietLift": quiet_lift,
+        "volumeRising": volume_rising,
+        "entryVolumeOk": entry_volume_ok,
+        "chaseRisk": chase_risk,
         "notOverextended": not_overextended,
         "trendScore": rnd(trend_score),
         "exitReason": exit_reason,
@@ -1286,7 +1296,8 @@ def compact_micro_signal(signal):
         "instId", "price", "lastLow", "pct5", "pct15", "pct1h", "pct12h", "volumeRatio",
         "volumeAccel", "compactRangePct", "ma5", "ma20", "ma60", "distanceMa60Pct",
         "ma20Slope", "ma60Slope", "ma60Slope24", "stacked", "breakout", "quietLift",
-        "notOverextended", "trendScore", "exitReason", "exitPrice", "buy", "time", "reason",
+        "volumeRising", "entryVolumeOk", "chaseRisk", "notOverextended", "trendScore",
+        "exitReason", "exitPrice", "buy", "time", "reason",
     ]
     return {key: signal.get(key) for key in keys if key in signal}
 
