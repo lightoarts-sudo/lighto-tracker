@@ -44,7 +44,7 @@ CONFIG = {
     "microInstType": os.environ.get("CRYPTO_MICRO_INST_TYPE", "SWAP").upper(),
     "microTrendVolumeRatio": float(os.environ.get("CRYPTO_MICRO_TREND_VOLUME_RATIO", "1.35")),
     "microEarlyVolumeRatio": float(os.environ.get("CRYPTO_MICRO_EARLY_VOLUME_RATIO", "1.12")),
-    "microEntryMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_ENTRY_MIN_VOLUME_RATIO", "1.2")),
+    "microEntryMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_ENTRY_MIN_VOLUME_RATIO", "2.0")),
     "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "0.8")),
     "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.2")),
     "microNoChasePct1h": float(os.environ.get("CRYPTO_MICRO_NO_CHASE_PCT_1H", "3")),
@@ -53,6 +53,7 @@ CONFIG = {
     "microTrendMaxPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_15M", "4")),
     "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "8")),
     "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
+    "microEarlyExitPct15m": float(os.environ.get("CRYPTO_MICRO_EARLY_EXIT_PCT_15M", "-0.3")),
     "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
     "microInterval": os.environ.get("CRYPTO_MICRO_INTERVAL", "5m"),
     "microBaseInterval": os.environ.get("CRYPTO_MICRO_BASE_INTERVAL", "5m"),
@@ -63,6 +64,7 @@ MICRO_EXCLUDED_SYNTHETIC_BASES = {
     "AAPL", "AMD", "AMZN", "BABA", "CL", "COIN", "DIA", "GLD", "GOOGL", "HOOD",
     "INTC", "IWM", "META", "MSTR", "MSFT", "NFLX", "NVDA", "ORCL", "PLTR",
     "QQQ", "SNDK", "SLV", "SPY", "TSLA", "USO", "XLE",
+    "CBRS", "COHR", "COST", "DRAM", "MU", "WDC", "XAG", "XAU",
 }
 
 STRATEGIES = [
@@ -454,10 +456,25 @@ class CryptoPaperBot:
                     else:
                         positions.append(micro_position_row(inst_id, state, price, signal))
                         await self._save_micro_state(inst_id, state)
+                elif state.get("pendingEntry") and open_count < CONFIG["microMaxPositions"]:
+                    if micro_entry_confirmed(state, signal, price):
+                        signal["reason"] = "confirmed_breakout_5m"
+                        state.pop("pendingEntry", None)
+                        await self._micro_buy(inst_id, state, price, signal)
+                        open_count += 1
+                        positions.append(micro_position_row(inst_id, state, price, signal))
+                    elif signal["time"] > state["pendingEntry"].get("expiresAt", 0) or not signal.get("entryVolumeOk"):
+                        state.pop("pendingEntry", None)
+                        await self._save_micro_state(inst_id, state)
                 elif signal["buy"] and open_count < CONFIG["microMaxPositions"]:
-                    await self._micro_buy(inst_id, state, price, signal)
-                    open_count += 1
-                    positions.append(micro_position_row(inst_id, state, price, signal))
+                    state["pendingEntry"] = {
+                        "time": signal["time"],
+                        "breakoutLevel": signal["priorHigh"],
+                        "expiresAt": signal["time"] + (micro_bar_minutes() * 3 * 60 * 1000),
+                    }
+                    await self._save_micro_state(inst_id, state)
+                    signal["reason"] = "pending_breakout_confirm"
+                    signal["buy"] = False
                 candidate = dict(signal)
                 candidate.pop("pre1hCandles", None)
                 candidates.append(candidate)
@@ -1028,6 +1045,16 @@ def micro_bars_per_hour():
     return 6
 
 
+def micro_bar_minutes():
+    if CONFIG["microInterval"] == "5m":
+        return 5
+    if CONFIG["microInterval"] == "10m":
+        return 10
+    if CONFIG["microInterval"] == "15m":
+        return 15
+    return 10
+
+
 def shortlist_micro_tickers(tickers):
     rows = []
     for ticker in tickers:
@@ -1146,10 +1173,12 @@ def micro_trend_signal(ticker, candles):
         "ma60Slope24": rnd(ma60_slope24),
         "stacked": stacked,
         "breakout": breakout,
+        "priorHigh": rnd(prior_high, 8),
         "quietLift": quiet_lift,
         "volumeRising": volume_rising,
         "entryVolumeOk": entry_volume_ok,
         "chaseRisk": chase_risk,
+        "trendOk": trend_ok,
         "notOverextended": not_overextended,
         "trendScore": rnd(trend_score),
         "exitReason": exit_reason,
@@ -1165,12 +1194,26 @@ def update_micro_position_state(state, price, signal):
     state["belowMa60Count"] = state.get("belowMa60Count", 0) + 1 if price < signal["ma60"] else 0
 
 
+def micro_entry_confirmed(state, signal, price):
+    pending = state.get("pendingEntry") or {}
+    breakout_level = pending.get("breakoutLevel")
+    if not breakout_level:
+        return False
+    if signal["time"] <= pending.get("time", 0):
+        return False
+    if signal["time"] > pending.get("expiresAt", 0):
+        return False
+    return price >= breakout_level and signal.get("trendOk") and signal.get("entryVolumeOk") and signal.get("notOverextended")
+
+
 def micro_should_exit(signal, state, price):
     entry = state.get("avgEntry", 0)
     stop_price = entry * (1 - CONFIG["microStopLossPct"] / 100) if entry else 0
     if entry and signal.get("lastLow", price) <= stop_price:
         signal["exitReason"] = "stop_loss_1pct"
         signal["exitPrice"] = stop_price
+    elif entry and price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
+        signal["exitReason"] = "early_momentum_loss_15m"
     elif state.get("belowMa60Count", 0) >= 2:
         signal["exitReason"] = "two_closes_below_ma60"
     else:
@@ -1295,8 +1338,8 @@ def compact_micro_signal(signal):
     keys = [
         "instId", "price", "lastLow", "pct5", "pct15", "pct1h", "pct12h", "volumeRatio",
         "volumeAccel", "compactRangePct", "ma5", "ma20", "ma60", "distanceMa60Pct",
-        "ma20Slope", "ma60Slope", "ma60Slope24", "stacked", "breakout", "quietLift",
-        "volumeRising", "entryVolumeOk", "chaseRisk", "notOverextended", "trendScore",
+        "ma20Slope", "ma60Slope", "ma60Slope24", "stacked", "breakout", "priorHigh", "quietLift",
+        "volumeRising", "entryVolumeOk", "chaseRisk", "trendOk", "notOverextended", "trendScore",
         "exitReason", "exitPrice", "buy", "time", "reason",
     ]
     return {key: signal.get(key) for key in keys if key in signal}
