@@ -45,13 +45,17 @@ CONFIG = {
     "microTrendVolumeRatio": float(os.environ.get("CRYPTO_MICRO_TREND_VOLUME_RATIO", "1.35")),
     "microEarlyVolumeRatio": float(os.environ.get("CRYPTO_MICRO_EARLY_VOLUME_RATIO", "1.12")),
     "microEntryMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_ENTRY_MIN_VOLUME_RATIO", "2.0")),
+    "microEntryMaxVolumeRatio": float(os.environ.get("CRYPTO_MICRO_ENTRY_MAX_VOLUME_RATIO", "8.0")),
     "microTrendMinPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_1H", "0.8")),
     "microTrendMinPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MIN_PCT_15M", "0.2")),
+    "microEntryMaxPct15m": float(os.environ.get("CRYPTO_MICRO_ENTRY_MAX_PCT_15M", "1.8")),
     "microNoChasePct1h": float(os.environ.get("CRYPTO_MICRO_NO_CHASE_PCT_1H", "3")),
     "microNoChaseRangePct": float(os.environ.get("CRYPTO_MICRO_NO_CHASE_RANGE_PCT", "3")),
+    "microEntryMaxRangePct": float(os.environ.get("CRYPTO_MICRO_ENTRY_MAX_RANGE_PCT", "4.5")),
     "microTrendMaxPct1h": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_1H", "8")),
     "microTrendMaxPct15m": float(os.environ.get("CRYPTO_MICRO_TREND_MAX_PCT_15M", "4")),
-    "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "8")),
+    "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "3")),
+    "microConfirmBreakoutBufferPct": float(os.environ.get("CRYPTO_MICRO_CONFIRM_BREAKOUT_BUFFER_PCT", "0.1")),
     "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
     "microEarlyExitPct15m": float(os.environ.get("CRYPTO_MICRO_EARLY_EXIT_PCT_15M", "-0.3")),
     "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
@@ -1125,12 +1129,14 @@ def micro_trend_signal(ticker, candles):
     breakout = close > prior_high
     quiet_lift = compact_range < 4 and volume_ratio >= CONFIG["microEarlyVolumeRatio"] and volume_accel >= 1.05 and close > ma20
     volume_rising = volume_ratio >= CONFIG["microTrendVolumeRatio"] or quiet_lift
-    entry_volume_ok = volume_ratio >= CONFIG["microEntryMinVolumeRatio"]
+    entry_volume_ok = CONFIG["microEntryMinVolumeRatio"] <= volume_ratio <= CONFIG["microEntryMaxVolumeRatio"]
     chase_risk = pct1h > CONFIG["microNoChasePct1h"] and compact_range > CONFIG["microNoChaseRangePct"]
     not_overextended = (
         pct1h <= CONFIG["microTrendMaxPct1h"]
         and pct15 <= CONFIG["microTrendMaxPct15m"]
         and distance_ma60 <= CONFIG["microMaxDistanceMa60Pct"]
+        and pct15 <= CONFIG["microEntryMaxPct15m"]
+        and compact_range <= CONFIG["microEntryMaxRangePct"]
         and not chase_risk
     )
     trend_ok = (
@@ -1177,6 +1183,7 @@ def micro_trend_signal(ticker, candles):
         "quietLift": quiet_lift,
         "volumeRising": volume_rising,
         "entryVolumeOk": entry_volume_ok,
+        "entryVolumeTooHot": volume_ratio > CONFIG["microEntryMaxVolumeRatio"],
         "chaseRisk": chase_risk,
         "trendOk": trend_ok,
         "notOverextended": not_overextended,
@@ -1203,7 +1210,15 @@ def micro_entry_confirmed(state, signal, price):
         return False
     if signal["time"] > pending.get("expiresAt", 0):
         return False
-    return price >= breakout_level and signal.get("trendOk") and signal.get("entryVolumeOk") and signal.get("notOverextended")
+    current_breakout_level = signal.get("priorHigh") or breakout_level
+    confirm_price = max(breakout_level, current_breakout_level) * (1 + CONFIG["microConfirmBreakoutBufferPct"] / 100)
+    return (
+        price >= confirm_price
+        and signal.get("breakout")
+        and signal.get("trendOk")
+        and signal.get("entryVolumeOk")
+        and signal.get("notOverextended")
+    )
 
 
 def micro_should_exit(signal, state, price):
