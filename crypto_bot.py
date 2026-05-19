@@ -61,6 +61,8 @@ CONFIG = {
     "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
     "microInterval": os.environ.get("CRYPTO_MICRO_INTERVAL", "5m"),
     "microBaseInterval": os.environ.get("CRYPTO_MICRO_BASE_INTERVAL", "5m"),
+    "microSurgeArchiveTopN": int(os.environ.get("CRYPTO_MICRO_SURGE_ARCHIVE_TOP_N", "10")),
+    "microSurgeArchiveHours": int(os.environ.get("CRYPTO_MICRO_SURGE_ARCHIVE_HOURS", "4")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -152,6 +154,25 @@ CREATE TABLE IF NOT EXISTS crypto_micro_trade_windows (
     signal JSONB,
     UNIQUE(trade_id, window_type)
 );
+CREATE TABLE IF NOT EXISTS crypto_micro_surge_archive (
+    id SERIAL PRIMARY KEY,
+    scan_hour TIMESTAMPTZ NOT NULL,
+    captured_at TIMESTAMPTZ DEFAULT NOW(),
+    rank INTEGER NOT NULL,
+    inst_id TEXT NOT NULL,
+    price DOUBLE PRECISION,
+    pct5 DOUBLE PRECISION,
+    pct15 DOUBLE PRECISION,
+    pct1h DOUBLE PRECISION,
+    pct12h DOUBLE PRECISION,
+    pct24 DOUBLE PRECISION,
+    quote_volume_24h DOUBLE PRECISION,
+    volume_ratio DOUBLE PRECISION,
+    distance_ma60_pct DOUBLE PRECISION,
+    candles JSONB NOT NULL,
+    signal JSONB,
+    UNIQUE(scan_hour, inst_id)
+);
 """
 
 
@@ -169,6 +190,8 @@ class CryptoPaperBot:
         self.micro_candidates = []
         self.micro_ranking12h = []
         self.micro_positions = []
+        self.micro_surge_last_archive_hour = None
+        self.micro_surge_archive_status = {"lastRunAt": None, "lastHour": None, "saved": 0, "lastError": ""}
         self.last_error = ""
         self.last_run_at = None
         self.snapshots = {}
@@ -440,6 +463,7 @@ class CryptoPaperBot:
             states = await self._load_micro_states()
             open_count = sum(1 for state in states.values() if state.get("assetQty", 0) > 0)
             candidates = []
+            archive_sources = {}
             positions = []
             for ticker in shortlist:
                 inst_id = ticker["instId"]
@@ -448,6 +472,7 @@ class CryptoPaperBot:
                 if len(candles) < 61:
                     continue
                 signal = micro_trend_signal(ticker, candles)
+                archive_sources[inst_id] = {"signal": dict(signal), "candles": candles}
                 state = states.get(inst_id, new_micro_state())
                 if await self._maybe_capture_exit_post_window(inst_id, state, candles, signal):
                     states[inst_id] = state
@@ -485,11 +510,74 @@ class CryptoPaperBot:
                 await asyncio.sleep(0.08)
         candidates.sort(key=lambda row: (row["buy"], row["trendScore"]), reverse=True)
         ranking12h = sorted(candidates, key=lambda row: row["pct12h"], reverse=True)
+        await self._archive_micro_surge_if_due(ranking12h, archive_sources)
         positions.sort(key=lambda row: row["unrealizedPnlPct"], reverse=True)
         self.micro_candidates = candidates[:40]
         self.micro_ranking12h = ranking12h[:40]
         self.micro_positions = positions
         self.micro_last_run_at = datetime.now(timezone.utc).isoformat()
+
+    async def _archive_micro_surge_if_due(self, ranking12h, archive_sources):
+        now = datetime.now(timezone.utc)
+        scan_hour = now.replace(minute=0, second=0, microsecond=0)
+        if self.micro_surge_last_archive_hour == scan_hour.isoformat():
+            return
+        top_rows = []
+        bars = CONFIG["microSurgeArchiveHours"] * micro_bars_per_hour()
+        for rank, signal in enumerate(ranking12h[:CONFIG["microSurgeArchiveTopN"]], start=1):
+            source = archive_sources.get(signal["instId"])
+            if not source:
+                continue
+            candles = source["candles"][-bars:]
+            top_rows.append((rank, signal, candles))
+        if not top_rows:
+            return
+        try:
+            await self._save_micro_surge_archive(scan_hour, top_rows)
+            self.micro_surge_last_archive_hour = scan_hour.isoformat()
+            self.micro_surge_archive_status = {
+                "lastRunAt": now.isoformat(),
+                "lastHour": scan_hour.isoformat(),
+                "saved": len(top_rows),
+                "lastError": "",
+            }
+        except Exception as exc:
+            self.micro_surge_archive_status = {
+                "lastRunAt": now.isoformat(),
+                "lastHour": scan_hour.isoformat(),
+                "saved": 0,
+                "lastError": str(exc),
+            }
+            raise
+
+    async def _save_micro_surge_archive(self, scan_hour, rows):
+        async with self.pool.acquire() as conn:
+            async with conn.transaction():
+                for rank, signal, candles in rows:
+                    await conn.execute(
+                        """INSERT INTO crypto_micro_surge_archive(
+                               scan_hour,rank,inst_id,price,pct5,pct15,pct1h,pct12h,pct24,
+                               quote_volume_24h,volume_ratio,distance_ma60_pct,candles,signal
+                           ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13::jsonb,$14::jsonb)
+                           ON CONFLICT(scan_hour, inst_id) DO UPDATE SET
+                               captured_at=NOW(), rank=$2, price=$4, pct5=$5, pct15=$6, pct1h=$7,
+                               pct12h=$8, pct24=$9, quote_volume_24h=$10, volume_ratio=$11,
+                               distance_ma60_pct=$12, candles=$13::jsonb, signal=$14::jsonb""",
+                        scan_hour,
+                        rank,
+                        signal["instId"],
+                        signal["price"],
+                        signal["pct5"],
+                        signal["pct15"],
+                        signal["pct1h"],
+                        signal["pct12h"],
+                        signal["pct24"],
+                        signal["quoteVolume24h"],
+                        signal["volumeRatio"],
+                        signal["distanceMa60Pct"],
+                        json.dumps([compact_candle(candle) for candle in candles]),
+                        json.dumps(compact_micro_signal(signal)),
+                    )
 
     async def _load_micro_states(self):
         async with self.pool.acquire() as conn:
@@ -647,6 +735,7 @@ class CryptoPaperBot:
             "candidates": self.micro_candidates,
             "ranking12h": getattr(self, "micro_ranking12h", []),
             "positions": self.micro_positions,
+            "surgeArchive": self.micro_surge_archive_status,
             "config": CONFIG,
         }
 
@@ -731,6 +820,28 @@ def install_crypto_bot(app: FastAPI):
             )
         rows = [dict(row) for row in records]
         for row in rows:
+            row["captured_at"] = row["captured_at"].isoformat()
+            if isinstance(row["candles"], str):
+                row["candles"] = json.loads(row["candles"])
+            if isinstance(row["signal"], str):
+                row["signal"] = json.loads(row["signal"])
+        return JSONResponse(rows)
+
+    @app.get("/api/crypto/micro/surge-archive")
+    async def crypto_micro_surge_archive(limit: int = Query(120, ge=1, le=1000), inst_id: str = Query("", max_length=30)):
+        sql = """SELECT id,scan_hour,captured_at,rank,inst_id,price,pct5,pct15,pct1h,pct12h,pct24,
+                        quote_volume_24h,volume_ratio,distance_ma60_pct,candles,signal
+                 FROM crypto_micro_surge_archive"""
+        args = []
+        if inst_id:
+            sql += " WHERE inst_id=$1"
+            args.append(inst_id.upper())
+        sql += f" ORDER BY scan_hour DESC, rank ASC LIMIT ${len(args) + 1}"
+        args.append(limit)
+        async with crypto_bot.pool.acquire() as conn:
+            rows = [dict(row) for row in await conn.fetch(sql, *args)]
+        for row in rows:
+            row["scan_hour"] = row["scan_hour"].isoformat()
             row["captured_at"] = row["captured_at"].isoformat()
             if isinstance(row["candles"], str):
                 row["candles"] = json.loads(row["candles"])
@@ -1692,18 +1803,20 @@ function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.get
 
 MICRO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Cap Radar</title>
 <style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>12h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>12h Gain Ranking</h2><p>Uses OKX USDT perpetual ranking, computes 12h gain from 5m candles, and checks MA60 trend state without a volume filter.</p><div id="candidates"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions use 10 USDT margin at 5x leverage, enter on 5m MA trend plus 1h breakout, then exit on 1% stop, two closes below MA60, or 2% trailing giveback.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
+<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>12h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>12h Gain Ranking</h2><p>Uses OKX USDT perpetual ranking, computes 12h gain from 5m candles, and checks MA60 trend state without a volume filter.</p><div id="candidates"></div></section><section class="panel"><h2>Surge Archive</h2><p id="archiveStatus">Waiting for hourly archive.</p><div id="archive"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions use 10 USDT margin at 5x leverage, enter on 5m MA trend plus 1h breakout, then exit on 1% stop, two closes below MA60, or 2% trailing giveback.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
 <script>
 const $=s=>document.querySelector(s);
 $("#scan").onclick=()=>scan();
 setInterval(load,10000); load();
-async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTrades();}
-async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();}
+async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTrades();await loadArchive();}
+async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();await loadArchive();}
 function render(data){let ranking=data.ranking12h||data.candidates||[];$("#marketType").textContent=`${data.config?.microInstType||"SWAP"} ${data.config?.microInterval||"5m"}`;$("#watchCount").textContent=ranking.length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(ranking);renderPositions(data.positions||[]);}
 function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No ranking data yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Rank</th><th>Coin</th><th>Status</th><th>Price</th><th>12h</th><th>1h</th><th>30m</th><th>Vol x</th><th>Accel</th><th>Range</th><th>MA60</th><th>Score</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':(r.quietLift?'early':'watch')}</td><td>${money(r.price)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${Number(r.volumeAccel||0).toFixed(2)}</td><td>${pct(r.compactRangePct)}</td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td></tr>`).join("")}</tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To MA60</th><th>Peak</th><th>Margin</th><th>Notional</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}<br><span class="label">${r.belowMa60Count||0}/2</span></td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.peakPrice)}<br><span class="label">${pct(r.givebackPct)}</span></td><td>${money(r.margin)}<br><span class="label">${Number(r.leverage||0).toFixed(1)}x</span></td><td>${money(r.notional||r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedRoePct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
 async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
 function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
+async function loadArchive(){const rows=await (await fetch("/api/crypto/micro/surge-archive?limit=60")).json();renderArchive(rows);}
+function renderArchive(rows){if(!rows.length){$("#archive").innerHTML="<p>No archived surge snapshots yet.</p>";return}let last=rows[0];$("#archiveStatus").textContent=`Latest archive: ${new Date(last.scan_hour).toLocaleString()} - stores top 10 with 4h 5m candles`;$("#archive").innerHTML=`<table><thead><tr><th>Hour</th><th>Rank</th><th>Coin</th><th>Price</th><th>12h</th><th>1h</th><th>15m</th><th>Vol x</th><th>MA60 Dist</th><th>K Bars</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.scan_hour).toLocaleString()}</td><td>${r.rank}</td><td>${r.inst_id}</td><td>${money(r.price)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.distance_ma60_pct)}">${pct(r.distance_ma60_pct)}</td><td>${(r.candles||[]).length}</td></tr>`).join("")}</tbody></table>`}
 function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:6})}
 function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`}
 function tone(v){return Number(v)>=0?'good':'bad'}
