@@ -554,16 +554,13 @@ class CryptoPaperBot:
     async def _save_micro_surge_archive(self, scan_hour, rows):
         async with self.pool.acquire() as conn:
             async with conn.transaction():
+                await conn.execute("DELETE FROM crypto_micro_surge_archive WHERE scan_hour=$1", scan_hour)
                 for rank, signal, candles in rows:
                     await conn.execute(
                         """INSERT INTO crypto_micro_surge_archive(
                                scan_hour,rank,inst_id,price,pct5,pct15,pct1h,pct12h,pct24,
                                quote_volume_24h,volume_ratio,distance_ma60_pct,candles,signal
-                           ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13::jsonb,$14::jsonb)
-                           ON CONFLICT(scan_hour, inst_id) DO UPDATE SET
-                               captured_at=NOW(), rank=$2, price=$4, pct5=$5, pct15=$6, pct1h=$7,
-                               pct12h=$8, pct24=$9, quote_volume_24h=$10, volume_ratio=$11,
-                               distance_ma60_pct=$12, candles=$13::jsonb, signal=$14::jsonb""",
+                           ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13::jsonb,$14::jsonb)""",
                         scan_hour,
                         rank,
                         signal["instId"],
