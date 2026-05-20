@@ -196,6 +196,7 @@ class CryptoPaperBot:
         self.task = None
         self.backfill_task = None
         self.backfill_status = {"running": False, "message": "idle", "symbols": {}, "startedAt": None, "finishedAt": None, "error": ""}
+        self.micro_run_lock = asyncio.Lock()
         self.micro_task = None
         self.micro_running = False
         self.micro_last_run_at = None
@@ -235,6 +236,19 @@ class CryptoPaperBot:
             await conn.execute(CREATE_SQL)
             await conn.execute("ALTER TABLE crypto_micro_trades ADD COLUMN IF NOT EXISTS strategy TEXT DEFAULT 'strategy1'")
             await conn.execute("UPDATE crypto_micro_trades SET strategy='strategy1' WHERE strategy IS NULL")
+            await conn.execute(
+                """DELETE FROM crypto_micro_trades t
+                   USING (
+                       SELECT id, ROW_NUMBER() OVER(PARTITION BY inst_id ORDER BY ts DESC) AS rn
+                       FROM crypto_micro_trades
+                       WHERE strategy='strategy2' AND side='BUY' AND ts > NOW() - INTERVAL '1 day'
+                   ) d
+                   WHERE t.id=d.id AND d.rn>1
+                     AND NOT EXISTS (
+                         SELECT 1 FROM crypto_micro_trades s
+                         WHERE s.strategy='strategy2' AND s.inst_id=t.inst_id AND s.side='SELL' AND s.ts>t.ts
+                     )"""
+            )
 
     async def close(self):
         await self.stop()
@@ -473,6 +487,10 @@ class CryptoPaperBot:
         return total
 
     async def run_micro_once(self):
+        async with self.micro_run_lock:
+            return await self._run_micro_once_locked()
+
+    async def _run_micro_once_locked(self):
         async with httpx.AsyncClient(timeout=20) as client:
             tickers = await fetch_market_tickers(client, CONFIG["microInstType"])
             shortlist = shortlist_micro_tickers(tickers)
