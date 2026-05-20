@@ -902,7 +902,7 @@ def install_crypto_bot(app: FastAPI):
     async def crypto_micro_performance():
         async with crypto_bot.pool.acquire() as conn:
             rows = [dict(row) for row in await conn.fetch(
-                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount,reason FROM crypto_micro_trades ORDER BY ts ASC"
+                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount,reason FROM crypto_micro_trades ORDER BY ts DESC"
             )]
         annotated = annotate_micro_trade_pnl(rows)
         groups = {}
