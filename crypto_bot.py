@@ -64,6 +64,17 @@ CONFIG = {
     "microBaseInterval": os.environ.get("CRYPTO_MICRO_BASE_INTERVAL", "5m"),
     "microSurgeArchiveTopN": int(os.environ.get("CRYPTO_MICRO_SURGE_ARCHIVE_TOP_N", "10")),
     "microSurgeArchiveHours": int(os.environ.get("CRYPTO_MICRO_SURGE_ARCHIVE_HOURS", "4")),
+    "microStrategy2TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY2_TOP_N", "5")),
+    "microStrategy2MinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_MIN_PCT_1H", "3.0")),
+    "microStrategy2MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_MAX_PCT_1H", "25.0")),
+    "microStrategy2MinPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_MIN_PCT_15M", "0.2")),
+    "microStrategy2MinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_MIN_VOLUME_RATIO", "1.0")),
+    "microStrategy2MaxVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_MAX_VOLUME_RATIO", "60.0")),
+    "microStrategy2StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_STOP_LOSS_PCT", "1.0")),
+    "microStrategy2NoFollowMinutes": int(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MINUTES", "15")),
+    "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
+    "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "3.0")),
+    "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.5")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -134,6 +145,7 @@ CREATE TABLE IF NOT EXISTS crypto_micro_trades (
     id SERIAL PRIMARY KEY,
     ts TIMESTAMPTZ DEFAULT NOW(),
     inst_id TEXT,
+    strategy TEXT DEFAULT 'strategy1',
     side TEXT,
     price DOUBLE PRECISION,
     quantity DOUBLE PRECISION,
@@ -221,6 +233,8 @@ class CryptoPaperBot:
         self.pool = await asyncpg.create_pool(database_url, min_size=1, max_size=2)
         async with self.pool.acquire() as conn:
             await conn.execute(CREATE_SQL)
+            await conn.execute("ALTER TABLE crypto_micro_trades ADD COLUMN IF NOT EXISTS strategy TEXT DEFAULT 'strategy1'")
+            await conn.execute("UPDATE crypto_micro_trades SET strategy='strategy1' WHERE strategy IS NULL")
 
     async def close(self):
         await self.stop()
@@ -514,12 +528,43 @@ class CryptoPaperBot:
         ranking12h = sorted(candidates, key=lambda row: row["pct12h"], reverse=True)
         ranking1h = sorted(candidates, key=lambda row: row["pct1h"], reverse=True)
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
+        await self._apply_micro_strategy2(ranking1h, archive_sources, states, positions, open_count)
         positions.sort(key=lambda row: row["unrealizedPnlPct"], reverse=True)
         self.micro_candidates = candidates[:40]
         self.micro_ranking12h = ranking12h[:40]
         self.micro_ranking1h = ranking1h[:40]
         self.micro_positions = positions
         self.micro_last_run_at = datetime.now(timezone.utc).isoformat()
+
+    async def _apply_micro_strategy2(self, ranking1h, archive_sources, states, positions, open_count):
+        top_inst_ids = [signal["instId"] for signal in ranking1h[:CONFIG["microStrategy2TopN"]]]
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith("strategy2::") and state.get("assetQty", 0) > 0
+        ]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            signal = dict(source["signal"])
+            state_key = micro_state_key("strategy2", inst_id)
+            state = states.get(state_key, new_micro_state())
+            candles = source["candles"]
+            price = candles[-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy2_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], "strategy2", state_key)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, "strategy2"))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and micro_strategy2_should_enter(signal):
+                signal["reason"] = "strategy2_surge_momentum"
+                await self._micro_buy(inst_id, state, price, signal, "strategy2", state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, "strategy2"))
+        return open_count
 
     async def _archive_micro_surge_if_due(self, ranking12h, archive_sources):
         now = datetime.now(timezone.utc)
@@ -599,7 +644,8 @@ class CryptoPaperBot:
                 json.dumps(state),
             )
 
-    async def _micro_buy(self, inst_id, state, price, signal):
+    async def _micro_buy(self, inst_id, state, price, signal, strategy="strategy1", state_key=None):
+        signal["strategy"] = strategy
         margin = CONFIG["microMarginUSDT"]
         quote = margin * CONFIG["microLeverage"]
         qty = quote / price
@@ -615,11 +661,12 @@ class CryptoPaperBot:
             "belowMa60Count": 0,
             "trades": state.get("trades", 0) + 1,
         })
-        await self._save_micro_state(inst_id, state)
-        trade_id = await self._log_micro_trade(inst_id, "BUY", price, qty, quote, signal, signal["reason"])
+        await self._save_micro_state(state_key or inst_id, state)
+        trade_id = await self._log_micro_trade(inst_id, "BUY", price, qty, quote, signal, signal["reason"], strategy)
         await self._save_micro_trade_window(trade_id, inst_id, "BUY", "entry_pre_1h", signal["pre1hCandles"], signal)
 
-    async def _micro_sell(self, inst_id, state, price, signal, reason):
+    async def _micro_sell(self, inst_id, state, price, signal, reason, strategy="strategy1", state_key=None):
+        signal["strategy"] = strategy
         qty = state.get("assetQty", 0)
         quote = qty * price
         pnl = quote - qty * state.get("avgEntry", 0)
@@ -634,19 +681,19 @@ class CryptoPaperBot:
         state["trades"] = state.get("trades", 0) + 1
         state["pendingExitContextTradeId"] = None
         state["pendingExitContextUntil"] = signal["time"] + 60 * 60 * 1000
-        await self._save_micro_state(inst_id, state)
-        trade_id = await self._log_micro_trade(inst_id, "SELL", price, qty, quote, signal, reason)
+        await self._save_micro_state(state_key or inst_id, state)
+        trade_id = await self._log_micro_trade(inst_id, "SELL", price, qty, quote, signal, reason, strategy)
         await self._save_micro_trade_window(trade_id, inst_id, "SELL", "exit_pre_1h", signal["pre1hCandles"], signal)
         state["pendingExitContextTradeId"] = trade_id
-        await self._save_micro_state(inst_id, state)
+        await self._save_micro_state(state_key or inst_id, state)
 
-    async def _log_micro_trade(self, inst_id, side, price, qty, quote, signal, reason):
+    async def _log_micro_trade(self, inst_id, side, price, qty, quote, signal, reason, strategy="strategy1"):
         async with self.pool.acquire() as conn:
             row = await conn.fetchrow(
-                """INSERT INTO crypto_micro_trades(inst_id,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason)
-                   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+                """INSERT INTO crypto_micro_trades(inst_id,strategy,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason)
+                   VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
                    RETURNING id""",
-                inst_id, side, price, qty, quote, signal["ma60"], signal["volumeRatio"], signal["pct5"], signal["pct15"], reason,
+                inst_id, strategy, side, price, qty, quote, signal["ma60"], signal["volumeRatio"], signal["pct5"], signal["pct15"], reason,
             )
         return row["id"]
 
@@ -801,7 +848,7 @@ def install_crypto_bot(app: FastAPI):
 
     @app.get("/api/crypto/micro/trades")
     async def crypto_micro_trades(inst_id: str = Query("", max_length=30)):
-        sql = "SELECT id,ts,inst_id,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason FROM crypto_micro_trades"
+        sql = "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount,ma60,volume_ratio,pct5,pct15,reason FROM crypto_micro_trades"
         args = []
         if inst_id:
             sql += " WHERE inst_id=$1"
@@ -832,6 +879,34 @@ def install_crypto_bot(app: FastAPI):
             if isinstance(row["signal"], str):
                 row["signal"] = json.loads(row["signal"])
         return JSONResponse(rows)
+
+    @app.get("/api/crypto/micro/performance")
+    async def crypto_micro_performance():
+        async with crypto_bot.pool.acquire() as conn:
+            rows = [dict(row) for row in await conn.fetch(
+                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount,reason FROM crypto_micro_trades ORDER BY ts ASC"
+            )]
+        annotated = annotate_micro_trade_pnl(rows)
+        groups = {}
+        for row in annotated:
+            strategy = row.get("strategy") or "strategy1"
+            item = groups.setdefault(strategy, {"strategy": strategy, "trades": 0, "closedTrades": 0, "wins": 0, "losses": 0, "realizedPnl": 0.0})
+            item["trades"] += 1
+            if row["side"] == "SELL" and row.get("pnl") is not None:
+                pnl = float(row["pnl"])
+                item["closedTrades"] += 1
+                item["realizedPnl"] += pnl
+                if pnl > 0:
+                    item["wins"] += 1
+                else:
+                    item["losses"] += 1
+        result = []
+        for item in groups.values():
+            item["realizedPnl"] = rnd(item["realizedPnl"])
+            item["winRate"] = rnd((item["wins"] / item["closedTrades"]) * 100 if item["closedTrades"] else 0)
+            result.append(item)
+        result.sort(key=lambda row: row["strategy"])
+        return JSONResponse(result)
 
     @app.get("/api/crypto/micro/surge-archive")
     async def crypto_micro_surge_archive(limit: int = Query(120, ge=1, le=1000), inst_id: str = Query("", max_length=30)):
@@ -1357,11 +1432,50 @@ def micro_should_exit(signal, state, price):
     return bool(signal.get("exitReason"))
 
 
+def micro_strategy2_should_enter(signal):
+    return (
+        signal.get("pct1h", 0) >= CONFIG["microStrategy2MinPct1h"]
+        and signal.get("pct1h", 0) <= CONFIG["microStrategy2MaxPct1h"]
+        and signal.get("pct15", 0) >= CONFIG["microStrategy2MinPct15m"]
+        and CONFIG["microStrategy2MinVolumeRatio"] <= signal.get("volumeRatio", 0) <= CONFIG["microStrategy2MaxVolumeRatio"]
+        and signal.get("price", 0) > signal.get("ma20", 0)
+    )
+
+
+def micro_strategy2_should_exit(signal, state, price):
+    entry = state.get("avgEntry", 0)
+    if not entry:
+        return False
+    stop_price = entry * (1 - CONFIG["microStrategy2StopLossPct"] / 100)
+    if signal.get("lastLow", price) <= stop_price:
+        signal["exitReason"] = "strategy2_stop_loss_1pct"
+        signal["exitPrice"] = stop_price
+        return True
+    age_minutes = (signal.get("time", 0) - state.get("entryTime", 0)) / 60000 if state.get("entryTime") else 0
+    peak = state.get("peakPrice", price)
+    peak_gain = ((peak - entry) / entry) * 100 if entry else 0
+    giveback = ((peak - price) / peak) * 100 if peak else 0
+    if age_minutes >= CONFIG["microStrategy2NoFollowMinutes"] and peak_gain < CONFIG["microStrategy2NoFollowMinGainPct"]:
+        signal["exitReason"] = "strategy2_no_follow_through"
+        return True
+    if peak_gain >= CONFIG["microStrategy2TrailingStartPct"] and giveback >= CONFIG["microStrategy2TrailingGivebackPct"]:
+        signal["exitReason"] = "strategy2_trailing_giveback"
+        return True
+    if price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
+        signal["exitReason"] = "strategy2_momentum_loss_15m"
+        return True
+    return False
+
+
+def micro_state_key(strategy, inst_id):
+    return inst_id if strategy == "strategy1" else f"{strategy}::{inst_id}"
+
+
 def new_micro_state():
     return {"assetQty": 0.0, "avgEntry": 0.0, "margin": 0.0, "leverage": CONFIG["microLeverage"], "notional": 0.0, "peakPrice": 0.0, "belowMa60Count": 0, "realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0}
 
 
-def micro_position_row(inst_id, state, price, signal):
+def micro_position_row(inst_id, state, price, signal, strategy="strategy1"):
     entry = state.get("avgEntry", 0)
     qty = state.get("assetQty", 0)
     value = qty * price
@@ -1369,6 +1483,7 @@ def micro_position_row(inst_id, state, price, signal):
     margin = state.get("margin") or (value / (state.get("leverage") or CONFIG["microLeverage"]) if value else CONFIG["microMarginUSDT"])
     return {
         "instId": inst_id,
+        "strategy": strategy,
         "price": rnd(price, 8),
         "avgEntry": rnd(entry, 8),
         "quantity": rnd(qty, 8),
@@ -1397,7 +1512,7 @@ def annotate_micro_trade_pnl(rows):
     annotated = []
     open_lots = {}
     for row in reversed(rows):
-        key = row["inst_id"]
+        key = (row.get("strategy") or "strategy1", row["inst_id"])
         item = dict(row)
         item["pnl"] = None
         item["pnlPct"] = None
@@ -1423,7 +1538,7 @@ def rebuild_micro_stats(rows):
     stats = {}
     open_lots = {}
     for row in rows:
-        key = row["inst_id"]
+        key = (row.get("strategy") or "strategy1", row["inst_id"])
         item = stats.setdefault(key, {"realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0})
         item["trades"] += 1
         if row["side"] == "BUY":
@@ -1472,7 +1587,7 @@ def compact_micro_signal(signal):
         "volumeAccel", "compactRangePct", "ma5", "ma20", "ma60", "distanceMa60Pct",
         "ma20Slope", "ma60Slope", "ma60Slope24", "stacked", "breakout", "priorHigh", "quietLift",
         "volumeRising", "entryVolumeOk", "chaseRisk", "trendOk", "notOverextended", "trendScore",
-        "exitReason", "exitPrice", "buy", "time", "reason",
+        "exitReason", "exitPrice", "buy", "time", "reason", "strategy",
     ]
     return {key: signal.get(key) for key in keys if key in signal}
 
@@ -1798,10 +1913,10 @@ function renderBacktest(rows){if(!rows.length){$("#backtestRows").innerHTML="<p>
 async function runMicroScan(){const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();renderMicro(data);await loadMicroTrades();}
 async function loadMicro(){const data=await (await fetch("/api/crypto/micro")).json();renderMicro(data);await loadMicroTrades();}
 function renderMicro(data){$("#microStatus").textContent=`Last scan: ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"waiting"} - ${data.running?"running":"stopped"}${data.lastError?" - "+data.lastError:""}`;renderMicroPositions(data.positions||[]);renderMicroCandidates(data.ranking1h||data.candidates||[]);}
-function renderMicroPositions(rows){if(!rows.length){$("#microPositions").innerHTML="<h3>Open Micro Positions</h3><p>No open breakout positions.</p>";return}$("#microPositions").innerHTML=`<h3>Open Micro Positions</h3><table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>Distance</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.instId}</td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
+function renderMicroPositions(rows){if(!rows.length){$("#microPositions").innerHTML="<h3>Open Micro Positions</h3><p>No open breakout positions.</p>";return}$("#microPositions").innerHTML=`<h3>Open Micro Positions</h3><table><thead><tr><th>Strategy</th><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>Distance</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td>${r.instId}</td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedPnlPct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
 function renderMicroCandidates(rows){if(!rows.length){$("#microCandidates").innerHTML="<h3>1h Ranking Watchlist</h3><p>No candidates yet.</p>";return}$("#microCandidates").innerHTML=`<h3>1h Ranking Watchlist</h3><table><thead><tr><th>Coin</th><th>Buy</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>24h Vol</th><th>MA60</th></tr></thead><tbody>${rows.slice(0,30).map(r=>`<tr><td>${r.instId}</td><td class="${r.buy?'good':'bad'}">${r.buy?'YES':'watch'}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${money(r.quoteVolume24h)}</td><td>${money(r.ma60)}</td></tr>`).join("")}</tbody></table>`}
 async function loadMicroTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderMicroTrades(rows);}
-function renderMicroTrades(rows){if(!rows.length){$("#microTrades").innerHTML="<h3>Micro Trades</h3><p>No micro trades yet.</p>";return}$("#microTrades").innerHTML=`<h3>Micro Trades</h3><table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.slice(0,40).map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
+function renderMicroTrades(rows){if(!rows.length){$("#microTrades").innerHTML="<h3>Micro Trades</h3><p>No micro trades yet.</p>";return}$("#microTrades").innerHTML=`<h3>Micro Trades</h3><table><thead><tr><th>Time</th><th>Strategy</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.slice(0,40).map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.strategy||'strategy1'}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
 function stat(k,v){return `<div class="stat"><span>${k}</span><strong>${v}</strong></div>`} function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:2})} function qty(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:8})} function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`} function tone(v){return Number(v)>=0?'good':'bad'}
 function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.getBoundingClientRect();canvas.width=Math.max(640,rect.width*r);canvas.height=280*r;const x=canvas.getContext('2d');x.scale(r,r);x.clearRect(0,0,rect.width,280);if(!c.length){x.fillText('Waiting for candles',18,32);return}let hi=Math.max(...c.map(k=>k.high)),lo=Math.min(...c.map(k=>k.low)),span=Math.max(1,hi-lo),w=(rect.width-64)/c.length;function y(v){return 18+((hi-v)/span)*(238)};c.forEach((k,i)=>{let cx=16+i*w+w/2,up=k.close>=k.open;x.strokeStyle=x.fillStyle=up?'#16835f':'#c53b3b';x.beginPath();x.moveTo(cx,y(k.high));x.lineTo(cx,y(k.low));x.stroke();x.fillRect(cx-w*.25,Math.min(y(k.open),y(k.close)),Math.max(2,w*.5),Math.max(2,Math.abs(y(k.close)-y(k.open))))});}
 </script></body></html>"""
@@ -1819,9 +1934,9 @@ async function load(){const data=await (await fetch("/api/crypto/micro")).json()
 async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();await loadArchive();}
 function render(data){let ranking=data.ranking1h||data.candidates||[];$("#marketType").textContent=`${data.config?.microInstType||"SWAP"} ${data.config?.microInterval||"5m"}`;$("#watchCount").textContent=ranking.length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(ranking);renderPositions(data.positions||[]);}
 function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No ranking data yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Rank</th><th>Coin</th><th>Status</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>Accel</th><th>Range</th><th>MA60</th><th>Score</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':(r.quietLift?'early':'watch')}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${Number(r.volumeAccel||0).toFixed(2)}</td><td>${pct(r.compactRangePct)}</td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td></tr>`).join("")}</tbody></table>`}
-function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To MA60</th><th>Peak</th><th>Margin</th><th>Notional</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}<br><span class="label">${r.belowMa60Count||0}/2</span></td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.peakPrice)}<br><span class="label">${pct(r.givebackPct)}</span></td><td>${money(r.margin)}<br><span class="label">${Number(r.leverage||0).toFixed(1)}x</span></td><td>${money(r.notional||r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedRoePct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
+function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Strategy</th><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To MA60</th><th>Peak</th><th>Margin</th><th>Notional</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}<br><span class="label">${r.belowMa60Count||0}/2</span></td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.peakPrice)}<br><span class="label">${pct(r.givebackPct)}</span></td><td>${money(r.margin)}<br><span class="label">${Number(r.leverage||0).toFixed(1)}x</span></td><td>${money(r.notional||r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedRoePct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
 async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
-function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
+function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Strategy</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.strategy||'strategy1'}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
 async function loadArchive(){const rows=await (await fetch("/api/crypto/micro/surge-archive?limit=60")).json();renderArchive(rows);}
 function renderArchive(rows){archiveRows=rows;if(!rows.length){$("#archive").innerHTML="<p>No archived surge snapshots yet.</p>";drawArchiveChart([],null);return}if(!selectedArchiveId||!rows.find(r=>r.id===selectedArchiveId))selectedArchiveId=rows[0].id;let picked=rows.find(r=>r.id===selectedArchiveId)||rows[0];$("#archiveStatus").textContent=`${picked.inst_id} - ${new Date(picked.scan_hour).toLocaleString()} - sorted by 1h gain - ${(picked.candles||[]).length} bars`;drawArchiveChart(picked.candles||[],picked);$("#archive").innerHTML=`<table><thead><tr><th>Hour</th><th>Rank</th><th>Coin</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>MA60 Dist</th><th>K Bars</th></tr></thead><tbody>${rows.map(r=>`<tr class="archiveRow ${r.id===selectedArchiveId?'selected':''}" data-id="${r.id}"><td>${new Date(r.scan_hour).toLocaleString()}</td><td>${r.rank}</td><td>${r.inst_id}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.distance_ma60_pct)}">${pct(r.distance_ma60_pct)}</td><td>${(r.candles||[]).length}</td></tr>`).join("")}</tbody></table>`;document.querySelectorAll(".archiveRow").forEach(row=>row.onclick=()=>{selectedArchiveId=Number(row.dataset.id);renderArchive(archiveRows);});}
 function drawArchiveChart(candles,row){const canvas=$("#archiveChart"),rect=canvas.getBoundingClientRect(),ratio=devicePixelRatio||1,w=Math.max(640,rect.width),h=320;canvas.width=w*ratio;canvas.height=h*ratio;const ctx=canvas.getContext("2d");ctx.scale(ratio,ratio);ctx.clearRect(0,0,w,h);ctx.fillStyle="#fbfcfb";ctx.fillRect(0,0,w,h);ctx.strokeStyle="#dce3df";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=28+i*(h-58)/4;ctx.beginPath();ctx.moveTo(48,y);ctx.lineTo(w-16,y);ctx.stroke();}if(!candles.length){ctx.fillStyle="#65706e";ctx.fillText("Click a surge archive row to inspect its 4h candles.",18,30);return}let hi=Math.max(...candles.map(k=>Number(k.high))),lo=Math.min(...candles.map(k=>Number(k.low))),span=Math.max(hi-lo,hi*0.0001),left=52,right=18,top=26,bottom=42,plotW=w-left-right,plotH=h-top-bottom,barW=plotW/candles.length;function y(v){return top+((hi-v)/span)*plotH}ctx.fillStyle="#19211f";ctx.font="12px Inter, Segoe UI, Arial";ctx.fillText(`${row.inst_id}  ${new Date(row.scan_hour).toLocaleString()}  12h ${pct(row.pct12h)}  1h ${pct(row.pct1h)}`,16,18);ctx.fillStyle="#65706e";ctx.fillText(money(hi),8,y(hi)+4);ctx.fillText(money(lo),8,y(lo)+4);candles.forEach((k,i)=>{let x=left+i*barW+barW/2,open=Number(k.open),close=Number(k.close),high=Number(k.high),low=Number(k.low),up=close>=open;ctx.strokeStyle=ctx.fillStyle=up?"#16835f":"#c53b3b";ctx.beginPath();ctx.moveTo(x,y(high));ctx.lineTo(x,y(low));ctx.stroke();ctx.fillRect(x-Math.max(2,barW*.28),Math.min(y(open),y(close)),Math.max(2,barW*.56),Math.max(2,Math.abs(y(close)-y(open))));});ctx.fillStyle="#65706e";ctx.fillText(new Date(candles[0].time).toLocaleTimeString(),left,h-16);ctx.fillText(new Date(candles[candles.length-1].time).toLocaleTimeString(),Math.max(left,w-100),h-16);}
