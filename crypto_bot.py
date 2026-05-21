@@ -89,13 +89,11 @@ MICRO_EXCLUDED_SYNTHETIC_BASES = {
     "CBRS", "COHR", "COST", "DRAM", "MU", "WDC", "XAG", "XAU",
 }
 
-STRATEGIES = [
-    {"id": "mtf_trend_pullback", "name": "15m Trend Pullback", "description": "15m uptrend filter, 5m pullback recovery entry."},
-    {"id": "mtf_macd_momentum", "name": "15m MACD Momentum", "description": "15m MACD positive, 5m momentum turns up."},
-    {"id": "vwap_reclaim", "name": "VWAP Reclaim", "description": "15m structure neutral/up, 5m price reclaims VWAP."},
-    {"id": "range_breakout_15m", "name": "15m Range Breakout", "description": "15m compression, 5m breakout with volume."},
-    {"id": "rsi_exhaustion_bounce", "name": "15m RSI Bounce", "description": "15m not bearish, 5m exhaustion bounce setup."},
-]
+# Standard large-cap crypto strategies were retired so the service can focus on
+# OKX micro-cap strategies only. Keep the list empty to prevent the legacy
+# paper-trading loop, performance endpoint, and backtest endpoint from emitting
+# the old 5 strategy rows.
+STRATEGIES = []
 
 CREATE_SQL = """
 CREATE TABLE IF NOT EXISTS crypto_state (
@@ -216,10 +214,10 @@ class CryptoPaperBot:
         self.snapshots = {}
 
     async def start(self):
-        if self.running:
-            return
-        self.running = True
-        self.task = asyncio.create_task(self._loop())
+        # Standard crypto paper strategies are retired. Starting the crypto bot
+        # now only starts the micro-cap scanner/trader.
+        self.running = False
+        self.task = None
         await self.start_micro()
 
     async def stop(self):
@@ -295,13 +293,7 @@ class CryptoPaperBot:
             await asyncio.sleep(CONFIG["pollSeconds"])
 
     async def run_once(self):
-        async with httpx.AsyncClient(timeout=20) as client:
-            for symbol in CONFIG["symbols"]:
-                candles, higher = await asyncio.gather(
-                    fetch_klines(client, symbol, CONFIG["interval"], 180),
-                    fetch_klines(client, symbol, CONFIG["higherInterval"], 180),
-                )
-                await self._apply_symbol(symbol, candles, higher)
+        # No-op: legacy standard crypto strategies have been removed.
         self.last_run_at = datetime.now(timezone.utc).isoformat()
 
     async def _apply_symbol(self, symbol, candles, higher):
@@ -1760,74 +1752,7 @@ def empty_snapshot(symbol, running, error, last_run_at):
 
 
 def backtest_symbol(symbol, candles, higher):
-    if len(candles) < 80 or len(higher) < 40:
-        return [
-            {
-                "symbol": symbol,
-                "id": strategy["id"],
-                "name": strategy["name"],
-                "description": strategy["description"],
-                "candles": len(candles),
-                "higherCandles": len(higher),
-                "error": "not_enough_candles",
-                **snapshot_row(strategy, new_account(), candles[-1]["close"] if candles else 0),
-            }
-            for strategy in STRATEGIES
-        ]
-    accounts = {strategy["id"]: new_account() for strategy in STRATEGIES}
-    higher_index = 0
-    for index, candle in enumerate(candles):
-        while higher_index + 1 < len(higher) and higher[higher_index + 1]["closeTime"] <= candle["closeTime"]:
-            higher_index += 1
-        if index < 60 or higher_index < 30:
-            continue
-        window = candles[max(0, index - 220):index + 1]
-        higher_window = higher[max(0, higher_index - 220):higher_index + 1]
-        price = candle["close"]
-        close_time = candle["closeTime"]
-        for strategy in STRATEGIES:
-            account = accounts[strategy["id"]]
-            refresh_daily_limit(account, close_time)
-            decision = decide(strategy["id"], window, higher_window, account)
-            decision = with_risk_exit(decision, account, price)
-            if decision["signal"] == "BUY" and account["assetQty"] <= 0 and can_enter(account, close_time):
-                quote = min(account["cash"], CONFIG["orderQuoteSize"])
-                qty = quote / price
-                account["cash"] -= quote
-                account["assetQty"] += qty
-                account["avgEntry"] = price
-                account["entryCountToday"] += 1
-                account["trades"] += 1
-            elif decision["signal"] == "SELL" and account["assetQty"] > 0:
-                qty = account["assetQty"]
-                quote = qty * price
-                pnl = quote - qty * account["avgEntry"]
-                account["cash"] += quote
-                account["assetQty"] = 0
-                account["avgEntry"] = 0
-                account["lastExitTime"] = close_time
-                account["realizedPnl"] += pnl
-                account["trades"] += 1
-                account["closedTrades"] += 1
-                account["wins"] += 1 if pnl > 0 else 0
-            equity = account["cash"] + account["assetQty"] * price
-            account["peakEquity"] = max(account["peakEquity"], equity)
-            if account["peakEquity"] > 0:
-                account["maxDrawdownPct"] = max(account["maxDrawdownPct"], ((account["peakEquity"] - equity) / account["peakEquity"]) * 100)
-            account["lastSignal"] = decision["signal"]
-            account["lastReason"] = decision["reason"]
-            account["lastAction"] = "backtest"
-            account["lastCandleCloseTime"] = close_time
-    last_price = candles[-1]["close"]
-    rows = []
-    for strategy in STRATEGIES:
-        item = snapshot_row(strategy, accounts[strategy["id"]], last_price)
-        item["symbol"] = symbol
-        item["closedTrades"] = accounts[strategy["id"]].get("closedTrades", 0)
-        item["candles"] = len(candles)
-        item["higherCandles"] = len(higher)
-        rows.append(item)
-    return rows
+    return []
 
 
 def with_risk_exit(decision, account, price):
@@ -1841,41 +1766,7 @@ def with_risk_exit(decision, account, price):
 
 
 def decide(strategy_id, candles, higher, account):
-    closes = [c["close"] for c in candles]
-    closes15 = [c["close"] for c in higher]
-    in_pos = account["assetQty"] > 0
-    if strategy_id == "mtf_trend_pullback":
-        fast, slow, r, avg = sma(closes15, 8), sma(closes15, 21), rsi(closes, 14), sma(closes, 20)
-        if None in (fast, slow, r, avg): return hold("warming_up")
-        if not in_pos and fast > slow and closes[-1] > avg and 45 < r < 62: return buy("15m_uptrend_5m_recovery")
-        if in_pos and (fast < slow or r > 72): return sell("trend_faded_or_overheated")
-    elif strategy_id == "mtf_macd_momentum":
-        m15, m5 = macd(closes15), macd(closes)
-        avg_vol = sma([c["volume"] for c in candles[-21:-1]], 20)
-        if not m15 or not m5 or avg_vol is None: return hold("warming_up")
-        if not in_pos and m15["histogram"] > 0 and m5["previousHistogram"] <= 0 and m5["histogram"] > 0 and candles[-1]["volume"] > avg_vol: return buy("15m_macd_5m_turn")
-        if in_pos and m5["histogram"] < 0: return sell("5m_momentum_lost")
-    elif strategy_id == "vwap_reclaim":
-        fast, slow, vw, pvw = sma(closes15, 8), sma(closes15, 21), vwap(candles, 48), vwap(candles[:-1], 48)
-        if None in (fast, slow, vw, pvw) or len(candles) < 2: return hold("warming_up")
-        if not in_pos and fast >= slow * 0.998 and candles[-2]["close"] < pvw and candles[-1]["close"] > vw: return buy("vwap_reclaim")
-        if in_pos and candles[-1]["close"] < vw: return sell("lost_vwap")
-    elif strategy_id == "range_breakout_15m":
-        mid, dev, a = sma(closes15, 20), stddev(closes15, 20), atr(higher, 14)
-        if None in (mid, dev, a) or len(candles) < 35: return hold("warming_up")
-        prev = candles[-25:-1]
-        high = max(c["high"] for c in prev)
-        avg_vol = sum(c["volume"] for c in prev) / len(prev)
-        if not in_pos and (dev / mid < 0.004 or a / mid < 0.004) and candles[-1]["close"] > high and candles[-1]["volume"] > avg_vol * 1.25: return buy("compressed_range_breakout")
-        avg20 = sma(closes, 20)
-        if in_pos and avg20 and candles[-1]["close"] < avg20: return sell("breakout_failed")
-    elif strategy_id == "rsi_exhaustion_bounce":
-        r5, r15, avg = rsi(closes, 14), rsi(closes15, 14), sma(closes, 12)
-        if None in (r5, r15, avg) or len(candles) < 2: return hold("warming_up")
-        green = candles[-2]["close"] < candles[-2]["open"] and candles[-1]["close"] > candles[-1]["open"] and candles[-1]["close"] > avg
-        if not in_pos and r15 > 38 and r5 < 34 and green: return buy("exhaustion_bounce")
-        if in_pos and (r5 > 58 or candles[-1]["close"] < avg): return sell("bounce_completed")
-    return hold("no_signal")
+    return hold("standard_strategy_retired")
 
 
 def buy(reason): return {"signal": "BUY", "reason": reason}
