@@ -58,8 +58,12 @@ CONFIG = {
     "microMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_MAX_DISTANCE_MA60_PCT", "3")),
     "microConfirmBreakoutBufferPct": float(os.environ.get("CRYPTO_MICRO_CONFIRM_BREAKOUT_BUFFER_PCT", "0.1")),
     "microStopLossPct": float(os.environ.get("CRYPTO_MICRO_STOP_LOSS_PCT", "1.0")),
+    "microTakeProfit1Pct": float(os.environ.get("CRYPTO_MICRO_TAKE_PROFIT_1_PCT", "1.2")),
+    "microTakeProfit2Pct": float(os.environ.get("CRYPTO_MICRO_TAKE_PROFIT_2_PCT", "2.5")),
+    "microBreakevenLockPct": float(os.environ.get("CRYPTO_MICRO_BREAKEVEN_LOCK_PCT", "0.2")),
+    "microTrailingStartPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_START_PCT", "1.8")),
+    "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "0.8")),
     "microEarlyExitPct15m": float(os.environ.get("CRYPTO_MICRO_EARLY_EXIT_PCT_15M", "-0.3")),
-    "microTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_TRAILING_GIVEBACK_PCT", "2.0")),
     "microInterval": os.environ.get("CRYPTO_MICRO_INTERVAL", "5m"),
     "microBaseInterval": os.environ.get("CRYPTO_MICRO_BASE_INTERVAL", "5m"),
     "microSurgeArchiveTopN": int(os.environ.get("CRYPTO_MICRO_SURGE_ARCHIVE_TOP_N", "10")),
@@ -73,8 +77,8 @@ CONFIG = {
     "microStrategy2StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_STOP_LOSS_PCT", "1.0")),
     "microStrategy2NoFollowMinutes": int(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MINUTES", "15")),
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
-    "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "3.0")),
-    "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.5")),
+    "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
+    "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -677,6 +681,9 @@ class CryptoPaperBot:
             "entryReason": signal["reason"],
             "peakPrice": price,
             "belowMa60Count": 0,
+            "tp1Taken": False,
+            "tp2Taken": False,
+            "breakevenStopPrice": 0,
             "trades": state.get("trades", 0) + 1,
         })
         await self._save_micro_state(state_key or inst_id, state)
@@ -685,25 +692,36 @@ class CryptoPaperBot:
 
     async def _micro_sell(self, inst_id, state, price, signal, reason, strategy="strategy1", state_key=None):
         signal["strategy"] = strategy
-        qty = state.get("assetQty", 0)
+        current_qty = state.get("assetQty", 0)
+        fraction = min(1.0, max(0.0, float(signal.get("exitFraction", 1.0))))
+        qty = current_qty * fraction
         quote = qty * price
         pnl = quote - qty * state.get("avgEntry", 0)
-        state["assetQty"] = 0
-        state["avgEntry"] = 0
-        state["peakPrice"] = 0
-        state["belowMa60Count"] = 0
-        state["lastExitTime"] = signal["time"]
+        remaining_qty = max(0.0, current_qty - qty)
+        full_exit = remaining_qty <= current_qty * 0.000001
+        state["assetQty"] = 0 if full_exit else remaining_qty
+        if full_exit:
+            state["avgEntry"] = 0
+            state["peakPrice"] = 0
+            state["belowMa60Count"] = 0
+            state["tp1Taken"] = False
+            state["tp2Taken"] = False
+            state["breakevenStopPrice"] = 0
+            state["lastExitTime"] = signal["time"]
+            state["closedTrades"] = state.get("closedTrades", 0) + 1
+            state["wins"] = state.get("wins", 0) + (1 if pnl > 0 else 0)
+            state["pendingExitContextTradeId"] = None
+            state["pendingExitContextUntil"] = signal["time"] + 60 * 60 * 1000
+        else:
+            state["peakPrice"] = max(state.get("peakPrice", price), price)
         state["realizedPnl"] = state.get("realizedPnl", 0) + pnl
-        state["closedTrades"] = state.get("closedTrades", 0) + 1
-        state["wins"] = state.get("wins", 0) + (1 if pnl > 0 else 0)
         state["trades"] = state.get("trades", 0) + 1
-        state["pendingExitContextTradeId"] = None
-        state["pendingExitContextUntil"] = signal["time"] + 60 * 60 * 1000
         await self._save_micro_state(state_key or inst_id, state)
         trade_id = await self._log_micro_trade(inst_id, "SELL", price, qty, quote, signal, reason, strategy)
         await self._save_micro_trade_window(trade_id, inst_id, "SELL", "exit_pre_1h", signal["pre1hCandles"], signal)
-        state["pendingExitContextTradeId"] = trade_id
-        await self._save_micro_state(state_key or inst_id, state)
+        if full_exit:
+            state["pendingExitContextTradeId"] = trade_id
+            await self._save_micro_state(state_key or inst_id, state)
 
     async def _log_micro_trade(self, inst_id, side, price, qty, quote, signal, reason, strategy="strategy1"):
         async with self.pool.acquire() as conn:
@@ -1431,22 +1449,40 @@ def micro_entry_confirmed(state, signal, price):
     )
 
 
+def set_micro_exit(signal, reason, fraction=1.0, price=None):
+    signal["exitReason"] = reason
+    signal["exitFraction"] = fraction
+    if price is not None:
+        signal["exitPrice"] = price
+
+
 def micro_should_exit(signal, state, price):
     entry = state.get("avgEntry", 0)
-    stop_price = entry * (1 - CONFIG["microStopLossPct"] / 100) if entry else 0
-    if entry and signal.get("lastLow", price) <= stop_price:
-        signal["exitReason"] = "stop_loss_1pct"
-        signal["exitPrice"] = stop_price
+    if not entry:
+        return False
+    stop_price = entry * (1 - CONFIG["microStopLossPct"] / 100)
+    breakeven_stop = state.get("breakevenStopPrice")
+    peak = max(state.get("peakPrice", price), price)
+    peak_gain = ((peak - entry) / entry) * 100
+    giveback = ((peak - price) / peak) * 100 if peak else 0
+
+    if signal.get("lastLow", price) <= stop_price:
+        set_micro_exit(signal, "stop_loss_1pct", 1.0, stop_price)
+    elif breakeven_stop and signal.get("lastLow", price) <= breakeven_stop:
+        set_micro_exit(signal, "breakeven_stop_after_tp1", 1.0, breakeven_stop)
+    elif not state.get("tp1Taken") and price >= entry * (1 + CONFIG["microTakeProfit1Pct"] / 100):
+        state["tp1Taken"] = True
+        state["breakevenStopPrice"] = entry * (1 + CONFIG["microBreakevenLockPct"] / 100)
+        set_micro_exit(signal, "tp1_take_half_move_stop_breakeven", 0.5, price)
+    elif state.get("tp1Taken") and not state.get("tp2Taken") and price >= entry * (1 + CONFIG["microTakeProfit2Pct"] / 100):
+        state["tp2Taken"] = True
+        set_micro_exit(signal, "tp2_take_quarter_keep_runner", 0.5, price)
     elif entry and price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
-        signal["exitReason"] = "early_momentum_loss_15m"
+        set_micro_exit(signal, "early_momentum_loss_15m")
     elif state.get("belowMa60Count", 0) >= 2:
-        signal["exitReason"] = "two_closes_below_ma60"
-    else:
-        peak = state.get("peakPrice", price)
-        peak_gain = ((peak - entry) / entry) * 100 if entry else 0
-        giveback = ((peak - price) / peak) * 100 if peak else 0
-        if peak_gain > CONFIG["microTrailingGivebackPct"] and giveback >= CONFIG["microTrailingGivebackPct"]:
-            signal["exitReason"] = "trailing_giveback_2pct"
+        set_micro_exit(signal, "two_closes_below_ma60")
+    elif peak_gain >= CONFIG["microTrailingStartPct"] and giveback >= CONFIG["microTrailingGivebackPct"]:
+        set_micro_exit(signal, "trailing_runner_giveback")
     return bool(signal.get("exitReason"))
 
 
@@ -1466,21 +1502,20 @@ def micro_strategy2_should_exit(signal, state, price):
         return False
     stop_price = entry * (1 - CONFIG["microStrategy2StopLossPct"] / 100)
     if signal.get("lastLow", price) <= stop_price:
-        signal["exitReason"] = "strategy2_stop_loss_1pct"
-        signal["exitPrice"] = stop_price
+        set_micro_exit(signal, "strategy2_stop_loss_1pct", 1.0, stop_price)
         return True
     age_minutes = (signal.get("time", 0) - state.get("entryTime", 0)) / 60000 if state.get("entryTime") else 0
     peak = state.get("peakPrice", price)
     peak_gain = ((peak - entry) / entry) * 100 if entry else 0
     giveback = ((peak - price) / peak) * 100 if peak else 0
     if age_minutes >= CONFIG["microStrategy2NoFollowMinutes"] and peak_gain < CONFIG["microStrategy2NoFollowMinGainPct"]:
-        signal["exitReason"] = "strategy2_no_follow_through"
+        set_micro_exit(signal, "strategy2_no_follow_through")
         return True
     if peak_gain >= CONFIG["microStrategy2TrailingStartPct"] and giveback >= CONFIG["microStrategy2TrailingGivebackPct"]:
-        signal["exitReason"] = "strategy2_trailing_giveback"
+        set_micro_exit(signal, "strategy2_trailing_giveback")
         return True
     if price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
-        signal["exitReason"] = "strategy2_momentum_loss_15m"
+        set_micro_exit(signal, "strategy2_momentum_loss_15m")
         return True
     return False
 
@@ -1536,18 +1571,22 @@ def annotate_micro_trade_pnl(rows):
         item["pnlPct"] = None
         item["pnlRoePct"] = None
         if row["side"] == "BUY":
-            open_lots[key] = row
+            open_lots[key] = {"row": row, "remainingQty": float(row["quantity"])}
         elif row["side"] == "SELL" and key in open_lots:
-            buy_row = open_lots.pop(key)
+            lot = open_lots[key]
+            buy_row = lot["row"]
             entry = float(buy_row["price"])
             exit_price = float(row["price"])
-            quantity = float(row["quantity"])
+            quantity = min(float(row["quantity"]), lot["remainingQty"])
             pnl = (exit_price - entry) * quantity
             margin = float(buy_row["quote_amount"]) / CONFIG["microLeverage"] if CONFIG["microLeverage"] else 0
             item["entryPrice"] = entry
             item["pnl"] = rnd(pnl)
             item["pnlPct"] = rnd(((exit_price - entry) / entry) * 100 if entry else 0)
             item["pnlRoePct"] = rnd((pnl / margin) * 100 if margin else 0)
+            lot["remainingQty"] -= quantity
+            if lot["remainingQty"] <= max(float(buy_row["quantity"]) * 0.000001, 1e-12):
+                open_lots.pop(key, None)
         annotated.append(item)
     return list(reversed(annotated))
 
@@ -1560,18 +1599,24 @@ def rebuild_micro_stats(rows):
         item = stats.setdefault(key, {"realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0})
         item["trades"] += 1
         if row["side"] == "BUY":
-            open_lots[key] = row
+            qty = float(row["quantity"])
+            open_lots[key] = {"row": row, "remainingQty": qty, "closedPnl": 0.0}
         elif row["side"] == "SELL":
-            buy_row = open_lots.pop(key, None)
-            if not buy_row:
+            lot = open_lots.get(key)
+            if not lot:
                 continue
+            buy_row = lot["row"]
             entry = float(buy_row["price"])
             exit_price = float(row["price"])
-            quantity = float(row["quantity"])
+            quantity = min(float(row["quantity"]), lot["remainingQty"])
             pnl = (exit_price - entry) * quantity
             item["realizedPnl"] += pnl
-            item["closedTrades"] += 1
-            item["wins"] += 1 if pnl > 0 else 0
+            lot["closedPnl"] += pnl
+            lot["remainingQty"] -= quantity
+            if lot["remainingQty"] <= max(float(buy_row["quantity"]) * 0.000001, 1e-12):
+                item["closedTrades"] += 1
+                item["wins"] += 1 if lot["closedPnl"] > 0 else 0
+                open_lots.pop(key, None)
     for item in stats.values():
         item["realizedPnl"] = rnd(item["realizedPnl"])
     return stats
