@@ -19,6 +19,11 @@ def _symbols():
     return [item.strip().upper() for item in raw.split(",") if item.strip()]
 
 
+def _csv_env(name, default):
+    raw = os.environ.get(name, default)
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
 CONFIG = {
     "symbols": _symbols(),
     "dataSource": "OKX",
@@ -79,6 +84,19 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2,strategy4_breakout_confirmation"),
+    "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
+    "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
+    "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
+    "microStrategy4ConfirmVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_VOLUME_RATIO", "1.1")),
+    "microStrategy4MinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_MIN_PCT_1H", "0.4")),
+    "microStrategy4StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_STOP_LOSS_PCT", "0.8")),
+    "microStrategy4TakeProfit1Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TAKE_PROFIT_1_PCT", "0.8")),
+    "microStrategy4TakeProfit2Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TAKE_PROFIT_2_PCT", "2.4")),
+    "microStrategy4BreakevenLockPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAKEVEN_LOCK_PCT", "0.2")),
+    "microStrategy4TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_START_PCT", "1.6")),
+    "microStrategy4TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_GIVEBACK_PCT", "0.6")),
+    "microStrategy4TimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY4_TIME_STOP_BARS", "8")),
 }
 
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
@@ -542,13 +560,49 @@ class CryptoPaperBot:
         ranking12h = sorted(candidates, key=lambda row: row["pct12h"], reverse=True)
         ranking1h = sorted(candidates, key=lambda row: row["pct1h"], reverse=True)
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
-        await self._apply_micro_strategy2(ranking1h, archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy4_breakout_confirmation"):
+            open_count = await self._apply_micro_strategy4(archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy2"):
+            await self._apply_micro_strategy2(ranking1h, archive_sources, states, positions, open_count)
         positions.sort(key=lambda row: row["unrealizedPnlPct"], reverse=True)
         self.micro_candidates = candidates[:40]
         self.micro_ranking12h = ranking12h[:40]
         self.micro_ranking1h = ranking1h[:40]
         self.micro_positions = positions
         self.micro_last_run_at = datetime.now(timezone.utc).isoformat()
+
+    async def _apply_micro_strategy4(self, archive_sources, states, positions, open_count):
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith("strategy4_breakout_confirmation::") and state.get("assetQty", 0) > 0
+        ]
+        source_items = sorted(
+            archive_sources.items(),
+            key=lambda item: item[1]["signal"].get("trendScore", 0),
+            reverse=True,
+        )
+        active_set = set(active_inst_ids)
+        ordered_items = [(inst_id, archive_sources[inst_id]) for inst_id in active_inst_ids if inst_id in archive_sources]
+        ordered_items.extend((inst_id, source) for inst_id, source in source_items if inst_id not in active_set)
+        for inst_id, source in ordered_items:
+            state_key = micro_state_key("strategy4_breakout_confirmation", inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy4_signal({"instId": inst_id, "_pct24": source["signal"].get("pct24", 0), "_quoteVol": source["signal"].get("quoteVolume24h", 0)}, source["candles"])
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy4_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], "strategy4_breakout_confirmation", state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, "strategy4_breakout_confirmation"))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, "strategy4_breakout_confirmation", state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, "strategy4_breakout_confirmation"))
+        return open_count
 
     async def _apply_micro_strategy2(self, ranking1h, archive_sources, states, positions, open_count):
         top_inst_ids = [signal["instId"] for signal in ranking1h[:CONFIG["microStrategy2TopN"]]]
@@ -1277,6 +1331,94 @@ def micro_bar_minutes():
     if CONFIG["microInterval"] == "15m":
         return 15
     return 10
+
+
+def micro_strategy_enabled(strategy):
+    active = CONFIG.get("microActiveStrategies") or []
+    return strategy in active
+
+
+def micro_strategy4_signal(ticker, candles):
+    base = micro_trend_signal(ticker, candles)
+    base["strategy"] = "strategy4_breakout_confirmation"
+    base["buy"] = False
+    base["reason"] = "strategy4_watch"
+    base["strategy4PrevBreakout"] = False
+    base["strategy4Hold"] = False
+    if len(candles) < max(72, micro_bars_per_hour() + 3):
+        return base
+
+    closes = [c["close"] for c in candles]
+    volumes = [c["volume"] for c in candles]
+    ema9 = ema_series(closes, 9)
+    ema21 = ema_series(closes, 21)
+    if len(ema9) < 3 or len(ema21) < 3:
+        return base
+
+    prev = candles[-2]
+    current = candles[-1]
+    bars_per_hour = micro_bars_per_hour()
+    prev_prior_high = max(c["high"] for c in candles[-(bars_per_hour + 2):-2])
+    prev_base_vol = sma(volumes[-74:-14], 60) or sma(volumes[-38:-8], 30) or sma(volumes[:-2], min(30, len(volumes[:-2]))) or 0
+    prev_vol_ratio = prev["volume"] / prev_base_vol if prev_base_vol else 0
+    ema9_prev = ema9[-2]
+    ema21_prev = ema21[-2]
+    pct1h = base.get("pct1h", 0)
+
+    prev_breakout = (
+        prev["close"] > prev_prior_high
+        and prev_vol_ratio >= CONFIG["microStrategy4BreakVolumeRatio"]
+        and prev["close"] > ema9_prev > ema21_prev
+    )
+    hold = (
+        current["low"] >= prev_prior_high * CONFIG["microStrategy4HoldFactor"]
+        and current["close"] > prev["close"] * (1 + CONFIG["microStrategy4ConfirmGainPct"] / 100)
+    )
+    confirm_volume = base.get("volumeRatio", 0) >= CONFIG["microStrategy4ConfirmVolumeRatio"]
+    buy_signal = prev_breakout and hold and pct1h >= CONFIG["microStrategy4MinPct1h"] and confirm_volume
+
+    base.update({
+        "buy": buy_signal,
+        "reason": "strategy4_confirmed_breakout" if buy_signal else "strategy4_watch",
+        "strategy4PrevBreakout": prev_breakout,
+        "strategy4Hold": hold,
+        "strategy4PrevVolumeRatio": rnd(prev_vol_ratio),
+        "strategy4ConfirmVolumeOk": confirm_volume,
+        "strategy4BreakoutLevel": rnd(prev_prior_high, 8),
+        "strategy4PrevEma9": rnd(ema9_prev, 8),
+        "strategy4PrevEma21": rnd(ema21_prev, 8),
+    })
+    return base
+
+
+def micro_strategy4_should_exit(signal, state, price):
+    entry = state.get("avgEntry", 0)
+    if not entry:
+        return False
+    stop_price = entry * (1 - CONFIG["microStrategy4StopLossPct"] / 100)
+    breakeven_stop = state.get("breakevenStopPrice")
+    peak = max(state.get("peakPrice", price), price)
+    peak_gain = ((peak - entry) / entry) * 100 if entry else 0
+    giveback = ((peak - price) / peak) * 100 if peak else 0
+    age_bars = (signal.get("time", 0) - state.get("entryTime", 0)) / (micro_bar_minutes() * 60 * 1000) if state.get("entryTime") else 0
+
+    if signal.get("lastLow", price) <= stop_price:
+        set_micro_exit(signal, "strategy4_stop_loss_0_8pct", 1.0, stop_price)
+    elif breakeven_stop and signal.get("lastLow", price) <= breakeven_stop:
+        set_micro_exit(signal, "strategy4_breakeven_stop_after_tp1", 1.0, breakeven_stop)
+    elif not state.get("tp1Taken") and price >= entry * (1 + CONFIG["microStrategy4TakeProfit1Pct"] / 100):
+        state["tp1Taken"] = True
+        state["breakevenStopPrice"] = entry * (1 + CONFIG["microStrategy4BreakevenLockPct"] / 100)
+        set_micro_exit(signal, "strategy4_tp1_take_half_move_stop_breakeven", 0.5, price)
+    elif state.get("tp1Taken") and price >= entry * (1 + CONFIG["microStrategy4TakeProfit2Pct"] / 100):
+        set_micro_exit(signal, "strategy4_tp2_or_runner_exit", 0.5, price)
+    elif state.get("tp1Taken") and peak_gain >= CONFIG["microStrategy4TrailingStartPct"] and giveback >= CONFIG["microStrategy4TrailingGivebackPct"]:
+        set_micro_exit(signal, "strategy4_trailing_runner_giveback")
+    elif age_bars >= CONFIG["microStrategy4TimeStopBars"]:
+        set_micro_exit(signal, "strategy4_time_stop")
+    elif price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
+        set_micro_exit(signal, "strategy4_momentum_loss_15m")
+    return bool(signal.get("exitReason"))
 
 
 def shortlist_micro_tickers(tickers):
