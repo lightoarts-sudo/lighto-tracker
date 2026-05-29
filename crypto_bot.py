@@ -679,6 +679,49 @@ class CryptoPaperBot:
         return open_count
 
 
+    async def _apply_micro_strategy21(self, ranking1h, ranking3h, ranking6h, archive_sources, states, positions, open_count):
+        strategy = "strategy21_multi_tf_intersection_ema9_bounce"
+        top_n = CONFIG["microStrategy21TopN"]
+        top1 = {signal["instId"] for signal in ranking1h[:top_n]}
+        top3 = {signal["instId"] for signal in ranking3h[:top_n]}
+        top6 = {signal["instId"] for signal in ranking6h[:top_n]}
+        top_inst_ids = [signal["instId"] for signal in ranking1h if signal["instId"] in top1 & top3 & top6]
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0
+        ]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy21_signal(
+                {
+                    "instId": inst_id,
+                    "_pct24": source["signal"].get("pct24", 0),
+                    "_quoteVol": source["signal"].get("quoteVolume24h", 0),
+                    "bidPx": source.get("ticker", {}).get("bidPx"),
+                    "askPx": source.get("ticker", {}).get("askPx"),
+                },
+                source["candles"],
+            )
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy21_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
     async def _apply_micro_strategy22(self, ranking2h, archive_sources, states, positions, open_count):
         strategy = "strategy22_2h_strength_breakout_retest"
         top_inst_ids = [signal["instId"] for signal in ranking2h[:CONFIG["microStrategy22TopN"]]]
@@ -707,6 +750,45 @@ class CryptoPaperBot:
             if state.get("assetQty", 0) > 0:
                 update_micro_position_state(state, price, signal)
                 if micro_strategy22_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
+    async def _apply_micro_strategy23(self, ranking1h, archive_sources, states, positions, open_count):
+        strategy = "strategy23_top1h_clean_early_breakout"
+        top_inst_ids = [signal["instId"] for signal in ranking1h[:CONFIG["microStrategy23TopN"]]]
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0
+        ]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy23_signal(
+                {
+                    "instId": inst_id,
+                    "_pct24": source["signal"].get("pct24", 0),
+                    "_quoteVol": source["signal"].get("quoteVolume24h", 0),
+                    "bidPx": source.get("ticker", {}).get("bidPx"),
+                    "askPx": source.get("ticker", {}).get("askPx"),
+                },
+                source["candles"],
+            )
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy23_should_exit(signal, state, price):
                     await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
                     open_count = max(0, open_count - 1)
                 else:
