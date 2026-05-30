@@ -113,3 +113,33 @@ def test_build_micro_strategy_performance_12h_history_keeps_current_and_past_win
     assert current_by_strategy["strategy22"]["losses"] == 1
     assert previous_by_strategy["strategy21"]["closedTrades"] == 1
     assert previous_by_strategy["strategy21"]["wins"] == 1
+
+
+def test_group_micro_strategy_performance_12h_by_strategy_pivots_windows_under_strategy():
+    windows = [
+        {
+            "windowStart": "2026-05-30T12:00:00+00:00",
+            "windowEnd": "2026-05-31T00:00:00+00:00",
+            "isCurrent": True,
+            "rows": [
+                {"strategy": "strategy22", "entries": 1, "closedTrades": 1, "wins": 0, "losses": 1, "openTrades": 0, "realizedPnl": -1.0, "avgPnlRoePct": -5.0, "winRate": 0.0},
+                {"strategy": "strategy21", "entries": 0, "closedTrades": 0, "wins": 0, "losses": 0, "openTrades": 0, "realizedPnl": 0.0, "avgPnlRoePct": 0.0, "winRate": 0.0},
+            ],
+        },
+        {
+            "windowStart": "2026-05-30T00:00:00+00:00",
+            "windowEnd": "2026-05-30T12:00:00+00:00",
+            "isCurrent": False,
+            "rows": [
+                {"strategy": "strategy21", "entries": 1, "closedTrades": 1, "wins": 1, "losses": 0, "openTrades": 0, "realizedPnl": 1.0, "avgPnlRoePct": 5.0, "winRate": 100.0},
+            ],
+        },
+    ]
+
+    grouped = crypto_bot.group_micro_strategy_performance_12h_by_strategy(windows)
+
+    assert [item["strategy"] for item in grouped] == ["strategy21", "strategy22"]
+    strategy21 = grouped[0]
+    assert len(strategy21["windows"]) == 2
+    assert strategy21["windows"][0]["isCurrent"] is True
+    assert strategy21["windows"][1]["winRate"] == 100.0

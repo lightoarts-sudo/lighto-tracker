@@ -2396,6 +2396,28 @@ def build_micro_strategy_performance_12h_history(records, now, strategies=None, 
     return windows
 
 
+def group_micro_strategy_performance_12h_by_strategy(windows):
+    strategies = {}
+    for window in windows:
+        for row in window.get("rows", []):
+            strategy = row.get("strategy") or "strategy1"
+            item = strategies.setdefault(strategy, {"strategy": strategy, "windows": []})
+            item["windows"].append({
+                "windowStart": window["windowStart"],
+                "windowEnd": window["windowEnd"],
+                "isCurrent": window.get("isCurrent", False),
+                "entries": row.get("entries", 0),
+                "closedTrades": row.get("closedTrades", 0),
+                "wins": row.get("wins", 0),
+                "losses": row.get("losses", 0),
+                "openTrades": row.get("openTrades", 0),
+                "realizedPnl": row.get("realizedPnl", 0),
+                "avgPnlRoePct": row.get("avgPnlRoePct", 0),
+                "winRate": row.get("winRate", 0),
+            })
+    return sorted(strategies.values(), key=lambda item: item["strategy"])
+
+
 def format_micro_strategy_performance_12h_history(rows):
     windows = []
     by_start = {}
@@ -2423,7 +2445,7 @@ def format_micro_strategy_performance_12h_history(rows):
             "winRate": rnd(float(row["win_rate"])),
         })
     current = windows[0] if windows else None
-    return {"current": current, "history": windows}
+    return {"current": current, "history": windows, "byStrategy": group_micro_strategy_performance_12h_by_strategy(windows)}
 
 def annotate_micro_trade_pnl(rows):
     annotated = []
@@ -2766,7 +2788,8 @@ function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No
 async function loadTradeRecords(){const rows=await (await fetch("/api/crypto/micro/trade-records")).json();renderTradeRecords(rows);}
 function renderTradeRecords(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Strategy</th><th>inst_id</th><th>Entry Time</th><th>Exit Time</th><th>Performance</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td><strong>${r.inst_id}</strong></td><td>${new Date(r.entry_time).toLocaleString()}</td><td>${r.exit_time?new Date(r.exit_time).toLocaleString():'open'}</td><td class="${tone(r.pnl_roe_pct??r.pnl_pct??0)}">${r.status==='open'?'open':money(r.pnl)+' / '+pct(r.pnl_roe_pct??r.pnl_pct)}</td></tr>`).join("")}</tbody></table>`}
 async function loadPerformance12h(){const data=await (await fetch("/api/crypto/micro/performance12h")).json();renderPerformance12h(data);}
-function renderPerformance12h(data){const windows=data.history||[];const current=data.current;$("#perf12hStatus").textContent=current?`Current 12h window: ${new Date(current.windowStart).toLocaleString()} - ${new Date(current.windowEnd).toLocaleString()}`:'No 12h records yet';if(!windows.length){$("#perf12h").innerHTML="<p>No strategy performance records yet.</p>";return}$("#perf12h").innerHTML=windows.map(w=>`<h3>${w.isCurrent?'Current 12h':'Historical 12h'} · ${new Date(w.windowStart).toLocaleString()} - ${new Date(w.windowEnd).toLocaleString()}</h3><table><thead><tr><th>Strategy</th><th>Entries</th><th>Closed</th><th>Open</th><th>Win Rate</th><th>Realized P/L</th><th>Avg ROE</th></tr></thead><tbody>${(w.rows||[]).map(r=>`<tr><td>${r.strategy}</td><td>${r.entries}</td><td>${r.closedTrades}</td><td>${r.openTrades}</td><td>${pct(r.winRate)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.avgPnlRoePct)}">${pct(r.avgPnlRoePct)}</td></tr>`).join("")}</tbody></table>`).join("")}
+function renderPerformance12h(data){const groups=data.byStrategy||groupPerformance12hByStrategy(data.history||[]);const current=data.current;$("#perf12hStatus").textContent=current?`Current 12h window: ${new Date(current.windowStart).toLocaleString()} - ${new Date(current.windowEnd).toLocaleString()} · grouped by strategy`:'No 12h records yet';if(!groups.length){$("#perf12h").innerHTML="<p>No strategy performance records yet.</p>";return}$("#perf12h").innerHTML=groups.map(g=>`<h3>${g.strategy}</h3><table><thead><tr><th>12h Window</th><th>Entries</th><th>Closed</th><th>Open</th><th>Win Rate</th><th>Realized P/L</th><th>Avg ROE</th></tr></thead><tbody>${(g.windows||[]).map(r=>`<tr><td>${r.isCurrent?'Current 12h':'Historical 12h'}<br><span class="label">${new Date(r.windowStart).toLocaleString()} - ${new Date(r.windowEnd).toLocaleString()}</span></td><td>${r.entries}</td><td>${r.closedTrades}</td><td>${r.openTrades}</td><td>${pct(r.winRate)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.avgPnlRoePct)}">${pct(r.avgPnlRoePct)}</td></tr>`).join("")}</tbody></table>`).join("")}
+function groupPerformance12hByStrategy(windows){const map={};(windows||[]).forEach(w=>(w.rows||[]).forEach(r=>{const s=r.strategy||'strategy1';if(!map[s])map[s]={strategy:s,windows:[]};map[s].windows.push({...r,windowStart:w.windowStart,windowEnd:w.windowEnd,isCurrent:w.isCurrent});}));return Object.values(map).sort((a,b)=>a.strategy.localeCompare(b.strategy));}
 async function loadArchive(){const rows=await (await fetch("/api/crypto/micro/surge-archive?limit=60")).json();renderArchive(rows);}
 function renderArchive(rows){archiveRows=rows;if(!rows.length){$("#archive").innerHTML="<p>No archived surge snapshots yet.</p>";drawArchiveChart([],null);return}if(!selectedArchiveId||!rows.find(r=>r.id===selectedArchiveId))selectedArchiveId=rows[0].id;let picked=rows.find(r=>r.id===selectedArchiveId)||rows[0];$("#archiveStatus").textContent=`${picked.inst_id} - ${new Date(picked.scan_hour).toLocaleString()} - sorted by 1h gain - ${(picked.candles||[]).length} bars`;drawArchiveChart(picked.candles||[],picked);$("#archive").innerHTML=`<table><thead><tr><th>Hour</th><th>Rank</th><th>Coin</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>MA60 Dist</th><th>K Bars</th></tr></thead><tbody>${rows.map(r=>`<tr class="archiveRow ${r.id===selectedArchiveId?'selected':''}" data-id="${r.id}"><td>${new Date(r.scan_hour).toLocaleString()}</td><td>${r.rank}</td><td>${r.inst_id}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.distance_ma60_pct)}">${pct(r.distance_ma60_pct)}</td><td>${(r.candles||[]).length}</td></tr>`).join("")}</tbody></table>`;document.querySelectorAll(".archiveRow").forEach(row=>row.onclick=()=>{selectedArchiveId=Number(row.dataset.id);renderArchive(archiveRows);});}
 function drawArchiveChart(candles,row){const canvas=$("#archiveChart"),rect=canvas.getBoundingClientRect(),ratio=devicePixelRatio||1,w=Math.max(640,rect.width),h=320;canvas.width=w*ratio;canvas.height=h*ratio;const ctx=canvas.getContext("2d");ctx.scale(ratio,ratio);ctx.clearRect(0,0,w,h);ctx.fillStyle="#fbfcfb";ctx.fillRect(0,0,w,h);ctx.strokeStyle="#dce3df";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=28+i*(h-58)/4;ctx.beginPath();ctx.moveTo(48,y);ctx.lineTo(w-16,y);ctx.stroke();}if(!candles.length){ctx.fillStyle="#65706e";ctx.fillText("Click a surge archive row to inspect its 4h candles.",18,30);return}let hi=Math.max(...candles.map(k=>Number(k.high))),lo=Math.min(...candles.map(k=>Number(k.low))),span=Math.max(hi-lo,hi*0.0001),left=52,right=18,top=26,bottom=42,plotW=w-left-right,plotH=h-top-bottom,barW=plotW/candles.length;function y(v){return top+((hi-v)/span)*plotH}ctx.fillStyle="#19211f";ctx.font="12px Inter, Segoe UI, Arial";ctx.fillText(`${row.inst_id}  ${new Date(row.scan_hour).toLocaleString()}  12h ${pct(row.pct12h)}  1h ${pct(row.pct1h)}`,16,18);ctx.fillStyle="#65706e";ctx.fillText(money(hi),8,y(hi)+4);ctx.fillText(money(lo),8,y(lo)+4);candles.forEach((k,i)=>{let x=left+i*barW+barW/2,open=Number(k.open),close=Number(k.close),high=Number(k.high),low=Number(k.low),up=close>=open;ctx.strokeStyle=ctx.fillStyle=up?"#16835f":"#c53b3b";ctx.beginPath();ctx.moveTo(x,y(high));ctx.lineTo(x,y(low));ctx.stroke();ctx.fillRect(x-Math.max(2,barW*.28),Math.min(y(open),y(close)),Math.max(2,barW*.56),Math.max(2,Math.abs(y(close)-y(open))));});ctx.fillStyle="#65706e";ctx.fillText(new Date(candles[0].time).toLocaleTimeString(),left,h-16);ctx.fillText(new Date(candles[candles.length-1].time).toLocaleTimeString(),Math.max(left,w-100),h-16);}
