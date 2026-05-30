@@ -1140,6 +1140,39 @@ def install_crypto_bot(app: FastAPI):
             row["ts"] = row["ts"].isoformat()
         return JSONResponse(rows)
 
+    @app.get("/api/crypto/micro/trade-records")
+    async def crypto_micro_trade_records():
+        async with crypto_bot.pool.acquire() as conn:
+            rows = [dict(row) for row in await conn.fetch(
+                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount FROM crypto_micro_trades ORDER BY ts ASC, id ASC"
+            )]
+        records = build_micro_entry_exit_records(rows)[:160]
+        compact_records = []
+        for row in records:
+            compact_records.append({
+                "strategy": row["strategy"],
+                "inst_id": row["inst_id"],
+                "entry_time": row["entry_time"].isoformat(),
+                "exit_time": row["exit_time"].isoformat() if row.get("exit_time") else None,
+                "performance": row.get("pnl_roe_pct"),
+                "pnl": row.get("pnl"),
+                "pnl_pct": row.get("pnl_pct"),
+                "pnl_roe_pct": row.get("pnl_roe_pct"),
+                "status": row.get("status"),
+            })
+        return JSONResponse(compact_records)
+
+    @app.get("/api/crypto/micro/performance12h")
+    async def crypto_micro_performance12h():
+        since = datetime.now(timezone.utc) - timedelta(hours=12)
+        async with crypto_bot.pool.acquire() as conn:
+            rows = [dict(row) for row in await conn.fetch(
+                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount FROM crypto_micro_trades ORDER BY ts ASC, id ASC"
+            )]
+        records = build_micro_entry_exit_records(rows)
+        result = summarize_micro_strategy_performance_12h(records, since)
+        return JSONResponse({"since": since.isoformat(), "rows": result})
+
     @app.get("/api/crypto/micro/trade-windows")
     async def crypto_micro_trade_windows(trade_id: int = Query(..., ge=1)):
         async with crypto_bot.pool.acquire() as conn:
@@ -2134,6 +2167,103 @@ def micro_position_row(inst_id, state, price, signal, strategy="strategy1"):
     }
 
 
+def build_micro_entry_exit_records(rows):
+    """Pair micro BUY/SELL rows into compact entry/exit performance records.
+
+    Rows may be in either ascending or descending time order. Partial exits are
+    accumulated into one record and marked closed when the original quantity is
+    fully exited.
+    """
+    ordered = sorted(rows, key=lambda row: (row["ts"], row.get("id", 0)))
+    records = []
+    open_lots = {}
+    for row in ordered:
+        key = (row.get("strategy") or "strategy1", row["inst_id"])
+        if row["side"] == "BUY":
+            open_lots[key] = {
+                "strategy": key[0],
+                "inst_id": key[1],
+                "entry_time": row["ts"],
+                "exit_time": None,
+                "entry_price": float(row["price"]),
+                "exit_price": None,
+                "quantity": float(row["quantity"]),
+                "remaining_qty": float(row["quantity"]),
+                "quote_amount": float(row.get("quote_amount") or 0),
+                "pnl": 0.0,
+                "pnl_pct": None,
+                "pnl_roe_pct": None,
+                "status": "open",
+            }
+        elif row["side"] == "SELL" and key in open_lots:
+            lot = open_lots[key]
+            entry = lot["entry_price"]
+            exit_price = float(row["price"])
+            qty = min(float(row["quantity"]), lot["remaining_qty"])
+            pnl = (exit_price - entry) * qty
+            lot["pnl"] += pnl
+            lot["remaining_qty"] -= qty
+            lot["exit_time"] = row["ts"]
+            lot["exit_price"] = exit_price
+            closed = lot["remaining_qty"] <= max(lot["quantity"] * 0.000001, 1e-12)
+            if closed:
+                invested = lot["entry_price"] * lot["quantity"]
+                margin = lot["quote_amount"] / CONFIG["microLeverage"] if CONFIG["microLeverage"] else 0
+                lot["status"] = "closed"
+                lot["pnl"] = rnd(lot["pnl"])
+                lot["pnl_pct"] = rnd((lot["pnl"] / invested) * 100 if invested else 0)
+                lot["pnl_roe_pct"] = rnd((lot["pnl"] / margin) * 100 if margin else 0)
+                records.append(lot)
+                open_lots.pop(key, None)
+    for lot in open_lots.values():
+        lot["pnl"] = None
+        records.append(lot)
+    records.sort(key=lambda row: row["exit_time"] or row["entry_time"], reverse=True)
+    return records
+
+
+def summarize_micro_strategy_performance_12h(records, since):
+    groups = {}
+    for row in records:
+        entry_time = row["entry_time"]
+        exit_time = row.get("exit_time")
+        if entry_time < since and (not exit_time or exit_time < since):
+            continue
+        strategy = row.get("strategy") or "strategy1"
+        item = groups.setdefault(strategy, {
+            "strategy": strategy,
+            "entries": 0,
+            "closedTrades": 0,
+            "wins": 0,
+            "losses": 0,
+            "openTrades": 0,
+            "realizedPnl": 0.0,
+            "avgPnlRoePct": 0.0,
+        })
+        if entry_time >= since:
+            item["entries"] += 1
+        if row.get("status") == "closed" and exit_time and exit_time >= since:
+            pnl = float(row.get("pnl") or 0)
+            item["closedTrades"] += 1
+            item["realizedPnl"] += pnl
+            item["avgPnlRoePct"] += float(row.get("pnl_roe_pct") or 0)
+            if pnl > 0:
+                item["wins"] += 1
+            else:
+                item["losses"] += 1
+        elif row.get("status") == "open":
+            item["openTrades"] += 1
+    result = []
+    for item in groups.values():
+        closed = item["closedTrades"]
+        item["realizedPnl"] = rnd(item["realizedPnl"])
+        item["winRate"] = rnd((item["wins"] / closed) * 100 if closed else 0)
+        item["avgPnlRoePct"] = rnd(item["avgPnlRoePct"] / closed if closed else 0)
+        result.append(item)
+    result.sort(key=lambda row: (row["realizedPnl"], row["winRate"], row["closedTrades"]), reverse=True)
+    return result
+
+
 def annotate_micro_trade_pnl(rows):
     annotated = []
     open_lots = {}
@@ -2458,20 +2588,24 @@ function chart(c){const canvas=$("#chart"),r=devicePixelRatio||1,rect=canvas.get
 
 
 MICRO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Cap Radar</title>
-<style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.archiveChart{width:100%;height:320px;border:1px solid #dce3df;border-radius:8px;background:#fbfcfb;margin:12px 0 16px}.archiveRow{cursor:pointer}.archiveRow.selected td{background:#eef6ff}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>1h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><section class="panel"><h2>1h Gain Ranking</h2><p>Uses OKX USDT perpetuals, computes 1h gain from 5m candles, and checks MA60 trend state for short-wave setups.</p><div id="candidates"></div></section><section class="panel"><h2>Surge Archive</h2><p id="archiveStatus">Sorted by 1h gain. Waiting for hourly archive.</p><canvas id="archiveChart" class="archiveChart"></canvas><div id="archive"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions use 10 USDT margin at 5x leverage, enter on 5m MA trend plus 1h breakout, then exit on 1% stop, two closes below MA60, or 2% trailing giveback.</p><div id="positions"></div></section><section class="panel"><h2>Entry / Exit Log</h2><div id="trades"></div></section></main>
+<style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.archiveChart{width:100%;height:320px;border:1px solid #dce3df;border-radius:8px;background:#fbfcfb;margin:12px 0 16px}.archiveRow{cursor:pointer}.archiveRow.selected td{background:#eef6ff}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab{border:1px solid #dce3df;border-radius:999px;background:#fff;padding:9px 14px;font-weight:800;cursor:pointer}.tab.active{background:#19211f;color:#fff}.pane{display:none}.pane.active{display:block}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
+<body><header class="top"><div><h1>Small Cap Perp Radar</h1><p id="status">Loading...</p></div><div class="controls"><button id="scan">Scan Now</button><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>Market</span><strong id="marketType">--</strong></div><div class="metric"><span>1h Ranking</span><strong id="watchCount">--</strong></div><div class="metric"><span>Positions</span><strong id="posCount">--</strong></div><div class="metric"><span>Last Scan</span><strong id="lastScan">--</strong></div></section><nav class="tabs"><button class="tab active" data-tab="radar">Radar</button><button class="tab" data-tab="trades">進出場紀錄</button><button class="tab" data-tab="perf12h">12小時策略績效</button></nav><div id="tab-radar" class="pane active"><section class="panel"><h2>1h Gain Ranking</h2><p>Uses OKX USDT perpetuals, computes 1h gain from 5m candles, and checks MA60 trend state for short-wave setups.</p><div id="candidates"></div></section><section class="panel"><h2>Surge Archive</h2><p id="archiveStatus">Sorted by 1h gain. Waiting for hourly archive.</p><canvas id="archiveChart" class="archiveChart"></canvas><div id="archive"></div></section><section class="panel"><h2>Open Positions</h2><p>Paper positions use 10 USDT margin at 5x leverage, enter on 5m MA trend plus 1h breakout, then exit on 1% stop, two closes below MA60, or 2% trailing giveback.</p><div id="positions"></div></section></div><div id="tab-trades" class="pane"><section class="panel"><h2>進出場與績效紀錄</h2><p>只顯示：策略名稱、inst_id、進場時間、出場時間、績效。</p><div id="trades"></div></section></div><div id="tab-perf12h" class="pane"><section class="panel"><h2>不同策略最近 12 小時績效</h2><p id="perf12hStatus">Loading...</p><div id="perf12h"></div></section></div></main>
 <script>
 const $=s=>document.querySelector(s);
 let archiveRows=[], selectedArchiveId=null;
 $("#scan").onclick=()=>scan();
+document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>showTab(btn.dataset.tab));
+function showTab(name){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("active",p.id===`tab-${name}`));}
 setInterval(load,10000); load();
-async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTrades();await loadArchive();}
-async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTrades();await loadArchive();}
+async function load(){const data=await (await fetch("/api/crypto/micro")).json();render(data);await loadTradeRecords();await loadPerformance12h();await loadArchive();}
+async function scan(){$("#status").textContent="Scanning...";const data=await (await fetch("/api/crypto/micro/run-once",{method:"POST"})).json();render(data);await loadTradeRecords();await loadPerformance12h();await loadArchive();}
 function render(data){let ranking=data.ranking1h||data.candidates||[];$("#marketType").textContent=`${data.config?.microInstType||"SWAP"} ${data.config?.microInterval||"5m"}`;$("#watchCount").textContent=ranking.length;$("#posCount").textContent=(data.positions||[]).length;$("#lastScan").textContent=data.lastRunAt?new Date(data.lastRunAt).toLocaleTimeString():"--";$("#status").textContent=`${data.running?"Running":"Stopped"} - ${data.lastRunAt?new Date(data.lastRunAt).toLocaleString():"Waiting"}${data.lastError?" - "+data.lastError:""}`;renderCandidates(ranking);renderPositions(data.positions||[]);}
 function renderCandidates(rows){if(!rows.length){$("#candidates").innerHTML="<p>No ranking data yet.</p>";return}$("#candidates").innerHTML=`<table><thead><tr><th>Rank</th><th>Coin</th><th>Status</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>Accel</th><th>Range</th><th>MA60</th><th>Score</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${r.instId}</strong></td><td class="${r.buy?'good':'bad'}">${r.buy?'BUY SIGNAL':(r.quietLift?'early':'watch')}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volumeRatio||0).toFixed(2)}</td><td>${Number(r.volumeAccel||0).toFixed(2)}</td><td>${pct(r.compactRangePct)}</td><td>${money(r.ma60)}<br><span class="label">${pct(r.ma60Slope)}</span></td><td>${Number(r.trendScore||0).toFixed(2)}</td></tr>`).join("")}</tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No open paper positions.</p>";return}$("#positions").innerHTML=`<table><thead><tr><th>Strategy</th><th>Coin</th><th>Entry</th><th>Price</th><th>MA60 Stop</th><th>To MA60</th><th>Peak</th><th>Margin</th><th>Notional</th><th>Unrealized</th><th>Trades</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td><strong>${r.instId}</strong></td><td>${money(r.avgEntry)}</td><td>${money(r.price)}</td><td>${money(r.ma60)}<br><span class="label">${r.belowMa60Count||0}/2</span></td><td class="${tone(r.distanceToMa60Pct)}">${pct(r.distanceToMa60Pct)}</td><td>${money(r.peakPrice)}<br><span class="label">${pct(r.givebackPct)}</span></td><td>${money(r.margin)}<br><span class="label">${Number(r.leverage||0).toFixed(1)}x</span></td><td>${money(r.notional||r.positionValue)}</td><td class="${tone(r.unrealizedPnl)}">${money(r.unrealizedPnl)} / ${pct(r.unrealizedRoePct)}</td><td>${r.trades} / ${r.closedTrades}</td></tr>`).join("")}</tbody></table>`}
-async function loadTrades(){const rows=await (await fetch("/api/crypto/micro/trades")).json();renderTrades(rows);}
-function renderTrades(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Time</th><th>Strategy</th><th>Coin</th><th>Side</th><th>Price</th><th>MA60</th><th>Notional</th><th>5m</th><th>15m</th><th>Vol x</th><th>P/L</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleString()}</td><td>${r.strategy||'strategy1'}</td><td>${r.inst_id}</td><td class="${r.side==='BUY'?'good':'bad'}">${r.side}</td><td>${money(r.price)}</td><td>${money(r.ma60)}</td><td>${money(r.quote_amount)}</td><td class="${tone(r.pct5)}">${pct(r.pct5)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.pnl||0)}">${r.pnl==null?'--':money(r.pnl)+' / '+pct(r.pnlRoePct??r.pnlPct)}</td><td>${r.reason}</td></tr>`).join("")}</tbody></table>`}
+async function loadTradeRecords(){const rows=await (await fetch("/api/crypto/micro/trade-records")).json();renderTradeRecords(rows);}
+function renderTradeRecords(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Strategy</th><th>inst_id</th><th>Entry Time</th><th>Exit Time</th><th>Performance</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td><strong>${r.inst_id}</strong></td><td>${new Date(r.entry_time).toLocaleString()}</td><td>${r.exit_time?new Date(r.exit_time).toLocaleString():'open'}</td><td class="${tone(r.pnl_roe_pct??r.pnl_pct??0)}">${r.status==='open'?'open':money(r.pnl)+' / '+pct(r.pnl_roe_pct??r.pnl_pct)}</td></tr>`).join("")}</tbody></table>`}
+async function loadPerformance12h(){const data=await (await fetch("/api/crypto/micro/performance12h")).json();renderPerformance12h(data);}
+function renderPerformance12h(data){const rows=data.rows||[];$("#perf12hStatus").textContent=`Since ${data.since?new Date(data.since).toLocaleString():'last 12h'}`;if(!rows.length){$("#perf12h").innerHTML="<p>No strategy performance in the last 12 hours.</p>";return}$("#perf12h").innerHTML=`<table><thead><tr><th>Strategy</th><th>Entries</th><th>Closed</th><th>Open</th><th>Win Rate</th><th>Realized P/L</th><th>Avg ROE</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy}</td><td>${r.entries}</td><td>${r.closedTrades}</td><td>${r.openTrades}</td><td>${pct(r.winRate)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.avgPnlRoePct)}">${pct(r.avgPnlRoePct)}</td></tr>`).join("")}</tbody></table>`}
 async function loadArchive(){const rows=await (await fetch("/api/crypto/micro/surge-archive?limit=60")).json();renderArchive(rows);}
 function renderArchive(rows){archiveRows=rows;if(!rows.length){$("#archive").innerHTML="<p>No archived surge snapshots yet.</p>";drawArchiveChart([],null);return}if(!selectedArchiveId||!rows.find(r=>r.id===selectedArchiveId))selectedArchiveId=rows[0].id;let picked=rows.find(r=>r.id===selectedArchiveId)||rows[0];$("#archiveStatus").textContent=`${picked.inst_id} - ${new Date(picked.scan_hour).toLocaleString()} - sorted by 1h gain - ${(picked.candles||[]).length} bars`;drawArchiveChart(picked.candles||[],picked);$("#archive").innerHTML=`<table><thead><tr><th>Hour</th><th>Rank</th><th>Coin</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>MA60 Dist</th><th>K Bars</th></tr></thead><tbody>${rows.map(r=>`<tr class="archiveRow ${r.id===selectedArchiveId?'selected':''}" data-id="${r.id}"><td>${new Date(r.scan_hour).toLocaleString()}</td><td>${r.rank}</td><td>${r.inst_id}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.distance_ma60_pct)}">${pct(r.distance_ma60_pct)}</td><td>${(r.candles||[]).length}</td></tr>`).join("")}</tbody></table>`;document.querySelectorAll(".archiveRow").forEach(row=>row.onclick=()=>{selectedArchiveId=Number(row.dataset.id);renderArchive(archiveRows);});}
 function drawArchiveChart(candles,row){const canvas=$("#archiveChart"),rect=canvas.getBoundingClientRect(),ratio=devicePixelRatio||1,w=Math.max(640,rect.width),h=320;canvas.width=w*ratio;canvas.height=h*ratio;const ctx=canvas.getContext("2d");ctx.scale(ratio,ratio);ctx.clearRect(0,0,w,h);ctx.fillStyle="#fbfcfb";ctx.fillRect(0,0,w,h);ctx.strokeStyle="#dce3df";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=28+i*(h-58)/4;ctx.beginPath();ctx.moveTo(48,y);ctx.lineTo(w-16,y);ctx.stroke();}if(!candles.length){ctx.fillStyle="#65706e";ctx.fillText("Click a surge archive row to inspect its 4h candles.",18,30);return}let hi=Math.max(...candles.map(k=>Number(k.high))),lo=Math.min(...candles.map(k=>Number(k.low))),span=Math.max(hi-lo,hi*0.0001),left=52,right=18,top=26,bottom=42,plotW=w-left-right,plotH=h-top-bottom,barW=plotW/candles.length;function y(v){return top+((hi-v)/span)*plotH}ctx.fillStyle="#19211f";ctx.font="12px Inter, Segoe UI, Arial";ctx.fillText(`${row.inst_id}  ${new Date(row.scan_hour).toLocaleString()}  12h ${pct(row.pct12h)}  1h ${pct(row.pct1h)}`,16,18);ctx.fillStyle="#65706e";ctx.fillText(money(hi),8,y(hi)+4);ctx.fillText(money(lo),8,y(lo)+4);candles.forEach((k,i)=>{let x=left+i*barW+barW/2,open=Number(k.open),close=Number(k.close),high=Number(k.high),low=Number(k.low),up=close>=open;ctx.strokeStyle=ctx.fillStyle=up?"#16835f":"#c53b3b";ctx.beginPath();ctx.moveTo(x,y(high));ctx.lineTo(x,y(low));ctx.stroke();ctx.fillRect(x-Math.max(2,barW*.28),Math.min(y(open),y(close)),Math.max(2,barW*.56),Math.max(2,Math.abs(y(close)-y(open))));});ctx.fillStyle="#65706e";ctx.fillText(new Date(candles[0].time).toLocaleTimeString(),left,h-16);ctx.fillText(new Date(candles[candles.length-1].time).toLocaleTimeString(),Math.max(left,w-100),h-16);}
