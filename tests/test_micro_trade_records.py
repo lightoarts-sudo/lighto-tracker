@@ -86,3 +86,30 @@ def test_summarize_micro_strategy_performance_12h_groups_by_strategy():
     assert by_strategy["strategy21"]["winRate"] == 100.0
     assert by_strategy["strategy22"]["entries"] == 1
     assert by_strategy["strategy22"]["openTrades"] == 1
+
+
+def test_build_micro_strategy_performance_12h_history_keeps_current_and_past_windows():
+    records = crypto_bot.build_micro_entry_exit_records([
+        row(1, 10, "strategy21", "AAA-USDT-SWAP", "BUY", 100.0),
+        row(2, 20, "strategy21", "AAA-USDT-SWAP", "SELL", 101.0),
+        row(3, 12 * 60 + 10, "strategy22", "BBB-USDT-SWAP", "BUY", 100.0),
+        row(4, 12 * 60 + 20, "strategy22", "BBB-USDT-SWAP", "SELL", 99.0),
+    ])
+
+    history = crypto_bot.build_micro_strategy_performance_12h_history(
+        records,
+        datetime(2026, 5, 30, 13, 0, tzinfo=timezone.utc),
+        strategies=["strategy21", "strategy22"],
+    )
+
+    assert len(history) >= 2
+    current = history[0]
+    previous = history[1]
+    assert current["isCurrent"] is True
+    assert current["windowStart"] == datetime(2026, 5, 30, 12, 0, tzinfo=timezone.utc)
+    current_by_strategy = {item["strategy"]: item for item in current["rows"]}
+    previous_by_strategy = {item["strategy"]: item for item in previous["rows"]}
+    assert current_by_strategy["strategy22"]["closedTrades"] == 1
+    assert current_by_strategy["strategy22"]["losses"] == 1
+    assert previous_by_strategy["strategy21"]["closedTrades"] == 1
+    assert previous_by_strategy["strategy21"]["wins"] == 1

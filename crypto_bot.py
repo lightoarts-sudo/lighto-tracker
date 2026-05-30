@@ -268,6 +268,21 @@ CREATE TABLE IF NOT EXISTS crypto_micro_surge_archive (
     signal JSONB,
     UNIQUE(scan_hour, inst_id)
 );
+CREATE TABLE IF NOT EXISTS crypto_micro_strategy_performance_12h (
+    window_start TIMESTAMPTZ NOT NULL,
+    window_end TIMESTAMPTZ NOT NULL,
+    strategy TEXT NOT NULL,
+    entries INTEGER NOT NULL DEFAULT 0,
+    closed_trades INTEGER NOT NULL DEFAULT 0,
+    wins INTEGER NOT NULL DEFAULT 0,
+    losses INTEGER NOT NULL DEFAULT 0,
+    open_trades INTEGER NOT NULL DEFAULT 0,
+    realized_pnl DOUBLE PRECISION NOT NULL DEFAULT 0,
+    avg_pnl_roe_pct DOUBLE PRECISION NOT NULL DEFAULT 0,
+    win_rate DOUBLE PRECISION NOT NULL DEFAULT 0,
+    updated_at TIMESTAMPTZ DEFAULT NOW(),
+    PRIMARY KEY(window_start, strategy)
+);
 """
 
 
@@ -1048,6 +1063,47 @@ class CryptoPaperBot:
         await self.run_micro_once()
         return {"cutoff": cutoff.isoformat(), "deletedTrades": deleted_trades, "resetStates": reset_states}
 
+    async def refresh_micro_strategy_performance_12h(self):
+        async with self.pool.acquire() as conn:
+            trade_rows = [dict(row) for row in await conn.fetch(
+                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount FROM crypto_micro_trades ORDER BY ts ASC, id ASC"
+            )]
+        records = build_micro_entry_exit_records(trade_rows)
+        history = build_micro_strategy_performance_12h_history(records, datetime.now(timezone.utc), CONFIG.get("microActiveStrategies", []))
+        async with self.pool.acquire() as conn:
+            async with conn.transaction():
+                for window in history:
+                    for row in window["rows"]:
+                        await conn.execute(
+                            """INSERT INTO crypto_micro_strategy_performance_12h(
+                                   window_start,window_end,strategy,entries,closed_trades,wins,losses,open_trades,
+                                   realized_pnl,avg_pnl_roe_pct,win_rate,updated_at
+                               ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,NOW())
+                               ON CONFLICT(window_start,strategy) DO UPDATE SET
+                                   window_end=$2, entries=$4, closed_trades=$5, wins=$6, losses=$7,
+                                   open_trades=$8, realized_pnl=$9, avg_pnl_roe_pct=$10,
+                                   win_rate=$11, updated_at=NOW()""",
+                            window["windowStart"],
+                            window["windowEnd"],
+                            row["strategy"],
+                            row["entries"],
+                            row["closedTrades"],
+                            row["wins"],
+                            row["losses"],
+                            row["openTrades"],
+                            row["realizedPnl"],
+                            row["avgPnlRoePct"],
+                            row["winRate"],
+                        )
+            rows = [dict(row) for row in await conn.fetch(
+                """SELECT window_start,window_end,strategy,entries,closed_trades,wins,losses,open_trades,
+                          realized_pnl,avg_pnl_roe_pct,win_rate,updated_at
+                   FROM crypto_micro_strategy_performance_12h
+                   ORDER BY window_start DESC, realized_pnl DESC, strategy ASC
+                   LIMIT 720"""
+            )]
+        return format_micro_strategy_performance_12h_history(rows)
+
     def status(self):
         markets = []
         for symbol in CONFIG["symbols"]:
@@ -1164,14 +1220,8 @@ def install_crypto_bot(app: FastAPI):
 
     @app.get("/api/crypto/micro/performance12h")
     async def crypto_micro_performance12h():
-        since = datetime.now(timezone.utc) - timedelta(hours=12)
-        async with crypto_bot.pool.acquire() as conn:
-            rows = [dict(row) for row in await conn.fetch(
-                "SELECT id,ts,inst_id,strategy,side,price,quantity,quote_amount FROM crypto_micro_trades ORDER BY ts ASC, id ASC"
-            )]
-        records = build_micro_entry_exit_records(rows)
-        result = summarize_micro_strategy_performance_12h(records, since)
-        return JSONResponse({"since": since.isoformat(), "rows": result})
+        history = await crypto_bot.refresh_micro_strategy_performance_12h()
+        return JSONResponse(history)
 
     @app.get("/api/crypto/micro/trade-windows")
     async def crypto_micro_trade_windows(trade_id: int = Query(..., ge=1)):
@@ -2264,6 +2314,117 @@ def summarize_micro_strategy_performance_12h(records, since):
     return result
 
 
+
+def floor_micro_12h_window(dt):
+    dt = dt.astimezone(timezone.utc)
+    return dt.replace(hour=0 if dt.hour < 12 else 12, minute=0, second=0, microsecond=0)
+
+
+def summarize_micro_strategy_performance_window(records, window_start, window_end, strategies=None):
+    groups = {}
+    for strategy in strategies or []:
+        groups.setdefault(strategy, {
+            "strategy": strategy,
+            "entries": 0,
+            "closedTrades": 0,
+            "wins": 0,
+            "losses": 0,
+            "openTrades": 0,
+            "realizedPnl": 0.0,
+            "avgPnlRoePct": 0.0,
+        })
+    for row in records:
+        entry_time = row["entry_time"]
+        exit_time = row.get("exit_time")
+        if entry_time >= window_end or (exit_time and exit_time < window_start) or (not exit_time and entry_time < window_start):
+            continue
+        strategy = row.get("strategy") or "strategy1"
+        item = groups.setdefault(strategy, {
+            "strategy": strategy,
+            "entries": 0,
+            "closedTrades": 0,
+            "wins": 0,
+            "losses": 0,
+            "openTrades": 0,
+            "realizedPnl": 0.0,
+            "avgPnlRoePct": 0.0,
+        })
+        if window_start <= entry_time < window_end:
+            item["entries"] += 1
+        if row.get("status") == "closed" and exit_time and window_start <= exit_time < window_end:
+            pnl = float(row.get("pnl") or 0)
+            item["closedTrades"] += 1
+            item["realizedPnl"] += pnl
+            item["avgPnlRoePct"] += float(row.get("pnl_roe_pct") or 0)
+            if pnl > 0:
+                item["wins"] += 1
+            else:
+                item["losses"] += 1
+        elif row.get("status") == "open" and entry_time < window_end:
+            item["openTrades"] += 1
+    result = []
+    for item in groups.values():
+        closed = item["closedTrades"]
+        item["realizedPnl"] = rnd(item["realizedPnl"])
+        item["winRate"] = rnd((item["wins"] / closed) * 100 if closed else 0)
+        item["avgPnlRoePct"] = rnd(item["avgPnlRoePct"] / closed if closed else 0)
+        result.append(item)
+    result.sort(key=lambda row: (row["realizedPnl"], row["winRate"], row["closedTrades"], row["strategy"]), reverse=True)
+    return result
+
+
+def build_micro_strategy_performance_12h_history(records, now, strategies=None, max_windows=60):
+    now = now.astimezone(timezone.utc)
+    if records:
+        first_time = min(row["entry_time"] for row in records).astimezone(timezone.utc)
+        start = floor_micro_12h_window(first_time)
+    else:
+        start = floor_micro_12h_window(now)
+    current_start = floor_micro_12h_window(now)
+    windows = []
+    cursor = current_start
+    while cursor >= start and len(windows) < max_windows:
+        window_end = cursor + timedelta(hours=12)
+        rows = summarize_micro_strategy_performance_window(records, cursor, window_end, strategies)
+        windows.append({
+            "windowStart": cursor,
+            "windowEnd": window_end,
+            "isCurrent": cursor == current_start,
+            "rows": rows,
+        })
+        cursor -= timedelta(hours=12)
+    return windows
+
+
+def format_micro_strategy_performance_12h_history(rows):
+    windows = []
+    by_start = {}
+    for row in rows:
+        start = row["window_start"]
+        item = by_start.get(start)
+        if item is None:
+            item = {
+                "windowStart": start.isoformat(),
+                "windowEnd": row["window_end"].isoformat(),
+                "isCurrent": start == floor_micro_12h_window(datetime.now(timezone.utc)),
+                "rows": [],
+            }
+            by_start[start] = item
+            windows.append(item)
+        item["rows"].append({
+            "strategy": row["strategy"],
+            "entries": row["entries"],
+            "closedTrades": row["closed_trades"],
+            "wins": row["wins"],
+            "losses": row["losses"],
+            "openTrades": row["open_trades"],
+            "realizedPnl": rnd(float(row["realized_pnl"])),
+            "avgPnlRoePct": rnd(float(row["avg_pnl_roe_pct"])),
+            "winRate": rnd(float(row["win_rate"])),
+        })
+    current = windows[0] if windows else None
+    return {"current": current, "history": windows}
+
 def annotate_micro_trade_pnl(rows):
     annotated = []
     open_lots = {}
@@ -2605,7 +2766,7 @@ function renderPositions(rows){if(!rows.length){$("#positions").innerHTML="<p>No
 async function loadTradeRecords(){const rows=await (await fetch("/api/crypto/micro/trade-records")).json();renderTradeRecords(rows);}
 function renderTradeRecords(rows){if(!rows.length){$("#trades").innerHTML="<p>No entries or exits yet.</p>";return}$("#trades").innerHTML=`<table><thead><tr><th>Strategy</th><th>inst_id</th><th>Entry Time</th><th>Exit Time</th><th>Performance</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy||'strategy1'}</td><td><strong>${r.inst_id}</strong></td><td>${new Date(r.entry_time).toLocaleString()}</td><td>${r.exit_time?new Date(r.exit_time).toLocaleString():'open'}</td><td class="${tone(r.pnl_roe_pct??r.pnl_pct??0)}">${r.status==='open'?'open':money(r.pnl)+' / '+pct(r.pnl_roe_pct??r.pnl_pct)}</td></tr>`).join("")}</tbody></table>`}
 async function loadPerformance12h(){const data=await (await fetch("/api/crypto/micro/performance12h")).json();renderPerformance12h(data);}
-function renderPerformance12h(data){const rows=data.rows||[];$("#perf12hStatus").textContent=`Since ${data.since?new Date(data.since).toLocaleString():'last 12h'}`;if(!rows.length){$("#perf12h").innerHTML="<p>No strategy performance in the last 12 hours.</p>";return}$("#perf12h").innerHTML=`<table><thead><tr><th>Strategy</th><th>Entries</th><th>Closed</th><th>Open</th><th>Win Rate</th><th>Realized P/L</th><th>Avg ROE</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.strategy}</td><td>${r.entries}</td><td>${r.closedTrades}</td><td>${r.openTrades}</td><td>${pct(r.winRate)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.avgPnlRoePct)}">${pct(r.avgPnlRoePct)}</td></tr>`).join("")}</tbody></table>`}
+function renderPerformance12h(data){const windows=data.history||[];const current=data.current;$("#perf12hStatus").textContent=current?`Current 12h window: ${new Date(current.windowStart).toLocaleString()} - ${new Date(current.windowEnd).toLocaleString()}`:'No 12h records yet';if(!windows.length){$("#perf12h").innerHTML="<p>No strategy performance records yet.</p>";return}$("#perf12h").innerHTML=windows.map(w=>`<h3>${w.isCurrent?'Current 12h':'Historical 12h'} · ${new Date(w.windowStart).toLocaleString()} - ${new Date(w.windowEnd).toLocaleString()}</h3><table><thead><tr><th>Strategy</th><th>Entries</th><th>Closed</th><th>Open</th><th>Win Rate</th><th>Realized P/L</th><th>Avg ROE</th></tr></thead><tbody>${(w.rows||[]).map(r=>`<tr><td>${r.strategy}</td><td>${r.entries}</td><td>${r.closedTrades}</td><td>${r.openTrades}</td><td>${pct(r.winRate)}</td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.avgPnlRoePct)}">${pct(r.avgPnlRoePct)}</td></tr>`).join("")}</tbody></table>`).join("")}
 async function loadArchive(){const rows=await (await fetch("/api/crypto/micro/surge-archive?limit=60")).json();renderArchive(rows);}
 function renderArchive(rows){archiveRows=rows;if(!rows.length){$("#archive").innerHTML="<p>No archived surge snapshots yet.</p>";drawArchiveChart([],null);return}if(!selectedArchiveId||!rows.find(r=>r.id===selectedArchiveId))selectedArchiveId=rows[0].id;let picked=rows.find(r=>r.id===selectedArchiveId)||rows[0];$("#archiveStatus").textContent=`${picked.inst_id} - ${new Date(picked.scan_hour).toLocaleString()} - sorted by 1h gain - ${(picked.candles||[]).length} bars`;drawArchiveChart(picked.candles||[],picked);$("#archive").innerHTML=`<table><thead><tr><th>Hour</th><th>Rank</th><th>Coin</th><th>Price</th><th>1h</th><th>15m</th><th>12h</th><th>Vol x</th><th>MA60 Dist</th><th>K Bars</th></tr></thead><tbody>${rows.map(r=>`<tr class="archiveRow ${r.id===selectedArchiveId?'selected':''}" data-id="${r.id}"><td>${new Date(r.scan_hour).toLocaleString()}</td><td>${r.rank}</td><td>${r.inst_id}</td><td>${money(r.price)}</td><td class="${tone(r.pct1h)}">${pct(r.pct1h)}</td><td class="${tone(r.pct15)}">${pct(r.pct15)}</td><td class="${tone(r.pct12h)}">${pct(r.pct12h)}</td><td>${Number(r.volume_ratio||0).toFixed(2)}</td><td class="${tone(r.distance_ma60_pct)}">${pct(r.distance_ma60_pct)}</td><td>${(r.candles||[]).length}</td></tr>`).join("")}</tbody></table>`;document.querySelectorAll(".archiveRow").forEach(row=>row.onclick=()=>{selectedArchiveId=Number(row.dataset.id);renderArchive(archiveRows);});}
 function drawArchiveChart(candles,row){const canvas=$("#archiveChart"),rect=canvas.getBoundingClientRect(),ratio=devicePixelRatio||1,w=Math.max(640,rect.width),h=320;canvas.width=w*ratio;canvas.height=h*ratio;const ctx=canvas.getContext("2d");ctx.scale(ratio,ratio);ctx.clearRect(0,0,w,h);ctx.fillStyle="#fbfcfb";ctx.fillRect(0,0,w,h);ctx.strokeStyle="#dce3df";ctx.lineWidth=1;for(let i=0;i<5;i++){let y=28+i*(h-58)/4;ctx.beginPath();ctx.moveTo(48,y);ctx.lineTo(w-16,y);ctx.stroke();}if(!candles.length){ctx.fillStyle="#65706e";ctx.fillText("Click a surge archive row to inspect its 4h candles.",18,30);return}let hi=Math.max(...candles.map(k=>Number(k.high))),lo=Math.min(...candles.map(k=>Number(k.low))),span=Math.max(hi-lo,hi*0.0001),left=52,right=18,top=26,bottom=42,plotW=w-left-right,plotH=h-top-bottom,barW=plotW/candles.length;function y(v){return top+((hi-v)/span)*plotH}ctx.fillStyle="#19211f";ctx.font="12px Inter, Segoe UI, Arial";ctx.fillText(`${row.inst_id}  ${new Date(row.scan_hour).toLocaleString()}  12h ${pct(row.pct12h)}  1h ${pct(row.pct1h)}`,16,18);ctx.fillStyle="#65706e";ctx.fillText(money(hi),8,y(hi)+4);ctx.fillText(money(lo),8,y(lo)+4);candles.forEach((k,i)=>{let x=left+i*barW+barW/2,open=Number(k.open),close=Number(k.close),high=Number(k.high),low=Number(k.low),up=close>=open;ctx.strokeStyle=ctx.fillStyle=up?"#16835f":"#c53b3b";ctx.beginPath();ctx.moveTo(x,y(high));ctx.lineTo(x,y(low));ctx.stroke();ctx.fillRect(x-Math.max(2,barW*.28),Math.min(y(open),y(close)),Math.max(2,barW*.56),Math.max(2,Math.abs(y(close)-y(open))));});ctx.fillStyle="#65706e";ctx.fillText(new Date(candles[0].time).toLocaleTimeString(),left,h-16);ctx.fillText(new Date(candles[candles.length-1].time).toLocaleTimeString(),Math.max(left,w-100),h-16);}
