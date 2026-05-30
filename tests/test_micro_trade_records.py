@@ -140,6 +140,10 @@ def test_group_micro_strategy_performance_12h_by_strategy_pivots_windows_under_s
 
     assert [item["strategy"] for item in grouped] == ["strategy21", "strategy22"]
     strategy21 = grouped[0]
-    assert len(strategy21["windows"]) == 2
-    assert strategy21["windows"][0]["isCurrent"] is True
-    assert strategy21["windows"][1]["winRate"] == 100.0
+    assert len(strategy21["windows"]) == 1
+    assert strategy21["windows"][0]["winRate"] == 100.0
+    assert strategy21["realizedPnl"] == 1.0
+    assert strategy21["cumulativeReturnPct"] == 10.0
+    assert strategy21["annualizedReturnPct"] > 0
+    strategy22 = grouped[1]
+    assert strategy22["cumulativeReturnPct"] == -10.0
