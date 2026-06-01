@@ -106,7 +106,10 @@ def test_build_micro_strategy_performance_12h_history_keeps_current_and_past_win
     current = history[0]
     previous = history[1]
     assert current["isCurrent"] is True
-    assert current["windowStart"] == datetime(2026, 5, 30, 12, 0, tzinfo=timezone.utc)
+    assert current["windowStart"] == datetime(2026, 5, 30, 1, 0, tzinfo=timezone.utc)
+    assert current["windowStartTaipei"] == "2026-05-30T09:00+08:00"
+    assert current["windowEndTaipei"] == "2026-05-30T21:00+08:00"
+    assert current["snapshotSlotTaipei"] == "2026-05-30T21:00+08:00"
     current_by_strategy = {item["strategy"]: item for item in current["rows"]}
     previous_by_strategy = {item["strategy"]: item for item in previous["rows"]}
     assert current_by_strategy["strategy22"]["closedTrades"] == 1
