@@ -85,7 +85,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2.1_surge_momentum,strategy4.1_breakout_confirmation,strategy9_ema9_bounce_low_heat,s18_top2h_retest_runner,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2.1_surge_momentum,strategy4.1_breakout_confirmation,strategy9_ema9_bounce_low_heat,s18_top2h_retest_runner,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout,strategy24_top1h_delay_rank5_chg1_5"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -236,6 +236,16 @@ CONFIG = {
     "microStrategy23SoftTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY23_SOFT_TIME_STOP_BARS", "8")),
     "microStrategy23HardTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY23_HARD_TIME_STOP_BARS", "20")),
     "microStrategy23MinProgressPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY23_MIN_PROGRESS_PCT", "0.2")),
+    "microStrategy24TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY24_TOP_N", "5")),
+    "microStrategy24SessionTopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY24_SESSION_TOP_N", "10")),
+    "microStrategy24DelayBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY24_DELAY_BARS", "1")),
+    "microStrategy24MinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_MIN_PCT_1H", "1.0")),
+    "microStrategy24MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_MAX_PCT_1H", "5.0")),
+    "microStrategy24StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_STOP_LOSS_PCT", "1.5")),
+    "microStrategy24BreakevenAfterPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_BREAKEVEN_AFTER_PCT", "0.8")),
+    "microStrategy24TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_TRAILING_START_PCT", "1.2")),
+    "microStrategy24TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY24_TRAILING_GIVEBACK_PCT", "0.6")),
+    "microStrategy24TimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY24_TIME_STOP_BARS", "12")),
 }
 
 
@@ -734,6 +744,8 @@ class CryptoPaperBot:
             open_count = await self._apply_micro_strategy22(ranking2h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy23_top1h_clean_early_breakout"):
             open_count = await self._apply_micro_strategy23(ranking1h, archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5"):
+            open_count = await self._apply_micro_strategy24(ranking1h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy2"):
             open_count = await self._apply_micro_strategy2(ranking1h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy2.1_surge_momentum"):
@@ -1050,6 +1062,69 @@ class CryptoPaperBot:
                 await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
                 open_count += 1
                 positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
+    async def _apply_micro_strategy24(self, ranking1h, archive_sources, states, positions, open_count):
+        strategy = "strategy24_top1h_delay_rank5_chg1_5"
+        top_entry = {signal["instId"]: rank for rank, signal in enumerate(ranking1h[:CONFIG["microStrategy24TopN"]], start=1)}
+        top_session = {signal["instId"]: rank for rank, signal in enumerate(ranking1h[:CONFIG["microStrategy24SessionTopN"]], start=1)}
+        carried_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and (state.get("assetQty", 0) > 0 or state.get("strategy24PendingEntry"))
+        ]
+        for inst_id in dict.fromkeys(list(top_entry.keys()) + carried_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            rank_1h = top_session.get(inst_id)
+            signal = micro_strategy24_signal(
+                {
+                    "instId": inst_id,
+                    "_pct24": source["signal"].get("pct24", 0),
+                    "_quoteVol": source["signal"].get("quoteVolume24h", 0),
+                    "bidPx": source.get("ticker", {}).get("bidPx"),
+                    "askPx": source.get("ticker", {}).get("askPx"),
+                },
+                source["candles"],
+                rank_1h=rank_1h,
+            )
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy24_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif state.get("strategy24PendingEntry"):
+                pending = state.get("strategy24PendingEntry") or {}
+                ready_time = pending.get("readyTime", 0)
+                expires_at = pending.get("expiresAt", 0)
+                if open_count < CONFIG["microMaxPositions"] and signal.get("time", 0) >= ready_time and signal.get("strategy24SessionStillTop10"):
+                    signal["buy"] = True
+                    signal["reason"] = "strategy24_delay1_rank5_chg1_5_confirmed"
+                    state.pop("strategy24PendingEntry", None)
+                    await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                    open_count += 1
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                elif signal.get("time", 0) > expires_at or not signal.get("strategy24SessionStillTop10"):
+                    state.pop("strategy24PendingEntry", None)
+                    await self._save_micro_state(state_key, state)
+            elif signal.get("strategy24SeedOk"):
+                delay_ms = CONFIG["microStrategy24DelayBars"] * micro_bar_minutes() * 60 * 1000
+                state["strategy24PendingEntry"] = {
+                    "time": signal["time"],
+                    "readyTime": signal["time"] + delay_ms,
+                    "expiresAt": signal["time"] + delay_ms + (micro_bar_minutes() * 60 * 1000),
+                    "entryRank1h": rank_1h,
+                    "entryChange1hPct": signal.get("pct1h", 0),
+                    "entryPrice": price,
+                }
+                await self._save_micro_state(state_key, state)
         return open_count
 
     async def _apply_micro_strategy2(self, ranking1h, archive_sources, states, positions, open_count):
@@ -2554,6 +2629,64 @@ def micro_strategy23_signal(ticker, candles):
     buy_signal = trend_filter and breakout_filter
     base.update({"buy": buy_signal, "reason": "strategy23_top1h_clean_breakout" if buy_signal else "strategy23_watch", "strategy23TrendFilter": trend_filter, "strategy23BreakoutFilter": breakout_filter, "strategy23BreakoutLevel": rnd(breakout_level, 8), "strategy23UpperWickRatio": rnd(upper_wick_ratio), "strategy23BodyPct": rnd(body_pct), "strategy23StretchPct": rnd(stretch_pct), "strategy23Ema9": rnd(ema9[-1], 8), "strategy23Ema21": rnd(ema21[-1], 8)})
     return base
+
+
+def micro_strategy24_signal(ticker, candles, rank_1h=None):
+    base = micro_trend_signal(ticker, candles)
+    base["strategy"] = "strategy24_top1h_delay_rank5_chg1_5"
+    base["buy"] = False
+    base["reason"] = "strategy24_watch"
+    add_micro_slippage_snapshot(base, ticker)
+    entry_rank_ok = rank_1h is not None and rank_1h <= CONFIG["microStrategy24TopN"]
+    entry_change_ok = CONFIG["microStrategy24MinPct1h"] <= base.get("pct1h", 0) <= CONFIG["microStrategy24MaxPct1h"]
+    session_still_top10 = rank_1h is not None and rank_1h <= CONFIG["microStrategy24SessionTopN"]
+    seed_ok = entry_rank_ok and entry_change_ok
+    base.update({
+        "strategy24SeedOk": seed_ok,
+        "strategy24EntryRankOk": entry_rank_ok,
+        "strategy24EntryChangeOk": entry_change_ok,
+        "strategy24SessionStillTop10": session_still_top10,
+        "strategy24Rank1h": rank_1h,
+        "strategy24Params": {
+            "delayBars": CONFIG["microStrategy24DelayBars"],
+            "topN": CONFIG["microStrategy24TopN"],
+            "sessionTopN": CONFIG["microStrategy24SessionTopN"],
+            "min1h": CONFIG["microStrategy24MinPct1h"],
+            "max1h": CONFIG["microStrategy24MaxPct1h"],
+            "sl": CONFIG["microStrategy24StopLossPct"],
+            "beAfter": CONFIG["microStrategy24BreakevenAfterPct"],
+            "trailStart": CONFIG["microStrategy24TrailingStartPct"],
+            "trailGiveback": CONFIG["microStrategy24TrailingGivebackPct"],
+            "timeStopBars": CONFIG["microStrategy24TimeStopBars"],
+        },
+    })
+    return base
+
+
+def micro_strategy24_should_exit(signal, state, price):
+    entry = state.get("avgEntry", 0)
+    if not entry:
+        return False
+    stop_pct = CONFIG["microStrategy24StopLossPct"]
+    stop_price = entry * (1 - stop_pct / 100)
+    peak = max(state.get("peakPrice", price), price)
+    peak_gain = ((peak - entry) / entry) * 100 if entry else 0
+    trail_stop = None
+    if peak_gain >= CONFIG["microStrategy24BreakevenAfterPct"]:
+        trail_stop = entry
+    if peak_gain >= CONFIG["microStrategy24TrailingStartPct"]:
+        trailing = peak * (1 - CONFIG["microStrategy24TrailingGivebackPct"] / 100)
+        trail_stop = max(trail_stop or stop_price, trailing)
+    active_stop = max(stop_price, trail_stop or stop_price)
+    age_bars = (signal.get("time", 0) - state.get("entryTime", 0)) / (micro_bar_minutes() * 60 * 1000) if state.get("entryTime") else 0
+    if signal.get("lastLow", price) <= active_stop:
+        if active_stop > stop_price:
+            set_micro_exit(signal, "strategy24_breakeven_or_trailing_stop", 1.0, active_stop)
+        else:
+            set_micro_exit(signal, "strategy24_stop_loss_1_5pct", 1.0, stop_price)
+    elif age_bars >= CONFIG["microStrategy24TimeStopBars"]:
+        set_micro_exit(signal, "strategy24_time_stop")
+    return bool(signal.get("exitReason"))
 
 
 def micro_lab_runner_should_exit(signal, state, price, strategy_number):

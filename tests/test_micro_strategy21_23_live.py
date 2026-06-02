@@ -30,12 +30,13 @@ def candle(close, high=None, low=None, open_=None, volume=100.0, t=0):
     }
 
 
-def test_strategy9_18_20_21_and_23_enabled_by_default():
+def test_strategy9_18_20_21_23_and_24_enabled_by_default():
     assert crypto_bot.micro_strategy_enabled("strategy9_ema9_bounce_low_heat")
     assert crypto_bot.micro_strategy_enabled("s18_top2h_retest_runner")
     assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
     assert crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
     assert crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
+    assert crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")
 
 
 def make_strategy20_candles():
@@ -222,3 +223,69 @@ def test_strategy18_uses_lab_exit_stop_parameter():
     assert crypto_bot.micro_strategy18_should_exit(signal, state, 99.35)
     assert signal["exitReason"] == "strategy18_stop_loss_0_6pct"
     assert signal["exitPrice"] == 99.4
+
+
+
+def make_strategy24_candles():
+    candles = []
+    for i in range(60):
+        candles.append(candle(100.0, high=100.2, low=99.8, volume=100.0, t=i * 300_000))
+    for i in range(60, 73):
+        price = 100.0 + (i - 60) * 0.16
+        candles.append(candle(price, high=price * 1.001, low=price * 0.999, open_=price * 0.9995, volume=120.0, t=i * 300_000))
+    return candles
+
+
+def test_strategy24_seeds_on_delay1_rank5_chg1_5():
+    signal = crypto_bot.micro_strategy24_signal(
+        {"instId": "TEST-USDT-SWAP", "_pct24": 4, "_quoteVol": 1_000_000, "bidPx": "101.9", "askPx": "102.1"},
+        make_strategy24_candles(),
+        rank_1h=5,
+    )
+
+    assert signal["strategy"] == "strategy24_top1h_delay_rank5_chg1_5"
+    assert signal["buy"] is False
+    assert signal["strategy24SeedOk"] is True
+    assert signal["strategy24EntryRankOk"] is True
+    assert signal["strategy24EntryChangeOk"] is True
+    assert signal["strategy24SessionStillTop10"] is True
+
+
+def test_strategy24_rejects_rank6_seed_but_keeps_top10_session_flag():
+    signal = crypto_bot.micro_strategy24_signal(
+        {"instId": "TEST-USDT-SWAP", "_pct24": 4, "_quoteVol": 1_000_000},
+        make_strategy24_candles(),
+        rank_1h=6,
+    )
+
+    assert signal["strategy24SeedOk"] is False
+    assert signal["strategy24EntryRankOk"] is False
+    assert signal["strategy24EntryChangeOk"] is True
+    assert signal["strategy24SessionStillTop10"] is True
+
+
+def test_strategy24_uses_sl1_5_be0_8_trail1_2x0_6_t12_stop():
+    state = {"avgEntry": 100.0, "assetQty": 10.0, "peakPrice": 100.0, "entryTime": 0}
+    signal = {"lastLow": 98.45, "time": 300_000, "ma20": 100.0}
+
+    assert crypto_bot.micro_strategy24_should_exit(signal, state, 98.45)
+    assert signal["exitReason"] == "strategy24_stop_loss_1_5pct"
+    assert signal["exitPrice"] == 98.5
+    assert signal["exitFraction"] == 1.0
+
+
+def test_strategy24_uses_be_and_trailing_stop_after_peak():
+    state = {"avgEntry": 100.0, "assetQty": 10.0, "peakPrice": 102.0, "entryTime": 0}
+    signal = {"lastLow": 101.3, "time": 600_000, "ma20": 100.0}
+
+    assert crypto_bot.micro_strategy24_should_exit(signal, state, 101.3)
+    assert signal["exitReason"] == "strategy24_breakeven_or_trailing_stop"
+    assert round(signal["exitPrice"], 2) == 101.39
+
+
+def test_strategy24_time_stop_after_12_bars():
+    state = {"avgEntry": 100.0, "assetQty": 10.0, "peakPrice": 100.5, "entryTime": 1}
+    signal = {"lastLow": 99.8, "time": 1 + 12 * 300_000, "ma20": 100.0}
+
+    assert crypto_bot.micro_strategy24_should_exit(signal, state, 100.1)
+    assert signal["exitReason"] == "strategy24_time_stop"
