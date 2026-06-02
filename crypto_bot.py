@@ -85,7 +85,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2,strategy4_breakout_confirmation,strategy9_ema9_bounce_low_heat,s18_top2h_retest_runner,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2.1_surge_momentum,strategy4.1_breakout_confirmation,strategy9_ema9_bounce_low_heat,s18_top2h_retest_runner,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -98,6 +98,26 @@ CONFIG = {
     "microStrategy4TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_START_PCT", "1.6")),
     "microStrategy4TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_GIVEBACK_PCT", "0.6")),
     "microStrategy4TimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY4_TIME_STOP_BARS", "8")),
+    "microStrategy21SurgeTopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_TOP_N", "12")),
+    "microStrategy21SurgeMinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MIN_PCT_1H", "1.2")),
+    "microStrategy21SurgeMaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MAX_PCT_1H", "4.8")),
+    "microStrategy21SurgeMinPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MIN_PCT_15M", "0.1")),
+    "microStrategy21SurgeMaxPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MAX_PCT_15M", "1.4")),
+    "microStrategy21SurgeMinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MIN_VOLUME_RATIO", "0.8")),
+    "microStrategy21SurgeMaxVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MAX_VOLUME_RATIO", "4.5")),
+    "microStrategy21SurgeMaxDistanceMa60Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MAX_DISTANCE_MA60_PCT", "2.8")),
+    "microStrategy21SurgeMaxSpreadPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_MAX_SPREAD_PCT", "0.35")),
+    "microStrategy21SurgeStopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_STOP_LOSS_PCT", "0.7")),
+    "microStrategy21SurgeNoFollowMinutes": int(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_NO_FOLLOW_MINUTES", "10")),
+    "microStrategy21SurgeNoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_NO_FOLLOW_MIN_GAIN_PCT", "0.6")),
+    "microStrategy21SurgeTrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_TRAILING_START_PCT", "1.4")),
+    "microStrategy21SurgeTrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_1_TRAILING_GIVEBACK_PCT", "0.55")),
+    "microStrategy41MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_PCT_1H", "4.0")),
+    "microStrategy41MaxPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_PCT_15M", "1.6")),
+    "microStrategy41MaxVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_VOLUME_RATIO", "5.0")),
+    "microStrategy41MaxUpperWickRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_UPPER_WICK_RATIO", "0.45")),
+    "microStrategy41MaxBreakoutStretchPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_BREAKOUT_STRETCH_PCT", "1.0")),
+    "microStrategy41MaxSpreadPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_1_MAX_SPREAD_PCT", "0.35")),
     "microStrategy9TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY9_TOP_N", "20")),
     "microStrategy9MinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MIN_PCT_1H", "0.55")),
     "microStrategy9MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MAX_PCT_1H", "2.2")),
@@ -700,6 +720,8 @@ class CryptoPaperBot:
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
         if micro_strategy_enabled("strategy4_breakout_confirmation"):
             open_count = await self._apply_micro_strategy4(archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy4.1_breakout_confirmation"):
+            open_count = await self._apply_micro_strategy41(archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy9_ema9_bounce_low_heat"):
             open_count = await self._apply_micro_strategy9(ranking1h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("s18_top2h_retest_runner"):
@@ -714,6 +736,8 @@ class CryptoPaperBot:
             open_count = await self._apply_micro_strategy23(ranking1h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy2"):
             open_count = await self._apply_micro_strategy2(ranking1h, archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy2.1_surge_momentum"):
+            open_count = await self._apply_micro_strategy21_surge(ranking1h, archive_sources, states, positions, open_count)
         positions.sort(key=lambda row: row["unrealizedPnlPct"], reverse=True)
         self.micro_candidates = candidates[:40]
         self.micro_ranking12h = ranking12h[:40]
@@ -756,6 +780,37 @@ class CryptoPaperBot:
                 open_count += 1
                 positions.append(micro_position_row(inst_id, state, price, signal, "strategy4_breakout_confirmation"))
         return open_count
+
+    async def _apply_micro_strategy41(self, archive_sources, states, positions, open_count):
+        strategy = "strategy4.1_breakout_confirmation"
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0
+        ]
+        source_items = sorted(archive_sources.items(), key=lambda item: item[1]["signal"].get("trendScore", 0), reverse=True)
+        active_set = set(active_inst_ids)
+        ordered_items = [(inst_id, archive_sources[inst_id]) for inst_id in active_inst_ids if inst_id in archive_sources]
+        ordered_items.extend((inst_id, source) for inst_id, source in source_items if inst_id not in active_set)
+        for inst_id, source in ordered_items:
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy41_signal({"instId": inst_id, "_pct24": source["signal"].get("pct24", 0), "_quoteVol": source["signal"].get("quoteVolume24h", 0), "bidPx": source.get("ticker", {}).get("bidPx"), "askPx": source.get("ticker", {}).get("askPx")}, source["candles"])
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy41_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
 
     async def _apply_micro_strategy9(self, ranking1h, archive_sources, states, positions, open_count):
         strategy = "strategy9_ema9_bounce_low_heat"
@@ -1027,6 +1082,33 @@ class CryptoPaperBot:
                 open_count += 1
                 positions.append(micro_position_row(inst_id, state, price, signal, "strategy2"))
         return open_count
+
+    async def _apply_micro_strategy21_surge(self, ranking1h, archive_sources, states, positions, open_count):
+        strategy = "strategy2.1_surge_momentum"
+        top_inst_ids = [signal["instId"] for signal in ranking1h[:CONFIG["microStrategy21SurgeTopN"]]]
+        active_inst_ids = [key.split("::", 1)[1] for key, state in states.items() if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            signal = micro_strategy21_surge_signal({**dict(source["signal"]), "bidPx": source.get("ticker", {}).get("bidPx"), "askPx": source.get("ticker", {}).get("askPx")})
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy21_surge_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
 
     async def _archive_micro_surge_if_due(self, ranking12h, archive_sources):
         now = datetime.now(timezone.utc)
@@ -2166,6 +2248,49 @@ def micro_strategy4_should_exit(signal, state, price):
 
 
 
+
+
+def micro_strategy41_signal(ticker, candles):
+    base = micro_strategy4_signal(ticker, candles)
+    base["strategy"] = "strategy4.1_breakout_confirmation"
+    add_micro_slippage_snapshot(base, ticker)
+    current = candles[-1]
+    candle_range = current["high"] - current["low"]
+    upper_wick_ratio = ((current["high"] - max(current["open"], current["close"])) / candle_range) if candle_range > 0 else 0
+    breakout_level = base.get("strategy4BreakoutLevel") or base.get("priorHigh") or 0
+    breakout_stretch_pct = ((current["close"] - breakout_level) / breakout_level) * 100 if breakout_level else 0
+    spread_pct = base.get("spreadPct")
+    spread_ok = spread_pct is None or spread_pct <= CONFIG["microStrategy41MaxSpreadPct"]
+    heat_ok = (
+        base.get("pct1h", 0) <= CONFIG["microStrategy41MaxPct1h"]
+        and base.get("pct15", 0) <= CONFIG["microStrategy41MaxPct15m"]
+        and base.get("volumeRatio", 0) <= CONFIG["microStrategy41MaxVolumeRatio"]
+        and base.get("distanceMa60Pct", 0) <= CONFIG["microMaxDistanceMa60Pct"]
+    )
+    structure_ok = (
+        base.get("ma20", 0) >= base.get("ma60", 0)
+        and base.get("ma60Slope", 0) >= 0
+        and upper_wick_ratio <= CONFIG["microStrategy41MaxUpperWickRatio"]
+        and breakout_stretch_pct <= CONFIG["microStrategy41MaxBreakoutStretchPct"]
+        and not base.get("chaseRisk")
+    )
+    buy_signal = bool(base.get("buy") and heat_ok and structure_ok and spread_ok)
+    base.update({
+        "buy": buy_signal,
+        "reason": "strategy4.1_confirmed_breakout_filtered" if buy_signal else "strategy4.1_watch",
+        "strategy41HeatOk": heat_ok,
+        "strategy41StructureOk": structure_ok,
+        "strategy41SpreadOk": spread_ok,
+        "strategy41UpperWickRatio": rnd(upper_wick_ratio),
+        "strategy41BreakoutStretchPct": rnd(breakout_stretch_pct),
+    })
+    return base
+
+
+def micro_strategy41_should_exit(signal, state, price):
+    return micro_strategy4_should_exit(signal, state, price)
+
+
 def add_micro_slippage_snapshot(signal, ticker):
     price = signal.get("price") or 0
     bid = safe_float(ticker.get("bidPx"))
@@ -2823,6 +2948,63 @@ def micro_strategy2_should_exit(signal, state, price):
         return True
     if price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
         set_micro_exit(signal, "strategy2_momentum_loss_15m")
+        return True
+    return False
+
+
+
+
+def micro_strategy21_surge_signal(signal):
+    out = dict(signal)
+    out["strategy"] = "strategy2.1_surge_momentum"
+    out["buy"] = False
+    out["reason"] = "strategy2.1_watch"
+    add_micro_slippage_snapshot(out, signal)
+    spread_pct = out.get("spreadPct")
+    spread_ok = spread_pct is None or spread_pct <= CONFIG["microStrategy21SurgeMaxSpreadPct"]
+    heat_ok = (
+        CONFIG["microStrategy21SurgeMinPct1h"] <= out.get("pct1h", 0) <= CONFIG["microStrategy21SurgeMaxPct1h"]
+        and CONFIG["microStrategy21SurgeMinPct15m"] <= out.get("pct15", 0) <= CONFIG["microStrategy21SurgeMaxPct15m"]
+        and CONFIG["microStrategy21SurgeMinVolumeRatio"] <= out.get("volumeRatio", 0) <= CONFIG["microStrategy21SurgeMaxVolumeRatio"]
+        and out.get("distanceMa60Pct", 0) <= CONFIG["microStrategy21SurgeMaxDistanceMa60Pct"]
+    )
+    structure_ok = (
+        out.get("price", 0) > out.get("ma20", 0) >= out.get("ma60", 0)
+        and out.get("ma60Slope", 0) >= 0
+        and out.get("notOverextended", False)
+        and not out.get("chaseRisk", False)
+    )
+    buy_signal = bool(heat_ok and structure_ok and spread_ok)
+    out.update({
+        "buy": buy_signal,
+        "reason": "strategy2.1_filtered_surge_momentum" if buy_signal else "strategy2.1_watch",
+        "strategy21SurgeHeatOk": heat_ok,
+        "strategy21SurgeStructureOk": structure_ok,
+        "strategy21SurgeSpreadOk": spread_ok,
+    })
+    return out
+
+
+def micro_strategy21_surge_should_exit(signal, state, price):
+    entry = state.get("avgEntry", 0)
+    if not entry:
+        return False
+    stop_price = entry * (1 - CONFIG["microStrategy21SurgeStopLossPct"] / 100)
+    if signal.get("lastLow", price) <= stop_price:
+        set_micro_exit(signal, "strategy2.1_stop_loss_0_7pct", 1.0, stop_price)
+        return True
+    age_minutes = (signal.get("time", 0) - state.get("entryTime", 0)) / 60000 if state.get("entryTime") else 0
+    peak = state.get("peakPrice", price)
+    peak_gain = ((peak - entry) / entry) * 100 if entry else 0
+    giveback = ((peak - price) / peak) * 100 if peak else 0
+    if age_minutes >= CONFIG["microStrategy21SurgeNoFollowMinutes"] and peak_gain < CONFIG["microStrategy21SurgeNoFollowMinGainPct"]:
+        set_micro_exit(signal, "strategy2.1_no_follow_through")
+        return True
+    if peak_gain >= CONFIG["microStrategy21SurgeTrailingStartPct"] and giveback >= CONFIG["microStrategy21SurgeTrailingGivebackPct"]:
+        set_micro_exit(signal, "strategy2.1_trailing_giveback")
+        return True
+    if price < entry and signal.get("pct15", 0) <= CONFIG["microEarlyExitPct15m"]:
+        set_micro_exit(signal, "strategy2.1_momentum_loss_15m")
         return True
     return False
 
