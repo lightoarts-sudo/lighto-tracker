@@ -1699,12 +1699,62 @@ async def fetch_okx_positions_snapshot():
         return {"ok": False, "error": str(exc), "positions": []}
 
 
+def normalize_okx_position_history(rows):
+    history = []
+    for row in rows or []:
+        open_px = safe_float(row.get("openAvgPx") or row.get("avgPx") or row.get("openPx"))
+        close_px = safe_float(row.get("closeAvgPx") or row.get("closePx"))
+        pnl = safe_float(row.get("realizedPnl") or row.get("pnl"))
+        pnl_ratio = safe_float(row.get("pnlRatio")) * 100
+        margin = safe_float(row.get("margin") or row.get("imr") or row.get("mmr"))
+        notional = safe_float(row.get("notionalUsd") or row.get("notional"))
+        fee = safe_float(row.get("fee"))
+        funding_fee = safe_float(row.get("fundingFee"))
+        history.append({
+            "instId": row.get("instId"),
+            "openTime": datetime.fromtimestamp(safe_float(row.get("cTime")) / 1000, timezone.utc).isoformat(timespec="seconds") if row.get("cTime") else None,
+            "closeTime": datetime.fromtimestamp(safe_float(row.get("uTime")) / 1000, timezone.utc).isoformat(timespec="seconds") if row.get("uTime") else None,
+            "openAvgPx": open_px,
+            "closeAvgPx": close_px,
+            "pnlUsd": rnd(pnl),
+            "pnlPct": rnd(pnl_ratio),
+            "margin": rnd(margin),
+            "notional": rnd(notional),
+            "fee": rnd(fee),
+            "fundingFee": rnd(funding_fee),
+            "leverage": safe_float(row.get("lever")),
+            "mgnMode": row.get("mgnMode"),
+            "posSide": row.get("posSide"),
+            "direction": row.get("direction") or row.get("side"),
+            "source": "okx_positions_history",
+        })
+    return sorted(history, key=lambda r: r.get("closeTime") or r.get("openTime") or "", reverse=True)
+
+
+async def fetch_okx_positions_history_snapshot(inst_id=None, limit=100):
+    try:
+        from okx_strategy22_live_pilot import OkxCredentials, OkxPrivateClient
+        creds = OkxCredentials.from_env()
+        params = {"instType": "SWAP", "limit": str(max(1, min(int(limit or 100), 100)))}
+        if inst_id:
+            params["instId"] = inst_id
+        path = "/api/v5/account/positions-history?" + str(httpx.QueryParams(params))
+        async with httpx.AsyncClient(timeout=30) as client:
+            okx = OkxPrivateClient(client, creds)
+            data = await okx.request("GET", path)
+        raw_rows = data.get("data", [])
+        return {"ok": True, "simulated": creds.simulated, "rows": normalize_okx_position_history(raw_rows), "rawCount": len(raw_rows), "limit": params["limit"], "instId": inst_id}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "rows": [], "limit": limit, "instId": inst_id}
+
+
 async def okx_live_performance_payload():
     rows = read_okx_live_log_rows()
     states = read_okx_live_states()
     perf = summarize_okx_live_performance(rows, states)
     perf["account"] = await fetch_okx_account_snapshot()
     exchange_positions = await fetch_okx_positions_snapshot()
+    perf["positionsHistory"] = await fetch_okx_positions_history_snapshot(limit=50)
     perf["exchangePositions"] = exchange_positions
     if exchange_positions.get("ok"):
         state_positions = {}
@@ -1765,6 +1815,10 @@ def install_crypto_bot(app: FastAPI):
     @app.get("/api/crypto/okx-live/performance")
     async def okx_live_performance():
         return JSONResponse(await okx_live_performance_payload())
+
+    @app.get("/api/crypto/okx-live/positions-history")
+    async def okx_live_positions_history(inst_id: str | None = Query(default=None), limit: int = Query(default=100, ge=1, le=100)):
+        return JSONResponse(await fetch_okx_positions_history_snapshot(inst_id=inst_id, limit=limit))
 
     @app.get("/api/crypto/status")
     async def crypto_status():
@@ -3764,13 +3818,14 @@ def vwap(candles, period):
 
 OKX_LIVE_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OKX Live Performance</title>
 <style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}a.btn,button{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:800;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}.muted{color:#65706e}.pill{display:inline-flex;border:1px solid #dce3df;border-radius:999px;padding:4px 9px;background:#fbfcfb;font-size:12px;font-weight:800}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
-<body><header class="top"><div><h1>OKX 真實交易績效</h1><p id="status">Loading...</p></div><div class="controls"><button id="refresh">Refresh</button><a class="btn" href="/micro">Micro</a><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>帳戶 Equity</span><strong id="equity">--</strong></div><div class="metric"><span>可用 USDT</span><strong id="available">--</strong></div><div class="metric"><span>Realized P/L</span><strong id="pnl">--</strong></div><div class="metric"><span>勝率</span><strong id="winRate">--</strong></div></section><section class="grid"><div class="metric"><span>Closed Trades</span><strong id="closed">--</strong></div><div class="metric"><span>Open Positions</span><strong id="open">--</strong></div><div class="metric"><span>Protected BUYs</span><strong id="protected">--</strong></div><div class="metric"><span>交易模式</span><strong id="mode">--</strong></div></section><section class="panel"><h2>使用策略績效</h2><p>百分比以每筆實際 pilot margin 當分母計算 ROE；USD 為 OKX 成交後記錄的 realized P/L。</p><div id="strategies"></div></section><section class="panel"><h2>目前未平倉</h2><div id="positions"></div></section><section class="panel"><h2>過去真實交易損益</h2><div id="trades"></div></section><section class="panel"><h2>最近事件</h2><div id="events"></div></section></main>
+<body><header class="top"><div><h1>OKX 真實交易績效</h1><p id="status">Loading...</p></div><div class="controls"><button id="refresh">Refresh</button><a class="btn" href="/micro">Micro</a><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>帳戶 Equity</span><strong id="equity">--</strong></div><div class="metric"><span>可用 USDT</span><strong id="available">--</strong></div><div class="metric"><span>Realized P/L</span><strong id="pnl">--</strong></div><div class="metric"><span>勝率</span><strong id="winRate">--</strong></div></section><section class="grid"><div class="metric"><span>Closed Trades</span><strong id="closed">--</strong></div><div class="metric"><span>Open Positions</span><strong id="open">--</strong></div><div class="metric"><span>Protected BUYs</span><strong id="protected">--</strong></div><div class="metric"><span>交易模式</span><strong id="mode">--</strong></div></section><section class="panel"><h2>使用策略績效</h2><p>百分比以每筆實際 pilot margin 當分母計算 ROE；USD 為 OKX 成交後記錄的 realized P/L。</p><div id="strategies"></div></section><section class="panel"><h2>目前未平倉</h2><div id="positions"></div></section><section class="panel"><h2>OKX 歷史倉位</h2><p id="historyStatus">直接查 OKX private positions-history；可補到手動或 runner log 沒記完整的歷史倉位。</p><div id="positionHistory"></div></section><section class="panel"><h2>過去真實交易損益</h2><div id="trades"></div></section><section class="panel"><h2>最近事件</h2><div id="events"></div></section></main>
 <script>
 const $=s=>document.querySelector(s);$("#refresh").onclick=()=>load();setInterval(load,15000);load();
 async function load(){try{const d=await (await fetch('/api/crypto/okx-live/performance')).json();render(d);}catch(e){$("#status").textContent='Load failed: '+e;}}
-function render(d){const s=d.summary||{},a=d.account||{};$("#status").textContent=`Updated ${d.updatedAt?new Date(d.updatedAt).toLocaleString():'--'} · logs ${d.logGlob||''}${a.ok?'':' · account error: '+(a.error||'')}`;$("#equity").textContent=a.equity==null?'--':money(a.equity)+' '+(a.currency||'USDT');$("#available").textContent=a.available==null?'--':money(a.available)+' USDT';$("#pnl").textContent=`${money(s.pnlUsd)} / ${pct(s.pnlPct)}`;$("#pnl").className=tone(s.pnlUsd);$("#winRate").textContent=pct(s.winRate);$("#closed").textContent=s.closedTrades||0;$("#open").textContent=s.openPositions||0;$("#protected").textContent=`${s.hardStopProtectedBuys||0} / ${s.buyEvents||0}`;$("#mode").textContent=a.simulated?'Simulated':'Real OKX';renderStrategies(d.byStrategy||[]);renderPositions(d.openPositions||[]);renderTrades(d.closedTrades||[]);renderEvents(d.events||[]);}
+function render(d){const s=d.summary||{},a=d.account||{};$("#status").textContent=`Updated ${d.updatedAt?new Date(d.updatedAt).toLocaleString():'--'} · logs ${d.logGlob||''}${a.ok?'':' · account error: '+(a.error||'')}`;$("#equity").textContent=a.equity==null?'--':money(a.equity)+' '+(a.currency||'USDT');$("#available").textContent=a.available==null?'--':money(a.available)+' USDT';$("#pnl").textContent=`${money(s.pnlUsd)} / ${pct(s.pnlPct)}`;$("#pnl").className=tone(s.pnlUsd);$("#winRate").textContent=pct(s.winRate);$("#closed").textContent=s.closedTrades||0;$("#open").textContent=s.openPositions||0;$("#protected").textContent=`${s.hardStopProtectedBuys||0} / ${s.buyEvents||0}`;$("#mode").textContent=a.simulated?'Simulated':'Real OKX';renderStrategies(d.byStrategy||[]);renderPositions(d.openPositions||[]);renderPositionHistory(d.positionsHistory||{});renderTrades(d.closedTrades||[]);renderEvents(d.events||[]);}
 function renderStrategies(rows){if(!rows.length){$("#strategies").innerHTML='<p>No closed strategy performance yet.</p>';return}$("#strategies").innerHTML=`<table><thead><tr><th>Strategy</th><th>Closed</th><th>Wins</th><th>Losses</th><th>Win Rate</th><th>P/L USD</th><th>P/L %</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${esc(r.strategy)}</strong></td><td>${r.closedTrades}</td><td class="good">${r.wins}</td><td class="bad">${r.losses}</td><td>${pct(r.winRate)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td></tr>`).join('')}</tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML='<p>No open live OKX positions.</p>';return}$("#positions").innerHTML=`<table><thead><tr><th>Strategy</th><th>Coin</th><th>Entry Time</th><th>Entry</th><th>Margin</th><th>Notional</th><th>Size</th><th>OKX Hard Stop</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.strategy)}</td><td><strong>${r.instId}</strong></td><td>${dt(r.entryTime)}</td><td>${money(r.entryPrice)}</td><td>${money(r.margin)}</td><td>${money(r.notional)}</td><td>${qty(r.sz)}</td><td>${r.hardStopAlgoId?'<span class="pill good">ON</span> '+money(r.hardStopPrice):'<span class="pill bad">missing</span>'}</td><td>${esc(r.entryReason||'')}</td></tr>`).join('')}</tbody></table>`}
+function renderPositionHistory(payload){const rows=payload.rows||[];$("#historyStatus").textContent=payload.ok?`OKX positions-history · ${rows.length} / raw ${payload.rawCount||0} · limit ${payload.limit||''}${payload.simulated?' · Simulated':' · Real OKX'}`:`OKX positions-history failed: ${payload.error||'unknown error'}`;if(!rows.length){$("#positionHistory").innerHTML='<p>No OKX historical positions returned yet.</p>';return}$("#positionHistory").innerHTML=`<table><thead><tr><th>Close Time</th><th>Coin</th><th>Side</th><th>Open</th><th>Close</th><th>Margin</th><th>Notional</th><th>P/L USD</th><th>P/L %</th><th>Fees</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${dt(r.closeTime)}<br><span class="label">open ${dt(r.openTime)}</span></td><td><strong>${r.instId}</strong><br><span class="label">${esc(r.mgnMode||'')} ${esc(r.posSide||'')}</span></td><td>${esc(r.direction||'')}</td><td>${money(r.openAvgPx)}</td><td>${money(r.closeAvgPx)}</td><td>${money(r.margin)}</td><td>${money(r.notional)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td><td>${money(r.fee)}<br><span class="label">funding ${money(r.fundingFee)}</span></td></tr>`).join('')}</tbody></table>`}
 function renderTrades(rows){if(!rows.length){$("#trades").innerHTML='<p>No closed live trades yet.</p>';return}$("#trades").innerHTML=`<table><thead><tr><th>Exit Time</th><th>Coin</th><th>Strategy</th><th>Entry</th><th>Exit</th><th>Margin</th><th>P/L USD</th><th>P/L %</th><th>Exit Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${dt(r.exitTime)}</td><td><strong>${r.instId}</strong><br><span class="label">entry ${dt(r.entryTime)}</span></td><td>${esc(r.strategy)}</td><td>${money(r.entryPrice)}</td><td>${money(r.exitPrice)}</td><td>${money(r.margin)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td><td>${esc(r.exitReason||'')}</td></tr>`).join('')}</tbody></table>`}
 function renderEvents(rows){if(!rows.length){$("#events").innerHTML='<p>No live events yet.</p>';return}$("#events").innerHTML=`<table><thead><tr><th>Time</th><th>Event</th><th>Coin</th><th>Strategy</th><th>Price</th><th>P/L</th><th>Reason / Protection</th></tr></thead><tbody>${rows.slice(0,80).map(r=>`<tr><td>${dt(r.time)}</td><td class="${r.event==='BUY'?'good':'bad'}">${r.event}</td><td>${r.instId}</td><td>${esc(r.strategy)}</td><td>${money(r.price)}</td><td class="${tone(r.pnlUsd||0)}">${r.pnlUsd==null?'--':money(r.pnlUsd)+' / '+pct(r.pnlPct)}</td><td>${esc(r.reason||'')}${r.hardStopAlgoId?'<br><span class="pill">hard stop '+r.hardStopAlgoId+'</span>':''}</td></tr>`).join('')}</tbody></table>`}
 function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:6})}function qty(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:8})}function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`}function tone(v){return Number(v)>=0?'good':'bad'}function dt(v){return v?new Date(v).toLocaleString():'--'}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
