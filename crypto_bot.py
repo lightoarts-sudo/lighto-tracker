@@ -3,6 +3,7 @@ import json
 import math
 import os
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 
 import asyncpg
 import httpx
@@ -84,7 +85,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2,strategy4_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy1,strategy2,strategy4_breakout_confirmation,strategy9_ema9_bounce_low_heat,s18_top2h_retest_runner,strategy20_6h12h_cool_vwap_reclaim,strategy21_multi_tf_intersection_ema9_bounce,strategy22_2h_strength_breakout_retest,strategy23_top1h_clean_early_breakout"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -97,6 +98,42 @@ CONFIG = {
     "microStrategy4TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_START_PCT", "1.6")),
     "microStrategy4TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_TRAILING_GIVEBACK_PCT", "0.6")),
     "microStrategy4TimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY4_TIME_STOP_BARS", "8")),
+    "microStrategy9TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY9_TOP_N", "20")),
+    "microStrategy9MinPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MIN_PCT_1H", "0.55")),
+    "microStrategy9MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MAX_PCT_1H", "2.2")),
+    "microStrategy9MaxPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MAX_PCT_15M", "0.9")),
+    "microStrategy9Ema9TouchPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_EMA9_TOUCH_PCT", "0.25")),
+    "microStrategy9Ema21SlackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_EMA21_SLACK_PCT", "0.1")),
+    "microStrategy9MinVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MIN_VOLUME_RATIO", "0.7")),
+    "microStrategy9MaxVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MAX_VOLUME_RATIO", "2.5")),
+    "microStrategy9StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_STOP_LOSS_PCT", "0.7")),
+    "microStrategy9TakeProfit1Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_TAKE_PROFIT_1_PCT", "1.0")),
+    "microStrategy9TakeProfit1Fraction": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_TAKE_PROFIT_1_FRACTION", "0.35")),
+    "microStrategy9TakeProfit2Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_TAKE_PROFIT_2_PCT", "2.4")),
+    "microStrategy9BreakevenLockPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_BREAKEVEN_LOCK_PCT", "0.2")),
+    "microStrategy9TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_TRAILING_START_PCT", "1.5")),
+    "microStrategy9TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_TRAILING_GIVEBACK_PCT", "0.7")),
+    "microStrategy9SoftTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY9_SOFT_TIME_STOP_BARS", "6")),
+    "microStrategy9HardTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY9_HARD_TIME_STOP_BARS", "12")),
+    "microStrategy9MinProgressPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY9_MIN_PROGRESS_PCT", "0.0")),
+    "microStrategy18TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY18_TOP_N", "20")),
+    "microStrategy18MinPct2h": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_MIN_PCT_2H", "2.2")),
+    "microStrategy18MaxPct1h": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_MAX_PCT_1H", "3.0")),
+    "microStrategy18MaxPct15m": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_MAX_PCT_15M", "1.5")),
+    "microStrategy18BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_BREAK_VOLUME_RATIO", "1.1")),
+    "microStrategy18ConfirmVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_CONFIRM_VOLUME_RATIO", "0.6")),
+    "microStrategy18RetestTolerancePct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_RETEST_TOLERANCE_PCT", "0.45")),
+    "microStrategy18HoldPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_HOLD_PCT", "0.0")),
+    "microStrategy18StopLossPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_STOP_LOSS_PCT", "0.6")),
+    "microStrategy18TakeProfit1Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_TAKE_PROFIT_1_PCT", "1.2")),
+    "microStrategy18TakeProfit1Fraction": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_TAKE_PROFIT_1_FRACTION", "0.35")),
+    "microStrategy18TakeProfit2Pct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_TAKE_PROFIT_2_PCT", "2.4")),
+    "microStrategy18BreakevenLockPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_BREAKEVEN_LOCK_PCT", "0.15")),
+    "microStrategy18TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_TRAILING_START_PCT", "1.8")),
+    "microStrategy18TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_TRAILING_GIVEBACK_PCT", "0.8")),
+    "microStrategy18SoftTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY18_SOFT_TIME_STOP_BARS", "6")),
+    "microStrategy18HardTimeStopBars": int(os.environ.get("CRYPTO_MICRO_STRATEGY18_HARD_TIME_STOP_BARS", "12")),
+    "microStrategy18MinProgressPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY18_MIN_PROGRESS_PCT", "0.0")),
     "microStrategy20TopN": int(os.environ.get("CRYPTO_MICRO_STRATEGY20_TOP_N", "20")),
     "microStrategy20MinPct12h": float(os.environ.get("CRYPTO_MICRO_STRATEGY20_MIN_PCT_12H", "6.0")),
     "microStrategy20MinPct6h": float(os.environ.get("CRYPTO_MICRO_STRATEGY20_MIN_PCT_6H", "1.0")),
@@ -663,6 +700,10 @@ class CryptoPaperBot:
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
         if micro_strategy_enabled("strategy4_breakout_confirmation"):
             open_count = await self._apply_micro_strategy4(archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("strategy9_ema9_bounce_low_heat"):
+            open_count = await self._apply_micro_strategy9(ranking1h, archive_sources, states, positions, open_count)
+        if micro_strategy_enabled("s18_top2h_retest_runner"):
+            open_count = await self._apply_micro_strategy18(ranking2h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim"):
             open_count = await self._apply_micro_strategy20(ranking12h, archive_sources, states, positions, open_count)
         if micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce"):
@@ -715,6 +756,85 @@ class CryptoPaperBot:
                 open_count += 1
                 positions.append(micro_position_row(inst_id, state, price, signal, "strategy4_breakout_confirmation"))
         return open_count
+
+    async def _apply_micro_strategy9(self, ranking1h, archive_sources, states, positions, open_count):
+        strategy = "strategy9_ema9_bounce_low_heat"
+        top_inst_ids = [signal["instId"] for signal in ranking1h[:CONFIG["microStrategy9TopN"]]]
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0
+        ]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy9_signal(
+                {
+                    "instId": inst_id,
+                    "_pct24": source["signal"].get("pct24", 0),
+                    "_quoteVol": source["signal"].get("quoteVolume24h", 0),
+                    "bidPx": source.get("ticker", {}).get("bidPx"),
+                    "askPx": source.get("ticker", {}).get("askPx"),
+                },
+                source["candles"],
+            )
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy9_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
+    async def _apply_micro_strategy18(self, ranking2h, archive_sources, states, positions, open_count):
+        strategy = "s18_top2h_retest_runner"
+        top_inst_ids = [signal["instId"] for signal in ranking2h[:CONFIG["microStrategy18TopN"]]]
+        active_inst_ids = [
+            key.split("::", 1)[1]
+            for key, state in states.items()
+            if key.startswith(f"{strategy}::") and state.get("assetQty", 0) > 0
+        ]
+        for inst_id in dict.fromkeys(top_inst_ids + active_inst_ids):
+            source = archive_sources.get(inst_id)
+            if not source:
+                continue
+            state_key = micro_state_key(strategy, inst_id)
+            state = states.get(state_key, new_micro_state())
+            signal = micro_strategy18_signal(
+                {
+                    "instId": inst_id,
+                    "_pct24": source["signal"].get("pct24", 0),
+                    "_quoteVol": source["signal"].get("quoteVolume24h", 0),
+                    "bidPx": source.get("ticker", {}).get("bidPx"),
+                    "askPx": source.get("ticker", {}).get("askPx"),
+                },
+                source["candles"],
+            )
+            price = source["candles"][-1]["close"]
+            if state.get("assetQty", 0) > 0:
+                update_micro_position_state(state, price, signal)
+                if micro_strategy18_should_exit(signal, state, price):
+                    await self._micro_sell(inst_id, state, signal.get("exitPrice", price), signal, signal["exitReason"], strategy, state_key)
+                    open_count = max(0, open_count - 1)
+                else:
+                    positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+                    await self._save_micro_state(state_key, state)
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy"):
+                await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
+                open_count += 1
+                positions.append(micro_position_row(inst_id, state, price, signal, strategy))
+        return open_count
+
 
     async def _apply_micro_strategy20(self, ranking12h, archive_sources, states, positions, open_count):
         strategy = "strategy20_6h12h_cool_vwap_reclaim"
@@ -1186,6 +1306,280 @@ class CryptoPaperBot:
         }
 
 
+OKX_LIVE_LOG_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_LOG_GLOB", "data/okx_strategy22_live*_log.jsonl")
+OKX_LIVE_STATE_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_STATE_GLOB", "data/okx_strategy22_live*_state.json")
+
+
+def _live_strategy_from_row(row):
+    signal = row.get("signal") if isinstance(row.get("signal"), dict) else {}
+    return row.get("strategy") or signal.get("strategy") or "strategy22_2h_strength_breakout_retest"
+
+
+def read_okx_live_log_rows(log_glob: str = OKX_LIVE_LOG_GLOB):
+    rows = []
+    for path in sorted(Path(".").glob(log_glob)):
+        if not path.exists():
+            continue
+        for line_no, line in enumerate(path.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            row["_source"] = str(path)
+            row["_line"] = line_no
+            rows.append(row)
+    rows.sort(key=lambda row: row.get("ts") or "")
+    return rows
+
+
+def read_okx_live_states(state_glob: str = OKX_LIVE_STATE_GLOB):
+    states = []
+    for path in sorted(Path(".").glob(state_glob)):
+        try:
+            state = json.loads(path.read_text(encoding="utf-8"))
+            state["_source"] = str(path)
+            states.append(state)
+        except Exception:
+            continue
+    return states
+
+
+def build_okx_live_trade_records(log_rows, margin_default=None):
+    open_lots = {}
+    closed = []
+    events = []
+    current_margin = float(margin_default or CONFIG.get("microMarginUSDT") or 2)
+    current_leverage = float(CONFIG.get("microLeverage") or 1)
+    for row in sorted(log_rows, key=lambda r: r.get("ts") or ""):
+        event = row.get("event")
+        if event == "start":
+            current_margin = float(row.get("marginUSDT") or current_margin or 2)
+            current_leverage = float(row.get("leverage") or current_leverage or 1)
+        if event not in {"BUY", "SELL", "NOON_STOP_MARKET_CLOSE"}:
+            continue
+        inst_id = row.get("instId") or row.get("inst_id")
+        if not inst_id:
+            continue
+        ts = row.get("ts")
+        if event == "BUY":
+            sizing = row.get("sizing") if isinstance(row.get("sizing"), dict) else {}
+            sz = float(row.get("sz") or sizing.get("roundedSz") or 0)
+            ct_val = float(sizing.get("ctVal") or 0)
+            fill = float(row.get("fillPrice") or row.get("price") or 0)
+            notional = sz * ct_val * fill if sz and ct_val and fill else 0.0
+            lot = {
+                "strategy": _live_strategy_from_row(row),
+                "instId": inst_id,
+                "entryTime": ts,
+                "entryPrice": fill,
+                "sz": sz,
+                "ctVal": ct_val,
+                "notional": notional,
+                "margin": float(row.get("marginUSDT") or current_margin or (notional / current_leverage if current_leverage else 0) or 0),
+                "leverage": current_leverage,
+                "orderId": row.get("orderId"),
+                "hardStopAlgoId": row.get("hardStopAlgoId"),
+                "hardStopPrice": row.get("hardStopPrice"),
+                "entryReason": (row.get("signal") or {}).get("reason") if isinstance(row.get("signal"), dict) else row.get("reason"),
+            }
+            open_lots.setdefault(inst_id, []).append(lot)
+            events.append({"time": ts, "event": "BUY", "strategy": lot["strategy"], "instId": inst_id, "price": fill, "pnlUsd": None, "pnlPct": None, "reason": lot["entryReason"], "orderId": lot["orderId"], "hardStopAlgoId": lot["hardStopAlgoId"]})
+            continue
+        lot = open_lots.get(inst_id, []).pop(0) if open_lots.get(inst_id) else None
+        fill = float(row.get("fillPrice") or row.get("price") or 0)
+        pnl = float(row.get("realizedPnl") or 0)
+        margin = float((lot or {}).get("margin") or current_margin or 0)
+        pnl_pct = (pnl / margin * 100) if margin else 0.0
+        record = {
+            "strategy": (lot or {}).get("strategy") or _live_strategy_from_row(row),
+            "instId": inst_id,
+            "entryTime": (lot or {}).get("entryTime"),
+            "exitTime": ts,
+            "entryPrice": (lot or {}).get("entryPrice"),
+            "exitPrice": fill,
+            "pnlUsd": rnd(pnl),
+            "pnlPct": rnd(pnl_pct),
+            "margin": margin,
+            "notional": (lot or {}).get("notional"),
+            "sz": row.get("sz") or (lot or {}).get("sz"),
+            "exitReason": row.get("reason"),
+            "entryOrderId": (lot or {}).get("orderId"),
+            "exitOrderId": row.get("orderId"),
+            "hardStopAlgoId": (lot or {}).get("hardStopAlgoId"),
+            "source": row.get("_source"),
+        }
+        closed.append(record)
+        events.append({"time": ts, "event": event, "strategy": record["strategy"], "instId": inst_id, "price": fill, "pnlUsd": record["pnlUsd"], "pnlPct": record["pnlPct"], "reason": record["exitReason"], "orderId": record["exitOrderId"]})
+    open_positions = []
+    for lots in open_lots.values():
+        for lot in lots:
+            open_positions.append({
+                "strategy": lot["strategy"],
+                "instId": lot["instId"],
+                "entryTime": lot["entryTime"],
+                "entryPrice": lot["entryPrice"],
+                "margin": lot["margin"],
+                "notional": lot["notional"],
+                "sz": lot["sz"],
+                "hardStopPrice": lot["hardStopPrice"],
+                "hardStopAlgoId": lot["hardStopAlgoId"],
+                "entryReason": lot["entryReason"],
+            })
+    return {"closedTrades": closed, "openPositions": open_positions, "events": events}
+
+
+def summarize_okx_live_performance(log_rows, states=None):
+    records = build_okx_live_trade_records(log_rows)
+    closed = records["closedTrades"]
+    open_positions = records["openPositions"]
+    total_pnl = sum(float(r.get("pnlUsd") or 0) for r in closed)
+    wins = sum(1 for r in closed if float(r.get("pnlUsd") or 0) > 0)
+    losses = sum(1 for r in closed if float(r.get("pnlUsd") or 0) <= 0)
+    total_margin = sum(float(r.get("margin") or 0) for r in closed)
+    strategy_map = {}
+    for r in closed:
+        item = strategy_map.setdefault(r["strategy"], {"strategy": r["strategy"], "closedTrades": 0, "wins": 0, "losses": 0, "pnlUsd": 0.0, "margin": 0.0})
+        item["closedTrades"] += 1
+        item["pnlUsd"] += float(r.get("pnlUsd") or 0)
+        item["margin"] += float(r.get("margin") or 0)
+        if float(r.get("pnlUsd") or 0) > 0:
+            item["wins"] += 1
+        else:
+            item["losses"] += 1
+    for item in strategy_map.values():
+        item["pnlUsd"] = rnd(item["pnlUsd"])
+        item["pnlPct"] = rnd((item["pnlUsd"] / item["margin"] * 100) if item["margin"] else 0)
+        item["winRate"] = rnd((item["wins"] / item["closedTrades"] * 100) if item["closedTrades"] else 0)
+    return {
+        "summary": {
+            "closedTrades": len(closed),
+            "openPositions": len(open_positions),
+            "wins": wins,
+            "losses": losses,
+            "winRate": rnd((wins / len(closed) * 100) if closed else 0),
+            "pnlUsd": rnd(total_pnl),
+            "pnlPct": rnd((total_pnl / total_margin * 100) if total_margin else 0),
+            "totalMargin": rnd(total_margin),
+            "buyEvents": sum(1 for r in log_rows if r.get("event") == "BUY"),
+            "sellEvents": sum(1 for r in log_rows if r.get("event") in {"SELL", "NOON_STOP_MARKET_CLOSE"}),
+            "hardStopProtectedBuys": sum(1 for r in log_rows if r.get("event") == "BUY" and r.get("hardStopAlgoId")),
+        },
+        "byStrategy": sorted(strategy_map.values(), key=lambda x: x["strategy"]),
+        "closedTrades": list(reversed(closed))[:200],
+        "openPositions": open_positions,
+        "events": list(reversed(records["events"]))[:200],
+        "states": states or [],
+    }
+
+
+async def fetch_okx_account_snapshot():
+    try:
+        from okx_strategy22_live_pilot import OkxCredentials, OkxPrivateClient
+        creds = OkxCredentials.from_env()
+        async with httpx.AsyncClient(timeout=20) as client:
+            okx = OkxPrivateClient(client, creds)
+            data = await okx.request("GET", "/api/v5/account/balance")
+        details = data.get("data", [{}])[0].get("details", [])
+        usdt = next((d for d in details if d.get("ccy") == "USDT"), {})
+        total_eq = float(usdt.get("eq") or usdt.get("cashBal") or 0)
+        avail = float(usdt.get("availBal") or usdt.get("availEq") or 0)
+        frozen = float(usdt.get("frozenBal") or 0)
+        return {"ok": True, "simulated": creds.simulated, "currency": "USDT", "equity": rnd(total_eq), "available": rnd(avail), "frozen": rnd(frozen), "rawUpdatedAt": data.get("data", [{}])[0].get("uTime")}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "currency": "USDT", "equity": None, "available": None, "frozen": None}
+
+
+def normalize_okx_position_snapshot(rows):
+    positions = []
+    for row in rows or []:
+        try:
+            pos = float(row.get("pos") or 0)
+        except Exception:
+            pos = 0.0
+        if not pos:
+            continue
+        mark_or_last = float(row.get("markPx") or row.get("last") or row.get("avgPx") or 0)
+        notional = float(row.get("notionalUsd") or 0)
+        try:
+            ct_val = abs(notional / (mark_or_last * abs(pos))) if mark_or_last and pos else 1.0
+        except Exception:
+            ct_val = 1.0
+        positions.append({
+            "strategy": "OKX exchange position",
+            "instId": row.get("instId"),
+            "entryTime": datetime.fromtimestamp(float(row.get("cTime") or row.get("uTime") or 0) / 1000, timezone.utc).isoformat(timespec="seconds") if (row.get("cTime") or row.get("uTime")) else None,
+            "entryPrice": float(row.get("avgPx") or 0),
+            "margin": float(row.get("margin") or 0),
+            "notional": notional,
+            "sz": pos,
+            "markPrice": float(row.get("markPx") or 0),
+            "lastPrice": float(row.get("last") or 0),
+            "unrealizedPnl": float(row.get("upl") or 0),
+            "unrealizedPnlPct": float(row.get("uplRatio") or 0) * 100,
+            "leverage": float(row.get("lever") or 0),
+            "posSide": row.get("posSide"),
+            "source": "okx_private_positions",
+            "entryReason": f"OKX live · mark {rnd(float(row.get('markPx') or 0))} · UPL {rnd(float(row.get('upl') or 0))} USDT",
+            "hardStopAlgoId": bool(row.get("closeOrderAlgo")),
+            "hardStopPrice": None,
+            "contractValueApprox": ct_val,
+        })
+    return sorted(positions, key=lambda p: p.get("instId") or "")
+
+
+async def fetch_okx_positions_snapshot():
+    try:
+        from okx_strategy22_live_pilot import OkxCredentials, OkxPrivateClient
+        creds = OkxCredentials.from_env()
+        async with httpx.AsyncClient(timeout=20) as client:
+            okx = OkxPrivateClient(client, creds)
+            data = await okx.positions()
+        raw_positions = data.get("data", [])
+        return {"ok": True, "simulated": creds.simulated, "positions": normalize_okx_position_snapshot(raw_positions), "rawCount": len(raw_positions)}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc), "positions": []}
+
+
+async def okx_live_performance_payload():
+    rows = read_okx_live_log_rows()
+    states = read_okx_live_states()
+    perf = summarize_okx_live_performance(rows, states)
+    perf["account"] = await fetch_okx_account_snapshot()
+    exchange_positions = await fetch_okx_positions_snapshot()
+    perf["exchangePositions"] = exchange_positions
+    if exchange_positions.get("ok"):
+        state_positions = {}
+        for state in states:
+            if state.get("completed"):
+                continue
+            for inst_id, item in (state.get("positions") or {}).items():
+                if isinstance(item, dict):
+                    state_positions[inst_id] = item
+        reconciled = []
+        for pos in exchange_positions.get("positions", []):
+            state_item = state_positions.get(pos.get("instId")) or {}
+            state_data = state_item.get("state") if isinstance(state_item.get("state"), dict) else {}
+            if state_data:
+                pos["strategy"] = "strategy22_2h_strength_breakout_retest"
+                pos["hardStopAlgoId"] = state_item.get("hardStopAlgoId") or state_data.get("hardStopAlgoId") or pos.get("hardStopAlgoId")
+                pos["hardStopPrice"] = state_data.get("hardStopLossPrice") or pos.get("hardStopPrice")
+                pos["entryReason"] = state_data.get("entryReason") or pos.get("entryReason")
+                pos["entryTime"] = state_item.get("openedAt") or pos.get("entryTime")
+            reconciled.append(pos)
+        perf["logReconstructedOpenPositions"] = perf.get("openPositions", [])
+        perf["openPositions"] = reconciled
+        perf.setdefault("summary", {})["openPositions"] = len(perf["openPositions"])
+        perf["openPositionsSource"] = "okx_private_positions"
+    else:
+        perf["openPositionsSource"] = "log_reconstruction"
+    perf["updatedAt"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    perf["logGlob"] = OKX_LIVE_LOG_GLOB
+    perf["stateGlob"] = OKX_LIVE_STATE_GLOB
+    return perf
+
+
 crypto_bot = CryptoPaperBot()
 
 
@@ -1206,6 +1600,14 @@ def install_crypto_bot(app: FastAPI):
     @app.get("/micro", response_class=HTMLResponse)
     async def micro_dashboard():
         return HTMLResponse(MICRO_HTML)
+
+    @app.get("/okx-live", response_class=HTMLResponse)
+    async def okx_live_dashboard():
+        return HTMLResponse(OKX_LIVE_HTML)
+
+    @app.get("/api/crypto/okx-live/performance")
+    async def okx_live_performance():
+        return JSONResponse(await okx_live_performance_payload())
 
     @app.get("/api/crypto/status")
     async def crypto_status():
@@ -1775,6 +2177,135 @@ def add_micro_slippage_snapshot(signal, ticker):
         signal["buySlippagePct"] = rnd(((ask - price) / price) * 100)
         signal["sellSlippagePct"] = rnd(((price - bid) / price) * 100)
     return signal
+
+
+def micro_strategy9_signal(ticker, candles):
+    base = micro_trend_signal(ticker, candles)
+    base["strategy"] = "strategy9_ema9_bounce_low_heat"
+    base["buy"] = False
+    base["reason"] = "strategy9_watch"
+    base["strategy9TrendFilter"] = False
+    base["strategy9BounceFilter"] = False
+    add_micro_slippage_snapshot(base, ticker)
+    bars_per_hour = micro_bars_per_hour()
+    if len(candles) < max(bars_per_hour * 2 + 1, 60):
+        return base
+    closes = [c["close"] for c in candles]
+    ema9 = ema_series(closes, 9)
+    ema21 = ema_series(closes, 21)
+    if len(ema9) < 2 or len(ema21) < 2:
+        return base
+    prev = candles[-2]
+    current = candles[-1]
+    trend_filter = (
+        CONFIG["microStrategy9MinPct1h"] <= base.get("pct1h", 0) <= CONFIG["microStrategy9MaxPct1h"]
+        and base.get("pct15", 0) <= CONFIG["microStrategy9MaxPct15m"]
+    )
+    bounce_filter = (
+        prev["low"] <= ema9[-2] * (1 + CONFIG["microStrategy9Ema9TouchPct"] / 100)
+        and prev["close"] >= ema21[-2] * (1 - CONFIG["microStrategy9Ema21SlackPct"] / 100)
+        and current["close"] > current["open"]
+        and current["close"] > ema9[-1]
+        and ema9[-1] >= ema21[-1]
+        and CONFIG["microStrategy9MinVolumeRatio"] <= base.get("volumeRatio", 0) <= CONFIG["microStrategy9MaxVolumeRatio"]
+    )
+    buy_signal = trend_filter and bounce_filter
+    base.update({
+        "buy": buy_signal,
+        "reason": "strategy9_ema9_bounce_low_heat" if buy_signal else "strategy9_watch",
+        "strategy9TrendFilter": trend_filter,
+        "strategy9BounceFilter": bounce_filter,
+        "strategy9Ema9": rnd(ema9[-1], 8),
+        "strategy9Ema21": rnd(ema21[-1], 8),
+        "strategy9PrevEma9": rnd(ema9[-2], 8),
+        "strategy9PrevEma21": rnd(ema21[-2], 8),
+        "strategy9Params": {
+            "topN": CONFIG["microStrategy9TopN"],
+            "min1": CONFIG["microStrategy9MinPct1h"],
+            "max1": CONFIG["microStrategy9MaxPct1h"],
+            "max15": CONFIG["microStrategy9MaxPct15m"],
+            "touch": CONFIG["microStrategy9Ema9TouchPct"],
+            "volMin": CONFIG["microStrategy9MinVolumeRatio"],
+            "volMax": CONFIG["microStrategy9MaxVolumeRatio"],
+        },
+    })
+    return base
+
+
+def micro_strategy18_signal(ticker, candles):
+    base = micro_trend_signal(ticker, candles)
+    base["strategy"] = "s18_top2h_retest_runner"
+    base["buy"] = False
+    base["reason"] = "strategy18_watch"
+    base["strategy18PrevBreakout"] = False
+    base["strategy18Retest"] = False
+    base["strategy18TrendFilter"] = False
+    base["strategy18CandleFilter"] = False
+    add_micro_slippage_snapshot(base, ticker)
+    bars_per_hour = micro_bars_per_hour()
+    if len(candles) < max(bars_per_hour * 3 + 4, 72):
+        return base
+    closes = [c["close"] for c in candles]
+    volumes = [c["volume"] for c in candles]
+    ema9 = ema_series(closes, 9)
+    ema21 = ema_series(closes, 21)
+    if len(ema9) < 3 or len(ema21) < 3:
+        return base
+    prev = candles[-2]
+    current = candles[-1]
+    breakout_level = max(c["high"] for c in candles[-(bars_per_hour + 3):-3])
+    prev_base_vol = sma(volumes[-74:-14], 60) or sma(volumes[-38:-8], 30) or sma(volumes[:-2], min(30, len(volumes[:-2]))) or 0
+    prev_vol_ratio = prev["volume"] / prev_base_vol if prev_base_vol else 0
+    prev_breakout = (
+        prev["close"] > breakout_level
+        and prev_vol_ratio >= CONFIG["microStrategy18BreakVolumeRatio"]
+        and prev["close"] > ema9[-2] >= ema21[-2]
+    )
+    retest = (
+        current["low"] <= breakout_level * (1 + CONFIG["microStrategy18RetestTolerancePct"] / 100)
+        and current["close"] >= breakout_level * (1 + CONFIG["microStrategy18HoldPct"] / 100)
+    )
+    trend_filter = (
+        base.get("pct2h", 0) >= CONFIG["microStrategy18MinPct2h"]
+        and base.get("pct1h", 0) <= CONFIG["microStrategy18MaxPct1h"]
+        and base.get("pct15", 0) <= CONFIG["microStrategy18MaxPct15m"]
+    )
+    candle_filter = (
+        current["close"] > current["open"]
+        and current["close"] > ema9[-1]
+        and base.get("volumeRatio", 0) >= CONFIG["microStrategy18ConfirmVolumeRatio"]
+    )
+    buy_signal = prev_breakout and retest and trend_filter and candle_filter
+    base.update({
+        "buy": buy_signal,
+        "reason": "s18_top2h_retest_runner" if buy_signal else "strategy18_watch",
+        "strategy18PrevBreakout": prev_breakout,
+        "strategy18Retest": retest,
+        "strategy18TrendFilter": trend_filter,
+        "strategy18CandleFilter": candle_filter,
+        "strategy18BreakoutLevel": rnd(breakout_level, 8),
+        "strategy18PrevVolumeRatio": rnd(prev_vol_ratio),
+        "strategy18Ema9": rnd(ema9[-1], 8),
+        "strategy18Ema21": rnd(ema21[-1], 8),
+        "strategy18Params": {
+            "topN": CONFIG["microStrategy18TopN"],
+            "min2": CONFIG["microStrategy18MinPct2h"],
+            "max1": CONFIG["microStrategy18MaxPct1h"],
+            "max15": CONFIG["microStrategy18MaxPct15m"],
+            "bvol": CONFIG["microStrategy18BreakVolumeRatio"],
+            "cvol": CONFIG["microStrategy18ConfirmVolumeRatio"],
+            "tol": CONFIG["microStrategy18RetestTolerancePct"],
+        },
+    })
+    return base
+
+
+def micro_strategy9_should_exit(signal, state, price):
+    return micro_lab_runner_should_exit(signal, state, price, 9)
+
+
+def micro_strategy18_should_exit(signal, state, price):
+    return micro_lab_runner_should_exit(signal, state, price, 18)
 
 
 def micro_strategy20_signal(ticker, candles):
@@ -2915,6 +3446,20 @@ def vwap(candles, period):
     if vol == 0: return None
     return sum(((c["high"] + c["low"] + c["close"]) / 3) * c["volume"] for c in recent) / vol
 
+
+OKX_LIVE_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OKX Live Performance</title>
+<style>body{margin:0;background:#f6f7f4;color:#19211f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0;z-index:2}.controls{display:flex;gap:8px;flex-wrap:wrap}a.btn,button{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:800;cursor:pointer;color:#19211f;text-decoration:none;display:inline-flex;align-items:center}main{max-width:1280px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}.good{color:#16835f}.bad{color:#c53b3b}.muted{color:#65706e}.pill{display:inline-flex;border:1px solid #dce3df;border-radius:999px;padding:4px 9px;background:#fbfcfb;font-size:12px;font-weight:800}table{width:100%;min-width:980px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}</style></head>
+<body><header class="top"><div><h1>OKX 真實交易績效</h1><p id="status">Loading...</p></div><div class="controls"><button id="refresh">Refresh</button><a class="btn" href="/micro">Micro</a><a class="btn" href="/crypto">Strategy Lab</a></div></header><main><section class="grid"><div class="metric"><span>帳戶 Equity</span><strong id="equity">--</strong></div><div class="metric"><span>可用 USDT</span><strong id="available">--</strong></div><div class="metric"><span>Realized P/L</span><strong id="pnl">--</strong></div><div class="metric"><span>勝率</span><strong id="winRate">--</strong></div></section><section class="grid"><div class="metric"><span>Closed Trades</span><strong id="closed">--</strong></div><div class="metric"><span>Open Positions</span><strong id="open">--</strong></div><div class="metric"><span>Protected BUYs</span><strong id="protected">--</strong></div><div class="metric"><span>交易模式</span><strong id="mode">--</strong></div></section><section class="panel"><h2>使用策略績效</h2><p>百分比以每筆實際 pilot margin 當分母計算 ROE；USD 為 OKX 成交後記錄的 realized P/L。</p><div id="strategies"></div></section><section class="panel"><h2>目前未平倉</h2><div id="positions"></div></section><section class="panel"><h2>過去真實交易損益</h2><div id="trades"></div></section><section class="panel"><h2>最近事件</h2><div id="events"></div></section></main>
+<script>
+const $=s=>document.querySelector(s);$("#refresh").onclick=()=>load();setInterval(load,15000);load();
+async function load(){try{const d=await (await fetch('/api/crypto/okx-live/performance')).json();render(d);}catch(e){$("#status").textContent='Load failed: '+e;}}
+function render(d){const s=d.summary||{},a=d.account||{};$("#status").textContent=`Updated ${d.updatedAt?new Date(d.updatedAt).toLocaleString():'--'} · logs ${d.logGlob||''}${a.ok?'':' · account error: '+(a.error||'')}`;$("#equity").textContent=a.equity==null?'--':money(a.equity)+' '+(a.currency||'USDT');$("#available").textContent=a.available==null?'--':money(a.available)+' USDT';$("#pnl").textContent=`${money(s.pnlUsd)} / ${pct(s.pnlPct)}`;$("#pnl").className=tone(s.pnlUsd);$("#winRate").textContent=pct(s.winRate);$("#closed").textContent=s.closedTrades||0;$("#open").textContent=s.openPositions||0;$("#protected").textContent=`${s.hardStopProtectedBuys||0} / ${s.buyEvents||0}`;$("#mode").textContent=a.simulated?'Simulated':'Real OKX';renderStrategies(d.byStrategy||[]);renderPositions(d.openPositions||[]);renderTrades(d.closedTrades||[]);renderEvents(d.events||[]);}
+function renderStrategies(rows){if(!rows.length){$("#strategies").innerHTML='<p>No closed strategy performance yet.</p>';return}$("#strategies").innerHTML=`<table><thead><tr><th>Strategy</th><th>Closed</th><th>Wins</th><th>Losses</th><th>Win Rate</th><th>P/L USD</th><th>P/L %</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${esc(r.strategy)}</strong></td><td>${r.closedTrades}</td><td class="good">${r.wins}</td><td class="bad">${r.losses}</td><td>${pct(r.winRate)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td></tr>`).join('')}</tbody></table>`}
+function renderPositions(rows){if(!rows.length){$("#positions").innerHTML='<p>No open live OKX positions.</p>';return}$("#positions").innerHTML=`<table><thead><tr><th>Strategy</th><th>Coin</th><th>Entry Time</th><th>Entry</th><th>Margin</th><th>Notional</th><th>Size</th><th>OKX Hard Stop</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.strategy)}</td><td><strong>${r.instId}</strong></td><td>${dt(r.entryTime)}</td><td>${money(r.entryPrice)}</td><td>${money(r.margin)}</td><td>${money(r.notional)}</td><td>${qty(r.sz)}</td><td>${r.hardStopAlgoId?'<span class="pill good">ON</span> '+money(r.hardStopPrice):'<span class="pill bad">missing</span>'}</td><td>${esc(r.entryReason||'')}</td></tr>`).join('')}</tbody></table>`}
+function renderTrades(rows){if(!rows.length){$("#trades").innerHTML='<p>No closed live trades yet.</p>';return}$("#trades").innerHTML=`<table><thead><tr><th>Exit Time</th><th>Coin</th><th>Strategy</th><th>Entry</th><th>Exit</th><th>Margin</th><th>P/L USD</th><th>P/L %</th><th>Exit Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${dt(r.exitTime)}</td><td><strong>${r.instId}</strong><br><span class="label">entry ${dt(r.entryTime)}</span></td><td>${esc(r.strategy)}</td><td>${money(r.entryPrice)}</td><td>${money(r.exitPrice)}</td><td>${money(r.margin)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td><td>${esc(r.exitReason||'')}</td></tr>`).join('')}</tbody></table>`}
+function renderEvents(rows){if(!rows.length){$("#events").innerHTML='<p>No live events yet.</p>';return}$("#events").innerHTML=`<table><thead><tr><th>Time</th><th>Event</th><th>Coin</th><th>Strategy</th><th>Price</th><th>P/L</th><th>Reason / Protection</th></tr></thead><tbody>${rows.slice(0,80).map(r=>`<tr><td>${dt(r.time)}</td><td class="${r.event==='BUY'?'good':'bad'}">${r.event}</td><td>${r.instId}</td><td>${esc(r.strategy)}</td><td>${money(r.price)}</td><td class="${tone(r.pnlUsd||0)}">${r.pnlUsd==null?'--':money(r.pnlUsd)+' / '+pct(r.pnlPct)}</td><td>${esc(r.reason||'')}${r.hardStopAlgoId?'<br><span class="pill">hard stop '+r.hardStopAlgoId+'</span>':''}</td></tr>`).join('')}</tbody></table>`}
+function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:6})}function qty(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:8})}function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`}function tone(v){return Number(v)>=0?'good':'bad'}function dt(v){return v?new Date(v).toLocaleString():'--'}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+</script></body></html>"""
 
 CRYPTO_HTML = """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crypto Strategy Lab</title>
 <style>body{margin:0;background:#f5f7f4;color:#18201f;font-family:Inter,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;gap:16px;padding:22px 28px;background:#fffefa;border-bottom:1px solid #dce3df;position:sticky;top:0}.controls{display:flex;gap:8px}button{border:1px solid #dce3df;border-radius:8px;background:#fff;padding:0 12px;height:40px;font-weight:700;cursor:pointer}main{max-width:1280px;margin:auto;padding:24px}.tabs{display:flex;gap:10px;margin-bottom:16px}.tabs button{min-width:120px}.active{border-color:#2867b2;box-shadow:inset 0 0 0 1px #2867b2}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.panel,.card{background:#fff;border:1px solid #dce3df;border-radius:8px;box-shadow:0 12px 32px rgba(31,45,42,.08)}.metric{padding:16px}.metric span,.label{display:block;color:#65706e;font-size:12px;text-transform:uppercase}.metric strong{display:block;margin-top:10px;font-size:24px}.panel{padding:18px;margin:16px 0 22px;overflow-x:auto}canvas{width:100%;height:280px;border:1px solid #dce3df;border-radius:8px;background:#fbfcfb}.cards{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:12px}.card{padding:14px;cursor:pointer}.card.pos{border-color:rgba(22,131,95,.55);background:#fbfffc}.card.selected,.pick.selected td{border-color:#2867b2;background:#f3f8ff}.pick{cursor:pointer}.position{border:1px solid #dce3df;border-radius:8px;padding:10px;margin:10px 0;background:#f8faf8}.position.on{background:#effaf4}.stat{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #dce3df;padding-top:8px;margin-top:8px;font-size:13px}.detailgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.good{color:#16835f}.bad{color:#c53b3b}table{width:100%;min-width:860px;border-collapse:collapse;font-size:13px}th{text-align:left;color:#65706e;background:#f8faf8;padding:9px;border-bottom:1px solid #dce3df}td{padding:9px;border-bottom:1px solid #eef2ef;vertical-align:top}tr:hover td{background:#fbfcfb}@media(max-width:900px){.grid,.cards,.detailgrid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid,.cards,.detailgrid{grid-template-columns:1fr}.top{align-items:flex-start}}</style></head>
