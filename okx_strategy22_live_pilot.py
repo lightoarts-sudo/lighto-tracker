@@ -35,8 +35,8 @@ OKX_BASE = os.environ.get("CRYPTO_OKX_BASE", "https://www.okx.com").rstrip("/")
 CONFIG = None
 fetch_market_tickers = None
 fetch_okx_candles_by_inst = None
-micro_strategy22_signal = None
-micro_strategy22_should_exit = None
+micro_top10_optimized_signal = None
+micro_top10_optimized_should_exit = None
 new_micro_state = None
 shortlist_micro_tickers = None
 to_micro_candles = None
@@ -46,7 +46,7 @@ update_micro_position_state = None
 def load_crypto_bot_helpers() -> None:
     """Import crypto_bot lazily so pure helper tests do not need web/db deps."""
     global CONFIG, OKX_BASE, fetch_market_tickers, fetch_okx_candles_by_inst
-    global micro_strategy22_signal, micro_strategy22_should_exit, new_micro_state
+    global micro_top10_optimized_signal, micro_top10_optimized_should_exit, new_micro_state
     global shortlist_micro_tickers, to_micro_candles, update_micro_position_state
     if CONFIG is not None:
         return
@@ -56,15 +56,15 @@ def load_crypto_bot_helpers() -> None:
     OKX_BASE = bot.OKX_BASE
     fetch_market_tickers = bot.fetch_market_tickers
     fetch_okx_candles_by_inst = bot.fetch_okx_candles_by_inst
-    micro_strategy22_signal = bot.micro_strategy22_signal
-    micro_strategy22_should_exit = bot.micro_strategy22_should_exit
+    micro_top10_optimized_signal = bot.micro_top10_optimized_signal
+    micro_top10_optimized_should_exit = bot.micro_top10_optimized_should_exit
     new_micro_state = bot.new_micro_state
     shortlist_micro_tickers = bot.shortlist_micro_tickers
     to_micro_candles = bot.to_micro_candles
     update_micro_position_state = bot.update_micro_position_state
 
 
-STRATEGY = "strategy22_2h_strength_breakout_retest"
+STRATEGY = "top10v1_rank5_chg3_10_sl1_trail09_t12"
 STATE_PATH = Path(os.environ.get("OKX_STRATEGY22_PILOT_STATE", "data/okx_strategy22_live_pilot_state.json"))
 LOG_PATH = Path(os.environ.get("OKX_STRATEGY22_PILOT_LOG", "data/okx_strategy22_live_pilot_log.jsonl"))
 DEFAULT_KEY_FILE = Path(os.environ.get("OKX_KEY_FILE", r"C:\Users\fuful\OneDrive\Desktop\KEY\OKX API.txt"))
@@ -409,7 +409,7 @@ class Pilot:
             raise RuntimeError(f"OKX instruments error: {data}")
         self.instruments = {row["instId"]: row for row in data.get("data", [])}
 
-    async def scan_strategy22(self, client: httpx.AsyncClient) -> list[tuple[str, dict[str, Any], float]]:
+    async def scan_top10_strategy(self, client: httpx.AsyncClient) -> list[tuple[str, dict[str, Any], float]]:
         tickers = await fetch_market_tickers(client, CONFIG["microInstType"])
         shortlist = shortlist_micro_tickers(tickers)
         scanned = []
@@ -419,12 +419,16 @@ class Pilot:
             candles = to_micro_candles(raw)
             if len(candles) < 72:
                 continue
-            signal = micro_strategy22_signal(ticker, candles)
-            scanned.append((signal.get("pct2h", 0), inst_id, signal, candles[-1]["close"]))
+            base_signal = __import__("crypto_bot").micro_trend_signal(ticker, candles)
+            scanned.append((base_signal.get("pct1h", 0), inst_id, ticker, candles, candles[-1]["close"]))
             await asyncio.sleep(self.args.scan_pause)
         scanned.sort(reverse=True, key=lambda row: row[0])
-        top_ids = {inst_id for _, inst_id, _, _ in scanned[: self.args.top_n]}
-        return [(inst_id, signal, price) for _, inst_id, signal, price in scanned if inst_id in top_ids and signal.get("buy")]
+        signals = []
+        for rank, (change_1h, inst_id, ticker, candles, price) in enumerate(scanned[:10], start=1):
+            signal = micro_top10_optimized_signal(ticker, candles, STRATEGY, rank_1h=rank, collector_change_1h_pct=change_1h)
+            if signal.get("buy"):
+                signals.append((inst_id, signal, price))
+        return signals
 
     async def poll_fill_price(self, okx: OkxPrivateClient, inst_id: str, ord_id: str) -> float:
         last_data: dict[str, Any] | None = None
@@ -510,6 +514,7 @@ class Pilot:
             "openedAt": utc_now_iso(),
             "openOrderId": order_id,
             "hardStopAlgoId": hard_stop_algo_id,
+            "strategy": STRATEGY,
         }
         self.state["entriesPlaced"] += 1
         self.save_state()
@@ -593,7 +598,6 @@ class Pilot:
         load_crypto_bot_helpers()
         CONFIG["microMarginUSDT"] = self.args.margin_usdt
         CONFIG["microLeverage"] = self.args.leverage
-        CONFIG["microStrategy22TopN"] = self.args.top_n
         creds = OkxCredentials.from_env() if self.args.live else None
         async with httpx.AsyncClient(timeout=25) as client:
             okx = OkxPrivateClient(client, creds) if creds else None
@@ -604,7 +608,8 @@ class Pilot:
                 maxEntries=self.args.max_entries,
                 marginUSDT=self.args.margin_usdt,
                 leverage=self.args.leverage,
-                topN=self.args.top_n,
+                topN=10,
+                strategy=STRATEGY,
                 hardStopPct=self.args.hard_stop_pct,
             )
             while True:
@@ -618,10 +623,10 @@ class Pilot:
                         continue
                     raw = await fetch_okx_candles_by_inst(client, inst_id, CONFIG["microBaseInterval"], 240)
                     candles = to_micro_candles(raw)
-                    signal = micro_strategy22_signal(ticker, candles)
+                    signal = micro_top10_optimized_signal(ticker, candles, position.get("strategy", STRATEGY), rank_1h=None, collector_change_1h_pct=None)
                     price = candles[-1]["close"]
                     update_micro_position_state(position["state"], price, signal)
-                    if micro_strategy22_should_exit(signal, position["state"], price):
+                    if micro_top10_optimized_should_exit(signal, position["state"], price, position.get("strategy", STRATEGY)):
                         await self.close_position(okx, inst_id, position, signal, signal.get("exitPrice", price))
                     else:
                         position["state"] = position["state"]
@@ -630,7 +635,7 @@ class Pilot:
                         self.save_state()
 
                 if self.state["entriesPlaced"] < self.args.max_entries:
-                    signals = await self.scan_strategy22(client)
+                    signals = await self.scan_top10_strategy(client)
                     for inst_id, signal, price in signals:
                         if self.state["entriesPlaced"] >= self.args.max_entries:
                             break

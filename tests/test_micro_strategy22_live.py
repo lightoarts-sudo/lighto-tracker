@@ -44,8 +44,10 @@ def make_strategy22_candles():
     return candles
 
 
-def test_strategy22_breakout_retest_is_enabled_by_default():
-    assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
+def test_top10_optimized_strategies_are_enabled_by_default():
+    active = crypto_bot.CONFIG["microActiveStrategies"]
+    assert active == list(crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES.keys())
+    assert crypto_bot.micro_strategy_enabled("top10v1_rank5_chg3_10_sl1_trail09_t12")
 
 
 def test_strategy22_uses_tighter_shadow_watchlist_defaults():

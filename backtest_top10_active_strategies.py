@@ -59,6 +59,11 @@ DEFAULT_STRATEGIES = [
     "strategy22_2h_strength_breakout_retest",
     "strategy23_top1h_clean_early_breakout",
     "strategy24_top1h_delay_rank5_chg1_5",
+    "top10v1_rank5_chg3_10_sl1_trail09_t12",
+    "top10v2_rank5_chg3_10_sl1_trail09_t18",
+    "top10v3_rank5_chg3_10_sl08_trail09_t12",
+    "top10v4_rank5_chg3_10_sl08_trail09_t18",
+    "top10v5_delay1_rank3_chg1_5_sl15_trail12_t12",
 ]
 RENDER_ELIGIBLE = [s for s in DEFAULT_STRATEGIES if s != "strategy1"]
 
@@ -85,6 +90,8 @@ class Backtester:
         self.trades: Dict[str, List[dict]] = {s: [] for s in strategies}
         self.entry_signals: Dict[str, int] = {s: 0 for s in strategies}
         self.skipped_no_candles = 0
+        self.top10_session_seen: Dict[str, set[str]] = {s: set() for s in strategies}
+        self.top10_session_age: Dict[str, Dict[str, int]] = {s: {} for s in strategies}
 
     def db_stats(self) -> dict:
         stats = {}
@@ -243,7 +250,7 @@ class Backtester:
         self.positions[strategy][inst_id] = SimPosition(inst_id=inst_id, entry_price=price, entry_time=signal.get("time", 0), state=state)
         self.entry_signals[strategy] += 1
 
-    def signal_for(self, strategy: str, source: dict, rank_1h: Optional[int]) -> dict:
+    def signal_for(self, strategy: str, source: dict, rank_1h: Optional[int], session_age_bars: int = 0) -> dict:
         inst_id = source["ticker"]["instId"]
         ticker = {"instId": inst_id, "_pct24": source["signal"].get("pct24", 0), "_quoteVol": source["signal"].get("quoteVolume24h", 0), "bidPx": None, "askPx": None}
         candles = source["candles"]
@@ -275,9 +282,14 @@ class Backtester:
             return cb.micro_strategy23_signal(ticker, candles)
         if strategy == "strategy24_top1h_delay_rank5_chg1_5":
             return cb.micro_strategy24_signal(ticker, candles, rank_1h=rank_1h)
+        if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
+            collector_change = source["signal"].get("collectorChange1hPct") or source["signal"].get("pct1h", 0)
+            return cb.micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=rank_1h, collector_change_1h_pct=collector_change, session_age_bars=session_age_bars)
         raise KeyError(strategy)
 
     def should_exit_fn(self, strategy: str):
+        if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
+            return lambda signal, state, price: cb.micro_top10_optimized_should_exit(signal, state, price, strategy)
         return {
             "strategy1": cb.micro_should_exit,
             "strategy2": cb.micro_strategy2_should_exit,
@@ -338,6 +350,12 @@ class Backtester:
                 "strategy23_top1h_clean_early_breakout": {s["instId"]: i for i, s in enumerate(ranking1h[:cb.CONFIG["microStrategy23TopN"]], 1)},
                 "strategy24_top1h_delay_rank5_chg1_5": {s["instId"]: i for i, s in enumerate(ranking1h[:cb.CONFIG["microStrategy24SessionTopN"]], 1)},
             }
+            for _strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
+                rank_maps[_strategy] = {s["instId"]: i for i, s in enumerate(ranking1h[:10], 1)}
+                current_top10 = set(rank_maps[_strategy].keys())
+                self.top10_session_seen.setdefault(_strategy, set()).intersection_update(current_top10)
+                age_map = self.top10_session_age.setdefault(_strategy, {})
+                self.top10_session_age[_strategy] = {inst: (age_map.get(inst, -1) + 1) for inst in current_top10}
 
             for strategy in self.strategies:
                 if strategy == "strategy24_top1h_delay_rank5_chg1_5":
@@ -352,10 +370,15 @@ class Backtester:
                     if not source:
                         continue
                     rank_1h = rank_maps.get(strategy, {}).get(inst_id) if strategy in rank_maps else source.get("rank_1h")
-                    signal = self.signal_for(strategy, source, rank_1h)
+                    session_age_bars = self.top10_session_age.get(strategy, {}).get(inst_id, 0) if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES else 0
+                    signal = self.signal_for(strategy, source, rank_1h, session_age_bars=session_age_bars)
                     price = source["candles"][-1]["close"]
                     if inst_id in self.positions[strategy]:
-                        self.close_or_update(strategy, inst_id, signal, price, self.should_exit_fn(strategy))
+                        if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES and rank_1h is None:
+                            cb.set_micro_exit(signal, f"{cb.MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy]['version']}_session_end", 1.0, price)
+                            self.close_or_update(strategy, inst_id, signal, price, lambda _sig, _state, _price: True)
+                        else:
+                            self.close_or_update(strategy, inst_id, signal, price, self.should_exit_fn(strategy))
                     elif strategy == "strategy1":
                         # Legacy strategy1 has a pending confirmation stage.
                         # For compact Top10 replay, count only confirmed immediate buy signals.
@@ -364,7 +387,14 @@ class Backtester:
                     elif strategy == "strategy24_top1h_delay_rank5_chg1_5":
                         self.step_strategy24_pending(inst_id, source, signal, rank_1h)
                     elif signal.get("buy"):
+                        if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
+                            seen = self.top10_session_seen.setdefault(strategy, set())
+                            if inst_id in seen:
+                                continue
+                            seen.add(inst_id)
                         self.enter(strategy, inst_id, price, signal)
+                    if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES and rank_1h is not None and signal.get("top10DelayOk"):
+                        self.top10_session_seen.setdefault(strategy, set()).add(inst_id)
 
         summaries = [self.summarize_strategy(s) for s in self.strategies]
         summaries.sort(key=lambda r: (r["eligible_win_rate_gt_40"], r["closed_trades"], r["net_avg_return"], r["win_rate"]), reverse=True)
