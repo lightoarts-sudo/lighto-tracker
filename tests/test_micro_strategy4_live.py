@@ -44,8 +44,8 @@ def make_strategy4_candles():
     return candles
 
 
-def test_strategy4_breakout_confirmation_is_enabled_by_default():
-    assert crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
+def test_strategy4_breakout_confirmation_is_not_in_current_paper_shadow_watchlist_by_default():
+    assert not crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
 
 
 def test_strategy4_enters_only_after_breakout_bar_is_confirmed_by_next_bar():

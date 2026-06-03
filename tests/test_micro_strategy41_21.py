@@ -64,9 +64,9 @@ def strategy21_signal(**overrides):
     return base
 
 
-def test_strategy41_and_21_are_enabled_by_default():
-    assert crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
-    assert crypto_bot.micro_strategy_enabled("strategy2.1_surge_momentum")
+def test_strategy41_and_21_are_not_in_current_paper_shadow_watchlist_by_default():
+    assert not crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("strategy2.1_surge_momentum")
 
 
 def test_strategy41_confirms_breakout_but_rejects_overstretched_follow_through():

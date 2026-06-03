@@ -30,13 +30,17 @@ def candle(close, high=None, low=None, open_=None, volume=100.0, t=0):
     }
 
 
-def test_strategy9_18_20_21_23_and_24_enabled_by_default():
-    assert crypto_bot.micro_strategy_enabled("strategy9_ema9_bounce_low_heat")
-    assert crypto_bot.micro_strategy_enabled("s18_top2h_retest_runner")
+def test_strategy20_23_and_22_enabled_by_default_for_current_paper_shadow_watchlist():
     assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
-    assert crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
     assert crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
-    assert crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")
+    assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
+    assert crypto_bot.CONFIG["microActiveStrategies"] == [
+        "strategy20_6h12h_cool_vwap_reclaim",
+        "strategy23_top1h_clean_early_breakout",
+        "strategy22_2h_strength_breakout_retest",
+    ]
+    assert not crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
+    assert not crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")
 
 
 def make_strategy20_candles():

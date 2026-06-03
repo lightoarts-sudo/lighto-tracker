@@ -48,6 +48,14 @@ def test_strategy22_breakout_retest_is_enabled_by_default():
     assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
 
 
+def test_strategy22_uses_tighter_shadow_watchlist_defaults():
+    assert crypto_bot.CONFIG["microStrategy22TopN"] == 10
+    assert crypto_bot.CONFIG["microStrategy22MinPct2h"] == 1.2
+    assert crypto_bot.CONFIG["microStrategy22MinPct3h"] == 0.0
+    assert crypto_bot.CONFIG["microStrategy22MaxPct1h"] == 2.0
+    assert crypto_bot.CONFIG["microStrategy22MaxPct15m"] == 1.4
+
+
 def test_strategy22_enters_on_2h_strength_breakout_retest_and_records_slippage():
     signal = crypto_bot.micro_strategy22_signal(
         {"instId": "TEST-USDT-SWAP", "_pct24": 0, "_quoteVol": 1_000_000, "bidPx": "100.95", "askPx": "101.15"},
