@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Small real-money OKX pilot for strategy22 slippage measurement.
+"""Small real-money OKX pilot for the best 1H Top10 optimized strategy.
 
 Default mode is DRY-RUN. To place real orders, all of these are required:
   OKX_API_KEY / OKX_API_SECRET / OKX_API_PASSPHRASE
-  OKX_STRATEGY22_PILOT_LIVE=1
+  OKX_TOP10_PILOT_LIVE=1
   --i-understand-live-trading
 
-The runner opens at most 10 strategy22 entries, each with 2 USDT margin and 5x
-leverage by default, then exits them using the same strategy22 exit helper used
-by the production paper/shadow loop. It records theoretical signal price,
-bid/ask spread, actual fill price, and realized slippage to JSONL.
+The runner opens capped Top10v1 entries, each with 2 USDT margin and 5x
+leverage by default, then exits them using the same Top10 optimized exit helper
+used by the production paper/shadow loop. Every live BUY immediately places an
+OKX exchange-native 1% hard stop before the runner continues.
 """
 from __future__ import annotations
 
@@ -65,10 +65,10 @@ def load_crypto_bot_helpers() -> None:
 
 
 STRATEGY = "top10v1_rank5_chg3_10_sl1_trail09_t12"
-STATE_PATH = Path(os.environ.get("OKX_STRATEGY22_PILOT_STATE", "data/okx_strategy22_live_pilot_state.json"))
-LOG_PATH = Path(os.environ.get("OKX_STRATEGY22_PILOT_LOG", "data/okx_strategy22_live_pilot_log.jsonl"))
+STATE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_STATE", "data/okx_top10_live_pilot_state.json"))
+LOG_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOG", "data/okx_top10_live_pilot_log.jsonl"))
 DEFAULT_KEY_FILE = Path(os.environ.get("OKX_KEY_FILE", r"C:\Users\fuful\OneDrive\Desktop\KEY\OKX API.txt"))
-LOCK_PATH = Path(os.environ.get("OKX_STRATEGY22_PILOT_LOCK", "data/okx_strategy22_live_pilot.lock"))
+LOCK_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOCK", "data/okx_top10_live_pilot.lock"))
 
 
 def utc_now_iso() -> str:
@@ -652,24 +652,24 @@ class Pilot:
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="strategy22 OKX live slippage pilot")
-    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "10")))
-    p.add_argument("--margin-usdt", type=float, default=float(os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_USDT", "2")))
-    p.add_argument("--leverage", type=float, default=float(os.environ.get("OKX_STRATEGY22_PILOT_LEVERAGE", "5")))
-    p.add_argument("--margin-mode", default=os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_MODE", "isolated"))
-    p.add_argument("--top-n", type=int, default=int(os.environ.get("OKX_STRATEGY22_PILOT_TOP_N", "20")))
-    p.add_argument("--poll-seconds", type=int, default=int(os.environ.get("OKX_STRATEGY22_PILOT_POLL_SECONDS", "300")))
-    p.add_argument("--scan-pause", type=float, default=float(os.environ.get("OKX_STRATEGY22_PILOT_SCAN_PAUSE", "0.08")))
-    p.add_argument("--hard-stop-pct", type=float, default=float(os.environ.get("OKX_STRATEGY22_PILOT_HARD_STOP_PCT", "1.0")), help="exchange-native hard stop loss percentage placed immediately after each live entry")
+    p = argparse.ArgumentParser(description="1H Top10 OKX live pilot with exchange-native hard stop")
+    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_ENTRIES", os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "10"))))
+    p.add_argument("--margin-usdt", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MARGIN_USDT", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_USDT", "2"))))
+    p.add_argument("--leverage", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_LEVERAGE", os.environ.get("OKX_STRATEGY22_PILOT_LEVERAGE", "5"))))
+    p.add_argument("--margin-mode", default=os.environ.get("OKX_TOP10_PILOT_MARGIN_MODE", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_MODE", "isolated")))
+    p.add_argument("--top-n", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_TOP_N", os.environ.get("OKX_STRATEGY22_PILOT_TOP_N", "10"))))
+    p.add_argument("--poll-seconds", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_POLL_SECONDS", os.environ.get("OKX_STRATEGY22_PILOT_POLL_SECONDS", "300"))))
+    p.add_argument("--scan-pause", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_SCAN_PAUSE", os.environ.get("OKX_STRATEGY22_PILOT_SCAN_PAUSE", "0.08"))))
+    p.add_argument("--hard-stop-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_HARD_STOP_PCT", os.environ.get("OKX_STRATEGY22_PILOT_HARD_STOP_PCT", "1.0"))), help="exchange-native hard stop loss percentage placed immediately after each live entry")
     p.add_argument("--once", action="store_true", help="run one scan/manage pass and exit")
-    p.add_argument("--i-understand-live-trading", action="store_true", help="required together with OKX_STRATEGY22_PILOT_LIVE=1 to place real orders")
+    p.add_argument("--i-understand-live-trading", action="store_true", help="required together with OKX_TOP10_PILOT_LIVE=1 to place real orders")
     args = p.parse_args()
     if args.hard_stop_pct <= 0 or args.hard_stop_pct >= 100:
         raise SystemExit("--hard-stop-pct must be greater than 0 and less than 100")
-    live_env = os.environ.get("OKX_STRATEGY22_PILOT_LIVE", "0") in {"1", "true", "TRUE", "yes", "YES"}
+    live_env = os.environ.get("OKX_TOP10_PILOT_LIVE", os.environ.get("OKX_STRATEGY22_PILOT_LIVE", "0")) in {"1", "true", "TRUE", "yes", "YES"}
     args.live = bool(live_env and args.i_understand_live_trading)
     if live_env and not args.i_understand_live_trading:
-        raise SystemExit("OKX_STRATEGY22_PILOT_LIVE=1 set, but --i-understand-live-trading was not provided; refusing to place real orders")
+        raise SystemExit("OKX_TOP10_PILOT_LIVE=1 set, but --i-understand-live-trading was not provided; refusing to place real orders")
     return args
 
 
