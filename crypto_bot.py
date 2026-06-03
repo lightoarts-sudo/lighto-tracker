@@ -10,6 +10,8 @@ import httpx
 from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse, JSONResponse
 
+from top10_overview import TOP10_STRATEGY_OVERVIEW_HTML, top10_strategy_overview_payload
+
 
 OKX_BASE = os.environ.get("CRYPTO_OKX_BASE", "https://www.okx.com").rstrip("/")
 TW_TZ = timezone(timedelta(hours=8))
@@ -1602,13 +1604,13 @@ class CryptoPaperBot:
         }
 
 
-OKX_LIVE_LOG_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_LOG_GLOB", "data/okx_strategy22_live*_log.jsonl")
-OKX_LIVE_STATE_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_STATE_GLOB", "data/okx_strategy22_live*_state.json")
+OKX_LIVE_LOG_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_LOG_GLOB", "data/okx_*live*_log.jsonl")
+OKX_LIVE_STATE_GLOB = os.environ.get("OKX_LIVE_PERFORMANCE_STATE_GLOB", "data/okx_*live*_state.json")
 
 
 def _live_strategy_from_row(row):
     signal = row.get("signal") if isinstance(row.get("signal"), dict) else {}
-    return row.get("strategy") or signal.get("strategy") or "strategy22_2h_strength_breakout_retest"
+    return row.get("strategy") or signal.get("strategy") or "top10v1_rank5_chg3_10_sl1_trail09_t12"
 
 
 def read_okx_live_log_rows(log_glob: str = OKX_LIVE_LOG_GLOB):
@@ -1908,7 +1910,7 @@ async def okx_live_performance_payload():
             state_item = state_positions.get(pos.get("instId")) or {}
             state_data = state_item.get("state") if isinstance(state_item.get("state"), dict) else {}
             if state_data:
-                pos["strategy"] = "strategy22_2h_strength_breakout_retest"
+                pos["strategy"] = "top10v1_rank5_chg3_10_sl1_trail09_t12"
                 pos["hardStopAlgoId"] = state_item.get("hardStopAlgoId") or state_data.get("hardStopAlgoId") or pos.get("hardStopAlgoId")
                 pos["hardStopPrice"] = state_data.get("hardStopLossPrice") or pos.get("hardStopPrice")
                 pos["entryReason"] = state_data.get("entryReason") or pos.get("entryReason")
@@ -1950,6 +1952,19 @@ def install_crypto_bot(app: FastAPI):
     @app.get("/okx-live", response_class=HTMLResponse)
     async def okx_live_dashboard():
         return HTMLResponse(OKX_LIVE_HTML)
+
+    @app.get("/top10-strategies", response_class=HTMLResponse)
+    async def top10_strategies_dashboard():
+        return HTMLResponse(TOP10_STRATEGY_OVERVIEW_HTML)
+
+    @app.get("/api/crypto/top10-strategies/overview")
+    async def top10_strategies_overview():
+        payload = await top10_strategy_overview_payload(
+            crypto_bot=crypto_bot,
+            config=CONFIG,
+            okx_live_performance_payload=okx_live_performance_payload,
+        )
+        return JSONResponse(payload)
 
     @app.get("/api/crypto/okx-live/performance")
     async def okx_live_performance():
