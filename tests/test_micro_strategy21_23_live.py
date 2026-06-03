@@ -31,10 +31,12 @@ def candle(close, high=None, low=None, open_=None, volume=100.0, t=0):
 
 
 def test_strategy20_23_and_22_enabled_by_default_for_current_paper_shadow_watchlist():
+    assert crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
     assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
     assert crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
     assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
+        "strategy4.1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
         "strategy23_top1h_clean_early_breakout",
         "strategy22_2h_strength_breakout_retest",
