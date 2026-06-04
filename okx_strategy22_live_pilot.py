@@ -69,6 +69,7 @@ STATE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_STATE", "data/okx_top10_live_p
 LOG_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOG", "data/okx_top10_live_pilot_log.jsonl"))
 DEFAULT_KEY_FILE = Path(os.environ.get("OKX_KEY_FILE", r"C:\Users\fuful\OneDrive\Desktop\KEY\OKX API.txt"))
 LOCK_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOCK", "data/okx_top10_live_pilot.lock"))
+PAUSE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_PAUSE_FILE", "data/okx_top10_live_pilot_paused.flag"))
 
 
 def utc_now_iso() -> str:
@@ -598,6 +599,9 @@ class Pilot:
         load_crypto_bot_helpers()
         CONFIG["microMarginUSDT"] = self.args.margin_usdt
         CONFIG["microLeverage"] = self.args.leverage
+        if PAUSE_PATH.exists() and os.environ.get("OKX_TOP10_PILOT_IGNORE_PAUSE") not in {"1", "true", "TRUE", "yes", "YES"}:
+            self.log("paused", pauseFile=str(PAUSE_PATH), strategy=STRATEGY, note="OKX Top10 live entries are paused; remove pause file only after manual confirmation")
+            return
         creds = OkxCredentials.from_env() if self.args.live else None
         async with httpx.AsyncClient(timeout=25) as client:
             okx = OkxPrivateClient(client, creds) if creds else None
