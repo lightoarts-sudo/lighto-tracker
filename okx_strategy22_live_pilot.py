@@ -444,7 +444,7 @@ class Pilot:
         raise RuntimeError(f"order did not report avgPx: {last_data}")
 
     async def open_position(self, okx: OkxPrivateClient | None, inst_id: str, signal: dict[str, Any], price: float) -> None:
-        if self.state["entriesPlaced"] >= self.args.max_entries:
+        if self.args.max_entries > 0 and self.state["entriesPlaced"] >= self.args.max_entries:
             return
         if inst_id in self.state["positions"]:
             return
@@ -602,10 +602,13 @@ class Pilot:
         async with httpx.AsyncClient(timeout=25) as client:
             okx = OkxPrivateClient(client, creds) if creds else None
             await self.load_instruments(client)
+            self.state["completed"] = False
+            self.save_state()
             self.log(
                 "start",
                 live=self.args.live,
                 maxEntries=self.args.max_entries,
+                unlimitedEntries=self.args.max_entries <= 0,
                 marginUSDT=self.args.margin_usdt,
                 leverage=self.args.leverage,
                 topN=10,
@@ -634,13 +637,13 @@ class Pilot:
                         self.state["positions"][inst_id] = position
                         self.save_state()
 
-                if self.state["entriesPlaced"] < self.args.max_entries:
+                if self.args.max_entries <= 0 or self.state["entriesPlaced"] < self.args.max_entries:
                     signals = await self.scan_top10_strategy(client)
                     for inst_id, signal, price in signals:
-                        if self.state["entriesPlaced"] >= self.args.max_entries:
+                        if self.args.max_entries > 0 and self.state["entriesPlaced"] >= self.args.max_entries:
                             break
                         await self.open_position(okx, inst_id, signal, price)
-                if self.state["entriesPlaced"] >= self.args.max_entries and not self.state.get("positions"):
+                if self.args.max_entries > 0 and self.state["entriesPlaced"] >= self.args.max_entries and not self.state.get("positions"):
                     self.state["completed"] = True
                     self.save_state()
                     self.log("completed", entriesPlaced=self.state["entriesPlaced"])
@@ -653,7 +656,7 @@ class Pilot:
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="1H Top10 OKX live pilot with exchange-native hard stop")
-    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_ENTRIES", os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "10"))))
+    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_ENTRIES", os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "0"))), help="maximum entries before stopping; 0 or negative means unlimited")
     p.add_argument("--margin-usdt", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MARGIN_USDT", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_USDT", "2"))))
     p.add_argument("--leverage", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_LEVERAGE", os.environ.get("OKX_STRATEGY22_PILOT_LEVERAGE", "5"))))
     p.add_argument("--margin-mode", default=os.environ.get("OKX_TOP10_PILOT_MARGIN_MODE", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_MODE", "isolated")))
