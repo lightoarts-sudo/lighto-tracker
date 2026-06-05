@@ -30,16 +30,17 @@ def candle(close, high=None, low=None, open_=None, volume=100.0, t=0):
     }
 
 
-def test_strategy20_23_and_22_enabled_by_default_for_current_paper_shadow_watchlist():
-    assert crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
-    assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
-    assert crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
-    assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
+def test_strategy20_23_and_22_helpers_remain_available_but_not_in_current_top10_watchlist():
+    assert not crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
+    assert not crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
+    assert not crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "strategy4.1_breakout_confirmation",
-        "strategy20_6h12h_cool_vwap_reclaim",
-        "strategy23_top1h_clean_early_breakout",
-        "strategy22_2h_strength_breakout_retest",
+        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
+        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
+        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
+        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
+        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
     ]
     assert not crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
     assert not crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")

@@ -46,8 +46,17 @@ def make_strategy22_candles():
 
 def test_top10_optimized_strategies_are_enabled_by_default():
     active = crypto_bot.CONFIG["microActiveStrategies"]
-    assert active == list(crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES.keys())
-    assert crypto_bot.micro_strategy_enabled("top10v1_rank5_chg3_10_sl1_trail09_t12")
+    expected = [
+        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
+        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
+        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
+        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
+        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
+    ]
+    assert active == expected
+    for strategy in expected:
+        assert strategy in crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES
+        assert crypto_bot.micro_strategy_enabled(strategy)
 
 
 def test_strategy22_uses_tighter_shadow_watchlist_defaults():

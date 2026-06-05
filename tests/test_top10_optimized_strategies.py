@@ -40,11 +40,11 @@ def make_top10_candles():
 
 def test_top10_optimized_strategies_are_the_default_render_active_set():
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "top10v1_rank5_chg3_10_sl1_trail09_t12",
-        "top10v2_rank5_chg3_10_sl1_trail09_t18",
-        "top10v3_rank5_chg3_10_sl08_trail09_t12",
-        "top10v4_rank5_chg3_10_sl08_trail09_t18",
-        "top10v5_delay1_rank3_chg1_5_sl15_trail12_t12",
+        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
+        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
+        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
+        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
+        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
     ]
 
 
@@ -79,6 +79,57 @@ def test_top10_optimized_signal_requires_current_1h_top10_rank_and_change_band()
         collector_change_1h_pct=2.9,
     )
     assert too_cold["buy"] is False
+
+
+def test_top10_scan_signal_requires_delay_current_reclaim_and_volume_filters():
+    candles = make_top10_candles()
+    strategy = "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12"
+
+    too_early = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000},
+        candles,
+        strategy,
+        rank_1h=3,
+        collector_change_1h_pct=3.2,
+        session_age_bars=0,
+    )
+    assert too_early["buy"] is False
+    assert too_early["top10DelayOk"] is False
+
+    reclaimed = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000, "bidPx": "103.1", "askPx": "103.3"},
+        candles,
+        strategy,
+        rank_1h=3,
+        collector_change_1h_pct=3.2,
+        session_age_bars=1,
+    )
+    assert reclaimed["buy"] is True
+    assert reclaimed["top10CurrentChangeOk"] is True
+    assert reclaimed["top10ReclaimOk"] is True
+
+    failed_reclaim = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000},
+        candles,
+        strategy,
+        rank_1h=3,
+        collector_change_1h_pct=5.0,
+        session_age_bars=1,
+    )
+    assert failed_reclaim["buy"] is False
+    assert failed_reclaim["top10ReclaimOk"] is False
+
+    volume_strategy = "top10scan1v_d1_r3_chg3_12_cur1_vol12_sl1_tr15x05_t12"
+    low_volume = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000},
+        candles,
+        volume_strategy,
+        rank_1h=3,
+        collector_change_1h_pct=3.2,
+        session_age_bars=1,
+    )
+    assert low_volume["buy"] is False
+    assert low_volume["top10VolumeOk"] is False
 
 
 def test_top10_optimized_exit_uses_variant_specific_stop_and_time_stop():

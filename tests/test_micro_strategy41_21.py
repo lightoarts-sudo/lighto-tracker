@@ -64,8 +64,8 @@ def strategy21_signal(**overrides):
     return base
 
 
-def test_strategy41_is_enabled_after_top10_backtest_and_21_is_not_enabled_by_default():
-    assert crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
+def test_strategy41_is_not_enabled_after_top10_scan_rotation_and_21_is_not_enabled_by_default():
+    assert not crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
     assert not crypto_bot.micro_strategy_enabled("strategy2.1_surge_momentum")
 
 

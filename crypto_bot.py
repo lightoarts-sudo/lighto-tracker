@@ -87,7 +87,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10v1_rank5_chg3_10_sl1_trail09_t12,top10v2_rank5_chg3_10_sl1_trail09_t18,top10v3_rank5_chg3_10_sl08_trail09_t12,top10v4_rank5_chg3_10_sl08_trail09_t18,top10v5_delay1_rank3_chg1_5_sl15_trail12_t12"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -306,6 +306,96 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "breakeven_after_pct": 0.8,
         "trailing_start_pct": 1.2,
         "trailing_giveback_pct": 0.6,
+        "time_stop_bars": 12,
+    },
+    "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12": {
+        "version": "top10scan1",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 1.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 0.0,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.5,
+        "trailing_start_pct": 1.5,
+        "trailing_giveback_pct": 0.5,
+        "time_stop_bars": 12,
+    },
+    "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12": {
+        "version": "top10scan2",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 2.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 0.0,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.5,
+        "trailing_start_pct": 1.5,
+        "trailing_giveback_pct": 0.5,
+        "time_stop_bars": 12,
+    },
+    "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12": {
+        "version": "top10scan3",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 1.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 0.0,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.0,
+        "trailing_start_pct": 1.0,
+        "trailing_giveback_pct": 0.5,
+        "time_stop_bars": 12,
+    },
+    "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12": {
+        "version": "top10scan4",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 2.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 0.0,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.0,
+        "trailing_start_pct": 1.0,
+        "trailing_giveback_pct": 0.5,
+        "time_stop_bars": 12,
+    },
+    "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12": {
+        "version": "top10scan5",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 2.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 0.0,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.5,
+        "trailing_start_pct": 1.5,
+        "trailing_giveback_pct": 0.5,
+        "time_stop_bars": 12,
+    },
+    "top10scan1v_d1_r3_chg3_12_cur1_vol12_sl1_tr15x05_t12": {
+        "version": "top10scan1v",
+        "entry_delay_bars": 1,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 1.0,
+        "require_change_reclaim": True,
+        "min_volume_ratio": 1.2,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 1.5,
+        "trailing_start_pct": 1.5,
+        "trailing_giveback_pct": 0.5,
         "time_stop_bars": 12,
     },
 }
@@ -3233,21 +3323,35 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
     add_micro_slippage_snapshot(base, ticker)
     if len(candles) < max(13, micro_bars_per_hour() + 1):
         return base
-    change_1h = base.get("pct1h", 0) if collector_change_1h_pct is None else float(collector_change_1h_pct or 0)
+    entry_change_1h = base.get("pct1h", 0) if collector_change_1h_pct is None else float(collector_change_1h_pct or 0)
+    current_change_1h = float(base.get("pct1h", 0) or 0)
+    min_current_change = float(params.get("min_current_change_1h_pct", 0.0) or 0.0)
+    min_volume_ratio = float(params.get("min_volume_ratio", 0.0) or 0.0)
     rank_ok = rank_1h is not None and int(rank_1h) <= int(params["max_rank"])
-    heat_ok = params["min_change_1h_pct"] <= change_1h <= params["max_change_1h_pct"]
+    heat_ok = params["min_change_1h_pct"] <= entry_change_1h <= params["max_change_1h_pct"]
+    current_change_ok = current_change_1h >= min_current_change
+    reclaim_ok = True
+    if params.get("require_change_reclaim"):
+        reclaim_ok = current_change_1h >= entry_change_1h - 1.0
+    volume_ok = float(base.get("volumeRatio", 0) or 0) >= min_volume_ratio
     delay_ok = int(session_age_bars or 0) >= int(params.get("entry_delay_bars", 0))
     base.update({
-        "collectorChange1hPct": rnd(change_1h),
+        "collectorChange1hPct": rnd(entry_change_1h),
+        "top10CurrentChange1hPct": rnd(current_change_1h),
         "top10RankOk": rank_ok,
         "top10HeatOk": heat_ok,
+        "top10CurrentChangeOk": current_change_ok,
+        "top10ReclaimOk": reclaim_ok,
+        "top10VolumeOk": volume_ok,
         "top10DelayOk": delay_ok,
         "top10EntryDelayBars": params.get("entry_delay_bars", 0),
         "top10EntryMaxRank": params["max_rank"],
         "top10MinChange1hPct": params["min_change_1h_pct"],
         "top10MaxChange1hPct": params["max_change_1h_pct"],
+        "top10MinCurrentChange1hPct": min_current_change,
+        "top10MinVolumeRatio": min_volume_ratio,
     })
-    if rank_ok and heat_ok and delay_ok:
+    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok:
         base["buy"] = True
         base["reason"] = f"{params['version']}_top10_entry"
     return base

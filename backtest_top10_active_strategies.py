@@ -64,6 +64,11 @@ DEFAULT_STRATEGIES = [
     "top10v3_rank5_chg3_10_sl08_trail09_t12",
     "top10v4_rank5_chg3_10_sl08_trail09_t18",
     "top10v5_delay1_rank3_chg1_5_sl15_trail12_t12",
+    "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
+    "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
+    "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
+    "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
+    "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
 ]
 RENDER_ELIGIBLE = [s for s in DEFAULT_STRATEGIES if s != "strategy1"]
 
@@ -178,7 +183,11 @@ class Backtester:
             signal["collectorChange1hPct"] = float(r["change_1h_pct"] or 0.0)
             sources[inst_id] = {"signal": signal, "candles": candles, "ticker": ticker, "rank_1h": int(r["rank_1h"])}
         candidates = [dict(s["signal"]) for s in sources.values()]
-        ranking1h = sorted(candidates, key=lambda row: row.get("pct1h", 0), reverse=True)
+        # For Top10/1H-session strategies, preserve collector point-in-time rank
+        # semantics instead of re-sorting the already capped Top10 rows by a
+        # recomputed candle pct. Re-sorting here breaks optimizer/live parity
+        # for delay/rank gates and one-entry-per-membership behavior.
+        ranking1h = sorted(candidates, key=lambda row: row.get("rank1h") or 999)
         ranking2h = sorted(candidates, key=lambda row: row.get("pct2h", 0), reverse=True)
         ranking3h = sorted(candidates, key=lambda row: row.get("pct3h", 0), reverse=True)
         ranking6h = sorted(candidates, key=lambda row: row.get("pct6h", 0), reverse=True)
