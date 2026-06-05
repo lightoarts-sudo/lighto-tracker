@@ -1002,6 +1002,7 @@ class CryptoPaperBot:
                     state["top10SessionActive"] = False
                     state["top10SessionSeen"] = False
                     state["top10SessionAgeBars"] = 0
+                    state["top10ShadowEntryTaken"] = False
                 if state.get("assetQty", 0) <= 0:
                     await self._save_micro_state(state_key, state)
                     continue
@@ -1038,10 +1039,16 @@ class CryptoPaperBot:
                 else:
                     positions.append(micro_position_row(inst_id, state, price, signal, strategy))
                     await self._save_micro_state(state_key, state)
-            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy") and not was_seen:
+            shadow_entry_allowed = bool(params.get("shadow_only")) and not state.get("top10ShadowEntryTaken")
+            entry_allowed = (not was_seen) or shadow_entry_allowed
+            if state.get("assetQty", 0) > 0:
+                pass
+            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy") and entry_allowed:
                 state["top10Params"] = dict(params)
                 state["top10SessionActive"] = True
                 state["top10SessionSeen"] = True
+                if params.get("shadow_only"):
+                    state["top10ShadowEntryTaken"] = True
                 await self._micro_buy(inst_id, state, price, signal, strategy, state_key)
                 open_count += 1
                 positions.append(micro_position_row(inst_id, state, price, signal, strategy))
