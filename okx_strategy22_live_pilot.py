@@ -64,7 +64,7 @@ def load_crypto_bot_helpers() -> None:
     update_micro_position_state = bot.update_micro_position_state
 
 
-STRATEGY = "top10v1_rank5_chg3_10_sl1_trail09_t12"
+STRATEGY = os.environ.get("OKX_TOP10_PILOT_STRATEGY", "top10v1_rank5_chg3_10_sl1_trail09_t12")
 STATE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_STATE", "data/okx_top10_live_pilot_state.json"))
 LOG_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOG", "data/okx_top10_live_pilot_log.jsonl"))
 DEFAULT_KEY_FILE = Path(os.environ.get("OKX_KEY_FILE", r"C:\Users\fuful\OneDrive\Desktop\KEY\OKX API.txt"))
