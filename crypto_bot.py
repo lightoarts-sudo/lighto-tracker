@@ -594,6 +594,7 @@ class CryptoPaperBot:
         self.micro_ranking12h = []
         self.micro_ranking1h = []
         self.micro_positions = []
+        self.micro_top10_debug = []
         self.micro_surge_last_archive_hour = None
         self.micro_surge_archive_status = {"lastRunAt": None, "lastHour": None, "saved": 0, "lastError": ""}
         self.last_error = ""
@@ -942,6 +943,7 @@ class CryptoPaperBot:
             if state.get("assetQty", 0) > 0 and key.split("::", 1)[-1] in archive_sources
         )
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
+        self.micro_top10_debug = []
         for strategy in CONFIG.get("microActiveStrategies") or []:
             if strategy in MICRO_TOP10_OPTIMIZED_STRATEGIES:
                 open_count = await self._apply_micro_top10_optimized(strategy, ranking1h, archive_sources, states, positions, open_count)
@@ -1041,6 +1043,30 @@ class CryptoPaperBot:
                     await self._save_micro_state(state_key, state)
             shadow_entry_allowed = bool(params.get("shadow_only")) and not state.get("top10ShadowEntryTaken")
             entry_allowed = (not was_seen) or shadow_entry_allowed
+            if len(self.micro_top10_debug) < 120:
+                self.micro_top10_debug.append({
+                    "strategy": strategy,
+                    "instId": inst_id,
+                    "rank1h": rank_1h,
+                    "buy": bool(signal.get("buy")),
+                    "reason": signal.get("reason"),
+                    "wasSeen": was_seen,
+                    "shadowOnly": bool(params.get("shadow_only")),
+                    "shadowEntryTaken": bool(state.get("top10ShadowEntryTaken")),
+                    "shadowEntryAllowed": shadow_entry_allowed,
+                    "entryAllowed": entry_allowed,
+                    "openCount": open_count,
+                    "maxPositions": CONFIG["microMaxPositions"],
+                    "assetQty": state.get("assetQty", 0),
+                    "top10RankOk": signal.get("top10RankOk"),
+                    "top10HeatOk": signal.get("top10HeatOk"),
+                    "top10CurrentChangeOk": signal.get("top10CurrentChangeOk"),
+                    "top10ReclaimOk": signal.get("top10ReclaimOk"),
+                    "top10VolumeOk": signal.get("top10VolumeOk"),
+                    "top10DelayOk": signal.get("top10DelayOk"),
+                    "collectorChange1hPct": signal.get("collectorChange1hPct"),
+                    "top10CurrentChange1hPct": signal.get("top10CurrentChange1hPct"),
+                })
             if state.get("assetQty", 0) > 0:
                 pass
             elif open_count < CONFIG["microMaxPositions"] and signal.get("buy") and entry_allowed:
@@ -1758,6 +1784,7 @@ class CryptoPaperBot:
             "ranking12h": getattr(self, "micro_ranking12h", []),
             "ranking1h": getattr(self, "micro_ranking1h", []),
             "positions": self.micro_positions,
+            "top10Debug": getattr(self, "micro_top10_debug", []),
             "surgeArchive": self.micro_surge_archive_status,
             "config": CONFIG,
         }
