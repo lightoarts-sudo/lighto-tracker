@@ -931,6 +931,16 @@ class CryptoPaperBot:
         ranking2h = sorted(candidates, key=lambda row: row.get("pct2h", 0), reverse=True)
         ranking3h = sorted(candidates, key=lambda row: row.get("pct3h", 0), reverse=True)
         ranking6h = sorted(candidates, key=lambda row: row.get("pct6h", 0), reverse=True)
+        # Only positions whose instruments are in the current scan universe can be
+        # updated, displayed, and eventually closed by this run. Old paper states
+        # for delisted/no-longer-shortlisted instruments must not occupy all
+        # slots forever, otherwise newly deployed Render shadow probes never get
+        # a chance to collect samples.
+        open_count = sum(
+            1
+            for key, state in states.items()
+            if state.get("assetQty", 0) > 0 and key.split("::", 1)[-1] in archive_sources
+        )
         await self._archive_micro_surge_if_due(ranking1h, archive_sources)
         for strategy in CONFIG.get("microActiveStrategies") or []:
             if strategy in MICRO_TOP10_OPTIMIZED_STRATEGIES:
