@@ -25,7 +25,7 @@ import signal
 import time
 from contextlib import contextmanager
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -74,6 +74,133 @@ PAUSE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_PAUSE_FILE", "data/okx_top10_l
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+GUARD_DEFAULTS = {
+    "min_pct1h": 3.0,
+    "min_pct15": 0.3,
+    "min_volume_ratio": 1.2,
+    "max_spread_pct": 0.12,
+    "max_abs_buy_slippage_pct": 0.5,
+    "cooldown_minutes_after_loss": 180,
+    "max_instrument_trades_12h": 1,
+    "blacklist_after_losses_12h": 2,
+    "blacklist_loss_usdt_12h": -0.15,
+    "blacklist_hours": 24,
+    "daily_loss_limit_usdt": -1.0,
+    "consecutive_loss_limit": 5,
+}
+
+
+def parse_iso_ts(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
+def _guard_value(config: dict[str, Any] | None, key: str) -> float:
+    return float((config or {}).get(key, GUARD_DEFAULTS[key]))
+
+
+def _risk_state(state: dict[str, Any]) -> dict[str, Any]:
+    risk = state.setdefault("risk", {})
+    risk.setdefault("instrumentStats", {})
+    risk.setdefault("closedTrades", [])
+    return risk
+
+
+def _recent_items(items: list[dict[str, Any]], now_iso: str, hours: float = 12.0) -> list[dict[str, Any]]:
+    now = parse_iso_ts(now_iso) or datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=hours)
+    recent = []
+    for item in items:
+        ts = parse_iso_ts(item.get("ts"))
+        if ts and ts >= cutoff:
+            recent.append(item)
+    return recent
+
+
+def record_instrument_trade_outcome(state: dict[str, Any], inst_id: str, pnl_usdt: float, now_iso: str | None = None) -> None:
+    """Persist risk facts used by guarded live-entry filters."""
+    now_iso = now_iso or utc_now_iso()
+    risk = _risk_state(state)
+    risk["closedTrades"].append({"ts": now_iso, "instId": inst_id, "pnlUsd": float(pnl_usdt)})
+    risk["closedTrades"] = _recent_items(risk["closedTrades"], now_iso, 24.0)
+
+    stats = risk["instrumentStats"].setdefault(inst_id, {"closedTrades": [], "lossStreak": 0})
+    stats["closedTrades"].append({"ts": now_iso, "pnlUsd": float(pnl_usdt)})
+    stats["closedTrades"] = _recent_items(stats["closedTrades"], now_iso, 24.0)
+    if pnl_usdt <= 0:
+        stats["lossStreak"] = int(stats.get("lossStreak") or 0) + 1
+        stats["lastLossAt"] = now_iso
+    else:
+        stats["lossStreak"] = 0
+    recent_12h = _recent_items(stats["closedTrades"], now_iso, 12.0)
+    losses_12h = [row for row in recent_12h if float(row.get("pnlUsd") or 0) <= 0]
+    pnl_12h = sum(float(row.get("pnlUsd") or 0) for row in recent_12h)
+    if len(losses_12h) >= int(GUARD_DEFAULTS["blacklist_after_losses_12h"]) or pnl_12h <= GUARD_DEFAULTS["blacklist_loss_usdt_12h"]:
+        until = (parse_iso_ts(now_iso) or datetime.now(timezone.utc)) + timedelta(hours=GUARD_DEFAULTS["blacklist_hours"])
+        stats["blacklistedUntil"] = until.isoformat(timespec="seconds")
+
+
+def guarded_entry_reject_reason(inst_id: str, signal: dict[str, Any], state: dict[str, Any], now_iso: str | None = None, config: dict[str, Any] | None = None) -> str | None:
+    """Return a machine-readable reason to skip risky Top10 entries, or None."""
+    now_iso = now_iso or utc_now_iso()
+    pct1h = float(signal.get("pct1h") or 0)
+    pct15 = float(signal.get("pct15") or 0)
+    pct2h = float(signal.get("pct2h") or 0)
+    pct3h = float(signal.get("pct3h") or 0)
+    volume_ratio = float(signal.get("volumeRatio") or 0)
+    spread_pct = abs(float(signal.get("spreadPct") or 0))
+    buy_slippage = abs(float(signal.get("buySlippagePct") if signal.get("buySlippagePct") is not None else signal.get("slippagePct") or 0))
+    if pct1h < _guard_value(config, "min_pct1h"):
+        return "weak_pct1h"
+    if pct15 < _guard_value(config, "min_pct15"):
+        return "weak_pct15"
+    if pct2h < 0:
+        return "negative_pct2h"
+    if pct3h < 0:
+        return "negative_pct3h"
+    if volume_ratio < _guard_value(config, "min_volume_ratio"):
+        return "weak_volume"
+    if spread_pct > _guard_value(config, "max_spread_pct"):
+        return "wide_spread"
+    if buy_slippage > _guard_value(config, "max_abs_buy_slippage_pct"):
+        return "excessive_buy_slippage"
+
+    risk = state.get("risk") or {}
+    stats = (risk.get("instrumentStats") or {}).get(inst_id) or {}
+    blacklist_until = parse_iso_ts(stats.get("blacklistedUntil"))
+    now = parse_iso_ts(now_iso) or datetime.now(timezone.utc)
+    if blacklist_until and blacklist_until > now:
+        return "instrument_blacklisted"
+    last_loss_at = parse_iso_ts(stats.get("lastLossAt"))
+    if last_loss_at and now - last_loss_at < timedelta(minutes=_guard_value(config, "cooldown_minutes_after_loss")):
+        return "cooldown_after_loss"
+    recent_12h = _recent_items(stats.get("closedTrades") or [], now_iso, 12.0)
+    if len(recent_12h) >= int(_guard_value(config, "max_instrument_trades_12h")):
+        return "instrument_12h_trade_limit"
+    return None
+
+
+def should_pause_for_global_loss(state: dict[str, Any], now_iso: str | None = None, config: dict[str, Any] | None = None) -> str | None:
+    now_iso = now_iso or utc_now_iso()
+    risk = state.get("risk") or {}
+    recent = _recent_items(risk.get("closedTrades") or [], now_iso, 24.0)
+    if sum(float(row.get("pnlUsd") or 0) for row in recent) <= _guard_value(config, "daily_loss_limit_usdt"):
+        return "daily_loss_limit"
+    loss_streak = 0
+    for row in reversed(recent):
+        if float(row.get("pnlUsd") or 0) <= 0:
+            loss_streak += 1
+        else:
+            break
+    if loss_streak >= int(_guard_value(config, "consecutive_loss_limit")):
+        return "consecutive_loss_limit"
+    return None
 
 
 def pid_is_running(pid: int) -> bool:
@@ -351,8 +478,43 @@ class Pilot:
 
     def load_state(self) -> dict[str, Any]:
         if STATE_PATH.exists():
-            return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        return {"startedAt": utc_now_iso(), "entriesPlaced": 0, "positions": {}, "completed": False}
+            state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        else:
+            state = {"startedAt": utc_now_iso(), "entriesPlaced": 0, "positions": {}, "completed": False}
+        state.setdefault("positions", {})
+        state.setdefault("entriesPlaced", 0)
+        state.setdefault("completed", False)
+        _risk_state(state)
+        return state
+
+    def guard_config(self) -> dict[str, Any]:
+        return {
+            "min_pct1h": self.args.min_pct1h,
+            "min_pct15": self.args.min_pct15,
+            "min_volume_ratio": self.args.min_volume_ratio,
+            "max_spread_pct": self.args.max_spread_pct,
+            "max_abs_buy_slippage_pct": self.args.max_abs_buy_slippage_pct,
+            "cooldown_minutes_after_loss": self.args.cooldown_minutes_after_loss,
+            "max_instrument_trades_12h": self.args.max_instrument_trades_12h,
+            "daily_loss_limit_usdt": self.args.daily_loss_limit_usdt,
+            "consecutive_loss_limit": self.args.consecutive_loss_limit,
+        }
+
+    def pause_new_entries(self, reason: str) -> None:
+        PAUSE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        PAUSE_PATH.write_text(f"{utc_now_iso()} {reason}\n", encoding="utf-8")
+        self.state["pausedReason"] = reason
+        self.state["pausedAt"] = utc_now_iso()
+        self.save_state()
+        self.log("auto_paused", reason=reason, pauseFile=str(PAUSE_PATH), strategy=STRATEGY)
+
+    def record_trade_outcome(self, inst_id: str, pnl_usdt: float, source: str) -> None:
+        record_instrument_trade_outcome(self.state, inst_id, pnl_usdt, utc_now_iso())
+        self.save_state()
+        reason = should_pause_for_global_loss(self.state, utc_now_iso(), self.guard_config())
+        if reason and not PAUSE_PATH.exists():
+            self.pause_new_entries(reason)
+        self.log("RISK_TRADE_OUTCOME", instId=inst_id, pnlUsd=pnl_usdt, source=source, pauseReason=reason)
 
     def save_state(self) -> None:
         STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -380,12 +542,15 @@ class Pilot:
         state = position.get("state", {})
         local_sz = float(state.get("contractSize") or 0)
         if exchange_sz <= 0:
+            approx_loss = -abs(float(state.get("margin") or self.args.margin_usdt) * float(state.get("leverage") or self.args.leverage) * (self.args.hard_stop_pct / 100.0))
             self.state["positions"].pop(inst_id, None)
+            self.record_trade_outcome(inst_id, approx_loss, "exchange_position_closed_approx_hard_stop")
             self.save_state()
             self.log(
                 "EXCHANGE_POSITION_CLOSED",
                 instId=inst_id,
                 localSz=local_sz,
+                approxRiskPnl=approx_loss,
                 hardStopAlgoId=position.get("hardStopAlgoId") or state.get("hardStopAlgoId"),
                 note="OKX reports no open position; likely exchange-native hard stop or manual close filled between runner polls",
             )
@@ -401,6 +566,7 @@ class Pilot:
             self.save_state()
             self.log("EXCHANGE_POSITION_SIZE_SYNC", instId=inst_id, localSz=local_sz, exchangeSz=exchange_sz)
         return True
+
 
     async def load_instruments(self, client: httpx.AsyncClient) -> None:
         resp = await client.get(f"{OKX_BASE}/api/v5/public/instruments", params={"instType": "SWAP"})
@@ -428,6 +594,10 @@ class Pilot:
         for rank, (change_1h, inst_id, ticker, candles, price) in enumerate(scanned[:10], start=1):
             signal = micro_top10_optimized_signal(ticker, candles, STRATEGY, rank_1h=rank, collector_change_1h_pct=change_1h)
             if signal.get("buy"):
+                reject_reason = guarded_entry_reject_reason(inst_id, signal, self.state, utc_now_iso(), self.guard_config())
+                if reject_reason:
+                    self.log("skip_entry_guard", instId=inst_id, reason=reject_reason, rank1h=rank, signal={k: signal.get(k) for k in ("pct1h", "pct2h", "pct3h", "pct15", "volumeRatio", "spreadPct", "buySlippagePct")})
+                    continue
                 signals.append((inst_id, signal, price))
         return signals
 
@@ -577,6 +747,7 @@ class Pilot:
         state["trades"] = state.get("trades", 0) + 1
         if full_exit:
             self.state["positions"].pop(inst_id, None)
+            self.record_trade_outcome(inst_id, state.get("realizedPnl", realized_pnl), "runner_sell")
         else:
             position["state"] = state
             self.state["positions"][inst_id] = position
@@ -641,7 +812,12 @@ class Pilot:
                         self.state["positions"][inst_id] = position
                         self.save_state()
 
-                if self.args.max_entries <= 0 or self.state["entriesPlaced"] < self.args.max_entries:
+                pause_reason = should_pause_for_global_loss(self.state, utc_now_iso(), self.guard_config())
+                if pause_reason:
+                    self.pause_new_entries(pause_reason)
+                    if not self.state.get("positions"):
+                        return
+                if not pause_reason and (self.args.max_entries <= 0 or self.state["entriesPlaced"] < self.args.max_entries):
                     signals = await self.scan_top10_strategy(client)
                     for inst_id, signal, price in signals:
                         if self.args.max_entries > 0 and self.state["entriesPlaced"] >= self.args.max_entries:
@@ -660,7 +836,7 @@ class Pilot:
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="1H Top10 OKX live pilot with exchange-native hard stop")
-    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_ENTRIES", os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "0"))), help="maximum entries before stopping; 0 or negative means unlimited")
+    p.add_argument("--max-entries", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_ENTRIES", os.environ.get("OKX_STRATEGY22_PILOT_MAX_ENTRIES", "10"))), help="maximum entries before stopping; guarded live mode refuses unlimited unless --allow-unlimited-live is provided")
     p.add_argument("--margin-usdt", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MARGIN_USDT", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_USDT", "2"))))
     p.add_argument("--leverage", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_LEVERAGE", os.environ.get("OKX_STRATEGY22_PILOT_LEVERAGE", "5"))))
     p.add_argument("--margin-mode", default=os.environ.get("OKX_TOP10_PILOT_MARGIN_MODE", os.environ.get("OKX_STRATEGY22_PILOT_MARGIN_MODE", "isolated")))
@@ -668,6 +844,16 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--poll-seconds", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_POLL_SECONDS", os.environ.get("OKX_STRATEGY22_PILOT_POLL_SECONDS", "300"))))
     p.add_argument("--scan-pause", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_SCAN_PAUSE", os.environ.get("OKX_STRATEGY22_PILOT_SCAN_PAUSE", "0.08"))))
     p.add_argument("--hard-stop-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_HARD_STOP_PCT", os.environ.get("OKX_STRATEGY22_PILOT_HARD_STOP_PCT", "1.0"))), help="exchange-native hard stop loss percentage placed immediately after each live entry")
+    p.add_argument("--min-pct1h", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_PCT1H", "3.0")))
+    p.add_argument("--min-pct15", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_PCT15", "0.3")))
+    p.add_argument("--min-volume-ratio", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_VOLUME_RATIO", "1.2")))
+    p.add_argument("--max-spread-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MAX_SPREAD_PCT", "0.12")))
+    p.add_argument("--max-abs-buy-slippage-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MAX_ABS_BUY_SLIPPAGE_PCT", "0.5")))
+    p.add_argument("--cooldown-minutes-after-loss", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_COOLDOWN_MINUTES_AFTER_LOSS", "180")))
+    p.add_argument("--max-instrument-trades-12h", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_MAX_INSTRUMENT_TRADES_12H", "1")))
+    p.add_argument("--daily-loss-limit-usdt", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_DAILY_LOSS_LIMIT_USDT", "-1.0")))
+    p.add_argument("--consecutive-loss-limit", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_CONSECUTIVE_LOSS_LIMIT", "5")))
+    p.add_argument("--allow-unlimited-live", action="store_true", help="explicitly allow max_entries<=0 in live mode; unsafe without separate approval")
     p.add_argument("--once", action="store_true", help="run one scan/manage pass and exit")
     p.add_argument("--i-understand-live-trading", action="store_true", help="required together with OKX_TOP10_PILOT_LIVE=1 to place real orders")
     args = p.parse_args()
@@ -677,6 +863,8 @@ def parse_args() -> argparse.Namespace:
     args.live = bool(live_env and args.i_understand_live_trading)
     if live_env and not args.i_understand_live_trading:
         raise SystemExit("OKX_TOP10_PILOT_LIVE=1 set, but --i-understand-live-trading was not provided; refusing to place real orders")
+    if args.live and args.max_entries <= 0 and not args.allow_unlimited_live:
+        raise SystemExit("guarded live mode refuses unlimited entries; set --max-entries > 0 or explicitly pass --allow-unlimited-live")
     return args
 
 

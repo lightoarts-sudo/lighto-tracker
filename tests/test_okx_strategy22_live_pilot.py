@@ -14,6 +14,10 @@ from okx_strategy22_live_pilot import (
     okx_position_contract_size,
     sign_okx,
     slippage_pct,
+    guarded_entry_reject_reason,
+    record_instrument_trade_outcome,
+    should_pause_for_global_loss,
+    parse_args,
 )
 
 
@@ -84,3 +88,48 @@ def test_okx_position_contract_size_reads_flat_and_open_positions():
     assert okx_position_contract_size(rows, "ABC-USDT-SWAP") == 0.0
     assert okx_position_contract_size(rows, "XYZ-USDT-SWAP") == 3.0
     assert okx_position_contract_size(rows, "MISSING-USDT-SWAP") == 0.0
+
+
+def test_guarded_entry_rejects_weak_momentum_and_bad_liquidity():
+    base = {"pct1h": 4.0, "pct2h": 1.0, "pct3h": 1.0, "pct15": 0.6, "volumeRatio": 1.6, "spreadPct": 0.04, "buySlippagePct": 0.1}
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", base, {}, "2026-06-04T00:00:00+00:00") is None
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", {**base, "pct15": -0.1}, {}, "2026-06-04T00:00:00+00:00") == "weak_pct15"
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", {**base, "volumeRatio": 0.9}, {}, "2026-06-04T00:00:00+00:00") == "weak_volume"
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", {**base, "pct2h": -0.1}, {}, "2026-06-04T00:00:00+00:00") == "negative_pct2h"
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", {**base, "pct3h": -0.1}, {}, "2026-06-04T00:00:00+00:00") == "negative_pct3h"
+    assert guarded_entry_reject_reason("ABC-USDT-SWAP", {**base, "spreadPct": 0.2}, {}, "2026-06-04T00:00:00+00:00") == "wide_spread"
+
+
+def test_record_trade_outcome_enforces_cooldown_and_blacklist_after_repeated_losses():
+    state = {"risk": {}}
+    first = "2026-06-04T01:00:00+00:00"
+    second = "2026-06-04T02:00:00+00:00"
+    signal = {"pct1h": 4.0, "pct2h": 1.0, "pct3h": 1.0, "pct15": 0.6, "volumeRatio": 1.6, "spreadPct": 0.04, "buySlippagePct": 0.1}
+
+    record_instrument_trade_outcome(state, "OPN-USDT-SWAP", -0.08, first)
+    assert guarded_entry_reject_reason("OPN-USDT-SWAP", signal, state, "2026-06-04T02:30:00+00:00") == "cooldown_after_loss"
+
+    record_instrument_trade_outcome(state, "OPN-USDT-SWAP", -0.09, second)
+    assert guarded_entry_reject_reason("OPN-USDT-SWAP", signal, state, "2026-06-04T05:30:00+00:00") == "instrument_blacklisted"
+
+
+def test_global_loss_guard_pauses_after_loss_or_loss_streak():
+    state = {"risk": {}}
+    for i in range(5):
+        record_instrument_trade_outcome(state, f"LOSS{i}-USDT-SWAP", -0.05, f"2026-06-04T0{i}:00:00+00:00")
+    assert should_pause_for_global_loss(state, "2026-06-04T05:00:00+00:00") == "consecutive_loss_limit"
+
+    state = {"risk": {}}
+    for i in range(4):
+        record_instrument_trade_outcome(state, f"BIG{i}-USDT-SWAP", -0.26, f"2026-06-04T0{i}:00:00+00:00")
+    assert should_pause_for_global_loss(state, "2026-06-04T05:00:00+00:00") == "daily_loss_limit"
+
+
+def test_live_unlimited_requires_explicit_override(monkeypatch):
+    monkeypatch.setenv("OKX_TOP10_PILOT_LIVE", "1")
+    monkeypatch.setattr("sys.argv", ["okx_strategy22_live_pilot.py", "--i-understand-live-trading", "--max-entries", "0"])
+    with pytest.raises(SystemExit, match="refuses unlimited entries"):
+        parse_args()
+
+    monkeypatch.setattr("sys.argv", ["okx_strategy22_live_pilot.py", "--i-understand-live-trading", "--max-entries", "0", "--allow-unlimited-live"])
+    assert parse_args().max_entries == 0
