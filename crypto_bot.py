@@ -1069,7 +1069,7 @@ class CryptoPaperBot:
                 })
             if state.get("assetQty", 0) > 0:
                 pass
-            elif open_count < CONFIG["microMaxPositions"] and signal.get("buy") and entry_allowed:
+            elif (open_count < CONFIG["microMaxPositions"] or params.get("shadow_only")) and signal.get("buy") and entry_allowed:
                 state["top10Params"] = dict(params)
                 state["top10SessionActive"] = True
                 state["top10SessionSeen"] = True
