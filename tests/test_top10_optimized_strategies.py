@@ -45,6 +45,9 @@ def test_top10_optimized_strategies_are_the_default_render_active_set():
         "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
         "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
         "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
+        "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
+        "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
+        "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
     ]
 
 
@@ -130,6 +133,26 @@ def test_top10_scan_signal_requires_delay_current_reclaim_and_volume_filters():
     )
     assert low_volume["buy"] is False
     assert low_volume["top10VolumeOk"] is False
+
+
+def test_top10_shadow_strategy_is_looser_but_marked_shadow_only():
+    candles = make_top10_candles()
+    strategy = "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12"
+    assert crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy]["shadow_only"] is True
+
+    signal = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000, "bidPx": "103.1", "askPx": "103.3"},
+        candles,
+        strategy,
+        rank_1h=5,
+        collector_change_1h_pct=2.2,
+        session_age_bars=0,
+    )
+
+    assert signal["buy"] is True
+    assert signal["reason"] == "top10shadow1_top10_entry"
+    assert signal["top10DelayOk"] is True
+    assert signal["top10ReclaimOk"] is True
 
 
 def test_top10_optimized_exit_uses_variant_specific_stop_and_time_stop():

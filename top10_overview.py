@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-TOP10_RENDER_STRATEGY_IDS = [
+TOP10_OPTIMIZER_STRATEGY_IDS = [
     "top10v1_rank5_chg3_10_sl1_trail09_t12",
     "top10v2_rank5_chg3_10_sl1_trail09_t18",
     "top10v3_rank5_chg3_10_sl08_trail09_t12",
@@ -10,6 +10,15 @@ TOP10_RENDER_STRATEGY_IDS = [
     "top10v5_delay1_rank3_chg1_5_sl15_trail12_t12",
 ]
 TOP10_OKX_LIVE_STRATEGY_ID = "top10v1_rank5_chg3_10_sl1_trail09_t12"
+
+
+def _is_top10_strategy(strategy):
+    return isinstance(strategy, str) and strategy.startswith("top10")
+
+
+def _is_shadow_only_strategy(strategy, strategy_params=None):
+    params = (strategy_params or {}).get(strategy) or {}
+    return bool(params.get("shadow_only")) or (isinstance(strategy, str) and strategy.startswith("top10shadow"))
 
 
 def _rnd(value, digits=4):
@@ -63,7 +72,7 @@ def load_top10_optimizer_snapshot():
                 entry = row.get("entry") or {}
                 exit_cfg = row.get("exit") or {}
                 parsed.append({
-                    "strategy": TOP10_RENDER_STRATEGY_IDS[idx] if idx < len(TOP10_RENDER_STRATEGY_IDS) else f"top10v{idx+1}",
+                    "strategy": TOP10_OPTIMIZER_STRATEGY_IDS[idx] if idx < len(TOP10_OPTIMIZER_STRATEGY_IDS) else f"top10v{idx+1}",
                     "optimizerName": f"{entry.get('name')} + {exit_cfg.get('name')}",
                     "entries": int(row.get("entries") or 0),
                     "closedTrades": int(row.get("closed_trades") or 0),
@@ -81,17 +90,29 @@ def load_top10_optimizer_snapshot():
     return {"dataset": dataset, "strategies": strategies, "source": source}
 
 
-def summarize_top10_render_performance(config, performance12h):
+def summarize_top10_render_performance(config, performance12h, strategy_params=None):
     rows_by_strategy = {row.get("strategy"): row for row in (performance12h.get("byStrategy") or [])}
     current_rows = {row.get("strategy"): row for row in ((performance12h.get("current") or {}).get("rows") or [])}
-    active = set(config.get("microActiveStrategies") or [])
+    active_list = list(config.get("microActiveStrategies") or [])
+    active = set(active_list)
+    strategies = []
+    for strategy in active_list:
+        if _is_top10_strategy(strategy) and strategy not in strategies:
+            strategies.append(strategy)
+    for strategy in list(current_rows) + list(rows_by_strategy):
+        if _is_top10_strategy(strategy) and strategy not in strategies:
+            strategies.append(strategy)
     out = []
-    for strategy in TOP10_RENDER_STRATEGY_IDS:
+    for strategy in strategies:
         hist = rows_by_strategy.get(strategy, {})
         cur = current_rows.get(strategy, {})
+        shadow_only = _is_shadow_only_strategy(strategy, strategy_params)
         out.append({
             "strategy": strategy,
             "deployed": strategy in active,
+            "shadowOnly": shadow_only,
+            "liveEligible": (strategy in active) and not shadow_only,
+            "purpose": "Render shadow-only sample collection" if shadow_only else "Render paper/shadow live-candidate monitoring",
             "currentEntries": int(cur.get("entries") or 0),
             "currentClosedTrades": int(cur.get("closedTrades") or 0),
             "currentOpenTrades": int(cur.get("openTrades") or 0),
@@ -124,17 +145,25 @@ async def top10_strategy_overview_payload(*, crypto_bot, config, okx_live_perfor
     okx_strategy = next((row for row in (okx.get("byStrategy") or []) if row.get("strategy") == TOP10_OKX_LIVE_STRATEGY_ID), None)
     if okx_strategy is None:
         okx_strategy = {"strategy": TOP10_OKX_LIVE_STRATEGY_ID, "closedTrades": 0, "wins": 0, "losses": 0, "winRate": 0, "pnlUsd": 0, "pnlPct": 0}
+    strategy_params = getattr(crypto_bot, "MICRO_TOP10_OPTIMIZED_STRATEGIES", {})
+    render_strategies = summarize_top10_render_performance(config, performance12h, strategy_params)
+    active_top10 = [s for s in (config.get("microActiveStrategies") or []) if _is_top10_strategy(s)]
+    shadow_top10 = [s for s in active_top10 if _is_shadow_only_strategy(s, strategy_params)]
     return {
         "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "top10StrategyCount": len(optimizer.get("strategies") or []),
         "optimizer": optimizer,
         "render": {
             "deployedStrategies": list(config.get("microActiveStrategies") or []),
-            "top10DeployedCount": sum(1 for s in config.get("microActiveStrategies", []) if s in TOP10_RENDER_STRATEGY_IDS),
+            "activeTop10Strategies": active_top10,
+            "shadowOnlyStrategies": shadow_top10,
+            "top10DeployedCount": len(active_top10),
+            "top10ShadowOnlyCount": len(shadow_top10),
+            "top10LiveEligibleCount": len(active_top10) - len(shadow_top10),
             "lastRunAt": crypto_bot.micro_last_run_at,
             "lastError": crypto_bot.micro_last_error,
             "performance12hCurrent": performance12h.get("current"),
-            "strategies": summarize_top10_render_performance(config, performance12h),
+            "strategies": render_strategies,
         },
         "okxLive": {
             "strategy": TOP10_OKX_LIVE_STRATEGY_ID,
@@ -160,9 +189,9 @@ TOP10_STRATEGY_OVERVIEW_HTML = """<!doctype html><html><head><meta charset="utf-
 <script>
 const $=s=>document.querySelector(s);$("#refresh").onclick=()=>load();setInterval(load,15000);load();
 async function load(){try{const d=await (await fetch('/api/crypto/top10-strategies/overview')).json();render(d);}catch(e){$("#status").textContent='Load failed: '+e;}}
-function render(d){const opt=d.optimizer||{}, ds=opt.dataset||{}, ren=d.render||{}, ok=d.okxLive||{}, sum=ok.summary||{}, strat=ok.strategyPerformance||{};$("#status").textContent=`Updated ${d.updatedAt?new Date(d.updatedAt).toLocaleString():'--'} · Render ${ren.lastRunAt?new Date(ren.lastRunAt).toLocaleString():'not run yet'}${ren.lastError?' · error '+ren.lastError:''}`;$("#allCount").textContent=d.top10StrategyCount||0;$("#renderCount").textContent=`${ren.top10DeployedCount||0} / ${(ren.deployedStrategies||[]).length}`;$("#okxStrategy").textContent=ok.strategy||'--';$("#okxPnl").textContent=`${money(strat.pnlUsd)} / ${pct(strat.pnlPct)}`;$("#okxPnl").className=tone(strat.pnlUsd);$("#optimizerMeta").textContent=`Source ${opt.source||''} · sessions ${ds.sessions||0} / closed ${ds.closedSessions||0} · instruments ${ds.instruments||0} · ${ds.minTs||''} → ${ds.maxTs||''} · round-trip cost ${pct(ds.roundTripCostPct)}`;renderOptimizer(opt.strategies||[]);$("#renderMeta").textContent=`Active strategies: ${(ren.deployedStrategies||[]).join(', ')} · latest 12h window ${(ren.performance12hCurrent||{}).windowStartTaipei||'--'} → ${(ren.performance12hCurrent||{}).windowEndTaipei||'--'}`;renderRender(ren.strategies||[]);$("#okxMeta").textContent=`OKX account ${(ok.account||{}).ok?'OK':'not available'} · ${(ok.account||{}).simulated?'simulated':'real'}${ok.snapshotFallback?' · public snapshot fallback '+(ok.snapshotUpdatedAt?new Date(ok.snapshotUpdatedAt).toLocaleString():''):''} · open positions ${sum.openPositions||0} · closed ${strat.closedTrades||0} · logs ${ok.logGlob||''}`;renderOkx(strat,sum);renderPositions(ok.openPositions||[]);}
+function render(d){const opt=d.optimizer||{}, ds=opt.dataset||{}, ren=d.render||{}, ok=d.okxLive||{}, sum=ok.summary||{}, strat=ok.strategyPerformance||{};$("#status").textContent=`Updated ${d.updatedAt?new Date(d.updatedAt).toLocaleString():'--'} · Render ${ren.lastRunAt?new Date(ren.lastRunAt).toLocaleString():'not run yet'}${ren.lastError?' · error '+ren.lastError:''}`;$("#allCount").textContent=d.top10StrategyCount||0;$("#renderCount").textContent=`${ren.top10DeployedCount||0} active (${ren.top10LiveEligibleCount||0} live-candidate / ${ren.top10ShadowOnlyCount||0} shadow)`;$("#okxStrategy").textContent=ok.strategy||'--';$("#okxPnl").textContent=`${money(strat.pnlUsd)} / ${pct(strat.pnlPct)}`;$("#okxPnl").className=tone(strat.pnlUsd);$("#optimizerMeta").textContent=`Source ${opt.source||''} · sessions ${ds.sessions||0} / closed ${ds.closedSessions||0} · instruments ${ds.instruments||0} · ${ds.minTs||''} → ${ds.maxTs||''} · round-trip cost ${pct(ds.roundTripCostPct)}`;renderOptimizer(opt.strategies||[]);$("#renderMeta").textContent=`Render active Top10: ${(ren.activeTop10Strategies||[]).join(', ')} · shadow-only: ${(ren.shadowOnlyStrategies||[]).join(', ')||'none'} · latest 12h window ${(ren.performance12hCurrent||{}).windowStartTaipei||'--'} → ${(ren.performance12hCurrent||{}).windowEndTaipei||'--'}`;renderRender(ren.strategies||[]);$("#okxMeta").textContent=`OKX account ${(ok.account||{}).ok?'OK':'not available'} · ${(ok.account||{}).simulated?'simulated':'real'}${ok.snapshotFallback?' · public snapshot fallback '+(ok.snapshotUpdatedAt?new Date(ok.snapshotUpdatedAt).toLocaleString():''):''} · open positions ${sum.openPositions||0} · closed ${strat.closedTrades||0} · logs ${ok.logGlob||''}`;renderOkx(strat,sum);renderPositions(ok.openPositions||[]);}
 function renderOptimizer(rows){if(!rows.length){$("#optimizer").innerHTML='<p>No optimizer rows.</p>';return}$("#optimizer").innerHTML=`<table><thead><tr><th>#</th><th>Strategy</th><th>Optimizer config</th><th>Trades</th><th>Win Rate</th><th>Net Avg Return</th><th>PF</th><th>Max Loss</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><strong>${esc(r.strategy)}</strong></td><td>${esc(r.optimizerName||'')}</td><td>${r.closedTrades||0} / ${r.entries||0}<br><span class="label">W ${r.wins||0} / L ${r.losses||0}</span></td><td>${pct(r.winRate)}</td><td class="${tone(r.netAvgReturnPct)}">${pct(r.netAvgReturnPct)}</td><td>${num(r.profitFactor)}</td><td class="bad">${pct(r.maxLossPct)}</td></tr>`).join('')}</tbody></table>`}
-function renderRender(rows){if(!rows.length){$("#render").innerHTML='<p>No Render Top10 rows.</p>';return}$("#render").innerHTML=`<table><thead><tr><th>Deployed</th><th>Strategy</th><th>Latest 12h</th><th>All monitored windows</th><th>Realized P/L</th><th>Cumulative Return</th><th>Annualized</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.deployed?'<span class="pill good">Render ON</span>':'<span class="pill">off</span>'}</td><td><strong>${esc(r.strategy)}</strong></td><td>entries ${r.currentEntries||0}, closed ${r.currentClosedTrades||0}, open ${r.currentOpenTrades||0}<br><span class="label">win ${pct(r.currentWinRate)} · avg ROE ${pct(r.currentAvgRoePct)}</span></td><td>closed ${r.closedTrades||0}<br><span class="label">days ${num(r.elapsedDays)}</span></td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.cumulativeReturnPct)}">${pct(r.cumulativeReturnPct)}</td><td class="${tone(r.annualizedReturnPct)}">${pct(r.annualizedReturnPct)}</td></tr>`).join('')}</tbody></table>`}
+function renderRender(rows){if(!rows.length){$("#render").innerHTML='<p>No Render Top10 rows.</p>';return}$("#render").innerHTML=`<table><thead><tr><th>Status</th><th>Strategy</th><th>Purpose</th><th>Latest 12h</th><th>All monitored windows</th><th>Realized P/L</th><th>Cumulative Return</th><th>Annualized</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.deployed?'<span class="pill good">Render ON</span>':'<span class="pill">off</span>'}<br>${r.shadowOnly?'<span class="pill">shadow-only</span>':(r.liveEligible?'<span class="pill good">live-candidate</span>':'')}</td><td><strong>${esc(r.strategy)}</strong></td><td>${esc(r.purpose||'')}</td><td>entries ${r.currentEntries||0}, closed ${r.currentClosedTrades||0}, open ${r.currentOpenTrades||0}<br><span class="label">win ${pct(r.currentWinRate)} · avg ROE ${pct(r.currentAvgRoePct)}</span></td><td>closed ${r.closedTrades||0}<br><span class="label">days ${num(r.elapsedDays)}</span></td><td class="${tone(r.realizedPnl)}">${money(r.realizedPnl)}</td><td class="${tone(r.cumulativeReturnPct)}">${pct(r.cumulativeReturnPct)}</td><td class="${tone(r.annualizedReturnPct)}">${pct(r.annualizedReturnPct)}</td></tr>`).join('')}</tbody></table>`}
 function renderOkx(r,sum){$("#okx").innerHTML=`<table><thead><tr><th>Live Strategy</th><th>Open</th><th>Closed</th><th>Wins/Losses</th><th>Win Rate</th><th>P/L USD</th><th>P/L %</th><th>Hard Stop Coverage</th></tr></thead><tbody><tr><td><strong>${esc(r.strategy||'')}</strong><br><span class="label">only strategy allowed on OKX pilot</span></td><td>${sum.openPositions||0}</td><td>${r.closedTrades||0}</td><td><span class="good">${r.wins||0}</span> / <span class="bad">${r.losses||0}</span></td><td>${pct(r.winRate)}</td><td class="${tone(r.pnlUsd)}">${money(r.pnlUsd)}</td><td class="${tone(r.pnlPct)}">${pct(r.pnlPct)}</td><td>${sum.hardStopProtectedBuys||0} / ${sum.buyEvents||0}</td></tr></tbody></table>`}
 function renderPositions(rows){if(!rows.length){$("#positions").innerHTML='<p>No open OKX positions from live log/API.</p>';return}$("#positions").innerHTML=`<table><thead><tr><th>Coin</th><th>Strategy</th><th>Entry Time</th><th>Entry</th><th>Margin</th><th>Size</th><th>Hard Stop</th><th>Reason</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r.instId}</strong></td><td>${esc(r.strategy)}</td><td>${dt(r.entryTime)}</td><td>${money(r.entryPrice)}</td><td>${money(r.margin)}</td><td>${num(r.sz)}</td><td>${(r.hardStopAlgoId||r.hardStopProtected)?'<span class="pill good">ON</span> '+money(r.hardStopPrice):'<span class="pill bad">missing</span>'}</td><td>${esc(r.entryReason||'')}</td></tr>`).join('')}</tbody></table>`}
 function money(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:6})}function num(v){return Number(v||0).toLocaleString(undefined,{maximumFractionDigits:4})}function pct(v){v=Number(v||0);return `${v>=0?'+':''}${v.toFixed(2)}%`}function tone(v){return Number(v)>=0?'good':'bad'}function dt(v){return v?new Date(v).toLocaleString():'--'}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}

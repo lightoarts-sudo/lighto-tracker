@@ -41,6 +41,9 @@ def test_strategy20_23_and_22_helpers_remain_available_but_not_in_current_top10_
         "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
         "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
         "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
+        "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
+        "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
+        "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
     ]
     assert not crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
     assert not crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")
