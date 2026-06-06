@@ -69,6 +69,7 @@ DEFAULT_STRATEGIES = [
     "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
     "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
     "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
+    "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
     "top10scan1v_d1_r3_chg3_12_cur1_vol12_sl1_tr15x05_t12",
     "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
     "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",

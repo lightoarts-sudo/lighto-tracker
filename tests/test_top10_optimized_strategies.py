@@ -44,11 +44,22 @@ def test_top10_optimized_strategies_are_the_default_render_active_set():
         "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
         "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
         "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
-        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
-        "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
-        "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
-        "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
+        "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
     ]
+
+
+def test_top10_scan6_matches_today_optimizer_fifth_candidate_params():
+    params = crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES["top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12"]
+    assert params["entry_delay_bars"] == 1
+    assert params["max_rank"] == 3
+    assert params["min_change_1h_pct"] == 3.0
+    assert params["max_change_1h_pct"] == 12.0
+    assert params["min_current_change_1h_pct"] == 1.0
+    assert params["require_change_reclaim"] is True
+    assert params["stop_loss_pct"] == 0.8
+    assert params["trailing_start_pct"] == 1.5
+    assert params["trailing_giveback_pct"] == 0.5
+    assert params["time_stop_bars"] == 12
 
 
 def test_top10_optimized_signal_requires_current_1h_top10_rank_and_change_band():
