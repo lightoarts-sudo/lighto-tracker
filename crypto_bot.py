@@ -87,7 +87,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12,top5dplus_score95_chg2_5_sl1_tr06x03_t6"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -464,6 +464,44 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_start_pct": 1.0,
         "trailing_giveback_pct": 0.5,
         "time_stop_bars": 18,
+    },
+    # D+ Render shadow candidate from the no-daily-cap Top5 quality-score replay.
+    # It is deliberately shadow-only: every signal that meets the quality score
+    # can paper-enter, while same-instrument Top5 session de-duplication is still
+    # handled by the production top10 session state. Do not promote to OKX live
+    # until fresh Render evidence confirms this short local replay.
+    "top5dplus_score95_chg2_5_sl1_tr06x03_t6": {
+        "version": "top5dplus",
+        "entry_delay_bars": 0,
+        "max_rank": 5,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 5.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "min_volume_ratio": 0.0,
+        "shadow_only": True,
+        "quality_score_threshold": 95.0,
+        "quality_rank_weight": 8.0,
+        "quality_change_peak_pct": 5.0,
+        "quality_change_peak_score": 25.0,
+        "quality_change_penalty": 7.0,
+        "quality_volume_weight": 8.0,
+        "quality_volume_cap_score": 20.0,
+        "quality_ema_bonus": 12.0,
+        "quality_green_bonus": 8.0,
+        "quality_upper_wick_bonus": 8.0,
+        "quality_close_pos_bonus": 6.0,
+        "quality_body_bonus": 5.0,
+        "quality_atr_bonus": 5.0,
+        "quality_max_upper_wick_ratio": 0.25,
+        "quality_min_close_position": 0.60,
+        "quality_min_body_ratio": 0.25,
+        "quality_atr_bonus_max_pct": 1.8,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.6,
+        "trailing_giveback_pct": 0.3,
+        "time_stop_bars": 6,
     },
 }
 
@@ -3423,6 +3461,58 @@ def micro_entry_confirmed(state, signal, price):
     )
 
 
+def micro_top10_quality_score(params, base, candles, rank_1h, entry_change_1h):
+    current = candles[-1]
+    close = float(current["close"])
+    open_ = float(current["open"])
+    high = float(current["high"])
+    low = float(current["low"])
+    candle_range = max(high - low, close * 0.0001)
+    upper_wick_ratio = (high - close) / candle_range
+    body_ratio = abs(close - open_) / candle_range
+    close_position = (close - low) / candle_range
+    closes = [c["close"] for c in candles]
+    ema9_values = ema_series(closes, 9)
+    ema21_values = ema_series(closes, 21)
+    ema9 = ema9_values[-1] if ema9_values else None
+    ema21 = ema21_values[-1] if ema21_values else None
+    atr_value = atr(candles, 14)
+    atr_pct = (atr_value / close) * 100 if atr_value and close else None
+    score = 0.0
+    if rank_1h is not None:
+        score += max(0, 6 - int(rank_1h)) * float(params.get("quality_rank_weight", 8.0))
+    score += max(
+        0,
+        float(params.get("quality_change_peak_score", 25.0))
+        - abs(float(entry_change_1h or 0) - float(params.get("quality_change_peak_pct", 5.0))) * float(params.get("quality_change_penalty", 7.0)),
+    )
+    score += min(
+        float(params.get("quality_volume_cap_score", 20.0)),
+        max(0.0, float(base.get("volumeRatio", 0) or 0)) * float(params.get("quality_volume_weight", 8.0)),
+    )
+    if ema9 is not None and ema21 is not None and ema9 > ema21:
+        score += float(params.get("quality_ema_bonus", 12.0))
+    if close > open_:
+        score += float(params.get("quality_green_bonus", 8.0))
+    if upper_wick_ratio <= float(params.get("quality_max_upper_wick_ratio", 0.25)):
+        score += float(params.get("quality_upper_wick_bonus", 8.0))
+    if close_position >= float(params.get("quality_min_close_position", 0.60)):
+        score += float(params.get("quality_close_pos_bonus", 6.0))
+    if body_ratio >= float(params.get("quality_min_body_ratio", 0.25)):
+        score += float(params.get("quality_body_bonus", 5.0))
+    if atr_pct is not None and atr_pct <= float(params.get("quality_atr_bonus_max_pct", 1.8)):
+        score += float(params.get("quality_atr_bonus", 5.0))
+    return {
+        "score": score,
+        "upperWickRatio": upper_wick_ratio,
+        "bodyRatio": body_ratio,
+        "closePosition": close_position,
+        "ema9": ema9,
+        "ema21": ema21,
+        "atrPct": atr_pct,
+    }
+
+
 def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collector_change_1h_pct=None, session_age_bars=0):
     params = MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy]
     base = micro_trend_signal(ticker, candles)
@@ -3446,6 +3536,12 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
         reclaim_ok = current_change_1h >= entry_change_1h - 1.0
     volume_ok = float(base.get("volumeRatio", 0) or 0) >= min_volume_ratio
     delay_ok = int(session_age_bars or 0) >= int(params.get("entry_delay_bars", 0))
+    quality_threshold = params.get("quality_score_threshold")
+    quality = None
+    quality_ok = True
+    if quality_threshold is not None:
+        quality = micro_top10_quality_score(params, base, candles, rank_1h, entry_change_1h)
+        quality_ok = quality["score"] >= float(quality_threshold)
     base.update({
         "collectorChange1hPct": rnd(entry_change_1h),
         "top10CurrentChange1hPct": rnd(current_change_1h),
@@ -3455,14 +3551,26 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
         "top10ReclaimOk": reclaim_ok,
         "top10VolumeOk": volume_ok,
         "top10DelayOk": delay_ok,
+        "top10QualityScoreOk": quality_ok,
         "top10EntryDelayBars": params.get("entry_delay_bars", 0),
         "top10EntryMaxRank": params["max_rank"],
         "top10MinChange1hPct": params["min_change_1h_pct"],
         "top10MaxChange1hPct": params["max_change_1h_pct"],
         "top10MinCurrentChange1hPct": min_current_change,
         "top10MinVolumeRatio": min_volume_ratio,
+        "top10QualityScoreThreshold": quality_threshold,
     })
-    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok:
+    if quality is not None:
+        base.update({
+            "top10QualityScore": rnd(quality["score"]),
+            "top10QualityUpperWickRatio": rnd(quality["upperWickRatio"]),
+            "top10QualityBodyRatio": rnd(quality["bodyRatio"]),
+            "top10QualityClosePosition": rnd(quality["closePosition"]),
+            "top10QualityEma9": rnd(quality["ema9"], 8) if quality["ema9"] is not None else None,
+            "top10QualityEma21": rnd(quality["ema21"], 8) if quality["ema21"] is not None else None,
+            "top10QualityAtrPct": rnd(quality["atrPct"]) if quality["atrPct"] is not None else None,
+        })
+    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok and quality_ok:
         base["buy"] = True
         base["reason"] = f"{params['version']}_top10_entry"
     return base

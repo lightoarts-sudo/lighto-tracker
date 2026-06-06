@@ -52,6 +52,7 @@ def test_top10_optimized_strategies_are_enabled_by_default():
         "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
         "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
         "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
+        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
     assert active == expected
     for strategy in expected:

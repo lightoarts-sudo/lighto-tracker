@@ -74,6 +74,7 @@ DEFAULT_STRATEGIES = [
     "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
     "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
     "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
+    "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
 ]
 RENDER_ELIGIBLE = [s for s in DEFAULT_STRATEGIES if s != "strategy1"]
 

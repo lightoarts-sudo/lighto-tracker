@@ -45,6 +45,7 @@ def test_top10_optimized_strategies_are_the_default_render_active_set():
         "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
         "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
         "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
+        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
 
 
@@ -164,6 +165,52 @@ def test_top10_shadow_strategy_is_looser_but_marked_shadow_only():
     assert signal["reason"] == "top10shadow1_top10_entry"
     assert signal["top10DelayOk"] is True
     assert signal["top10ReclaimOk"] is True
+
+
+def test_top5_dplus_is_shadow_only_no_daily_cap_quality_score_candidate():
+    strategy = "top5dplus_score95_chg2_5_sl1_tr06x03_t6"
+    params = crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy]
+    assert params["shadow_only"] is True
+    assert params["max_rank"] == 5
+    assert params["min_change_1h_pct"] == 2.0
+    assert params["max_change_1h_pct"] == 5.0
+    assert params["quality_score_threshold"] == 95.0
+    assert params["stop_loss_pct"] == 1.0
+    assert params["trailing_start_pct"] == 0.6
+    assert params["trailing_giveback_pct"] == 0.3
+    assert params["time_stop_bars"] == 6
+
+
+def test_top5_dplus_buys_only_when_quality_score_passes():
+    strategy = "top5dplus_score95_chg2_5_sl1_tr06x03_t6"
+    candles = make_top10_candles()
+    good = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000, "bidPx": "103.1", "askPx": "103.3"},
+        candles,
+        strategy,
+        rank_1h=1,
+        collector_change_1h_pct=4.5,
+        session_age_bars=0,
+    )
+    assert good["buy"] is True
+    assert good["reason"] == "top5dplus_top10_entry"
+    assert good["top10QualityScoreOk"] is True
+    assert good["top10QualityScore"] >= 95
+    assert good["top10DelayOk"] is True
+
+    ugly_candles = make_top10_candles()
+    ugly_candles[-1] = candle(103.0, high=105.0, low=102.8, open_=103.4, volume=180, t=80 * 300_000)
+    bad = crypto_bot.micro_top10_optimized_signal(
+        {"instId": "TEST-USDT-SWAP", "_quoteVol": 1_000_000, "bidPx": "102.9", "askPx": "103.1"},
+        ugly_candles,
+        strategy,
+        rank_1h=5,
+        collector_change_1h_pct=4.5,
+        session_age_bars=0,
+    )
+    assert bad["buy"] is False
+    assert bad["top10QualityScoreOk"] is False
+    assert bad["top10QualityScore"] < 95
 
 
 def test_top10_optimized_exit_uses_variant_specific_stop_and_time_stop():
