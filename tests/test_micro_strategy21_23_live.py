@@ -36,12 +36,11 @@ def test_strategy20_23_and_22_helpers_remain_available_but_not_in_current_top10_
     assert not crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
     assert not crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
-        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
-        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
-        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
-        "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12",
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12",
     ]
     assert not crypto_bot.micro_strategy_enabled("strategy21_multi_tf_intersection_ema9_bounce")
     assert not crypto_bot.micro_strategy_enabled("strategy24_top1h_delay_rank5_chg1_5")

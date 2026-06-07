@@ -40,13 +40,29 @@ def make_top10_candles():
 
 def test_top10_optimized_strategies_are_the_default_render_active_set():
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
-        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
-        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
-        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
-        "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12",
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12",
+        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12",
     ]
+
+
+def test_today_top10_scan_winners_are_shadow_only_with_optimizer_params():
+    params = crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES[
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12"
+    ]
+    assert params["shadow_only"] is True
+    assert params["entry_delay_bars"] == 2
+    assert params["max_rank"] == 5
+    assert params["min_change_1h_pct"] == 2.0
+    assert params["max_change_1h_pct"] == 8.0
+    assert params["min_current_change_1h_pct"] == 2.0
+    assert params["min_volume_ratio"] == 1.2
+    assert params["stop_loss_pct"] == 0.8
+    assert params["trailing_start_pct"] == 1.5
+    assert params["trailing_giveback_pct"] == 0.5
+    assert params["time_stop_bars"] == 12
 
 
 def test_top10_scan6_matches_today_optimizer_fifth_candidate_params():

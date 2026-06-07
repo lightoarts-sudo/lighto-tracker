@@ -71,6 +71,11 @@ DEFAULT_STRATEGIES = [
     "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
     "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
     "top10scan1v_d1_r3_chg3_12_cur1_vol12_sl1_tr15x05_t12",
+    "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
+    "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12",
+    "top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12",
+    "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12",
+    "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12",
     "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
     "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
     "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
@@ -469,7 +474,7 @@ def main():
     ap.add_argument("--db", default="data/okx_micro_5m_tracking.sqlite")
     ap.add_argument("--json-out", default="data/top10_1h_all_strategy_backtest_latest.json")
     ap.add_argument("--csv-out", default="data/top10_1h_all_strategy_backtest_latest.csv")
-    ap.add_argument("--min-trades", type=int, default=5, help="Minimum closed trades before a >40% win-rate strategy is selectable")
+    ap.add_argument("--min-trades", type=int, default=5, help="Minimum closed trades before a >40%% win-rate strategy is selectable")
     ap.add_argument("--limit-runs", type=int, default=None)
     args = ap.parse_args()
     bt = Backtester(args.db, DEFAULT_STRATEGIES, args.min_trades)
