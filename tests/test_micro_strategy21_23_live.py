@@ -32,11 +32,13 @@ def candle(close, high=None, low=None, open_=None, volume=100.0, t=0):
 
 def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
     # New production-ready strategies promoted from lab/backtest
-    assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
-    assert crypto_bot.micro_strategy_enabled("strategy23_top1h_clean_early_breakout")
-    assert crypto_bot.micro_strategy_enabled("strategy4_breakout_confirmation")
-    assert crypto_bot.micro_strategy_enabled("strategy22_2h_strength_breakout_retest")
-    assert crypto_bot.micro_strategy_enabled("s18_top2h_retest_runner")
+    # These are available but not in DEFAULT active set anymore
+    # (they can be enabled via CRYPTO_MICRO_ACTIVE_STRATEGIES env var)
+    
+    # New live-candidate strategies (now in default active set)
+    assert crypto_bot.micro_strategy_enabled("top10live1_d3_r3_chg1-12_green_vol1.5_sl1.0_be0.6_tr0.9x0.4_t12")
+    assert crypto_bot.micro_strategy_enabled("top10live2_d3_r3_chg1-12_green_vol1.5_sl1.5_be0.6_tr0.9x0.4_t12")
+    assert crypto_bot.micro_strategy_enabled("top10live3_d3_r3_chg1-12_green_vol1.5_sl2.0_be0.6_tr0.9x0.4_t12")
     
     # Old top10scan strategies now NOT in active set (demoted to shadow/research)
     assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12")
@@ -46,11 +48,18 @@ def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12")
     
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "strategy20_6h12h_cool_vwap_reclaim",
-        "strategy23_top1h_clean_early_breakout",
-        "strategy4_breakout_confirmation",
-        "strategy22_2h_strength_breakout_retest",
-        "s18_top2h_retest_runner",
+        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
+        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
+        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
+        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
+        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
+        "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
+        "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
+        "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
+        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
+        "top10live1_d3_r3_chg1-12_green_vol1.5_sl1.0_be0.6_tr0.9x0.4_t12",
+        "top10live2_d3_r3_chg1-12_green_vol1.5_sl1.5_be0.6_tr0.9x0.4_t12",
+        "top10live3_d3_r3_chg1-12_green_vol1.5_sl2.0_be0.6_tr0.9x0.4_t12",
     ]
 
 
