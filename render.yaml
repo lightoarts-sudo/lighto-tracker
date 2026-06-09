@@ -12,7 +12,7 @@ services:
       - key: DASHBOARD_PASSWORD
         value: lighto2026   # ← 部署後請在 Render 後台修改這個密碼
       - key: CRYPTO_MICRO_ACTIVE_STRATEGIES
-        value: top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12,top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12,top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12,top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18,top5dplus_score95_chg2_5_sl1_tr06x03_t6
+        value: top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12,top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12,top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12,top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18,top5dplus_score95_chg2_5_sl1_tr06x03_t6,top10live1_d3_r3_chg1-12_green_vol1.5_sl1.0_be0.6_tr0.9x0.4_t12,top10live2_d3_r3_chg1-12_green_vol1.5_sl1.5_be0.6_tr0.9x0.4_t12,top10live3_d3_r3_chg1-12_green_vol1.5_sl2.0_be0.6_tr0.9x0.4_t12
 
 databases:
   - name: lighto-tracker-db
