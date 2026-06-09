@@ -44,19 +44,25 @@ def make_strategy22_candles():
     return candles
 
 
-def test_top10_optimized_strategies_are_enabled_by_default():
+def test_new_default_strategies_are_enabled_by_default():
     active = crypto_bot.CONFIG["microActiveStrategies"]
     expected = [
-        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
-        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12",
-        "top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12",
-        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12",
-        "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12",
+        "strategy20_6h12h_cool_vwap_reclaim",
+        "strategy23_top1h_clean_early_breakout",
+        "strategy4_breakout_confirmation",
+        "strategy22_2h_strength_breakout_retest",
+        "s18_top2h_retest_runner",
     ]
     assert active == expected
     for strategy in expected:
-        assert strategy in crypto_bot.MICRO_TOP10_OPTIMIZED_STRATEGIES
         assert crypto_bot.micro_strategy_enabled(strategy)
+    
+    # Old top10scan strategies no longer in active set
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12")
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12")
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12")
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12")
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12")
 
 
 def test_strategy22_uses_tighter_shadow_watchlist_defaults():

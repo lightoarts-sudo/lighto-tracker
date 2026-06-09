@@ -87,7 +87,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12,top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12,top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12,top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12,top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy20_6h12h_cool_vwap_reclaim,strategy23_top1h_clean_early_breakout,strategy4_breakout_confirmation,strategy22_2h_strength_breakout_retest,s18_top2h_retest_runner"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
