@@ -40,18 +40,11 @@ def make_top10_candles():
 
 def test_top10_optimized_strategies_are_the_default_render_active_set():
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
-        "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
-        "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
-        "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
-        "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
-        "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
-        "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
-        "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
-        "top10live1_d3_r3_chg1-12_green_vol1.5_sl1.0_be0.6_tr0.9x0.4_t12",
-        "top10live2_d3_r3_chg1-12_green_vol1.5_sl1.5_be0.6_tr0.9x0.4_t12",
-        "top10live3_d3_r3_chg1-12_green_vol1.5_sl2.0_be0.6_tr0.9x0.4_t12",
+        "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
+        "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
+        "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18",
+        "strategy20_6h12h_cool_vwap_reclaim",
+        "strategy4_breakout_confirmation",
     ]
 
 

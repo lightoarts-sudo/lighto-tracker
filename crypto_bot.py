@@ -27,6 +27,14 @@ def _csv_env(name, default):
     return [item.strip() for item in raw.split(",") if item.strip()]
 
 
+_DEFAULT_MICRO_ACTIVE = (
+    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12,"
+    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18,"
+    "strategy20_6h12h_cool_vwap_reclaim,"
+    "strategy4_breakout_confirmation"
+)
+
 CONFIG = {
     "symbols": _symbols(),
     "dataSource": "OKX",
@@ -87,7 +95,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12,top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12,top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12,top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12,top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12,top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12,top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12,top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18,top5dplus_score95_chg2_5_sl1_tr06x03_t6,top10live1_d3_r3_chg1-12_green_vol1.5_sl1.0_be0.6_tr0.9x0.4_t12,top10live2_d3_r3_chg1-12_green_vol1.5_sl1.5_be0.6_tr0.9x0.4_t12,top10live3_d3_r3_chg1-12_green_vol1.5_sl2.0_be0.6_tr0.9x0.4_t12,auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8,auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12,auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18")
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", _DEFAULT_MICRO_ACTIVE),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -654,8 +662,8 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": true,
-        "require_green_confirm": true,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
@@ -672,8 +680,8 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": true,
-        "require_green_confirm": true,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
@@ -690,8 +698,8 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": true,
-        "require_green_confirm": true,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
