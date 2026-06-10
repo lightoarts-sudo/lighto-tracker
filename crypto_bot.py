@@ -652,9 +652,10 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 12,
     },
-    # === Auto-optimized strategies from 4H scheduler (2026-06-10) ===
-    # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry
+    # === Auto-optimized strategies from 4H scheduler (2026-06-10 16:00) ===
+    # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price
     # Not shadow_only — intended for Render paper/shadow monitoring with live-ready potential.
+    # All 3 passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
     "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 2,
@@ -665,6 +666,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "require_change_reclaim": True,
         "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
@@ -683,6 +685,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "require_change_reclaim": True,
         "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
@@ -701,6 +704,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "require_change_reclaim": True,
         "require_green_confirm": True,
         "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
@@ -708,6 +712,85 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,
+    },
+    # === Reclaim-entry strategies from training optimizer (2026-06-10) ===
+    # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price
+    # Target: >50% win rate per optimizer results (tmp_top10_training_optimizer_results.json)
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8": {
+        "version": "top10reclaim",
+        "entry_delay_bars": 2,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 0.0,
+        "shadow_only": False,
+        "stop_loss_pct": 1.5,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12": {
+        "version": "top10reclaim",
+        "entry_delay_bars": 2,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 0.0,
+        "shadow_only": False,
+        "stop_loss_pct": 1.5,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_be0.6_tr0.9x0.4_t8": {
+        "version": "top10reclaim",
+        "entry_delay_bars": 2,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 0.0,
+        "shadow_only": False,
+        "stop_loss_pct": 2.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_be0.6_tr0.9x0.4_t12": {
+        "version": "top10reclaim",
+        "entry_delay_bars": 2,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": True,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 0.0,
+        "shadow_only": False,
+        "stop_loss_pct": 2.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
     },
 }
 
@@ -3742,12 +3825,46 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
         reclaim_ok = current_change_1h >= entry_change_1h - 1.0
     volume_ok = float(base.get("volumeRatio", 0) or 0) >= min_volume_ratio
     delay_ok = int(session_age_bars or 0) >= int(params.get("entry_delay_bars", 0))
+
+    # ⭐ 新增：上影線過濾
+    max_upper_wick_pct = float(params.get("max_upper_wick_pct", 99.9) or 99.9)
+    last_bar = candles[-1] if candles else {}
+    upper_wick_ok = True
+    if max_upper_wick_pct < 99.9:
+        high = float(last_bar.get("high", 0) or 0)
+        low = float(last_bar.get("low", 0) or 0)
+        close = float(last_bar.get("close", 0) or 0)
+        open_ = float(last_bar.get("open", 0) or 0)
+        if high > 0 and high != low:
+            body = abs(close - open_)
+            total_range = high - low
+            upper_wick = high - max(close, open_)
+            upper_wick_pct = (upper_wick / total_range) * 100
+            upper_wick_ok = upper_wick_pct <= max_upper_wick_pct
+            base["top10UpperWickPct"] = rnd(upper_wick_pct)
+        else:
+            upper_wick_ok = True
+            base["top10UpperWickPct"] = 0.0
+    base["top10MaxUpperWickPct"] = max_upper_wick_pct
+    base["top10UpperWickOk"] = upper_wick_ok
+
+    require_green_confirm = params.get("require_green_confirm", False)
+    green_confirm_ok = True
+    if require_green_confirm:
+        last_close = float(last_bar.get("close", 0) or 0)
+        last_open = float(last_bar.get("open", 0) or 0)
+        green_confirm_ok = last_close >= last_open
+        base["top10GreenConfirmOk"] = green_confirm_ok
+    else:
+        base["top10GreenConfirmOk"] = True
+
     quality_threshold = params.get("quality_score_threshold")
     quality = None
     quality_ok = True
     if quality_threshold is not None:
         quality = micro_top10_quality_score(params, base, candles, rank_1h, entry_change_1h)
         quality_ok = quality["score"] >= float(quality_threshold)
+
     base.update({
         "collectorChange1hPct": rnd(entry_change_1h),
         "top10CurrentChange1hPct": rnd(current_change_1h),
@@ -3757,6 +3874,8 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
         "top10ReclaimOk": reclaim_ok,
         "top10VolumeOk": volume_ok,
         "top10DelayOk": delay_ok,
+        "top10UpperWickOk": upper_wick_ok,
+        "top10GreenConfirmOk": green_confirm_ok,
         "top10QualityScoreOk": quality_ok,
         "top10EntryDelayBars": params.get("entry_delay_bars", 0),
         "top10EntryMaxRank": params["max_rank"],
@@ -3764,6 +3883,8 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
         "top10MaxChange1hPct": params["max_change_1h_pct"],
         "top10MinCurrentChange1hPct": min_current_change,
         "top10MinVolumeRatio": min_volume_ratio,
+        "top10MaxUpperWickPct": max_upper_wick_pct,
+        "top10RequireGreenConfirm": require_green_confirm,
         "top10QualityScoreThreshold": quality_threshold,
     })
     if quality is not None:
@@ -3776,9 +3897,23 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
             "top10QualityEma21": rnd(quality["ema21"], 8) if quality["ema21"] is not None else None,
             "top10QualityAtrPct": rnd(quality["atrPct"]) if quality["atrPct"] is not None else None,
         })
-    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok and quality_ok:
-        base["buy"] = True
-        base["reason"] = f"{params['version']}_top10_entry"
+
+    # ⭐ 新增：reclaim_entry_price 邏輯
+    # 如果需要回踩確認，在 buy=True 時設定 pending_reclaim 狀態
+    # 真正觸發進場會在下一根 K 線確認價格是否回到進場價
+    base["top10ReclaimEntryRequired"] = params.get("reclaim_entry_price", False)
+    if base["top10ReclaimEntryRequired"]:
+        base["top10ReclaimEntryPrice"] = float(last_bar.get("close", 0) or 0)
+
+    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok and quality_ok and upper_wick_ok and green_confirm_ok:
+        if params.get("reclaim_entry_price", False):
+            # 不立即買入，設定 pending 狀態等待回踩
+            base["buy"] = False
+            base["reason"] = f"{params['version']}_top10_pending_reclaim"
+            base["top10PendingReclaim"] = True
+        else:
+            base["buy"] = True
+            base["reason"] = f"{params['version']}_top10_entry"
     return base
 
 
