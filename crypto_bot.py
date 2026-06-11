@@ -28,9 +28,9 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8,"
-    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12,"
-    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18,"
+    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8,"
+    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8,"
     "strategy20_6h12h_cool_vwap_reclaim,"
     "strategy4_breakout_confirmation"
 )
@@ -933,6 +933,133 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_start_pct": 0.8,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,
+    }    # === Auto-optimized strategies from 4H scheduler (2026-06-12 00:00) ===
+    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=1.0%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top2_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # Entry: delay=3, max_rank=3, chg=1-12%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top3_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 1.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # === Auto-optimized strategies from 4H scheduler (2026-06-12 00:00) ===
+    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=1.0%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top2_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # Entry: delay=3, max_rank=3, chg=1-12%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
+    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
+    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
+    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top3_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 1.0,
+        "max_change_1h_pct": 12.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
     },
     # Refined: add uw≤1.2%, reclaim, SL 1.2%, trail 1.2x0.5, t12, be0.8
     "sweep_refined_d2_r3_chg2-8_green_uw12_reclaim_sl1.2_be0.8_tr1.2x0.5_t12": {
