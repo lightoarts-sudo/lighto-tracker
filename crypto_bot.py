@@ -28,9 +28,9 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t8,"
-    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t12,"
-    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t18,"
+    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12,"
+    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18,"
     "strategy20_6h12h_cool_vwap_reclaim,"
     "strategy4_breakout_confirmation"
 )
@@ -656,8 +656,8 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
     # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price
     # Not shadow_only — intended for Render paper/shadow monitoring with live-ready potential.
     # All 3 passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
-    # FIXED: remove conflicting require_change_reclaim, disable breakeven (matches optimizer)
-    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t8": {
+    # breakeven_after_pct=0.6 matches optimizer config; name includes be0.6
+    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 2,
         "max_rank": 3,
@@ -671,12 +671,12 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
-        "breakeven_after_pct": 999.0,
+        "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
     },
-    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t12": {
+    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12": {
         "version": "auto_top2_4h",
         "entry_delay_bars": 2,
         "max_rank": 3,
@@ -690,12 +690,12 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
-        "breakeven_after_pct": 999.0,
+        "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 12,
     },
-    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t18": {
+    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18": {
         "version": "auto_top3_4h",
         "entry_delay_bars": 2,
         "max_rank": 3,
@@ -709,7 +709,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 1.5,
-        "breakeven_after_pct": 999.0,
+        "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,

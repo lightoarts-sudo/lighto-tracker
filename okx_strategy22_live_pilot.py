@@ -576,20 +576,47 @@ class Pilot:
             raise RuntimeError(f"OKX instruments error: {data}")
         self.instruments = {row["instId"]: row for row in data.get("data", [])}
 
+    async def fetch_candles_guarded(self, client: httpx.AsyncClient, inst_id: str) -> list[dict[str, Any]] | None:
+        """Fetch candles without letting a single OKX 429/timeout stall live trading."""
+        last_error = None
+        for attempt in range(3):
+            try:
+                return await asyncio.wait_for(
+                    fetch_okx_candles_by_inst(client, inst_id, CONFIG["microBaseInterval"], 240),
+                    timeout=18,
+                )
+            except Exception as exc:
+                last_error = exc
+                text = str(exc)
+                if "429" in text or "Too Many Requests" in text:
+                    await asyncio.sleep(2.0 + attempt * 2.0)
+                else:
+                    await asyncio.sleep(0.5 + attempt * 0.5)
+        self.log("skip_candles_fetch", instId=inst_id, error=repr(last_error))
+        return None
+
     async def scan_top10_strategy(self, client: httpx.AsyncClient) -> list[tuple[str, dict[str, Any], float]]:
         tickers = await fetch_market_tickers(client, CONFIG["microInstType"])
         shortlist = shortlist_micro_tickers(tickers)
         scanned = []
-        for ticker in shortlist:
+        self.log("scan_start", shortlistCount=len(shortlist), strategy=STRATEGY)
+        for idx, ticker in enumerate(shortlist, start=1):
             inst_id = ticker["instId"]
-            raw = await fetch_okx_candles_by_inst(client, inst_id, CONFIG["microBaseInterval"], 240)
+            raw = await self.fetch_candles_guarded(client, inst_id)
+            if not raw:
+                await asyncio.sleep(self.args.scan_pause)
+                continue
             candles = to_micro_candles(raw)
             if len(candles) < 72:
+                await asyncio.sleep(self.args.scan_pause)
                 continue
             base_signal = __import__("crypto_bot").micro_trend_signal(ticker, candles)
             scanned.append((base_signal.get("pct1h", 0), inst_id, ticker, candles, candles[-1]["close"]))
+            if idx % 40 == 0:
+                self.log("scan_progress", scanned=idx, rankedCandidates=len(scanned), currentInstId=inst_id)
             await asyncio.sleep(self.args.scan_pause)
         scanned.sort(reverse=True, key=lambda row: row[0])
+        self.log("scan_ranked", rankedCandidates=len(scanned), top=[{"rank": i + 1, "instId": row[1], "pct1h": row[0]} for i, row in enumerate(scanned[:10])])
         signals = []
         for rank, (change_1h, inst_id, ticker, candles, price) in enumerate(scanned[:10], start=1):
             signal = micro_top10_optimized_signal(ticker, candles, STRATEGY, rank_1h=rank, collector_change_1h_pct=change_1h)

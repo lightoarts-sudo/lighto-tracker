@@ -80,6 +80,23 @@ DEFAULT_STRATEGIES = [
     "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
     "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
     "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
+    # === Reclaim-entry strategies (target >50% WR) ===
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t8",
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t12",
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t8",
+    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t12",
+    # === 4H optimizer strategies (auto_top1/2/3) ===
+    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
+    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
+    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18",
+    # === Sweep strategies ===
+    "sweep_best_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
+    "sweep_nodup_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
+    "sweep_refined_d2_r3_chg2-8_green_uw12_reclaim_sl1.2_be0.8_tr1.2x0.5_t12",
+    # === Optimizer best params ===
+    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
+    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
+    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_be0.6_tr0.9x0.4_t8",
 ]
 RENDER_ELIGIBLE = [s for s in DEFAULT_STRATEGIES if s != "strategy1"]
 
@@ -351,6 +368,65 @@ class Backtester:
             }
             self.positions[strategy][f"PENDING::{inst_id}"] = SimPosition(inst_id=f"PENDING::{inst_id}", entry_price=0, entry_time=signal["time"], state=state)
 
+    def _step_reclaim_pending(self, strategy: str, sources: dict, rank_map: dict):
+        """Handle reclaim_entry_price pending logic for reclaim strategies."""
+        if not (strategy.startswith("top10reclaim") or strategy.startswith("auto_top") or strategy.startswith("top10refined")):
+            return
+        for inst_id, pseudo in list(self.positions[strategy].items()):
+            if not inst_id.startswith("RECLAIM::"):
+                continue
+            pending = pseudo.state.get("reclaimPendingEntry") or {}
+            source = sources.get(inst_id.split("::")[1])
+            if not source:
+                continue
+            last_bar = source["candles"][-1]
+            price = last_bar["close"]
+            reclaim_price = pending.get("reclaimPrice", 0)
+            expires_at = pending.get("expiresAt", 0)
+            signal_time = last_bar.get("ts_ms", 0) or last_bar.get("time", 0)
+            # ⭐ CORRECTED: wait for price to RECLAIM (close >= reclaim_price)
+            # i.e., breakout -> pullback -> close back above breakout level -> enter
+            if price >= reclaim_price and reclaim_price > 0:
+                # Trigger entry at reclaim price (close of this bar)
+                inst = inst_id.split("::")[1]
+                del self.positions[strategy][inst_id]
+                signal = self.signal_for(strategy, source, rank_map.get(inst), session_age_bars=0)
+                signal["buy"] = True
+                signal["reason"] = f"{strategy}_reclaim_confirmed"
+                signal["entryPrice"] = price
+                self.enter(strategy, inst, price, signal)
+            elif signal_time > expires_at:
+                # Expired
+                del self.positions[strategy][inst_id]
+
+    def _create_reclaim_pending(self, strategy: str, inst_id: str, source: dict, signal: dict, rank_1h: Optional[int]):
+        """Create a pending reclaim entry for top10reclaim strategies."""
+        if not signal.get("top10ReclaimEntryRequired"):
+            return
+        if inst_id in self.positions[strategy]:
+            return
+        # Check if already have a RECLAIM pending for this inst
+        reclaim_key = f"RECLAIM::{inst_id}"
+        if reclaim_key in self.positions[strategy]:
+            return
+        params = cb.MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy]
+        reclaim_price = signal.get("top10ReclaimEntryPrice", 0)
+        if reclaim_price <= 0:
+            return
+        # Expire after time_stop_bars * 5min = time_stop_bars * 5 minutes
+        expire_bars = params.get("time_stop_bars", 12)
+        delay_ms = expire_bars * cb.micro_bar_minutes() * 60 * 1000
+        signal_time = signal.get("time", 0)
+        state = cb.new_micro_state()
+        state["reclaimPendingEntry"] = {
+            "time": signal_time,
+            "reclaimPrice": reclaim_price,
+            "expiresAt": signal_time + delay_ms,
+            "entryRank1h": rank_1h,
+            "entryChange1hPct": signal.get("collectorChange1hPct", signal.get("pct1h", 0)),
+        }
+        self.positions[strategy][reclaim_key] = SimPosition(inst_id=reclaim_key, entry_price=0, entry_time=signal_time, state=state)
+
     def run(self, limit_runs: Optional[int] = None) -> dict:
         run_count = 0
         for run_id, rows in self.iter_runs(limit_runs):
@@ -381,6 +457,10 @@ class Backtester:
                 if strategy == "strategy24_top1h_delay_rank5_chg1_5":
                     # Evaluate active positions first, then pending/new seeds over current Top10/rank scope.
                     pass
+
+                # ⭐ Handle pending reclaim entries for reclaim strategies
+                self._step_reclaim_pending(strategy, sources, rank_maps.get(strategy, {}))
+
                 allowed = set(sources.keys())
                 if strategy in rank_maps:
                     allowed = set(rank_maps[strategy]) | set(self.positions[strategy])
@@ -406,12 +486,19 @@ class Backtester:
                             self.enter(strategy, inst_id, price, signal)
                     elif strategy == "strategy24_top1h_delay_rank5_chg1_5":
                         self.step_strategy24_pending(inst_id, source, signal, rank_1h)
+                    elif signal.get("top10PendingReclaim"):
+                        # Create pending reclaim entry for reclaim strategies
+                        self._create_reclaim_pending(strategy, inst_id, source, signal, rank_1h)
                     elif signal.get("buy"):
                         if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
-                            seen = self.top10_session_seen.setdefault(strategy, set())
-                            if inst_id in seen:
-                                continue
-                            seen.add(inst_id)
+                            # 特殊策略：不進行 session tracking 去重
+                            if strategy.startswith("sweep_nodup"):
+                                pass
+                            else:
+                                seen = self.top10_session_seen.setdefault(strategy, set())
+                                if inst_id in seen:
+                                    continue
+                                seen.add(inst_id)
                         self.enter(strategy, inst_id, price, signal)
                     if strategy in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES and rank_1h is not None and signal.get("top10DelayOk"):
                         self.top10_session_seen.setdefault(strategy, set()).add(inst_id)
