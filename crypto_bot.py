@@ -652,7 +652,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 12,
     },
-    # === Auto-optimized strategies from 4H scheduler (2026-06-11 12:00) ===
+    # === Auto-optimized strategies from 4H scheduler (2026-06-11 16:00) ===
     # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price
     # Not shadow_only — intended for Render paper/shadow monitoring with live-ready potential.
     # All 3 passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
