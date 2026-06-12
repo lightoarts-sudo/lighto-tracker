@@ -29,9 +29,9 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8,"
-    "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8,"
-    "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8,"
+    "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t12,"
+    "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t18,"
     "strategy4_1_breakout_confirmation,"
     "strategy20_6h12h_cool_vwap_reclaim,"
     "top5dplus_score95_chg2_5_sl1_tr06x03_t6"
@@ -263,31 +263,12 @@ CONFIG = {
 
 
 MICRO_TOP10_OPTIMIZED_STRATEGIES = {
-    # === 2026-06-12 11:00 optimizer winners ===
+    # === 2026-06-12 20:00 optimizer winners (4H cycle) ===
     # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price=true
-    # This entry matches the optimizer's top config at min_trades=30 (42 trades): WR=54.8%, net=1.15%, PF=3.54
-    # Production parity: reclaim_entry_price + max_upper_wick=0.8% bridge optimizer >50% WR to production backtest
-    "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8": {
+    # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=30
+    # Top 1: net_avg=1.154%, WR=54.76%, PF=3.54, max_loss=-1.66%, trades=42
+    "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
-        "entry_delay_bars": 2,
-        "max_rank": 3,
-        "min_change_1h_pct": 3.0,
-        "max_change_1h_pct": 10.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 0.8,
-        "min_volume_ratio": 0.0,
-        "reclaim_entry_price": True,
-        "shadow_only": False,
-        "stop_loss_pct": 1.0,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
-    },
-    "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top2_4h",
         "entry_delay_bars": 2,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
@@ -305,7 +286,28 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
     },
-    "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8": {
+    # Top 2: net_avg=1.141%, WR=52.38%, PF=3.49, max_loss=-1.66%, trades=42
+    "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top2_4h",
+        "entry_delay_bars": 2,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "min_volume_ratio": 0.0,
+        "reclaim_entry_price": True,
+        "shadow_only": False,
+        "stop_loss_pct": 1.5,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    # Top 3: net_avg=1.141%, WR=52.38%, PF=3.49, max_loss=-1.66%, trades=42
+    "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t18": {
         "version": "auto_top3_4h",
         "entry_delay_bars": 2,
         "max_rank": 3,
@@ -318,11 +320,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 0.0,
         "reclaim_entry_price": True,
         "shadow_only": False,
-        "stop_loss_pct": 2.0,
+        "stop_loss_pct": 1.5,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
+        "time_stop_bars": 18,
     },
     # === Strategy 4.1 (production backtest positive) ===
     # Kept from previous: net_avg=0.087%, WR=44.4%, PF=1.21, max_loss=-0.96%
