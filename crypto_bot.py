@@ -28,9 +28,9 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8_20260612_1230,"
-    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8_20260612_1230,"
-    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8_20260612_1230,"
+    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t12,"
+    "auto_top3_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t18,"
     "strategy4_breakout_confirmation,"
     "strategy20_6h12h_cool_vwap_reclaim,"
     "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12,"
