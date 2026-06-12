@@ -166,7 +166,7 @@ def summarize(trades: list[dict], entry: EntryRule, exit_: ExitRule) -> dict:
 def build_rules() -> tuple[list[EntryRule], list[ExitRule]]:
     entries = []
     for delay in [0, 1, 2, 3]:
-        for max_rank in [3, 5, 10]:
+        for max_rank in [3, 5]:
             for lo, hi in [(1, 5), (2, 8), (3, 10), (5, 15), (1, 12)]:
                 entries.append(EntryRule(f"delay{delay}_rank{max_rank}_chg{lo}-{hi}", delay, max_rank, lo, hi))
                 if delay >= 1:

@@ -299,7 +299,7 @@ def insert_session_candles(
     return con.total_changes - before
 
 
-def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int = 20, dry_run: bool = False) -> dict:
+def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int = 5, dry_run: bool = False) -> dict:
     captured_at = now_taipei().isoformat(timespec="seconds")
     con = sqlite3.connect(db_path)
     con.row_factory = sqlite3.Row
@@ -470,7 +470,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", default=str(DB_PATH))
     parser.add_argument("--max-universe", type=int, default=int(os.environ.get("OKX_TOP10_MAX_UNIVERSE", "220")))
-    parser.add_argument("--max-rank", type=int, default=int(os.environ.get("OKX_TOP10_MAX_RANK", "20")))
+    parser.add_argument("--max-rank", type=int, default=int(os.environ.get("OKX_TOP10_MAX_RANK", "5")))
     parser.add_argument("--sleep", type=float, default=float(os.environ.get("OKX_TOP10_API_SLEEP", "0.055")))
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()

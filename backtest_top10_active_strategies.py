@@ -59,59 +59,14 @@ DEFAULT_STRATEGIES = [
     "strategy22_2h_strength_breakout_retest",
     "strategy23_top1h_clean_early_breakout",
     "strategy24_top1h_delay_rank5_chg1_5",
-    "top10v1_rank5_chg3_10_sl1_trail09_t12",
-    "top10v2_rank5_chg3_10_sl1_trail09_t18",
-    "top10v3_rank5_chg3_10_sl08_trail09_t12",
-    "top10v4_rank5_chg3_10_sl08_trail09_t18",
-    "top10v5_delay1_rank3_chg1_5_sl15_trail12_t12",
-    "top10scan1_d1_r3_chg3_12_cur1_sl1_tr15x05_t12",
-    "top10scan2_d1_r3_chg3_12_cur2_sl1_tr15x05_t12",
-    "top10scan3_d1_r3_chg3_12_cur1_sl1_tr1x05_t12",
-    "top10scan4_d1_r3_chg3_12_cur2_sl1_tr1x05_t12",
-    "top10scan5_d1_r3_chg2_12_cur2_sl1_tr15x05_t12",
-    "top10scan6_d1_r3_chg3_12_cur1_sl08_tr15x05_t12",
-    "top10scan1v_d1_r3_chg3_12_cur1_vol12_sl1_tr15x05_t12",
-    "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
-    "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12",
-    "top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12",
-    "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12",
-    "top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12",
-    "top10shadow1_d0_r5_chg2_15_cur0_sl1_tr1x05_t12",
-    "top10shadow2_d0_r10_chg1_20_cur0_sl12_tr15x06_t12",
-    "top10shadow3_d1_r5_chg1_12_cur0_vol08_sl1_tr1x05_t18",
-    "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
-    # === Reclaim-entry strategies (target >50% WR) ===
-    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t8",
-    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t12",
-    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t8",
-    "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t12",
-    # === 4H optimizer strategies (auto_top1/2/3) — legacy d2_r3_chg3-10 ===
-    "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
-    "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
-    "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18",
-    # === 4H optimizer strategies (auto_top1/2/3) — new d3_r3_chg2-8 with uw=1.2% ===
+    # === Latest 4H optimizer strategies (2026-06-12) ===
     "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
-    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8",
-    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
-    # === Reclaim-entry variants (target >50% WR with uw=0.8% + reclaim) ===
-    "auto_top1_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
-    "auto_top2_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t12",
-    "auto_top3_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl1.0_be0.6_tr0.9x0.4_t18",
-    # === Spread/slippage filtered variants ===
-    "auto_top1_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t8",
-    "auto_top2_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t12",
-    # === Trend-filtered variants (require positive pct2h/pct3h) ===
-    "auto_top1_trend_d3_r3_chg2-8_green_uw08_reclaim_vol15_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
-    # === Combined tight+trend variant (best of both) ===
-    "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
-    # === Sweep strategies ===
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t12",
+    "auto_top3_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t18",
+    # === Sweep best ===
     "sweep_best_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
-    "sweep_nodup_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
-    "sweep_refined_d2_r3_chg2-8_green_uw12_reclaim_sl1.2_be0.8_tr1.2x0.5_t12",
-    # === Optimizer best params ===
-    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
-    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
-    "opt_best_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_be0.6_tr0.9x0.4_t8",
+    # === Top5 quality ===
+    "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
 ]
 RENDER_ELIGIBLE = [s for s in DEFAULT_STRATEGIES if s != "strategy1"]
 
