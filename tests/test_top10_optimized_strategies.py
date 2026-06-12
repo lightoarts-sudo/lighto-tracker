@@ -40,10 +40,11 @@ def make_top10_candles():
 
 def test_top10_optimized_strategies_are_the_default_render_active_set():
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
-        "strategy4_breakout_confirmation",
+        "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8",
+        "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8",
+        "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8",
+        "strategy4_1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
-        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
         "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
 

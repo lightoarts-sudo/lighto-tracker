@@ -36,10 +36,11 @@ def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
     # (they can be enabled via CRYPTO_MICRO_ACTIVE_STRATEGIES env var)
     
     # New optimized strategies (now in default active set)
-    assert crypto_bot.micro_strategy_enabled("auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8")
-    assert crypto_bot.micro_strategy_enabled("strategy4_breakout_confirmation")
+    assert crypto_bot.micro_strategy_enabled("auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8")
+    assert crypto_bot.micro_strategy_enabled("auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8")
+    assert crypto_bot.micro_strategy_enabled("auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8")
+    assert crypto_bot.micro_strategy_enabled("strategy4_1_breakout_confirmation")
     assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
-    assert crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12")
     assert crypto_bot.micro_strategy_enabled("top5dplus_score95_chg2_5_sl1_tr06x03_t6")
     
     # Old auto_top strategies now NOT in active set
@@ -47,18 +48,24 @@ def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
     assert not crypto_bot.micro_strategy_enabled("auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t12")
     assert not crypto_bot.micro_strategy_enabled("auto_top3_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t18")
     
+    # Old strategy4 and sweep best strategies now NOT in active set
+    assert not crypto_bot.micro_strategy_enabled("strategy4_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("strategy4.1_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("sweep_best_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18")
+    
     # Old top10scan strategies now NOT in active set (demoted to shadow/research)
-    # Note: top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12 is NOW in active set
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12")
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12")
     assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12")
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1x0.5_t12")
+    assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12")
     
     assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
-        "strategy4_breakout_confirmation",
+        "auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8",
+        "auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8",
+        "auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8",
+        "strategy4_1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
-        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
         "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
 
