@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 import re
 import shutil
@@ -17,6 +18,7 @@ from starlette.background import BackgroundTask
 ASSET_DIR = Path(__file__).resolve().parent / "static"
 MAX_CLIP_SECONDS = 60 * 60
 _download_lock = asyncio.Lock()
+logger = logging.getLogger("youtube_clipper")
 
 
 def _is_youtube_url(value: str) -> bool:
@@ -126,12 +128,19 @@ def install_youtube_clipper(app: FastAPI) -> None:
 
         if process.returncode != 0:
             detail = stderr.decode("utf-8", errors="replace")
+            logger.error("yt-dlp failed for %s: %s", url, detail[-4000:])
             _cleanup(job_dir)
-            message = (
-                "影片超過伺服器允許的檔案大小。"
-                if "max-filesize" in detail.lower()
-                else "YouTube 無法提供此影片，可能是私人、受限或連結已失效。"
-            )
+            lower_detail = detail.lower()
+            if "sign in to confirm" in lower_detail or "not a bot" in lower_detail:
+                message = "YouTube 要求伺服器通過真人驗證；Render 的資料中心 IP 目前被限制。"
+            elif "requested format is not available" in lower_detail:
+                message = "YouTube 沒有提供可下載的影片格式，請稍後重試。"
+            elif "http error 403" in lower_detail or "forbidden" in lower_detail:
+                message = "YouTube 拒絕 Render 伺服器存取影片串流（HTTP 403）。"
+            elif "max-filesize" in lower_detail:
+                message = "影片超過伺服器允許的檔案大小。"
+            else:
+                message = "YouTube 無法提供此影片，可能是私人、受限或連結已失效。"
             return JSONResponse({"error": message}, status_code=422)
 
         reported = stdout.decode("utf-8", errors="replace").strip().splitlines()
