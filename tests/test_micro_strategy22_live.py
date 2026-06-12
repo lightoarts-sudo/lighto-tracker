@@ -47,18 +47,18 @@ def make_strategy22_candles():
 def test_new_default_strategies_are_enabled_by_default():
     active = crypto_bot.CONFIG["microActiveStrategies"]
     expected = [
-        "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
-        "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
-        "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18",
-        "strategy20_6h12h_cool_vwap_reclaim",
+        "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
         "strategy4_breakout_confirmation",
+        "strategy20_6h12h_cool_vwap_reclaim",
+        "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12",
+        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
     assert active == expected
     for strategy in expected:
         assert crypto_bot.micro_strategy_enabled(strategy)
     
-    # Old top10scan strategies no longer in active set
-    assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12")
+    # Old top10scan strategies no longer in active set (except the one promoted)
+    # Note: top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12 is NOW in active set
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur1_vol0_sl1_tr1.5x0.5_t12")
     assert not crypto_bot.micro_strategy_enabled("top10scan_d1_r3_chg3-12_cur2_vol0_sl1_tr1.5x0.5_t12")
     assert not crypto_bot.micro_strategy_enabled("top10scan_d2_r5_chg2-8_cur2_vol1.2_sl1_tr1.5x0.5_t12")

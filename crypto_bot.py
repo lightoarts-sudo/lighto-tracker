@@ -28,11 +28,11 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8,"
-    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t12,"
-    "auto_top3_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t18,"
+    "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8,"
+    "strategy4_breakout_confirmation,"
     "strategy20_6h12h_cool_vwap_reclaim,"
-    "strategy4_breakout_confirmation"
+    "top10scan_d2_r5_chg2-8_cur2_vol1.2_sl0.8_tr1.5x0.5_t12,"
+    "top5dplus_score95_chg2_5_sl1_tr06x03_t6"
 )
 
 CONFIG = {
@@ -995,69 +995,6 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_start_pct": 0.8,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,
-    }    # === Auto-optimized strategies from 4H scheduler (2026-06-12 00:00) ===
-    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
-    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
-    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
-    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top1_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 2.0,
-        "max_change_1h_pct": 8.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "shadow_only": False,
-        "stop_loss_pct": 0.8,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
-    },
-    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
-    # Exit: SL=1.0%, BE=0.6%, trail=0.9x0.4%, time_stop=8
-    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
-    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top2_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 2.0,
-        "max_change_1h_pct": 8.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "shadow_only": False,
-        "stop_loss_pct": 1.0,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
-    },
-    # Entry: delay=3, max_rank=3, chg=1-12%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
-    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8
-    # Passed: net_avg_return>0, profit_factor>1.5, max_loss>-2%, win_rate>40%, trades>=30
-    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top3_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 1.0,
-        "max_change_1h_pct": 12.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "shadow_only": False,
-        "stop_loss_pct": 0.8,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
     },
     # === Auto-optimized strategies from 4H scheduler (2026-06-12 00:00) ===
     # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.5
@@ -1116,6 +1053,155 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # === Reclaim-entry variants (target >50% WR with wick filter + reclaim) ===
+    # Entry: delay=3, max_rank=3, chg=2-8%, green_confirm, max_upper_wick=0.8%, min_vol_ratio=1.5, reclaim_entry_price=true
+    # Exit: SL=0.8%, BE=0.6%, trail=0.9x0.4%, time_stop=8/12/18
+    # Based on optimizer top configs; reclaim + wick filter critical for production parity
+    "auto_top1_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_reclaim",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "auto_top2_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top2_reclaim",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    "auto_top3_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl1.0_be0.6_tr0.9x0.4_t18": {
+        "version": "auto_top3_reclaim",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 18,
+    },
+    # === Spread/slippage filtered variants ===
+    # Add max_spread_pct and min_volume_ratio guards per live audit findings
+    "auto_top1_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_tight",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "max_spread_pct": 0.25,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "auto_top2_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top2_tight",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "max_spread_pct": 0.25,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    # === Trend-filtered variants (require positive pct2h/pct3h) ===
+    # Entry adds min_pct2h_pct and min_pct3h_pct to avoid chasing after spike
+    "auto_top1_trend_d3_r3_chg2-8_green_uw08_reclaim_vol15_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_trend",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "min_pct2h_pct": 0.5,
+        "min_pct3h_pct": 0.0,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # === Combined tight+trend variant (best of both) ===
+    "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_combined",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 2.0,
+        "max_change_1h_pct": 8.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 0.8,
+        "reclaim_entry_price": True,
+        "min_volume_ratio": 1.5,
+        "max_spread_pct": 0.25,
+        "min_pct2h_pct": 0.5,
+        "min_pct3h_pct": 0.0,
         "shadow_only": False,
         "stop_loss_pct": 0.8,
         "breakeven_after_pct": 0.6,
@@ -4175,7 +4261,12 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
     if params.get("require_change_reclaim"):
         reclaim_ok = current_change_1h >= entry_change_1h - 1.0
     volume_ok = float(base.get("volumeRatio", 0) or 0) >= min_volume_ratio
-    delay_ok = int(session_age_bars or 0) >= int(params.get("entry_delay_bars", 0))
+    # ⭐ PARITY FIX: optimizer enters at EXACTLY delay_bars after session start, not any bar after
+    # This prevents multiple entry attempts per session and matches scan_top10_training_strategies.py logic
+    delay_exact = int(session_age_bars or 0) == int(params.get("entry_delay_bars", 0))
+    delay_ok = delay_exact
+    base["top10DelayExact"] = delay_exact
+    base["top10DelayOk"] = delay_ok  # keep for backward compat
 
     # ⭐ 新增：上影線過濾
     max_upper_wick_pct = float(params.get("max_upper_wick_pct", 99.9) or 99.9)
@@ -4256,7 +4347,42 @@ def micro_top10_optimized_signal(ticker, candles, strategy, rank_1h=None, collec
     if base["top10ReclaimEntryRequired"]:
         base["top10ReclaimEntryPrice"] = float(last_bar.get("close", 0) or 0)
 
-    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok and quality_ok and upper_wick_ok and green_confirm_ok:
+    # ⭐ 新增：spread filter (max_spread_pct)
+    max_spread_pct = float(params.get("max_spread_pct", 99.9) or 99.9)
+    spread_ok = True
+    if max_spread_pct < 99.9:
+        bid = float(ticker.get("bidPx", 0) or 0)
+        ask = float(ticker.get("askPx", 0) or 0)
+        mid = (bid + ask) / 2 if (bid and ask) else 0
+        if mid > 0:
+            spread_pct = ((ask - bid) / mid) * 100
+            spread_ok = spread_pct <= max_spread_pct
+            base["top10SpreadPct"] = rnd(spread_pct)
+        else:
+            spread_ok = True
+            base["top10SpreadPct"] = 0.0
+    base["top10MaxSpreadPct"] = max_spread_pct
+    base["top10SpreadOk"] = spread_ok
+
+    # ⭐ 新增：trend filter (pct2h/pct3h positive)
+    min_pct2h = float(params.get("min_pct2h_pct", -99.9) or -99.9)
+    min_pct3h = float(params.get("min_pct3h_pct", -99.9) or -99.9)
+    pct2h_ok = True
+    pct3h_ok = True
+    pct2h_val = base.get("pct2h", base.get("pct2h_pct", 0.0))
+    pct3h_val = base.get("pct3h", base.get("pct3h_pct", 0.0))
+    if min_pct2h > -99.9:
+        pct2h_ok = float(pct2h_val or 0) >= min_pct2h
+    if min_pct3h > -99.9:
+        pct3h_ok = float(pct3h_val or 0) >= min_pct3h
+    base["top10Pct2h"] = rnd(pct2h_val)
+    base["top10Pct3h"] = rnd(pct3h_val)
+    base["top10MinPct2hPct"] = min_pct2h
+    base["top10MinPct3hPct"] = min_pct3h
+    base["top10Pct2hOk"] = pct2h_ok
+    base["top10Pct3hOk"] = pct3h_ok
+
+    if rank_ok and heat_ok and current_change_ok and reclaim_ok and volume_ok and delay_ok and quality_ok and upper_wick_ok and green_confirm_ok and spread_ok and pct2h_ok and pct3h_ok:
         if params.get("reclaim_entry_price", False):
             # 不立即買入，設定 pending 狀態等待回踩
             base["buy"] = False

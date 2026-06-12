@@ -85,10 +85,25 @@ DEFAULT_STRATEGIES = [
     "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_tr0.9x0.4_t12",
     "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t8",
     "top10reclaim_d2_r3_chg3-10_green_uw08_reclaim_sl2.0_tr0.9x0.4_t12",
-    # === 4H optimizer strategies (auto_top1/2/3) ===
+    # === 4H optimizer strategies (auto_top1/2/3) — legacy d2_r3_chg3-10 ===
     "auto_top1_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t8",
     "auto_top2_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t12",
     "auto_top3_4h_d2_r3_chg3-10_green_uw08_reclaim_sl1.5_be0.6_tr0.9x0.4_t18",
+    # === 4H optimizer strategies (auto_top1/2/3) — new d3_r3_chg2-8 with uw=1.2% ===
+    "auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
+    "auto_top2_4h_d3_r3_chg2-8_green_uw12_vol15_sl1.0_be0.6_tr0.9x0.4_t8",
+    "auto_top3_4h_d3_r3_chg1-12_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
+    # === Reclaim-entry variants (target >50% WR with uw=0.8% + reclaim) ===
+    "auto_top1_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t8",
+    "auto_top2_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl0.8_be0.6_tr0.9x0.4_t12",
+    "auto_top3_reclaim_d3_r3_chg2-8_green_uw08_reclaim_vol15_sl1.0_be0.6_tr0.9x0.4_t18",
+    # === Spread/slippage filtered variants ===
+    "auto_top1_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t8",
+    "auto_top2_tight_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_sl0.8_be0.6_tr0.9x0.4_t12",
+    # === Trend-filtered variants (require positive pct2h/pct3h) ===
+    "auto_top1_trend_d3_r3_chg2-8_green_uw08_reclaim_vol15_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
+    # === Combined tight+trend variant (best of both) ===
+    "auto_top1_combined_d3_r3_chg2-8_green_uw08_reclaim_vol15_spread25_pct2h3h_sl0.8_be0.6_tr0.9x0.4_t8",
     # === Sweep strategies ===
     "sweep_best_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
     "sweep_nodup_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18",
@@ -384,9 +399,18 @@ class Backtester:
             reclaim_price = pending.get("reclaimPrice", 0)
             expires_at = pending.get("expiresAt", 0)
             signal_time = last_bar.get("ts_ms", 0) or last_bar.get("time", 0)
-            # ⭐ CORRECTED: wait for price to RECLAIM (close >= reclaim_price)
-            # i.e., breakout -> pullback -> close back above breakout level -> enter
-            if price >= reclaim_price and reclaim_price > 0:
+            # ⭐ FIXED: skip reclaim check on the SAME run where pending was created
+            # (signal_time == this run's time means we're evaluating the same bar that generated the signal)
+            # Only check reclaim on SUBSEQUENT runs when price has had time to pull back and reclaim
+            created_at = pending.get("createdAt", 0)
+            if created_at == 0:
+                # Fix old pending entries that lack createdAt
+                pending["createdAt"] = expires_at - (params.get("time_stop_bars", 12) * cb.micro_bar_minutes() * 60 * 1000)
+                created_at = pending["createdAt"]
+            if signal_time <= created_at:
+                # Same run that created the pending — do not reclaim yet
+                pass
+            elif price >= reclaim_price and reclaim_price > 0:
                 # Trigger entry at reclaim price (close of this bar)
                 inst = inst_id.split("::")[1]
                 del self.positions[strategy][inst_id]
@@ -422,6 +446,7 @@ class Backtester:
             "time": signal_time,
             "reclaimPrice": reclaim_price,
             "expiresAt": signal_time + delay_ms,
+            "createdAt": signal_time,
             "entryRank1h": rank_1h,
             "entryChange1hPct": signal.get("collectorChange1hPct", signal.get("pct1h", 0)),
         }
