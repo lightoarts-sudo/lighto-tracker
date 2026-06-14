@@ -97,7 +97,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-        "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,top5dplus_score95_chg2_5_sl1_tr06x03_t6,auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t18,auto_top4_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl0.8_be0.6_tr0.9x0.4_t8,auto_top5_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl0.8_be0.6_tr0.9x0.4_t12"),
+        "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t18"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
