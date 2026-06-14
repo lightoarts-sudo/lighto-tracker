@@ -29,9 +29,9 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d3_r3_chg3-10_green_uw0.8_vol20dur1040_sl1.0_be0.6_tr0.9x0.4_t8,",
-    "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8,",
-    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol20dur1040_sl1.2_be0.6_tr0.9x0.4_t8,",
+    "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8,",
+    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t12,",
+    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t18,",
     "strategy4_1_breakout_confirmation,",
     "strategy20_6h12h_cool_vwap_reclaim,",
 )
@@ -766,6 +766,69 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
+    },
+    # === 2026-06-15 4H optimizer winners (14d lookback, vol_ratio>=1.0) ===
+    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.0, reclaim=False, session_dur=10-40
+    # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10
+    # Top 1: net_avg=0.725%, WR=58.3%, PF=2.84, max_loss=-1.16%, trades=72
+    "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top1_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": False,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    # Top 2: net_avg=0.725%, WR=58.3%, PF=2.84, max_loss=-1.16%, trades=72
+    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top2_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": False,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    # Top 3: net_avg=0.725%, WR=58.3%, PF=2.84, max_loss=-1.16%, trades=72
+    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t18": {
+        "version": "auto_top3_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": False,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 18,
     },
 }
 
