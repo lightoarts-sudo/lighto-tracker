@@ -833,7 +833,10 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
     # === 2026-06-15 08:00 optimizer winners (4H cycle, 14d lookback, vol_ratio=1.0) ===
     # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol_ratio=1.0, dur=10-40
     # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10
-    # Top 1: net_avg=0.698%, WR=57.33%, PF=2.82, max_loss=-1.16%, trades=75
+    # === 2026-06-15 12:00 optimizer winners (4H cycle, 14d lookback, vol_ratio=1.0) ===
+    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, vol_ratio=1.0, dur=10-40
+    # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10
+    # Top 1: net_avg=0.704%, WR=57.89%, PF=2.85, max_loss=-1.16%, trades=76
     "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
@@ -853,7 +856,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
     },
-    # Top 2: net_avg=0.698%, WR=57.33%, PF=2.82, max_loss=-1.16%, trades=75
+    # Top 2: net_avg=0.704%, WR=57.89%, PF=2.85, max_loss=-1.16%, trades=76
     "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t12": {
         "version": "auto_top2_4h",
         "entry_delay_bars": 3,
@@ -873,7 +876,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 12,
     },
-    # Top 3: net_avg=0.698%, WR=57.33%, PF=2.82, max_loss=-1.16%, trades=75
+    # Top 3: net_avg=0.704%, WR=57.89%, PF=2.85, max_loss=-1.16%, trades=76
     "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t18": {
         "version": "auto_top3_4h",
         "entry_delay_bars": 3,
