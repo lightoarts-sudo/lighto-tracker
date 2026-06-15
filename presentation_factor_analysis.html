@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHTOARTS OKX 因子分析與新策略建議</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+    <style>
+        .reveal h1 { font-size: 2.5em; color: #00d4ff; }
+        .reveal h2 { font-size: 1.8em; color: #00ff88; }
+        .reveal h3 { font-size: 1.4em; color: #ffaa00; }
+        .reveal table { font-size: 0.6em; }
+        .reveal th { background: #333; }
+        .reveal code { background: #222; padding: 2px 4px; border-radius: 3px; }
+        .reveal pre { background: #1a1a1a; font-size: 0.55em; line-height: 1.3; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; font-weight: bold; }
+        .badge-fire { background: #ff4444; color: white; }
+        .badge-star { background: #ffaa00; color: black; }
+        .badge-new { background: #00ff88; color: black; }
+        .badge-dim { background: #666; color: white; }
+        .factor-card { background: #1a1a2e; border-left: 4px solid #00d4ff; padding: 10px; margin: 5px 0; font-size: 0.8em; }
+        .factor-card.fire { border-left-color: #ff4444; }
+        .factor-card.star { border-left-color: #ffaa00; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+<!-- Slide 1: Title -->
+<section>
+    <h1>LIGHTOARTS OKX 因子分析與新策略建議</h1>
+    <h3>基於 1844 sessions IC 分析的因子效能排名</h3>
+    <p>資料來源：factor_ic_analysis.py + factor_ic_results.json</p>
+    <p style="font-size: 0.8em; color: #888;">期間：2026-05-31 ~ 2026-06-初 | Horizons: 6/8/12/18 bars (30-90min)</p>
+</section>
+
+<!-- Slide 2: Factor Strength Ranking -->
+<section>
+    <h2>🏆 因子強度排名（按平均 |Spearman IC| 排序）</h2>
+    <table>
+        <thead><tr><th>排名</th><th>因子名稱</th><th>平均 \|IC\|</th><th>強度</th><th>建議用途</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td><strong>atr_session / dist_to_high</strong></td><td><span class="badge badge-fire">0.524</span></td><td>🔥 <strong>極強</strong></td><td>核心過濾/分層</td></tr>
+            <tr><td>2</td><td><strong>max_chg_so_far</strong></td><td><span class="badge badge-fire">0.314</span></td><td>🔥 <strong>極強</strong></td><td>核心過濾/分層</td></tr>
+            <tr><td>3</td><td>entry_change</td><td><span class="badge badge-star">0.151</span></td><td>⭐ 中等</td><td>入場門檻 (已在用)</td></tr>
+            <tr><td>4</td><td>rank_improve</td><td><span class="badge badge-star">0.102</span></td><td>⭐ 中等</td><td>輔助確認</td></tr>
+            <tr><td>5</td><td>entry_rank</td><td><span class="badge badge-star">0.106</span></td><td>中等</td><td>入場門檻 (已在用)</td></tr>
+            <tr><td>6</td><td>chg_persistence</td><td>0.097</td><td>中弱</td><td>輔助</td></tr>
+            <tr><td>7</td><td>rank_momentum</td><td>0.100</td><td>中弱</td><td>輔助</td></tr>
+            <tr><td>8</td><td>vol_trend</td><td>~0.05</td><td><span class="badge badge-dim">弱</span></td><td>參考</td></tr>
+            <tr><td>9</td><td>body_ratio</td><td>~0.03</td><td><span class="badge badge-dim">弱</span></td><td>參考</td></tr>
+            <tr><td>10</td><td>session_duration</td><td>~0.01</td><td><span class="badge badge-dim">極弱</span></td><td>已用作過濾</td></tr>
+            <tr><td>11</td><td>time_of_day</td><td>~0.00</td><td><span class="badge badge-dim">無</span></td><td>不建議</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 3: Key Discovery -->
+<section>
+    <h2>💡 重大發現：最強因子被忽略</h2>
+    <div class="factor-card fire">
+        <strong>atr_session = max_chg_so_far - entry_change</strong><br>
+        <span class="badge badge-fire">IC = 0.524</span> (跨所有 horizons 穩定 > 0.5)<br>
+        意義：Session 剩餘上漲空間（從進榜到 session 高點的距離）<br>
+        <strong>目前優化器未直接使用此因子</strong>，只間接用了 max_change_1h_pct 做 session 長度過濾
+    </div>
+    <div class="factor-card fire">
+        <strong>max_chg_so_far</strong><br>
+        <span class="badge badge-fire">IC = 0.314</span><br>
+        Session 迄今最大漲幅，已隱含在 atr_session 中
+    </div>
+    <p><strong>結論</strong>：波動率代理因子（剩餘上漲空間）是迄今最強預測因子，遠超排名/漲幅門檻（IC 0.1 左右），強烈建議納入優化器搜尋空間。</p>
+</section>
+
+<!-- Slide 4: Factor Categories A -->
+<section>
+    <h2>📋 因子詳細定義 - A. 核心入場特徵（已在用）</h2>
+    <table>
+        <thead><tr><th>因子</th><th>定義</th><th>IC</th><th>目前應用</th></tr></thead>
+        <tbody>
+            <tr><td>entry_rank</td><td>進榜時排名 (1-10，越小越強)</td><td>0.106</td><td>max_entry_rank ≤ 3</td></tr>
+            <tr><td>entry_change</td><td>進榜時 1H 漲幅%</td><td>0.151</td><td>3% ≤ chg ≤ 10%</td></tr>
+            <tr><td>max_chg_so_far</td><td>Session 迄今最大漲幅%</td><td><strong>0.314</strong></td><td>❌ 未直接用</td></tr>
+            <tr><td>unrealized_pnl</td><td>進場時未實現損益 (接近0)</td><td>0.100</td><td>基準</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 5: Factor Categories B -->
+<section>
+    <h2>📋 因子詳細定義 - B. 動量持久度/質量</h2>
+    <table>
+        <thead><tr><th>因子</th><th>定義</th><th>IC</th><th>應用潛力</th></tr></thead>
+        <tbody>
+            <tr><td>rank_improve</td><td>排名改善度：entry_rank - min_rank_1h</td><td>0.102</td><td>✅ 已加入優化器 (min_rank_momentum)</td></tr>
+            <tr><td>chg_persistence</td><td>當前漲幅/進榜漲幅 (current/entry)</td><td>0.097</td><td>衰減/加速判斷</td></tr>
+            <tr><td>rank_momentum</td><td>當前排名動能：entry_rank - current_rank</td><td>0.100</td><td>榜內上升確認</td></tr>
+            <tr><td>change_momentum</td><td>當前漲幅動能：current_chg - entry_chg</td><td>0.100</td><td>加速確認</td></tr>
+            <tr><td>chg_acceleration</td><td>次根K漲幅 - 首根K漲幅</td><td>~0</td><td>樣本太少</td></tr>
+            <tr><td>rank_acceleration</td><td>次根K排名改善 - 首根K</td><td>~0</td><td>樣本太少</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 6: Factor Categories C-D -->
+<section>
+    <h2>📋 因子詳細定義 - C. 量能/信念度 & D. Session 背景/波動率</h2>
+    <table>
+        <thead><tr><th>類別</th><th>因子</th><th>定義</th><th>IC</th><th>評價</th></tr></thead>
+        <tbody>
+            <tr><td rowspan="3">C. 量能/信念度</td><td>vol_trend</td><td>近3根量均值 / 近10根量均值</td><td>~0.05</td><td>弱</td></tr>
+            <tr><td>body_ratio</td><td>近3根 K 線 實體/振幅 平均</td><td>~0.03</td><td>弱</td></tr>
+            <tr><td>consec_green</td><td>連續綠K 根數</td><td>~0.02</td><td>極弱</td></tr>
+            <tr><td rowspan="3">D. 背景/波動率</td><td class="factor-card fire"><strong>atr_session</strong></td><td>Session 波動代理：max_chg - entry_chg</td><td><strong>0.524</strong></td><td>🔥 <strong>最強!</strong></td></tr>
+            <tr><td>dist_to_high</td><td>距離 Session 高點（同上）</td><td><strong>0.524</strong></td><td>與 atr_session 完全相同</td></tr>
+            <tr><td>session_duration</td><td>Session 總根數</td><td>~0.01</td><td>已用：min/max_session_bars</td></tr>
+            <tr><td>time_of_day</td><td>進場時段 (0-23h)</td><td>~0.00</td><td>無效</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 7: Quantile Analysis -->
+<section>
+    <h2>📊 五分位數分析 - atr_session @ 12 bars</h2>
+    <table>
+        <thead><tr><th>五分位</th><th>平均淨報酬</th><th>解讀</th></tr></thead>
+        <tbody>
+            <tr><td>Q1 (最小剩餘空間)</td><td>-0.438%</td><td>剩餘空間小 → 容易見頂回落</td></tr>
+            <tr><td>Q2</td><td>-0.619%</td><td></td></tr>
+            <tr><td>Q3</td><td>-0.272%</td><td></td></tr>
+            <tr><td>Q4</td><td>+0.101%</td><td>轉正</td></tr>
+            <tr><td style="color:#00ff88"><strong>Q5 (最大剩餘空間)</strong></td><td style="color:#00ff88"><strong>+1.766%</strong></td><td style="color:#00ff88"><strong>巨大剩餘空間 → 延續動能強</strong></td></tr>
+        </tbody>
+    </table>
+    <p>Q5-Q5 Spread: <strong>+2.20%</strong> | Monotonic: 趨勢明顯（Q1-Q3 負，Q4-Q5 正）</p>
+</section>
+
+<!-- Slide 8: Tier 1 Recommendations -->
+<section>
+    <h2>💡 新策略研發建議因子組合 - Tier 1: 必須納入核心搜尋空間</h2>
+    <pre><code># 目前已在用
+- entry_rank (≤3)
+- entry_change (3-10%)
+- require_green_confirm
+- max_upper_wick_pct (1.2%)
+- min_vol_ratio (1.0)
+
+# 【新增強烈建議】波動率代理 - IC=0.52！
+- atr_session (max_chg_so_far - entry_change) 範圍過濾
+  例：剩餘上漲空間 ≥ 2% 且 ≤ 15%
+  搜尋範圍建議：min_atr_proxy ∈ [2, 3, 5], max_atr_proxy ∈ [10, 12, 15]</code></pre>
+    <p><span class="badge badge-new">高優先級</span> 這是目前 IC 最高且未被充分利用的因子</p>
+</section>
+
+<!-- Slide 9: Tier 2-3 Recommendations -->
+<section>
+    <h2>💡 Tier 2-3: 進階搜尋與 ML 特徵</h2>
+    <h3>Tier 2：加入優化器搜尋網格</h3>
+    <pre><code># 已在優化器程式碼但未啟用/未充分搜尋
+- min_rank_momentum: [0, 1, 2]  # 排名改善至少 1-2 位
+- min_session_bars / max_session_bars: 已有 (6,60)/(8,50)/(10,40)
+- reclaim_entry_price: [True, False]  # 已在搜尋</code></pre>
+    <h3>Tier 3：作為 ML/評分模型輸入特徵</h3>
+    <pre><code># 用於 quality_score 或 meta-labeling
+- rank_improve (IC=0.10)
+- chg_persistence (IC=0.10) 
+- rank_momentum / change_momentum
+- vol_trend, body_ratio (弱但可作輔助)</code></pre>
+    <h3>Tier 4：不要用</h3>
+    <pre><code>- time_of_day (IC≈0)
+- chg_acceleration, rank_acceleration (樣本太少)
+- consec_green (極弱)</code></pre>
+</section>
+
+<!-- Slide 10: How to Add Factor -->
+<section>
+    <h2>🔧 如何加入新因子到優化器</h2>
+    <ol style="text-align:left; font-size:0.85em;">
+        <li><strong>在 factor_ic_analysis.py 新增 Factor 定義</strong>（參考現有寫法）</li>
+        <li><strong>跑 IC 分析</strong>確認效果：
+            <pre><code>python factor_ic_analysis.py</code></pre>
+        </li>
+        <li><strong>在 tmp_top10_training_optimizer.py 的 build_rules() 加入搜尋範圍</strong>：
+            <pre><code>for atr_min, atr_max in [(2, 15), (3, 12), (5, 10)]:
+    entries.append(EntryRule(
+        f"..._atr{atr_min}-{atr_max}",
+        ...,
+        min_atr_proxy=atr_min,
+        max_atr_proxy=atr_max,
+    ))</code></pre>
+        </li>
+        <li><strong>重跑優化器</strong>產出新 qualified_strategies.pkl</li>
+        <li><strong>用 update_strategies.py 同步部署</strong></li>
+    </ol>
+</section>
+
+<!-- Slide 11: Related Files -->
+<section>
+    <h2>📁 相關檔案</h2>
+    <table>
+        <thead><tr><th>檔案</th><th>用途</th></tr></thead>
+        <tbody>
+            <tr><td>factor_ic_analysis.py</td><td>因子定義 + IC 分析主程式（19 個因子）</td></tr>
+            <tr><td>factor_ic_results.json</td><td>完整 IC 結果（含五分位數、Spearman/Pearson、Monotonic 檢查）</td></tr>
+            <tr><td>tmp_top10_training_optimizer.py</td><td>優化器搜尋空間定義 (build_rules())</td></tr>
+            <tr><td>scan_top10_training_strategies.py</td><td>更廣泛的策略掃描（可測試新因子組合）</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 12: End -->
+<section>
+    <h1>謝謝</h1>
+    <h3>LIGHTOARTS OKX 因子分析與新策略建議</h3>
+    <p>核心建議：<span class="badge badge-fire">立即加入 atr_session (剩餘上漲空間) 到優化器搜尋空間</span></p>
+    <p>詳細文件：即將產出 <code>FACTOR_ANALYSIS.md</code></p>
+    <p style="font-size:0.7em; color:#888;">2026-06-15 | v1.0</p>
+</section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

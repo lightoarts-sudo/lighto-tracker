@@ -269,6 +269,8 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
     # Top 2 (sl0.8): net_avg=0.666%, WR=53.2%, PF=2.74, max_loss=-0.96%, trades=77
     # Top 3 (sl1.2): net_avg=0.665%, WR=57.1%, PF=2.59, max_loss=-1.36%, trades=77
     "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version":     "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version":     "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_atr2-15_sl1.0_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
@@ -281,13 +283,15 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": false,
         "shadow_only": False,
+        "min_atr_proxy": 2,
+        "max_atr_proxy": 15,
         "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
     },
-    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl0.8_be0.6_tr0.9x0.4_t8": {
+    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_atr2-15_sl1.0_be0.6_tr0.9x0.4_t12": {
         "version": "auto_top2_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
@@ -300,13 +304,15 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": false,
         "shadow_only": False,
-        "stop_loss_pct": 0.8,
+        "min_atr_proxy": 2,
+        "max_atr_proxy": 15,
+        "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
+        "time_stop_bars": 12,
     },
-    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.2_be0.6_tr0.9x0.4_t8": {
+    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_atr2-15_sl1.0_be0.6_tr0.9x0.4_t18": {
         "version": "auto_top3_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
@@ -319,12 +325,16 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": false,
         "shadow_only": False,
-        "stop_loss_pct": 1.2,
+        "min_atr_proxy": 2,
+        "max_atr_proxy": 15,
+        "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
         "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
+        "time_stop_bars": 18,
     },
+
+
 
 
     # === Strategy 4.1 (production backtest positive) ===

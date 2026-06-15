@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIGHTOARTS OKX 策略研發流程 R&D Pipeline</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css">
+    <style>
+        .reveal h1 { font-size: 2.5em; color: #00d4ff; }
+        .reveal h2 { font-size: 1.8em; color: #00ff88; }
+        .reveal h3 { font-size: 1.4em; color: #ffaa00; }
+        .reveal table { font-size: 0.65em; }
+        .reveal th { background: #333; }
+        .reveal code { background: #222; padding: 2px 4px; border-radius: 3px; }
+        .reveal pre { background: #1a1a1a; font-size: 0.55em; line-height: 1.3; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; font-weight: bold; }
+        .badge-strong { background: #ff4444; color: white; }
+        .badge-moderate { background: #ffaa00; color: black; }
+        .flow { font-family: monospace; font-size: 0.7em; background: #1a1a2e; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+<!-- Slide 1: Title -->
+<section>
+    <h1>LIGHTOARTS OKX 策略研發流程</h1>
+    <h3>R&D Pipeline - 從資料收集到實盤部署的完整治理</h3>
+    <p>更新：2026-06-15 | 核心原則：Point-in-time 嚴謹、Walk-Forward 驗證、硬門檻不妥協、影子先行、原生硬停損</p>
+</section>
+
+<!-- Slide 2: Four Stages -->
+<section>
+    <h2>🔄 完整四階段流程</h2>
+    <div class="flow">
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│ ① 資料收集       │───→ │ ② 參數優化搜尋   │───→ │ ③ 驗證分級       │───→ │ ④ 實盤推廣       │
+│  (每5分鐘持續)   │     │  (每日11:00)     │     │  (研究審核)      │     │  (每日23:00)     │
+└─────────────────┘     └─────────────────┘     └─────────────────┘     └─────────────────┘
+    </div>
+    <ul style="text-align:left; font-size:0.85em; margin-top:20px;">
+        <li><strong>① 資料收集</strong>：okx_top10_1h_training_collector.py 每 5 分鐘抓全市場、建立 session、存 5m K 線</li>
+        <li><strong>② 參數優化</strong>：tmp_top10_training_optimizer.py 每日 11:00 跑網格搜尋 + Walk-Forward 驗證</li>
+        <li><strong>③ 研究審核</strong>：okx_strategy_research_review.py 三級分級（research-only / shadow / tiny-pilot）</li>
+        <li><strong>④ 實盤推廣</strong>：每日 23:00 Preflight 檢查通過才推 OKX 實盤，失敗則 PAUSE</li>
+    </ul>
+</section>
+
+<!-- Slide 3: Data Collection -->
+<section>
+    <h2>① 資料收集層（基礎設施）</h2>
+    <table>
+        <thead><tr><th>腳本</th><th>頻率</th><th>功能</th><th>產出</th></tr></thead>
+        <tbody>
+            <tr><td>okx_top10_1h_training_collector.py</td><td>每 5 分鐘</td><td>抓全市場 SPOT USDT → 計算 1H 漲幅 → 排名 → 追蹤進榜/出榜 session → 存 5m K 線</td><td>data/okx_micro_5m_tracking.sqlite</td></tr>
+        </tbody>
+    </table>
+    <h3>關鍵設計</h3>
+    <ul style="text-align:left; font-size:0.85em;">
+        <li><strong>Session 定義</strong>：幣種進入 Top10 = session 開始；摔出 Top10 = session 結束</li>
+        <li><strong>Point-in-time 正確性</strong>：每根 5m K 線記錄當時的 <code>rank_1h</code>、<code>change_1h_pct</code>，回測時<strong>只能看當下可見資訊</strong></li>
+        <li><strong>資料量</strong>：~1.2 萬 closed sessions，200+ 幣種，從 2026-05-31 累積至今</li>
+    </ul>
+</section>
+
+<!-- Slide 4: Optimizer Search Space -->
+<section>
+    <h2>② 參數優化搜尋空間</h2>
+    <h3>入場規則組合</h3>
+    <pre><code>delay_bars = [3]                    # IC 分析證實 delay=3 最佳
+max_entry_rank = [3]                # Rank 3 主導，Rank 5 衰減
+min/max_entry_change = [(3, 10)]    # IC 證實 3-10% 最佳
+require_green_confirm = [True]      # 綠K確認
+max_upper_wick_pct = [1.2, 0.8]     # 1.2% 基礎 / 0.8% 嚴格
+min_vol_ratio = [1.0, 2.0]          # 1.0x 基礎 / 2.0x 嚴格
+reclaim_entry_price = [False, True] # 不回踩 / 回踩確認
+session_duration = [(6,60), (8,50), (10,40)]</code></pre>
+    <h3>出場規則組合</h3>
+    <pre><code>sl_pct = [0.8, 1.0, 1.2]
+time_stop_bars = [8, 12, 18]
+breakeven_after_pct = [0.6, 0.8]
+trail_start_pct = [0.9, 1.2]
+trail_giveback_pct = [0.4, 0.6]</code></pre>
+    <p><strong>組合數</strong>：~144 種 entry × 18 種 exit = <span class="badge badge-strong">~2,600 個策略組合</span></p>
+</section>
+
+<!-- Slide 5: Walk-Forward Validation -->
+<section>
+    <h2>② Walk-Forward 驗證（防過擬合核心）</h2>
+    <pre><code># 拿最早 7 天當 train，接著 2 天當 test
+# 滾動向前：
+# train 7天 → test 2天 → train 9天 → test 2天 → train 11天 → test 2天 → ...
+# 只看 test 期間表現，不看 train 期間</code></pre>
+    <h3>硬門檻篩選（優化器內建）</h3>
+    <table>
+        <thead><tr><th>指標</th><th>門檻</th><th>來源</th></tr></thead>
+        <tbody>
+            <tr><td>min_trades</td><td>≥ 10</td><td>樣本數基本門檻</td></tr>
+            <tr><td>net_avg_return</td><td>&gt; 0%</td><td>必須有正期望值</td></tr>
+            <tr><td>profit_factor</td><td>&gt; 1.5</td><td>風險報酬比</td></tr>
+            <tr><td>max_loss</td><td>&gt; -2%</td><td>單筆虧損可控</td></tr>
+            <tr><td>win_rate</td><td>&gt; 40%</td><td>基本勝率</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 6: Research Review Levels -->
+<section>
+    <h2>③ 研究審核分級（三級標準）</h2>
+    <table>
+        <thead><tr><th>等級</th><th>標籤</th><th>升級條件</th><th>用途</th></tr></thead>
+        <tbody>
+            <tr><td>L1</td><td>research-only</td><td>任一硬門檻不達標</td><td>僅供觀察、不部署</td></tr>
+            <tr><td>L2</td><td>Render shadow candidate</td><td>PF≥1.15, net_avg&gt;0.05%, 日勝率≥55%, max_loss≥-1.5%, trades≥80</td><td>部署 Render 影子模式（不實際下單）</td></tr>
+            <tr><td>L3</td><td><span class="badge badge-strong">tiny-pilot candidate</span></td><td>PF≥1.5, net_avg&gt;0.15%, 日勝率≥60%, max_loss≥-1.25%, trades≥100, 無警告</td><td>可申請 OKX 小額實盤試驗</td></tr>
+        </tbody>
+    </table>
+    <h3>核心防過擬合檢查</h3>
+    <pre><code># 單日依賴度檢查
+one_day_dependency = best_day_pct / net_sum_pct
+if one_day_dependency >= 45%:  → WARNING
+if net_sum_without_best_day <= 0:  → REJECT (扣掉最好的一天後還要賺錢)
+
+# 連續性檢查
+days >= 5 天
+day_win_rate >= 50%</code></pre>
+    <p><strong>原則</strong>：研究審核<strong>永遠不宣稱 live-ready</strong>，最多只到 tiny-pilot candidate。</p>
+</section>
+
+<!-- Slide 7: Live Promotion -->
+<section>
+    <h2>④ 實盤推廣流程（每日 23:00）</h2>
+    <pre><code>Render 上的最佳策略
+       ↓
+Preflight 檢查（本地跑）：
+  ├─ 樣本數充足？(trades ≥ 30)
+  ├─ PF ≥ 1.5？
+  ├─ 淨期望值 > 0 且穩定？
+  ├─ 最大虧損 > -2%？
+  ├─ 勝率 > 40%？
+  ├─ 不依賴單一天？(one_day_dependency < 45%)
+  └─ 近期表現無顯著衰退？
+       ↓
+通過 → 推送到 OKX 實盤 (原生 1% 硬停損)
+失敗 → PAUSE + 通報</code></pre>
+</section>
+
+<!-- Slide 8: Iron Rules -->
+<section>
+    <h2>⚖️ 研發鐵律（不可違反的 7 條規則）</h2>
+    <table>
+        <thead><tr><th>原則</th><th>說明</th><th>違反後果</th></tr></thead>
+        <tbody>
+            <tr><td>Point-in-time 嚴謹</td><td>回測只能用進場當下可見資訊</td><td>看起來很美但實盤失效</td></tr>
+            <tr><td>Walk-Forward > In-sample</td><td>只相信 test window 表現</td><td>In-sample 過擬合</td></tr>
+            <tr><td>硬門檻不妥協</td><td>PF<1.5、max_loss<-2%、WR<40% 直接淘汰</td><td>實盤爆雷</td></tr>
+            <tr><td>單日依賴度 < 45%</td><td>扣掉最好的一天還要賺錢</td><td>幸運者偏差</td></tr>
+            <tr><td>最小樣本數</td><td>研究≥30、影子≥80、實盤≥100</td><td>小樣本隨機性</td></tr>
+            <tr><td>原生硬停損</td><td>實盤每筆必掛 OKX 1% 止損單</td><td>系統故障/網路斷線不爆倉</td></tr>
+            <tr><td>影子先行</td><td>新策略必須先跑 2 週影子模式</td><td>未驗證直上實盤</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 9: Complete Script Chain -->
+<section>
+    <h2>📁 完整腳本鏈路</h2>
+    <div class="flow">
+資料收集
+  okx_top10_1h_training_collector.py (每5m)
+        ↓ SQLite
+參數優化
+  tmp_top10_training_optimizer.py (每日11:00)
+        ↓ pkl + json
+部署同步
+  update_strategies.py (優化後立即)
+        ↓ git push → Render 自動部署
+廣泛掃描/研究
+  scan_top10_training_strategies.py (手動/排程)
+        ↓ json
+研究審核分級
+  okx_strategy_research_review.py (輸出 md/json)
+        ↓
+實盤推廣決策
+  人工/半自動 Preflight (每日23:00)
+        ↓
+OKX 實盤執行
+  okx_strategy22_live_pilot.py / okx_dplus_live_pilot.py
+    </div>
+</section>
+
+<!-- Slide 10: Key Output Files -->
+<section>
+    <h2>📂 關鍵輸出檔案對照表</h2>
+    <table>
+        <thead><tr><th>階段</th><th>檔案</th><th>用途</th></tr></thead>
+        <tbody>
+            <tr><td>資料</td><td>okx_micro_5m_tracking.sqlite</td><td>原始 session + K 線資料庫</td></tr>
+            <tr><td>優化</td><td>qualified_strategies.pkl</td><td>Top 3 給部署腳本用</td></tr>
+            <tr><td>優化</td><td>top10_1h_optimizer_latest.json</td><td>完整優化結果（含所有指標）</td></tr>
+            <tr><td>掃描</td><td>top10_training_strategy_scan_latest.json</td><td>廣泛參數掃描結果</td></tr>
+            <tr><td>審核</td><td>okx_strategy_research_review_latest.json</td><td>分級標籤 + 詳細指標</td></tr>
+            <tr><td>審核</td><td>okx_strategy_research_review_latest.md</td><td>人工閱讀報告</td></tr>
+            <tr><td>部署</td><td>render.yaml</td><td>Render 環境變數（含 ACTIVE_STRATEGIES）</td></tr>
+            <tr><td>部署</td><td>crypto_bot.py</td><td>實盤主程式（含策略定義）</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Slide 11: Current Focus -->
+<section>
+    <h2>🎯 目前研發重心（2026-06 狀態）</h2>
+    <ol style="text-align:left; font-size:0.85em;">
+        <li><strong>動態排序策略</strong>：已驗證 <code>delay=3, rank≤3, chg=3-10%, green_confirm, wick≤1.2%, vol≥1.0x</code> 是核心骨架</li>
+        <li><strong>出場參數微調</strong>：SL 0.8/1.0/1.2%、time_stop 8/12/18、BE 0.6/0.8、Trail 0.9×0.4 vs 1.2×0.6</li>
+        <li><strong>Session 長度過濾</strong>：<code>dur=10-40</code> 目前勝過 <code>dur=6-60</code>，代表太短/太長的 session 都不好</li>
+        <li><strong>回踩確認</strong>：動態三條 <code>reclaim=False</code>（突破即進），固定策略用 <code>reclaim=True</code>，兩種互補</li>
+        <li><strong>防過擬合</strong>：Walk-forward + 單日依賴度 + 最小樣本數 三重把關</li>
+    </ol>
+</section>
+
+<!-- Slide 12: End -->
+<section>
+    <h1>謝謝</h1>
+    <h3>LIGHTOARTS OKX 策略研發流程 R&D Pipeline</h3>
+    <p>詳細文件：<code>RND_PIPELINE.md</code></p>
+    <p style="font-size:0.7em; color:#888;">2026-06-15 | v1.0</p>
+</section>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1094 @@
+{
+  "db_stats": {
+    "dataset_rows": 9433,
+    "sessions": 1849,
+    "closed_sessions": 1844
+  },
+  "horizons": [
+    6,
+    8,
+    12,
+    18
+  ],
+  "round_trip_cost": 0.16,
+  "factors": [
+    {
+      "factor": "entry_rank",
+      "desc": "Entry rank (1-10, lower better)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1123,
+          "pearson_ic": 0.0034,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.0136,
+            "Q2": 0.0739,
+            "Q3": 0.1799,
+            "Q4": 0.0303,
+            "Q5": 0.1488
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.103,
+          "pearson_ic": 0.021,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.0704,
+            "Q2": 0.0631,
+            "Q3": 0.1976,
+            "Q4": 0.0442,
+            "Q5": 0.13
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1057,
+          "pearson_ic": 0.0116,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.0349,
+            "Q2": 0.1515,
+            "Q3": 0.2167,
+            "Q4": 0.0649,
+            "Q5": 0.1579
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.1051,
+          "pearson_ic": 0.008,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.0733,
+            "Q2": 0.1665,
+            "Q3": 0.2207,
+            "Q4": 0.0733,
+            "Q5": 0.3049
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "entry_change",
+      "desc": "Entry 1H change% (momentum strength)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1632,
+          "pearson_ic": 0.0092,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.0821,
+            "Q2": 0.0673,
+            "Q3": -0.0016,
+            "Q4": 0.1524,
+            "Q5": 0.1463
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.1533,
+          "pearson_ic": -0.0053,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.0648,
+            "Q2": 0.0433,
+            "Q3": 0.0866,
+            "Q4": 0.1364,
+            "Q5": 0.0345
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1453,
+          "pearson_ic": 0.0455,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.1067,
+            "Q2": 0.1318,
+            "Q3": 0.1217,
+            "Q4": 0.2055,
+            "Q5": -0.008
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.1441,
+          "pearson_ic": 0.0684,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.1649,
+            "Q2": 0.1832,
+            "Q3": 0.1352,
+            "Q4": 0.2266,
+            "Q5": 0.1306
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "max_chg_so_far",
+      "desc": "Session max change% so far",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.3261,
+          "pearson_ic": 0.443,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": -0.2144,
+            "Q2": -0.2593,
+            "Q3": -0.1325,
+            "Q4": 0.036,
+            "Q5": 1.0073
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.309,
+          "pearson_ic": 0.4085,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.2189,
+            "Q2": -0.2515,
+            "Q3": -0.1504,
+            "Q4": 0.0731,
+            "Q5": 0.904
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.3117,
+          "pearson_ic": 0.4584,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.2177,
+            "Q2": -0.253,
+            "Q3": -0.1409,
+            "Q4": 0.0806,
+            "Q5": 1.077
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.3111,
+          "pearson_ic": 0.5132,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": -0.2177,
+            "Q2": -0.2511,
+            "Q3": -0.14,
+            "Q4": 0.1006,
+            "Q5": 1.3357
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "unrealized_pnl",
+      "desc": "Unrealized P&L at entry",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1063,
+          "pearson_ic": 0.0,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.2202,
+            "Q2": 0.0654,
+            "Q3": 0.0669,
+            "Q4": 0.0093,
+            "Q5": 0.0853
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.0969,
+          "pearson_ic": 0.0,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.1975,
+            "Q2": 0.1511,
+            "Q3": -0.0116,
+            "Q4": -0.0462,
+            "Q5": 0.0744
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.0996,
+          "pearson_ic": 0.0,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.226,
+            "Q2": 0.1542,
+            "Q3": 0.0929,
+            "Q4": -0.0099,
+            "Q5": 0.0935
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.099,
+          "pearson_ic": 0.0,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.2336,
+            "Q2": 0.2014,
+            "Q3": 0.1042,
+            "Q4": 0.1675,
+            "Q5": 0.1339
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "rank_improve",
+      "desc": "Rank improvement (entry - min_rank)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1083,
+          "pearson_ic": 0.2441,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": -0.0794,
+            "Q2": -0.182,
+            "Q3": -0.3473,
+            "Q4": 0.1514,
+            "Q5": 0.8957
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.0989,
+          "pearson_ic": 0.2623,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.1606,
+            "Q2": -0.1559,
+            "Q3": -0.3773,
+            "Q4": 0.1316,
+            "Q5": 0.9183
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1016,
+          "pearson_ic": 0.2506,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.2157,
+            "Q2": -0.078,
+            "Q3": -0.37,
+            "Q4": 0.1769,
+            "Q5": 1.0333
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.101,
+          "pearson_ic": 0.259,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": -0.2007,
+            "Q2": -0.0698,
+            "Q3": -0.3267,
+            "Q4": 0.2157,
+            "Q5": 1.2103
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "chg_persistence",
+      "desc": "Change% persistence (cur/entry)",
+      "horizons": {
+        "6b": {
+          "n": 1841,
+          "spearman_ic": 0.103,
+          "pearson_ic": 0.0,
+          "mean_return": 0.0898,
+          "quantile_returns": {
+            "Q1": 0.2202,
+            "Q2": 0.0656,
+            "Q3": 0.0669,
+            "Q4": 0.0067,
+            "Q5": 0.0898
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1841,
+          "spearman_ic": 0.0936,
+          "pearson_ic": 0.0,
+          "mean_return": 0.0734,
+          "quantile_returns": {
+            "Q1": 0.1975,
+            "Q2": 0.1513,
+            "Q3": -0.0116,
+            "Q4": -0.0488,
+            "Q5": 0.0787
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1841,
+          "spearman_ic": 0.0963,
+          "pearson_ic": 0.0,
+          "mean_return": 0.1117,
+          "quantile_returns": {
+            "Q1": 0.226,
+            "Q2": 0.1543,
+            "Q3": 0.0929,
+            "Q4": -0.0127,
+            "Q5": 0.0982
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1841,
+          "spearman_ic": 0.0956,
+          "pearson_ic": 0.0,
+          "mean_return": 0.1686,
+          "quantile_returns": {
+            "Q1": 0.2336,
+            "Q2": 0.2015,
+            "Q3": 0.1042,
+            "Q4": 0.1647,
+            "Q5": 0.139
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "rank_momentum",
+      "desc": "Rank momentum (entry - current)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1063,
+          "pearson_ic": 0.0,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.2202,
+            "Q2": 0.0654,
+            "Q3": 0.0669,
+            "Q4": 0.0093,
+            "Q5": 0.0853
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.0969,
+          "pearson_ic": 0.0,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.1975,
+            "Q2": 0.1511,
+            "Q3": -0.0116,
+            "Q4": -0.0462,
+            "Q5": 0.0744
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.0996,
+          "pearson_ic": 0.0,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.226,
+            "Q2": 0.1542,
+            "Q3": 0.0929,
+            "Q4": -0.0099,
+            "Q5": 0.0935
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.099,
+          "pearson_ic": 0.0,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.2336,
+            "Q2": 0.2014,
+            "Q3": 0.1042,
+            "Q4": 0.1675,
+            "Q5": 0.1339
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "change_momentum",
+      "desc": "Change% momentum (cur - entry)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1063,
+          "pearson_ic": 0.0,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.2202,
+            "Q2": 0.0654,
+            "Q3": 0.0669,
+            "Q4": 0.0093,
+            "Q5": 0.0853
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.0969,
+          "pearson_ic": 0.0,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.1975,
+            "Q2": 0.1511,
+            "Q3": -0.0116,
+            "Q4": -0.0462,
+            "Q5": 0.0744
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.0996,
+          "pearson_ic": 0.0,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.226,
+            "Q2": 0.1542,
+            "Q3": 0.0929,
+            "Q4": -0.0099,
+            "Q5": 0.0935
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.099,
+          "pearson_ic": 0.0,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.2336,
+            "Q2": 0.2014,
+            "Q3": 0.1042,
+            "Q4": 0.1675,
+            "Q5": 0.1339
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "chg_acceleration",
+      "desc": "Change acceleration (bar1 - bar0)",
+      "horizons": {
+        "6b": {
+          "n": 1361,
+          "spearman_ic": 0.431,
+          "pearson_ic": 0.3909,
+          "mean_return": 0.1779,
+          "quantile_returns": {
+            "Q1": -0.739,
+            "Q2": -0.1381,
+            "Q3": 0.0063,
+            "Q4": 0.269,
+            "Q5": 1.4867
+          },
+          "monotonic": true,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1361,
+          "spearman_ic": 0.4093,
+          "pearson_ic": 0.336,
+          "mean_return": 0.1557,
+          "quantile_returns": {
+            "Q1": -0.707,
+            "Q2": -0.1051,
+            "Q3": 0.0264,
+            "Q4": 0.3487,
+            "Q5": 1.2118
+          },
+          "monotonic": true,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1361,
+          "spearman_ic": 0.4056,
+          "pearson_ic": 0.3542,
+          "mean_return": 0.2076,
+          "quantile_returns": {
+            "Q1": -0.6364,
+            "Q2": -0.0562,
+            "Q3": 0.0422,
+            "Q4": 0.3814,
+            "Q5": 1.3029
+          },
+          "monotonic": true,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1361,
+          "spearman_ic": 0.4044,
+          "pearson_ic": 0.3323,
+          "mean_return": 0.2844,
+          "quantile_returns": {
+            "Q1": -0.5454,
+            "Q2": -0.0119,
+            "Q3": 0.0536,
+            "Q4": 0.4191,
+            "Q5": 1.5022
+          },
+          "monotonic": true,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "rank_acceleration",
+      "desc": "Rank acceleration (bar0 - bar1)",
+      "horizons": {
+        "6b": {
+          "n": 1361,
+          "spearman_ic": -0.7392,
+          "pearson_ic": 0.1536,
+          "mean_return": 0.1779,
+          "quantile_returns": {
+            "Q1": -0.3646,
+            "Q2": -0.0558,
+            "Q3": 0.4711,
+            "Q4": 0.1384,
+            "Q5": 0.6988
+          },
+          "monotonic": false,
+          "ic_sign": "negative"
+        },
+        "8b": {
+          "n": 1361,
+          "spearman_ic": -0.747,
+          "pearson_ic": 0.143,
+          "mean_return": 0.1557,
+          "quantile_returns": {
+            "Q1": -0.3114,
+            "Q2": -0.0872,
+            "Q3": 0.4055,
+            "Q4": 0.1296,
+            "Q5": 0.6404
+          },
+          "monotonic": false,
+          "ic_sign": "negative"
+        },
+        "12b": {
+          "n": 1361,
+          "spearman_ic": -0.7446,
+          "pearson_ic": 0.1295,
+          "mean_return": 0.2076,
+          "quantile_returns": {
+            "Q1": -0.2743,
+            "Q2": 0.0186,
+            "Q3": 0.377,
+            "Q4": 0.2248,
+            "Q5": 0.6899
+          },
+          "monotonic": false,
+          "ic_sign": "negative"
+        },
+        "18b": {
+          "n": 1361,
+          "spearman_ic": -0.7448,
+          "pearson_ic": 0.1184,
+          "mean_return": 0.2844,
+          "quantile_returns": {
+            "Q1": -0.1762,
+            "Q2": 0.0508,
+            "Q3": 0.4528,
+            "Q4": 0.2594,
+            "Q5": 0.8333
+          },
+          "monotonic": false,
+          "ic_sign": "negative"
+        }
+      }
+    },
+    {
+      "factor": "vol_trend",
+      "desc": "Volume trend (3-bar/10-bar avg)",
+      "horizons": {
+        "6b": {
+          "n": 0,
+          "error": "insufficient samples"
+        },
+        "8b": {
+          "n": 0,
+          "error": "insufficient samples"
+        },
+        "12b": {
+          "n": 0,
+          "error": "insufficient samples"
+        },
+        "18b": {
+          "n": 0,
+          "error": "insufficient samples"
+        }
+      }
+    },
+    {
+      "factor": "body_ratio",
+      "desc": "Body/range ratio (last 3 bars)",
+      "horizons": {
+        "6b": {
+          "n": 1239,
+          "spearman_ic": 0.5545,
+          "pearson_ic": 0.0293,
+          "mean_return": 0.1511,
+          "quantile_returns": {
+            "Q1": 0.0461,
+            "Q2": 0.0533,
+            "Q3": 0.3563,
+            "Q4": 0.2914,
+            "Q5": 0.0109
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1239,
+          "spearman_ic": 0.5566,
+          "pearson_ic": 0.0481,
+          "mean_return": 0.1294,
+          "quantile_returns": {
+            "Q1": -0.0342,
+            "Q2": 0.0305,
+            "Q3": 0.2952,
+            "Q4": 0.26,
+            "Q5": 0.096
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1239,
+          "spearman_ic": 0.556,
+          "pearson_ic": 0.0355,
+          "mean_return": 0.1816,
+          "quantile_returns": {
+            "Q1": -0.0105,
+            "Q2": 0.243,
+            "Q3": 0.2865,
+            "Q4": 0.2114,
+            "Q5": 0.1779
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1239,
+          "spearman_ic": 0.5557,
+          "pearson_ic": 0.0315,
+          "mean_return": 0.2652,
+          "quantile_returns": {
+            "Q1": 0.0475,
+            "Q2": 0.3598,
+            "Q3": 0.327,
+            "Q4": 0.3166,
+            "Q5": 0.2752
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "consec_green",
+      "desc": "Consecutive green bars count",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1073,
+          "pearson_ic": 0.035,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.0454,
+            "Q2": 0.0994,
+            "Q3": -0.0345,
+            "Q4": 0.2083,
+            "Q5": 0.1282
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.0979,
+          "pearson_ic": 0.0309,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.1279,
+            "Q2": 0.0088,
+            "Q3": -0.0377,
+            "Q4": 0.1909,
+            "Q5": 0.0752
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1006,
+          "pearson_ic": 0.0372,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.1175,
+            "Q2": 0.0174,
+            "Q3": 0.0661,
+            "Q4": 0.2069,
+            "Q5": 0.1483
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.1,
+          "pearson_ic": 0.052,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.1268,
+            "Q2": 0.0742,
+            "Q3": 0.0277,
+            "Q4": 0.2774,
+            "Q5": 0.3322
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "session_duration",
+      "desc": "Session duration (bars)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1174,
+          "pearson_ic": 0.3165,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": -0.16,
+            "Q2": -0.2781,
+            "Q3": -0.3235,
+            "Q4": -0.1115,
+            "Q5": 1.3069
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.108,
+          "pearson_ic": 0.3567,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.16,
+            "Q2": -0.2781,
+            "Q3": -0.3235,
+            "Q4": -0.1532,
+            "Q5": 1.267
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1109,
+          "pearson_ic": 0.4089,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.16,
+            "Q2": -0.2781,
+            "Q3": -0.3235,
+            "Q4": -0.1532,
+            "Q5": 1.4567
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.1103,
+          "pearson_ic": 0.4727,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": -0.16,
+            "Q2": -0.2781,
+            "Q3": -0.3235,
+            "Q4": -0.1532,
+            "Q5": 1.7379
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "time_of_day",
+      "desc": "Hour of day at entry",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.1316,
+          "pearson_ic": -0.0088,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": 0.1094,
+            "Q2": 0.1077,
+            "Q3": 0.0137,
+            "Q4": 0.1909,
+            "Q5": 0.0262
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.1225,
+          "pearson_ic": -0.003,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": 0.0949,
+            "Q2": 0.0615,
+            "Q3": -0.03,
+            "Q4": 0.2294,
+            "Q5": 0.0101
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.1251,
+          "pearson_ic": -0.0091,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": 0.1649,
+            "Q2": 0.1172,
+            "Q3": -0.08,
+            "Q4": 0.3125,
+            "Q5": 0.0428
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.1244,
+          "pearson_ic": -0.0134,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": 0.2485,
+            "Q2": 0.1417,
+            "Q3": -0.0385,
+            "Q4": 0.4647,
+            "Q5": 0.0253
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "atr_session",
+      "desc": "Session range proxy (max_chg - entry_chg)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.5357,
+          "pearson_ic": 0.6231,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": -0.4383,
+            "Q2": -0.623,
+            "Q3": -0.2696,
+            "Q4": 0.1298,
+            "Q5": 1.6315
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.5161,
+          "pearson_ic": 0.5857,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.4359,
+            "Q2": -0.6141,
+            "Q3": -0.2706,
+            "Q4": 0.1194,
+            "Q5": 1.5504
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.5222,
+          "pearson_ic": 0.616,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.4381,
+            "Q2": -0.6186,
+            "Q3": -0.272,
+            "Q4": 0.1012,
+            "Q5": 1.7659
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.5211,
+          "pearson_ic": 0.6758,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": -0.4391,
+            "Q2": -0.6119,
+            "Q3": -0.27,
+            "Q4": 0.1114,
+            "Q5": 2.0295
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    },
+    {
+      "factor": "dist_to_high",
+      "desc": "Distance to session high (max_chg - entry_chg)",
+      "horizons": {
+        "6b": {
+          "n": 1844,
+          "spearman_ic": 0.5357,
+          "pearson_ic": 0.6231,
+          "mean_return": 0.0894,
+          "quantile_returns": {
+            "Q1": -0.4383,
+            "Q2": -0.623,
+            "Q3": -0.2696,
+            "Q4": 0.1298,
+            "Q5": 1.6315
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "8b": {
+          "n": 1844,
+          "spearman_ic": 0.5161,
+          "pearson_ic": 0.5857,
+          "mean_return": 0.073,
+          "quantile_returns": {
+            "Q1": -0.4359,
+            "Q2": -0.6141,
+            "Q3": -0.2706,
+            "Q4": 0.1194,
+            "Q5": 1.5504
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "12b": {
+          "n": 1844,
+          "spearman_ic": 0.5222,
+          "pearson_ic": 0.616,
+          "mean_return": 0.1113,
+          "quantile_returns": {
+            "Q1": -0.4381,
+            "Q2": -0.6186,
+            "Q3": -0.272,
+            "Q4": 0.1012,
+            "Q5": 1.7659
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        },
+        "18b": {
+          "n": 1844,
+          "spearman_ic": 0.5211,
+          "pearson_ic": 0.6758,
+          "mean_return": 0.168,
+          "quantile_returns": {
+            "Q1": -0.4391,
+            "Q2": -0.6119,
+            "Q3": -0.27,
+            "Q4": 0.1114,
+            "Q5": 2.0295
+          },
+          "monotonic": false,
+          "ic_sign": "positive"
+        }
+      }
+    }
+  ]
+}

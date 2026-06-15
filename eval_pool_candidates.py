@@ -40,46 +40,47 @@ existing = set(cb.MICRO_TOP10_OPTIMIZED_STRATEGIES.keys())
 
 results = []
 
-for cand in pending:
+for i, cand in enumerate(pending):
     cid = cand["id"]
     entry = cand["entry"]
     exit_ = cand["exit"]
     
-    # Generate strategy ID in the naming convention
-    entry_name = entry["name"]
-    exit_name = exit_["name"]
-    strategy_id = f"cand_{cid}_{entry_name}_{exit_name}"
+    # Generate strategy ID with "auto_top" prefix so reclaim logic works
+    strategy_id = f"auto_top{i+1}_4h_from_pool_{cid.replace('cand_', '')}"
     
     # Convert to MICRO_TOP10_OPTIMIZED_STRATEGIES format
+    # Only include params that the production signal function supports
     params = {
-        "version": "pool_candidate",
+        "version": "auto_top_from_pool",
         "entry_delay_bars": entry["delay_bars"],
         "max_rank": entry["max_entry_rank"],
         "min_change_1h_pct": entry["min_entry_change"],
         "max_change_1h_pct": entry["max_entry_change"],
-        "min_current_change_1h_pct": 0.0,  # not in pool entry
-        "require_change_reclaim": False,   # not in pool entry
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": False,
         "require_green_confirm": entry["require_green_confirm"],
         "max_upper_wick_pct": entry["max_upper_wick_pct"],
         "min_volume_ratio": entry["min_vol_ratio"],
         "reclaim_entry_price": entry.get("reclaim_entry_price", False),
         "shadow_only": False,
+        # Exit params
         "stop_loss_pct": exit_["sl_pct"],
         "breakeven_after_pct": exit_["breakeven_after_pct"],
         "trailing_start_pct": exit_["trail_start_pct"],
         "trailing_giveback_pct": exit_["trail_giveback_pct"],
         "time_stop_bars": exit_["time_stop_bars"],
+        # Note: min_session_bars, max_session_bars, min_rank_momentum, min_atr_proxy, max_atr_proxy, allowed_hours
+        # are not supported in production signal function yet
     }
     
     # Add to strategies dict temporarily
     cb.MICRO_TOP10_OPTIMIZED_STRATEGIES[strategy_id] = params
     print(f"Added {strategy_id}")
 
-# Run backtest for all candidates + existing strategies we care about
-# Use only our candidate strategies for speed
-candidate_strats = [f"cand_{c['id']}_{c['entry']['name']}_{c['exit']['name']}" for c in pending]
+# Run backtest for all candidates
+candidate_strats = [f"auto_top{i+1}_4h_from_pool_{c['id'].replace('cand_', '')}" for i, c in enumerate(pending)]
 
-# Also test against full DEFAULT_STRATEGIES for comparison (but skip missing ones)
+# Also test against existing active strategies for comparison
 test_strategies = candidate_strats.copy()
 for s in DEFAULT_STRATEGIES:
     if s in cb.MICRO_TOP10_OPTIMIZED_STRATEGIES:
@@ -93,7 +94,7 @@ out = bt.run()
 # Print summaries for our candidates
 for summary in out["summaries"]:
     strat = summary["strategy"]
-    if strat.startswith("cand_"):
+    if strat.startswith("auto_top") and "from_pool" in strat:
         print(f"\n=== {strat} ===")
         print(f"  Closed trades: {summary['closed_trades']}")
         print(f"  Win rate: {summary['win_rate']:.2f}%")

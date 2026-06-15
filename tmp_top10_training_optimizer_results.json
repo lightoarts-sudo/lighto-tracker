@@ -1,29 +1,35 @@
 {
   "db_stats": {
-    "dataset_rows": 8609,
-    "sessions": 1588,
-    "closed_sessions": 1583,
+    "dataset_rows": 10834,
+    "sessions": 2319,
+    "closed_sessions": 2314,
     "active_sessions": 5,
-    "candles": 8609,
+    "candles": 10834,
     "min_ts_iso": "2026-05-31T21:30+08:00",
-    "max_ts_iso": "2026-06-12T18:50+08:00",
-    "insts": 184
+    "max_ts_iso": "2026-06-14T08:00+08:00",
+    "insts": 205
   },
   "round_trip_cost_pct": 0.16,
   "min_trades": 10,
-  "result_count": 11520,
+  "result_count": 144,
   "top": [
     {
       "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
+        "name": "delay3_rank3_chg3-10_green_vol_reclaim_dur10-40",
         "delay_bars": 3,
         "max_entry_rank": 3,
         "min_entry_change": 3,
         "max_entry_change": 10,
         "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
+        "max_upper_wick_pct": 0.8,
+        "min_vol_ratio": 2.0,
+        "reclaim_entry_price": true,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
       },
       "exit": {
         "name": "sl1.0_be0.6_trail0.9x0.4_t8",
@@ -34,32 +40,38 @@
         "trail_start_pct": 0.9,
         "trail_giveback_pct": 0.4
       },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.648331616466362,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.488331616466362,
-      "profit_factor": 4.207611242384391,
+      "entries": 11,
+      "closed_trades": 11,
+      "wins": 7,
+      "losses": 4,
+      "win_rate": 63.63636363636363,
+      "avg_return": 1.925654102081111,
+      "median_return": 0.9960477941176382,
+      "net_avg_return": 1.7656541020811112,
+      "profit_factor": 6.335767890904436,
       "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -4.963952205882382,
+      "max_drawdown_proxy": -2.3200000000000016,
       "exit_reason_counts": {
-        "stop_or_trail": 20
+        "stop_or_trail": 11
       }
     },
     {
       "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
+        "name": "delay3_rank3_chg3-10_green_vol_reclaim_dur10-40",
         "delay_bars": 3,
         "max_entry_rank": 3,
         "min_entry_change": 3,
         "max_entry_change": 10,
         "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
+        "max_upper_wick_pct": 0.8,
+        "min_vol_ratio": 2.0,
+        "reclaim_entry_price": true,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
       },
       "exit": {
         "name": "sl1.0_be0.6_trail0.9x0.4_t12",
@@ -70,32 +82,38 @@
         "trail_start_pct": 0.9,
         "trail_giveback_pct": 0.4
       },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.648331616466362,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.488331616466362,
-      "profit_factor": 4.207611242384391,
+      "entries": 11,
+      "closed_trades": 11,
+      "wins": 7,
+      "losses": 4,
+      "win_rate": 63.63636363636363,
+      "avg_return": 1.925654102081111,
+      "median_return": 0.9960477941176382,
+      "net_avg_return": 1.7656541020811112,
+      "profit_factor": 6.335767890904436,
       "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -4.963952205882382,
+      "max_drawdown_proxy": -2.3200000000000016,
       "exit_reason_counts": {
-        "stop_or_trail": 20
+        "stop_or_trail": 11
       }
     },
     {
       "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
+        "name": "delay3_rank3_chg3-10_green_vol_reclaim_dur10-40",
         "delay_bars": 3,
         "max_entry_rank": 3,
         "min_entry_change": 3,
         "max_entry_change": 10,
         "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
+        "max_upper_wick_pct": 0.8,
+        "min_vol_ratio": 2.0,
+        "reclaim_entry_price": true,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
       },
       "exit": {
         "name": "sl1.0_be0.6_trail0.9x0.4_t18",
@@ -106,24 +124,24 @@
         "trail_start_pct": 0.9,
         "trail_giveback_pct": 0.4
       },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.648331616466362,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.488331616466362,
-      "profit_factor": 4.207611242384391,
+      "entries": 11,
+      "closed_trades": 11,
+      "wins": 7,
+      "losses": 4,
+      "win_rate": 63.63636363636363,
+      "avg_return": 1.925654102081111,
+      "median_return": 0.9960477941176382,
+      "net_avg_return": 1.7656541020811112,
+      "profit_factor": 6.335767890904436,
       "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -4.963952205882382,
+      "max_drawdown_proxy": -2.3200000000000016,
       "exit_reason_counts": {
-        "stop_or_trail": 20
+        "stop_or_trail": 11
       }
     },
     {
       "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
         "delay_bars": 3,
         "max_entry_rank": 3,
         "min_entry_change": 3,
@@ -131,115 +149,13 @@
         "require_green_confirm": true,
         "max_upper_wick_pct": 1.2,
         "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.6385292267604812,
-      "median_return": 0.9362275044594082,
-      "net_avg_return": 1.478529226760481,
-      "profit_factor": 4.422521358241853,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t12",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.6385292267604812,
-      "median_return": 0.9362275044594082,
-      "net_avg_return": 1.478529226760481,
-      "profit_factor": 4.422521358241853,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.6385292267604812,
-      "median_return": 0.9362275044594082,
-      "net_avg_return": 1.478529226760481,
-      "profit_factor": 4.422521358241853,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
       },
       "exit": {
         "name": "sl1.2_be0.6_trail0.9x0.4_t8",
@@ -250,24 +166,24 @@
         "trail_start_pct": 0.9,
         "trail_giveback_pct": 0.4
       },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.5683316164663625,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.4083316164663633,
-      "profit_factor": 3.588844883210224,
+      "entries": 19,
+      "closed_trades": 19,
+      "wins": 13,
+      "losses": 6,
+      "win_rate": 68.42105263157895,
+      "avg_return": 1.893554813019501,
+      "median_return": 1.45609602021477,
+      "net_avg_return": 1.7335548130195018,
+      "profit_factor": 5.732405380369326,
       "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -5.9639522058823715,
+      "max_drawdown_proxy": -3.2439522058823727,
       "exit_reason_counts": {
-        "stop_or_trail": 20
+        "stop_or_trail": 19
       }
     },
     {
       "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
         "delay_bars": 3,
         "max_entry_rank": 3,
         "min_entry_change": 3,
@@ -275,7 +191,13 @@
         "require_green_confirm": true,
         "max_upper_wick_pct": 1.2,
         "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
       },
       "exit": {
         "name": "sl1.2_be0.6_trail0.9x0.4_t12",
@@ -286,1556 +208,19 @@
         "trail_start_pct": 0.9,
         "trail_giveback_pct": 0.4
       },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.5683316164663625,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.4083316164663633,
-      "profit_factor": 3.588844883210224,
+      "entries": 19,
+      "closed_trades": 19,
+      "wins": 13,
+      "losses": 6,
+      "win_rate": 68.42105263157895,
+      "avg_return": 1.893554813019501,
+      "median_return": 1.45609602021477,
+      "net_avg_return": 1.7335548130195018,
+      "profit_factor": 5.732405380369326,
       "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -5.9639522058823715,
+      "max_drawdown_proxy": -3.2439522058823727,
       "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.2_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.5683316164663625,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.4083316164663633,
-      "profit_factor": 3.588844883210224,
-      "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -5.9639522058823715,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 10,
-      "losses": 10,
-      "win_rate": 50.0,
-      "avg_return": 1.4975677219759764,
-      "median_return": 0.46847804850819186,
-      "net_avg_return": 1.3375677219759763,
-      "profit_factor": 4.03992664085449,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 10,
-      "losses": 10,
-      "win_rate": 50.0,
-      "avg_return": 1.4975677219759764,
-      "median_return": 0.46847804850819186,
-      "net_avg_return": 1.3375677219759763,
-      "profit_factor": 4.03992664085449,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 10,
-      "losses": 10,
-      "win_rate": 50.0,
-      "avg_return": 1.4975677219759764,
-      "median_return": 0.46847804850819186,
-      "net_avg_return": 1.3375677219759763,
-      "profit_factor": 4.03992664085449,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4972299462406817,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.3372299462406816,
-      "profit_factor": 3.833114292882791,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -5.166755514705901,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4972299462406817,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.3372299462406816,
-      "profit_factor": 3.833114292882791,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -5.166755514705901,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4972299462406817,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.3372299462406816,
-      "profit_factor": 3.833114292882791,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -5.166755514705901,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.4828206473594832,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.322820647359483,
-      "profit_factor": 3.101346461422644,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.774171588019964,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.6_trail0.9x0.4_t12",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.4828206473594832,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.322820647359483,
-      "profit_factor": 3.101346461422644,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.774171588019964,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.4828206473594832,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.322820647359483,
-      "profit_factor": 3.101346461422644,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.774171588019964,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl2.0_be0.6_trail0.9x0.4_t12",
-        "sl_pct": 2.0,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.4578566562635031,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.297856656263503,
-      "profit_factor": 2.983050132064977,
-      "max_loss": -2.160000000000013,
-      "max_drawdown_proxy": -8.274171588019957,
-      "exit_reason_counts": {
-        "stop_or_trail": 17,
-        "session_end": 3
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl2.0_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 2.0,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.4578566562635031,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.297856656263503,
-      "profit_factor": 2.983050132064977,
-      "max_loss": -2.160000000000013,
-      "max_drawdown_proxy": -8.274171588019957,
-      "exit_reason_counts": {
-        "stop_or_trail": 17,
-        "session_end": 3
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.449801596656928,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.289801596656928,
-      "profit_factor": 4.720581528818059,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.449801596656928,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.289801596656928,
-      "profit_factor": 4.720581528818059,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t12",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.449801596656928,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.289801596656928,
-      "profit_factor": 4.720581528818059,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.449801596656928,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.289801596656928,
-      "profit_factor": 4.720581528818059,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t6",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.4185862110391687,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.2585862110391688,
-      "profit_factor": 4.775758633117504,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "time_stop": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.4185862110391687,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.2585862110391688,
-      "profit_factor": 4.775758633117504,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.4185862110391687,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.2585862110391688,
-      "profit_factor": 4.775758633117504,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl0.8_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.4185862110391687,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.2585862110391688,
-      "profit_factor": 4.775758633117504,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -1.919999999999991,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.2_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4172299462406825,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.2572299462406826,
-      "profit_factor": 3.277590482320075,
-      "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -6.166755514705891,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.2_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4172299462406825,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.2572299462406826,
-      "profit_factor": 3.277590482320075,
-      "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -6.166755514705891,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.2_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.4172299462406825,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.2572299462406826,
-      "profit_factor": 3.277590482320075,
-      "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -6.166755514705891,
-      "exit_reason_counts": {
-        "stop_or_trail": 20
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3831349299902607,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.2231349299902603,
-      "profit_factor": 3.95919741126675,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3831349299902607,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.2231349299902603,
-      "profit_factor": 3.95919741126675,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.6_trail0.9x0.4_t12",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3831349299902607,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.2231349299902603,
-      "profit_factor": 3.95919741126675,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.6_trail0.9x0.4_t18",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3831349299902607,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.2231349299902603,
-      "profit_factor": 3.95919741126675,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 12
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.0_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.379422132376156,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.2194221323761558,
-      "profit_factor": 3.628064940465845,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -4.963952205882382,
-      "exit_reason_counts": {
-        "stop_or_trail": 19,
-        "time_stop": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl2.0_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 2.0,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.377636876043723,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.217636876043723,
-      "profit_factor": 2.6573371347986856,
-      "max_loss": -2.160000000000013,
-      "max_drawdown_proxy": -8.274171588019957,
-      "exit_reason_counts": {
-        "stop_or_trail": 16,
-        "session_end": 3,
-        "time_stop": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl0.8_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 0.8,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.369619742670275,
-      "median_return": 0.9362275044594082,
-      "net_avg_return": 1.2096197426702748,
-      "profit_factor": 3.8000457006256343,
-      "max_loss": -0.9600000000000118,
-      "max_drawdown_proxy": -5.760000000000005,
-      "exit_reason_counts": {
-        "stop_or_trail": 19,
-        "time_stop": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t6",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.3519195443725016,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.1919195443725015,
-      "profit_factor": 3.9797988609312447,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "time_stop": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.3519195443725016,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.1919195443725015,
-      "profit_factor": 3.9797988609312447,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.3519195443725016,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.1919195443725015,
-      "profit_factor": 3.9797988609312447,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.0_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 1.0,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 7,
-      "losses": 5,
-      "win_rate": 58.333333333333336,
-      "avg_return": 1.3519195443725016,
-      "median_return": 0.8788073581575517,
-      "net_avg_return": 1.1919195443725015,
-      "profit_factor": 3.9797988609312447,
-      "max_loss": -1.160000000000012,
-      "max_drawdown_proxy": -2.3200000000000127,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.2_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.3397253435496077,
-      "median_return": 1.0680481790650065,
-      "net_avg_return": 1.1797253435496082,
-      "profit_factor": 3.3421339379549897,
-      "max_loss": -1.360000000000012,
-      "max_drawdown_proxy": -5.157887982413346,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "time_stop": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl2.0_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 2.0,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.3368319091147467,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.1768319091147463,
-      "profit_factor": 2.798131297108718,
-      "max_loss": -2.160000000000013,
-      "max_drawdown_proxy": -8.476974896843476,
-      "exit_reason_counts": {
-        "stop_or_trail": 17,
-        "session_end": 3
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl2.0_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 2.0,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 12,
-      "losses": 8,
-      "win_rate": 60.0,
-      "avg_return": 1.3368319091147467,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.1768319091147463,
-      "profit_factor": 2.798131297108718,
-      "max_loss": -2.160000000000013,
-      "max_drawdown_proxy": -8.476974896843476,
-      "exit_reason_counts": {
-        "stop_or_trail": 17,
-        "session_end": 3
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.8_trail1.2x0.6_t8",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.3317189771338025,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.1717189771338024,
-      "profit_factor": 2.8379589276327573,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.976974896843483,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.8_trail1.2x0.6_t12",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 12,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.3317189771338025,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.1717189771338024,
-      "profit_factor": 2.8379589276327573,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.976974896843483,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay3_rank3_chg3-10_green_vol",
-        "delay_bars": 3,
-        "max_entry_rank": 3,
-        "min_entry_change": 3,
-        "max_entry_change": 10,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 1.2,
-        "min_vol_ratio": 1.5,
-        "reclaim_entry_price": false
-      },
-      "exit": {
-        "name": "sl1.5_be0.8_trail1.2x0.6_t18",
-        "sl_pct": 1.5,
-        "tp_pct": null,
-        "time_stop_bars": 18,
-        "breakeven_after_pct": 0.8,
-        "trail_start_pct": 1.2,
-        "trail_giveback_pct": 0.6
-      },
-      "entries": 20,
-      "closed_trades": 20,
-      "wins": 11,
-      "losses": 9,
-      "win_rate": 55.00000000000001,
-      "avg_return": 1.3317189771338025,
-      "median_return": 0.8651002911552519,
-      "net_avg_return": 1.1717189771338024,
-      "profit_factor": 2.8379589276327573,
-      "max_loss": -1.6600000000000124,
-      "max_drawdown_proxy": -6.976974896843483,
-      "exit_reason_counts": {
-        "stop_or_trail": 18,
-        "session_end": 2
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.2_be0.6_trail0.9x0.4_t6",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 6,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3255591724145057,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.165559172414506,
-      "profit_factor": 3.47512565570649,
-      "max_loss": -1.360000000000001,
-      "max_drawdown_proxy": -2.6109090909090664,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
-      }
-    },
-    {
-      "entry": {
-        "name": "delay2_rank3_chg5-15_green_reclaim",
-        "delay_bars": 2,
-        "max_entry_rank": 3,
-        "min_entry_change": 5,
-        "max_entry_change": 15,
-        "require_green_confirm": true,
-        "max_upper_wick_pct": 0.8,
-        "min_vol_ratio": null,
-        "reclaim_entry_price": true
-      },
-      "exit": {
-        "name": "sl1.2_be0.6_trail0.9x0.4_t8",
-        "sl_pct": 1.2,
-        "tp_pct": null,
-        "time_stop_bars": 8,
-        "breakeven_after_pct": 0.6,
-        "trail_start_pct": 0.9,
-        "trail_giveback_pct": 0.4
-      },
-      "entries": 12,
-      "closed_trades": 12,
-      "wins": 6,
-      "losses": 6,
-      "win_rate": 50.0,
-      "avg_return": 1.3255591724145057,
-      "median_return": 0.5445046821094146,
-      "net_avg_return": 1.165559172414506,
-      "profit_factor": 3.47512565570649,
-      "max_loss": -1.360000000000001,
-      "max_drawdown_proxy": -2.6109090909090664,
-      "exit_reason_counts": {
-        "stop_or_trail": 11,
-        "session_end": 1
+        "stop_or_trail": 19
       }
     }
   ]
