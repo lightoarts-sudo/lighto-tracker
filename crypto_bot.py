@@ -97,7 +97,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-        "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.0_be0.6_tr0.9x0.4_t18"),
+        "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,top5dplus_score95_chg2_5_sl1_tr06x03_t6,auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t18"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -262,22 +262,22 @@ CONFIG = {
 
 
 MICRO_TOP10_OPTIMIZED_STRATEGIES = {
-    # === 2026-06-12 20:00 optimizer winners (4H cycle) ===
-    # Entry: delay=2, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=0.8%, reclaim_entry_price=true
+    # === 2026-06-15 16:00 optimizer winners (4H cycle) ===
+    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol=1.0x, reclaim=false, dur=10-40
     # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=30
-    # Top 1: net_avg=1.154%, WR=54.76%, PF=3.54, max_loss=-1.66%, trades=42
-    "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t8": {
+    # Top 1: net_avg=0.693%, WR=57.1%, PF=2.84, max_loss=-1.16%, trades=77 (2026-06-15 optimizer)
+    "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
         "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "reclaim_entry_price": False,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
         "shadow_only": False,
         "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
@@ -285,18 +285,18 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 8,
     },
-    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t12": {
+    "auto_top2_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t12": {
         "version": "auto_top2_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
         "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "reclaim_entry_price": False,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
         "shadow_only": False,
         "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
@@ -304,18 +304,18 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 12,
     },
-    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl1.0_be0.6_tr0.9x0.4_t18": {
+    "auto_top3_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur55_sl1.0_be0.6_tr0.9x0.4_t18": {
         "version": "auto_top3_4h",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
         "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "reclaim_entry_price": False,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
         "shadow_only": False,
         "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
@@ -323,44 +323,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,
     },
-    "auto_top4_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl0.8_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top4_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 3.0,
-        "max_change_1h_pct": 10.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "reclaim_entry_price": False,
-        "shadow_only": False,
-        "stop_loss_pct": 0.8,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
-    },
-    "auto_top5_4h_d3_r3_chg3-10_greenuw1.2_vol15_dur55_sl0.8_be0.6_tr0.9x0.4_t12": {
-        "version": "auto_top5_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 3.0,
-        "max_change_1h_pct": 10.0,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.5,
-        "reclaim_entry_price": False,
-        "shadow_only": False,
-        "stop_loss_pct": 0.8,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 12,
-    },
+
 
     # === Strategy 4.1 (production backtest positive) ===
     # Kept from previous: net_avg=0.087%, WR=44.4%, PF=1.21, max_loss=-0.96%
