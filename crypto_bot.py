@@ -262,7 +262,7 @@ CONFIG = {
 
 
 MICRO_TOP10_OPTIMIZED_STRATEGIES = {
-    # === 2026-06-16 16:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
+    # === 2026-06-16 20:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
     # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol=1.0x, reclaim=false, dur=10-40
     # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10 (78 closed trades)
     # Top 1 (sl1.2, t8): net_avg=0.673%, WR=59.0%, PF=2.71, max_loss=-1.36%, trades=78
