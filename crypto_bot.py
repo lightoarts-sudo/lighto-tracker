@@ -262,12 +262,12 @@ CONFIG = {
 
 
 MICRO_TOP10_OPTIMIZED_STRATEGIES = {
-    # === 2026-06-16 20:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
+    # === 2026-06-17 04:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
     # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol=1.0x, reclaim=false, dur=10-40
-    # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10 (78 closed trades)
-    # Top 1 (sl1.2, t8): net_avg=0.673%, WR=59.0%, PF=2.71, max_loss=-1.36%, trades=78
-    # Top 2 (sl1.2, t12): net_avg=0.673%, WR=59.0%, PF=2.71, max_loss=-1.36%, trades=78
-    # Top 3 (sl1.2, t18): net_avg=0.673%, WR=59.0%, PF=2.71, max_loss=-1.36%, trades=78
+    # All 3 meet criteria: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10 (80 closed trades)
+    # Top 1 (sl1.2, be0.6, trail0.9x0.4, t8): net_avg=0.623%, WR=57.5%, PF=2.49, max_loss=-1.36%, trades=80
+    # Top 2 (sl1.2, be0.6, trail0.9x0.4, t12): net_avg=0.623%, WR=57.5%, PF=2.49, max_loss=-1.36%, trades=80
+    # Top 3 (sl1.2, be0.6, trail0.9x0.4, t18): net_avg=0.623%, WR=57.5%, PF=2.49, max_loss=-1.36%, trades=80
     "auto_top1_4h_d3_r3_chg3-10_greenuw1.2_vol10_dur1040_sl1.2_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
