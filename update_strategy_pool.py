@@ -1,54 +1,91 @@
+#!/usr/bin/env python3
+"""Write 4H optimizer results to strategy_pool.json as pending_review candidates."""
+
 import json
-from datetime import datetime
+from datetime import datetime, timezone
+from pathlib import Path
 
-# Read the optimizer results
-with open('tmp_top10_training_optimizer_results.json', 'r', encoding='utf-8') as f:
-    results = json.load(f)
+PROJECT = Path(r"C:/Users/fuful/OneDrive/Desktop/LIGHTOARTS/_render_lighto_tracker")
+OPTIMIZER_RESULTS = PROJECT / "data" / "top10_1h_optimizer_latest.json"
+POOL_FILE = PROJECT / "data" / "strategy_pool.json"
 
-# Filter criteria
-candidates = []
-for i, r in enumerate(results['top'][:10]):
-    trades = r['closed_trades']
-    win_rate = r['win_rate']
-    profit_factor = r['profit_factor']
-    net_avg_return = r['net_avg_return']
-    max_loss = r['max_loss']
+
+def load_optimizer_results():
+    with open(OPTIMIZER_RESULTS, "r") as f:
+        return json.load(f)
+
+
+def load_pool():
+    if POOL_FILE.exists():
+        with open(POOL_FILE, "r") as f:
+            return json.load(f)
+    return {"updated_at": "", "candidates": []}
+
+
+def save_pool(pool):
+    pool["updated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    with open(POOL_FILE, "w") as f:
+        json.dump(pool, f, ensure_ascii=False, indent=2)
+
+
+def main():
+    results = load_optimizer_results()
+    pool = load_pool()
     
-    if (trades >= 10 and 
-        win_rate > 45 and 
-        profit_factor > 1.3 and 
-        net_avg_return > 0 and 
-        max_loss > -1.5):
+    top3 = results.get("top", [])[:3]
+    if not top3:
+        print("No optimizer results to add to pool")
+        return
+    
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    added = 0
+    
+    # Build set of existing candidate keys for fast duplicate detection
+    existing_keys = set()
+    for existing in pool["candidates"]:
+        entry_name = existing.get("entry", {}).get("name", "")
+        exit_name = existing.get("exit", {}).get("name", "")
+        existing_keys.add(f"{entry_name}|{exit_name}")
+    
+    for i, r in enumerate(top3, 1):
+        entry = r["entry"]
+        exit_ = r["exit"]
         
-        # Generate ID: cand_4h_YYYYMMDD_HHMM_NN
-        now = datetime.now()
-        candidate_id = f"cand_4h_{now.strftime('%Y%m%d_%H%M')}_{i+1:02d}"
+        key = f"{entry['name']}|{exit_['name']}"
         
-        candidates.append({
-            "id": candidate_id,
-            "created_at": now.isoformat(),
-            "entry_name": r['entry']['name'],
-            "exit_name": r['exit']['name'],
+        if key in existing_keys:
+            print(f"Skipped duplicate: {entry['name']} + {exit_['name']}")
+            continue
+        
+        candidate = {
+            "id": f"cand_4h_{datetime.now().strftime('%Y%m%d_%H%M')}_{i:02d}",
+            "created_at": now,
+            "entry": entry,
+            "exit": exit_,
             "metrics": {
-                "trades": trades,
-                "win_rate": round(win_rate, 1),
-                "profit_factor": round(profit_factor, 2),
-                "net_avg_return": round(net_avg_return, 2),
-                "max_loss": round(max_loss, 1)
+                "trades": r.get("closed_trades") or r.get("entries"),
+                "win_rate": r.get("win_rate"),
+                "profit_factor": r.get("profit_factor"),
+                "net_avg_return": r.get("net_avg_return"),
+                "max_loss": r.get("max_loss"),
             },
-            "status": "pending_review"
-        })
+            "status": "pending_review",
+            "rejection_reason": "",
+            "evaluated_at": "",
+            "source": "4h_optimizer",
+        }
+        
+        pool["candidates"].append(candidate)
+        existing_keys.add(key)
+        added += 1
+        print(f"Added candidate: {candidate['id']}")
+    
+    if added > 0:
+        save_pool(pool)
+        print(f"Updated strategy_pool.json with {added} new pending_review candidates")
+    else:
+        print("No new candidates added (all duplicates)")
 
-# Update strategy pool - keep only top 3
-pool = {
-    "updated_at": datetime.now().isoformat(),
-    "candidates": candidates[:3]
-}
 
-with open('data/strategy_pool.json', 'w', encoding='utf-8') as f:
-    json.dump(pool, f, ensure_ascii=False, indent=2)
-
-print(f"Found {len(candidates)} eligible candidates, keeping top 3")
-for c in candidates[:3]:
-    m = c['metrics']
-    print(f"  {c['id']}: entry={c['entry_name']}, exit={c['exit_name']}, trades={m['trades']}, win_rate={m['win_rate']}%, pf={m['profit_factor']}, net_avg={m['net_avg_return']}, max_loss={m['max_loss']}%")
+if __name__ == "__main__":
+    main()
