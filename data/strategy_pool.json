@@ -1,0 +1,125 @@
+{
+  "updated_at": "2026-06-18T12:30:00+08:00",
+  "candidates": [
+    {
+      "id": "cand_4h_20260617_1551_01",
+      "created_at": "2026-06-17T15:51:57.410384",
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl1.2_be0.6_trail0.9x0.4_t8",
+        "sl_pct": 1.2,
+        "tp_pct": null,
+        "time_stop_bars": 8,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "metrics": {
+        "trades": 164,
+        "win_rate": 34.756,
+        "profit_factor": 0.514,
+        "net_avg_return": -0.400,
+        "max_loss": -5.338
+      },
+      "status": "rejected",
+      "rejection_reason": "Production backtest FAIL: win_rate=34.8% (<40%), net_avg=-0.40% (<0), profit_factor=0.51 (<1.5), max_loss=-5.34% (<-2%)",
+      "reviewed_at": "2026-06-18T12:30:00+08:00"
+    },
+    {
+      "id": "cand_4h_20260617_1551_02",
+      "created_at": "2026-06-17T15:51:57.410384",
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl1.2_be0.6_trail0.9x0.4_t12",
+        "sl_pct": 1.2,
+        "tp_pct": null,
+        "time_stop_bars": 12,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "metrics": {
+        "trades": 164,
+        "win_rate": 34.756,
+        "profit_factor": 0.524,
+        "net_avg_return": -0.395,
+        "max_loss": -5.338
+      },
+      "status": "rejected",
+      "rejection_reason": "Production backtest FAIL: win_rate=34.8% (<40%), net_avg=-0.40% (<0), profit_factor=0.52 (<1.5), max_loss=-5.34% (<-2%)",
+      "reviewed_at": "2026-06-18T12:30:00+08:00"
+    },
+    {
+      "id": "cand_4h_20260617_1551_03",
+      "created_at": "2026-06-17T15:51:57.410384",
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl1.2_be0.6_trail0.9x0.4_t18",
+        "sl_pct": 1.2,
+        "tp_pct": null,
+        "time_stop_bars": 18,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "metrics": {
+        "trades": 164,
+        "win_rate": 34.756,
+        "profit_factor": 0.520,
+        "net_avg_return": -0.398,
+        "max_loss": -5.338
+      },
+      "status": "rejected",
+      "rejection_reason": "Production backtest FAIL: win_rate=34.8% (<40%), net_avg=-0.40% (<0), profit_factor=0.52 (<1.5), max_loss=-5.34% (<-2%)",
+      "reviewed_at": "2026-06-18T12:30:00+08:00"
+    }
+  ]
+}
