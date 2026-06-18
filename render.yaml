@@ -12,7 +12,7 @@ services:
       - key: DASHBOARD_PASSWORD
         value: lighto2026   # ← 部署後請在 Render 後台修改這個密碼
       - key: CRYPTO_MICRO_ACTIVE_STRATEGIES
-        value: 
+        value: ""
 
 databases:
   - name: lighto-tracker-db
