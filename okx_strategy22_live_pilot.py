@@ -64,7 +64,7 @@ def load_crypto_bot_helpers() -> None:
     update_micro_position_state = bot.update_micro_position_state
 
 
-STRATEGY = os.environ.get("OKX_TOP10_PILOT_STRATEGY", "top10v1_rank5_chg3_10_sl1_trail09_t12")
+STRATEGY = os.environ.get("OKX_TOP10_PILOT_STRATEGY", "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10_early_sl1.2_be0.6_tr0.9x0.4_t8")
 STATE_PATH = Path(os.environ.get("OKX_TOP10_PILOT_STATE", "data/okx_top10_live_pilot_state.json"))
 LOG_PATH = Path(os.environ.get("OKX_TOP10_PILOT_LOG", "data/okx_top10_live_pilot_log.jsonl"))
 DEFAULT_KEY_FILE = Path(os.environ.get("OKX_KEY_FILE", r"C:\Users\fuful\OneDrive\Desktop\KEY\OKX API.txt"))
@@ -870,7 +870,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--top-n", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_TOP_N", os.environ.get("OKX_STRATEGY22_PILOT_TOP_N", "10"))))
     p.add_argument("--poll-seconds", type=int, default=int(os.environ.get("OKX_TOP10_PILOT_POLL_SECONDS", os.environ.get("OKX_STRATEGY22_PILOT_POLL_SECONDS", "300"))))
     p.add_argument("--scan-pause", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_SCAN_PAUSE", os.environ.get("OKX_STRATEGY22_PILOT_SCAN_PAUSE", "0.08"))))
-    p.add_argument("--hard-stop-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_HARD_STOP_PCT", os.environ.get("OKX_STRATEGY22_PILOT_HARD_STOP_PCT", "1.0"))), help="exchange-native hard stop loss percentage placed immediately after each live entry")
+    p.add_argument("--hard-stop-pct", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_HARD_STOP_PCT", os.environ.get("OKX_STRATEGY22_PILOT_HARD_STOP_PCT", "1.2"))), help="exchange-native hard stop loss percentage placed immediately after each live entry")
     p.add_argument("--min-pct1h", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_PCT1H", "3.0")))
     p.add_argument("--min-pct15", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_PCT15", "0.3")))
     p.add_argument("--min-volume-ratio", type=float, default=float(os.environ.get("OKX_TOP10_PILOT_MIN_VOLUME_RATIO", "1.2")))

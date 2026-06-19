@@ -1700,9 +1700,12 @@ class CryptoPaperBot:
 
     async def _micro_buy(self, inst_id, state, price, signal, strategy="strategy1", state_key=None):
         signal["strategy"] = strategy
+        if not _micro_entry_allowed(state, signal.get("time")):
+            return
         margin = CONFIG["microMarginUSDT"]
         quote = margin * CONFIG["microLeverage"]
         qty = quote / price
+        refresh_micro_daily_limit(state, signal.get("time") or datetime.now(timezone.utc).timestamp() * 1000)
         state.update({
             "assetQty": qty,
             "avgEntry": price,
@@ -1717,6 +1720,7 @@ class CryptoPaperBot:
             "tp2Taken": False,
             "breakevenStopPrice": 0,
             "trades": state.get("trades", 0) + 1,
+            "entryCountToday": state.get("entryCountToday", 0) + 1,
         })
         await self._save_micro_state(state_key or inst_id, state)
         trade_id = await self._log_micro_trade(inst_id, "BUY", price, qty, quote, signal, signal["reason"], strategy)
@@ -3892,7 +3896,36 @@ def micro_state_key(strategy, inst_id):
 
 
 def new_micro_state():
-    return {"assetQty": 0.0, "avgEntry": 0.0, "margin": 0.0, "leverage": CONFIG["microLeverage"], "notional": 0.0, "peakPrice": 0.0, "belowMa60Count": 0, "realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0}
+    return {"assetQty": 0.0, "avgEntry": 0.0, "margin": 0.0, "leverage": CONFIG["microLeverage"], "notional": 0.0, "peakPrice": 0.0, "belowMa60Count": 0, "realizedPnl": 0.0, "trades": 0, "closedTrades": 0, "wins": 0, "entryDay": None, "entryCountToday": 0, "lastExitTime": 0}
+
+
+def refresh_micro_daily_limit(state, timestamp_ms):
+    day = datetime.fromtimestamp(timestamp_ms / 1000, tz=timezone.utc).date().isoformat()
+    if state.get("entryDay") != day:
+        state["entryDay"] = day
+        state["entryCountToday"] = 0
+
+
+def _micro_entry_allowed(state, signal_time):
+    if state.get("assetQty", 0) > 0:
+        return False
+    now_ms = None
+    if isinstance(signal_time, (int, float)):
+        now_ms = int(signal_time)
+    elif isinstance(signal_time, str):
+        try:
+            now_ms = int(parse_datetime(signal_time).timestamp() * 1000)
+        except Exception:
+            now_ms = None
+    if now_ms is None:
+        return True
+    refresh_micro_daily_limit(state, now_ms)
+    if state.get("entryCountToday", 0) >= CONFIG["maxEntriesPerDay"]:
+        return False
+    last_exit_ms = int(state.get("lastExitTime") or 0)
+    if last_exit_ms > 0 and now_ms - last_exit_ms < CONFIG["cooldownMinutes"] * 60 * 1000:
+        return False
+    return True
 
 
 def micro_position_row(inst_id, state, price, signal, strategy="strategy1"):
