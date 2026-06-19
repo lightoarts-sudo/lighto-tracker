@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T16:29:53+00:00",
+  "updated_at": "2026-06-19T00:11:31+00:00",
   "candidates": [
     {
       "id": "cand_4h_20260617_1551_01",
@@ -238,6 +238,47 @@
         "profit_factor": 2.6592042463523837,
         "net_avg_return": 0.6340340504689466,
         "max_loss": -0.9600000000000118
+      },
+      "status": "pending_review",
+      "rejection_reason": "",
+      "evaluated_at": "",
+      "source": "4h_optimizer"
+    },
+    {
+      "id": "cand_4h_20260619_0811_07",
+      "created_at": "2026-06-19T00:11:31+00:00",
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol_dur10-40",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": 10,
+        "max_session_bars": 40,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl1.0_be0.6_trail0.9x0.4_t8",
+        "sl_pct": 1.0,
+        "tp_pct": null,
+        "time_stop_bars": 8,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "metrics": {
+        "trades": 74,
+        "win_rate": 51.35135135135135,
+        "profit_factor": 2.2268655813024103,
+        "net_avg_return": 0.5227942560681684,
+        "max_loss": -1.160000000000012
       },
       "status": "pending_review",
       "rejection_reason": "",
