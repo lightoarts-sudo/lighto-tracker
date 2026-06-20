@@ -45,7 +45,6 @@ def test_top10_optimized_strategies_are_the_default_render_active_set():
         "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t18",
         "strategy4_1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
 
 

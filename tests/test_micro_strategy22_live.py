@@ -52,7 +52,6 @@ def test_new_default_strategies_are_enabled_by_default():
         "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t18",
         "strategy4_1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
     assert active == expected
     for strategy in expected:
