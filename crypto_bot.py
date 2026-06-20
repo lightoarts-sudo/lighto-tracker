@@ -262,9 +262,10 @@ CONFIG = {
 
 
 MICRO_TOP10_OPTIMIZED_STRATEGIES = {
-    # === 2026-06-20 04:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
-    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol=1.0x, reclaim=false, atr=2-15
-    # Closed trades: 12, net_avg=1.083%, PF=4.57, WR=66.7%, max_loss=-1.16%
+    # === Deployed 2026-06-20 16:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
+    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, upper_wick<=1.2%, min_vol=1.0x, reclaim=false
+    # Closed trades: 13, net_avg=1.177%, PF=5.20, WR=69.2%, max_loss=-1.16%
+    # Top result (atr2-15): 72.7% WR, 1.287% net_avg, PF=6.71, max_loss=-1.16%, trades=11
     "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
@@ -323,8 +324,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "time_stop_bars": 18,
     },
 
-
-# === Strategy 4.1 (production backtest positive) ===
+    # === Strategy 4.1 (production backtest positive) ===
     # Kept from previous: net_avg=0.087%, WR=44.4%, PF=1.21, max_loss=-0.96%
     "strategy4_1_breakout_confirmation": {
         "version": "strategy4.1",
@@ -552,12 +552,6 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.6,
         "time_stop_bars": 12,
     },
-        # === 2026-06-19 08:00 optimizer winners (4H cycle, 14d lookback, vol_ratio>=1.0, min_trades>=10) ===
-    # Entry: delay=3, max_rank=3, chg=3-10%, green_confirm, max_upper_wick=1.2%, min_vol=1.0x, reclaim=false, dur=10-40
-    # All 144 candidates pass thresholds: net_avg>0, PF>1.5, max_loss>-2%, WR>40%, trades>=10 (74 closed trades)
-    # Top 1 (sl1.2, be0.6, trail0.9x0.4, t8): net_avg=1.088%, WR=63.3%, PF=3.66, max_loss=-1.36%
-    # Top 2 (sl1.2, be0.6, trail0.9x0.4, t12): net_avg=1.088%, WR=63.3%, PF=3.66, max_loss=-1.36%
-    # Top 3 (sl1.2, be0.6, trail0.9x0.4, t18): net_avg=1.088%, WR=63.3%, PF=3.66, max_loss=-1.36%
     "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8": {
         "version": "auto_top1_4h",
         "entry_delay_bars": 3,
@@ -615,65 +609,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "trailing_giveback_pct": 0.4,
         "time_stop_bars": 18,
     },
-
-    "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top1_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 3,
-        "max_change_1h_pct": 10,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.0,
-        "reclaim_entry_price": False,
-        "shadow_only": False,
-        "stop_loss_pct": 1.0,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 8,
-    },
-    "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t12": {
-        "version": "auto_top2_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 3,
-        "max_change_1h_pct": 10,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.0,
-        "reclaim_entry_price": False,
-        "shadow_only": False,
-        "stop_loss_pct": 1.0,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 12,
-    },
-    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t18": {
-        "version": "auto_top3_4h",
-        "entry_delay_bars": 3,
-        "max_rank": 3,
-        "min_change_1h_pct": 3,
-        "max_change_1h_pct": 10,
-        "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": False,
-        "require_green_confirm": True,
-        "max_upper_wick_pct": 1.2,
-        "min_volume_ratio": 1.0,
-        "reclaim_entry_price": False,
-        "shadow_only": False,
-        "stop_loss_pct": 1.0,
-        "breakeven_after_pct": 0.6,
-        "trailing_start_pct": 0.9,
-        "trailing_giveback_pct": 0.4,
-        "time_stop_bars": 18,
-    },
-},
+}
 MICRO_EXCLUDED_BASES = {"BTC", "ETH", "BNB", "USDT", "USDC", "DAI", "FDUSD", "TUSD", "USD", "EUR", "BRL"}
 MICRO_EXCLUDED_SYNTHETIC_BASES = {
     "AAPL", "AMD", "AMZN", "BABA", "CL", "COIN", "DIA", "GLD", "GOOGL", "HOOD",

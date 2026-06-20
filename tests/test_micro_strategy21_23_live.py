@@ -35,13 +35,13 @@ def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
     # These are available but not in DEFAULT active set anymore
     # (they can be enabled via CRYPTO_MICRO_ACTIVE_STRATEGIES env var)
     
-    # New optimized strategies (now in default active set)
     assert crypto_bot.micro_strategy_enabled("auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t8")
     assert crypto_bot.micro_strategy_enabled("auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t12")
     assert crypto_bot.micro_strategy_enabled("auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t18")
     assert crypto_bot.micro_strategy_enabled("strategy4_1_breakout_confirmation")
     assert crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
-    assert crypto_bot.micro_strategy_enabled("top5dplus_score95_chg2_5_sl1_tr06x03_t6")
+    # top5dplus is shadow-only research, not in default active set
+    assert not crypto_bot.micro_strategy_enabled("top5dplus_score95_chg2_5_sl1_tr06x03_t6")
     
     # Old auto_top strategies now NOT in active set
     assert not crypto_bot.micro_strategy_enabled("auto_top1_4h_d3_r3_chg2-8_green_uw12_vol15_sl0.8_be0.6_tr0.9x0.4_t8")
@@ -66,7 +66,6 @@ def test_strategy20_23_and_22_helpers_are_now_active_top10_strategies():
         "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10_sl1.0_be0.6_tr0.9x0.4_t18",
         "strategy4_1_breakout_confirmation",
         "strategy20_6h12h_cool_vwap_reclaim",
-        "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
     ]
 
 
