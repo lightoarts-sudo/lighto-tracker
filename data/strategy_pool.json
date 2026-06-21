@@ -157,10 +157,14 @@
         "net_avg_return": 0.6340340504689466,
         "max_loss": -0.9600000000000118
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_0029_02",
@@ -198,10 +202,14 @@
         "net_avg_return": 0.6340340504689466,
         "max_loss": -0.9600000000000118
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_0029_03",
@@ -239,10 +247,14 @@
         "net_avg_return": 0.6340340504689466,
         "max_loss": -0.9600000000000118
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_0811_07",
@@ -280,10 +292,14 @@
         "net_avg_return": 0.5227942560681684,
         "max_loss": -1.160000000000012
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_1649_01",
@@ -337,10 +353,14 @@
         "net_avg_return": 1.0878527563435638,
         "max_loss": -1.360000000000012
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_1649_02",
@@ -394,10 +414,14 @@
         "net_avg_return": 1.0878527563435638,
         "max_loss": -1.360000000000012
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     },
     {
       "id": "cand_4h_20260619_1649_03",
@@ -451,10 +475,14 @@
         "net_avg_return": 1.0878527563435638,
         "max_loss": -1.360000000000012
       },
-      "status": "pending_review",
+      "status": "approved",
       "rejection_reason": "",
       "evaluated_at": "",
-      "source": "4h_optimizer"
+      "source": "4h_optimizer",
+      "reviewed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_at": "2026-06-21T10:55:26.252533+08:00",
+      "deployed_to": "active_strategies.json",
+      "deployed_render": "auto_top1~3_existing_plus_auto_top4~7_new"
     }
   ]
 }
