@@ -1,6 +1,8 @@
 {
-  "updated_at": "2026-06-21T10:50:00+08:00",
+  "updated_at": "2026-06-21T11:07:54.735667+08:00",
   "strategies": [
+    "strategy4_1_breakout_confirmation",
+    "strategy20_6h12h_cool_vwap_reclaim",
     "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8",
     "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12",
     "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18",
@@ -8,7 +10,12 @@
     "auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8",
     "auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12",
     "auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18",
-    "strategy4_1_breakout_confirmation",
-    "strategy20_6h12h_cool_vwap_reclaim"
+    "auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8",
+    "auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12",
+    "auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18",
+    "auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8",
+    "auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8",
+    "auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12",
+    "auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18"
   ]
 }

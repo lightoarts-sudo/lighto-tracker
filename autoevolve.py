@@ -545,6 +545,85 @@ def read_sessions(cur: sqlite3.Cursor, table: str) -> List[TradeSnapshot]:
     return out
 
 
+def load_live_pilot_outcomes(limit: int = 300) -> List[TradeOutcome]:
+    """Parse realized BUY/SELL pairs from okx_top10_live_pilot_log.jsonl.
+
+    This is the authoritative realized P&L source. Falls back to empty list
+    so the existing inference path is preserved.
+    """
+    log_path = ROOT / "data" / "okx_top10_live_pilot_log.jsonl"
+    if not log_path.exists():
+        return []
+    pairs: Dict[str, Dict[str, Any]] = {}
+    out: List[TradeOutcome] = []
+    try:
+        with log_path.open("r", encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                event = rec.get("event")
+                ts = rec.get("ts")
+                inst = rec.get("instId")
+                if not inst:
+                    continue
+                if event == "BUY":
+                    pairs.setdefault(inst, {"entry": rec, "exit": None})
+                    continue
+                if event == "SELL":
+                    realized = rec.get("realizedPnl")
+                    fill = rec.get("fillPrice")
+                    if realized is None and isinstance(fill, (int, float)):
+                        size = rec.get("sz")
+                        entry_rec = (pairs.get(inst) or {}).get("entry") or {}
+                        entry_price = entry_rec.get("fillPrice")
+                        if isinstance(entry_price, (int, float)) and isinstance(size, (int, float)):
+                            try:
+                                realized = (fill - entry_price) * size
+                            except Exception:
+                                pass
+                    slot = pairs.get(inst) or {}
+                    slot["exit"] = rec
+                    entry = slot.get("entry") or {}
+                    entry_price = entry.get("fillPrice")
+                    if entry_price is None:
+                        entry_price = entry.get("theoreticalPrice")
+                    pnl_pct = None
+                    if isinstance(fill, (int, float)) and isinstance(entry_price, (int, float)) and entry_price:
+                        pnl_pct = ((float(fill) - float(entry_price)) / float(entry_price)) * 100.0
+                    meta = {
+                        "source": "jsonl",
+                        "entry_ts": entry.get("ts"),
+                        "exit_ts": ts,
+                        "exit_reason": rec.get("reason"),
+                        "leverage": 5.0,
+                        "margin_mode": "cross",
+                    }
+                    out.append(TradeOutcome(
+                        ts=ts or entry.get("ts"),
+                        instId=inst,
+                        pnlPct=pnl_pct,
+                        pnlUsdt=float(realized) if isinstance(realized, (int, float)) else None,
+                        outcome_type="filled",
+                        meta=meta,
+                    ))
+                    if event == "SELL" and rec.get("fullExit"):
+                        pairs.pop(inst, None)
+                        continue
+                    if event == "SELL":
+                        pairs.pop(inst, None)
+    except Exception:
+        return []
+    if not out:
+        return []
+    out.sort(key=lambda t: (t.ts or ""), reverse=True)
+    return out[:limit]
+
+
 def infer_trade_outcomes(sessions: List[TradeSnapshot]) -> List[TradeOutcome]:
     closed = [s for s in sessions if s.status == "closed"]
     open_ = [s for s in sessions if s.status == "open"][: max(0, 80 - len(closed))]
@@ -780,7 +859,9 @@ def main() -> int:
     finally:
         con.close()
 
-    trades = infer_trade_outcomes(sessions) if sessions else []
+    inferred = infer_trade_outcomes(sessions) if sessions else []
+    live_outcomes = load_live_pilot_outcomes(limit=300)
+    trades = live_outcomes or inferred
     if not trades:
         trades = [TradeOutcome(ts=_ts(), instId="unknown", pnlPct=0.0, pnlUsdt=0.0)]
 

@@ -29,15 +29,22 @@ def _csv_env(name, default):
 
 
 _DEFAULT_MICRO_ACTIVE = (
-    "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,",
-    "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,",
-    "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,",
-    "auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,",
-    "auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,",
-    "auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,",
-    "auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,",
-    "strategy4_1_breakout_confirmation,",
-    "strategy20_6h12h_cool_vwap_reclaim,",
+    "strategy4_1_breakout_confirmation,"
+    "strategy20_6h12h_cool_vwap_reclaim,"
+    "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,"
+    "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,"
+    "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,"
+    "auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,"
+    "auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,"
+    "auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,"
+    "auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,"
+    "auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,"
+    "auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,"
+    "auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,"
+    "auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,"
+    "auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,"
+    "auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,"
+    "auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,"
 )
 
 
@@ -101,7 +108,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18"),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -403,7 +410,140 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "time_stop_bars": 18,
     },
 
-    # === Strategy 4.1 (production backtest positive) ===
+        "auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top10_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top11_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    "auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18": {
+        "version": "auto_top12_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 0.8,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 18,
+    },
+    "auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top13_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 1.0,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8": {
+        "version": "auto_top14_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 1.2,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 8,
+    },
+    "auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12": {
+        "version": "auto_top15_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 1.2,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 12,
+    },
+    "auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18": {
+        "version": "auto_top16_4h",
+        "entry_delay_bars": 3,
+        "max_rank": 3,
+        "min_change_1h_pct": 3.0,
+        "max_change_1h_pct": 10.0,
+        "min_current_change_1h_pct": 0.0,
+        "require_change_reclaim": false,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_volume_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "shadow_only": False,
+        "stop_loss_pct": 1.2,
+        "breakeven_after_pct": 0.6,
+        "trailing_start_pct": 0.9,
+        "trailing_giveback_pct": 0.4,
+        "time_stop_bars": 18,
+    },
+# === Strategy 4.1 (production backtest positive) ===
     # Kept from previous: net_avg=0.087%, WR=44.4%, PF=1.21, max_loss=-0.96%
     "strategy4_1_breakout_confirmation": {
         "version": "strategy4.1",

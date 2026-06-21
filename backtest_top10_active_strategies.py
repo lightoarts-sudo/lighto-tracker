@@ -59,11 +59,16 @@ DEFAULT_STRATEGIES = [
     "strategy22_2h_strength_breakout_retest",
     "strategy23_top1h_clean_early_breakout",
     "strategy24_top1h_delay_rank5_chg1_5",
-    # === Latest 4H optimizer strategies (2026-06-18 20:00) ===
-    "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8",
+    # === Top3 4H optimizer winners (2026-06-19, max_rank=3) ===
+    "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl0.8_be0.6_tr0.9x0.4_t8",
     "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl0.8_be0.6_tr0.9x0.4_t8",
-    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10dur850_sl1.2_be0.6_tr0.9x0.4_t8",
-    # === Sweep best ===
+    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl0.8_be0.6_tr0.9x0.4_t8",
+    "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.0_be0.6_tr0.9x0.4_t8",
+    "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.0_be0.6_tr0.9x0.4_t8",
+    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.0_be0.6_tr0.9x0.4_t8",
+    "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8",
+    "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8",
+    "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8",
     # === Top5 quality ===
     "top5dplus_score95_chg2_5_sl1_tr06x03_t6",
 ]
