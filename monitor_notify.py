@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path.cwd()
+ROOT = Path(r"C:\Users\fuful\OneDrive\Desktop\LIGHTOARTS\_render_lighto_tracker")
 STATE_FILE = ROOT / "data" / "monitor_notify_state.json"
 GAPI = (
     r"C:\Users\fuful\.hermes\skills\productivity\google-workspace\scripts\google_api.py"
@@ -167,7 +167,7 @@ def main() -> int:
             current["notified_okx_live_by_pilot"][pilot] = False
             changed = True
 
-    if changed:
+    if True or changed:
         save_json(STATE_FILE, current)
 
     live_names = [p for p, v in current["live_pilots"].items() if v]
