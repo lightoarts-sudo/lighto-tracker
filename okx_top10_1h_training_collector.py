@@ -4,8 +4,11 @@
 Workflow:
 - Fetch OKX SPOT USDT tickers and exclude majors/stables.
 - Compute point-in-time 1H return from recent 5m candles.
-- Track coins while they are in the 1H return Top10.
-- Open a session when a coin enters Top10, close it when it leaves.
+- Track a research universe of current 1H return TopN (default Top20).
+- Mark Top5 entries with signal flags, but keep collecting Top20 research sessions.
+- Keep sessions alive after they leave Top5 while 1H change is still positive.
+- Before closing failed sessions, persist the final candle that triggered the exit.
+- For change_below_zero exits, keep post-exit candles for a short horizon so exit quality can be studied.
 - Store 5m candles for active sessions in training-specific tables and also
   upsert them into the shared candles_5m table for reuse by existing research scripts.
 """
@@ -101,9 +104,12 @@ def init_db(con: sqlite3.Connection) -> None:
             entry_rank_1h INTEGER NOT NULL,
             entry_change_1h_pct REAL NOT NULL,
             entry_price REAL NOT NULL,
+            entry_signal_rank INTEGER,
+            entry_is_signal_top5 INTEGER NOT NULL DEFAULT 0,
             exited_at TEXT,
             exited_ts_ms INTEGER,
             exit_reason TEXT,
+            post_exit_bars_remaining INTEGER NOT NULL DEFAULT 0,
             last_seen_at TEXT NOT NULL,
             last_rank_1h INTEGER NOT NULL,
             last_change_1h_pct REAL NOT NULL,
@@ -165,11 +171,18 @@ def init_db(con: sqlite3.Connection) -> None:
         JOIN top10_1h_training_sessions s ON s.id = c.session_id;
     """
     )
-    # Migrate: add topn_count column if missing
-    try:
-        con.execute("ALTER TABLE top10_1h_training_runs ADD COLUMN topn_count INTEGER NOT NULL DEFAULT 10")
-    except sqlite3.OperationalError:
-        pass  # column already exists
+    # Migrate: add columns if missing
+    migrations = [
+        "ALTER TABLE top10_1h_training_runs ADD COLUMN topn_count INTEGER NOT NULL DEFAULT 10",
+        "ALTER TABLE top10_1h_training_sessions ADD COLUMN entry_signal_rank INTEGER",
+        "ALTER TABLE top10_1h_training_sessions ADD COLUMN entry_is_signal_top5 INTEGER NOT NULL DEFAULT 0",
+        "ALTER TABLE top10_1h_training_sessions ADD COLUMN post_exit_bars_remaining INTEGER NOT NULL DEFAULT 0",
+    ]
+    for sql in migrations:
+        try:
+            con.execute(sql)
+        except sqlite3.OperationalError:
+            pass  # column already exists
     con.commit()
 
 
@@ -274,9 +287,19 @@ def insert_session_candles(
     wanted = [c for c in candles if c["ts_ms"] >= start_ts_ms]
     before = con.total_changes
     con.executemany(
-        """INSERT OR IGNORE INTO top10_1h_training_candles(
+        """INSERT INTO top10_1h_training_candles(
                session_id,inst_id,ts_ms,ts_iso,open,high,low,close,vol,vol_ccy,captured_at,rank_1h,change_1h_pct
-           ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+           ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+           ON CONFLICT(session_id, ts_ms) DO UPDATE SET
+               open=excluded.open,
+               high=excluded.high,
+               low=excluded.low,
+               close=excluded.close,
+               vol=excluded.vol,
+               vol_ccy=excluded.vol_ccy,
+               captured_at=excluded.captured_at,
+               rank_1h=excluded.rank_1h,
+               change_1h_pct=excluded.change_1h_pct""",
         [
             (
                 session_id,
@@ -299,7 +322,15 @@ def insert_session_candles(
     return con.total_changes - before
 
 
-def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int = 5, dry_run: bool = False) -> dict:
+def collect_once(
+    db_path: Path,
+    max_universe: int,
+    sleep_s: float,
+    max_rank: int = 20,
+    entry_rank: int = 5,
+    post_exit_bars: int = 12,
+    dry_run: bool = False,
+) -> dict:
     captured_at = now_taipei().isoformat(timespec="seconds")
     con = sqlite3.connect(db_path)
     con.row_factory = sqlite3.Row
@@ -338,7 +369,6 @@ def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int
 
     ranked.sort(key=lambda r: r["change_1h_pct"], reverse=True)
     topn = ranked[:max_rank]
-    topn_ids = {r["inst_id"] for r in topn}
 
     if dry_run:
         return {
@@ -381,51 +411,26 @@ def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int
     active = active_sessions(con)
     opened, updated, closed, inserted_training_candles = [], [], [], 0
 
-    # Close sessions that left the TopN list.
-    for inst_id, sess in list(active.items()):
-        if inst_id not in topn_ids:
-            cur.execute(
-                """UPDATE top10_1h_training_sessions
-                   SET is_active=0, exited_at=?, exited_ts_ms=?, exit_reason='left_topn'
-                   WHERE id=? """,
-                (captured_at, int(datetime.now(timezone.utc).timestamp() * 1000), sess["id"]),
-            )
-            closed.append(inst_id)
+    universe_ids = {item["inst_id"] for item in universe}
+    ranked_by_inst = {r["inst_id"]: r for r in ranked}
+    updated_rank_map = {r["inst_id"]: i + 1 for i, r in enumerate(ranked)}
 
-    # Open/update TopN sessions and record their candles.
-    active = active_sessions(con)
-    for rank, r in enumerate(topn, 1):
-        inst_id = r["inst_id"]
-        candles = candle_cache.get(inst_id) or fetch_5m(inst_id, 20)
-        if inst_id not in active:
-            start_ts_ms = r["last_ts_ms"]
-            cur.execute(
-                """INSERT INTO top10_1h_training_sessions(
-                       inst_id,base_ccy,entered_at,entered_ts_ms,entry_rank_1h,entry_change_1h_pct,entry_price,
-                       last_seen_at,last_rank_1h,last_change_1h_pct,last_price,max_change_1h_pct,min_rank_1h,is_active
-                   ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,1)""",
-                (
-                    inst_id,
-                    r["base_ccy"],
-                    captured_at,
-                    start_ts_ms,
-                    rank,
-                    r["change_1h_pct"],
-                    r["last"],
-                    captured_at,
-                    rank,
-                    r["change_1h_pct"],
-                    r["last"],
-                    r["change_1h_pct"],
-                    rank,
-                ),
+    # Update/close active sessions. Important: record the current/final candle before
+    # setting an exit reason, otherwise the DB misses the candle that caused failure.
+    for inst_id, sess in list(active.items()):
+        session_id = sess["id"]
+        start_ts_ms = sess["entered_ts_ms"]
+        already_exiting = bool(sess["exit_reason"])
+        r = ranked_by_inst.get(inst_id)
+        rank = updated_rank_map.get(inst_id, 999)
+        candles = candle_cache.get(inst_id)
+
+        if r is not None:
+            if candles is None:
+                candles = fetch_5m(inst_id, 20)
+            inserted_training_candles += insert_session_candles(
+                con, session_id, inst_id, candles, captured_at, rank, r["change_1h_pct"], start_ts_ms
             )
-            session_id = cur.lastrowid
-            opened.append(inst_id)
-        else:
-            sess = active[inst_id]
-            session_id = sess["id"]
-            start_ts_ms = sess["entered_ts_ms"]
             cur.execute(
                 """UPDATE top10_1h_training_sessions
                    SET last_seen_at=?, last_rank_1h=?, last_change_1h_pct=?, last_price=?,
@@ -433,7 +438,88 @@ def collect_once(db_path: Path, max_universe: int, sleep_s: float, max_rank: int
                    WHERE id=?""",
                 (captured_at, rank, r["change_1h_pct"], r["last"], r["change_1h_pct"], rank, session_id),
             )
-            updated.append(inst_id)
+            if already_exiting:
+                remaining = max(0, int(sess["post_exit_bars_remaining"] or 0) - 1)
+                cur.execute(
+                    "UPDATE top10_1h_training_sessions SET post_exit_bars_remaining=?, is_active=? WHERE id=?",
+                    (remaining, 1 if remaining > 0 else 0, session_id),
+                )
+                updated.append(inst_id)
+                continue
+            if r["change_1h_pct"] < 0:
+                remaining = max(0, post_exit_bars - 1)
+                cur.execute(
+                    """UPDATE top10_1h_training_sessions
+                       SET exited_at=?, exited_ts_ms=?, exit_reason='change_below_zero',
+                           post_exit_bars_remaining=?, is_active=?
+                       WHERE id=?""",
+                    (captured_at, r["last_ts_ms"], remaining, 1 if remaining > 0 else 0, session_id),
+                )
+                closed.append(inst_id)
+            else:
+                updated.append(inst_id)
+            continue
+
+        # No ranked row for an active session: separate liquidity-universe exit from data gaps.
+        if already_exiting:
+            remaining = max(0, int(sess["post_exit_bars_remaining"] or 0) - 1)
+            cur.execute(
+                "UPDATE top10_1h_training_sessions SET post_exit_bars_remaining=?, is_active=? WHERE id=?",
+                (remaining, 1 if remaining > 0 else 0, session_id),
+            )
+            continue
+
+        if inst_id not in universe_ids:
+            reason = "left_liquidity_universe_220"
+        elif candles is not None and len(candles) < 13:
+            reason = "insufficient_5m_candles"
+        else:
+            reason = "data_gap"
+        cur.execute(
+            """UPDATE top10_1h_training_sessions
+               SET is_active=0, exited_at=?, exited_ts_ms=?, exit_reason=?, post_exit_bars_remaining=0
+               WHERE id=? """,
+            (captured_at, int(datetime.now(timezone.utc).timestamp() * 1000), reason, session_id),
+        )
+        closed.append(inst_id)
+
+    # Open research sessions for current TopN/Top20 coins. Top5 is only a signal flag,
+    # not the full data-collection universe.
+    active = active_sessions(con)
+    for rank, r in enumerate(topn, 1):
+        inst_id = r["inst_id"]
+        if inst_id in active or r["change_1h_pct"] <= 0:
+            continue
+        candles = candle_cache.get(inst_id) or fetch_5m(inst_id, 20)
+        start_ts_ms = r["last_ts_ms"]
+        entry_signal_rank = rank if rank <= entry_rank else None
+        entry_is_signal_top5 = 1 if rank <= entry_rank else 0
+        cur.execute(
+            """INSERT INTO top10_1h_training_sessions(
+                   inst_id,base_ccy,entered_at,entered_ts_ms,entry_rank_1h,entry_change_1h_pct,entry_price,
+                   entry_signal_rank,entry_is_signal_top5,last_seen_at,last_rank_1h,last_change_1h_pct,last_price,
+                   max_change_1h_pct,min_rank_1h,is_active
+               ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)""",
+            (
+                inst_id,
+                r["base_ccy"],
+                captured_at,
+                start_ts_ms,
+                rank,
+                r["change_1h_pct"],
+                r["last"],
+                entry_signal_rank,
+                entry_is_signal_top5,
+                captured_at,
+                rank,
+                r["change_1h_pct"],
+                r["last"],
+                r["change_1h_pct"],
+                rank,
+            ),
+        )
+        session_id = cur.lastrowid
+        opened.append(inst_id)
         inserted_training_candles += insert_session_candles(
             con, session_id, inst_id, candles, captured_at, rank, r["change_1h_pct"], start_ts_ms
         )
@@ -470,11 +556,21 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--db", default=str(DB_PATH))
     parser.add_argument("--max-universe", type=int, default=int(os.environ.get("OKX_TOP10_MAX_UNIVERSE", "220")))
-    parser.add_argument("--max-rank", type=int, default=int(os.environ.get("OKX_TOP10_MAX_RANK", "5")))
+    parser.add_argument("--max-rank", type=int, default=int(os.environ.get("OKX_TOP10_MAX_RANK", "20")))
+    parser.add_argument("--entry-rank", type=int, default=int(os.environ.get("OKX_TOP10_ENTRY_RANK", "5")))
+    parser.add_argument("--post-exit-bars", type=int, default=int(os.environ.get("OKX_TOP10_POST_EXIT_BARS", "12")))
     parser.add_argument("--sleep", type=float, default=float(os.environ.get("OKX_TOP10_API_SLEEP", "0.055")))
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
-    result = collect_once(Path(args.db), args.max_universe, args.sleep, args.max_rank, args.dry_run)
+    result = collect_once(
+        Path(args.db),
+        args.max_universe,
+        args.sleep,
+        max_rank=args.max_rank,
+        entry_rank=args.entry_rank,
+        post_exit_bars=args.post_exit_bars,
+        dry_run=args.dry_run,
+    )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
