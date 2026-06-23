@@ -2709,13 +2709,6 @@ def install_crypto_bot(app: FastAPI):
         result = await crypto_bot.prune_old_micro_records(CONFIG["microStrategySince"])
         return JSONResponse(result)
 
-    @app.post("/api/crypto/micro/reset-all")
-    async def crypto_micro_reset_all(confirm: str = Query("", max_length=64)):
-        if confirm != "reset-all-micro-paper-shadow-data":
-            return JSONResponse({"error": "confirmation required"}, status_code=400)
-        result = await crypto_bot.reset_micro_records()
-        return JSONResponse(result)
-
     @app.post("/api/crypto/backfill")
     async def crypto_backfill(days: int = Query(90, ge=1, le=365)):
         status = await crypto_bot.start_backfill(days)
