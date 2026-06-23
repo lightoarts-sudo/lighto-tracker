@@ -28,24 +28,8 @@ def _csv_env(name, default):
 
 
 
-_DEFAULT_MICRO_ACTIVE = (
-    "strategy4_1_breakout_confirmation,"
-    "strategy20_6h12h_cool_vwap_reclaim,"
-    "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,"
-    "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,"
-    "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,"
-    "auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,"
-    "auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,"
-    "auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,"
-    "auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,"
-    "auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,"
-    "auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,"
-    "auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,"
-    "auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,"
-    "auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,"
-    "auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,"
-    "auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,"
-)
+# Quant reset: no Render paper/shadow strategies are active by default.
+_DEFAULT_MICRO_ACTIVE = ()
 
 
 CONFIG = {
@@ -108,7 +92,7 @@ CONFIG = {
     "microStrategy2NoFollowMinGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_NO_FOLLOW_MIN_GAIN_PCT", "1.2")),
     "microStrategy2TrailingStartPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_START_PCT", "2.0")),
     "microStrategy2TrailingGivebackPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY2_TRAILING_GIVEBACK_PCT", "1.0")),
-    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", "strategy4_1_breakout_confirmation,strategy20_6h12h_cool_vwap_reclaim,auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,auto_top4_4h_d3_r3_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,auto_top5_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,auto_top6_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,auto_top7_4h_d3_r3_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18,auto_top10_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8,auto_top11_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12,auto_top12_4h_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18,auto_top13_4h_chg3-10_green_vol_dur10-40_sl1.0_be0.6_tr0.9x0.4_t8,auto_top14_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t8,auto_top15_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t12,auto_top16_4h_chg3-10_green_vol_early_sl1.2_be0.6_tr0.9x0.4_t18"),
+    "microActiveStrategies": _csv_env("CRYPTO_MICRO_ACTIVE_STRATEGIES", ""),
     "microStrategy4BreakVolumeRatio": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_BREAK_VOLUME_RATIO", "1.4")),
     "microStrategy4HoldFactor": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_HOLD_FACTOR", "1.0")),
     "microStrategy4ConfirmGainPct": float(os.environ.get("CRYPTO_MICRO_STRATEGY4_CONFIRM_GAIN_PCT", "0.2")),
@@ -417,11 +401,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 0.8,
         "breakeven_after_pct": 0.6,
@@ -436,11 +420,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 0.8,
         "breakeven_after_pct": 0.6,
@@ -455,11 +439,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 0.8,
         "breakeven_after_pct": 0.6,
@@ -474,11 +458,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 1.0,
         "breakeven_after_pct": 0.6,
@@ -493,11 +477,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
@@ -512,11 +496,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
@@ -531,11 +515,11 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "min_change_1h_pct": 3.0,
         "max_change_1h_pct": 10.0,
         "min_current_change_1h_pct": 0.0,
-        "require_change_reclaim": false,
-        "require_green_confirm": true,
+        "require_change_reclaim": False,
+        "require_green_confirm": True,
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
-        "reclaim_entry_price": false,
+        "reclaim_entry_price": False,
         "shadow_only": False,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
@@ -772,7 +756,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "time_stop_bars": 12,
     },
     "auto_top1_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t8": {
-        "version": "auto_top1_4h",
+        "version": "retired",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
@@ -783,7 +767,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": False,
-        "shadow_only": False,
+        "shadow_only": True,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
@@ -791,7 +775,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "time_stop_bars": 8,
     },
     "auto_top2_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t12": {
-        "version": "auto_top2_4h",
+        "version": "retired",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
@@ -802,7 +786,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": False,
-        "shadow_only": False,
+        "shadow_only": True,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
@@ -810,7 +794,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "time_stop_bars": 12,
     },
     "auto_top3_4h_d3_r3_chg3-10_green_uw1.2_vol10dur1040_sl1.2_be0.6_tr0.9x0.4_t18": {
-        "version": "auto_top3_4h",
+        "version": "retired",
         "entry_delay_bars": 3,
         "max_rank": 3,
         "min_change_1h_pct": 3.0,
@@ -821,7 +805,7 @@ MICRO_TOP10_OPTIMIZED_STRATEGIES = {
         "max_upper_wick_pct": 1.2,
         "min_volume_ratio": 1.0,
         "reclaim_entry_price": False,
-        "shadow_only": False,
+        "shadow_only": True,
         "stop_loss_pct": 1.2,
         "breakeven_after_pct": 0.6,
         "trailing_start_pct": 0.9,
@@ -2063,6 +2047,37 @@ class CryptoPaperBot:
         await self._save_micro_state(inst_id, state)
         return True
 
+    async def reset_micro_records(self):
+        """Delete all Render micro paper/shadow state, trades, archives, and 12h performance rows."""
+        async with self.pool.acquire() as conn:
+            async with conn.transaction():
+                windows = await conn.fetchval(
+                    "WITH deleted AS (DELETE FROM crypto_micro_trade_windows RETURNING 1) SELECT COUNT(*) FROM deleted"
+                )
+                trades = await conn.fetchval(
+                    "WITH deleted AS (DELETE FROM crypto_micro_trades RETURNING 1) SELECT COUNT(*) FROM deleted"
+                )
+                states = await conn.fetchval(
+                    "WITH deleted AS (DELETE FROM crypto_micro_state RETURNING 1) SELECT COUNT(*) FROM deleted"
+                )
+                perf = await conn.fetchval(
+                    "WITH deleted AS (DELETE FROM crypto_micro_strategy_performance_12h RETURNING 1) SELECT COUNT(*) FROM deleted"
+                )
+                archive = await conn.fetchval(
+                    "WITH deleted AS (DELETE FROM crypto_micro_surge_archive RETURNING 1) SELECT COUNT(*) FROM deleted"
+                )
+        self.micro_positions = []
+        self.micro_top10_debug = []
+        self.micro_surge_archive_status = {"lastRunAt": None, "lastHour": None, "saved": 0, "lastError": ""}
+        return {
+            "deletedTradeWindows": windows,
+            "deletedTrades": trades,
+            "deletedStates": states,
+            "deletedPerformance12h": perf,
+            "deletedSurgeArchive": archive,
+            "activeStrategies": CONFIG.get("microActiveStrategies", []),
+        }
+
     async def prune_old_micro_records(self, cutoff_iso):
         cutoff = parse_datetime(cutoff_iso)
         cutoff_ms = int(cutoff.timestamp() * 1000)
@@ -2692,6 +2707,13 @@ def install_crypto_bot(app: FastAPI):
         if confirm != "delete-old-micro-trades":
             return JSONResponse({"error": "confirmation required"}, status_code=400)
         result = await crypto_bot.prune_old_micro_records(CONFIG["microStrategySince"])
+        return JSONResponse(result)
+
+    @app.post("/api/crypto/micro/reset-all")
+    async def crypto_micro_reset_all(confirm: str = Query("", max_length=64)):
+        if confirm != "reset-all-micro-paper-shadow-data":
+            return JSONResponse({"error": "confirmation required"}, status_code=400)
+        result = await crypto_bot.reset_micro_records()
         return JSONResponse(result)
 
     @app.post("/api/crypto/backfill")

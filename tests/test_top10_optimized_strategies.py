@@ -38,14 +38,10 @@ def make_top10_candles():
     return candles
 
 
-def test_top10_optimized_strategies_are_the_default_render_active_set() -> None:
-    assert crypto_bot.CONFIG["microActiveStrategies"] == [
-        "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8",
-        "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12",
-        "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18",
-        "strategy4_1_breakout_confirmation",
-        "strategy20_6h12h_cool_vwap_reclaim",
-    ]
+def test_top10_optimized_strategies_are_disabled_by_default_after_quant_reset() -> None:
+    assert crypto_bot.CONFIG["microActiveStrategies"] == []
+    assert not crypto_bot.micro_strategy_enabled("strategy4_1_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
 
 
 def test_today_top10_scan_winners_are_shadow_only_with_optimizer_params():

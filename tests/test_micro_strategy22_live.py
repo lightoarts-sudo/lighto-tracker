@@ -44,26 +44,12 @@ def make_strategy22_candles():
     return candles
 
 
-def test_new_default_strategies_are_enabled_by_default():
-    active = crypto_bot.CONFIG["microActiveStrategies"]
-    expected = [
-        "auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8",
-        "auto_top2_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t12",
-        "auto_top3_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t18",
-        "strategy4_1_breakout_confirmation",
-        "strategy20_6h12h_cool_vwap_reclaim",
-    ]
-    assert active == expected
-    for strategy in expected:
-        assert crypto_bot.micro_strategy_enabled(strategy)
-    
-    # Old auto_top strategies no longer in active set
-    assert not crypto_bot.micro_strategy_enabled("auto_top1_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.0_be0.6_tr0.9x0.4_t8")
-    assert not crypto_bot.micro_strategy_enabled("auto_top2_4h_d2_r3_chg3-10_green_reclaim_uw08_sl1.5_be0.6_tr0.9x0.4_t8")
-    assert not crypto_bot.micro_strategy_enabled("auto_top3_4h_d2_r3_chg3-10_green_reclaim_uw08_sl2.0_be0.6_tr0.9x0.4_t8")
-    # Old strategy4_breakout_confirmation
+def test_new_default_strategies_are_disabled_by_default_after_quant_reset():
+    assert crypto_bot.CONFIG["microActiveStrategies"] == []
+    assert not crypto_bot.micro_strategy_enabled("strategy4_1_breakout_confirmation")
+    assert not crypto_bot.micro_strategy_enabled("strategy20_6h12h_cool_vwap_reclaim")
+    assert not crypto_bot.micro_strategy_enabled("auto_top1_4h_d3_r3_chg3-10_green_vol_dur10-40_sl0.8_be0.6_tr0.9x0.4_t8")
     assert not crypto_bot.micro_strategy_enabled("strategy4_breakout_confirmation")
-    # Sweep best no longer in active set
     assert not crypto_bot.micro_strategy_enabled("sweep_best_d2_r3_chg2-8_green_sl2_tr0.8x0.4_t18")
 
 
