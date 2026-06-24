@@ -33,6 +33,7 @@ LIVE_STANDARD_PATH = PROJECT / "data" / "live_strategy_standard.json"
 
 MIN_SESSIONS = 50
 MIN_CANDLES = 1000
+MIN_SESSION_MINUTES = 30
 LIVE_STANDARDS = {
     "min_trades": 30,
     "min_win_rate_pct": 40.0,
@@ -81,13 +82,18 @@ def check_db_quality() -> dict[str, Any]:
         "active_sessions": "select count(*) from top10_1h_training_sessions where is_active=1",
         "candles_5m": "select count(*) from candles_5m",
         "candles_1h": "select count(*) from top10_1h_training_candles",
+        "short_closed_sessions": "select count(*) from top10_1h_training_sessions where is_active=0 and (exited_ts_ms - entered_ts_ms)/60000.0 < ?",
+        "eligible_ge_30m_sessions": "select count(*) from top10_1h_training_sessions where is_active=0 and (exited_ts_ms - entered_ts_ms)/60000.0 >= ?",
     }.items():
-        stats[key] = con.execute(sql).fetchone()[0]
+        if "short_closed_sessions" == key or "eligible_ge_30m_sessions" == key:
+            stats[key] = con.execute(sql, (MIN_SESSION_MINUTES,)).fetchone()[0]
+        else:
+            stats[key] = con.execute(sql).fetchone()[0]
     row = con.execute("select min(captured_at), max(captured_at) from top10_1h_training_runs").fetchone()
     stats["first_run"] = row[0]
     stats["last_run"] = row[1]
     stats["ok"] = (
-        stats["sessions"] >= MIN_SESSIONS
+        stats["eligible_ge_30m_sessions"] >= 30
         and stats["candles_5m"] >= MIN_CANDLES
         and stats["last_run"] is not None
     )
@@ -259,6 +265,12 @@ def build_report(db_stats: dict[str, Any], scan_meta: dict[str, Any], backtest_m
         "",
         f"- updated_at: {pool.get('updated_at')}",
         f"- candidates: {len(pool.get('candidates', []))}",
+        "",
+        "## 5. 可用樣本集",
+        "",
+        f"- eligible_ge_30m_sessions（>= 30 分鐘）：{db_stats.get('eligible_ge_30m_sessions', 0):,}",
+        f"- 已排除短 session：{db_stats.get('short_closed_sessions', 0):,}",
+        "- 合格門檻：session 持續 >= 30 分鐘",
         "",
         "## 5. 可進入真錢條件審核的策略",
         "",
