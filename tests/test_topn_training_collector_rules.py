@@ -89,19 +89,27 @@ def test_negative_change_records_final_candle_and_keeps_post_exit_collection(tmp
 def test_left_liquidity_universe_has_specific_exit_reason(tmp_path, monkeypatch):
     db = tmp_path / "training.sqlite"
     install_fake_market(monkeypatch, [10, 9, 8, 7, 6])
-    collector.collect_once(db, max_universe=220, sleep_s=0, max_rank=20, entry_rank=5)
+    collector.collect_once(db, max_universe=220, sleep_s=0, max_rank=20, entry_rank=5, post_exit_bars=12)
 
-    # C1 disappears from the liquidity universe entirely.
+    # C1 disappears from the liquidity universe entirely, but exit is now delayed by 1HR post-exit.
     universe = [
         {"inst_id": f"C{i}-USDT", "base_ccy": f"C{i}", "quote_vol_24h": 10_000 - i, "ticker_last": 1.0}
         for i in range(2, 6)
     ]
-    candles = {item["inst_id"]: make_candles(base=100 + i, change_pct=9 - i) for i, item in enumerate(universe, 2)}
+    candles = {
+        item["inst_id"]: make_candles(base=100 + i, change_pct=9 - i)
+        for i, item in enumerate(universe, 2)
+    }
+    # Still allow candle fetches for C1 so post-exit collection can proceed.
+    candles["C1-USDT"] = make_candles(base=101, change_pct=9)
     monkeypatch.setattr(collector, "fetch_universe", lambda max_universe: universe)
     monkeypatch.setattr(collector, "fetch_5m", lambda inst_id, limit=20: candles[inst_id])
-    result = collector.collect_once(db, max_universe=220, sleep_s=0, max_rank=20, entry_rank=5)
+    result = collector.collect_once(db, max_universe=220, sleep_s=0, max_rank=20, entry_rank=5, post_exit_bars=12)
 
     assert "C1-USDT" in result["closed"]
     con = sqlite3.connect(db)
-    reason = con.execute("SELECT exit_reason FROM top10_1h_training_sessions WHERE inst_id='C1-USDT'").fetchone()[0]
-    assert reason == "left_liquidity_universe_220"
+    con.row_factory = sqlite3.Row
+    row = con.execute("SELECT is_active, exit_reason, post_exit_bars_remaining FROM top10_1h_training_sessions WHERE inst_id='C1-USDT'").fetchone()
+    assert row["exit_reason"] == "left_liquidity_universe_220"
+    assert row["is_active"] == 1
+    assert row["post_exit_bars_remaining"] == 11

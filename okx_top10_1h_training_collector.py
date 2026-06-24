@@ -475,11 +475,33 @@ def collect_once(
             reason = "insufficient_5m_candles"
         else:
             reason = "data_gap"
+        remaining = max(0, post_exit_bars - 1)
+        final_candles = candle_cache.get(inst_id)
+        if final_candles is None:
+            final_candles = fetch_5m(inst_id, 20)
+        if final_candles:
+            insert_session_candles(
+                con,
+                session_id,
+                inst_id,
+                final_candles,
+                captured_at,
+                sess["last_rank_1h"] if sess["last_rank_1h"] is not None else 999,
+                sess["last_change_1h_pct"] if sess["last_change_1h_pct"] is not None else 0.0,
+                sess["entered_ts_ms"],
+            )
         cur.execute(
             """UPDATE top10_1h_training_sessions
-               SET is_active=0, exited_at=?, exited_ts_ms=?, exit_reason=?, post_exit_bars_remaining=0
+               SET is_active=?, exited_at=?, exited_ts_ms=?, exit_reason=?, post_exit_bars_remaining=?
                WHERE id=? """,
-            (captured_at, int(datetime.now(timezone.utc).timestamp() * 1000), reason, session_id),
+            (
+                1 if remaining > 0 else 0,
+                captured_at,
+                int(datetime.now(timezone.utc).timestamp() * 1000),
+                reason,
+                remaining,
+                session_id,
+            ),
         )
         closed.append(inst_id)
 
