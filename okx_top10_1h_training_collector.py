@@ -213,6 +213,13 @@ def parse_candles(raw: list) -> list[dict]:
     for c in raw:
         try:
             ts_ms = int(c[0])
+            vol = float(c[5])
+            vol_ccy = float(c[6] or 0)
+        except (IndexError, TypeError, ValueError):
+            continue
+        if vol <= 0 and vol_ccy <= 0:
+            continue
+        try:
             rows.append(
                 {
                     "ts_ms": ts_ms,
@@ -221,11 +228,11 @@ def parse_candles(raw: list) -> list[dict]:
                     "high": float(c[2]),
                     "low": float(c[3]),
                     "close": float(c[4]),
-                    "vol": float(c[5]),
-                    "vol_ccy": float(c[6] or 0),
+                    "vol": vol,
+                    "vol_ccy": vol_ccy,
                 }
             )
-        except (IndexError, TypeError, ValueError):
+        except (TypeError, ValueError):
             continue
     rows.sort(key=lambda r: r["ts_ms"])
     return rows

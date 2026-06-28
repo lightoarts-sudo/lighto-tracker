@@ -6,7 +6,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT = Path(r"C:/Users/fuful/OneDrive/Desktop/LIGHTOARTS/_render_lighto_tracker")
-OPTIMIZER_RESULTS = PROJECT / "data" / "top10_1h_optimizer_latest.json"
+_4H = PROJECT / "data" / "top10_1h_optimizer_latest_4h.json"
+_LEGACY = PROJECT / "data" / "top10_1h_optimizer_latest.json"
+OPTIMIZER_RESULTS = _4H if _4H.exists() else _LEGACY
 POOL_FILE = PROJECT / "data" / "strategy_pool.json"
 
 

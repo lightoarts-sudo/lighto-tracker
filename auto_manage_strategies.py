@@ -21,6 +21,8 @@ ACTIVE_FILE = BASE / "data" / "active_strategies.json"
 POOL_FILE = BASE / "data" / "strategy_pool.json"
 RENDER_YAML = BASE / "render.yaml"
 CRYPTO_BOT = BASE / "crypto_bot.py"
+RD_HISTORY_DETAIL = BASE / "data" / "strategy_rd_8h_history_candidates.jsonl"
+LATEST_JSON = BASE / "data" / "strategy_rd_8h_latest.json"
 
 RENDER_URL = os.environ.get("RENDER_URL", "https://lighto-tracker.onrender.com")
 
@@ -49,6 +51,16 @@ def load_state():
         except Exception:
             pass
     return {"last_run": None, "streaks": {}, "promoted": [], "demoted": []}
+
+
+def load_latest():
+    if not LATEST_JSON.exists():
+        return {}
+    try:
+        return json.loads(LATEST_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"[auto_manage] latest load failed: {exc}")
+        return {}
 
 
 def save_state(state):
@@ -80,13 +92,22 @@ def get_current_render_active():
             if "value:" in line:
                 val = line.split("value:", 1)[1].strip().strip('"')
                 return [s.strip() for s in val.split(",") if s.strip()]
-    # Multiline fallback
     lines = content.splitlines()
     for i, line in enumerate(lines):
         if "CRYPTO_MICRO_ACTIVE_STRATEGIES" in line and i + 1 < len(lines):
             val = lines[i + 1].split("value:", 1)[1].strip().strip('"')
             return [s.strip() for s in val.split(",") if s.strip()]
     return []
+
+
+def load_latest_candidates():
+    if not LATEST_JSON.exists():
+        return []
+    try:
+        return json.loads(LATEST_JSON.read_text(encoding="utf-8")).get("candidates", [])
+    except Exception as exc:
+        print(f"[auto_manage] latest candidates load failed: {exc}")
+        return []
 
 
 def update_render_yaml(strategies):
@@ -211,11 +232,24 @@ def candidate_to_name(entry, exit_, index):
 
 
 def get_pool_candidates():
-    if not POOL_FILE.exists():
-        return []
-    pool = json.loads(POOL_FILE.read_text(encoding="utf-8"))
-    cands = pool.get("candidates", [])
-    good = []
+    if POOL_FILE.exists():
+        pool = json.loads(POOL_FILE.read_text(encoding="utf-8"))
+        cands = pool.get("candidates", [])
+        good = []
+        for c in cands:
+            status = c.get("status", "")
+            if status not in ("pending_review", "approved"):
+                continue
+            m = c.get("metrics", {})
+            trades = m.get("trades", 0)
+            win_rate = m.get("win_rate", 0) / 100.0 if m.get("win_rate", 0) > 1 else m.get("win_rate", 0)
+            pf = m.get("profit_factor", 0)
+            if trades >= MIN_TRADES and win_rate >= MIN_WIN_RATE and pf >= 1.2:
+                good.append(c)
+        if good:
+            return good
+
+
     for c in cands:
         status = c.get("status", "")
         if status not in ("pending_review", "approved"):
@@ -281,6 +315,35 @@ def main():
     current_active = get_active_from_file()
     print(f"[auto_manage] current_active={len(current_active)} strategies")
     print(f"[auto_manage] performance_fetched={len(perf_map)} strategies")
+
+    seed_candidates = RD_HISTORY_DETAIL.exists()
+    if not current_active and seed_candidates:
+        print("[auto_manage] no active strategies yet, seed from latest R&D candidates")
+        latest = load_latest()
+        candidates = latest.get("candidates", [])[:20]
+        promote = []
+        seen = set()
+        for c in candidates:
+            name = candidate_to_name(c["entry"], c["exit"], len(seen) + 1)
+            if name in seen:
+                continue
+            seen.add(name)
+            promote.append((name, c["entry"], c["exit"]))
+
+        new_active_names = [n for n, _, _ in promote]
+        set_active_in_file(new_active_names)
+        update_render_yaml(new_active_names)
+        update_crypto_bot_config(new_active_names)
+        for name, entry, exit_ in promote[:10]:
+            append_crypto_bot_new_strategy(name, entry, exit_)
+
+        msg = f"Auto-manage strategies: seed+{len(promote)} active={len(new_active_names)}"
+        git_commit_and_push(msg)
+        state["last_run"] = datetime.now(timezone.utc).isoformat()
+        state["streaks"] = new_streaks
+        state["promoted"] = state.get("promoted", []) + [{"time": state["last_run"], "names": new_active_names}]
+        save_state(state)
+        return
 
     # Evaluate existing active strategies
     keep = []

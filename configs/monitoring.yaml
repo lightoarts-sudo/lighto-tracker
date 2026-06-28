@@ -1,0 +1,11 @@
+monitoring:
+  enabled: true
+  log_path: data/strategy_rd_8h_history_candidates.jsonl
+  report_path: data/strategy_rd_8h_latest.md
+  alert_thresholds:
+    consecutive_bad_runs: 3
+    max_drawdown_pct: 5.0
+  memory:
+    enabled: true
+    source: file
+    path: data/strategy_rd_8h_history_candidates.jsonl

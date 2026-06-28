@@ -327,6 +327,13 @@ def main() -> int:
             "candidate_count": len(payload.get("candidates", [])),
             "closed_sessions": payload["db_stats"].get("closed_sessions"),
         }, ensure_ascii=False) + "\n")
+    detail_path = REPORT_JSON.parent / "strategy_rd_8h_history_candidates.jsonl"
+    with detail_path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps({
+            "ts": datetime.now(timezone.utc).isoformat(),
+            "db_stats": payload.get("db_stats", {}),
+            "candidates": payload.get("candidates", [])[:20],
+        }, ensure_ascii=False) + "\n")
     best = payload["candidates"][0] if payload.get("candidates") else None
     if best:
         print(
