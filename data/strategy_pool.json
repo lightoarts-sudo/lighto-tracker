@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-28T17:27:00+08:00",
+  "updated_at": "2026-06-28T16:08:13+00:00",
   "source": "strategy_rd_8h_latest.json",
   "candidates": [
     {
@@ -16,7 +16,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r3_3-10_gv_atr1-3_w0.8",
@@ -32,7 +34,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r3_3-10_gv_atr1-3_w0.8",
@@ -48,7 +52,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r5_3-10_gv_atr1-3_w0.8",
@@ -64,7 +70,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r5_3-10_gv_atr1-3_w0.8",
@@ -80,7 +88,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r5_3-10_gv_atr1-3_w0.8",
@@ -96,7 +106,9 @@
       "profit_factor": 999.0,
       "max_loss": 1.650284522768546,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r3_2-10_gv_atr1-3_w0.8",
@@ -112,7 +124,9 @@
       "profit_factor": 999.0,
       "max_loss": 0.5848954489544856,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r3_3-10_gv_w0.8_vol1.5",
@@ -128,7 +142,9 @@
       "profit_factor": 999.0,
       "max_loss": 0.7836866981769043,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r3_3-10_gv_w0.8_vol1.5",
@@ -144,7 +160,9 @@
       "profit_factor": 999.0,
       "max_loss": 0.7836866981769043,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     },
     {
       "entry_name": "d2_r5_2-10_gv_atr1-3_w0.8",
@@ -160,7 +178,9 @@
       "profit_factor": 999.0,
       "max_loss": 0.5848954489544856,
       "max_drawdown_proxy": 0.0,
-      "status": "pending_review"
+      "status": "pending_review",
+      "rejection_reason": "trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0%",
+      "evaluated_at": "2026-06-28T16:08:13+00:00"
     }
   ]
 }

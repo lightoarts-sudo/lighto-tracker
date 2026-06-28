@@ -24,8 +24,26 @@ DB_PATH = Path("data/okx_top10_volume_5m_tracking.sqlite")
 TZ = timezone(timedelta(hours=8))
 OKX_BASE = "https://www.okx.com"
 USER_AGENT = "LIGHTOARTS-top10-volume-collector/1.0"
-TOP_N = 10
-FETCH_LIMIT = 100  # recent 5m candles per inst
+VOLUME_TIERS = [
+    "BTC-USDT",
+    "ETH-USDT",
+    "SOL-USDT",
+    "RE-USDT",
+    "HYPE-USDT",
+    "OKB-USDT",
+    "DOGE-USDT",
+    "XRP-USDT",
+    "TRX-USDT",
+    "IP-USDT",
+]
+TOP_N_VOLUME = 10
+FETCH_LIMIT = 100
+
+# Exclude majors/stable/quotable-not-trading units from volume ranking
+EXCLUDE = set(
+    "BTC ETH SOL BNB XRP ADA DOGE TRX TON AVAX LINK DOT MATIC POL LTC BCH ETC FIL ATOM NEAR APT SUI OP ARB WLD UNI PEPE SHIB LDO ICP HBAR XLM HYPE ONDO".split()
+)
+STABLE_OR_FIAT = set("USDC USDG USD1 RLUSD DAI TUSD USDP EURT BRZ TRYB XAUT FDUSD PYUSD USDE".split())
 
 
 def now_taipei() -> datetime:
@@ -176,7 +194,7 @@ def upsert_candles(con: sqlite3.Connection, inst_id: str, candles: list[dict], c
     )
 
 
-def collect_once(db_path: Path, sleep_s: float = 0.05, top_n: int = TOP_N) -> dict:
+def collect_once(db_path: Path, sleep_s: float = 0.05, top_n: int = TOP_N_VOLUME) -> dict:
     captured_at = now_taipei().isoformat(timespec="seconds")
     con = sqlite3.connect(db_path)
     con.row_factory = sqlite3.Row
@@ -188,6 +206,8 @@ def collect_once(db_path: Path, sleep_s: float = 0.05, top_n: int = TOP_N) -> di
 
     for item in universe:
         inst_id = item["inst_id"]
+        if inst_id not in VOLUME_TIERS:
+            continue
         try:
             candles = fetch_5m(inst_id)
             if not candles:

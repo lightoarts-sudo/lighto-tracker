@@ -1,12 +1,12 @@
-# 策略研發日報 (2026-06-28T16:07:17+08:00)
+# 策略研發日報 (2026-06-29T00:08:13+08:00)
 
 ## 1. DB 狀態
 
-- sessions: 2,484
-- closed_sessions: 2,433
-- active_sessions: 51
-- candles_5m: 156,479
-- last_run: 2026-06-28T15:56:26+08:00
+- sessions: 2,758
+- closed_sessions: 2,697
+- active_sessions: 61
+- candles_5m: 173,331
+- last_run: 2026-06-28T23:56:01+08:00
 
 ## 2. 資料品質
 
@@ -19,13 +19,13 @@
 
 ## 4. 策略池
 
-- updated_at: 2026-06-28T08:07:17+00:00
-- candidates: 0
+- updated_at: 2026-06-28T16:08:13+00:00
+- candidates: 10
 
 ## 5. 可用樣本集
 
-- eligible_ge_30m_sessions（>= 30 分鐘）：1,629
-- 已排除短 session：804
+- eligible_ge_30m_sessions（>= 30 分鐘）：1,809
+- 已排除短 session：888
 - 合格門檻：session 持續 >= 30 分鐘
 
 ## 5. 可進入真錢條件審核的策略
@@ -41,6 +41,17 @@
 
 ## 6. 不合格策略（前 10）
 
--
+| ID | 原因 |
+|---|---|
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
+|  | trades 0 < 30; win_rate 0.0% < 40.0%; PF 0.00 < 1.5; net_avg 0.000% <= 0.0% |
 
 > 本報告為研究用途，不自動部署或下單。
