@@ -201,6 +201,29 @@ def append_crypto_bot_new_strategy(name, entry, exit_):
     CRYPTO_BOT.write_text(content, encoding="utf-8")
 
 
+def entry_exit_from_pool(c):
+    return {
+        "entry": {
+            "name": c.get("entry_name", c.get("entry", {}).get("name", "")),
+            "delay_bars": c.get("entry", {}).get("delay_bars", 2),
+            "max_entry_rank": c.get("entry", {}).get("max_entry_rank", 3),
+            "min_entry_change": c.get("entry", {}).get("min_entry_change", 3),
+            "max_entry_change": c.get("entry", {}).get("max_entry_change", 10),
+            "require_green_confirm": c.get("entry", {}).get("require_green_confirm", True),
+            "max_upper_wick_pct": c.get("entry", {}).get("max_upper_wick_pct", 1.2),
+            "min_vol_ratio": c.get("entry", {}).get("min_vol_ratio", 1.0),
+            "reclaim_entry_price": c.get("entry", {}).get("reclaim_entry_price", False),
+        },
+        "exit": {
+            "name": c.get("exit_name", c.get("exit", {}).get("name", "")),
+            "sl_pct": c.get("exit", {}).get("sl_pct", 1.0),
+            "breakeven_after_pct": c.get("exit", {}).get("breakeven_after_pct"),
+            "trail_start_pct": c.get("exit", {}).get("trail_start_pct", 0.9),
+            "trail_giveback_pct": c.get("exit", {}).get("trail_giveback_pct", 0.4),
+            "time_stop_bars": c.get("exit", {}).get("time_stop_bars", 8),
+        },
+    }
+
 def candidate_to_name(entry, exit_, index):
     """Generate strategy name from candidate entry/exit parameters."""
     delay = entry.get("delay_bars", 3)
@@ -240,27 +263,16 @@ def get_pool_candidates():
             status = c.get("status", "")
             if status not in ("pending_review", "approved"):
                 continue
-            m = c.get("metrics", {})
+            m = c.get("metrics", {}) if "metrics" in c else c
             trades = m.get("trades", 0)
             win_rate = m.get("win_rate", 0) / 100.0 if m.get("win_rate", 0) > 1 else m.get("win_rate", 0)
             pf = m.get("profit_factor", 0)
-            if trades >= MIN_TRADES and win_rate >= MIN_WIN_RATE and pf >= 1.2:
+            if win_rate >= 0.50 and pf >= 1.0:
                 good.append(c)
         if good:
             return good
+    return []
 
-
-    for c in cands:
-        status = c.get("status", "")
-        if status not in ("pending_review", "approved"):
-            continue
-        m = c.get("metrics", {})
-        trades = m.get("trades", 0)
-        win_rate = m.get("win_rate", 0) / 100.0 if m.get("win_rate", 0) > 1 else m.get("win_rate", 0)
-        pf = m.get("profit_factor", 0)
-        if trades >= MIN_TRADES and win_rate >= MIN_WIN_RATE and pf >= 1.2:
-            good.append(c)
-    return good
 
 
 def build_qualified_pickle(candidates):
@@ -316,36 +328,6 @@ def main():
     print(f"[auto_manage] current_active={len(current_active)} strategies")
     print(f"[auto_manage] performance_fetched={len(perf_map)} strategies")
 
-    seed_candidates = RD_HISTORY_DETAIL.exists()
-    if not current_active and seed_candidates:
-        print("[auto_manage] no active strategies yet, seed from latest R&D candidates")
-        latest = load_latest()
-        candidates = latest.get("candidates", [])[:20]
-        promote = []
-        seen = set()
-        for c in candidates:
-            name = candidate_to_name(c["entry"], c["exit"], len(seen) + 1)
-            if name in seen:
-                continue
-            seen.add(name)
-            promote.append((name, c["entry"], c["exit"]))
-
-        new_active_names = [n for n, _, _ in promote]
-        set_active_in_file(new_active_names)
-        update_render_yaml(new_active_names)
-        update_crypto_bot_config(new_active_names)
-        for name, entry, exit_ in promote[:10]:
-            append_crypto_bot_new_strategy(name, entry, exit_)
-
-        msg = f"Auto-manage strategies: seed+{len(promote)} active={len(new_active_names)}"
-        git_commit_and_push(msg)
-        state["last_run"] = datetime.now(timezone.utc).isoformat()
-        state["streaks"] = new_streaks
-        state["promoted"] = state.get("promoted", []) + [{"time": state["last_run"], "names": new_active_names}]
-        save_state(state)
-        return
-
-    # Evaluate existing active strategies
     keep = []
     demote = []
     new_streaks = {}
@@ -384,9 +366,10 @@ def main():
     print(f"[auto_manage] pool candidates meeting criteria: {len(candidates)}")
     promote = []
     for c in candidates:
-        name = candidate_to_name(c["entry"], c["exit"], len(keep) + len(promote) + 1)
+        mapped = entry_exit_from_pool(c)
+        name = candidate_to_name(mapped["entry"], mapped["exit"], len(keep) + len(promote) + 1)
         if name not in keep and name not in demote:
-            promote.append((name, c["entry"], c["exit"]))
+            promote.append((name, mapped["entry"], mapped["exit"]))
             print(f"  PROMOTE: {name}")
 
     # Build new active list: non-auto strategies first, then auto strategies
