@@ -1,16 +1,143 @@
 {
   "db_stats": {
-    "dataset_rows": 842,
-    "sessions": 76,
-    "closed_sessions": 2,
-    "active_sessions": 74,
-    "candles": 842,
-    "min_ts_iso": "2026-06-23T21:35+08:00",
-    "max_ts_iso": "2026-06-23T22:50+08:00",
-    "insts": 76
+    "dataset_rows": 73813,
+    "sessions": 3614,
+    "closed_sessions": 3559,
+    "active_sessions": 55,
+    "candles": 73813,
+    "min_ts_iso": "2026-06-25T12:35+08:00",
+    "max_ts_iso": "2026-06-29T22:00+08:00",
+    "insts": 244
   },
   "round_trip_cost_pct": 0.16,
-  "min_trades": 5,
-  "result_count": 0,
-  "top": []
+  "min_trades": 0,
+  "result_count": 72,
+  "top": [
+    {
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": null,
+        "max_session_bars": null,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl0.8_be0.6_trail0.9x0.4_t8",
+        "sl_pct": 0.8,
+        "tp_pct": null,
+        "time_stop_bars": 8,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "entries": 1,
+      "closed_trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate": 0.0,
+      "avg_return": -0.8000000000000007,
+      "median_return": -0.8000000000000007,
+      "net_avg_return": -0.9600000000000007,
+      "profit_factor": 0.0,
+      "max_loss": -0.9600000000000007,
+      "max_drawdown_proxy": -0.9600000000000007,
+      "exit_reason_counts": {
+        "stop_or_trail": 1
+      }
+    },
+    {
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": null,
+        "max_session_bars": null,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl0.8_be0.8_trail1.2x0.6_t8",
+        "sl_pct": 0.8,
+        "tp_pct": null,
+        "time_stop_bars": 8,
+        "breakeven_after_pct": 0.8,
+        "trail_start_pct": 1.2,
+        "trail_giveback_pct": 0.6
+      },
+      "entries": 1,
+      "closed_trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate": 0.0,
+      "avg_return": -0.8000000000000007,
+      "median_return": -0.8000000000000007,
+      "net_avg_return": -0.9600000000000007,
+      "profit_factor": 0.0,
+      "max_loss": -0.9600000000000007,
+      "max_drawdown_proxy": -0.9600000000000007,
+      "exit_reason_counts": {
+        "stop_or_trail": 1
+      }
+    },
+    {
+      "entry": {
+        "name": "delay3_rank3_chg3-10_green_vol",
+        "delay_bars": 3,
+        "max_entry_rank": 3,
+        "min_entry_change": 3,
+        "max_entry_change": 10,
+        "require_green_confirm": true,
+        "max_upper_wick_pct": 1.2,
+        "min_vol_ratio": 1.0,
+        "reclaim_entry_price": false,
+        "min_atr_proxy": null,
+        "max_atr_proxy": null,
+        "allowed_hours": null,
+        "min_session_bars": null,
+        "max_session_bars": null,
+        "min_rank_momentum": null
+      },
+      "exit": {
+        "name": "sl0.8_be0.6_trail0.9x0.4_t12",
+        "sl_pct": 0.8,
+        "tp_pct": null,
+        "time_stop_bars": 12,
+        "breakeven_after_pct": 0.6,
+        "trail_start_pct": 0.9,
+        "trail_giveback_pct": 0.4
+      },
+      "entries": 1,
+      "closed_trades": 1,
+      "wins": 0,
+      "losses": 1,
+      "win_rate": 0.0,
+      "avg_return": -0.8000000000000007,
+      "median_return": -0.8000000000000007,
+      "net_avg_return": -0.9600000000000007,
+      "profit_factor": 0.0,
+      "max_loss": -0.9600000000000007,
+      "max_drawdown_proxy": -0.9600000000000007,
+      "exit_reason_counts": {
+        "stop_or_trail": 1
+      }
+    }
+  ]
 }
