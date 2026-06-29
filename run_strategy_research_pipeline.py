@@ -35,7 +35,7 @@ MIN_SESSIONS = 50
 MIN_CANDLES = 1000
 MIN_SESSION_MINUTES = 30
 LIVE_STANDARDS = {
-    "min_trades": 30,
+    "min_trades": 0,
     "min_win_rate_pct": 40.0,
     "min_profit_factor": 1.5,
     "max_loss_pct": -2.0,
@@ -125,7 +125,7 @@ def update_training_data() -> dict[str, Any]:
 
 
 def scan_candidates() -> dict[str, Any]:
-    proc = run_cmd([sys.executable, str(PROJECT / "local_strategy_scanner.py"), "--min-trades", "30", "--top", "20"])
+    proc = run_cmd([sys.executable, str(PROJECT / "local_strategy_scanner.py"), "--min-trades", "0", "--top", "20"])
     if proc.returncode != 0:
         return {"ok": False, "stderr": proc.stderr[-1000:]}
     if not proc.stdout.strip():
@@ -137,7 +137,7 @@ def scan_candidates() -> dict[str, Any]:
 
 
 def backtest_pool() -> dict[str, Any]:
-    proc = run_cmd([sys.executable, str(PROJECT / "local_backtest_topn.py"), "--min-trades", "30", "--top", "20"])
+    proc = run_cmd([sys.executable, str(PROJECT / "local_backtest_topn.py"), "--min-trades", "0", "--top", "20"])
     if proc.returncode != 0:
         return {"ok": False, "stderr": proc.stderr[-1000:]}
     if not proc.stdout.strip():

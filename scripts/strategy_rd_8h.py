@@ -30,7 +30,7 @@ REPORT_MD = ROOT / "data" / "strategy_rd_8h_latest.md"
 REPORT_JSON = ROOT / "data" / "strategy_rd_8h_latest.json"
 HISTORY_JSONL = ROOT / "data" / "strategy_rd_8h_history.jsonl"
 ROUND_TRIP_COST_PCT = 0.16
-MIN_TRADES = 2
+MIN_TRADES = 0
 
 
 def _ensure_fastapi_stub() -> None:

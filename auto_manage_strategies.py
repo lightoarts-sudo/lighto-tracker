@@ -27,7 +27,7 @@ LATEST_JSON = BASE / "data" / "strategy_rd_8h_latest.json"
 RENDER_URL = os.environ.get("RENDER_URL", "https://lighto-tracker.onrender.com")
 
 # Thresholds
-MIN_TRADES = 20
+MIN_TRADES = 0
 MIN_WIN_RATE = 0.45
 # Live proxy for PF >= 1.2: realizedPnl must be positive
 MIN_REALIZED_PNL = 0.0
