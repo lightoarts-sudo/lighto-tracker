@@ -65,23 +65,39 @@ def load_sessions(db_path: str) -> tuple[dict, dict]:
     con = sqlite3.connect(db_path)
     con.row_factory = sqlite3.Row
     stats = {}
-    stats["dataset_rows"] = con.execute("select count(*) from top10_1h_training_dataset").fetchone()[0]
+    stats["dataset_rows"] = con.execute("select count(*) from top10_1h_training_candles").fetchone()[0]
     stats["sessions"] = con.execute("select count(*) from top10_1h_training_sessions").fetchone()[0]
     stats["closed_sessions"] = con.execute("select count(*) from top10_1h_training_sessions where is_active=0").fetchone()[0]
     stats["active_sessions"] = con.execute("select count(*) from top10_1h_training_sessions where is_active=1").fetchone()[0]
-    stats["candles"] = con.execute("select count(*) from top10_1h_training_candles").fetchone()[0]
-    tr = con.execute("select min(ts_iso), max(ts_iso), count(distinct inst_id) from top10_1h_training_dataset").fetchone()
+    stats["candles"] = stats["dataset_rows"]
+    tr = con.execute("select min(ts_iso), max(ts_iso), count(distinct inst_id) from top10_1h_training_candles").fetchone()
     stats["min_ts_iso"], stats["max_ts_iso"], stats["insts"] = tr[0], tr[1], tr[2]
 
     sessions: dict[int, list[sqlite3.Row]] = defaultdict(list)
     for row in con.execute(
         """
-        select d.*, s.candle_count, s.entered_at
-        from top10_1h_training_dataset d
-        join top10_1h_training_sessions s on d.session_id = s.id
+        select c.session_id,
+               c.inst_id,
+               c.ts_ms,
+               c.ts_iso,
+               c.open,
+               c.high,
+               c.low,
+               c.close,
+               c.vol,
+               c.vol_ccy,
+               c.rank_1h,
+               c.change_1h_pct,
+               s.candle_count,
+               s.entered_at,
+               s.entry_rank_1h,
+               s.entry_change_1h_pct,
+               s.entry_price
+        from top10_1h_training_candles c
+        join top10_1h_training_sessions s on c.session_id = s.id
         where s.is_active = 0
-        and d.open is not null and d.high is not null and d.low is not null and d.close is not null
-        order by d.session_id, d.bar_index_from_entry, d.ts_ms
+          and c.open is not null and c.high is not null and c.low is not null and c.close is not null
+        order by c.session_id, c.ts_ms
         """
     ):
         sessions[int(row["session_id"])].append(row)
