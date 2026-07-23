@@ -22,6 +22,7 @@ def test_seed_is_readable_and_complete():
 def test_page_contains_full_fund_tracker():
     page = (popostock.SITE_DIR / "index.html").read_text(encoding="utf-8")
     assert '<base href="/popostock/"' in page
-    assert "波波流基金持股追蹤" in page
+    assert "PoPoStock｜波波流" in page
+    assert (popostock.SITE_DIR / "bobo-flow-logo.png").exists()
     assert (popostock.SITE_DIR / "data" / "market" / "TAIEX.json").exists()
     assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
