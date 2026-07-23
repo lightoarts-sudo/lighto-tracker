@@ -41,6 +41,8 @@ def test_page_contains_full_fund_tracker():
     assert 'fetch("api/page-view"' in page
     assert "https://www.googletagmanager.com/gtag/js?id=G-TFK1BMB9LT" in page
     assert 'gtag("config", "G-TFK1BMB9LT")' in page
-    assert "詳細資料" in asset_text
-    assert "instrument-detail-sections" in asset_text
-    assert ".detail-disclosure" in asset_text
+    assert "basic-info-list" in asset_text
+    assert ".basic-info-disclosure" in asset_text
+    assert "歷史淨值走勢" in asset_text
+    assert "每日持股異動" in asset_text
+    assert "instrument-detail-sections" not in asset_text
