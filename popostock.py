@@ -12,13 +12,14 @@ from typing import Any
 
 import asyncpg
 from fastapi import FastAPI, HTTPException, Query, Request
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 
 LOGGER = logging.getLogger(__name__)
 BASE_DIR = Path(__file__).resolve().parent
 SEED_PATH = BASE_DIR / "popostock" / "data" / "market_seed.json.gz"
-PAGE_PATH = BASE_DIR / "popostock" / "index.html"
+SITE_DIR = BASE_DIR / "popostock" / "site"
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS popostock_instruments (
@@ -195,9 +196,9 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
     async def popostock_slash() -> RedirectResponse:
         return RedirectResponse("/popostock", status_code=308)
 
-    @app.get("/popostock", response_class=HTMLResponse)
-    async def popostock_page() -> HTMLResponse:
-        return HTMLResponse(PAGE_PATH.read_text(encoding="utf-8"))
+    @app.get("/popostock", response_class=FileResponse)
+    async def popostock_page() -> FileResponse:
+        return FileResponse(SITE_DIR / "index.html")
 
     @app.get("/popostock/api/summary")
     async def popostock_summary(request: Request) -> JSONResponse:
@@ -324,3 +325,9 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 for row in rows
             ]
         )
+
+    app.mount(
+        "/popostock",
+        StaticFiles(directory=SITE_DIR, html=True),
+        name="popostock-static",
+    )
