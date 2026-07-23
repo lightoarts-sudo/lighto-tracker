@@ -19,8 +19,9 @@ def test_seed_is_readable_and_complete():
     assert {"TAIEX", "VIXTWN", "0050", "00981A", "ALI005"} <= symbols
 
 
-def test_page_contains_popostock_routes():
-    page = popostock.PAGE_PATH.read_text(encoding="utf-8")
-    assert "/popostock/api/instruments" in page
-    assert "/popostock/api/candles/" in page
-    assert "Popostock" in page
+def test_page_contains_full_fund_tracker():
+    page = (popostock.SITE_DIR / "index.html").read_text(encoding="utf-8")
+    assert '<base href="/popostock/"' in page
+    assert "波波流基金持股追蹤" in page
+    assert (popostock.SITE_DIR / "data" / "market" / "TAIEX.json").exists()
+    assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
