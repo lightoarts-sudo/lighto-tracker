@@ -7,6 +7,7 @@ import popostock
 def test_schema_is_namespaced():
     assert "popostock_instruments" in popostock.SCHEMA_SQL
     assert "popostock_candles" in popostock.SCHEMA_SQL
+    assert "popostock_page_views" in popostock.SCHEMA_SQL
     assert "PRIMARY KEY (instrument_id, trade_date, timeframe)" in popostock.SCHEMA_SQL
 
 
@@ -28,3 +29,5 @@ def test_page_contains_full_fund_tracker():
     assert (popostock.SITE_DIR / "bobo-flow-logo.png").exists()
     assert (popostock.SITE_DIR / "data" / "market" / "TAIEX.json").exists()
     assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
+    assert 'sessionStorage.getItem(key)' in page
+    assert 'fetch("api/page-view"' in page

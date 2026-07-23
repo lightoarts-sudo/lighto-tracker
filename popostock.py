@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 import asyncpg
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -56,6 +56,12 @@ CREATE TABLE IF NOT EXISTS popostock_sync_runs (
     instrument_count INTEGER NOT NULL,
     candle_count INTEGER NOT NULL,
     completed_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS popostock_page_views (
+    view_date DATE PRIMARY KEY,
+    view_count BIGINT NOT NULL DEFAULT 0 CHECK (view_count >= 0),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 """
 
@@ -218,6 +224,46 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
             {
                 "instruments": row["instruments"],
                 "candles": row["candles"],
+                "firstDate": row["first_date"].isoformat() if row["first_date"] else None,
+                "latestDate": row["latest_date"].isoformat() if row["latest_date"] else None,
+            }
+        )
+
+    @app.post("/popostock/api/page-view", status_code=204)
+    async def record_popostock_page_view(request: Request) -> Response:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            await conn.execute(
+                """
+                INSERT INTO popostock_page_views (view_date, view_count)
+                VALUES ((CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Taipei')::date, 1)
+                ON CONFLICT (view_date) DO UPDATE SET
+                    view_count = popostock_page_views.view_count + 1,
+                    updated_at = NOW()
+                """
+            )
+        return Response(status_code=204)
+
+    @app.get("/popostock/api/page-views/summary")
+    async def popostock_page_view_summary(request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            row = await conn.fetchrow(
+                """
+                SELECT COALESCE(SUM(view_count), 0) AS total,
+                       COALESCE(SUM(view_count) FILTER (
+                           WHERE view_date =
+                               (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Taipei')::date
+                       ), 0) AS today,
+                       MIN(view_date) AS first_date,
+                       MAX(view_date) AS latest_date
+                FROM popostock_page_views
+                """
+            )
+        return JSONResponse(
+            {
+                "total": row["total"],
+                "today": row["today"],
                 "firstDate": row["first_date"].isoformat() if row["first_date"] else None,
                 "latestDate": row["latest_date"].isoformat() if row["latest_date"] else None,
             }
