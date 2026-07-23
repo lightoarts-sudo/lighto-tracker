@@ -34,3 +34,5 @@ def test_page_contains_full_fund_tracker():
     assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
     assert 'sessionStorage.getItem(key)' in page
     assert 'fetch("api/page-view"' in page
+    assert "https://www.googletagmanager.com/gtag/js?id=G-TFK1BMB9LT" in page
+    assert 'gtag("config", "G-TFK1BMB9LT")' in page
