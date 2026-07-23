@@ -74,6 +74,13 @@ def load_nav(source: Path) -> list[dict]:
     return instruments
 
 
+def load_fund_profiles(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return payload.get("items", [])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source", type=Path, help="Path to public/data")
@@ -82,17 +89,32 @@ def main() -> None:
         type=Path,
         default=Path("popostock/data/market_seed.json.gz"),
     )
+    parser.add_argument(
+        "--fund-data",
+        type=Path,
+        help="Path to normalized fund-bootstrap.json",
+    )
     args = parser.parse_args()
 
     instruments = load_market(args.source) + load_nav(args.source)
-    canonical = json.dumps(instruments, ensure_ascii=False, separators=(",", ":")).encode()
+    fund_data = args.fund_data or args.source.parents[1] / "data" / "fund-bootstrap.json"
+    fund_profiles = load_fund_profiles(fund_data)
+    canonical = json.dumps(
+        {"instruments": instruments, "fundProfiles": fund_profiles},
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode()
     version = hashlib.sha256(canonical).hexdigest()[:16]
     payload = {
         "version": version,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "instrumentCount": len(instruments),
         "candleCount": sum(len(item["candles"]) for item in instruments),
+        "fundProfileCount": len(fund_profiles),
+        "fundHoldingCount": sum(len(item.get("holdings", [])) for item in fund_profiles),
+        "fundAssetClassCount": sum(len(item.get("assetClasses", [])) for item in fund_profiles),
         "instruments": instruments,
+        "fundProfiles": fund_profiles,
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -100,7 +122,8 @@ def main() -> None:
         json.dump(payload, handle, ensure_ascii=False, separators=(",", ":"))
     print(
         f"wrote {args.output}: {payload['instrumentCount']} instruments, "
-        f"{payload['candleCount']} rows, version {version}"
+        f"{payload['candleCount']} rows, {payload['fundProfileCount']} fund profiles, "
+        f"{payload['fundHoldingCount']} fund holdings, version {version}"
     )
 
 

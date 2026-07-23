@@ -50,6 +50,45 @@ CREATE TABLE IF NOT EXISTS popostock_candles (
 CREATE INDEX IF NOT EXISTS idx_popostock_candles_symbol_date
     ON popostock_candles (instrument_id, trade_date DESC);
 
+CREATE TABLE IF NOT EXISTS popostock_fund_profiles (
+    symbol TEXT PRIMARY KEY REFERENCES popostock_instruments(symbol) ON DELETE CASCADE,
+    name TEXT NOT NULL,
+    category TEXT,
+    aum_twd BIGINT,
+    aum_date TEXT,
+    nav_date DATE,
+    nav_value NUMERIC,
+    manager TEXT,
+    official_url TEXT,
+    bootstrap_source_url TEXT,
+    payload_json JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS popostock_fund_holdings (
+    fund_symbol TEXT NOT NULL REFERENCES popostock_fund_profiles(symbol) ON DELETE CASCADE,
+    source_date DATE NOT NULL,
+    stock_code TEXT,
+    stock_name TEXT NOT NULL,
+    weight NUMERIC,
+    source_title TEXT,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (fund_symbol, source_date, stock_name)
+);
+
+CREATE INDEX IF NOT EXISTS idx_popostock_fund_holdings_symbol_date
+    ON popostock_fund_holdings (fund_symbol, source_date DESC);
+
+CREATE TABLE IF NOT EXISTS popostock_fund_asset_classes (
+    fund_symbol TEXT NOT NULL REFERENCES popostock_fund_profiles(symbol) ON DELETE CASCADE,
+    source_date DATE NOT NULL,
+    label TEXT NOT NULL,
+    weight NUMERIC NOT NULL,
+    source_title TEXT,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (fund_symbol, source_date, label)
+);
+
 CREATE TABLE IF NOT EXISTS popostock_sync_runs (
     id BIGSERIAL PRIMARY KEY,
     version TEXT NOT NULL UNIQUE,
@@ -97,6 +136,21 @@ def _number(value: Any) -> float | int | None:
     if isinstance(value, Decimal):
         return float(value)
     return value
+
+
+def _basic_value(item: dict[str, Any], label: str) -> str | None:
+    for entry in item.get("basicInfo", []):
+        if entry.get("label") == label:
+            return entry.get("value")
+    return None
+
+
+def _nav_value(item: dict[str, Any]) -> float | None:
+    value = str((item.get("performance") or {}).get("priceOrNav") or "").split(" ", 1)[0]
+    try:
+        return float(value)
+    except ValueError:
+        return None
 
 
 async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
@@ -149,6 +203,95 @@ async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
                     )
                 if rows:
                     await conn.executemany(UPSERT_CANDLE_SQL, rows)
+
+            for item in seed.get("fundProfiles", []):
+                symbol = str(item["code"]).upper()
+                performance = item.get("performance") or {}
+                metadata = item.get("sourceMetadata") or {}
+                await conn.execute(
+                    """
+                    INSERT INTO popostock_fund_profiles (
+                        symbol, name, category, aum_twd, aum_date, nav_date,
+                        nav_value, manager, official_url, bootstrap_source_url,
+                        payload_json
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11::jsonb)
+                    ON CONFLICT (symbol) DO UPDATE SET
+                        name = EXCLUDED.name,
+                        category = EXCLUDED.category,
+                        aum_twd = EXCLUDED.aum_twd,
+                        aum_date = EXCLUDED.aum_date,
+                        nav_date = EXCLUDED.nav_date,
+                        nav_value = EXCLUDED.nav_value,
+                        manager = EXCLUDED.manager,
+                        official_url = EXCLUDED.official_url,
+                        bootstrap_source_url = EXCLUDED.bootstrap_source_url,
+                        payload_json = EXCLUDED.payload_json,
+                        updated_at = NOW()
+                    """,
+                    symbol,
+                    item["name"],
+                    item.get("category"),
+                    item.get("aumTwd"),
+                    item.get("aumDate"),
+                    _as_date(performance.get("date")),
+                    _nav_value(item),
+                    _basic_value(item, "基金經理人"),
+                    metadata.get("officialUrl"),
+                    metadata.get("bootstrapSourceUrl"),
+                    json.dumps(item, ensure_ascii=False, separators=(",", ":")),
+                )
+
+                await conn.execute(
+                    "DELETE FROM popostock_fund_holdings WHERE fund_symbol = $1",
+                    symbol,
+                )
+                holding_rows = [
+                    (
+                        symbol,
+                        _as_date(holding.get("sourceDate")),
+                        holding.get("stockCode"),
+                        holding["stockName"],
+                        holding.get("weight"),
+                        holding.get("sourceTitle"),
+                    )
+                    for holding in item.get("holdings", [])
+                    if holding.get("sourceDate")
+                ]
+                if holding_rows:
+                    await conn.executemany(
+                        """
+                        INSERT INTO popostock_fund_holdings (
+                            fund_symbol, source_date, stock_code, stock_name,
+                            weight, source_title
+                        ) VALUES ($1, $2, $3, $4, $5, $6)
+                        """,
+                        holding_rows,
+                    )
+
+                await conn.execute(
+                    "DELETE FROM popostock_fund_asset_classes WHERE fund_symbol = $1",
+                    symbol,
+                )
+                asset_rows = [
+                    (
+                        symbol,
+                        _as_date(asset.get("sourceDate")),
+                        asset["label"],
+                        asset["weight"],
+                        asset.get("sourceTitle"),
+                    )
+                    for asset in item.get("assetClasses", [])
+                    if asset.get("sourceDate")
+                ]
+                if asset_rows:
+                    await conn.executemany(
+                        """
+                        INSERT INTO popostock_fund_asset_classes (
+                            fund_symbol, source_date, label, weight, source_title
+                        ) VALUES ($1, $2, $3, $4, $5)
+                        """,
+                        asset_rows,
+                    )
 
             await conn.execute(
                 """
@@ -220,12 +363,23 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 LEFT JOIN popostock_candles c ON c.instrument_id = i.id
                 """
             )
+            fund_row = await conn.fetchrow(
+                """
+                SELECT COUNT(*) AS profiles,
+                       (SELECT COUNT(*) FROM popostock_fund_holdings) AS holdings,
+                       (SELECT COUNT(*) FROM popostock_fund_asset_classes) AS asset_classes
+                FROM popostock_fund_profiles
+                """
+            )
         return JSONResponse(
             {
                 "instruments": row["instruments"],
                 "candles": row["candles"],
                 "firstDate": row["first_date"].isoformat() if row["first_date"] else None,
                 "latestDate": row["latest_date"].isoformat() if row["latest_date"] else None,
+                "fundProfiles": fund_row["profiles"],
+                "fundHoldings": fund_row["holdings"],
+                "fundAssetClasses": fund_row["asset_classes"],
             }
         )
 
@@ -327,6 +481,26 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 }
             )
         return JSONResponse(payload)
+
+    @app.get("/popostock/api/funds")
+    async def popostock_funds(request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            rows = await conn.fetch(
+                """
+                SELECT payload_json
+                FROM popostock_fund_profiles
+                ORDER BY aum_twd DESC NULLS LAST, symbol
+                """
+            )
+        return JSONResponse(
+            [
+                json.loads(row["payload_json"])
+                if isinstance(row["payload_json"], str)
+                else row["payload_json"]
+                for row in rows
+            ]
+        )
 
     @app.get("/popostock/api/candles/{symbol}")
     async def popostock_candles(
