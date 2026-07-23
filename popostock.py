@@ -262,8 +262,8 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
             )
         return JSONResponse(
             {
-                "total": row["total"],
-                "today": row["today"],
+                "total": int(row["total"] or 0),
+                "today": int(row["today"] or 0),
                 "firstDate": row["first_date"].isoformat() if row["first_date"] else None,
                 "latestDate": row["latest_date"].isoformat() if row["latest_date"] else None,
             }
