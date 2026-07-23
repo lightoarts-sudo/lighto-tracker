@@ -1,7 +1,8 @@
 {
   "date": "2026-07-23",
-  "generatedAt": "2026-07-23T18:11:21+08:00",
+  "generatedAt": "2026-07-23T20:17:26+08:00",
   "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
+  "averagePriceMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
   "coverage": {
     "trackedEtfCount": 28,
     "comparableEtfCount": 19,
@@ -84,10 +85,14 @@
       ],
       "etfCount": 4,
       "closePrice": 2285.0,
+      "highPrice": 2325.0,
+      "lowPrice": 2105.0,
+      "averagePrice": 2215.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1256750000
+      "amountTwd": 1256750000,
+      "averageAmountTwd": 1218250000
     },
     {
       "stockCode": "2308",
@@ -115,10 +120,14 @@
       ],
       "etfCount": 3,
       "closePrice": 1880.0,
+      "highPrice": 1945.0,
+      "lowPrice": 1850.0,
+      "averagePrice": 1897.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 334640000
+      "amountTwd": 334640000,
+      "averageAmountTwd": 337755000
     },
     {
       "stockCode": "5274",
@@ -140,10 +149,14 @@
       ],
       "etfCount": 2,
       "closePrice": 15540.0,
+      "highPrice": 16210.0,
+      "lowPrice": 15315.0,
+      "averagePrice": 15762.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 248640000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 248640000,
+      "averageAmountTwd": 252200000
     },
     {
       "stockCode": "1303",
@@ -165,10 +178,14 @@
       ],
       "etfCount": 2,
       "closePrice": 197.0,
+      "highPrice": 217.0,
+      "lowPrice": 194.0,
+      "averagePrice": 205.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 240340000
+      "amountTwd": 240340000,
+      "averageAmountTwd": 250710000
     },
     {
       "stockCode": "3653",
@@ -184,10 +201,14 @@
       ],
       "etfCount": 1,
       "closePrice": 3710.0,
+      "highPrice": 3820.0,
+      "lowPrice": 3600.0,
+      "averagePrice": 3710.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 211470000
+      "amountTwd": 211470000,
+      "averageAmountTwd": 211470000
     },
     {
       "stockCode": "6805",
@@ -209,10 +230,14 @@
       ],
       "etfCount": 2,
       "closePrice": 1455.0,
+      "highPrice": 1475.0,
+      "lowPrice": 1415.0,
+      "averagePrice": 1445.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 189150000
+      "amountTwd": 189150000,
+      "averageAmountTwd": 187850000
     },
     {
       "stockCode": "3037",
@@ -240,10 +265,14 @@
       ],
       "etfCount": 3,
       "closePrice": 896.0,
+      "highPrice": 918.0,
+      "lowPrice": 872.0,
+      "averagePrice": 895.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 145152000
+      "amountTwd": 145152000,
+      "averageAmountTwd": 144990000
     },
     {
       "stockCode": "6239",
@@ -259,10 +288,14 @@
       ],
       "etfCount": 1,
       "closePrice": 294.0,
+      "highPrice": 315.0,
+      "lowPrice": 292.0,
+      "averagePrice": 303.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 132300000
+      "amountTwd": 132300000,
+      "averageAmountTwd": 136575000
     },
     {
       "stockCode": "6274",
@@ -296,10 +329,14 @@
       ],
       "etfCount": 4,
       "closePrice": 1335.0,
+      "highPrice": 1415.0,
+      "lowPrice": 1325.0,
+      "averagePrice": 1370.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 116145000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 116145000,
+      "averageAmountTwd": 119190000
     },
     {
       "stockCode": "6442",
@@ -321,10 +358,14 @@
       ],
       "etfCount": 2,
       "closePrice": 1390.0,
+      "highPrice": 1495.0,
+      "lowPrice": 1370.0,
+      "averagePrice": 1432.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 61160000
+      "amountTwd": 61160000,
+      "averageAmountTwd": 63030000
     },
     {
       "stockCode": "8046",
@@ -340,10 +381,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1230.0,
+      "highPrice": 1310.0,
+      "lowPrice": 1175.0,
+      "averagePrice": 1242.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 56580000
+      "amountTwd": 56580000,
+      "averageAmountTwd": 57155000
     },
     {
       "stockCode": "4958",
@@ -365,10 +410,14 @@
       ],
       "etfCount": 2,
       "closePrice": 506.0,
+      "highPrice": 558.0,
+      "lowPrice": 504.0,
+      "averagePrice": 531.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 55154000
+      "amountTwd": 55154000,
+      "averageAmountTwd": 57879000
     },
     {
       "stockCode": "2330",
@@ -384,10 +433,14 @@
       ],
       "etfCount": 1,
       "closePrice": 2405.0,
+      "highPrice": 2405.0,
+      "lowPrice": 2370.0,
+      "averagePrice": 2387.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 48100000
+      "amountTwd": 48100000,
+      "averageAmountTwd": 47750000
     },
     {
       "stockCode": "2454",
@@ -409,10 +462,14 @@
       ],
       "etfCount": 2,
       "closePrice": 3875.0,
+      "highPrice": 4050.0,
+      "lowPrice": 3850.0,
+      "averagePrice": 3950.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 42625000
+      "amountTwd": 42625000,
+      "averageAmountTwd": 43450000
     },
     {
       "stockCode": "2383",
@@ -428,10 +485,14 @@
       ],
       "etfCount": 1,
       "closePrice": 5095.0,
+      "highPrice": 5280.0,
+      "lowPrice": 5030.0,
+      "averagePrice": 5155.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 40760000
+      "amountTwd": 40760000,
+      "averageAmountTwd": 41240000
     },
     {
       "stockCode": "3711",
@@ -447,10 +508,14 @@
       ],
       "etfCount": 1,
       "closePrice": 649.0,
+      "highPrice": 665.0,
+      "lowPrice": 637.0,
+      "averagePrice": 651.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 38940000
+      "amountTwd": 38940000,
+      "averageAmountTwd": 39060000
     },
     {
       "stockCode": "3583",
@@ -466,10 +531,14 @@
       ],
       "etfCount": 1,
       "closePrice": 759.0,
+      "highPrice": 780.0,
+      "lowPrice": 743.0,
+      "averagePrice": 761.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 37950000
+      "amountTwd": 37950000,
+      "averageAmountTwd": 38075000
     },
     {
       "stockCode": "7769",
@@ -485,10 +554,14 @@
       ],
       "etfCount": 1,
       "closePrice": 6465.0,
+      "highPrice": 6680.0,
+      "lowPrice": 6375.0,
+      "averagePrice": 6527.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 32325000
+      "amountTwd": 32325000,
+      "averageAmountTwd": 32637500
     },
     {
       "stockCode": "2408",
@@ -504,10 +577,14 @@
       ],
       "etfCount": 1,
       "closePrice": 426.0,
+      "highPrice": 452.0,
+      "lowPrice": 415.0,
+      "averagePrice": 433.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 30672000
+      "amountTwd": 30672000,
+      "averageAmountTwd": 31212000
     },
     {
       "stockCode": "2486",
@@ -529,10 +606,14 @@
       ],
       "etfCount": 2,
       "closePrice": 239.0,
+      "highPrice": 247.5,
+      "lowPrice": 232.0,
+      "averagePrice": 239.75,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 28680000
+      "amountTwd": 28680000,
+      "averageAmountTwd": 28770000
     },
     {
       "stockCode": "2449",
@@ -548,10 +629,14 @@
       ],
       "etfCount": 1,
       "closePrice": 286.0,
+      "highPrice": 302.0,
+      "lowPrice": 282.5,
+      "averagePrice": 292.25,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 28600000
+      "amountTwd": 28600000,
+      "averageAmountTwd": 29225000
     },
     {
       "stockCode": "6739",
@@ -567,10 +652,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1190.0,
+      "highPrice": 1220.0,
+      "lowPrice": 1160.0,
+      "averagePrice": 1190.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 23800000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 23800000,
+      "averageAmountTwd": 23800000
     },
     {
       "stockCode": "6488",
@@ -592,10 +681,14 @@
       ],
       "etfCount": 2,
       "closePrice": 1120.0,
+      "highPrice": 1295.0,
+      "lowPrice": 1120.0,
+      "averagePrice": 1207.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 23520000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 23520000,
+      "averageAmountTwd": 25357500
     },
     {
       "stockCode": "2344",
@@ -611,10 +704,14 @@
       ],
       "etfCount": 1,
       "closePrice": 161.0,
+      "highPrice": 172.0,
+      "lowPrice": 157.0,
+      "averagePrice": 164.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 13685000
+      "amountTwd": 13685000,
+      "averageAmountTwd": 13982500
     },
     {
       "stockCode": "6531",
@@ -630,10 +727,14 @@
       ],
       "etfCount": 1,
       "closePrice": 904.0,
+      "highPrice": 925.0,
+      "lowPrice": 865.0,
+      "averagePrice": 895.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 10848000
+      "amountTwd": 10848000,
+      "averageAmountTwd": 10740000
     },
     {
       "stockCode": "2890",
@@ -667,10 +768,14 @@
       ],
       "etfCount": 4,
       "closePrice": 38.2,
+      "highPrice": 38.9,
+      "lowPrice": 37.6,
+      "averagePrice": 38.25,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 9948044
+      "amountTwd": 9948044,
+      "averageAmountTwd": 9961065
     },
     {
       "stockCode": "3443",
@@ -686,10 +791,14 @@
       ],
       "etfCount": 1,
       "closePrice": 4380.0,
+      "highPrice": 4420.0,
+      "lowPrice": 4220.0,
+      "averagePrice": 4320.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 8760000
+      "amountTwd": 8760000,
+      "averageAmountTwd": 8640000
     },
     {
       "stockCode": "8021",
@@ -711,10 +820,14 @@
       ],
       "etfCount": 2,
       "closePrice": 406.5,
+      "highPrice": 435.0,
+      "lowPrice": 399.0,
+      "averagePrice": 417.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 8536500
+      "amountTwd": 8536500,
+      "averageAmountTwd": 8757000
     },
     {
       "stockCode": "2360",
@@ -730,10 +843,14 @@
       ],
       "etfCount": 1,
       "closePrice": 2155.0,
+      "highPrice": 2215.0,
+      "lowPrice": 2105.0,
+      "averagePrice": 2160.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 6465000
+      "amountTwd": 6465000,
+      "averageAmountTwd": 6480000
     },
     {
       "stockCode": "8358",
@@ -749,10 +866,14 @@
       ],
       "etfCount": 1,
       "closePrice": 406.5,
+      "highPrice": 417.5,
+      "lowPrice": 393.5,
+      "averagePrice": 405.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 5691000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 5691000,
+      "averageAmountTwd": 5677000
     },
     {
       "stockCode": "6669",
@@ -768,10 +889,14 @@
       ],
       "etfCount": 1,
       "closePrice": 5470.0,
+      "highPrice": 5675.0,
+      "lowPrice": 5410.0,
+      "averagePrice": 5542.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 5470000
+      "amountTwd": 5470000,
+      "averageAmountTwd": 5542500
     },
     {
       "stockCode": "3363",
@@ -787,10 +912,14 @@
       ],
       "etfCount": 1,
       "closePrice": 589.0,
+      "highPrice": 606.0,
+      "lowPrice": 557.0,
+      "averagePrice": 581.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 4123000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 4123000,
+      "averageAmountTwd": 4070500
     },
     {
       "stockCode": "3036",
@@ -806,10 +935,14 @@
       ],
       "etfCount": 1,
       "closePrice": 207.5,
+      "highPrice": 207.5,
+      "lowPrice": 198.0,
+      "averagePrice": 202.75,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3942500
+      "amountTwd": 3942500,
+      "averageAmountTwd": 3852250
     },
     {
       "stockCode": "6944",
@@ -825,10 +958,14 @@
       ],
       "etfCount": 1,
       "closePrice": 829.0,
+      "highPrice": 831.0,
+      "lowPrice": 770.0,
+      "averagePrice": 800.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3150200
+      "amountTwd": 3150200,
+      "averageAmountTwd": 3041900
     },
     {
       "stockCode": "3264",
@@ -844,10 +981,14 @@
       ],
       "etfCount": 1,
       "closePrice": 218.0,
+      "highPrice": 221.0,
+      "lowPrice": 209.5,
+      "averagePrice": 215.25,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 2834000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 2834000,
+      "averageAmountTwd": 2798250
     },
     {
       "stockCode": "2395",
@@ -863,10 +1004,14 @@
       ],
       "etfCount": 1,
       "closePrice": 600.0,
+      "highPrice": 607.0,
+      "lowPrice": 582.0,
+      "averagePrice": 594.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1800000
+      "amountTwd": 1800000,
+      "averageAmountTwd": 1783500
     },
     {
       "stockCode": "2637",
@@ -882,10 +1027,14 @@
       ],
       "etfCount": 1,
       "closePrice": 81.3,
+      "highPrice": 84.5,
+      "lowPrice": 81.1,
+      "averagePrice": 82.8,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1626000
+      "amountTwd": 1626000,
+      "averageAmountTwd": 1656000
     },
     {
       "stockCode": "2027",
@@ -901,10 +1050,14 @@
       ],
       "etfCount": 1,
       "closePrice": 44.4,
+      "highPrice": 45.5,
+      "lowPrice": 43.2,
+      "averagePrice": 44.35,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1554000
+      "amountTwd": 1554000,
+      "averageAmountTwd": 1552250
     },
     {
       "stockCode": "6446",
@@ -920,10 +1073,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1150.0,
+      "highPrice": 1190.0,
+      "lowPrice": 1125.0,
+      "averagePrice": 1157.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1150000
+      "amountTwd": 1150000,
+      "averageAmountTwd": 1157500
     },
     {
       "stockCode": "3481",
@@ -939,10 +1096,14 @@
       ],
       "etfCount": 1,
       "closePrice": 51.9,
+      "highPrice": 53.8,
+      "lowPrice": 51.0,
+      "averagePrice": 52.4,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 622800
+      "amountTwd": 622800,
+      "averageAmountTwd": 628800
     },
     {
       "stockCode": "2882",
@@ -958,10 +1119,14 @@
       ],
       "etfCount": 1,
       "closePrice": 97.3,
+      "highPrice": 98.5,
+      "lowPrice": 96.4,
+      "averagePrice": 97.45,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 291900
+      "amountTwd": 291900,
+      "averageAmountTwd": 292350
     },
     {
       "stockCode": "4749",
@@ -977,10 +1142,14 @@
       ],
       "etfCount": 1,
       "closePrice": 809.0,
+      "highPrice": 821.0,
+      "lowPrice": 801.0,
+      "averagePrice": 811.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 69574
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 69574,
+      "averageAmountTwd": 69746
     },
     {
       "stockCode": "U",
@@ -996,10 +1165,14 @@
       ],
       "etfCount": 1,
       "closePrice": null,
+      "highPrice": null,
+      "lowPrice": null,
+      "averagePrice": null,
       "priceDate": null,
       "market": null,
       "priceSourceUrl": null,
-      "amountTwd": null
+      "amountTwd": null,
+      "averageAmountTwd": null
     }
   ],
   "sellSummary": {
@@ -1043,10 +1216,14 @@
       ],
       "etfCount": 4,
       "closePrice": 2405.0,
+      "highPrice": 2405.0,
+      "lowPrice": 2370.0,
+      "averagePrice": 2387.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2056275000
+      "amountTwd": 2056275000,
+      "averageAmountTwd": 2041312500
     },
     {
       "stockCode": "6669",
@@ -1068,10 +1245,14 @@
       ],
       "etfCount": 2,
       "closePrice": 5470.0,
+      "highPrice": 5675.0,
+      "lowPrice": 5410.0,
+      "averagePrice": 5542.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1044770000
+      "amountTwd": 1044770000,
+      "averageAmountTwd": 1058617500
     },
     {
       "stockCode": "2368",
@@ -1093,10 +1274,14 @@
       ],
       "etfCount": 2,
       "closePrice": 941.0,
+      "highPrice": 958.0,
+      "lowPrice": 930.0,
+      "averagePrice": 944.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 788558000
+      "amountTwd": 788558000,
+      "averageAmountTwd": 791072000
     },
     {
       "stockCode": "4958",
@@ -1118,10 +1303,14 @@
       ],
       "etfCount": 2,
       "closePrice": 506.0,
+      "highPrice": 558.0,
+      "lowPrice": 504.0,
+      "averagePrice": 531.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 398728000
+      "amountTwd": 398728000,
+      "averageAmountTwd": 418428000
     },
     {
       "stockCode": "2337",
@@ -1137,10 +1326,14 @@
       ],
       "etfCount": 1,
       "closePrice": 129.5,
+      "highPrice": 134.5,
+      "lowPrice": 125.5,
+      "averagePrice": 130.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 362600000
+      "amountTwd": 362600000,
+      "averageAmountTwd": 364000000
     },
     {
       "stockCode": "6147",
@@ -1174,10 +1367,14 @@
       ],
       "etfCount": 4,
       "closePrice": 175.5,
+      "highPrice": 188.0,
+      "lowPrice": 172.5,
+      "averagePrice": 180.25,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 326956500
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 326956500,
+      "averageAmountTwd": 335805750
     },
     {
       "stockCode": "6510",
@@ -1205,10 +1402,14 @@
       ],
       "etfCount": 3,
       "closePrice": 2760.0,
+      "highPrice": 2840.0,
+      "lowPrice": 2720.0,
+      "averagePrice": 2780.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 41400000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 41400000,
+      "averageAmountTwd": 41700000
     },
     {
       "stockCode": "8046",
@@ -1224,10 +1425,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1230.0,
+      "highPrice": 1310.0,
+      "lowPrice": 1175.0,
+      "averagePrice": 1242.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 23370000
+      "amountTwd": 23370000,
+      "averageAmountTwd": 23607500
     },
     {
       "stockCode": "2308",
@@ -1243,10 +1448,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1880.0,
+      "highPrice": 1945.0,
+      "lowPrice": 1850.0,
+      "averagePrice": 1897.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 7520000
+      "amountTwd": 7520000,
+      "averageAmountTwd": 7590000
     },
     {
       "stockCode": "7769",
@@ -1262,10 +1471,14 @@
       ],
       "etfCount": 1,
       "closePrice": 6465.0,
+      "highPrice": 6680.0,
+      "lowPrice": 6375.0,
+      "averagePrice": 6527.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 6465000
+      "amountTwd": 6465000,
+      "averageAmountTwd": 6527500
     },
     {
       "stockCode": "6223",
@@ -1281,10 +1494,14 @@
       ],
       "etfCount": 1,
       "closePrice": 6250.0,
+      "highPrice": 6350.0,
+      "lowPrice": 6075.0,
+      "averagePrice": 6212.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 6250000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 6250000,
+      "averageAmountTwd": 6212500
     },
     {
       "stockCode": "2383",
@@ -1300,10 +1517,14 @@
       ],
       "etfCount": 1,
       "closePrice": 5095.0,
+      "highPrice": 5280.0,
+      "lowPrice": 5030.0,
+      "averagePrice": 5155.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 5095000
+      "amountTwd": 5095000,
+      "averageAmountTwd": 5155000
     },
     {
       "stockCode": "2345",
@@ -1319,10 +1540,14 @@
       ],
       "etfCount": 1,
       "closePrice": 2325.0,
+      "highPrice": 2390.0,
+      "lowPrice": 2280.0,
+      "averagePrice": 2335.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 4650000
+      "amountTwd": 4650000,
+      "averageAmountTwd": 4670000
     },
     {
       "stockCode": "3711",
@@ -1338,10 +1563,14 @@
       ],
       "etfCount": 1,
       "closePrice": 649.0,
+      "highPrice": 665.0,
+      "lowPrice": 637.0,
+      "averagePrice": 651.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 4543000
+      "amountTwd": 4543000,
+      "averageAmountTwd": 4557000
     },
     {
       "stockCode": "2360",
@@ -1357,10 +1586,14 @@
       ],
       "etfCount": 1,
       "closePrice": 2155.0,
+      "highPrice": 2215.0,
+      "lowPrice": 2105.0,
+      "averagePrice": 2160.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 4310000
+      "amountTwd": 4310000,
+      "averageAmountTwd": 4320000
     },
     {
       "stockCode": "6285",
@@ -1376,10 +1609,14 @@
       ],
       "etfCount": 1,
       "closePrice": 258.5,
+      "highPrice": 261.0,
+      "lowPrice": 252.0,
+      "averagePrice": 256.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3877500
+      "amountTwd": 3877500,
+      "averageAmountTwd": 3847500
     },
     {
       "stockCode": "2883",
@@ -1395,10 +1632,14 @@
       ],
       "etfCount": 1,
       "closePrice": 30.85,
+      "highPrice": 31.3,
+      "lowPrice": 30.5,
+      "averagePrice": 30.9,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3794550
+      "amountTwd": 3794550,
+      "averageAmountTwd": 3800700
     },
     {
       "stockCode": "2379",
@@ -1414,10 +1655,14 @@
       ],
       "etfCount": 1,
       "closePrice": 745.0,
+      "highPrice": 748.0,
+      "lowPrice": 726.0,
+      "averagePrice": 737.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3725000
+      "amountTwd": 3725000,
+      "averageAmountTwd": 3685000
     },
     {
       "stockCode": "3653",
@@ -1433,10 +1678,14 @@
       ],
       "etfCount": 1,
       "closePrice": 3710.0,
+      "highPrice": 3820.0,
+      "lowPrice": 3600.0,
+      "averagePrice": 3710.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3710000
+      "amountTwd": 3710000,
+      "averageAmountTwd": 3710000
     },
     {
       "stockCode": "2382",
@@ -1452,10 +1701,14 @@
       ],
       "etfCount": 1,
       "closePrice": 336.0,
+      "highPrice": 337.5,
+      "lowPrice": 328.0,
+      "averagePrice": 332.75,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3696000
+      "amountTwd": 3696000,
+      "averageAmountTwd": 3660250
     },
     {
       "stockCode": "2891",
@@ -1471,10 +1724,14 @@
       ],
       "etfCount": 1,
       "closePrice": 63.5,
+      "highPrice": 64.8,
+      "lowPrice": 62.4,
+      "averagePrice": 63.6,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3492500
+      "amountTwd": 3492500,
+      "averageAmountTwd": 3498000
     },
     {
       "stockCode": "2884",
@@ -1490,10 +1747,14 @@
       ],
       "etfCount": 1,
       "closePrice": 35.65,
+      "highPrice": 36.3,
+      "lowPrice": 35.4,
+      "averagePrice": 35.85,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3386750
+      "amountTwd": 3386750,
+      "averageAmountTwd": 3405750
     },
     {
       "stockCode": "2881",
@@ -1509,10 +1770,14 @@
       ],
       "etfCount": 1,
       "closePrice": 128.5,
+      "highPrice": 129.5,
+      "lowPrice": 126.5,
+      "averagePrice": 128.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 3341000
+      "amountTwd": 3341000,
+      "averageAmountTwd": 3328000
     },
     {
       "stockCode": "2886",
@@ -1528,10 +1793,14 @@
       ],
       "etfCount": 1,
       "closePrice": 48.15,
+      "highPrice": 48.35,
+      "lowPrice": 47.6,
+      "averagePrice": 47.975,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2889000
+      "amountTwd": 2889000,
+      "averageAmountTwd": 2878500
     },
     {
       "stockCode": "6531",
@@ -1547,10 +1816,14 @@
       ],
       "etfCount": 1,
       "closePrice": 904.0,
+      "highPrice": 925.0,
+      "lowPrice": 865.0,
+      "averagePrice": 895.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2712000
+      "amountTwd": 2712000,
+      "averageAmountTwd": 2685000
     },
     {
       "stockCode": "3491",
@@ -1566,10 +1839,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1300.0,
+      "highPrice": 1355.0,
+      "lowPrice": 1270.0,
+      "averagePrice": 1312.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 2600000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 2600000,
+      "averageAmountTwd": 2625000
     },
     {
       "stockCode": "2357",
@@ -1585,10 +1862,14 @@
       ],
       "etfCount": 1,
       "closePrice": 769.0,
+      "highPrice": 773.0,
+      "lowPrice": 759.0,
+      "averagePrice": 766.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2307000
+      "amountTwd": 2307000,
+      "averageAmountTwd": 2298000
     },
     {
       "stockCode": "2344",
@@ -1604,10 +1885,14 @@
       ],
       "etfCount": 1,
       "closePrice": 161.0,
+      "highPrice": 172.0,
+      "lowPrice": 157.0,
+      "averagePrice": 164.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2254000
+      "amountTwd": 2254000,
+      "averageAmountTwd": 2303000
     },
     {
       "stockCode": "8464",
@@ -1623,10 +1908,14 @@
       ],
       "etfCount": 1,
       "closePrice": 364.0,
+      "highPrice": 366.5,
+      "lowPrice": 359.5,
+      "averagePrice": 363.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2184000
+      "amountTwd": 2184000,
+      "averageAmountTwd": 2178000
     },
     {
       "stockCode": "2313",
@@ -1642,10 +1931,14 @@
       ],
       "etfCount": 1,
       "closePrice": 214.0,
+      "highPrice": 218.5,
+      "lowPrice": 208.5,
+      "averagePrice": 213.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2140000
+      "amountTwd": 2140000,
+      "averageAmountTwd": 2135000
     },
     {
       "stockCode": "2303",
@@ -1661,10 +1954,14 @@
       ],
       "etfCount": 1,
       "closePrice": 138.5,
+      "highPrice": 142.5,
+      "lowPrice": 135.5,
+      "averagePrice": 139.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2077500
+      "amountTwd": 2077500,
+      "averageAmountTwd": 2085000
     },
     {
       "stockCode": "2882",
@@ -1680,10 +1977,14 @@
       ],
       "etfCount": 1,
       "closePrice": 97.3,
+      "highPrice": 98.5,
+      "lowPrice": 96.4,
+      "averagePrice": 97.45,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2043300
+      "amountTwd": 2043300,
+      "averageAmountTwd": 2046450
     },
     {
       "stockCode": "2603",
@@ -1699,10 +2000,14 @@
       ],
       "etfCount": 1,
       "closePrice": 203.5,
+      "highPrice": 207.0,
+      "lowPrice": 203.0,
+      "averagePrice": 205.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2035000
+      "amountTwd": 2035000,
+      "averageAmountTwd": 2050000
     },
     {
       "stockCode": "2885",
@@ -1718,10 +2023,14 @@
       ],
       "etfCount": 1,
       "closePrice": 63.3,
+      "highPrice": 64.2,
+      "lowPrice": 61.9,
+      "averagePrice": 63.05,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2025600
+      "amountTwd": 2025600,
+      "averageAmountTwd": 2017600
     },
     {
       "stockCode": "2449",
@@ -1737,10 +2046,14 @@
       ],
       "etfCount": 1,
       "closePrice": 286.0,
+      "highPrice": 302.0,
+      "lowPrice": 282.5,
+      "averagePrice": 292.25,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 2002000
+      "amountTwd": 2002000,
+      "averageAmountTwd": 2045750
     },
     {
       "stockCode": "2887",
@@ -1756,10 +2069,14 @@
       ],
       "etfCount": 1,
       "closePrice": 34.5,
+      "highPrice": 34.85,
+      "lowPrice": 33.95,
+      "averagePrice": 34.4,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1966500
+      "amountTwd": 1966500,
+      "averageAmountTwd": 1960800
     },
     {
       "stockCode": "2412",
@@ -1775,10 +2092,14 @@
       ],
       "etfCount": 1,
       "closePrice": 138.0,
+      "highPrice": 139.0,
+      "lowPrice": 137.5,
+      "averagePrice": 138.25,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1794000
+      "amountTwd": 1794000,
+      "averageAmountTwd": 1797250
     },
     {
       "stockCode": "4904",
@@ -1794,10 +2115,14 @@
       ],
       "etfCount": 1,
       "closePrice": 102.5,
+      "highPrice": 104.5,
+      "lowPrice": 102.5,
+      "averagePrice": 103.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1640000
+      "amountTwd": 1640000,
+      "averageAmountTwd": 1656000
     },
     {
       "stockCode": "3034",
@@ -1813,10 +2138,14 @@
       ],
       "etfCount": 1,
       "closePrice": 503.0,
+      "highPrice": 509.0,
+      "lowPrice": 495.0,
+      "averagePrice": 502.0,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1509000
+      "amountTwd": 1509000,
+      "averageAmountTwd": 1506000
     },
     {
       "stockCode": "6415",
@@ -1832,10 +2161,14 @@
       ],
       "etfCount": 1,
       "closePrice": 474.5,
+      "highPrice": 493.0,
+      "lowPrice": 463.5,
+      "averagePrice": 478.25,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1423500
+      "amountTwd": 1423500,
+      "averageAmountTwd": 1434750
     },
     {
       "stockCode": "2317",
@@ -1851,10 +2184,14 @@
       ],
       "etfCount": 1,
       "closePrice": 257.5,
+      "highPrice": 259.5,
+      "lowPrice": 253.5,
+      "averagePrice": 256.5,
       "priceDate": "2026-07-23",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
-      "amountTwd": 1287500
+      "amountTwd": 1287500,
+      "averageAmountTwd": 1282500
     },
     {
       "stockCode": "5904",
@@ -1870,10 +2207,14 @@
       ],
       "etfCount": 1,
       "closePrice": 635.0,
+      "highPrice": 643.0,
+      "lowPrice": 626.0,
+      "averagePrice": 634.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 1270000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 1270000,
+      "averageAmountTwd": 1269000
     },
     {
       "stockCode": "6187",
@@ -1889,10 +2230,14 @@
       ],
       "etfCount": 1,
       "closePrice": 1025.0,
+      "highPrice": 1100.0,
+      "lowPrice": 1010.0,
+      "averagePrice": 1055.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
-      "amountTwd": 1025000
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": 1025000,
+      "averageAmountTwd": 1055000
     }
   ]
 }
