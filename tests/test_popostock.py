@@ -23,6 +23,8 @@ def test_page_contains_full_fund_tracker():
     page = (popostock.SITE_DIR / "index.html").read_text(encoding="utf-8")
     assert '<base href="/popostock/"' in page
     assert "PoPoStock｜波波流" in page
+    assert 'href="favicon.png"' in page
+    assert (popostock.SITE_DIR / "favicon.png").exists()
     assert (popostock.SITE_DIR / "bobo-flow-logo.png").exists()
     assert (popostock.SITE_DIR / "data" / "market" / "TAIEX.json").exists()
     assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
