@@ -25,6 +25,11 @@ def test_seed_is_readable_and_complete():
 
 def test_page_contains_full_fund_tracker():
     page = (popostock.SITE_DIR / "index.html").read_text(encoding="utf-8")
+    asset_text = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in (popostock.SITE_DIR / "assets").iterdir()
+        if path.suffix in {".js", ".css"}
+    )
     assert '<base href="/popostock/"' in page
     assert "PoPoStock｜波波流" in page
     assert 'href="favicon.png"' in page
@@ -36,3 +41,6 @@ def test_page_contains_full_fund_tracker():
     assert 'fetch("api/page-view"' in page
     assert "https://www.googletagmanager.com/gtag/js?id=G-TFK1BMB9LT" in page
     assert 'gtag("config", "G-TFK1BMB9LT")' in page
+    assert "詳細資料" in asset_text
+    assert "instrument-detail-sections" in asset_text
+    assert ".detail-disclosure" in asset_text
