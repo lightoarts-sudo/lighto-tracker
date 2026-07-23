@@ -15,5 +15,23 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (() => {
+        const key = "popostock-page-view-counted";
+        try {
+          if (sessionStorage.getItem(key)) return;
+          sessionStorage.setItem(key, "pending");
+        } catch {
+          return;
+        }
+
+        fetch("api/page-view", { method: "POST", keepalive: true })
+          .then((response) => {
+            if (!response.ok) throw new Error("Page view was not recorded");
+            sessionStorage.setItem(key, "yes");
+          })
+          .catch(() => sessionStorage.removeItem(key));
+      })();
+    </script>
   </body>
 </html>
