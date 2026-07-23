@@ -9,6 +9,9 @@ def test_schema_is_namespaced():
     assert "popostock_candles" in popostock.SCHEMA_SQL
     assert "popostock_page_views" in popostock.SCHEMA_SQL
     assert "PRIMARY KEY (instrument_id, trade_date, timeframe)" in popostock.SCHEMA_SQL
+    source = (popostock.BASE_DIR / "popostock.py").read_text(encoding="utf-8")
+    assert '"total": int(row["total"] or 0)' in source
+    assert '"today": int(row["today"] or 0)' in source
 
 
 def test_seed_is_readable_and_complete():
