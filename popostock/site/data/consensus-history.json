@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-07-22T18:14:07+08:00",
+  "generatedAt": "2026-07-23T12:03:58+08:00",
   "availableDates": [
+    "2026-07-23",
     "2026-07-22",
     "2026-07-21",
     "2026-07-20",
@@ -18,7 +19,7 @@
   "daily": {
     "2026-07-03": {
       "date": "2026-07-03",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -83,7 +84,7 @@
     },
     "2026-07-06": {
       "date": "2026-07-06",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -776,7 +777,7 @@
     },
     "2026-07-07": {
       "date": "2026-07-07",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -1361,7 +1362,7 @@
     },
     "2026-07-08": {
       "date": "2026-07-08",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -1579,7 +1580,7 @@
     },
     "2026-07-09": {
       "date": "2026-07-09",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -2012,7 +2013,7 @@
     },
     "2026-07-13": {
       "date": "2026-07-13",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -2344,7 +2345,7 @@
     },
     "2026-07-14": {
       "date": "2026-07-14",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -3132,7 +3133,7 @@
     },
     "2026-07-15": {
       "date": "2026-07-15",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -3679,7 +3680,7 @@
     },
     "2026-07-16": {
       "date": "2026-07-16",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -4259,7 +4260,7 @@
     },
     "2026-07-17": {
       "date": "2026-07-17",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -5576,7 +5577,7 @@
     },
     "2026-07-20": {
       "date": "2026-07-20",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
@@ -7866,13 +7867,13 @@
     },
     "2026-07-21": {
       "date": "2026-07-21",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
-        "comparableEtfCount": 27,
+        "comparableEtfCount": 28,
         "baselineEtfCount": 0,
-        "pendingEtfCount": 1,
+        "pendingEtfCount": 0,
         "futureEtfCount": 0,
         "comparableEtfs": [
           "00981A",
@@ -7886,6 +7887,7 @@
           "00405A",
           "00400A",
           "00980A",
+          "00997A",
           "00999A",
           "00993A",
           "00985A",
@@ -7904,17 +7906,15 @@
           "00983A"
         ],
         "baselineEtfs": [],
-        "pendingEtfs": [
-          "00997A"
-        ],
+        "pendingEtfs": [],
         "futureEtfs": []
       },
       "summary": {
-        "buyingEtfCount": 20,
-        "stockCount": 87,
-        "totalLots": 23696.028,
+        "buyingEtfCount": 21,
+        "stockCount": 93,
+        "totalLots": 23727.658,
         "pricedStockCount": 70,
-        "unpricedStockCount": 17,
+        "unpricedStockCount": 23,
         "totalAmountTwd": 11613048544
       },
       "stocks": [
@@ -9557,7 +9557,7 @@
         {
           "stockCode": "CRDO US",
           "stockName": "CREDO TECHNOLOGY GROUP HOLDI",
-          "totalLots": 124.3,
+          "totalLots": 126.723,
           "etfs": [
             {
               "code": "00988A",
@@ -9570,9 +9570,15 @@
               "name": "主動元大AI新經濟",
               "lotChange": 84.3,
               "action": "added"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 2.423,
+              "action": "increase"
             }
           ],
-          "etfCount": 2,
+          "etfCount": 3,
           "closePrice": null,
           "priceDate": null,
           "market": null,
@@ -9582,7 +9588,7 @@
         {
           "stockCode": "LITE US",
           "stockName": "LUMENTUM HOLDINGS INC",
-          "totalLots": 35.56,
+          "totalLots": 38.007,
           "etfs": [
             {
               "code": "00988A",
@@ -9595,9 +9601,15 @@
               "name": "主動元大AI新經濟",
               "lotChange": 15.56,
               "action": "increase"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 2.447,
+              "action": "increase"
             }
           ],
-          "etfCount": 2,
+          "etfCount": 3,
           "closePrice": null,
           "priceDate": null,
           "market": null,
@@ -9607,7 +9619,7 @@
         {
           "stockCode": "MU US",
           "stockName": "MICRON TECHNOLOGY INC",
-          "totalLots": 14.823,
+          "totalLots": 16.37,
           "etfs": [
             {
               "code": "00988A",
@@ -9619,6 +9631,62 @@
               "code": "00990A",
               "name": "主動元大AI新經濟",
               "lotChange": 2.254,
+              "action": "increase"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.547,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 3,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "MRVL US",
+          "stockName": "MARVELL TECHNOLOGY INC",
+          "totalLots": 39.709,
+          "etfs": [
+            {
+              "code": "00990A",
+              "name": "主動元大AI新經濟",
+              "lotChange": 30.5,
+              "action": "increase"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 9.209,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "SNDK US",
+          "stockName": "SANDISK CORP",
+          "totalLots": 4.083,
+          "etfs": [
+            {
+              "code": "00990A",
+              "name": "主動元大AI新經濟",
+              "lotChange": 3.66,
+              "action": "increase"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.423,
               "action": "increase"
             }
           ],
@@ -9683,6 +9751,63 @@
               "name": "主動統一全球創新",
               "lotChange": 10.459,
               "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "AMAT US",
+          "stockName": "應用材料",
+          "totalLots": 1.019,
+          "etfs": [
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.019,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "AMD US",
+          "stockName": "超微半導體公司",
+          "totalLots": 1.996,
+          "etfs": [
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.996,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "CDNS US",
+          "stockName": "Cadence設計系統公司",
+          "totalLots": 0.209,
+          "etfs": [
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.209,
+              "action": "increase"
             }
           ],
           "etfCount": 1,
@@ -9788,14 +9913,14 @@
           "amountTwd": null
         },
         {
-          "stockCode": "MRVL US",
-          "stockName": "MARVELL TECHNOLOGY INC",
-          "totalLots": 30.5,
+          "stockCode": "INTC US",
+          "stockName": "英特爾",
+          "totalLots": 10.658,
           "etfs": [
             {
-              "code": "00990A",
-              "name": "主動元大AI新經濟",
-              "lotChange": 30.5,
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 10.658,
               "action": "increase"
             }
           ],
@@ -9826,14 +9951,14 @@
           "amountTwd": null
         },
         {
-          "stockCode": "SNDK US",
-          "stockName": "SANDISK CORP",
-          "totalLots": 3.66,
+          "stockCode": "SNOW US",
+          "stockName": "Snowflake公司",
+          "totalLots": 0.169,
           "etfs": [
             {
-              "code": "00990A",
-              "name": "主動元大AI新經濟",
-              "lotChange": 3.66,
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 0.169,
               "action": "increase"
             }
           ],
@@ -9845,14 +9970,14 @@
           "amountTwd": null
         },
         {
-          "stockCode": "SNOW US",
-          "stockName": "Snowflake公司",
-          "totalLots": 0.169,
+          "stockCode": "STX US",
+          "stockName": "希捷科技控股公開有限公司",
+          "totalLots": 0.73,
           "etfs": [
             {
-              "code": "00983A",
-              "name": "主動中信ARK創新",
-              "lotChange": 0.169,
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.73,
               "action": "increase"
             }
           ],
@@ -9900,15 +10025,34 @@
           "market": null,
           "priceSourceUrl": null,
           "amountTwd": null
+        },
+        {
+          "stockCode": "WDC US",
+          "stockName": "威騰電子公司",
+          "totalLots": 0.969,
+          "etfs": [
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.969,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
         }
       ],
       "sellSummary": {
-        "sellingEtfCount": 16,
+        "sellingEtfCount": 17,
         "stockCount": 60,
-        "totalLots": 27695.745,
+        "totalLots": 27947.745,
         "pricedStockCount": 52,
         "unpricedStockCount": 8,
-        "totalAmountTwd": 6478520050
+        "totalAmountTwd": 6647360050
       },
       "sellStocks": [
         {
@@ -9948,6 +10092,43 @@
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260721&type=ALLBUT0999&response=json",
           "amountTwd": 746400000
+        },
+        {
+          "stockCode": "2327",
+          "stockName": "國巨*",
+          "totalLots": 1083,
+          "etfs": [
+            {
+              "code": "00987A",
+              "name": "主動台新優勢成長",
+              "lotChange": 111,
+              "action": "removed"
+            },
+            {
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lotChange": 600,
+              "action": "decrease"
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 120,
+              "action": "decrease"
+            },
+            {
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 252,
+              "action": "removed"
+            }
+          ],
+          "etfCount": 4,
+          "closePrice": 670.0,
+          "priceDate": "2026-07-21",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260721&type=ALLBUT0999&response=json",
+          "amountTwd": 725610000
         },
         {
           "stockCode": "2303",
@@ -9998,37 +10179,6 @@
           "market": "TPEx",
           "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
           "amountTwd": 585000000
-        },
-        {
-          "stockCode": "2327",
-          "stockName": "國巨*",
-          "totalLots": 831,
-          "etfs": [
-            {
-              "code": "00987A",
-              "name": "主動台新優勢成長",
-              "lotChange": 111,
-              "action": "removed"
-            },
-            {
-              "code": "00988A",
-              "name": "主動統一全球創新",
-              "lotChange": 600,
-              "action": "decrease"
-            },
-            {
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 120,
-              "action": "decrease"
-            }
-          ],
-          "etfCount": 3,
-          "closePrice": 670.0,
-          "priceDate": "2026-07-21",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260721&type=ALLBUT0999&response=json",
-          "amountTwd": 556770000
         },
         {
           "stockCode": "2368",
@@ -11109,18 +11259,19 @@
     },
     "2026-07-22": {
       "date": "2026-07-22",
-      "generatedAt": "2026-07-22T18:14:07+08:00",
+      "generatedAt": "2026-07-23T12:03:49+08:00",
       "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
       "coverage": {
         "trackedEtfCount": 28,
-        "comparableEtfCount": 19,
+        "comparableEtfCount": 23,
         "baselineEtfCount": 0,
-        "pendingEtfCount": 9,
+        "pendingEtfCount": 5,
         "futureEtfCount": 0,
         "comparableEtfs": [
           "00981A",
           "00403A",
           "00991A",
+          "00982A",
           "00992A",
           "00407A",
           "00405A",
@@ -11132,33 +11283,32 @@
           "00984A",
           "00406A",
           "00995A",
+          "00994A",
           "00996A",
+          "00998A",
           "00404A",
           "00401A",
           "00987A",
-          "00989A"
+          "00989A",
+          "00983A"
         ],
         "baselineEtfs": [],
         "pendingEtfs": [
           "00988A",
-          "00982A",
           "00990A",
           "00997A",
           "00402A",
-          "00994A",
-          "00998A",
-          "00408A",
-          "00983A"
+          "00408A"
         ],
         "futureEtfs": []
       },
       "summary": {
-        "buyingEtfCount": 13,
-        "stockCount": 128,
-        "totalLots": 23298.072,
-        "pricedStockCount": 127,
-        "unpricedStockCount": 1,
-        "totalAmountTwd": 9058500250
+        "buyingEtfCount": 17,
+        "stockCount": 136,
+        "totalLots": 24108.928,
+        "pricedStockCount": 128,
+        "unpricedStockCount": 8,
+        "totalAmountTwd": 9666380250
       },
       "stocks": [
         {
@@ -11270,7 +11420,7 @@
         {
           "stockCode": "2308",
           "stockName": "台達電",
-          "totalLots": 200,
+          "totalLots": 215,
           "etfs": [
             {
               "code": "00403A",
@@ -11283,14 +11433,45 @@
               "name": "主動復華未來50",
               "lotChange": 100,
               "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 15,
+              "action": "increase"
             }
           ],
-          "etfCount": 2,
+          "etfCount": 3,
           "closePrice": 1880.0,
           "priceDate": "2026-07-22",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 376000000
+          "amountTwd": 404200000
+        },
+        {
+          "stockCode": "2383",
+          "stockName": "台光電",
+          "totalLots": 75,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lotChange": 70,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 5,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 5125.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 384375000
         },
         {
           "stockCode": "5274",
@@ -11318,47 +11499,9 @@
           "amountTwd": 372240000
         },
         {
-          "stockCode": "2383",
-          "stockName": "台光電",
-          "totalLots": 70,
-          "etfs": [
-            {
-              "code": "00403A",
-              "name": "主動統一升級50",
-              "lotChange": 70,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 5125.0,
-          "priceDate": "2026-07-22",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 358750000
-        },
-        {
-          "stockCode": "3037",
-          "stockName": "欣興",
-          "totalLots": 388,
-          "etfs": [
-            {
-              "code": "00403A",
-              "name": "主動統一升級50",
-              "lotChange": 388,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 907.0,
-          "priceDate": "2026-07-22",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 351916000
-        },
-        {
           "stockCode": "1303",
           "stockName": "南亞",
-          "totalLots": 1690,
+          "totalLots": 1770,
           "etfs": [
             {
               "code": "00403A",
@@ -11383,14 +11526,39 @@
               "name": "主動安聯台灣",
               "lotChange": 134,
               "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 80,
+              "action": "added"
             }
           ],
-          "etfCount": 4,
+          "etfCount": 5,
           "closePrice": 208.0,
           "priceDate": "2026-07-22",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 351520000
+          "amountTwd": 368160000
+        },
+        {
+          "stockCode": "3037",
+          "stockName": "欣興",
+          "totalLots": 388,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lotChange": 388,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": 907.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 351916000
         },
         {
           "stockCode": "6187",
@@ -11416,6 +11584,37 @@
           "market": "TPEx",
           "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
           "amountTwd": 339710000
+        },
+        {
+          "stockCode": "2360",
+          "stockName": "致茂",
+          "totalLots": 138,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lotChange": 80,
+              "action": "increase"
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 38,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 20,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 3,
+          "closePrice": 2125.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 293250000
         },
         {
           "stockCode": "3443",
@@ -11524,31 +11723,6 @@
           "amountTwd": 258464000
         },
         {
-          "stockCode": "2360",
-          "stockName": "致茂",
-          "totalLots": 118,
-          "etfs": [
-            {
-              "code": "00403A",
-              "name": "主動統一升級50",
-              "lotChange": 80,
-              "action": "increase"
-            },
-            {
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 38,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 2,
-          "closePrice": 2125.0,
-          "priceDate": "2026-07-22",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 250750000
-        },
-        {
           "stockCode": "3008",
           "stockName": "大立光",
           "totalLots": 61,
@@ -11568,9 +11742,53 @@
           "amountTwd": 244000000
         },
         {
+          "stockCode": "3529",
+          "stockName": "力旺",
+          "totalLots": 93,
+          "etfs": [
+            {
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 93,
+              "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": 2600.0,
+          "priceDate": "2026-07-22",
+          "market": "TPEx",
+          "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F22&s=0%2Casc%2C0",
+          "amountTwd": 241800000
+        },
+        {
+          "stockCode": "6531",
+          "stockName": "愛普*",
+          "totalLots": 253,
+          "etfs": [
+            {
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 250,
+              "action": "increase"
+            },
+            {
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lotChange": 3,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 908.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 229724000
+        },
+        {
           "stockCode": "2303",
           "stockName": "聯電",
-          "totalLots": 1573,
+          "totalLots": 1613,
           "etfs": [
             {
               "code": "00403A",
@@ -11589,19 +11807,25 @@
               "name": "主動野村台灣50",
               "lotChange": 339,
               "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 40,
+              "action": "increase"
             }
           ],
-          "etfCount": 3,
+          "etfCount": 4,
           "closePrice": 139.0,
           "priceDate": "2026-07-22",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 218647000
+          "amountTwd": 224207000
         },
         {
           "stockCode": "2454",
           "stockName": "聯發科",
-          "totalLots": 53,
+          "totalLots": 58,
           "etfs": [
             {
               "code": "00403A",
@@ -11614,14 +11838,20 @@
               "name": "主動中信台灣收益",
               "lotChange": 3,
               "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 5,
+              "action": "increase"
             }
           ],
-          "etfCount": 2,
+          "etfCount": 3,
           "closePrice": 3850.0,
           "priceDate": "2026-07-22",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 204050000
+          "amountTwd": 223300000
         },
         {
           "stockCode": "2027",
@@ -12609,6 +12839,31 @@
           "amountTwd": 3955000
         },
         {
+          "stockCode": "8046",
+          "stockName": "南電",
+          "totalLots": 3,
+          "etfs": [
+            {
+              "code": "00400A",
+              "name": "主動國泰動能高息",
+              "lotChange": 2,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 1,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 1305.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 3915000
+        },
+        {
           "stockCode": "2357",
           "stockName": "華碩",
           "totalLots": 5,
@@ -12626,44 +12881,6 @@
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
           "amountTwd": 3785000
-        },
-        {
-          "stockCode": "6531",
-          "stockName": "愛普科技",
-          "totalLots": 3,
-          "etfs": [
-            {
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lotChange": 3,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 908.0,
-          "priceDate": "2026-07-22",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 2724000
-        },
-        {
-          "stockCode": "8046",
-          "stockName": "南電",
-          "totalLots": 2,
-          "etfs": [
-            {
-              "code": "00400A",
-              "name": "主動國泰動能高息",
-              "lotChange": 2,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 1305.0,
-          "priceDate": "2026-07-22",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
-          "amountTwd": 2610000
         },
         {
           "stockCode": "3045",
@@ -13886,15 +14103,148 @@
           "market": null,
           "priceSourceUrl": null,
           "amountTwd": null
+        },
+        {
+          "stockCode": "BLSH US",
+          "stockName": "Bullish",
+          "totalLots": 6.819,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 6.819,
+              "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "BMNR US",
+          "stockName": "BitMine Immersion Technologi",
+          "totalLots": 10.23,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 10.23,
+              "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "CBRS US",
+          "stockName": "Cerebras Systems Inc",
+          "totalLots": 0.176,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 0.176,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "CRWV US",
+          "stockName": "CoreWeave Inc",
+          "totalLots": 2.077,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 2.077,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "LLOY LN",
+          "stockName": "勞埃德銀行集團",
+          "totalLots": 280,
+          "etfs": [
+            {
+              "code": "00998A",
+              "name": "主動復華金融股息",
+              "lotChange": 280,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "SNOW US",
+          "stockName": "Snowflake公司",
+          "totalLots": 0.148,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 0.148,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "XE US",
+          "stockName": "X-Energy Inc",
+          "totalLots": 2.406,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 2.406,
+              "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
         }
       ],
       "sellSummary": {
-        "sellingEtfCount": 10,
-        "stockCount": 41,
-        "totalLots": 8233.283,
-        "pricedStockCount": 40,
-        "unpricedStockCount": 1,
-        "totalAmountTwd": 5328872800
+        "sellingEtfCount": 12,
+        "stockCount": 43,
+        "totalLots": 8257.035,
+        "pricedStockCount": 41,
+        "unpricedStockCount": 2,
+        "totalAmountTwd": 5330933109
       },
       "sellStocks": [
         {
@@ -14675,6 +15025,25 @@
           "amountTwd": 6351800
         },
         {
+          "stockCode": "4904",
+          "stockName": "遠傳",
+          "totalLots": 20.003,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 20.003,
+              "action": "removed"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": 103.0,
+          "priceDate": "2026-07-22",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260722&type=ALLBUT0999&response=json",
+          "amountTwd": 2060309
+        },
+        {
           "stockCode": "1815",
           "stockName": "富喬",
           "totalLots": 1,
@@ -14711,6 +15080,889 @@
           "market": null,
           "priceSourceUrl": null,
           "amountTwd": null
+        },
+        {
+          "stockCode": "TEM US",
+          "stockName": "Tempus AI Inc",
+          "totalLots": 3.749,
+          "etfs": [
+            {
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 3.749,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        }
+      ]
+    },
+    "2026-07-23": {
+      "date": "2026-07-23",
+      "generatedAt": "2026-07-23T12:03:58+08:00",
+      "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
+      "coverage": {
+        "trackedEtfCount": 28,
+        "comparableEtfCount": 2,
+        "baselineEtfCount": 0,
+        "pendingEtfCount": 26,
+        "futureEtfCount": 0,
+        "comparableEtfs": [
+          "00401A",
+          "00989A"
+        ],
+        "baselineEtfs": [],
+        "pendingEtfs": [
+          "00981A",
+          "00403A",
+          "00991A",
+          "00988A",
+          "00982A",
+          "00990A",
+          "00992A",
+          "00407A",
+          "00405A",
+          "00400A",
+          "00980A",
+          "00997A",
+          "00999A",
+          "00993A",
+          "00985A",
+          "00984A",
+          "00406A",
+          "00402A",
+          "00995A",
+          "00994A",
+          "00996A",
+          "00998A",
+          "00404A",
+          "00987A",
+          "00408A",
+          "00983A"
+        ],
+        "futureEtfs": []
+      },
+      "summary": {
+        "buyingEtfCount": 2,
+        "stockCount": 3,
+        "totalLots": 12.633,
+        "pricedStockCount": 0,
+        "unpricedStockCount": 3,
+        "totalAmountTwd": 0
+      },
+      "stocks": [
+        {
+          "stockCode": "2890",
+          "stockName": "SINOPAC HOLDINGS COMPANY",
+          "totalLots": 4.92,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 4.92,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6944",
+          "stockName": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000",
+          "totalLots": 3.8,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3.8,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "U",
+          "stockName": "UNITY SOFTWARE INC COM NPV",
+          "totalLots": 3.913,
+          "etfs": [
+            {
+              "code": "00989A",
+              "name": "主動摩根美國科技",
+              "lotChange": 3.913,
+              "action": "added"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        }
+      ],
+      "sellSummary": {
+        "sellingEtfCount": 1,
+        "stockCount": 39,
+        "totalLots": 649,
+        "pricedStockCount": 0,
+        "unpricedStockCount": 39,
+        "totalAmountTwd": 0
+      },
+      "sellStocks": [
+        {
+          "stockCode": "2303",
+          "stockName": "UNITED MICROELECTRONICS CORP ORD TWD10",
+          "totalLots": 15,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 15,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2308",
+          "stockName": "DELTA ELECTRONICS INC TWD10",
+          "totalLots": 4,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 4,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2313",
+          "stockName": "COMPEQ MANUFACTURING CO LTD ORD TWD10",
+          "totalLots": 10,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 10,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2317",
+          "stockName": "HON HAI PRECISION IND CO LTD ORD TWD10",
+          "totalLots": 5,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 5,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2330",
+          "stockName": "TAIWAN SEMICONDUCTOR MFG CO. LTD",
+          "totalLots": 7,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2344",
+          "stockName": "WINBOND ELECTRONICS CORP ORD TWD10",
+          "totalLots": 14,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 14,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2345",
+          "stockName": "ACCTON TECHNOLOGY CORP ORD TWD 10",
+          "totalLots": 2,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2357",
+          "stockName": "ASUSTEK COMPUTER INC",
+          "totalLots": 3,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2360",
+          "stockName": "CHROMA ATE INC ORD TWD10",
+          "totalLots": 2,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2368",
+          "stockName": "GOLD CIRCUIT ELECTRONICS LTD ORD TWD 10",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2379",
+          "stockName": "REALTEK SEMICONDUCTOR CORP",
+          "totalLots": 5,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 5,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2382",
+          "stockName": "QUANTA COMPUTER INC",
+          "totalLots": 11,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 11,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2383",
+          "stockName": "ELITE MATERIAL CO LTD ORD TWD 10",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2412",
+          "stockName": "CHUNGHWA TELECOM CO LTD ORD TWD10",
+          "totalLots": 13,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 13,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2449",
+          "stockName": "KING YUAN ELECTRONICS CO LTD ORD TWD10",
+          "totalLots": 7,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2603",
+          "stockName": "EVERGREEN MARINE CORPORATION",
+          "totalLots": 10,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 10,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2881",
+          "stockName": "FUBON FINANCIAL HOLDING COMPANY LIMITED",
+          "totalLots": 26,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 26,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2882",
+          "stockName": "CATHAY FINANCIAL HOLDING CO. LTD.",
+          "totalLots": 21,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 21,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2883",
+          "stockName": "KGI FINANCIAL HOLDING CO LTD",
+          "totalLots": 123,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 123,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2884",
+          "stockName": "E. SUN FINANCIAL HOLDING COMPANY LIMITED",
+          "totalLots": 95,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 95,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2885",
+          "stockName": "YUANTA FINANCIAL HOLDING CO LTD ORD TWD10",
+          "totalLots": 32,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 32,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2886",
+          "stockName": "MEGA FINANCIAL HLDGS CO LTD",
+          "totalLots": 60,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 60,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2887",
+          "stockName": "TS FINANCIAL HOLDING CO LTD ORD TWD10",
+          "totalLots": 57,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 57,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "2891",
+          "stockName": "CTBC FINANCIAL HOLDING CO. LTD.",
+          "totalLots": 55,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 55,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "3034",
+          "stockName": "NOVATEK MICROELECTRONICS CORP LTD",
+          "totalLots": 3,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "3491",
+          "stockName": "UNIVERSAL MICROWAVE TECHNOLOGY ORD TWD10",
+          "totalLots": 2,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "3653",
+          "stockName": "JENTECH PRECISION INDUSTRIAL",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "3711",
+          "stockName": "ASE TECHNOLOGY HOLDING CO LTD ORD TWD10",
+          "totalLots": 7,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "4904",
+          "stockName": "FAR EASTONE TELECOMMUNICATIONS COMPANY LIMITED TWD10",
+          "totalLots": 16,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 16,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "4958",
+          "stockName": "ZHEN DING TECHNOLOGY HOLDING ORD TWD10",
+          "totalLots": 8,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 8,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "5904",
+          "stockName": "POYA CO LTD ORD TWD10",
+          "totalLots": 2,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6187",
+          "stockName": "ALL RING TECH CO LTD ORD TWD10",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6223",
+          "stockName": "MPI CORP ORD TWD10",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6285",
+          "stockName": "WNC CORP /TAIWAN",
+          "totalLots": 15,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 15,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6415",
+          "stockName": "SILERGY CORP ORD NPV",
+          "totalLots": 3,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6531",
+          "stockName": "AP MEMORY TECHNOLOGY CORP ORD TWD5.000000000",
+          "totalLots": 3,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "6669",
+          "stockName": "WIWYNN CORP ORD TWD 10",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "7769",
+          "stockName": "Hon.Precision  Inc.",
+          "totalLots": 1,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
+        },
+        {
+          "stockCode": "8464",
+          "stockName": "NIEN MADE ENTERPRISE CO LTD ORD TWD10",
+          "totalLots": 6,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 6,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 1,
+          "closePrice": null,
+          "priceDate": null,
+          "market": null,
+          "priceSourceUrl": null,
+          "amountTwd": null
         }
       ]
     }
@@ -14720,31 +15972,32 @@
       "weekStart": "2026-07-20",
       "weekEnd": "2026-07-24",
       "dataStart": "2026-07-20",
-      "dataEnd": "2026-07-22",
+      "dataEnd": "2026-07-23",
       "dates": [
         "2026-07-20",
         "2026-07-21",
-        "2026-07-22"
+        "2026-07-22",
+        "2026-07-23"
       ],
       "summary": {
-        "tradingDayCount": 3,
+        "tradingDayCount": 4,
         "comparableEtfCount": 28,
-        "participatingEtfCount": 26,
-        "stockCount": 220,
-        "buyLots": 60520.925,
-        "sellLots": 44371.613,
-        "netLots": 16149.312,
-        "buyAmountTwd": 26016937786,
-        "sellAmountTwd": 14354926650,
-        "netAmountTwd": 11662011136
+        "participatingEtfCount": 27,
+        "stockCount": 240,
+        "buyLots": 61376.044,
+        "sellLots": 45296.365,
+        "netLots": 16079.679,
+        "buyAmountTwd": 26624817786,
+        "sellAmountTwd": 14525826959,
+        "netAmountTwd": 12098990827
       },
       "stocks": [
         {
           "stockCode": "2308",
           "stockName": "台達電",
-          "buyLots": 1215,
-          "sellLots": 93,
-          "buyAmountTwd": 2228905000,
+          "buyLots": 1230,
+          "sellLots": 97,
+          "buyAmountTwd": 2257105000,
           "sellAmountTwd": 170805000,
           "activities": [
             {
@@ -14823,12 +16076,26 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 3
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 15
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 4
             }
           ],
-          "netLots": 1122,
-          "netAmountTwd": 2058100000,
-          "buyEtfCount": 4,
-          "sellEtfCount": 3
+          "netLots": 1133,
+          "netAmountTwd": 2086300000,
+          "buyEtfCount": 5,
+          "sellEtfCount": 4
         },
         {
           "stockCode": "2408",
@@ -14890,7 +16157,7 @@
           "stockCode": "2330",
           "stockName": "台灣積體電路製造",
           "buyLots": 295,
-          "sellLots": 884,
+          "sellLots": 891,
           "buyAmountTwd": 707940000,
           "sellAmountTwd": 2116480000,
           "activities": [
@@ -14970,19 +16237,26 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 54
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7
             }
           ],
-          "netLots": -589,
+          "netLots": -596,
           "netAmountTwd": -1408540000,
           "buyEtfCount": 4,
-          "sellEtfCount": 4
+          "sellEtfCount": 5
         },
         {
           "stockCode": "2383",
           "stockName": "台光電",
-          "buyLots": 308,
-          "sellLots": 34,
-          "buyAmountTwd": 1500460000,
+          "buyLots": 313,
+          "sellLots": 35,
+          "buyAmountTwd": 1526085000,
           "sellAmountTwd": 168350000,
           "activities": [
             {
@@ -15047,19 +16321,33 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 14
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 5
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": 274,
-          "netAmountTwd": 1332110000,
-          "buyEtfCount": 6,
-          "sellEtfCount": 1
+          "netLots": 278,
+          "netAmountTwd": 1357735000,
+          "buyEtfCount": 7,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "1303",
           "stockName": "南亞塑膠",
-          "buyLots": 6656,
+          "buyLots": 6736,
           "sellLots": 0,
-          "buyAmountTwd": 1322373000,
+          "buyAmountTwd": 1339013000,
           "sellAmountTwd": 0,
           "activities": [
             {
@@ -15103,18 +16391,25 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 134
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 80
             }
           ],
-          "netLots": 6656,
-          "netAmountTwd": 1322373000,
-          "buyEtfCount": 5,
+          "netLots": 6736,
+          "netAmountTwd": 1339013000,
+          "buyEtfCount": 6,
           "sellEtfCount": 0
         },
         {
           "stockCode": "2368",
           "stockName": "金像電",
           "buyLots": 8,
-          "sellLots": 1397,
+          "sellLots": 1398,
           "buyAmountTwd": 7416000,
           "sellAmountTwd": 1321330000,
           "activities": [
@@ -15159,12 +16454,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 19
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": -1389,
+          "netLots": -1390,
           "netAmountTwd": -1313914000,
           "buyEtfCount": 1,
-          "sellEtfCount": 4
+          "sellEtfCount": 5
         },
         {
           "stockCode": "2492",
@@ -15373,7 +16675,7 @@
           "stockCode": "3711",
           "stockName": "日月光投",
           "buyLots": 1545,
-          "sellLots": 102,
+          "sellLots": 109,
           "buyAmountTwd": 959471000,
           "sellAmountTwd": 65601000,
           "activities": [
@@ -15453,12 +16755,110 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 45
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7
             }
           ],
-          "netLots": 1443,
+          "netLots": 1436,
           "netAmountTwd": 893870000,
           "buyEtfCount": 7,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
+        },
+        {
+          "stockCode": "2327",
+          "stockName": "國巨*",
+          "buyLots": 842,
+          "sellLots": 2185,
+          "buyAmountTwd": 576581000,
+          "sellAmountTwd": 1427316000,
+          "activities": [
+            {
+              "date": "2026-07-20",
+              "direction": "sell",
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lotChange": 1000
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00985A",
+              "name": "主動野村台灣50",
+              "lotChange": 435
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "sell",
+              "code": "00987A",
+              "name": "主動台新優勢成長",
+              "lotChange": 111
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "sell",
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lotChange": 600
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "sell",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 120
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lotChange": 30
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "sell",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 252
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lotChange": 2
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00985A",
+              "name": "主動野村台灣50",
+              "lotChange": 75
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lotChange": 300
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "sell",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 102
+            }
+          ],
+          "netLots": -1343,
+          "netAmountTwd": -850735000,
+          "buyEtfCount": 4,
+          "sellEtfCount": 5
         },
         {
           "stockCode": "6515",
@@ -15527,7 +16927,7 @@
           "stockCode": "2345",
           "stockName": "智邦科技",
           "buyLots": 455,
-          "sellLots": 85,
+          "sellLots": 87,
           "buyAmountTwd": 972530000,
           "sellAmountTwd": 191105000,
           "activities": [
@@ -15614,12 +17014,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 37
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2
             }
           ],
-          "netLots": 370,
+          "netLots": 368,
           "netAmountTwd": 781425000,
           "buyEtfCount": 8,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3037",
@@ -15695,7 +17102,7 @@
           "stockCode": "2344",
           "stockName": "華邦電子",
           "buyLots": 110,
-          "sellLots": 4800,
+          "sellLots": 4814,
           "buyAmountTwd": 17105000,
           "sellAmountTwd": 746400000,
           "activities": [
@@ -15712,12 +17119,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 110
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 14
             }
           ],
-          "netLots": -4690,
+          "netLots": -4704,
           "netAmountTwd": -729295000,
           "buyEtfCount": 1,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3017",
@@ -15804,88 +17218,81 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "2327",
-          "stockName": "國巨*",
-          "buyLots": 842,
-          "sellLots": 1933,
-          "buyAmountTwd": 576581000,
-          "sellAmountTwd": 1258476000,
+          "stockCode": "2360",
+          "stockName": "致茂",
+          "buyLots": 340,
+          "sellLots": 2,
+          "buyAmountTwd": 697760000,
+          "sellAmountTwd": 0,
           "activities": [
             {
               "date": "2026-07-20",
-              "direction": "sell",
+              "direction": "buy",
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 14
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00400A",
+              "name": "主動國泰動能高息",
+              "lotChange": 121
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 10
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 42
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 15
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
               "code": "00403A",
               "name": "主動統一升級50",
-              "lotChange": 1000
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00985A",
-              "name": "主動野村台灣50",
-              "lotChange": 435
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "sell",
-              "code": "00987A",
-              "name": "主動台新優勢成長",
-              "lotChange": 111
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "sell",
-              "code": "00988A",
-              "name": "主動統一全球創新",
-              "lotChange": 600
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "sell",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 120
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00996A",
-              "name": "主動兆豐台灣豐收",
-              "lotChange": 30
+              "lotChange": 80
             },
             {
               "date": "2026-07-22",
               "direction": "buy",
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 38
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 20
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
               "lotChange": 2
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00985A",
-              "name": "主動野村台灣50",
-              "lotChange": 75
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00991A",
-              "name": "主動復華未來50",
-              "lotChange": 300
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "sell",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 102
             }
           ],
-          "netLots": -1091,
-          "netAmountTwd": -681895000,
-          "buyEtfCount": 4,
-          "sellEtfCount": 4
+          "netLots": 338,
+          "netAmountTwd": 697760000,
+          "buyEtfCount": 6,
+          "sellEtfCount": 1
         },
         {
           "stockCode": "6488",
@@ -15958,73 +17365,10 @@
           "sellEtfCount": 0
         },
         {
-          "stockCode": "2360",
-          "stockName": "致茂",
-          "buyLots": 320,
-          "sellLots": 0,
-          "buyAmountTwd": 655260000,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-20",
-              "direction": "buy",
-              "code": "00982A",
-              "name": "主動群益台灣強棒",
-              "lotChange": 14
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00400A",
-              "name": "主動國泰動能高息",
-              "lotChange": 121
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00408A",
-              "name": "主動第一金優股息",
-              "lotChange": 10
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 42
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 15
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00403A",
-              "name": "主動統一升級50",
-              "lotChange": 80
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 38
-            }
-          ],
-          "netLots": 320,
-          "netAmountTwd": 655260000,
-          "buyEtfCount": 6,
-          "sellEtfCount": 0
-        },
-        {
           "stockCode": "4958",
           "stockName": "臻鼎-KY",
           "buyLots": 2044,
-          "sellLots": 978,
+          "sellLots": 986,
           "buyAmountTwd": 1122280500,
           "sellAmountTwd": 498608500,
           "activities": [
@@ -16090,12 +17434,19 @@
               "code": "00981A",
               "name": "主動統一台股增長",
               "lotChange": 1681
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 8
             }
           ],
-          "netLots": 1066,
+          "netLots": 1058,
           "netAmountTwd": 623672000,
           "buyEtfCount": 5,
-          "sellEtfCount": 4
+          "sellEtfCount": 5
         },
         {
           "stockCode": "6182",
@@ -16129,7 +17480,7 @@
           "stockCode": "2449",
           "stockName": "京元電子",
           "buyLots": 1896,
-          "sellLots": 0,
+          "sellLots": 7,
           "buyAmountTwd": 534722000,
           "sellAmountTwd": 0,
           "activities": [
@@ -16146,18 +17497,25 @@
               "code": "00981A",
               "name": "主動統一台股增長",
               "lotChange": 892
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 7
             }
           ],
-          "netLots": 1896,
+          "netLots": 1889,
           "netAmountTwd": 534722000,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "6669",
           "stockName": "緯穎科技",
           "buyLots": 138,
-          "sellLots": 29,
+          "sellLots": 30,
           "buyAmountTwd": 664725000,
           "sellAmountTwd": 151500000,
           "activities": [
@@ -16230,18 +17588,25 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 13
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": 109,
+          "netLots": 108,
           "netAmountTwd": 513225000,
           "buyEtfCount": 6,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "7769",
           "stockName": "鴻勁精密",
           "buyLots": 92,
-          "sellLots": 13,
+          "sellLots": 14,
           "buyAmountTwd": 580450000,
           "sellAmountTwd": 83265000,
           "activities": [
@@ -16321,12 +17686,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 13
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": 79,
+          "netLots": 78,
           "netAmountTwd": 497185000,
           "buyEtfCount": 8,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3443",
@@ -16395,7 +17767,7 @@
           "stockCode": "6187",
           "stockName": "萬  潤",
           "buyLots": 322,
-          "sellLots": 0,
+          "sellLots": 1,
           "buyAmountTwd": 339710000,
           "sellAmountTwd": 0,
           "activities": [
@@ -16412,12 +17784,19 @@
               "code": "00985A",
               "name": "主動野村台灣50",
               "lotChange": 75
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": 322,
+          "netLots": 321,
           "netAmountTwd": 339710000,
           "buyEtfCount": 2,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "6274",
@@ -16457,9 +17836,9 @@
         {
           "stockCode": "2303",
           "stockName": "聯電",
-          "buyLots": 3085,
-          "sellLots": 5279,
-          "buyAmountTwd": 420377500,
+          "buyLots": 3125,
+          "sellLots": 5294,
+          "buyAmountTwd": 425937500,
           "sellAmountTwd": 710912000,
           "activities": [
             {
@@ -16538,12 +17917,26 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 197
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 40
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 15
             }
           ],
-          "netLots": -2194,
-          "netAmountTwd": -290534500,
-          "buyEtfCount": 5,
-          "sellEtfCount": 3
+          "netLots": -2169,
+          "netAmountTwd": -284974500,
+          "buyEtfCount": 6,
+          "sellEtfCount": 4
         },
         {
           "stockCode": "6239",
@@ -16577,7 +17970,7 @@
           "stockCode": "3653",
           "stockName": "健策",
           "buyLots": 133,
-          "sellLots": 51,
+          "sellLots": 52,
           "buyAmountTwd": 461360000,
           "sellAmountTwd": 178500000,
           "activities": [
@@ -16615,12 +18008,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 20
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
             }
           ],
-          "netLots": 82,
+          "netLots": 81,
           "netAmountTwd": 282860000,
           "buyEtfCount": 2,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3008",
@@ -16658,60 +18058,11 @@
           "sellEtfCount": 0
         },
         {
-          "stockCode": "6223",
-          "stockName": "旺矽科技",
-          "buyLots": 44,
-          "sellLots": 0,
-          "buyAmountTwd": 256140000,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-20",
-              "direction": "buy",
-              "code": "00406A",
-              "name": "主動中信台灣收益",
-              "lotChange": 8
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00991A",
-              "name": "主動復華未來50",
-              "lotChange": 20
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 8
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lotChange": 1
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 7
-            }
-          ],
-          "netLots": 44,
-          "netAmountTwd": 256140000,
-          "buyEtfCount": 4,
-          "sellEtfCount": 0
-        },
-        {
           "stockCode": "2454",
           "stockName": "聯發科",
-          "buyLots": 129,
+          "buyLots": 134,
           "sellLots": 62,
-          "buyAmountTwd": 473400000,
+          "buyAmountTwd": 492650000,
           "sellAmountTwd": 227540000,
           "activities": [
             {
@@ -16797,12 +18148,75 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 22
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 5
             }
           ],
-          "netLots": 67,
-          "netAmountTwd": 245860000,
+          "netLots": 72,
+          "netAmountTwd": 265110000,
           "buyEtfCount": 7,
           "sellEtfCount": 2
+        },
+        {
+          "stockCode": "6223",
+          "stockName": "旺矽科技",
+          "buyLots": 44,
+          "sellLots": 1,
+          "buyAmountTwd": 256140000,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-20",
+              "direction": "buy",
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lotChange": 8
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lotChange": 20
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 8
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lotChange": 1
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 7
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 1
+            }
+          ],
+          "netLots": 43,
+          "netAmountTwd": 256140000,
+          "buyEtfCount": 4,
+          "sellEtfCount": 1
         },
         {
           "stockCode": "8210",
@@ -16852,6 +18266,69 @@
           "netAmountTwd": -243530000,
           "buyEtfCount": 2,
           "sellEtfCount": 3
+        },
+        {
+          "stockCode": "3529",
+          "stockName": "力旺",
+          "buyLots": 93,
+          "sellLots": 0,
+          "buyAmountTwd": 241800000,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 93
+            }
+          ],
+          "netLots": 93,
+          "netAmountTwd": 241800000,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "6531",
+          "stockName": "愛普*",
+          "buyLots": 259,
+          "sellLots": 3,
+          "buyAmountTwd": 234404000,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-20",
+              "direction": "buy",
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 6
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 250
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lotChange": 3
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3
+            }
+          ],
+          "netLots": 256,
+          "netAmountTwd": 234404000,
+          "buyEtfCount": 2,
+          "sellEtfCount": 1
         },
         {
           "stockCode": "5536",
@@ -16926,9 +18403,9 @@
         {
           "stockCode": "8046",
           "stockName": "南亞電路",
-          "buyLots": 202,
+          "buyLots": 203,
           "sellLots": 9,
-          "buyAmountTwd": 232110000,
+          "buyAmountTwd": 233415000,
           "sellAmountTwd": 10710000,
           "activities": [
             {
@@ -16958,18 +18435,25 @@
               "code": "00400A",
               "name": "主動國泰動能高息",
               "lotChange": 2
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 1
             }
           ],
-          "netLots": 193,
-          "netAmountTwd": 221400000,
-          "buyEtfCount": 2,
+          "netLots": 194,
+          "netAmountTwd": 222705000,
+          "buyEtfCount": 3,
           "sellEtfCount": 1
         },
         {
           "stockCode": "2317",
           "stockName": "鴻海精密工業",
           "buyLots": 1121,
-          "sellLots": 261,
+          "sellLots": 266,
           "buyAmountTwd": 276651500,
           "sellAmountTwd": 62699500,
           "activities": [
@@ -17000,12 +18484,19 @@
               "code": "00980A",
               "name": "主動野村臺灣優選",
               "lotChange": 161
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 5
             }
           ],
-          "netLots": 860,
+          "netLots": 855,
           "netAmountTwd": 213952000,
           "buyEtfCount": 2,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "2027",
@@ -17339,7 +18830,7 @@
         {
           "stockCode": "2890",
           "stockName": "永豐金融控股",
-          "buyLots": 3326,
+          "buyLots": 3330.92,
           "sellLots": 0,
           "buyAmountTwd": 133047100,
           "sellAmountTwd": 0,
@@ -17364,18 +18855,25 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 802
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "buy",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 4.92
             }
           ],
-          "netLots": 3326,
+          "netLots": 3330.92,
           "netAmountTwd": 133047100,
-          "buyEtfCount": 2,
+          "buyEtfCount": 3,
           "sellEtfCount": 0
         },
         {
           "stockCode": "2887",
           "stockName": "台新新光金融控股",
           "buyLots": 3570.67,
-          "sellLots": 0,
+          "sellLots": 57,
           "buyAmountTwd": 125478216,
           "sellAmountTwd": 0,
           "activities": [
@@ -17406,18 +18904,25 @@
               "code": "00999A",
               "name": "主動野村臺灣高息",
               "lotChange": 58.36
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 57
             }
           ],
-          "netLots": 3570.67,
+          "netLots": 3513.67,
           "netAmountTwd": 125478216,
           "buyEtfCount": 3,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "2883",
           "stockName": "凱基金控",
           "buyLots": 3570,
-          "sellLots": 0,
+          "sellLots": 123,
           "buyAmountTwd": 107223750,
           "sellAmountTwd": 0,
           "activities": [
@@ -17434,12 +18939,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 1593
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 123
             }
           ],
-          "netLots": 3570,
+          "netLots": 3447,
           "netAmountTwd": 107223750,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "2618",
@@ -18061,7 +19573,7 @@
           "stockCode": "6285",
           "stockName": "啟碁",
           "buyLots": 252,
-          "sellLots": 0,
+          "sellLots": 15,
           "buyAmountTwd": 62956000,
           "sellAmountTwd": 0,
           "activities": [
@@ -18085,18 +19597,25 @@
               "code": "00984A",
               "name": "主動安聯台灣高息",
               "lotChange": 2
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 15
             }
           ],
-          "netLots": 252,
+          "netLots": 237,
           "netAmountTwd": 62956000,
           "buyEtfCount": 2,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "5904",
           "stockName": "寶雅",
           "buyLots": 2,
-          "sellLots": 98,
+          "sellLots": 100,
           "buyAmountTwd": 1262000,
           "sellAmountTwd": 61946000,
           "activities": [
@@ -18120,12 +19639,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 44
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2
             }
           ],
-          "netLots": -96,
+          "netLots": -98,
           "netAmountTwd": -60684000,
           "buyEtfCount": 1,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3045",
@@ -18194,7 +19720,7 @@
           "stockCode": "2412",
           "stockName": "中華電",
           "buyLots": 384,
-          "sellLots": 0,
+          "sellLots": 13,
           "buyAmountTwd": 53279000,
           "sellAmountTwd": 0,
           "activities": [
@@ -18218,18 +19744,25 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 170
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 13
             }
           ],
-          "netLots": 384,
+          "netLots": 371,
           "netAmountTwd": 53279000,
           "buyEtfCount": 2,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "2882",
           "stockName": "國泰金",
           "buyLots": 543,
-          "sellLots": 0,
+          "sellLots": 21,
           "buyAmountTwd": 52277400,
           "sellAmountTwd": 0,
           "activities": [
@@ -18253,12 +19786,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 255
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 21
             }
           ],
-          "netLots": 543,
+          "netLots": 522,
           "netAmountTwd": 52277400,
           "buyEtfCount": 2,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "9907",
@@ -18341,7 +19881,7 @@
           "stockCode": "2881",
           "stockName": "富邦金控",
           "buyLots": 526,
-          "sellLots": 148,
+          "sellLots": 174,
           "buyAmountTwd": 65839500,
           "sellAmountTwd": 18278000,
           "activities": [
@@ -18372,12 +19912,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 225
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 26
             }
           ],
-          "netLots": 378,
+          "netLots": 352,
           "netAmountTwd": 47561500,
           "buyEtfCount": 2,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3293",
@@ -18411,7 +19958,7 @@
           "stockCode": "2382",
           "stockName": "廣達",
           "buyLots": 154,
-          "sellLots": 16,
+          "sellLots": 27,
           "buyAmountTwd": 50666000,
           "sellAmountTwd": 5056000,
           "activities": [
@@ -18435,18 +19982,25 @@
               "code": "00984A",
               "name": "主動安聯台灣高息",
               "lotChange": 37
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 11
             }
           ],
-          "netLots": 138,
+          "netLots": 127,
           "netAmountTwd": 45610000,
           "buyEtfCount": 2,
-          "sellEtfCount": 1
+          "sellEtfCount": 2
         },
         {
           "stockCode": "2891",
           "stockName": "中信金",
           "buyLots": 710,
-          "sellLots": 0,
+          "sellLots": 55,
           "buyAmountTwd": 45273600,
           "sellAmountTwd": 0,
           "activities": [
@@ -18477,12 +20031,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 120
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 55
             }
           ],
-          "netLots": 710,
+          "netLots": 655,
           "netAmountTwd": 45273600,
           "buyEtfCount": 3,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "4551",
@@ -18915,7 +20476,7 @@
           "stockCode": "2886",
           "stockName": "兆豐金融",
           "buyLots": 557,
-          "sellLots": 0,
+          "sellLots": 60,
           "buyAmountTwd": 27070200,
           "sellAmountTwd": 0,
           "activities": [
@@ -18939,12 +20500,19 @@
               "code": "00999A",
               "name": "主動野村臺灣高息",
               "lotChange": 264
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 60
             }
           ],
-          "netLots": 557,
+          "netLots": 497,
           "netAmountTwd": 27070200,
           "buyEtfCount": 3,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "6138",
@@ -18999,7 +20567,7 @@
           "stockCode": "3491",
           "stockName": "昇達科",
           "buyLots": 21,
-          "sellLots": 0,
+          "sellLots": 2,
           "buyAmountTwd": 25620000,
           "sellAmountTwd": 0,
           "activities": [
@@ -19009,12 +20577,19 @@
               "code": "00982A",
               "name": "主動群益台灣強棒",
               "lotChange": 21
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 2
             }
           ],
-          "netLots": 21,
+          "netLots": 19,
           "netAmountTwd": 25620000,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "3357",
@@ -19132,7 +20707,7 @@
           "stockCode": "2885",
           "stockName": "元大金",
           "buyLots": 321,
-          "sellLots": 0,
+          "sellLots": 32,
           "buyAmountTwd": 19901300,
           "sellAmountTwd": 0,
           "activities": [
@@ -19163,12 +20738,19 @@
               "code": "00993A",
               "name": "主動安聯台灣",
               "lotChange": 87
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 32
             }
           ],
-          "netLots": 321,
+          "netLots": 289,
           "netAmountTwd": 19901300,
           "buyEtfCount": 3,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "2472",
@@ -19213,45 +20795,10 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "4904",
-          "stockName": "遠傳",
-          "buyLots": 187,
-          "sellLots": 0,
-          "buyAmountTwd": 19166000,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 95
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lotChange": 22
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 70
-            }
-          ],
-          "netLots": 187,
-          "netAmountTwd": 19166000,
-          "buyEtfCount": 2,
-          "sellEtfCount": 0
-        },
-        {
           "stockCode": "6415",
           "stockName": "矽力-KY",
           "buyLots": 44,
-          "sellLots": 0,
+          "sellLots": 3,
           "buyAmountTwd": 18810000,
           "sellAmountTwd": 0,
           "activities": [
@@ -19261,12 +20808,19 @@
               "code": "00996A",
               "name": "主動兆豐台灣豐收",
               "lotChange": 44
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3
             }
           ],
-          "netLots": 44,
+          "netLots": 41,
           "netAmountTwd": 18810000,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "7828",
@@ -19372,6 +20926,55 @@
           "netAmountTwd": 17416000,
           "buyEtfCount": 1,
           "sellEtfCount": 0
+        },
+        {
+          "stockCode": "4904",
+          "stockName": "遠傳",
+          "buyLots": 187,
+          "sellLots": 36.003,
+          "buyAmountTwd": 19166000,
+          "sellAmountTwd": 2060309,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 95
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lotChange": 22
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 70
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "sell",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 20.003
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 16
+            }
+          ],
+          "netLots": 150.997,
+          "netAmountTwd": 17105691,
+          "buyEtfCount": 2,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "6257",
@@ -19836,34 +21439,6 @@
           "sellEtfCount": 0
         },
         {
-          "stockCode": "6531",
-          "stockName": "愛普*",
-          "buyLots": 9,
-          "sellLots": 0,
-          "buyAmountTwd": 7404000,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-20",
-              "direction": "buy",
-              "code": "00982A",
-              "name": "主動群益台灣強棒",
-              "lotChange": 6
-            },
-            {
-              "date": "2026-07-22",
-              "direction": "buy",
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lotChange": 3
-            }
-          ],
-          "netLots": 9,
-          "netAmountTwd": 7404000,
-          "buyEtfCount": 2,
-          "sellEtfCount": 0
-        },
-        {
           "stockCode": "8299",
           "stockName": "群聯電子",
           "buyLots": 41,
@@ -19895,7 +21470,7 @@
           "stockCode": "2357",
           "stockName": "華碩",
           "buyLots": 5,
-          "sellLots": 0,
+          "sellLots": 3,
           "buyAmountTwd": 3785000,
           "sellAmountTwd": 0,
           "activities": [
@@ -19905,12 +21480,19 @@
               "code": "00984A",
               "name": "主動安聯台灣高息",
               "lotChange": 5
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3
             }
           ],
-          "netLots": 5,
+          "netLots": 2,
           "netAmountTwd": 3785000,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "2351",
@@ -20049,7 +21631,7 @@
           "stockCode": "3034",
           "stockName": "聯詠",
           "buyLots": 4,
-          "sellLots": 0,
+          "sellLots": 3,
           "buyAmountTwd": 2004000,
           "sellAmountTwd": 0,
           "activities": [
@@ -20059,12 +21641,19 @@
               "code": "00984A",
               "name": "主動安聯台灣高息",
               "lotChange": 4
+            },
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3
             }
           ],
-          "netLots": 4,
+          "netLots": 1,
           "netAmountTwd": 2004000,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "sellEtfCount": 1
         },
         {
           "stockCode": "1402",
@@ -21012,6 +22601,27 @@
           "sellEtfCount": 0
         },
         {
+          "stockCode": "LLOY LN",
+          "stockName": "勞埃德銀行集團",
+          "buyLots": 280,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00998A",
+              "name": "主動復華金融股息",
+              "lotChange": 280
+            }
+          ],
+          "netLots": 280,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "3436 JP",
           "stockName": "SUMCO CORP",
           "buyLots": 0,
@@ -21035,7 +22645,7 @@
         {
           "stockCode": "CRDO US",
           "stockName": "CREDO TECHNOLOGY GROUP HOLDI",
-          "buyLots": 124.3,
+          "buyLots": 126.723,
           "sellLots": 0,
           "buyAmountTwd": 0,
           "sellAmountTwd": 0,
@@ -21053,11 +22663,18 @@
               "code": "00990A",
               "name": "主動元大AI新經濟",
               "lotChange": 84.3
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 2.423
             }
           ],
-          "netLots": 124.3,
+          "netLots": 126.723,
           "netAmountTwd": 0,
-          "buyEtfCount": 2,
+          "buyEtfCount": 3,
           "sellEtfCount": 0
         },
         {
@@ -21098,6 +22715,27 @@
             }
           ],
           "netLots": -110,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
+        },
+        {
+          "stockCode": "2884",
+          "stockName": "E. SUN FINANCIAL HOLDING COMPANY LIMITED",
+          "buyLots": 0,
+          "sellLots": 95,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 95
+            }
+          ],
+          "netLots": -95,
           "netAmountTwd": 0,
           "buyEtfCount": 0,
           "sellEtfCount": 1
@@ -21159,9 +22797,37 @@
           "sellEtfCount": 0
         },
         {
+          "stockCode": "MRVL US",
+          "stockName": "MARVELL TECHNOLOGY INC",
+          "buyLots": 39.709,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00990A",
+              "name": "主動元大AI新經濟",
+              "lotChange": 30.5
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 9.209
+            }
+          ],
+          "netLots": 39.709,
+          "netAmountTwd": 0,
+          "buyEtfCount": 2,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "LITE US",
           "stockName": "LUMENTUM HOLDINGS INC",
-          "buyLots": 35.56,
+          "buyLots": 38.007,
           "sellLots": 0,
           "buyAmountTwd": 0,
           "sellAmountTwd": 0,
@@ -21179,11 +22845,18 @@
               "code": "00990A",
               "name": "主動元大AI新經濟",
               "lotChange": 15.56
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 2.447
             }
           ],
-          "netLots": 35.56,
+          "netLots": 38.007,
           "netAmountTwd": 0,
-          "buyEtfCount": 2,
+          "buyEtfCount": 3,
           "sellEtfCount": 0
         },
         {
@@ -21224,27 +22897,6 @@
             }
           ],
           "netLots": 31.701,
-          "netAmountTwd": 0,
-          "buyEtfCount": 1,
-          "sellEtfCount": 0
-        },
-        {
-          "stockCode": "MRVL US",
-          "stockName": "MARVELL TECHNOLOGY INC",
-          "buyLots": 30.5,
-          "sellLots": 0,
-          "buyAmountTwd": 0,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00990A",
-              "name": "主動元大AI新經濟",
-              "lotChange": 30.5
-            }
-          ],
-          "netLots": 30.5,
           "netAmountTwd": 0,
           "buyEtfCount": 1,
           "sellEtfCount": 0
@@ -21334,6 +22986,41 @@
           "sellEtfCount": 0
         },
         {
+          "stockCode": "MU US",
+          "stockName": "MICRON TECHNOLOGY INC",
+          "buyLots": 16.37,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lotChange": 12.569
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00990A",
+              "name": "主動元大AI新經濟",
+              "lotChange": 2.254
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.547
+            }
+          ],
+          "netLots": 16.37,
+          "netAmountTwd": 0,
+          "buyEtfCount": 3,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "UBS US",
           "stockName": "瑞銀集團公司",
           "buyLots": 15,
@@ -21352,34 +23039,6 @@
           "netLots": 15,
           "netAmountTwd": 0,
           "buyEtfCount": 1,
-          "sellEtfCount": 0
-        },
-        {
-          "stockCode": "MU US",
-          "stockName": "MICRON TECHNOLOGY INC",
-          "buyLots": 14.823,
-          "sellLots": 0,
-          "buyAmountTwd": 0,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00988A",
-              "name": "主動統一全球創新",
-              "lotChange": 12.569
-            },
-            {
-              "date": "2026-07-21",
-              "direction": "buy",
-              "code": "00990A",
-              "name": "主動元大AI新經濟",
-              "lotChange": 2.254
-            }
-          ],
-          "netLots": 14.823,
-          "netAmountTwd": 0,
-          "buyEtfCount": 2,
           "sellEtfCount": 0
         },
         {
@@ -21418,6 +23077,27 @@
           "sellEtfCount": 2
         },
         {
+          "stockCode": "INTC US",
+          "stockName": "英特爾",
+          "buyLots": 10.658,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 10.658
+            }
+          ],
+          "netLots": 10.658,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "AEHR US",
           "stockName": "AEHR TEST SYSTEMS",
           "buyLots": 10.459,
@@ -21439,6 +23119,27 @@
           "sellEtfCount": 0
         },
         {
+          "stockCode": "BMNR US",
+          "stockName": "BitMine Immersion Technologi",
+          "buyLots": 10.23,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 10.23
+            }
+          ],
+          "netLots": 10.23,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "000660 KS",
           "stockName": "SK HYNIX INC",
           "buyLots": 0,
@@ -21451,6 +23152,48 @@
               "direction": "sell",
               "code": "00988A",
               "name": "主動統一全球創新",
+              "lotChange": 10
+            }
+          ],
+          "netLots": -10,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
+        },
+        {
+          "stockCode": "2313",
+          "stockName": "COMPEQ MANUFACTURING CO LTD ORD TWD10",
+          "buyLots": 0,
+          "sellLots": 10,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 10
+            }
+          ],
+          "netLots": -10,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
+        },
+        {
+          "stockCode": "2603",
+          "stockName": "EVERGREEN MARINE CORPORATION",
+          "buyLots": 0,
+          "sellLots": 10,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
               "lotChange": 10
             }
           ],
@@ -21481,6 +23224,55 @@
           "sellEtfCount": 1
         },
         {
+          "stockCode": "TEM US",
+          "stockName": "Tempus AI Inc",
+          "buyLots": 0,
+          "sellLots": 8.281,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-20",
+              "direction": "sell",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 4.532
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "sell",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 3.749
+            }
+          ],
+          "netLots": -8.281,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
+        },
+        {
+          "stockCode": "BLSH US",
+          "stockName": "Bullish",
+          "buyLots": 6.819,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 6.819
+            }
+          ],
+          "netLots": 6.819,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "FIG US",
           "stockName": "Figma Inc",
           "buyLots": 6.28,
@@ -21507,6 +23299,48 @@
           "netAmountTwd": 0,
           "buyEtfCount": 1,
           "sellEtfCount": 0
+        },
+        {
+          "stockCode": "8464",
+          "stockName": "NIEN MADE ENTERPRISE CO LTD ORD TWD10",
+          "buyLots": 0,
+          "sellLots": 6,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 6
+            }
+          ],
+          "netLots": -6,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
+        },
+        {
+          "stockCode": "2379",
+          "stockName": "REALTEK SEMICONDUCTOR CORP",
+          "buyLots": 0,
+          "sellLots": 5,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "sell",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 5
+            }
+          ],
+          "netLots": -5,
+          "netAmountTwd": 0,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
         },
         {
           "stockCode": "PFG US",
@@ -21551,30 +23385,9 @@
           "sellEtfCount": 0
         },
         {
-          "stockCode": "TEM US",
-          "stockName": "Tempus AI Inc",
-          "buyLots": 0,
-          "sellLots": 4.532,
-          "buyAmountTwd": 0,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-07-20",
-              "direction": "sell",
-              "code": "00983A",
-              "name": "主動中信ARK創新",
-              "lotChange": 4.532
-            }
-          ],
-          "netLots": -4.532,
-          "netAmountTwd": 0,
-          "buyEtfCount": 0,
-          "sellEtfCount": 1
-        },
-        {
           "stockCode": "SNDK US",
           "stockName": "SANDISK CORP",
-          "buyLots": 3.66,
+          "buyLots": 4.083,
           "sellLots": 0,
           "buyAmountTwd": 0,
           "sellAmountTwd": 0,
@@ -21585,9 +23398,79 @@
               "code": "00990A",
               "name": "主動元大AI新經濟",
               "lotChange": 3.66
+            },
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.423
             }
           ],
-          "netLots": 3.66,
+          "netLots": 4.083,
+          "netAmountTwd": 0,
+          "buyEtfCount": 2,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "U",
+          "stockName": "UNITY SOFTWARE INC COM NPV",
+          "buyLots": 3.913,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "buy",
+              "code": "00989A",
+              "name": "主動摩根美國科技",
+              "lotChange": 3.913
+            }
+          ],
+          "netLots": 3.913,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "6944",
+          "stockName": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000",
+          "buyLots": 3.8,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-23",
+              "direction": "buy",
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lotChange": 3.8
+            }
+          ],
+          "netLots": 3.8,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "XE US",
+          "stockName": "X-Energy Inc",
+          "buyLots": 2.406,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 2.406
+            }
+          ],
+          "netLots": 2.406,
           "netAmountTwd": 0,
           "buyEtfCount": 1,
           "sellEtfCount": 0
@@ -21612,6 +23495,48 @@
           "netAmountTwd": 0,
           "buyEtfCount": 0,
           "sellEtfCount": 1
+        },
+        {
+          "stockCode": "CRWV US",
+          "stockName": "CoreWeave Inc",
+          "buyLots": 2.077,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 2.077
+            }
+          ],
+          "netLots": 2.077,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "AMD US",
+          "stockName": "超微半導體公司",
+          "buyLots": 1.996,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.996
+            }
+          ],
+          "netLots": 1.996,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
         },
         {
           "stockCode": "CRSP US",
@@ -21656,6 +23581,48 @@
           "sellEtfCount": 0
         },
         {
+          "stockCode": "AMAT US",
+          "stockName": "應用材料",
+          "buyLots": 1.019,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 1.019
+            }
+          ],
+          "netLots": 1.019,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "WDC US",
+          "stockName": "威騰電子公司",
+          "buyLots": 0.969,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.969
+            }
+          ],
+          "netLots": 0.969,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
           "stockCode": "COIN US",
           "stockName": "比特幣基地全球公司",
           "buyLots": 0,
@@ -21677,9 +23644,9 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "CRM",
-          "stockName": "SALESFORCE INC",
-          "buyLots": 0.556,
+          "stockCode": "STX US",
+          "stockName": "希捷科技控股公開有限公司",
+          "buyLots": 0.73,
           "sellLots": 0,
           "buyAmountTwd": 0,
           "sellAmountTwd": 0,
@@ -21687,12 +23654,12 @@
             {
               "date": "2026-07-21",
               "direction": "buy",
-              "code": "00989A",
-              "name": "主動摩根美國科技",
-              "lotChange": 0.556
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.73
             }
           ],
-          "netLots": 0.556,
+          "netLots": 0.73,
           "netAmountTwd": 0,
           "buyEtfCount": 1,
           "sellEtfCount": 0
@@ -21700,7 +23667,7 @@
         {
           "stockCode": "SNOW US",
           "stockName": "Snowflake公司",
-          "buyLots": 0.467,
+          "buyLots": 0.615,
           "sellLots": 0,
           "buyAmountTwd": 0,
           "sellAmountTwd": 0,
@@ -21718,9 +23685,37 @@
               "code": "00983A",
               "name": "主動中信ARK創新",
               "lotChange": 0.169
+            },
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 0.148
             }
           ],
-          "netLots": 0.467,
+          "netLots": 0.615,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "CRM",
+          "stockName": "SALESFORCE INC",
+          "buyLots": 0.556,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00989A",
+              "name": "主動摩根美國科技",
+              "lotChange": 0.556
+            }
+          ],
+          "netLots": 0.556,
           "netAmountTwd": 0,
           "buyEtfCount": 1,
           "sellEtfCount": 0
@@ -21787,6 +23782,48 @@
           "netAmountTwd": 0,
           "buyEtfCount": 0,
           "sellEtfCount": 1
+        },
+        {
+          "stockCode": "CDNS US",
+          "stockName": "Cadence設計系統公司",
+          "buyLots": 0.209,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-21",
+              "direction": "buy",
+              "code": "00997A",
+              "name": "主動群益美國增長",
+              "lotChange": 0.209
+            }
+          ],
+          "netLots": 0.209,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "CBRS US",
+          "stockName": "Cerebras Systems Inc",
+          "buyLots": 0.176,
+          "sellLots": 0,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-07-22",
+              "direction": "buy",
+              "code": "00983A",
+              "name": "主動中信ARK創新",
+              "lotChange": 0.176
+            }
+          ],
+          "netLots": 0.176,
+          "netAmountTwd": 0,
+          "buyEtfCount": 1,
+          "sellEtfCount": 0
         },
         {
           "stockCode": "ASML",
