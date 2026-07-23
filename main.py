@@ -1040,3 +1040,9 @@ async def products_list():
     """Debug: full product catalogue with tags."""
     products = await _load_products()
     return JSONResponse(products)
+
+
+# Keep the market tracker isolated from the existing EDM and crypto routes.
+from popostock import install_popostock
+
+install_popostock(app, DATABASE_URL)
