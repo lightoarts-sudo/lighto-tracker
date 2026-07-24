@@ -10,13 +10,13 @@
   "summary": {
     "total": 50,
     "added": 0,
-    "increased": 2,
-    "decreased": 0,
-    "removed": 1,
-    "pricedChanged": 3,
+    "increased": 4,
+    "decreased": 4,
+    "removed": 2,
+    "pricedChanged": 10,
     "unpricedChanged": 0,
-    "buyAmountTwd": 895000000,
-    "sellAmountTwd": 362600000
+    "buyAmountTwd": 1790650000,
+    "sellAmountTwd": 1016895500
   },
   "holdings": [
     {
@@ -35,7 +35,37 @@
       "action": "increase"
     },
     {
-      "rank": 50,
+      "rank": 42,
+      "stockCode": "6669",
+      "stockName": "緯穎",
+      "heldLots": 145,
+      "lotChange": 140,
+      "weightPct": 2.8988,
+      "weightChangePct": 2784.38,
+      "closePrice": 5470.0,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": 765800000,
+      "action": "increase"
+    },
+    {
+      "rank": 16,
+      "stockCode": "2330",
+      "stockName": "台積電",
+      "heldLots": 49,
+      "lotChange": -190,
+      "weightPct": 0.4307,
+      "weightChangePct": -79.46,
+      "closePrice": 2405.0,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": -456950000,
+      "action": "decrease"
+    },
+    {
+      "rank": 49,
       "stockCode": "2337",
       "stockName": "旺宏",
       "heldLots": 0,
@@ -48,6 +78,66 @@
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
       "amountTwd": -362600000,
       "action": "removed"
+    },
+    {
+      "rank": 14,
+      "stockCode": "3653",
+      "stockName": "健策",
+      "heldLots": 215,
+      "lotChange": 35,
+      "weightPct": 2.9153,
+      "weightChangePct": 26.6,
+      "closePrice": 3710.0,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": 129850000,
+      "action": "increase"
+    },
+    {
+      "rank": 21,
+      "stockCode": "3583",
+      "stockName": "辛耘",
+      "heldLots": 504,
+      "lotChange": -100,
+      "weightPct": 1.3981,
+      "weightChangePct": -17.43,
+      "closePrice": 759.0,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": -75900000,
+      "action": "decrease"
+    },
+    {
+      "rank": 32,
+      "stockCode": "8210",
+      "stockName": "勤誠",
+      "heldLots": 168,
+      "lotChange": -50,
+      "weightPct": 0.7245,
+      "weightChangePct": -20.93,
+      "closePrice": 1180.0,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": -59000000,
+      "action": "decrease"
+    },
+    {
+      "rank": 17,
+      "stockCode": "6187",
+      "stockName": "萬潤",
+      "heldLots": 498,
+      "lotChange": -55,
+      "weightPct": 1.8656,
+      "weightChangePct": -12.51,
+      "closePrice": 1025.0,
+      "priceDate": "2026-07-23",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
+      "amountTwd": -56375000,
+      "action": "decrease"
     },
     {
       "rank": 23,
@@ -63,6 +153,21 @@
       "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": 26700000,
       "action": "increase"
+    },
+    {
+      "rank": 50,
+      "stockCode": "2049",
+      "stockName": "上銀",
+      "heldLots": 0,
+      "lotChange": -19,
+      "weightPct": 0.0,
+      "weightChangePct": -100.0,
+      "closePrice": 319.5,
+      "priceDate": "2026-07-23",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260723&type=ALLBUT0999&response=json",
+      "amountTwd": -6070500,
+      "action": "removed"
     },
     {
       "rank": 1,
@@ -245,21 +350,6 @@
       "action": "hold"
     },
     {
-      "rank": 14,
-      "stockCode": "3653",
-      "stockName": "健策",
-      "heldLots": 180,
-      "lotChange": 0,
-      "weightPct": 2.4406,
-      "weightChangePct": 5.99,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
       "rank": 15,
       "stockCode": "7769",
       "stockName": "鴻勁",
@@ -267,36 +357,6 @@
       "lotChange": 0,
       "weightPct": 2.3628,
       "weightChangePct": 0.93,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
-      "rank": 16,
-      "stockCode": "2330",
-      "stockName": "台積電",
-      "heldLots": 239,
-      "lotChange": 0,
-      "weightPct": 2.1007,
-      "weightChangePct": 0.2,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
-      "rank": 17,
-      "stockCode": "6187",
-      "stockName": "萬潤",
-      "heldLots": 553,
-      "lotChange": 0,
-      "weightPct": 2.0716,
-      "weightChangePct": -2.85,
       "closePrice": null,
       "priceDate": null,
       "market": null,
@@ -342,21 +402,6 @@
       "lotChange": 0,
       "weightPct": 1.9118,
       "weightChangePct": 5.1,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
-      "rank": 21,
-      "stockCode": "3583",
-      "stockName": "辛耘",
-      "heldLots": 604,
-      "lotChange": 0,
-      "weightPct": 1.6755,
-      "weightChangePct": -1.05,
       "closePrice": null,
       "priceDate": null,
       "market": null,
@@ -500,21 +545,6 @@
       "action": "hold"
     },
     {
-      "rank": 32,
-      "stockCode": "8210",
-      "stockName": "勤誠",
-      "heldLots": 218,
-      "lotChange": 0,
-      "weightPct": 0.9401,
-      "weightChangePct": 2.6,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
       "rank": 33,
       "stockCode": "2449",
       "stockName": "京元電子",
@@ -650,21 +680,6 @@
       "action": "hold"
     },
     {
-      "rank": 42,
-      "stockCode": "6669",
-      "stockName": "緯穎",
-      "heldLots": 5,
-      "lotChange": 0,
-      "weightPct": 0.0999,
-      "weightChangePct": -0.6,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
       "rank": 43,
       "stockCode": "4576",
       "stockName": "大銀微系統",
@@ -711,21 +726,6 @@
     },
     {
       "rank": 46,
-      "stockCode": "2049",
-      "stockName": "上銀",
-      "heldLots": 19,
-      "lotChange": 0,
-      "weightPct": 0.0221,
-      "weightChangePct": -0.45,
-      "closePrice": null,
-      "priceDate": null,
-      "market": null,
-      "priceSourceUrl": null,
-      "amountTwd": null,
-      "action": "hold"
-    },
-    {
-      "rank": 47,
       "stockCode": "3661",
       "stockName": "世芯-KY",
       "heldLots": 1,
@@ -740,7 +740,7 @@
       "action": "hold"
     },
     {
-      "rank": 48,
+      "rank": 47,
       "stockCode": "3533",
       "stockName": "嘉澤",
       "heldLots": 1,
@@ -755,7 +755,7 @@
       "action": "hold"
     },
     {
-      "rank": 49,
+      "rank": 48,
       "stockCode": "8299",
       "stockName": "群聯",
       "heldLots": 1,
