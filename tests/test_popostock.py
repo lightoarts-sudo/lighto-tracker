@@ -72,4 +72,6 @@ def test_page_contains_full_fund_tracker():
     assert "每日持股異動" in asset_text
     assert "統一奔騰基金" in asset_text
     assert "野村優質基金-TISA類型" in asset_text
+    assert "consensus-streak" in asset_text
+    assert "🔥 " in asset_text
     assert "instrument-detail-sections" not in asset_text
