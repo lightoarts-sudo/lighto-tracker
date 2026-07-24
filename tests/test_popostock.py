@@ -1,5 +1,6 @@
 import gzip
 import json
+import re
 
 import popostock
 
@@ -82,3 +83,26 @@ def test_page_contains_full_fund_tracker():
     assert "justify-content:flex-start" in asset_text
     assert "POC " in asset_text
     assert "instrument-detail-sections" not in asset_text
+
+
+def test_consensus_bundle_matches_latest_published_data():
+    consensus = json.loads(
+        (popostock.SITE_DIR / "data" / "consensus-history.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    script = next(
+        path.read_text(encoding="utf-8")
+        for path in (popostock.SITE_DIR / "assets").glob("index-*.js")
+        if "單日共識加碼" in path.read_text(encoding="utf-8")
+    )
+    match = re.search(
+        r"var [A-Za-z_$][\w$]*=JSON\.parse\((\"(?:\\.|[^\"\\])*\")\),"
+        r"[A-Za-z_$][\w$]*=[A-Za-z_$][\w$]*;function",
+        script,
+    )
+    assert match is not None
+    bundled = json.loads(json.loads(match.group(1)))
+    latest_date = consensus["availableDates"][0]
+    assert bundled["availableDates"][0] == latest_date
+    assert bundled["daily"][latest_date] == consensus["daily"][latest_date]
