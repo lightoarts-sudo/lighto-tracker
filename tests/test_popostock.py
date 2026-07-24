@@ -76,4 +76,7 @@ def test_page_contains_full_fund_tracker():
     assert "🔥 " in asset_text
     assert "consensus-sources" in asset_text
     assert "查看 " in asset_text
+    assert "vrvp-toggle" in asset_text
+    assert "vrvp-overlay" in asset_text
+    assert "POC " in asset_text
     assert "instrument-detail-sections" not in asset_text
