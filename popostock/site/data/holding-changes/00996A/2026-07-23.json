@@ -4,7 +4,7 @@
   "instrumentName": "主動兆豐台灣豐收",
   "sourceDate": "2026-07-23",
   "comparisonDate": "2026-07-22",
-  "capturedAt": "2026-07-23T18:09:16+08:00",
+  "capturedAt": "2026-07-24T12:04:03+08:00",
   "sourceTitle": "兆豐投信 00996A 官方持股",
   "status": "complete",
   "summary": {
@@ -45,7 +45,7 @@
       "closePrice": 2760.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": -19320000,
       "action": "decrease"
     },
@@ -75,7 +75,7 @@
       "closePrice": 1335.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": 8010000,
       "action": "added"
     },
@@ -90,7 +90,7 @@
       "closePrice": 589.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": 4123000,
       "action": "added"
     },
@@ -105,7 +105,7 @@
       "closePrice": 809.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": 69574,
       "action": "increase"
     },

@@ -4,7 +4,7 @@
   "instrumentName": "主動中信台灣卓越",
   "sourceDate": "2026-07-23",
   "comparisonDate": "2026-07-22",
-  "capturedAt": "2026-07-23T18:09:16+08:00",
+  "capturedAt": "2026-07-24T12:04:03+08:00",
   "sourceTitle": "中國信託投信 00995A 官方持股",
   "status": "complete",
   "summary": {
@@ -30,7 +30,7 @@
       "closePrice": 2760.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": -13800000,
       "action": "removed"
     },
@@ -60,7 +60,7 @@
       "closePrice": 175.5,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": -10530000,
       "action": "decrease"
     },

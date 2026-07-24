@@ -4,7 +4,7 @@
   "instrumentName": "主動統一升級50",
   "sourceDate": "2026-07-23",
   "comparisonDate": "2026-07-22",
-  "capturedAt": "2026-07-23T18:09:16+08:00",
+  "capturedAt": "2026-07-24T12:04:03+08:00",
   "sourceTitle": "統一投信 00403A 官方持股",
   "status": "complete",
   "summary": {
@@ -90,7 +90,7 @@
       "closePrice": 15540.0,
       "priceDate": "2026-07-23",
       "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F23&s=0%2Casc%2C0",
+      "priceSourceUrl": "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock",
       "amountTwd": 233100000,
       "action": "increase"
     },
