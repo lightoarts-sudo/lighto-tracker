@@ -1,8 +1,8 @@
 {
   "date": "2026-07-24",
-  "generatedAt": "2026-07-24T21:32:02+08:00",
-  "methodology": "合計加碼張數 × 1,000 × 當日收盤價",
-  "averagePriceMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
+  "generatedAt": "2026-07-24T22:08:08+08:00",
+  "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
+  "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
   "coverage": {
     "trackedEtfCount": 28,
     "comparableEtfCount": 20,
@@ -50,7 +50,7 @@
     "totalLots": 10390,
     "pricedStockCount": 59,
     "unpricedStockCount": 0,
-    "totalAmountTwd": 3939106600
+    "totalAmountTwd": 3987085825
   },
   "stocks": [
     {
@@ -73,8 +73,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 799261000,
-      "averageAmountTwd": 792233500
+      "closeAmountTwd": 799261000,
+      "averageAmountTwd": 792233500,
+      "amountTwd": 792233500
     },
     {
       "stockCode": "3231",
@@ -102,8 +103,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 643684000,
-      "averageAmountTwd": 641886000
+      "closeAmountTwd": 643684000,
+      "averageAmountTwd": 641886000,
+      "amountTwd": 641886000
     },
     {
       "stockCode": "6669",
@@ -131,8 +133,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 469860000,
-      "averageAmountTwd": 459610000
+      "closeAmountTwd": 469860000,
+      "averageAmountTwd": 459610000,
+      "amountTwd": 459610000
     },
     {
       "stockCode": "8021",
@@ -160,8 +163,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 396270000,
-      "averageAmountTwd": 420099750
+      "closeAmountTwd": 396270000,
+      "averageAmountTwd": 420099750,
+      "amountTwd": 420099750
     },
     {
       "stockCode": "2454",
@@ -189,8 +193,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 318750000,
-      "averageAmountTwd": 329800000
+      "closeAmountTwd": 318750000,
+      "averageAmountTwd": 329800000,
+      "amountTwd": 329800000
     },
     {
       "stockCode": "3665",
@@ -212,8 +217,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 176400000,
-      "averageAmountTwd": 181600000
+      "closeAmountTwd": 176400000,
+      "averageAmountTwd": 181600000,
+      "amountTwd": 181600000
     },
     {
       "stockCode": "6139",
@@ -235,8 +241,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 100800000,
-      "averageAmountTwd": 104340000
+      "closeAmountTwd": 100800000,
+      "averageAmountTwd": 104340000,
+      "amountTwd": 104340000
     },
     {
       "stockCode": "2412",
@@ -258,37 +265,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 87292000,
-      "averageAmountTwd": 86821000
-    },
-    {
-      "stockCode": "4904",
-      "stockName": "遠傳電信",
-      "totalLots": 767,
-      "etfs": [
-        {
-          "code": "00984A",
-          "name": "主動安聯台灣高息",
-          "lotChange": 1,
-          "action": "increase"
-        },
-        {
-          "code": "00985A",
-          "name": "主動野村台灣50",
-          "lotChange": 766,
-          "action": "increase"
-        }
-      ],
-      "etfCount": 2,
-      "closePrice": 105.5,
-      "highPrice": 106.0,
-      "lowPrice": 102.0,
-      "averagePrice": 104.0,
-      "priceDate": "2026-07-24",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 80918500,
-      "averageAmountTwd": 79768000
+      "closeAmountTwd": 87292000,
+      "averageAmountTwd": 86821000,
+      "amountTwd": 86821000
     },
     {
       "stockCode": "2383",
@@ -316,8 +295,39 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 80835000,
-      "averageAmountTwd": 83087500
+      "closeAmountTwd": 80835000,
+      "averageAmountTwd": 83087500,
+      "amountTwd": 83087500
+    },
+    {
+      "stockCode": "4904",
+      "stockName": "遠傳電信",
+      "totalLots": 767,
+      "etfs": [
+        {
+          "code": "00984A",
+          "name": "主動安聯台灣高息",
+          "lotChange": 1,
+          "action": "increase"
+        },
+        {
+          "code": "00985A",
+          "name": "主動野村台灣50",
+          "lotChange": 766,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 2,
+      "closePrice": 105.5,
+      "highPrice": 106.0,
+      "lowPrice": 102.0,
+      "averagePrice": 104.0,
+      "priceDate": "2026-07-24",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 80918500,
+      "averageAmountTwd": 79768000,
+      "amountTwd": 79768000
     },
     {
       "stockCode": "6223",
@@ -345,8 +355,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 74165000,
-      "averageAmountTwd": 77610000
+      "closeAmountTwd": 74165000,
+      "averageAmountTwd": 77610000,
+      "amountTwd": 77610000
     },
     {
       "stockCode": "6239",
@@ -368,8 +379,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 69875000,
-      "averageAmountTwd": 71250000
+      "closeAmountTwd": 69875000,
+      "averageAmountTwd": 71250000,
+      "amountTwd": 71250000
     },
     {
       "stockCode": "1303",
@@ -397,8 +409,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 62657500,
-      "averageAmountTwd": 65658000
+      "closeAmountTwd": 62657500,
+      "averageAmountTwd": 65658000,
+      "amountTwd": 65658000
     },
     {
       "stockCode": "3036",
@@ -420,8 +433,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 55896000,
-      "averageAmountTwd": 56168000
+      "closeAmountTwd": 55896000,
+      "averageAmountTwd": 56168000,
+      "amountTwd": 56168000
     },
     {
       "stockCode": "2330",
@@ -443,8 +457,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 51700000,
-      "averageAmountTwd": 51810000
+      "closeAmountTwd": 51700000,
+      "averageAmountTwd": 51810000,
+      "amountTwd": 51810000
     },
     {
       "stockCode": "8046",
@@ -472,8 +487,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 47730000,
-      "averageAmountTwd": 50310000
+      "closeAmountTwd": 47730000,
+      "averageAmountTwd": 50310000,
+      "amountTwd": 50310000
     },
     {
       "stockCode": "2408",
@@ -495,8 +511,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 47719000,
-      "averageAmountTwd": 49652750
+      "closeAmountTwd": 47719000,
+      "averageAmountTwd": 49652750,
+      "amountTwd": 49652750
     },
     {
       "stockCode": "3008",
@@ -518,31 +535,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 43120000,
-      "averageAmountTwd": 44357500
-    },
-    {
-      "stockCode": "3711",
-      "stockName": "日月光投資控股",
-      "totalLots": 70,
-      "etfs": [
-        {
-          "code": "00406A",
-          "name": "主動中信台灣收益",
-          "lotChange": 70,
-          "action": "increase"
-        }
-      ],
-      "etfCount": 1,
-      "closePrice": 613.0,
-      "highPrice": 636.0,
-      "lowPrice": 609.0,
-      "averagePrice": 622.5,
-      "priceDate": "2026-07-24",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 42910000,
-      "averageAmountTwd": 43575000
+      "closeAmountTwd": 43120000,
+      "averageAmountTwd": 44357500,
+      "amountTwd": 44357500
     },
     {
       "stockCode": "6213",
@@ -564,8 +559,33 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 42092000,
-      "averageAmountTwd": 43996000
+      "closeAmountTwd": 42092000,
+      "averageAmountTwd": 43996000,
+      "amountTwd": 43996000
+    },
+    {
+      "stockCode": "3711",
+      "stockName": "日月光投資控股",
+      "totalLots": 70,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 70,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 613.0,
+      "highPrice": 636.0,
+      "lowPrice": 609.0,
+      "averagePrice": 622.5,
+      "priceDate": "2026-07-24",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 42910000,
+      "averageAmountTwd": 43575000,
+      "amountTwd": 43575000
     },
     {
       "stockCode": "3583",
@@ -587,8 +607,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 35750000,
-      "averageAmountTwd": 36625000
+      "closeAmountTwd": 35750000,
+      "averageAmountTwd": 36625000,
+      "amountTwd": 36625000
     },
     {
       "stockCode": "6274",
@@ -616,8 +637,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 31250000,
-      "averageAmountTwd": 31687500
+      "closeAmountTwd": 31250000,
+      "averageAmountTwd": 31687500,
+      "amountTwd": 31687500
     },
     {
       "stockCode": "3017",
@@ -639,8 +661,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 28560000,
-      "averageAmountTwd": 29190000
+      "closeAmountTwd": 28560000,
+      "averageAmountTwd": 29190000,
+      "amountTwd": 29190000
     },
     {
       "stockCode": "3443",
@@ -662,8 +685,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 24420000,
-      "averageAmountTwd": 25605000
+      "closeAmountTwd": 24420000,
+      "averageAmountTwd": 25605000,
+      "amountTwd": 25605000
     },
     {
       "stockCode": "2059",
@@ -685,8 +709,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 23205000,
-      "averageAmountTwd": 23677500
+      "closeAmountTwd": 23205000,
+      "averageAmountTwd": 23677500,
+      "amountTwd": 23677500
     },
     {
       "stockCode": "2486",
@@ -708,8 +733,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 21900000,
-      "averageAmountTwd": 23000000
+      "closeAmountTwd": 21900000,
+      "averageAmountTwd": 23000000,
+      "amountTwd": 23000000
     },
     {
       "stockCode": "6415",
@@ -731,8 +757,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 20102500,
-      "averageAmountTwd": 20253000
+      "closeAmountTwd": 20102500,
+      "averageAmountTwd": 20253000,
+      "amountTwd": 20253000
     },
     {
       "stockCode": "2308",
@@ -754,8 +781,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 14280000,
-      "averageAmountTwd": 14700000
+      "closeAmountTwd": 14280000,
+      "averageAmountTwd": 14700000,
+      "amountTwd": 14700000
     },
     {
       "stockCode": "2027",
@@ -777,8 +805,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 11540750,
-      "averageAmountTwd": 11646750
+      "closeAmountTwd": 11540750,
+      "averageAmountTwd": 11646750,
+      "amountTwd": 11646750
     },
     {
       "stockCode": "3037",
@@ -806,8 +835,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 10068000,
-      "averageAmountTwd": 10302000
+      "closeAmountTwd": 10068000,
+      "averageAmountTwd": 10302000,
+      "amountTwd": 10302000
     },
     {
       "stockCode": "6187",
@@ -829,8 +859,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 6594000,
-      "averageAmountTwd": 6842500
+      "closeAmountTwd": 6594000,
+      "averageAmountTwd": 6842500,
+      "amountTwd": 6842500
     },
     {
       "stockCode": "6442",
@@ -852,31 +883,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 5300000,
-      "averageAmountTwd": 5590000
-    },
-    {
-      "stockCode": "2206",
-      "stockName": "三陽工業",
-      "totalLots": 32,
-      "etfs": [
-        {
-          "code": "00984A",
-          "name": "主動安聯台灣高息",
-          "lotChange": 32,
-          "action": "increase"
-        }
-      ],
-      "etfCount": 1,
-      "closePrice": 61.4,
-      "highPrice": 61.4,
-      "lowPrice": 60.7,
-      "averagePrice": 61.05,
-      "priceDate": "2026-07-24",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 1964800,
-      "averageAmountTwd": 1953600
+      "closeAmountTwd": 5300000,
+      "averageAmountTwd": 5590000,
+      "amountTwd": 5590000
     },
     {
       "stockCode": "4958",
@@ -898,8 +907,33 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 1928000,
-      "averageAmountTwd": 1976000
+      "closeAmountTwd": 1928000,
+      "averageAmountTwd": 1976000,
+      "amountTwd": 1976000
+    },
+    {
+      "stockCode": "2206",
+      "stockName": "三陽工業",
+      "totalLots": 32,
+      "etfs": [
+        {
+          "code": "00984A",
+          "name": "主動安聯台灣高息",
+          "lotChange": 32,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 61.4,
+      "highPrice": 61.4,
+      "lowPrice": 60.7,
+      "averagePrice": 61.05,
+      "priceDate": "2026-07-24",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 1964800,
+      "averageAmountTwd": 1953600,
+      "amountTwd": 1953600
     },
     {
       "stockCode": "2204",
@@ -921,8 +955,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 1709400,
-      "averageAmountTwd": 1712700
+      "closeAmountTwd": 1709400,
+      "averageAmountTwd": 1712700,
+      "amountTwd": 1712700
     },
     {
       "stockCode": "2897",
@@ -944,8 +979,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 1339800,
-      "averageAmountTwd": 1329900
+      "closeAmountTwd": 1339800,
+      "averageAmountTwd": 1329900,
+      "amountTwd": 1329900
     },
     {
       "stockCode": "5536",
@@ -967,8 +1003,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 1120000,
-      "averageAmountTwd": 1155000
+      "closeAmountTwd": 1120000,
+      "averageAmountTwd": 1155000,
+      "amountTwd": 1155000
     },
     {
       "stockCode": "9958",
@@ -990,8 +1027,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 994500,
-      "averageAmountTwd": 1003500
+      "closeAmountTwd": 994500,
+      "averageAmountTwd": 1003500,
+      "amountTwd": 1003500
     },
     {
       "stockCode": "2357",
@@ -1013,8 +1051,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 771000,
-      "averageAmountTwd": 770000
+      "closeAmountTwd": 771000,
+      "averageAmountTwd": 770000,
+      "amountTwd": 770000
     },
     {
       "stockCode": "2337",
@@ -1036,8 +1075,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 620000,
-      "averageAmountTwd": 636250
+      "closeAmountTwd": 620000,
+      "averageAmountTwd": 636250,
+      "amountTwd": 636250
     },
     {
       "stockCode": "5483",
@@ -1059,8 +1099,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 610500,
-      "averageAmountTwd": 625500
+      "closeAmountTwd": 610500,
+      "averageAmountTwd": 625500,
+      "amountTwd": 625500
     },
     {
       "stockCode": "2481",
@@ -1082,8 +1123,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 560000,
-      "averageAmountTwd": 571000
+      "closeAmountTwd": 560000,
+      "averageAmountTwd": 571000,
+      "amountTwd": 571000
     },
     {
       "stockCode": "2478",
@@ -1105,8 +1147,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 526000,
-      "averageAmountTwd": 535000
+      "closeAmountTwd": 526000,
+      "averageAmountTwd": 535000,
+      "amountTwd": 535000
     },
     {
       "stockCode": "3034",
@@ -1128,8 +1171,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 507000,
-      "averageAmountTwd": 503000
+      "closeAmountTwd": 507000,
+      "averageAmountTwd": 503000,
+      "amountTwd": 503000
     },
     {
       "stockCode": "6147",
@@ -1151,8 +1195,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 474000,
-      "averageAmountTwd": 474000
+      "closeAmountTwd": 474000,
+      "averageAmountTwd": 474000,
+      "amountTwd": 474000
     },
     {
       "stockCode": "6285",
@@ -1174,8 +1219,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 249500,
-      "averageAmountTwd": 254750
+      "closeAmountTwd": 249500,
+      "averageAmountTwd": 254750,
+      "amountTwd": 254750
     },
     {
       "stockCode": "1795",
@@ -1197,8 +1243,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 185000,
-      "averageAmountTwd": 186500
+      "closeAmountTwd": 185000,
+      "averageAmountTwd": 186500,
+      "amountTwd": 186500
     },
     {
       "stockCode": "2303",
@@ -1220,8 +1267,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 128000,
-      "averageAmountTwd": 133000
+      "closeAmountTwd": 128000,
+      "averageAmountTwd": 133000,
+      "amountTwd": 133000
     },
     {
       "stockCode": "1216",
@@ -1243,8 +1291,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 77400,
-      "averageAmountTwd": 76800
+      "closeAmountTwd": 77400,
+      "averageAmountTwd": 76800,
+      "amountTwd": 76800
     },
     {
       "stockCode": "1326",
@@ -1266,8 +1315,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 67500,
-      "averageAmountTwd": 69700
+      "closeAmountTwd": 67500,
+      "averageAmountTwd": 69700,
+      "amountTwd": 69700
     },
     {
       "stockCode": "2634",
@@ -1289,8 +1339,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 65400,
-      "averageAmountTwd": 65100
+      "closeAmountTwd": 65400,
+      "averageAmountTwd": 65100,
+      "amountTwd": 65100
     },
     {
       "stockCode": "2891",
@@ -1312,8 +1363,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 63600,
-      "averageAmountTwd": 63400
+      "closeAmountTwd": 63600,
+      "averageAmountTwd": 63400,
+      "amountTwd": 63400
     },
     {
       "stockCode": "5876",
@@ -1335,8 +1387,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 46150,
-      "averageAmountTwd": 45275
+      "closeAmountTwd": 46150,
+      "averageAmountTwd": 45275,
+      "amountTwd": 45275
     },
     {
       "stockCode": "2855",
@@ -1358,8 +1411,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 44200,
-      "averageAmountTwd": 44500
+      "closeAmountTwd": 44200,
+      "averageAmountTwd": 44500,
+      "amountTwd": 44500
     },
     {
       "stockCode": "2618",
@@ -1381,8 +1435,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 40700,
-      "averageAmountTwd": 40425
+      "closeAmountTwd": 40700,
+      "averageAmountTwd": 40425,
+      "amountTwd": 40425
     },
     {
       "stockCode": "1102",
@@ -1404,8 +1459,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 32750,
-      "averageAmountTwd": 32725
+      "closeAmountTwd": 32750,
+      "averageAmountTwd": 32725,
+      "amountTwd": 32725
     },
     {
       "stockCode": "1402",
@@ -1427,8 +1483,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 27350,
-      "averageAmountTwd": 27325
+      "closeAmountTwd": 27350,
+      "averageAmountTwd": 27325,
+      "amountTwd": 27325
     },
     {
       "stockCode": "2633",
@@ -1450,8 +1507,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 26050,
-      "averageAmountTwd": 26000
+      "closeAmountTwd": 26050,
+      "averageAmountTwd": 26000,
+      "amountTwd": 26000
     },
     {
       "stockCode": "2501",
@@ -1473,8 +1531,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 22750,
-      "averageAmountTwd": 22625
+      "closeAmountTwd": 22750,
+      "averageAmountTwd": 22625,
+      "amountTwd": 22625
     }
   ],
   "sellSummary": {
@@ -1483,7 +1542,7 @@
     "totalLots": 3295,
     "pricedStockCount": 22,
     "unpricedStockCount": 0,
-    "totalAmountTwd": 1494917050
+    "totalAmountTwd": 1533615450
   },
   "sellStocks": [
     {
@@ -1512,8 +1571,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 333720000,
-      "averageAmountTwd": 343440000
+      "closeAmountTwd": 333720000,
+      "averageAmountTwd": 343440000,
+      "amountTwd": 343440000
     },
     {
       "stockCode": "2368",
@@ -1535,8 +1595,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 234260000,
-      "averageAmountTwd": 238290000
+      "closeAmountTwd": 234260000,
+      "averageAmountTwd": 238290000,
+      "amountTwd": 238290000
     },
     {
       "stockCode": "3653",
@@ -1558,8 +1619,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 123480000,
-      "averageAmountTwd": 126990000
+      "closeAmountTwd": 123480000,
+      "averageAmountTwd": 126990000,
+      "amountTwd": 126990000
     },
     {
       "stockCode": "2330",
@@ -1581,8 +1643,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 101050000,
-      "averageAmountTwd": 101265000
+      "closeAmountTwd": 101050000,
+      "averageAmountTwd": 101265000,
+      "amountTwd": 101265000
     },
     {
       "stockCode": "2327",
@@ -1604,8 +1667,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 89238000,
-      "averageAmountTwd": 92018000
+      "closeAmountTwd": 89238000,
+      "averageAmountTwd": 92018000,
+      "amountTwd": 92018000
     },
     {
       "stockCode": "2360",
@@ -1627,8 +1691,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 70720000,
-      "averageAmountTwd": 72505000
+      "closeAmountTwd": 70720000,
+      "averageAmountTwd": 72505000,
+      "amountTwd": 72505000
     },
     {
       "stockCode": "2308",
@@ -1650,8 +1715,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 64260000,
-      "averageAmountTwd": 66150000
+      "closeAmountTwd": 64260000,
+      "averageAmountTwd": 66150000,
+      "amountTwd": 66150000
     },
     {
       "stockCode": "3017",
@@ -1673,8 +1739,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 64260000,
-      "averageAmountTwd": 65677500
+      "closeAmountTwd": 64260000,
+      "averageAmountTwd": 65677500,
+      "amountTwd": 65677500
     },
     {
       "stockCode": "3167",
@@ -1696,8 +1763,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 54560000,
-      "averageAmountTwd": 56452000
+      "closeAmountTwd": 54560000,
+      "averageAmountTwd": 56452000,
+      "amountTwd": 56452000
     },
     {
       "stockCode": "6223",
@@ -1719,8 +1787,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 45640000,
-      "averageAmountTwd": 47760000
+      "closeAmountTwd": 45640000,
+      "averageAmountTwd": 47760000,
+      "amountTwd": 47760000
     },
     {
       "stockCode": "7769",
@@ -1742,8 +1811,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 42385000,
-      "averageAmountTwd": 43697500
+      "closeAmountTwd": 42385000,
+      "averageAmountTwd": 43697500,
+      "amountTwd": 43697500
     },
     {
       "stockCode": "8046",
@@ -1771,8 +1841,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 39960000,
-      "averageAmountTwd": 42120000
+      "closeAmountTwd": 39960000,
+      "averageAmountTwd": 42120000,
+      "amountTwd": 42120000
     },
     {
       "stockCode": "6505",
@@ -1794,8 +1865,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 37580400,
-      "averageAmountTwd": 39989400
+      "closeAmountTwd": 37580400,
+      "averageAmountTwd": 39989400,
+      "amountTwd": 39989400
     },
     {
       "stockCode": "2344",
@@ -1817,31 +1889,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 37080000,
-      "averageAmountTwd": 38100000
-    },
-    {
-      "stockCode": "3529",
-      "stockName": "力旺電子",
-      "totalLots": 15,
-      "etfs": [
-        {
-          "code": "00985A",
-          "name": "主動野村台灣50",
-          "lotChange": 15,
-          "action": "decrease"
-        }
-      ],
-      "etfCount": 1,
-      "closePrice": 2470.0,
-      "highPrice": 2520.0,
-      "lowPrice": 2405.0,
-      "averagePrice": 2462.5,
-      "priceDate": "2026-07-24",
-      "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 37050000,
-      "averageAmountTwd": 36937500
+      "closeAmountTwd": 37080000,
+      "averageAmountTwd": 38100000,
+      "amountTwd": 38100000
     },
     {
       "stockCode": "8996",
@@ -1863,8 +1913,33 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 36180000,
-      "averageAmountTwd": 37890000
+      "closeAmountTwd": 36180000,
+      "averageAmountTwd": 37890000,
+      "amountTwd": 37890000
+    },
+    {
+      "stockCode": "3529",
+      "stockName": "力旺電子",
+      "totalLots": 15,
+      "etfs": [
+        {
+          "code": "00985A",
+          "name": "主動野村台灣50",
+          "lotChange": 15,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2470.0,
+      "highPrice": 2520.0,
+      "lowPrice": 2405.0,
+      "averagePrice": 2462.5,
+      "priceDate": "2026-07-24",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
+      "closeAmountTwd": 37050000,
+      "averageAmountTwd": 36937500,
+      "amountTwd": 36937500
     },
     {
       "stockCode": "1802",
@@ -1886,8 +1961,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 29019000,
-      "averageAmountTwd": 29616450
+      "closeAmountTwd": 29019000,
+      "averageAmountTwd": 29616450,
+      "amountTwd": 29616450
     },
     {
       "stockCode": "4915",
@@ -1909,8 +1985,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 16430400,
-      "averageAmountTwd": 16493400
+      "closeAmountTwd": 16430400,
+      "averageAmountTwd": 16493400,
+      "amountTwd": 16493400
     },
     {
       "stockCode": "3592",
@@ -1932,8 +2009,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 14818000,
-      "averageAmountTwd": 14756000
+      "closeAmountTwd": 14818000,
+      "averageAmountTwd": 14756000,
+      "amountTwd": 14756000
     },
     {
       "stockCode": "7751",
@@ -1955,8 +2033,9 @@
       "priceDate": "2026-07-24",
       "market": "TPEx",
       "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F07%2F24&s=0%2Casc%2C0",
-      "amountTwd": 9160000,
-      "averageAmountTwd": 9380000
+      "closeAmountTwd": 9160000,
+      "averageAmountTwd": 9380000,
+      "amountTwd": 9380000
     },
     {
       "stockCode": "9907",
@@ -1978,8 +2057,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 8408250,
-      "averageAmountTwd": 8380500
+      "closeAmountTwd": 8408250,
+      "averageAmountTwd": 8380500,
+      "amountTwd": 8380500
     },
     {
       "stockCode": "6768",
@@ -2001,8 +2081,9 @@
       "priceDate": "2026-07-24",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260724&type=ALLBUT0999&response=json",
-      "amountTwd": 5658000,
-      "averageAmountTwd": 5707200
+      "closeAmountTwd": 5658000,
+      "averageAmountTwd": 5707200,
+      "amountTwd": 5707200
     }
   ]
 }
