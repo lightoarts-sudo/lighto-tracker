@@ -108,3 +108,46 @@ def test_consensus_bundle_matches_latest_published_data():
     latest_date = consensus["availableDates"][0]
     assert bundled["availableDates"][0] == latest_date
     assert bundled["daily"][latest_date] == consensus["daily"][latest_date]
+
+
+def test_nav_reports_and_passive_bundle_match_latest_published_data():
+    passive = json.loads(
+        (popostock.SITE_DIR / "data" / "passive-etf-latest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    funds = json.loads(
+        (popostock.SITE_DIR / "data" / "fund-nav-latest.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    script = next(
+        path.read_text(encoding="utf-8")
+        for path in (popostock.SITE_DIR / "assets").glob("index-*.js")
+        if "臺灣證券交易所 ETF e添富每日盤後淨值" in path.read_text(
+            encoding="utf-8"
+        )
+    )
+    embedded = None
+    for match in re.finditer(r"JSON\.parse\((\"(?:\\.|[^\"\\])*\")\)", script):
+        candidate = json.loads(json.loads(match.group(1)))
+        if (
+            isinstance(candidate, dict)
+            and candidate.get("sourceTitle")
+            == "臺灣證券交易所 ETF e添富每日盤後淨值"
+        ):
+            embedded = candidate
+            break
+
+    assert embedded is not None
+    assert embedded["expectedDate"] == passive["expectedDate"]
+    assert embedded["snapshots"] == passive["snapshots"]
+    assert embedded["missing"] == passive["missing"]
+    assert all(
+        snapshot["sourceDate"] == passive["expectedDate"]
+        for snapshot in passive["snapshots"].values()
+    )
+    assert all(
+        (popostock.SITE_DIR / "data" / "nav" / f"{code}.json").exists()
+        for code in funds["funds"]
+    )
