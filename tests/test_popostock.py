@@ -83,6 +83,8 @@ def test_page_contains_full_fund_tracker():
     assert "justify-content:flex-start" in asset_text
     assert "POC " in asset_text
     assert "instrument-detail-sections" not in asset_text
+    assert "brand-home-link" in asset_text
+    assert "https://lighto-tracker.onrender.com/popostock" in asset_text
 
 
 def test_consensus_bundle_matches_latest_published_data():
