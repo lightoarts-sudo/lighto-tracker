@@ -27,7 +27,7 @@ def test_seed_is_readable_and_complete():
     assert seed["fundHoldingCount"] == 90
     assert seed["fundAssetClassCount"] == 26
     symbols = {item["symbol"] for item in seed["instruments"]}
-    assert {"TAIEX", "VIXTWN", "0050", "00981A", "ALI005"} <= symbols
+    assert {"TAIEX", "VIXTWN", "SPY", "QQQ", "SMH", "0050", "00981A", "ALI005"} <= symbols
     assert {
         "UNI023",
         "NOM156",
@@ -61,6 +61,9 @@ def test_page_contains_full_fund_tracker():
     assert (popostock.SITE_DIR / "favicon.png").exists()
     assert (popostock.SITE_DIR / "bobo-flow-logo.png").exists()
     assert (popostock.SITE_DIR / "data" / "market" / "TAIEX.json").exists()
+    assert (popostock.SITE_DIR / "data" / "market" / "SPY.json").exists()
+    assert (popostock.SITE_DIR / "data" / "market" / "QQQ.json").exists()
+    assert (popostock.SITE_DIR / "data" / "market" / "SMH.json").exists()
     assert (popostock.SITE_DIR / "data" / "nav" / "ALI006.json").exists()
     assert (popostock.SITE_DIR / "data" / "nav" / "UNI023.json").exists()
     assert 'sessionStorage.getItem(key)' in page
@@ -85,6 +88,10 @@ def test_page_contains_full_fund_tracker():
     assert "instrument-detail-sections" not in asset_text
     assert "brand-home-link" in asset_text
     assert "https://lighto-tracker.onrender.com/popostock" in asset_text
+    assert "美股大盤" in asset_text
+    assert "etfCode:`SPY`" in asset_text
+    assert "etfCode:`QQQ`" in asset_text
+    assert "etfCode:`SMH`" in asset_text
 
 
 def test_consensus_bundle_matches_latest_published_data():

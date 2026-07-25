@@ -26,12 +26,14 @@ def compact_candle(row: dict) -> list:
 def load_market(source: Path) -> list[dict]:
     instruments = []
     for path in sorted((source / "market").glob("*.json")):
-        if path.name in {"index.json", "passive-index.json"}:
+        if path.name in {"index.json", "passive-index.json", "us-index.json"}:
             continue
         item = json.loads(path.read_text(encoding="utf-8"))
         symbol = str(item["code"]).upper()
         if symbol in {"TAIEX", "VIXTWN"}:
             category = "index"
+        elif symbol in {"SPY", "QQQ", "SMH"}:
+            category = "us_etf"
         elif symbol.endswith("A"):
             category = "active_etf"
         else:
