@@ -36,6 +36,11 @@
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js" defer data-popostock-url-state></script>
+    <style id="popostock-layout-override">
+/* 美股大盤區塊：標題放圖表上方（與手機版一致） */
+.taiex-header{flex-direction:column !important;align-items:stretch !important;gap:14px !important}
+.taiex-header .nav-chart-panel{min-width:0;width:100%}
+</style>
   </head>
   <body>
     <div id="root"></div>
