@@ -9,6 +9,7 @@ from datetime import date
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 import asyncpg
 from fastapi import FastAPI, HTTPException, Query, Request, Response
@@ -172,6 +173,11 @@ def _number(value: Any) -> float | int | None:
     if isinstance(value, Decimal):
         return float(value)
     return value
+
+
+def _popostock_redirect_target(query_items: list[tuple[str, str]]) -> str:
+    query = urlencode(query_items)
+    return f"/popostock?{query}" if query else "/popostock"
 
 
 def _basic_value(item: dict[str, Any], label: str) -> str | None:
@@ -451,8 +457,11 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
         return pool
 
     @app.get("/popostock/")
-    async def popostock_slash() -> RedirectResponse:
-        return RedirectResponse("/popostock", status_code=308)
+    async def popostock_slash(request: Request) -> RedirectResponse:
+        return RedirectResponse(
+            _popostock_redirect_target(list(request.query_params.multi_items())),
+            status_code=308,
+        )
 
     @app.get("/popostock", response_class=FileResponse)
     async def popostock_page() -> FileResponse:

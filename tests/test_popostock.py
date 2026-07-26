@@ -12,6 +12,16 @@ def test_as_date_accepts_legacy_slash_format():
     assert popostock._as_date(None) is None
 
 
+def test_popostock_slash_redirect_preserves_query_state():
+    assert (
+        popostock._popostock_redirect_target(
+            [("tab", "funds"), ("code", "ESI217")]
+        )
+        == "/popostock?tab=funds&code=ESI217"
+    )
+    assert popostock._popostock_redirect_target([]) == "/popostock"
+
+
 def test_schema_is_namespaced():
     assert "popostock_instruments" in popostock.SCHEMA_SQL
     assert "popostock_candles" in popostock.SCHEMA_SQL
@@ -115,6 +125,14 @@ def test_page_contains_full_fund_tracker():
     assert "etfCode:`SPY`" in asset_text
     assert "etfCode:`QQQ`" in asset_text
     assert "etfCode:`SMH`" in asset_text
+    url_state = (popostock.SITE_DIR / "popostock-url-state.js").read_text(
+        encoding="utf-8"
+    )
+    assert 'data-popostock-url-state' in page
+    assert '"active-etfs": "主動式 ETF"' in url_state
+    assert 'url.searchParams.set("tab", tab)' in url_state
+    assert 'url.searchParams.set("code", code.toUpperCase())' in url_state
+    assert 'window.addEventListener("popstate"' in url_state
 
 
 def test_consensus_bundle_matches_latest_published_data():
