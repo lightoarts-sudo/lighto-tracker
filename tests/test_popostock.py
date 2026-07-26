@@ -1,8 +1,15 @@
 import gzip
 import json
 import re
+from datetime import date
 
 import popostock
+
+
+def test_as_date_accepts_legacy_slash_format():
+    assert popostock._as_date("2026/07/17") == date(2026, 7, 17)
+    assert popostock._as_date("2026-07-17") == date(2026, 7, 17)
+    assert popostock._as_date(None) is None
 
 
 def test_schema_is_namespaced():

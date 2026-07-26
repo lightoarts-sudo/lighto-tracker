@@ -163,7 +163,7 @@ def _read_seed() -> dict[str, Any] | None:
 
 
 def _as_date(value: str | None) -> date | None:
-    return date.fromisoformat(value) if value else None
+    return date.fromisoformat(str(value).replace("/", "-")) if value else None
 
 
 def _number(value: Any) -> float | int | None:
