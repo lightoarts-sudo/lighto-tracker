@@ -89,6 +89,42 @@ CREATE TABLE IF NOT EXISTS popostock_fund_asset_classes (
     PRIMARY KEY (fund_symbol, source_date, label)
 );
 
+CREATE TABLE IF NOT EXISTS popostock_tracker_items (
+    item_id TEXT PRIMARY KEY,
+    symbol TEXT NOT NULL REFERENCES popostock_instruments(symbol) ON DELETE CASCADE,
+    group_name TEXT NOT NULL,
+    group_rank INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    aum_twd BIGINT,
+    payload_json JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_popostock_tracker_items_group_rank
+    ON popostock_tracker_items (group_name, group_rank);
+
+CREATE TABLE IF NOT EXISTS popostock_tracker_holdings (
+    item_id TEXT NOT NULL REFERENCES popostock_tracker_items(item_id) ON DELETE CASCADE,
+    holding_index INTEGER NOT NULL,
+    stock_code TEXT,
+    stock_name TEXT NOT NULL,
+    shares TEXT,
+    weight NUMERIC,
+    source_date TEXT,
+    source_title TEXT,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (item_id, holding_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_popostock_tracker_holdings_stock
+    ON popostock_tracker_holdings (stock_code, stock_name);
+
+CREATE TABLE IF NOT EXISTS popostock_tracker_metadata (
+    metadata_key TEXT PRIMARY KEY,
+    payload_json JSONB NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS popostock_sync_runs (
     id BIGSERIAL PRIMARY KEY,
     version TEXT NOT NULL UNIQUE,
@@ -155,6 +191,19 @@ def _nav_value(item: dict[str, Any]) -> float | None:
 
 async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
     version = str(seed["version"])
+    tracker_items = seed.get("trackerItems")
+    tracker_references = seed.get("trackerReferences")
+    if (
+        not isinstance(tracker_items, list)
+        or len(tracker_items) != int(seed.get("trackerItemCount", 0))
+        or not tracker_items
+    ):
+        raise ValueError("Complete trackerItems are required before database import")
+    if (
+        not isinstance(tracker_references, list)
+        or len(tracker_references) != int(seed.get("trackerReferenceCount", -1))
+    ):
+        raise ValueError("Complete trackerReferences are required before database import")
     async with pool.acquire() as conn:
         exists = await conn.fetchval(
             "SELECT 1 FROM popostock_sync_runs WHERE version = $1", version
@@ -293,6 +342,66 @@ async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
                         asset_rows,
                     )
 
+            await conn.execute("DELETE FROM popostock_tracker_holdings")
+            await conn.execute("DELETE FROM popostock_tracker_items")
+            for item in seed.get("trackerItems", []):
+                item_id = str(item["id"])
+                symbol = str(item["code"]).upper()
+                await conn.execute(
+                    """
+                    INSERT INTO popostock_tracker_items (
+                        item_id, symbol, group_name, group_rank, name,
+                        aum_twd, payload_json
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb)
+                    """,
+                    item_id,
+                    symbol,
+                    item["group"],
+                    int(item["groupRank"]),
+                    item["name"],
+                    item.get("aumTwd"),
+                    json.dumps(item, ensure_ascii=False, separators=(",", ":")),
+                )
+                holding_rows = [
+                    (
+                        item_id,
+                        index,
+                        holding.get("stockCode"),
+                        holding["stockName"],
+                        holding.get("shares"),
+                        holding.get("weight"),
+                        holding.get("sourceDate"),
+                        holding.get("sourceTitle"),
+                    )
+                    for index, holding in enumerate(item.get("holdings", []))
+                ]
+                if holding_rows:
+                    await conn.executemany(
+                        """
+                        INSERT INTO popostock_tracker_holdings (
+                            item_id, holding_index, stock_code, stock_name,
+                            shares, weight, source_date, source_title
+                        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                        """,
+                        holding_rows,
+                    )
+
+            await conn.execute(
+                """
+                INSERT INTO popostock_tracker_metadata (
+                    metadata_key, payload_json
+                ) VALUES ('references', $1::jsonb)
+                ON CONFLICT (metadata_key) DO UPDATE SET
+                    payload_json = EXCLUDED.payload_json,
+                    updated_at = NOW()
+                """,
+                json.dumps(
+                    seed.get("trackerReferences", []),
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                ),
+            )
+
             await conn.execute(
                 """
                 INSERT INTO popostock_sync_runs
@@ -371,6 +480,16 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 FROM popostock_fund_profiles
                 """
             )
+            tracker_row = await conn.fetchrow(
+                """
+                SELECT COUNT(*) AS items,
+                       (SELECT COUNT(*) FROM popostock_tracker_holdings) AS holdings,
+                       COUNT(*) FILTER (WHERE group_name = 'funds') AS funds,
+                       COUNT(*) FILTER (WHERE group_name = 'activeEtfs') AS active_etfs,
+                       COUNT(*) FILTER (WHERE group_name = 'passiveEtfs') AS passive_etfs
+                FROM popostock_tracker_items
+                """
+            )
         return JSONResponse(
             {
                 "instruments": row["instruments"],
@@ -380,6 +499,13 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 "fundProfiles": fund_row["profiles"],
                 "fundHoldings": fund_row["holdings"],
                 "fundAssetClasses": fund_row["asset_classes"],
+                "trackerItems": tracker_row["items"],
+                "trackerHoldings": tracker_row["holdings"],
+                "trackerGroups": {
+                    "funds": tracker_row["funds"],
+                    "activeEtfs": tracker_row["active_etfs"],
+                    "passiveEtfs": tracker_row["passive_etfs"],
+                },
             }
         )
 
@@ -500,6 +626,49 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 else row["payload_json"]
                 for row in rows
             ]
+        )
+
+    @app.get("/popostock/api/tracker")
+    async def popostock_tracker(request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            rows = await conn.fetch(
+                """
+                SELECT payload_json
+                FROM popostock_tracker_items
+                ORDER BY CASE group_name
+                    WHEN 'funds' THEN 1
+                    WHEN 'activeEtfs' THEN 2
+                    WHEN 'passiveEtfs' THEN 3
+                    ELSE 4
+                END, group_rank, item_id
+                """
+            )
+            references = await conn.fetchval(
+                """
+                SELECT payload_json
+                FROM popostock_tracker_metadata
+                WHERE metadata_key = 'references'
+                """
+            )
+            version = await conn.fetchval(
+                """
+                SELECT version
+                FROM popostock_sync_runs
+                ORDER BY id DESC
+                LIMIT 1
+                """
+            )
+
+        def json_value(value: Any) -> Any:
+            return json.loads(value) if isinstance(value, str) else value
+
+        return JSONResponse(
+            {
+                "version": version,
+                "items": [json_value(row["payload_json"]) for row in rows],
+                "references": json_value(references) if references is not None else [],
+            }
         )
 
     @app.get("/popostock/api/candles/{symbol}")

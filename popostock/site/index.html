@@ -20,7 +20,20 @@
     />
     <link rel="icon" type="image/png" href="favicon.png" />
     <title>PoPoStock｜波波流</title>
-    <script type="module" crossorigin src="/popostock/assets/index-c3f33423.js"></script>
+    <script type="module">
+      try {
+        const response = await fetch("api/tracker", { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        if (!Array.isArray(payload.items) || payload.items.length < 1) {
+          throw new Error("Tracker API payload is incomplete");
+        }
+        window.__POPOSTOCK_TRACKER_DATA__ = payload;
+      } catch (error) {
+        console.warn("Tracker API unavailable; using static fallback", error);
+      }
+      await import("/popostock/assets/index-b9ae20d0.js");
+    </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
   </head>
   <body>

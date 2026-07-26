@@ -12,10 +12,14 @@ def test_schema_is_namespaced():
     assert "popostock_fund_profiles" in popostock.SCHEMA_SQL
     assert "popostock_fund_holdings" in popostock.SCHEMA_SQL
     assert "popostock_fund_asset_classes" in popostock.SCHEMA_SQL
+    assert "popostock_tracker_items" in popostock.SCHEMA_SQL
+    assert "popostock_tracker_holdings" in popostock.SCHEMA_SQL
+    assert "popostock_tracker_metadata" in popostock.SCHEMA_SQL
     assert "PRIMARY KEY (instrument_id, trade_date, timeframe)" in popostock.SCHEMA_SQL
     source = (popostock.BASE_DIR / "popostock.py").read_text(encoding="utf-8")
     assert '"total": int(row["total"] or 0)' in source
     assert '"today": int(row["today"] or 0)' in source
+    assert '@app.get("/popostock/api/tracker")' in source
 
 
 def test_seed_is_readable_and_complete():
@@ -23,9 +27,12 @@ def test_seed_is_readable_and_complete():
         seed = json.load(handle)
     assert seed["instrumentCount"] >= 69
     assert seed["candleCount"] >= 120_000
-    assert seed["fundProfileCount"] == 9
-    assert seed["fundHoldingCount"] == 90
-    assert seed["fundAssetClassCount"] == 26
+    assert seed["fundProfileCount"] == 23
+    assert seed["fundHoldingCount"] == 265
+    assert seed["fundAssetClassCount"] == 57
+    assert seed["trackerItemCount"] == 76
+    assert seed["trackerHoldingCount"] == 2943
+    assert seed["trackerReferenceCount"] == 123
     symbols = {item["symbol"] for item in seed["instruments"]}
     assert {"TAIEX", "VIXTWN", "SPY", "QQQ", "SMH", "0050", "00981A", "ALI005"} <= symbols
     assert {
@@ -40,12 +47,18 @@ def test_seed_is_readable_and_complete():
         "UNI002",
     } <= symbols
     profiles = {item["code"]: item for item in seed["fundProfiles"]}
+    assert len(profiles) == 23
+    assert profiles["ALI005"]["name"] == "安聯台灣大壩基金-A類型"
     assert profiles["UNI023"]["name"] == "統一奔騰基金"
     nom156_info = {
         item["label"]: item["value"] for item in profiles["NOM156"]["basicInfo"]
     }
-    assert nom156_info["最新淨值資料日"] == "2026-07-22"
+    assert nom156_info["最新淨值資料日"] == "2026-07-24"
     assert len(profiles["CSI002"]["holdings"]) == 10
+    group_counts = {}
+    for item in seed["trackerItems"]:
+        group_counts[item["group"]] = group_counts.get(item["group"], 0) + 1
+    assert group_counts == {"funds": 23, "activeEtfs": 28, "passiveEtfs": 25}
 
 
 def test_page_contains_full_fund_tracker():
@@ -68,6 +81,9 @@ def test_page_contains_full_fund_tracker():
     assert (popostock.SITE_DIR / "data" / "nav" / "UNI023.json").exists()
     assert 'sessionStorage.getItem(key)' in page
     assert 'fetch("api/page-view"' in page
+    assert 'fetch("api/tracker"' in page
+    assert "__POPOSTOCK_TRACKER_DATA__" in page
+    assert "window.__POPOSTOCK_TRACKER_DATA__?.items" in asset_text
     assert "https://www.googletagmanager.com/gtag/js?id=G-TFK1BMB9LT" in page
     assert 'gtag("config", "G-TFK1BMB9LT")' in page
     assert "basic-info-list" in asset_text

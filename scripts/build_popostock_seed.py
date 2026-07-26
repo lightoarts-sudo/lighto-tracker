@@ -83,6 +83,17 @@ def load_fund_profiles(path: Path) -> list[dict]:
     return payload.get("items", [])
 
 
+def load_tracker_data(path: Path | None) -> dict:
+    if path is None or not path.exists():
+        return {"items": [], "references": []}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload.get("items"), list):
+        raise ValueError("Tracker bootstrap items must be a list")
+    if not isinstance(payload.get("references"), list):
+        raise ValueError("Tracker bootstrap references must be a list")
+    return payload
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source", type=Path, help="Path to public/data")
@@ -96,13 +107,27 @@ def main() -> None:
         type=Path,
         help="Path to normalized fund-bootstrap.json",
     )
+    parser.add_argument(
+        "--tracker-data",
+        type=Path,
+        required=True,
+        help="Path to complete tracker-bootstrap.json",
+    )
     args = parser.parse_args()
 
     instruments = load_market(args.source) + load_nav(args.source)
     fund_data = args.fund_data or args.source.parents[1] / "data" / "fund-bootstrap.json"
-    fund_profiles = load_fund_profiles(fund_data)
+    tracker_data = load_tracker_data(args.tracker_data)
+    fund_profiles = [
+        item for item in tracker_data["items"] if item.get("group") == "funds"
+    ] or load_fund_profiles(fund_data)
     canonical = json.dumps(
-        {"instruments": instruments, "fundProfiles": fund_profiles},
+        {
+            "instruments": instruments,
+            "fundProfiles": fund_profiles,
+            "trackerItems": tracker_data["items"],
+            "trackerReferences": tracker_data["references"],
+        },
         ensure_ascii=False,
         separators=(",", ":"),
     ).encode()
@@ -115,8 +140,15 @@ def main() -> None:
         "fundProfileCount": len(fund_profiles),
         "fundHoldingCount": sum(len(item.get("holdings", [])) for item in fund_profiles),
         "fundAssetClassCount": sum(len(item.get("assetClasses", [])) for item in fund_profiles),
+        "trackerItemCount": len(tracker_data["items"]),
+        "trackerHoldingCount": sum(
+            len(item.get("holdings", [])) for item in tracker_data["items"]
+        ),
+        "trackerReferenceCount": len(tracker_data["references"]),
         "instruments": instruments,
         "fundProfiles": fund_profiles,
+        "trackerItems": tracker_data["items"],
+        "trackerReferences": tracker_data["references"],
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -125,7 +157,9 @@ def main() -> None:
     print(
         f"wrote {args.output}: {payload['instrumentCount']} instruments, "
         f"{payload['candleCount']} rows, {payload['fundProfileCount']} fund profiles, "
-        f"{payload['fundHoldingCount']} fund holdings, version {version}"
+        f"{payload['fundHoldingCount']} fund holdings, "
+        f"{payload['trackerItemCount']} tracker items, "
+        f"{payload['trackerHoldingCount']} tracker holdings, version {version}"
     )
 
 

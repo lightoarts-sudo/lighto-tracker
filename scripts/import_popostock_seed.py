@@ -36,10 +36,19 @@ async def main() -> None:
                 FROM popostock_candles
                 """
             )
+            tracker = await conn.fetchrow(
+                """
+                SELECT COUNT(*) AS items,
+                       (SELECT COUNT(*) FROM popostock_tracker_holdings) AS holdings
+                FROM popostock_tracker_items
+                """
+            )
         print(
             f"imported={imported} version={seed['version']} "
             f"instruments={stats['instruments']} candles={stats['candles']} "
-            f"range={stats['first_date']}..{stats['latest_date']}"
+            f"range={stats['first_date']}..{stats['latest_date']} "
+            f"tracker_items={tracker['items']} "
+            f"tracker_holdings={tracker['holdings']}"
         )
     finally:
         await pool.close()
