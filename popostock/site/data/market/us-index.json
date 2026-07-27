@@ -10,6 +10,16 @@
     "sourceUrl": "https://www.nasdaq.com/market-activity/etf/spy/historical"
   },
   {
+    "code": "CNN-FNG",
+    "name": "CNN 恐懼與貪婪指數",
+    "description": "衡量美股市場情緒（0=極度恐慌，100=極度貪婪）",
+    "listingDate": "2000-01-01",
+    "historyStart": "2025-07-28",
+    "historyEnd": "2026-07-27",
+    "historyPoints": 365,
+    "sourceUrl": "https://money.cnn.com/data/fear-and-greed/"
+  },
+  {
     "code": "QQQ",
     "name": "Invesco QQQ Trust",
     "description": "追蹤 Nasdaq-100 指數",
