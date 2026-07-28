@@ -32,7 +32,7 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-302a0c90.js");
+      await import("/popostock/assets/index-75ee7e13.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js" defer data-popostock-url-state></script>
@@ -43,6 +43,15 @@
 </style>
   <script src="fng-line-chart.js" defer></script>
 <script src="fng-threshold-highlight.js" defer></script>
+  <style id="popostock-distribution-collapse">
+/* 每日漲跌幅分佈：改為可折疊（原生 details/summary） */
+details.return-distribution>summary.return-distribution-heading{cursor:pointer;list-style:none}
+details.return-distribution>summary.return-distribution-heading::-webkit-details-marker{display:none}
+details.return-distribution>summary.return-distribution-heading::after{content:"";border-bottom:2px solid;border-right:2px solid;width:9px;height:9px;margin-left:10px;align-self:center;flex:none;color:var(--teal);transition:transform .16s;transform:rotate(45deg)}
+details.return-distribution[open]>summary.return-distribution-heading::after{transform:rotate(-135deg)}
+details.return-distribution>summary.return-distribution-heading:hover::after{opacity:.75}
+details.return-distribution>summary.return-distribution-heading:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+</style>
 </head>
   <body>
     <div id="root"></div>
