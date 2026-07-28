@@ -13,16 +13,18 @@
   "use strict";
 
   var DATA_URL = "data/market/CNN-FNG.json";
-  var DEFAULT_THRESHOLD = 10;
+  var DEFAULT_THRESHOLD = 20;
   var MIN_THRESHOLD = 0;
   var MAX_THRESHOLD = 100;
-  // Only the US market instruments; TAIEX keeps its own volatility highlight.
-  var INSTRUMENTS = /^(SPY|QQQ|SMH)\b/;
+  // Every 美股大盤 panel, including the index's own chart; TAIEX keeps its
+  // separate volatility highlight and must not be picked up here.
+  var INSTRUMENTS = /^(SPY|QQQ|SMH|CNN-FNG)\b/;
 
   var threshold = DEFAULT_THRESHOLD;
   var readings = null; // sorted ascending [{time, value}]
   var overlays = [];
   var controls = [];
+  var syncingRange = false;
 
   function getBaseUrl() {
     var match = window.location.href.match(/^(https?:\/\/[^\/]+\/popostock)/);
@@ -110,7 +112,13 @@
       });
     };
 
-    chart.timeScale().subscribeVisibleTimeRangeChange(render);
+    var onRangeChange = function (range) {
+      render();
+      // Dragging or zooming any 美股大盤 chart moves the rest with it.
+      if (range) shareRange(overlay, range);
+    };
+
+    chart.timeScale().subscribeVisibleTimeRangeChange(onRangeChange);
     var observer = new ResizeObserver(render);
     observer.observe(container);
 
@@ -120,18 +128,55 @@
       // The bundle removes the chart on interval changes, which already drops
       // its subscriptions; guard so a late teardown cannot throw.
       try {
-        chart.timeScale().unsubscribeVisibleTimeRangeChange(render);
+        chart.timeScale().unsubscribeVisibleTimeRangeChange(onRangeChange);
       } catch (error) {
         /* chart already disposed */
       }
       layer.remove();
     };
 
-    return {
+    var overlay = {
       render: render,
       destroy: destroy,
       container: container,
+      chart: chart,
     };
+    return overlay;
+  }
+
+  function visibleRange(overlay) {
+    try {
+      return overlay.chart.timeScale().getVisibleRange();
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function applyRange(overlay, range) {
+    try {
+      overlay.chart.timeScale().setVisibleRange(range);
+    } catch (error) {
+      // Ranges outside a chart's own data are rejected; leave that chart put.
+    }
+  }
+
+  /*
+   * lightweight-charts fires the same event for programmatic changes, so a
+   * naive propagation would ping-pong between charts. One flag keeps a user
+   * gesture to a single pass over the peers.
+   */
+  function shareRange(source, range) {
+    if (syncingRange) return;
+    syncingRange = true;
+    try {
+      overlays.forEach(function (peer) {
+        if (peer === source || !peer.container.isConnected) return;
+        applyRange(peer, range);
+        peer.render();
+      });
+    } finally {
+      syncingRange = false;
+    }
   }
 
   function countFlagged() {
@@ -229,7 +274,27 @@
         dropOverlays(function (overlay) {
           return overlay.container === container;
         });
-        overlays.push(createOverlay(container, chart, points));
+
+        // Adopt whatever window the panels already show, so a chart that
+        // mounts late (the index fetches its own data) lines up instead of
+        // sitting on its full history.
+        var peerRange = null;
+        for (var i = 0; i < overlays.length; i++) {
+          if (!overlays[i].container.isConnected) continue;
+          peerRange = visibleRange(overlays[i]);
+          if (peerRange) break;
+        }
+
+        var overlay = createOverlay(container, chart, points);
+        overlays.push(overlay);
+        if (peerRange) {
+          syncingRange = true;
+          try {
+            applyRange(overlay, peerRange);
+          } finally {
+            syncingRange = false;
+          }
+        }
         renderAll();
       } catch (error) {
         // A highlight failure must never take the chart itself down.

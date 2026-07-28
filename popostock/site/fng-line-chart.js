@@ -126,7 +126,8 @@
 
   function renderChart(container, lc, values) {
     var chartDiv = document.createElement("div");
-    chartDiv.style.cssText = "width:100%;height:220px;";
+    // position:relative anchors the absolutely positioned threshold overlay.
+    chartDiv.style.cssText = "width:100%;height:220px;position:relative;";
 
     container.innerHTML = "";
     container.appendChild(buildReadingBar(values[values.length - 1]));
@@ -186,12 +187,14 @@
     // is often created at zero width. Track the real width instead of
     // guessing with timers, which left the canvas stuck at its default size.
     var lastWidth = 0;
+    var synced = false;
     var applyWidth = function () {
       var width = chartDiv.clientWidth;
       if (width > 0 && width !== lastWidth) {
         lastWidth = width;
         chart.applyOptions({ width: width });
-        chart.timeScale().fitContent();
+        // Once the panels share a window, refitting would fight the sync.
+        if (!synced) chart.timeScale().fitContent();
       }
     };
 
@@ -203,6 +206,14 @@
       setTimeout(applyWidth, 1000);
     }
     applyWidth();
+
+    // Join the 美股大盤 group: this chart then shares the candlesticks' date
+    // range and carries the same below-threshold shading.
+    var highlight = window.__popostockFngHighlight;
+    if (highlight && typeof highlight.attach === "function") {
+      synced = true;
+      highlight.attach(chartDiv, chart, values);
+    }
   }
 
   function initChart(container, dataUrl) {
