@@ -17,7 +17,6 @@
     text: "#667483",
     grid: "#edf1f4",
     border: "#d6dee6",
-    zoneLine: "#c3ccd6",
     fontFamily: 'var(--font-geist-sans), "Noto Sans TC", Arial, sans-serif',
   };
 
@@ -177,16 +176,9 @@
       })
     );
 
-    ZONES.slice(0, -1).forEach(function (zone, position) {
-      series.createPriceLine({
-        price: zone.limit,
-        color: THEME.zoneLine,
-        lineWidth: 1,
-        lineStyle: 2,
-        axisLabelVisible: true,
-        title: zone.label + "/" + ZONES[position + 1].label,
-      });
-    });
+    // The zone boundaries are stated in the panel description instead of drawn
+    // on the chart, which kept four dashed lines and their 25/45/55/75 axis
+    // labels competing with the series itself.
 
     chart.timeScale().fitContent();
 
