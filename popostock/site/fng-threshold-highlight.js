@@ -21,6 +21,7 @@
   var INSTRUMENTS = /^(SPY|QQQ|SMH|CNN-FNG)\b/;
 
   var threshold = DEFAULT_THRESHOLD;
+  var showHighlights = true;
   var readings = null; // sorted ascending [{time, value}]
   var overlays = [];
   var controls = [];
@@ -81,6 +82,10 @@
     var frame = 0;
     var render = function () {
       window.cancelAnimationFrame(frame);
+      if (!showHighlights) {
+        layer.replaceChildren();
+        return;
+      }
       frame = window.requestAnimationFrame(function () {
         var flagged = highlightedTimes(points);
         var placed = points.flatMap(function (point) {
@@ -230,9 +235,24 @@
 
     var summary = document.createElement("span");
 
+    var toggleLabel = document.createElement("label");
+    toggleLabel.style.cssText =
+      "display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;";
+    var toggle = document.createElement("input");
+    toggle.type = "checkbox";
+    toggle.checked = showHighlights;
+    toggle.style.cssText = "cursor:pointer;";
+    toggle.setAttribute("aria-label", "顯示或隱藏閥值紅色區塊");
+    var toggleText = document.createElement("span");
+    toggleText.textContent = "顯示紅色區塊";
+    toggleLabel.appendChild(toggle);
+    toggleLabel.appendChild(toggleText);
+
     var sync = function () {
       labelValue.textContent = String(threshold);
       slider.value = String(threshold);
+      slider.disabled = !showHighlights;
+      toggle.checked = showHighlights;
       summary.textContent =
         countFlagged().toLocaleString("zh-TW") + " 個交易日不高於閥值";
     };
@@ -246,9 +266,18 @@
     slider.addEventListener("input", onChange);
     slider.addEventListener("change", onChange);
 
+    toggle.addEventListener("change", function (event) {
+      showHighlights = !!event.currentTarget.checked;
+      renderAll();
+    });
+
+    // The shared stylesheet lays this control out as three columns; the
+    // toggle adds a fourth.
+    wrapper.style.gridTemplateColumns = "auto minmax(180px,1fr) auto auto";
     wrapper.appendChild(label);
     wrapper.appendChild(slider);
     wrapper.appendChild(summary);
+    wrapper.appendChild(toggleLabel);
     host.appendChild(wrapper);
 
     controls.push({ sync: sync });
