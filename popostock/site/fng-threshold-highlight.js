@@ -1,9 +1,13 @@
 /*
- * CNN Fear & Greed threshold highlights for the 美股大盤 charts.
+ * Fear-threshold highlights for the 美股大盤 charts.
  *
- * Mirrors the TAIEX/VIX volatility-threshold feature: sessions whose Fear &
- * Greed reading sits at or below the threshold are shaded red across the SPY,
- * QQQ and SMH candlestick charts.
+ * Two independent signals shade the same charts:
+ *   - CNN Fear & Greed at or BELOW its threshold (low reading = fear)
+ *   - CBOE VIX at or ABOVE its threshold (high reading = fear)
+ *
+ * Each signal owns its own overlay layer per chart. The band colour is
+ * translucent, so a session both signals flag composites into a deeper red
+ * without any special-casing.
  *
  * The candlestick charts belong to the React bundle, so the bundle patch calls
  * window.__popostockFngHighlight.attach(container, chart, points) for each one
@@ -12,17 +16,53 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "data/market/CNN-FNG.json";
-  var DEFAULT_THRESHOLD = 20;
-  var MIN_THRESHOLD = 0;
-  var MAX_THRESHOLD = 100;
-  // Every 美股大盤 panel, including the index's own chart; TAIEX keeps its
+  // Every 美股大盤 panel, including the two index charts; TAIEX keeps its
   // separate volatility highlight and must not be picked up here.
-  var INSTRUMENTS = /^(SPY|QQQ|SMH|CNN-FNG)\b/;
+  var INSTRUMENTS = /^(SPY|QQQ|SMH|CNN-FNG|VIX)\b/;
 
-  var threshold = DEFAULT_THRESHOLD;
-  var showHighlights = true;
-  var readings = null; // sorted ascending [{time, value}]
+  var SIGNALS = [
+    {
+      key: "fng",
+      dataUrl: "data/market/CNN-FNG.json",
+      controlAttribute: "data-fng-threshold",
+      inputId: "fng-threshold",
+      label: "恐懼貪婪指數閥值",
+      toggleLabel: "顯示紅色區塊",
+      summarySuffix: " 個交易日不高於閥值",
+      readingKey: "fngValue",
+      // Fear is a LOW Fear & Greed reading.
+      meets: function (value, threshold) {
+        return value <= threshold;
+      },
+      threshold: 20,
+      min: 0,
+      max: 100,
+      step: 1,
+      show: true,
+      readings: null,
+    },
+    {
+      key: "vix",
+      dataUrl: "data/market/VIX.json",
+      controlAttribute: "data-vix-threshold",
+      inputId: "vix-threshold",
+      label: "VIX 閥值",
+      toggleLabel: "顯示紅色區塊",
+      summarySuffix: " 個交易日不低於閥值",
+      readingKey: "close",
+      // Fear is a HIGH VIX reading, so the comparison is inverted.
+      meets: function (value, threshold) {
+        return value >= threshold;
+      },
+      threshold: 30,
+      min: 10,
+      max: 90,
+      step: 1,
+      show: true,
+      readings: null,
+    },
+  ];
+
   var overlays = [];
   var controls = [];
   var syncingRange = false;
@@ -48,11 +88,12 @@
 
   /*
    * The charts may be aggregated by day, week or month, so a bar is shaded when
-   * any Fear & Greed session inside that bar's span meets the threshold. Bar
-   * spans come from the chart's own points, which keeps every interval correct.
+   * any session inside that bar's span meets the threshold. Bar spans come from
+   * the chart's own points, which keeps every interval correct.
    */
-  function highlightedTimes(points) {
+  function highlightedTimes(signal, points) {
     var flagged = new Set();
+    var readings = signal.readings;
     if (!readings || !points.length) return flagged;
 
     var index = 0;
@@ -63,7 +104,7 @@
       for (var j = index; j < readings.length; j++) {
         if (readings[j].time < from) continue;
         if (to !== null && readings[j].time >= to) break;
-        if (readings[j].value <= threshold) {
+        if (signal.meets(readings[j].value, signal.threshold)) {
           flagged.add(from);
           break;
         }
@@ -72,48 +113,70 @@
     return flagged;
   }
 
+  function countFlagged(signal) {
+    if (!signal.readings) return 0;
+    return signal.readings.filter(function (reading) {
+      return signal.meets(reading.value, signal.threshold);
+    }).length;
+  }
+
   function createOverlay(container, chart, points) {
-    var layer = document.createElement("div");
-    layer.className = "threshold-highlight-layer";
-    layer.dataset.fngLayer = "1";
-    layer.setAttribute("aria-hidden", "true");
-    container.appendChild(layer);
+    // One layer per signal. They stack, so a session both signals flag shows
+    // two translucent bands over each other and reads as a deeper red.
+    var layers = SIGNALS.map(function (signal) {
+      var layer = document.createElement("div");
+      layer.className = "threshold-highlight-layer";
+      layer.dataset.fngLayer = "1";
+      layer.dataset.signal = signal.key;
+      layer.setAttribute("aria-hidden", "true");
+      container.appendChild(layer);
+      return { signal: signal, node: layer };
+    });
 
     var frame = 0;
     var render = function () {
       window.cancelAnimationFrame(frame);
-      if (!showHighlights) {
-        layer.replaceChildren();
-        return;
-      }
+
+      // Clear hidden signals synchronously: unchecking a toggle should take
+      // effect at once rather than waiting for the next animation frame.
+      var visible = layers.filter(function (entry) {
+        if (entry.signal.show) return true;
+        entry.node.replaceChildren();
+        return false;
+      });
+      if (!visible.length) return;
+
       frame = window.requestAnimationFrame(function () {
-        var flagged = highlightedTimes(points);
         var placed = points.flatMap(function (point) {
           var x = chart.timeScale().timeToCoordinate(point.time);
           return x === null ? [] : [{ point: point, x: Number(x) }];
         });
-        var fragment = document.createDocumentFragment();
-        placed.forEach(function (entry, i) {
-          if (!flagged.has(entry.point.time)) return;
-          var previous = placed[i - 1] ? placed[i - 1].x : undefined;
-          var next = placed[i + 1] ? placed[i + 1].x : undefined;
-          var leftSpan =
-            previous === undefined
-              ? next === undefined
-                ? 8
-                : next - entry.x
-              : entry.x - previous;
-          var rightSpan = next === undefined ? leftSpan : next - entry.x;
-          var left = entry.x - leftSpan / 2;
-          var right = entry.x + rightSpan / 2;
-          if (right < 0 || left > container.clientWidth) return;
-          var band = document.createElement("span");
-          band.dataset.thresholdDate = entry.point.time;
-          band.style.left = left + "px";
-          band.style.width = Math.max(1, right - left) + "px";
-          fragment.appendChild(band);
+        visible.forEach(function (entry) {
+          var flagged = highlightedTimes(entry.signal, points);
+          var fragment = document.createDocumentFragment();
+          placed.forEach(function (placedPoint, i) {
+            if (!flagged.has(placedPoint.point.time)) return;
+            var previous = placed[i - 1] ? placed[i - 1].x : undefined;
+            var next = placed[i + 1] ? placed[i + 1].x : undefined;
+            var leftSpan =
+              previous === undefined
+                ? next === undefined
+                  ? 8
+                  : next - placedPoint.x
+                : placedPoint.x - previous;
+            var rightSpan =
+              next === undefined ? leftSpan : next - placedPoint.x;
+            var left = placedPoint.x - leftSpan / 2;
+            var right = placedPoint.x + rightSpan / 2;
+            if (right < 0 || left > container.clientWidth) return;
+            var band = document.createElement("span");
+            band.dataset.thresholdDate = placedPoint.point.time;
+            band.style.left = left + "px";
+            band.style.width = Math.max(1, right - left) + "px";
+            fragment.appendChild(band);
+          });
+          entry.node.replaceChildren(fragment);
         });
-        layer.replaceChildren(fragment);
       });
     };
 
@@ -137,7 +200,9 @@
       } catch (error) {
         /* chart already disposed */
       }
-      layer.remove();
+      layers.forEach(function (entry) {
+        entry.node.remove();
+      });
     };
 
     var overlay = {
@@ -184,13 +249,6 @@
     }
   }
 
-  function countFlagged() {
-    if (!readings) return 0;
-    return readings.filter(function (r) {
-      return r.value <= threshold;
-    }).length;
-  }
-
   function dropOverlays(match) {
     overlays = overlays.filter(function (overlay) {
       if (!match(overlay)) return true;
@@ -211,27 +269,27 @@
     });
   }
 
-  function buildControl(host) {
+  function buildControl(host, signal) {
     host.innerHTML = "";
     var wrapper = document.createElement("div");
     wrapper.className = "volatility-threshold-control";
 
     var label = document.createElement("label");
-    label.htmlFor = "fng-threshold";
+    label.htmlFor = signal.inputId;
     var labelText = document.createElement("span");
-    labelText.textContent = "恐懼貪婪指數閥值";
+    labelText.textContent = signal.label;
     var labelValue = document.createElement("strong");
     label.appendChild(labelText);
     label.appendChild(labelValue);
 
     var slider = document.createElement("input");
     slider.type = "range";
-    slider.id = "fng-threshold";
-    slider.min = String(MIN_THRESHOLD);
-    slider.max = String(MAX_THRESHOLD);
-    slider.step = "1";
-    slider.value = String(threshold);
-    slider.setAttribute("aria-label", "調整恐懼貪婪指數閥值");
+    slider.id = signal.inputId;
+    slider.min = String(signal.min);
+    slider.max = String(signal.max);
+    slider.step = String(signal.step);
+    slider.value = String(signal.threshold);
+    slider.setAttribute("aria-label", "調整" + signal.label);
 
     var summary = document.createElement("span");
 
@@ -240,34 +298,34 @@
       "display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;";
     var toggle = document.createElement("input");
     toggle.type = "checkbox";
-    toggle.checked = showHighlights;
+    toggle.checked = signal.show;
     toggle.style.cssText = "cursor:pointer;";
-    toggle.setAttribute("aria-label", "顯示或隱藏閥值紅色區塊");
+    toggle.setAttribute("aria-label", "顯示或隱藏" + signal.label + "紅色區塊");
     var toggleText = document.createElement("span");
-    toggleText.textContent = "顯示紅色區塊";
+    toggleText.textContent = signal.toggleLabel;
     toggleLabel.appendChild(toggle);
     toggleLabel.appendChild(toggleText);
 
     var sync = function () {
-      labelValue.textContent = String(threshold);
-      slider.value = String(threshold);
-      slider.disabled = !showHighlights;
-      toggle.checked = showHighlights;
+      labelValue.textContent = String(signal.threshold);
+      slider.value = String(signal.threshold);
+      slider.disabled = !signal.show;
+      toggle.checked = signal.show;
       summary.textContent =
-        countFlagged().toLocaleString("zh-TW") + " 個交易日不高於閥值";
+        countFlagged(signal).toLocaleString("zh-TW") + signal.summarySuffix;
     };
 
     var onChange = function (event) {
       var next = Number(event.currentTarget.value);
-      if (Number.isNaN(next) || next === threshold) return;
-      threshold = next;
+      if (Number.isNaN(next) || next === signal.threshold) return;
+      signal.threshold = next;
       renderAll();
     };
     slider.addEventListener("input", onChange);
     slider.addEventListener("change", onChange);
 
     toggle.addEventListener("change", function (event) {
-      showHighlights = !!event.currentTarget.checked;
+      signal.show = !!event.currentTarget.checked;
       renderAll();
     });
 
@@ -286,10 +344,14 @@
 
   function scanControls(root) {
     var scope = root && root.querySelectorAll ? root : document;
-    scope.querySelectorAll("[data-fng-threshold]").forEach(function (host) {
-      if (host.dataset.fngThresholdReady === "1") return;
-      host.dataset.fngThresholdReady = "1";
-      buildControl(host);
+    SIGNALS.forEach(function (signal) {
+      scope
+        .querySelectorAll("[" + signal.controlAttribute + "]")
+        .forEach(function (host) {
+          if (host.dataset.thresholdControlReady === "1") return;
+          host.dataset.thresholdControlReady = "1";
+          buildControl(host, signal);
+        });
     });
   }
 
@@ -331,27 +393,35 @@
     },
   };
 
-  fetch(getBaseUrl() + "/" + DATA_URL)
-    .then(function (response) {
-      if (!response.ok) throw new Error("HTTP " + response.status);
-      return response.json();
-    })
-    .then(function (data) {
-      readings = (data && data.values ? data.values : [])
-        .filter(function (point) {
-          return point && point.time && typeof point.fngValue === "number";
-        })
-        .map(function (point) {
-          return { time: point.time, value: point.fngValue };
-        })
-        .sort(function (a, b) {
-          return a.time < b.time ? -1 : a.time > b.time ? 1 : 0;
-        });
-      renderAll();
-    })
-    .catch(function () {
-      readings = [];
-    });
+  SIGNALS.forEach(function (signal) {
+    fetch(getBaseUrl() + "/" + signal.dataUrl)
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then(function (data) {
+        signal.readings = (data && data.values ? data.values : [])
+          .filter(function (point) {
+            return (
+              point &&
+              point.time &&
+              typeof point[signal.readingKey] === "number"
+            );
+          })
+          .map(function (point) {
+            return { time: point.time, value: point[signal.readingKey] };
+          })
+          .sort(function (a, b) {
+            return a.time < b.time ? -1 : a.time > b.time ? 1 : 0;
+          });
+        renderAll();
+      })
+      .catch(function () {
+        // An unavailable feed must not hide the other signal's bands.
+        signal.readings = [];
+        renderAll();
+      });
+  });
 
   function watch() {
     scanControls(document);
