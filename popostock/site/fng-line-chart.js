@@ -20,6 +20,9 @@
     fontFamily: 'var(--font-geist-sans), "Noto Sans TC", Arial, sans-serif',
   };
 
+  // The site's teal, matching the TAIEX panel this ratio chart sits under.
+  var RATIO_LINE_COLOR = "#08756f";
+
   // Ordered from most fearful to most greedy; neutral stays amber so the
   // fear and greed ends of the scale never read as the same colour.
   var ZONES = [
@@ -44,6 +47,62 @@
   function fngLabel(value) {
     return zoneFor(value).label;
   }
+
+  function buildRatioReadingBar(latest) {
+    var bar = document.createElement("div");
+    bar.className = "fng-reading-bar";
+    bar.style.cssText =
+      "display:flex;align-items:baseline;gap:10px;padding:10px 0;" +
+      "border-bottom:1px solid #e5eaf0;margin-bottom:10px;";
+
+    var value = document.createElement("span");
+    value.style.cssText =
+      "font-size:28px;font-weight:700;color:" + RATIO_LINE_COLOR + ";";
+    value.textContent = latest.value.toFixed(2) + "%";
+
+    var note = document.createElement("span");
+    note.style.cssText = "font-size:13px;color:" + THEME.text + ";";
+    note.textContent = "推算值";
+
+    var date = document.createElement("span");
+    date.style.cssText = "font-size:13px;color:" + THEME.text + ";margin-left:auto;";
+    date.textContent = latest.time;
+
+    bar.appendChild(value);
+    bar.appendChild(note);
+    bar.appendChild(date);
+    return bar;
+  }
+
+  var PROFILES = [
+    {
+      attribute: "data-fng-chart",
+      valueKey: "fngValue",
+      lineColor: undefined, // per-point zone colours win over this
+      joinsThresholdGroup: true,
+      readingBar: buildReadingBar,
+      legend: buildLegend,
+      point: function (point) {
+        return {
+          time: point.time,
+          value: point.fngValue,
+          color: fngColor(point.fngValue),
+        };
+      },
+    },
+    {
+      attribute: "data-ratio-chart",
+      valueKey: "value",
+      lineColor: RATIO_LINE_COLOR,
+      // The margin ratio belongs to 台股大盤; the threshold group is 美股大盤.
+      joinsThresholdGroup: false,
+      readingBar: buildRatioReadingBar,
+      legend: null,
+      point: function (point) {
+        return { time: point.time, value: point.value };
+      },
+    },
+  ];
 
   function getBaseUrl() {
     var match = window.location.href.match(/^(https?:\/\/[^\/]+\/popostock)/);
@@ -124,15 +183,15 @@
     return legend;
   }
 
-  function renderChart(container, lc, values) {
+  function renderChart(container, lc, values, profile) {
     var chartDiv = document.createElement("div");
     // position:relative anchors the absolutely positioned threshold overlay.
     chartDiv.style.cssText = "width:100%;height:220px;position:relative;";
 
     container.innerHTML = "";
-    container.appendChild(buildReadingBar(values[values.length - 1]));
+    container.appendChild(profile.readingBar(values[values.length - 1]));
     container.appendChild(chartDiv);
-    container.appendChild(buildLegend());
+    if (profile.legend) container.appendChild(profile.legend());
 
     var chart = lc.createChart(chartDiv, {
       layout: {
@@ -160,6 +219,7 @@
     });
 
     var series = chart.addSeries(lc.LineSeries, {
+      color: profile.lineColor,
       lineWidth: 2,
       crosshairMarkerRadius: 4,
       crosshairMarkerBorderColor: THEME.background,
@@ -167,15 +227,7 @@
       lastValueVisible: false,
     });
 
-    series.setData(
-      values.map(function (point) {
-        return {
-          time: point.time,
-          value: point.fngValue,
-          color: fngColor(point.fngValue),
-        };
-      })
-    );
+    series.setData(values.map(profile.point));
 
     // The zone boundaries are stated in the panel description instead of drawn
     // on the chart, which kept four dashed lines and their 25/45/55/75 axis
@@ -210,13 +262,14 @@
     // Join the 美股大盤 group: this chart then shares the candlesticks' date
     // range and carries the same below-threshold shading.
     var highlight = window.__popostockFngHighlight;
-    if (highlight && typeof highlight.attach === "function") {
+    if (profile.joinsThresholdGroup && highlight &&
+        typeof highlight.attach === "function") {
       synced = true;
       highlight.attach(chartDiv, chart, values);
     }
   }
 
-  function initChart(container, dataUrl) {
+  function initChart(container, dataUrl, profile) {
     if (!container || !dataUrl) return;
     // React can re-mount the panel; only ever build one chart per element.
     if (container.dataset.fngChartReady === "1") return;
@@ -235,7 +288,7 @@
         var data = results[0];
         var lc = results[1];
         var values = (data && data.values ? data.values : []).filter(function (point) {
-          return point && typeof point.fngValue === "number" && point.time;
+          return point && point.time && typeof point[profile.valueKey] === "number";
         });
         if (!values.length) {
           message(container, "資訊為空");
@@ -245,7 +298,7 @@
         values.sort(function (a, b) {
           return a.time < b.time ? -1 : a.time > b.time ? 1 : 0;
         });
-        renderChart(container, lc, values);
+        renderChart(container, lc, values, profile);
       })
       .catch(function () {
         container.dataset.fngChartReady = "";
@@ -255,8 +308,12 @@
 
   function scan(root) {
     var scope = root && root.querySelectorAll ? root : document;
-    scope.querySelectorAll("[data-fng-chart]").forEach(function (element) {
-      initChart(element, element.getAttribute("data-fng-chart"));
+    PROFILES.forEach(function (profile) {
+      scope
+        .querySelectorAll("[" + profile.attribute + "]")
+        .forEach(function (element) {
+          initChart(element, element.getAttribute(profile.attribute), profile);
+        });
     });
   }
 
@@ -270,9 +327,11 @@
         for (var j = 0; j < added.length; j++) {
           var node = added[j];
           if (node.nodeType !== 1) continue;
-          if (node.hasAttribute && node.hasAttribute("data-fng-chart")) {
-            initChart(node, node.getAttribute("data-fng-chart"));
-          }
+          PROFILES.forEach(function (profile) {
+            if (node.hasAttribute && node.hasAttribute(profile.attribute)) {
+              initChart(node, node.getAttribute(profile.attribute), profile);
+            }
+          });
           scan(node);
         }
       }
