@@ -30,7 +30,10 @@ def load_market(source: Path) -> list[dict]:
             continue
         item = json.loads(path.read_text(encoding="utf-8"))
         symbol = str(item["code"]).upper()
-        if symbol in {"TAIEX", "VIXTWN"}:
+        declared_category = item.get("category")
+        if declared_category:
+            category = str(declared_category)
+        elif symbol in {"TAIEX", "VIXTWN"}:
             category = "index"
         elif symbol in {"SPY", "QQQ", "SMH"}:
             category = "us_etf"
