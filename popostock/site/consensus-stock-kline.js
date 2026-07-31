@@ -153,7 +153,7 @@
     modal.setAttribute("aria-hidden", "true");
     modal.innerHTML =
       '<section class="consensus-kline-dialog" role="dialog" aria-modal="true" aria-labelledby="consensus-kline-title">' +
-      '<header class="consensus-kline-header"><div><p class="consensus-kline-eyebrow">共識加碼股票</p>' +
+      '<header class="consensus-kline-header"><div><p class="consensus-kline-eyebrow">共識加減碼股票</p>' +
       '<h2 class="consensus-kline-title" id="consensus-kline-title"></h2>' +
       '<p class="consensus-kline-subtitle">近一年官方日 K · 含成交量</p></div>' +
       '<button class="consensus-kline-close" type="button" aria-label="關閉 K 線">×</button></header>' +
