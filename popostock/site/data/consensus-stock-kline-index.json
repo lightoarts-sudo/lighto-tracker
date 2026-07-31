@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-31T11:49:32+08:00",
-  "consensusDate": "2026-07-30",
+  "generatedAt": "2026-07-31T18:04:23+08:00",
+  "consensusDate": "2026-07-31",
   "thresholdTwd": 100000000,
   "stocks": [
     {
@@ -21,10 +21,10 @@
     },
     {
       "code": "2308",
-      "name": "台達電",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "name": "台達電子",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
@@ -38,9 +38,9 @@
     {
       "code": "2330",
       "name": "台積電",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
@@ -54,9 +54,9 @@
     {
       "code": "2360",
       "name": "致茂",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
@@ -94,17 +94,17 @@
     {
       "code": "3008",
       "name": "大立光",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
       "code": "3017",
-      "name": "奇鋐",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "name": "奇鋐科技",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
@@ -124,19 +124,35 @@
       "historyPoints": 243
     },
     {
+      "code": "3231",
+      "name": "緯創",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243
+    },
+    {
+      "code": "3529",
+      "name": "力旺",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243
+    },
+    {
       "code": "3653",
-      "name": "健策",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "name": "健策精密",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
       "code": "3665",
       "name": "貿聯-KY",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 242
     },
     {
@@ -158,9 +174,9 @@
     {
       "code": "6239",
       "name": "力成",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
@@ -172,11 +188,19 @@
       "historyPoints": 243
     },
     {
+      "code": "6510",
+      "name": "精測",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243
+    },
+    {
       "code": "6669",
-      "name": "緯穎",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
+      "name": "緯穎科技",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
       "historyPoints": 243
     },
     {
