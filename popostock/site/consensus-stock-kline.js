@@ -12,6 +12,7 @@
   var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
   var stockNames = new Map();
+  var stockBuySessions = new Map();
   var libraryPromise = null;
   var activeChart = null;
   var activeResizeObserver = null;
@@ -138,6 +139,7 @@
       ".consensus-kline-reading strong{color:#06275f;font-size:20px}" +
       ".consensus-kline-reading span:last-child{margin-left:auto}" +
       ".consensus-kline-chart{width:100%;height:430px}" +
+      ".consensus-kline-marker-note{margin:10px 0 0;color:#667483;font-size:12px;font-weight:700}" +
       ".consensus-kline-message{display:grid;place-items:center;min-height:260px;color:#667483;font-weight:750}" +
       "@media(max-width:720px){.consensus-kline-modal{padding:10px}.consensus-kline-dialog{max-height:calc(100vh - 20px);border-radius:12px}.consensus-kline-header{padding:16px}.consensus-kline-title{font-size:20px}.consensus-kline-body{padding:14px 12px 16px}.consensus-kline-chart{height:340px}.consensus-kline-reading{align-items:flex-start;flex-wrap:wrap}.consensus-kline-reading span:last-child{width:100%;margin-left:0}}";
     document.head.appendChild(style);
@@ -199,7 +201,45 @@
     body.appendChild(message);
   }
 
-  function renderChart(modal, lc, payload) {
+  /*
+   * Mark the sessions where active ETFs added to the stock with an up arrow
+   * under the candle. Markers whose date is not in the series are dropped:
+   * the consensus history only reaches back to the holding-change baseline,
+   * while the chart shows a full year.
+   */
+  function applyBuyMarkers(lc, series, code, values) {
+    var sessions = stockBuySessions.get(code) || [];
+    if (!sessions.length) return 0;
+    var chartDates = new Set(
+      values.map(function (point) {
+        return point.time;
+      }),
+    );
+    var markers = sessions
+      .filter(function (session) {
+        return session && chartDates.has(session.date);
+      })
+      .map(function (session) {
+        return {
+          time: session.date,
+          position: "belowBar",
+          color: "#c23d4b",
+          shape: "arrowUp",
+          size: 1,
+        };
+      });
+    if (!markers.length) return 0;
+    if (typeof lc.createSeriesMarkers === "function") {
+      lc.createSeriesMarkers(series, markers);
+    } else if (typeof series.setMarkers === "function") {
+      series.setMarkers(markers);
+    } else {
+      return 0;
+    }
+    return markers.length;
+  }
+
+  function renderChart(modal, lc, code, payload) {
     var values = (payload.values || [])
       .filter(function (point) {
         return point && point.time &&
@@ -306,6 +346,14 @@
         };
       }),
     );
+    var markerCount = applyBuyMarkers(lc, candles, code, values);
+    if (markerCount) {
+      var legend = document.createElement("p");
+      legend.className = "consensus-kline-marker-note";
+      legend.textContent =
+        "🔼 主動 ETF 加碼日 · 共 " + markerCount + " 天（僅涵蓋共識統計起算後的交易日）";
+      body.appendChild(legend);
+    }
     chart.timeScale().fitContent();
     activeChart = chart;
 
@@ -349,7 +397,7 @@
     ])
       .then(function (results) {
         if (requestId !== activeRequest) return;
-        renderChart(modal, results[1], results[0]);
+        renderChart(modal, results[1], code, results[0]);
       })
       .catch(function () {
         if (requestId !== activeRequest) return;
@@ -375,6 +423,10 @@
           var code = String(stock.code || stock.symbol || "");
           if (/^\d{4}$/.test(code)) {
             stockNames.set(code, String(stock.name || code));
+            stockBuySessions.set(
+              code,
+              Array.isArray(stock.buySessions) ? stock.buySessions : [],
+            );
           }
         });
         scan(document);

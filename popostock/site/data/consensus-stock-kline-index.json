@@ -1,23 +1,147 @@
 {
-  "generatedAt": "2026-08-01T12:01:52+08:00",
+  "generatedAt": "2026-08-01T13:13:31+08:00",
   "consensusDate": "2026-07-31",
   "thresholdTwd": 100000000,
   "stocks": [
     {
       "code": "2059",
       "name": "川湖科技",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-08",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 161900000
+        },
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 242400000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 170000000
+        },
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 86550000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 3,
+          "lots": 19,
+          "amountTwd": 147250000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 8,
+          "amountTwd": 63800000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 23677500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 159500000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 13,
+          "amountTwd": 99255000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 7217500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 213750000
+        }
+      ]
     },
     {
       "code": "2303",
       "name": "聯電",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 31,
+          "amountTwd": 4681000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 363,
+          "amountTwd": 47190000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 1149,
+          "amountTwd": 154540500
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 5,
+          "lots": 1673,
+          "amountTwd": 232547000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 133000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 222,
+          "amountTwd": 27195000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 2881250
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 1314,
+          "amountTwd": 140926500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 3378,
+          "amountTwd": 367357500
+        }
+      ]
     },
     {
       "code": "2308",
@@ -25,15 +149,133 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-17",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 174000000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 74,
+          "amountTwd": 126170000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 941,
+          "amountTwd": 1726735000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 5,
+          "lots": 368,
+          "amountTwd": 691840000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 3,
+          "lots": 178,
+          "amountTwd": 337755000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 14700000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 34800000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 22,
+          "amountTwd": 35585000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 13,
+          "amountTwd": 19630000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 235,
+          "amountTwd": 364250000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 7,
+          "lots": 844,
+          "amountTwd": 1379940000
+        }
+      ]
     },
     {
       "code": "2327",
       "name": "國巨*",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 236
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 236,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 250,
+          "amountTwd": 251250000
+        },
+        {
+          "date": "2026-07-09",
+          "etfCount": 2,
+          "lots": 1000,
+          "amountTwd": 900000000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 239400000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 465,
+          "amountTwd": 311550000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 377,
+          "amountTwd": 265031000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 85,
+          "amountTwd": 48662500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 164,
+          "amountTwd": 86264000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 339,
+          "amountTwd": 166703250
+        }
+      ]
     },
     {
       "code": "2330",
@@ -41,15 +283,187 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 732000000
+        },
+        {
+          "date": "2026-07-08",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 246500000
+        },
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 732000000
+        },
+        {
+          "date": "2026-07-17",
+          "etfCount": 1,
+          "lots": 130,
+          "amountTwd": 297700000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 58000000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 194,
+          "amountTwd": 467540000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 76,
+          "amountTwd": 182400000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 47750000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 22,
+          "amountTwd": 51810000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 70425000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 55,
+          "amountTwd": 125812500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 190,
+          "amountTwd": 423700000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 270,
+          "amountTwd": 600750000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 5,
+          "lots": 2201,
+          "amountTwd": 5249385000
+        }
+      ]
     },
     {
       "code": "2345",
       "name": "智邦",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 245500000
+        },
+        {
+          "date": "2026-07-08",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": 144900000
+        },
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 40,
+          "amountTwd": 96200000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 9120000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 234000000
+        },
+        {
+          "date": "2026-07-17",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 146300000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 4,
+          "lots": 328,
+          "amountTwd": 685520000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 49,
+          "amountTwd": 108780000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 78,
+          "amountTwd": 178230000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 6,
+          "amountTwd": 14010000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 32,
+          "amountTwd": 71280000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 4,
+          "lots": 99,
+          "amountTwd": 208890000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 47,
+          "amountTwd": 92825000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 4,
+          "lots": 338,
+          "amountTwd": 659945000
+        }
+      ]
     },
     {
       "code": "2360",
@@ -57,7 +471,57 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 14,
+          "amountTwd": 25690000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 4,
+          "lots": 188,
+          "amountTwd": 378820000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 4,
+          "lots": 147,
+          "amountTwd": 312375000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 6480000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 26,
+          "amountTwd": 51480000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 14900000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 4,
+          "lots": 756,
+          "amountTwd": 1428840000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 4,
+          "lots": 457,
+          "amountTwd": 932280000
+        }
+      ]
     },
     {
       "code": "2368",
@@ -65,39 +529,349 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 2030000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 7416000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 1781000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 101,
+          "amountTwd": 74942000
+        }
+      ]
     },
     {
       "code": "2383",
       "name": "台光電",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 150,
+          "amountTwd": 821250000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 522000000
+        },
+        {
+          "date": "2026-07-09",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": 317700000
+        },
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 40,
+          "amountTwd": 205000000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 4970000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 254000000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 18,
+          "amountTwd": 79110000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 4,
+          "lots": 220,
+          "amountTwd": 1062600000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 79,
+          "amountTwd": 404875000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 41240000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 17,
+          "amountTwd": 83087500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 3,
+          "lots": 40,
+          "amountTwd": 190600000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 53,
+          "amountTwd": 240885000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 19,
+          "amountTwd": 80370000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 6,
+          "lots": 186,
+          "amountTwd": 784920000
+        }
+      ]
     },
     {
       "code": "2408",
       "name": "南亞科技",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-09",
+          "etfCount": 1,
+          "lots": 500,
+          "amountTwd": 217750000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 134400000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 144300000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 2018,
+          "amountTwd": 817290000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 1457,
+          "amountTwd": 649093500
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 276,
+          "amountTwd": 119646000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 119,
+          "amountTwd": 49652750
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 131,
+          "amountTwd": 51876000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 25602500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 631,
+          "amountTwd": 219903500
+        }
+      ]
     },
     {
       "code": "2449",
       "name": "京元電子",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 1074,
+          "amountTwd": 341532000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 1004,
+          "amountTwd": 271582000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 892,
+          "amountTwd": 263140000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 29225000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 226,
+          "amountTwd": 61811000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 8,
+          "lots": 415.95,
+          "amountTwd": 102011738
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 1219,
+          "amountTwd": 253247250
+        }
+      ]
     },
     {
       "code": "2454",
       "name": "聯發科",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 123750000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 80600000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 14640000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 187000000
+        },
+        {
+          "date": "2026-07-17",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 168500000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 29,
+          "amountTwd": 96860000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 5,
+          "lots": 47,
+          "amountTwd": 172490000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 4,
+          "lots": 63,
+          "amountTwd": 242550000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 11,
+          "amountTwd": 43450000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 85,
+          "amountTwd": 329800000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 7235000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 52,
+          "amountTwd": 176150000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 40,
+          "amountTwd": 126500000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 6,
+          "lots": 168,
+          "amountTwd": 543480000
+        }
+      ]
     },
     {
       "code": "3008",
@@ -105,7 +879,81 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 8530000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 15,
+          "amountTwd": 60600000
+        },
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 106500000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 7750000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 19925000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 61,
+          "amountTwd": 244000000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 11,
+          "amountTwd": 44357500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 63,
+          "amountTwd": 253732500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 3,
+          "lots": 22,
+          "amountTwd": 87835000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 35,
+          "amountTwd": 134662500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 32,
+          "amountTwd": 123200000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 3,
+          "lots": 104,
+          "amountTwd": 413920000
+        }
+      ]
     },
     {
       "code": "3017",
@@ -113,7 +961,81 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 53400000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 151550000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 3,
+          "lots": 192,
+          "amountTwd": 409920000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 4,
+          "lots": 214,
+          "amountTwd": 496480000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 22650000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 13,
+          "amountTwd": 31460000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 29190000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 15,
+          "amountTwd": 35475000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 3,
+          "lots": 90,
+          "amountTwd": 204750000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 27,
+          "amountTwd": 57577500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 4,
+          "lots": 143,
+          "amountTwd": 302445000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 3,
+          "lots": 300,
+          "amountTwd": 689250000
+        }
+      ]
     },
     {
       "code": "3026",
@@ -121,23 +1043,197 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 900,
+          "amountTwd": 866700000
+        },
+        {
+          "date": "2026-07-08",
+          "etfCount": 1,
+          "lots": 900,
+          "amountTwd": 857700000
+        },
+        {
+          "date": "2026-07-09",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 201000000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 459,
+          "amountTwd": 374085000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 2,
+          "lots": 650,
+          "amountTwd": 544700000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 110,
+          "amountTwd": 68310000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 500,
+          "amountTwd": 341000000
+        }
+      ]
     },
     {
       "code": "3037",
       "name": "欣興",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 91700000
+        },
+        {
+          "date": "2026-07-09",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 87500000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 87400000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 150,
+          "amountTwd": 140400000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 92,
+          "amountTwd": 69000000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 621,
+          "amountTwd": 512325000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 388,
+          "amountTwd": 351916000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 4,
+          "lots": 402,
+          "amountTwd": 359790000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 12,
+          "amountTwd": 10302000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": 49740000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 36,
+          "amountTwd": 28008000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 200,
+          "amountTwd": 147400000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 4,
+          "lots": 1123,
+          "amountTwd": 791153500
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 54,
+          "amountTwd": 42498000
+        }
+      ]
     },
     {
       "code": "3189",
       "name": "景碩科技",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 3,
+          "lots": 273,
+          "amountTwd": 185367000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 29,
+          "amountTwd": 23084000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 45,
+          "amountTwd": 35415000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 17387500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 47,
+          "amountTwd": 31466500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 6130000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 219,
+          "amountTwd": 128553000
+        }
+      ]
     },
     {
       "code": "3231",
@@ -145,7 +1241,51 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 100,
+          "amountTwd": 14350000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 171,
+          "amountTwd": 29497500
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 4,
+          "lots": 3706,
+          "amountTwd": 661521000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 34800000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 2166,
+          "amountTwd": 373093500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 108,
+          "amountTwd": 17712000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 2,
+          "lots": 2062,
+          "amountTwd": 352086500
+        }
+      ]
     },
     {
       "code": "3529",
@@ -153,7 +1293,27 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 93,
+          "amountTwd": 241800000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 54187500
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 2,
+          "lots": 102,
+          "amountTwd": 248370000
+        }
+      ]
     },
     {
       "code": "3653",
@@ -161,7 +1321,57 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 64000000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 93,
+          "amountTwd": 327360000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 70000000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 92,
+          "amountTwd": 341320000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 3,
+          "lots": 119,
+          "amountTwd": 401625000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 98,
+          "amountTwd": 330260000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 32,
+          "amountTwd": 102880000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 4,
+          "lots": 183,
+          "amountTwd": 619912500
+        }
+      ]
     },
     {
       "code": "3665",
@@ -169,15 +1379,145 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 242
+      "historyPoints": 242,
+      "buySessions": [
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 382000000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 4,
+          "lots": 116,
+          "amountTwd": 211120000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 5,
+          "lots": 184,
+          "amountTwd": 368000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 4,
+          "lots": 448,
+          "amountTwd": 947520000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 7,
+          "lots": 684,
+          "amountTwd": 1515060000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 152,
+          "amountTwd": 345040000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 150500000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 4,
+          "lots": 377,
+          "amountTwd": 817147500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 111,
+          "amountTwd": 236985000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 87,
+          "amountTwd": 174435000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 3,
+          "lots": 318,
+          "amountTwd": 657465000
+        }
+      ]
     },
     {
       "code": "5274",
       "name": "信驊",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-07",
+          "etfCount": 2,
+          "lots": 12.4,
+          "amountTwd": 178746000
+        },
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 41715000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 33,
+          "amountTwd": 426195000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 10,
+          "amountTwd": 141000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 24,
+          "amountTwd": 372240000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 3,
+          "lots": 18,
+          "amountTwd": 283725000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 29180000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 27520000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 41,
+          "amountTwd": 538740000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 72325000
+        }
+      ]
     },
     {
       "code": "5439",
@@ -185,7 +1525,15 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 270,
+          "amountTwd": 69255000
+        }
+      ]
     },
     {
       "code": "6147",
@@ -193,15 +1541,121 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 109,
+          "amountTwd": 17876000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 509,
+          "amountTwd": 96710000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 474000
+        }
+      ]
     },
     {
       "code": "6223",
       "name": "旺矽科技",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 137100000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 63100000
+        },
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 132800000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 63400000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 126600000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 43640000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 28,
+          "amountTwd": 164500000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 53,
+          "amountTwd": 318000000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 4.5,
+          "amountTwd": 27956250
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 13,
+          "amountTwd": 77610000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 28225000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 21,
+          "amountTwd": 112402500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 8,
+          "amountTwd": 39720000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 92,
+          "amountTwd": 447120000
+        }
+      ]
     },
     {
       "code": "6239",
@@ -209,15 +1663,121 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 500,
+          "amountTwd": 136000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 500,
+          "amountTwd": 147000000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 450,
+          "amountTwd": 136575000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 250,
+          "amountTwd": 71250000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 60,
+          "amountTwd": 14820000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 1015,
+          "amountTwd": 223300000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 3,
+          "lots": 599,
+          "amountTwd": 139567000
+        }
+      ]
     },
     {
       "code": "6274",
       "name": "台燿",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 163000000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 2790000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 143500000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 9,
+          "amountTwd": 10125000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 5,
+          "lots": 121,
+          "amountTwd": 165770000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 25,
+          "amountTwd": 31687500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 26,
+          "amountTwd": 32630000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 24,
+          "amountTwd": 28500000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 3,
+          "lots": 43,
+          "amountTwd": 46762500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 4,
+          "lots": 227,
+          "amountTwd": 233583000
+        }
+      ]
     },
     {
       "code": "6510",
@@ -225,7 +1785,21 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 18,
+          "amountTwd": 47610000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 171500000
+        }
+      ]
     },
     {
       "code": "6515",
@@ -233,7 +1807,39 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 80250000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 13000000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 0.859,
+          "amountTwd": 5373045
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 1.748,
+          "amountTwd": 10623470
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 5722500
+        }
+      ]
     },
     {
       "code": "6669",
@@ -241,23 +1847,179 @@
       "sourceDate": "2026-07-31",
       "historyStart": "2025-07-31",
       "historyEnd": "2026-07-31",
-      "historyPoints": 243
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 50350000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 4905000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 3,
+          "lots": 85,
+          "amountTwd": 398225000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 4,
+          "lots": 50,
+          "amountTwd": 250000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 16500000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 3,
+          "lots": 146,
+          "amountTwd": 809205000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 82,
+          "amountTwd": 459610000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 61,
+          "amountTwd": 343430000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 3,
+          "lots": 62,
+          "amountTwd": 335420000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 4,
+          "lots": 41,
+          "amountTwd": 213507500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 39,
+          "amountTwd": 195975000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 5,
+          "lots": 242,
+          "amountTwd": 1293490000
+        }
+      ]
     },
     {
       "code": "7769",
       "name": "鴻  勁",
-      "sourceDate": "2026-07-30",
+      "sourceDate": "2026-07-31",
       "historyStart": "2025-11-27",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 161
+      "historyEnd": "2026-07-31",
+      "historyPoints": 162,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 127900000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 134400000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 3,
+          "lots": 32,
+          "amountTwd": 192160000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 5,
+          "lots": 42,
+          "amountTwd": 273000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 18,
+          "amountTwd": 115290000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 32637500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 42227500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 23320000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 10935000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 26,
+          "amountTwd": 138840000
+        }
+      ]
     },
     {
       "code": "8299",
       "name": "群聯電子",
-      "sourceDate": "2026-07-30",
-      "historyStart": "2025-07-30",
-      "historyEnd": "2026-07-30",
-      "historyPoints": 243
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 41,
+          "amountTwd": 78515000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 4657500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 154250000
+        }
+      ]
     }
   ]
 }
