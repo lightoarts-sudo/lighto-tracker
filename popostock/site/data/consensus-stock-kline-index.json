@@ -1,8 +1,172 @@
 {
-  "generatedAt": "2026-08-01T13:13:31+08:00",
+  "generatedAt": "2026-08-01T20:40:01+08:00",
   "consensusDate": "2026-07-31",
   "thresholdTwd": 100000000,
   "stocks": [
+    {
+      "code": "1303",
+      "name": "南亞",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 4966,
+          "amountTwd": 970853000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 6,
+          "lots": 1840,
+          "amountTwd": 382720000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 3,
+          "lots": 1681,
+          "amountTwd": 345445500
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 353,
+          "amountTwd": 65658000
+        }
+      ]
+    },
+    {
+      "code": "1560",
+      "name": "中砂",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 1414000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 250,
+          "amountTwd": 170625000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 113,
+          "amountTwd": 71303000
+        }
+      ]
+    },
+    {
+      "code": "1590",
+      "name": "亞德客-KY",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 55,
+          "amountTwd": 73425000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 1360000
+        }
+      ]
+    },
+    {
+      "code": "1785",
+      "name": "光洋科",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 112,
+          "amountTwd": 11704000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 1338000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 19,
+          "amountTwd": 1995000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 2045000
+        }
+      ]
+    },
+    {
+      "code": "2027",
+      "name": "大成鋼",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 576,
+          "amountTwd": 23702400
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 4210,
+          "amountTwd": 184187500
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 35,
+          "amountTwd": 1552250
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 265,
+          "amountTwd": 11646750
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 299,
+          "amountTwd": 13245700
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1246,
+          "amountTwd": 53328800
+        }
+      ]
+    },
     {
       "code": "2059",
       "name": "川湖科技",
@@ -220,6 +384,40 @@
       ]
     },
     {
+      "code": "2317",
+      "name": "鴻海",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 960,
+          "amountTwd": 236160000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 161,
+          "amountTwd": 40491500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 31,
+          "amountTwd": 7192000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 2,
+          "lots": 131,
+          "amountTwd": 32389750
+        }
+      ]
+    },
+    {
       "code": "2327",
       "name": "國巨*",
       "sourceDate": "2026-07-31",
@@ -372,6 +570,44 @@
       ]
     },
     {
+      "code": "2337",
+      "name": "旺宏",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 636250
+        }
+      ]
+    },
+    {
+      "code": "2344",
+      "name": "華邦電子",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 110,
+          "amountTwd": 17105000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 85,
+          "amountTwd": 13982500
+        }
+      ]
+    },
+    {
       "code": "2345",
       "name": "智邦",
       "sourceDate": "2026-07-31",
@@ -466,6 +702,40 @@
       ]
     },
     {
+      "code": "2351",
+      "name": "順德",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-13",
+          "etfCount": 1,
+          "lots": 800,
+          "amountTwd": 168400000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 1167000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 23,
+          "amountTwd": 3588000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 636000
+        }
+      ]
+    },
+    {
       "code": "2360",
       "name": "致茂",
       "sourceDate": "2026-07-31",
@@ -554,6 +824,70 @@
           "etfCount": 1,
           "lots": 101,
           "amountTwd": 74942000
+        }
+      ]
+    },
+    {
+      "code": "2376",
+      "name": "技嘉",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 668000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 2317000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 235,
+          "amountTwd": 81780000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 24465000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 346500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 333500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 2280250
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 3813000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 2,
+          "lots": 66,
+          "amountTwd": 22027500
         }
       ]
     },
@@ -658,6 +992,74 @@
       ]
     },
     {
+      "code": "2395",
+      "name": "研華",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 29800000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 1783500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 95,
+          "amountTwd": 53057500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 26,
+          "amountTwd": 14222000
+        }
+      ]
+    },
+    {
+      "code": "2404",
+      "name": "漢唐",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-17",
+          "etfCount": 1,
+          "lots": 80,
+          "amountTwd": 92800000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 150,
+          "amountTwd": 172500000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 47,
+          "amountTwd": 55225000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 40,
+          "amountTwd": 43400000
+        }
+      ]
+    },
+    {
       "code": "2408",
       "name": "南亞科技",
       "sourceDate": "2026-07-31",
@@ -724,6 +1126,40 @@
           "etfCount": 2,
           "lots": 631,
           "amountTwd": 219903500
+        }
+      ]
+    },
+    {
+      "code": "2412",
+      "name": "中華電信",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 190,
+          "amountTwd": 26410000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 194,
+          "amountTwd": 26869000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 628,
+          "amountTwd": 86821000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 140750
         }
       ]
     },
@@ -870,6 +1306,170 @@
           "etfCount": 6,
           "lots": 168,
           "amountTwd": 543480000
+        }
+      ]
+    },
+    {
+      "code": "2492",
+      "name": "華新科技",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-09",
+          "etfCount": 1,
+          "lots": 400,
+          "amountTwd": 186200000
+        }
+      ]
+    },
+    {
+      "code": "2885",
+      "name": "元大金",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 14,
+          "amountTwd": 880600
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 195,
+          "amountTwd": 11953500
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 112,
+          "amountTwd": 7067200
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 2014,
+          "amountTwd": 128896000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1300,
+          "amountTwd": 81510000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 600,
+          "amountTwd": 37350000
+        }
+      ]
+    },
+    {
+      "code": "2886",
+      "name": "兆豐金融控股",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 3,
+          "lots": 557,
+          "amountTwd": 27070200
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 2500,
+          "amountTwd": 124437500
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 3,
+          "lots": 1520,
+          "amountTwd": 76836000
+        }
+      ]
+    },
+    {
+      "code": "2887",
+      "name": "台新新光金融控股",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 3502.15,
+          "amountTwd": 123100572
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 68.52,
+          "amountTwd": 2377644
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 9,
+          "amountTwd": 292950
+        }
+      ]
+    },
+    {
+      "code": "2891",
+      "name": "中信金",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 128,
+          "amountTwd": 8025600
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 582,
+          "amountTwd": 37248000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 63400
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 3875,
+          "amountTwd": 240831250
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 92,
+          "amountTwd": 5713200
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 355,
+          "amountTwd": 22915250
         }
       ]
     },
@@ -1184,6 +1784,22 @@
       ]
     },
     {
+      "code": "3105",
+      "name": "穩懋",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 83,
+          "amountTwd": 26020500
+        }
+      ]
+    },
+    {
       "code": "3189",
       "name": "景碩科技",
       "sourceDate": "2026-07-31",
@@ -1288,6 +1904,58 @@
       ]
     },
     {
+      "code": "3443",
+      "name": "創意",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 54,
+          "amountTwd": 222210000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 61,
+          "amountTwd": 266570000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 8640000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 25605000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 17,
+          "amountTwd": 67447500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": 48750000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 13590000
+        }
+      ]
+    },
+    {
       "code": "3529",
       "name": "力旺",
       "sourceDate": "2026-07-31",
@@ -1312,6 +1980,70 @@
           "etfCount": 2,
           "lots": 102,
           "amountTwd": 248370000
+        }
+      ]
+    },
+    {
+      "code": "3583",
+      "name": "辛耘",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 4596000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 19,
+          "amountTwd": 13832000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 75,
+          "amountTwd": 57525000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 38075000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 36625000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 12,
+          "amountTwd": 8742000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 54,
+          "amountTwd": 38313000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 52,
+          "amountTwd": 34164000
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 3,
+          "lots": 82,
+          "amountTwd": 52849000
         }
       ]
     },
@@ -1372,6 +2104,15 @@
           "amountTwd": 619912500
         }
       ]
+    },
+    {
+      "code": "3661",
+      "name": "世芯電子",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": []
     },
     {
       "code": "3665",
@@ -1446,6 +2187,196 @@
           "etfCount": 3,
           "lots": 318,
           "amountTwd": 657465000
+        }
+      ]
+    },
+    {
+      "code": "3711",
+      "name": "日月光投控",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 67900000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 130200000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 2564000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 136600000
+        },
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 365,
+          "amountTwd": 248930000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 4,
+          "lots": 766,
+          "amountTwd": 457302000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 385,
+          "amountTwd": 243705000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 394,
+          "amountTwd": 258464000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": 39060000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 43575000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 62,
+          "amountTwd": 37293000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 3,
+          "lots": 123,
+          "amountTwd": 69679500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 53,
+          "amountTwd": 27719000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": 29955000
+        }
+      ]
+    },
+    {
+      "code": "4904",
+      "name": "遠傳電信",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 95,
+          "amountTwd": 9690000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 92,
+          "amountTwd": 9476000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 767,
+          "amountTwd": 79768000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 2.003,
+          "amountTwd": 213820
+        }
+      ]
+    },
+    {
+      "code": "4958",
+      "name": "臻鼎-KY",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 71,
+          "amountTwd": 33973500
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 292,
+          "amountTwd": 148628000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 1681,
+          "amountTwd": 939679000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 109,
+          "amountTwd": 57879000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 1976000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 17,
+          "amountTwd": 6702250
+        }
+      ]
+    },
+    {
+      "code": "4979",
+      "name": "華星光",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 1874,
+          "amountTwd": 792233500
         }
       ]
     },
@@ -1536,6 +2467,92 @@
       ]
     },
     {
+      "code": "5536",
+      "name": "聖暉*",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": 15015000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 46,
+          "amountTwd": 52440000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 1155000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 8820000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 9,
+          "amountTwd": 9382500
+        }
+      ]
+    },
+    {
+      "code": "6139",
+      "name": "亞翔",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 32,
+          "amountTwd": 24800000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 844000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 120,
+          "amountTwd": 104340000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 51,
+          "amountTwd": 40902000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 2,
+          "lots": 31,
+          "amountTwd": 22351000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 3427500
+        }
+      ]
+    },
+    {
       "code": "6147",
       "name": "頎邦",
       "sourceDate": "2026-07-31",
@@ -1560,6 +2577,50 @@
           "etfCount": 1,
           "lots": 3,
           "amountTwd": 474000
+        }
+      ]
+    },
+    {
+      "code": "6182",
+      "name": "合晶",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 774000
+        }
+      ]
+    },
+    {
+      "code": "6187",
+      "name": "萬潤",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 322,
+          "amountTwd": 339710000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 6842500
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 2,
+          "lots": 27,
+          "amountTwd": 25258500
         }
       ]
     },
@@ -1780,6 +2841,125 @@
       ]
     },
     {
+      "code": "6446",
+      "name": "藥華醫藥",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": 9400000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 8260000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 1157500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 122,
+          "amountTwd": 142435000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 6540000
+        }
+      ]
+    },
+    {
+      "code": "6488",
+      "name": "環球晶圓",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 174,
+          "amountTwd": 232290000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 220,
+          "amountTwd": 265100000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 4545000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 4,
+          "lots": 133,
+          "amountTwd": 168245000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 68,
+          "amountTwd": 81940000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 336,
+          "amountTwd": 416640000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 21,
+          "amountTwd": 25357500
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 2,
+          "lots": 17,
+          "amountTwd": 17595000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 29,
+          "amountTwd": 28376500
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 61,
+          "amountTwd": 50538500
+        }
+      ]
+    },
+    {
+      "code": "6505",
+      "name": "台塑石化",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": []
+    },
+    {
       "code": "6510",
       "name": "精測",
       "sourceDate": "2026-07-31",
@@ -1838,6 +3018,76 @@
           "etfCount": 1,
           "lots": 1,
           "amountTwd": 5722500
+        }
+      ]
+    },
+    {
+      "code": "6531",
+      "name": "愛普*",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 1716000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 46,
+          "amountTwd": 43378000
+        },
+        {
+          "date": "2026-07-16",
+          "etfCount": 1,
+          "lots": 120,
+          "amountTwd": 109080000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": 4680000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 2,
+          "lots": 253,
+          "amountTwd": 229724000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 10740000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 799500
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 1392000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 4525500
+        },
+        {
+          "date": "2026-07-31",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 3280000
         }
       ]
     },
@@ -1924,6 +3174,40 @@
       ]
     },
     {
+      "code": "6805",
+      "name": "富世達",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 2,
+          "lots": 120,
+          "amountTwd": 169800000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 130,
+          "amountTwd": 187850000
+        },
+        {
+          "date": "2026-07-29",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 1305000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 1,
+          "lots": 26,
+          "amountTwd": 32500000
+        }
+      ]
+    },
+    {
       "code": "7769",
       "name": "鴻  勁",
       "sourceDate": "2026-07-31",
@@ -1994,6 +3278,150 @@
       ]
     },
     {
+      "code": "8021",
+      "name": "尖點",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 42,
+          "amountTwd": 17199000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 4566000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 2,
+          "lots": 21,
+          "amountTwd": 8757000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 1071,
+          "amountTwd": 420099750
+        }
+      ]
+    },
+    {
+      "code": "8046",
+      "name": "南亞電路",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-06",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 107500000
+        },
+        {
+          "date": "2026-07-07",
+          "etfCount": 1,
+          "lots": 200,
+          "amountTwd": 206000000
+        },
+        {
+          "date": "2026-07-14",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 129000000
+        },
+        {
+          "date": "2026-07-15",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 141500000
+        },
+        {
+          "date": "2026-07-20",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 110500000
+        },
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 100,
+          "amountTwd": 119000000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 3,
+          "lots": 11,
+          "amountTwd": 14355000
+        },
+        {
+          "date": "2026-07-23",
+          "etfCount": 1,
+          "lots": 46,
+          "amountTwd": 57155000
+        },
+        {
+          "date": "2026-07-24",
+          "etfCount": 2,
+          "lots": 43,
+          "amountTwd": 50310000
+        },
+        {
+          "date": "2026-07-27",
+          "etfCount": 1,
+          "lots": 32,
+          "amountTwd": 34480000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 30270000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 75,
+          "amountTwd": 65475000
+        }
+      ]
+    },
+    {
+      "code": "8210",
+      "name": "勤  誠",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-21",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 23300000
+        },
+        {
+          "date": "2026-07-22",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": 23000000
+        },
+        {
+          "date": "2026-07-30",
+          "etfCount": 2,
+          "lots": 37,
+          "amountTwd": 36112000
+        }
+      ]
+    },
+    {
       "code": "8299",
       "name": "群聯電子",
       "sourceDate": "2026-07-31",
@@ -2018,6 +3446,28 @@
           "etfCount": 1,
           "lots": 100,
           "amountTwd": 154250000
+        }
+      ]
+    },
+    {
+      "code": "8996",
+      "name": "高力熱處",
+      "sourceDate": "2026-07-31",
+      "historyStart": "2025-07-31",
+      "historyEnd": "2026-07-31",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-07-20",
+          "etfCount": 2,
+          "lots": 36,
+          "amountTwd": 34956000
+        },
+        {
+          "date": "2026-07-28",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": 27990000
         }
       ]
     }
