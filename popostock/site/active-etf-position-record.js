@@ -166,16 +166,21 @@
         return point.time;
       }),
     );
+    var counts = { buy: 0, sell: 0 };
     var markers = position.events
       .filter(function (event) {
-        return event.action === "buy" && chartDates.has(event.date);
+        return chartDates.has(event.date);
       })
       .map(function (event) {
+        var isBuy = event.action === "buy";
+        counts[isBuy ? "buy" : "sell"] += 1;
+        // Buys sit under the bar, sells above it, so a date with both stays
+        // readable instead of stacking two arrows on the same spot.
         return {
           time: event.date,
-          position: "belowBar",
-          color: "#c23d4b",
-          shape: "arrowUp",
+          position: isBuy ? "belowBar" : "aboveBar",
+          color: isBuy ? "#c23d4b" : "#16845b",
+          shape: isBuy ? "arrowUp" : "arrowDown",
           size: 1,
         };
       })
@@ -197,23 +202,34 @@
       });
       fromIndex = Math.max(0, (index < 0 ? values.length : index) - 12);
     }
-    if (fromIndex > 0 && values.length - fromIndex > 3) {
-      chart.timeScale().setVisibleRange({
-        from: values[fromIndex].time,
-        to: values[values.length - 1].time,
-      });
-    } else {
-      chart.timeScale().fitContent();
-    }
+    var applyRange = function () {
+      if (fromIndex > 0 && values.length - fromIndex > 3) {
+        chart.timeScale().setVisibleRange({
+          from: values[fromIndex].time,
+          to: values[values.length - 1].time,
+        });
+      } else {
+        chart.timeScale().fitContent();
+      }
+    };
 
     activeChart = chart;
+    // A chart created while the container still measures 0 wide keeps a bar
+    // spacing that leaves the candles crushed against the right edge, so the
+    // range has to be reapplied once a real width arrives.
+    var sized = container.clientWidth > 0;
     var resize = function () {
       if (!activeChart || !container.clientWidth) return;
       activeChart.applyOptions({
         width: container.clientWidth,
         height: container.clientHeight,
       });
+      if (!sized) {
+        sized = true;
+        applyRange();
+      }
     };
+    applyRange();
     if (typeof ResizeObserver === "function") {
       activeResizeObserver = new ResizeObserver(resize);
       activeResizeObserver.observe(container);
@@ -221,7 +237,7 @@
       window.addEventListener("resize", resize, { once: true });
     }
     resize();
-    return markers.length;
+    return counts;
   }
 
   function lots(value) {
@@ -259,9 +275,11 @@
     var style = document.createElement("style");
     style.id = "active-etf-position-styles";
     style.textContent =
-      ".active-etf-change-card li[data-position-stock]{cursor:pointer;border-radius:7px;transition:background .16s ease}" +
-      ".active-etf-change-card li[data-position-stock]:hover{background:#eef8f7}" +
-      ".active-etf-change-card li[data-position-stock]:focus-visible{outline:3px solid rgba(8,117,111,.32);outline-offset:-2px}" +
+      ".active-etf-change-card li[data-position-stock],.daily-change-panel tr[data-position-stock]{cursor:pointer;transition:background .16s ease}" +
+      ".active-etf-change-card li[data-position-stock]{border-radius:7px}" +
+      ".active-etf-change-card li[data-position-stock]:hover,.daily-change-panel tr[data-position-stock]:hover>td{background:#eef8f7}" +
+      ".active-etf-change-card li[data-position-stock]:focus-visible,.daily-change-panel tr[data-position-stock]:focus-visible{outline:3px solid rgba(8,117,111,.32);outline-offset:-2px}" +
+      ".daily-change-panel tr[data-position-stock] td[data-label=\"股票\"] strong{text-decoration:underline;text-decoration-color:rgba(8,117,111,.45);text-underline-offset:3px}" +
       ".active-etf-position-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(5,24,48,.66);backdrop-filter:blur(4px)}" +
       ".active-etf-position-modal.is-open{display:flex}" +
       ".active-etf-position-dialog{width:min(880px,100%);max-height:min(860px,calc(100vh - 40px));overflow:auto;border:1px solid #d6dee6;border-radius:16px;background:#fff;box-shadow:0 28px 70px rgba(3,25,52,.3)}" +
@@ -542,16 +560,18 @@
         slot.innerHTML =
           '<div class="active-etf-position-chart"></div>' +
           '<p class="active-etf-position-chart-note"></p>';
-        var markerCount = drawChart(
+        var counts = drawChart(
           slot.querySelector(".active-etf-position-chart"),
           lc,
           values,
           position,
         );
-        slot.querySelector(".active-etf-position-chart-note").textContent =
-          markerCount
-            ? "🔼 這檔 ETF 的加碼日 · 共 " + markerCount + " 天（可捲動或縮放查看整年走勢）"
-            : "近一年官方日 K（追蹤期內沒有可標記的加碼日）";
+        var parts = [];
+        if (counts.buy) parts.push("🔼 加碼 " + counts.buy + " 天");
+        if (counts.sell) parts.push("🔽 減碼 " + counts.sell + " 天");
+        slot.querySelector(".active-etf-position-chart-note").textContent = parts.length
+          ? parts.join(" · ") + "（這檔 ETF 的操作日 · 可捲動或縮放查看整年走勢）"
+          : "近一年官方日 K（追蹤期內沒有可標記的操作日）";
       })
       .catch(function () {
         if (requestId !== activeRequest) return;
@@ -607,16 +627,51 @@
       if (!codeElement || !nameElement) return;
       var stockCode = codeElement.textContent.trim();
       if (!stockCode) return;
-      item.dataset.positionStock = stockCode;
-      item.dataset.positionEtf = etfCode;
-      item.dataset.positionEtfName = etfName.trim();
-      item.dataset.positionName = nameElement.textContent.trim();
-      item.setAttribute("role", "button");
-      item.setAttribute("tabindex", "0");
-      item.setAttribute(
-        "title",
-        "查看 " + etfName.trim() + " 操作 " + nameElement.textContent.trim() + " 的紀錄與成本",
+      markActivatable(
+        item,
+        etfCode,
+        etfName.trim(),
+        stockCode,
+        nameElement.textContent.trim(),
       );
+    });
+  }
+
+  function markActivatable(element, etfCode, etfName, stockCode, stockName) {
+    element.dataset.positionStock = stockCode;
+    element.dataset.positionEtf = etfCode;
+    element.dataset.positionEtfName = etfName;
+    element.dataset.positionName = stockName;
+    element.setAttribute("role", "button");
+    element.setAttribute("tabindex", "0");
+    element.setAttribute(
+      "title",
+      "查看 " + etfName + " 操作 " + stockName + " 的 K 線與加減碼紀錄",
+    );
+  }
+
+  /*
+   * The per-ETF detail page shows the same daily changes as a table. Its rows
+   * open the same dialog, with the ETF taken from the detail header so it
+   * follows whichever ETF is on screen.
+   */
+  function decorateDetailPanel(panel) {
+    var header = document.querySelector(".detail-header");
+    var eyebrow = header && header.querySelector(".eyebrow");
+    var match = eyebrow && eyebrow.textContent.match(/(\d{5}[A-Z])/);
+    if (!match) return;
+    var etfCode = match[1];
+    var titleElement = header.querySelector("h2");
+    var etfName = titleElement ? titleElement.textContent.trim() : etfCode;
+    panel.querySelectorAll("tbody tr").forEach(function (row) {
+      var cell = row.querySelector('td[data-label="股票"]');
+      if (!cell) return;
+      var codeElement = cell.querySelector(".code-note");
+      var nameElement = cell.querySelector("strong");
+      if (!codeElement || !nameElement) return;
+      var stockCode = codeElement.textContent.trim();
+      if (!stockCode || row.dataset.positionStock === stockCode) return;
+      markActivatable(row, etfCode, etfName, stockCode, nameElement.textContent.trim());
     });
   }
 
@@ -624,6 +679,13 @@
     var scope = root && root.querySelectorAll ? root : document;
     if (scope.matches && scope.matches(".active-etf-change-card")) decorateCard(scope);
     scope.querySelectorAll(".active-etf-change-card").forEach(decorateCard);
+    if (scope.matches && scope.matches(".daily-change-panel")) decorateDetailPanel(scope);
+    scope.querySelectorAll(".daily-change-panel").forEach(decorateDetailPanel);
+    // React swaps the detail body in place, so a re-render that only replaces
+    // the rows still has to be picked up.
+    if (scope.closest && scope.closest(".daily-change-panel")) {
+      decorateDetailPanel(scope.closest(".daily-change-panel"));
+    }
   }
 
   function activate(item) {
@@ -668,7 +730,7 @@
         }
         return;
       }
-      var item = event.target.closest("li[data-position-stock]");
+      var item = event.target.closest("[data-position-stock]");
       if (item) activate(item);
     });
     document.addEventListener("keydown", function (event) {
@@ -676,7 +738,7 @@
         closeModal();
         return;
       }
-      var item = event.target.closest ? event.target.closest("li[data-position-stock]") : null;
+      var item = event.target.closest ? event.target.closest("[data-position-stock]") : null;
       if (item && (event.key === "Enter" || event.key === " ")) {
         event.preventDefault();
         activate(item);
