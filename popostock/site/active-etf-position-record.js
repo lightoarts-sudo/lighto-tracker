@@ -311,6 +311,7 @@
       ".active-etf-position-dialog .active-etf-position-table td.is-buy{color:#c23d4b;font-weight:800}" +
       ".active-etf-position-dialog .active-etf-position-table td.is-sell{color:#16845b;font-weight:800}" +
       ".active-etf-position-scroll{overflow-x:auto}" +
+      ".active-etf-position-dialog .active-etf-position-source{display:inline-block;margin-left:6px;padding:1px 5px;border-radius:4px;background:#f0f3f6;color:#8794a3;font-size:10px;font-weight:800}" +
       ".active-etf-position-chart{width:100%;height:280px;margin:0 0 6px}" +
       ".active-etf-position-chart-note{margin:0 0 12px;color:#667483;font-size:12px;font-weight:700}" +
       ".active-etf-position-chart-missing{margin:0 0 12px;padding:9px 12px;border-radius:8px;background:#f5f8fa;color:#667483;font-size:12.5px}" +
@@ -491,6 +492,15 @@
         " 以先進先出沖銷到期初持股，這部分無法計算績效。",
       );
     }
+    if (position.externalEventCount > 0 && ledger.officialBaselineDate) {
+      notes.push(
+        ledger.baselineDate.replace(/-/g, "/") + " ~ " +
+        ledger.officialBaselineDate.replace(/-/g, "/") +
+        " 的持股張數來自第三方每日觀測（籌碼小宇），非投信官方揭露；" +
+        "這段期間的加減碼張數由張數差推導，金額一律以 TWSE／TPEx 官方收盤重新計價。" +
+        "明細表中這些日期標示「觀測」。",
+      );
+    }
     if (position.unknownCostLotsHeld > 0 && position.baselineLots === 0) {
       notes.push(
         "有 " + lots(position.unknownCostLotsHeld) + " 的加碼當日沒有官方價格，未列入成本計算。",
@@ -502,8 +512,12 @@
       .reverse()
       .map(function (event) {
         var isBuy = event.action === "buy";
+        var tag =
+          event.source === "external"
+            ? '<small class="active-etf-position-source">觀測</small>'
+            : "";
         return (
-          "<tr><td>" + event.date.replace(/-/g, "/") + "</td>" +
+          "<tr><td>" + event.date.replace(/-/g, "/") + tag + "</td>" +
           '<td class="' + (isBuy ? "is-buy" : "is-sell") + '">' + (isBuy ? "加碼" : "減碼") + "</td>" +
           '<td class="' + (isBuy ? "is-buy" : "is-sell") + '">' +
           (isBuy ? "+" : "−") + lots(Math.abs(event.lots)) + "</td>" +
