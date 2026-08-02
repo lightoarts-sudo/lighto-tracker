@@ -16,7 +16,13 @@
   "use strict";
 
   var DATA_PREFIX = "data/active-etf-positions/";
+  var MARKET_PREFIX = "data/market/";
+  var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
   var ledgers = new Map();
+  var candles = new Map();
+  var libraryPromise = null;
+  var activeChart = null;
+  var activeResizeObserver = null;
   var lastTrigger = null;
   var previousBodyOverflow = "";
   var activeRequest = 0;
@@ -42,6 +48,180 @@
         ledgers.set(etfCode, payload);
         return payload;
       });
+  }
+
+  function loadLibrary() {
+    if (window.LightweightCharts) return Promise.resolve(window.LightweightCharts);
+    if (libraryPromise) return libraryPromise;
+    libraryPromise = new Promise(function (resolve, reject) {
+      var source = baseUrl() + "/" + LIBRARY_FILE;
+      // consensus-stock-kline.js ships the same library; reuse its tag rather
+      // than downloading a second copy.
+      var existing = Array.from(document.scripts).find(function (script) {
+        return script.src === source || script.src.endsWith("/" + LIBRARY_FILE);
+      });
+      var script = existing || document.createElement("script");
+      script.addEventListener(
+        "load",
+        function () {
+          if (window.LightweightCharts) resolve(window.LightweightCharts);
+          else reject(new Error("LightweightCharts global missing"));
+        },
+        { once: true },
+      );
+      script.addEventListener(
+        "error",
+        function () {
+          reject(new Error("failed to load " + LIBRARY_FILE));
+        },
+        { once: true },
+      );
+      if (!existing) {
+        script.src = source;
+        document.head.appendChild(script);
+      }
+    });
+    return libraryPromise;
+  }
+
+  function loadCandles(stockCode) {
+    if (candles.has(stockCode)) return Promise.resolve(candles.get(stockCode));
+    return fetch(baseUrl() + "/" + MARKET_PREFIX + encodeURIComponent(stockCode) + ".json", {
+      cache: "no-store",
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then(function (payload) {
+        var values = (payload.values || [])
+          .filter(function (point) {
+            return point && point.time &&
+              [point.open, point.high, point.low, point.close].every(function (value) {
+                return typeof value === "number";
+              });
+          })
+          .sort(function (left, right) {
+            return left.time < right.time ? -1 : left.time > right.time ? 1 : 0;
+          });
+        candles.set(stockCode, values);
+        return values;
+      })
+      .catch(function () {
+        candles.set(stockCode, null);
+        return null;
+      });
+  }
+
+  function clearChart() {
+    if (activeResizeObserver) {
+      activeResizeObserver.disconnect();
+      activeResizeObserver = null;
+    }
+    if (activeChart) {
+      activeChart.remove();
+      activeChart = null;
+    }
+  }
+
+  function drawChart(container, lc, values, position) {
+    clearChart();
+    var chart = lc.createChart(container, {
+      layout: {
+        background: { type: lc.ColorType.Solid, color: "#ffffff" },
+        textColor: "#667483",
+        fontFamily: 'var(--font-geist-sans), "Noto Sans TC", Arial, sans-serif',
+        fontSize: 11,
+      },
+      width: container.clientWidth,
+      height: container.clientHeight,
+      crosshairMode: lc.CrosshairMode.Normal,
+      grid: { vertLines: { color: "#edf1f4" }, horzLines: { color: "#edf1f4" } },
+      rightPriceScale: { borderColor: "#d6dee6", scaleMargins: { top: 0.1, bottom: 0.16 } },
+      timeScale: { borderColor: "#d6dee6", rightOffset: 2 },
+    });
+    var series = chart.addSeries(lc.CandlestickSeries, {
+      upColor: "#c23d4b",
+      downColor: "#16845b",
+      borderUpColor: "#c23d4b",
+      borderDownColor: "#16845b",
+      wickUpColor: "#c23d4b",
+      wickDownColor: "#16845b",
+      priceLineVisible: false,
+    });
+    series.setData(
+      values.map(function (point) {
+        return {
+          time: point.time,
+          open: point.open,
+          high: point.high,
+          low: point.low,
+          close: point.close,
+        };
+      }),
+    );
+
+    var chartDates = new Set(
+      values.map(function (point) {
+        return point.time;
+      }),
+    );
+    var markers = position.events
+      .filter(function (event) {
+        return event.action === "buy" && chartDates.has(event.date);
+      })
+      .map(function (event) {
+        return {
+          time: event.date,
+          position: "belowBar",
+          color: "#c23d4b",
+          shape: "arrowUp",
+          size: 1,
+        };
+      })
+      .sort(function (left, right) {
+        return left.time < right.time ? -1 : 1;
+      });
+    if (markers.length) {
+      if (typeof lc.createSeriesMarkers === "function") lc.createSeriesMarkers(series, markers);
+      else if (typeof series.setMarkers === "function") series.setMarkers(markers);
+    }
+
+    // The whole year would squeeze the tracking window into the last few
+    // pixels, so open on the traded stretch and leave the rest scrollable.
+    var firstEvent = position.events.length ? position.events[0].date : null;
+    var fromIndex = 0;
+    if (firstEvent) {
+      var index = values.findIndex(function (point) {
+        return point.time >= firstEvent;
+      });
+      fromIndex = Math.max(0, (index < 0 ? values.length : index) - 12);
+    }
+    if (fromIndex > 0 && values.length - fromIndex > 3) {
+      chart.timeScale().setVisibleRange({
+        from: values[fromIndex].time,
+        to: values[values.length - 1].time,
+      });
+    } else {
+      chart.timeScale().fitContent();
+    }
+
+    activeChart = chart;
+    var resize = function () {
+      if (!activeChart || !container.clientWidth) return;
+      activeChart.applyOptions({
+        width: container.clientWidth,
+        height: container.clientHeight,
+      });
+    };
+    if (typeof ResizeObserver === "function") {
+      activeResizeObserver = new ResizeObserver(resize);
+      activeResizeObserver.observe(container);
+    } else {
+      window.addEventListener("resize", resize, { once: true });
+    }
+    resize();
+    return markers.length;
   }
 
   function lots(value) {
@@ -113,6 +293,10 @@
       ".active-etf-position-dialog .active-etf-position-table td.is-buy{color:#c23d4b;font-weight:800}" +
       ".active-etf-position-dialog .active-etf-position-table td.is-sell{color:#16845b;font-weight:800}" +
       ".active-etf-position-scroll{overflow-x:auto}" +
+      ".active-etf-position-chart{width:100%;height:280px;margin:0 0 6px}" +
+      ".active-etf-position-chart-note{margin:0 0 12px;color:#667483;font-size:12px;font-weight:700}" +
+      ".active-etf-position-chart-missing{margin:0 0 12px;padding:9px 12px;border-radius:8px;background:#f5f8fa;color:#667483;font-size:12.5px}" +
+      "@media(max-width:720px){.active-etf-position-chart{height:220px}}" +
       ".active-etf-position-closed{margin:14px 0 0;padding-top:12px;border-top:1px solid #edf1f4}" +
       ".active-etf-position-closed p{margin:0 0 7px;color:#667483;font-size:12px;font-weight:750}" +
       ".active-etf-position-closed div{display:flex;flex-wrap:wrap;gap:6px}" +
@@ -154,6 +338,7 @@
     var modal = document.getElementById("active-etf-position-modal");
     if (!modal || !modal.classList.contains("is-open")) return;
     activeRequest += 1;
+    clearChart();
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = previousBodyOverflow;
@@ -161,6 +346,9 @@
   }
 
   function showMessage(modal, text) {
+    // Switching positions replaces the body, so drop the old chart first or it
+    // keeps observing a detached node.
+    clearChart();
     var body = modal.querySelector(".active-etf-position-body");
     body.innerHTML = "";
     var message = document.createElement("div");
@@ -315,6 +503,7 @@
           return '<p class="active-etf-position-note">' + note + "</p>";
         })
         .join("") +
+      '<div class="active-etf-position-chart-slot"></div>' +
       '<div class="active-etf-position-scroll"><table class="active-etf-position-table">' +
       "<thead><tr><th>日期</th><th>動作</th><th>張數</th><th>價格</th><th>金額</th><th>累計持股</th></tr></thead>" +
       "<tbody>" + rows + "</tbody></table></div>" +
@@ -322,6 +511,53 @@
       '<p class="active-etf-position-method">' + ledger.costMethodology +
       " 追蹤期 " + ledger.baselineDate.replace(/-/g, "/") + " ~ " +
       ledger.latestDate.replace(/-/g, "/") + "（" + ledger.sessionCount + " 個交易日）。</p>";
+
+    mountChart(modal, body.querySelector(".active-etf-position-chart-slot"), position);
+  }
+
+  /*
+   * The chart is filled in after the rest of the dialog so a missing K-line —
+   * every overseas holding, and any domestic stock not yet backfilled — never
+   * blocks the numbers the user came for.
+   */
+  function mountChart(modal, slot, position) {
+    if (!slot) return;
+    var requestId = activeRequest;
+    var domestic = /^\d{4,6}$/.test(position.stockCode);
+    if (!domestic) {
+      slot.innerHTML =
+        '<p class="active-etf-position-chart-missing">海外標的沒有台灣官方日 K，僅顯示操作明細。</p>';
+      return;
+    }
+    Promise.all([loadCandles(position.stockCode), loadLibrary()])
+      .then(function (results) {
+        if (requestId !== activeRequest || !modal.classList.contains("is-open")) return;
+        var values = results[0];
+        var lc = results[1];
+        if (!values || !values.length) {
+          slot.innerHTML =
+            '<p class="active-etf-position-chart-missing">目前沒有這檔股票的官方日 K 資料。</p>';
+          return;
+        }
+        slot.innerHTML =
+          '<div class="active-etf-position-chart"></div>' +
+          '<p class="active-etf-position-chart-note"></p>';
+        var markerCount = drawChart(
+          slot.querySelector(".active-etf-position-chart"),
+          lc,
+          values,
+          position,
+        );
+        slot.querySelector(".active-etf-position-chart-note").textContent =
+          markerCount
+            ? "🔼 這檔 ETF 的加碼日 · 共 " + markerCount + " 天（可捲動或縮放查看整年走勢）"
+            : "近一年官方日 K（追蹤期內沒有可標記的加碼日）";
+      })
+      .catch(function () {
+        if (requestId !== activeRequest) return;
+        slot.innerHTML =
+          '<p class="active-etf-position-chart-missing">K 線載入失敗，操作明細不受影響。</p>';
+      });
   }
 
   function openRecord(etfCode, etfName, stockCode, stockName, trigger) {
