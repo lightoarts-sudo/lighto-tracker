@@ -496,7 +496,7 @@
       notes.push(
         ledger.baselineDate.replace(/-/g, "/") + " ~ " +
         ledger.officialBaselineDate.replace(/-/g, "/") +
-        " 的持股張數來自第三方每日觀測（籌碼小宇），非投信官方揭露；" +
+        " 的持股張數來自第三方每日觀測，非投信官方揭露；" +
         "這段期間的加減碼張數由張數差推導，金額一律以 TWSE／TPEx 官方收盤重新計價。" +
         "明細表中這些日期標示「觀測」。",
       );
