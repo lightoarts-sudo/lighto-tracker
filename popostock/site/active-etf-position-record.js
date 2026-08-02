@@ -20,6 +20,7 @@
   var lastTrigger = null;
   var previousBodyOverflow = "";
   var activeRequest = 0;
+  var openContext = null;
 
   function baseUrl() {
     var base = document.querySelector("base[href]");
@@ -112,6 +113,14 @@
       ".active-etf-position-dialog .active-etf-position-table td.is-buy{color:#c23d4b;font-weight:800}" +
       ".active-etf-position-dialog .active-etf-position-table td.is-sell{color:#16845b;font-weight:800}" +
       ".active-etf-position-scroll{overflow-x:auto}" +
+      ".active-etf-position-closed{margin:14px 0 0;padding-top:12px;border-top:1px solid #edf1f4}" +
+      ".active-etf-position-closed p{margin:0 0 7px;color:#667483;font-size:12px;font-weight:750}" +
+      ".active-etf-position-closed div{display:flex;flex-wrap:wrap;gap:6px}" +
+      ".active-etf-position-chip{padding:5px 10px;border:1px solid #d6dee6;border-radius:999px;background:#fff;color:#33485f;font-size:12px;font-family:inherit;cursor:pointer}" +
+      ".active-etf-position-chip:hover{background:#f3f6f8}" +
+      ".active-etf-position-chip b{margin-left:4px}" +
+      ".active-etf-position-chip.is-up b{color:#c23d4b}" +
+      ".active-etf-position-chip.is-down b{color:#16845b}" +
       ".active-etf-position-method{margin:12px 0 0;color:#8794a3;font-size:11.5px;line-height:1.6}" +
       ".active-etf-position-message{display:grid;place-items:center;min-height:180px;color:#667483;font-weight:750}" +
       "@media(max-width:720px){.active-etf-position-modal{padding:10px}.active-etf-position-dialog{max-height:calc(100vh - 20px);border-radius:12px}.active-etf-position-header{padding:16px}.active-etf-position-title{font-size:19px}.active-etf-position-body{padding:14px 12px 16px}}";
@@ -166,6 +175,41 @@
       "<strong" + (tone || "") + ">" + value + "</strong>" +
       (sub ? "<em" + (subTone || "") + ">" + sub + "</em>" : "") +
       "</div>"
+    );
+  }
+
+  /*
+   * A 加減碼 card only lists the stocks that moved on its own date, so a stock
+   * the ETF has fully sold is unreachable from the grid — exactly the position
+   * whose realised result is most worth seeing. Offer them from inside the
+   * dialog instead.
+   */
+  function closedPositionLinks(ledger, current) {
+    var closed = (ledger.positions || []).filter(function (item) {
+      return item.closed && item.stockCode !== current.stockCode && item.events.length;
+    });
+    if (!closed.length) return "";
+    closed.sort(function (left, right) {
+      return (left.realizedTwd || 0) - (right.realizedTwd || 0);
+    });
+    var chips = closed
+      .map(function (item) {
+        var tone = item.realizedTwd === null || item.realizedTwd === undefined
+          ? ""
+          : toneClass(item.realizedTwd);
+        var result = item.realizedTwd === null || item.realizedTwd === undefined
+          ? "成本未知"
+          : percent(item.realizedPct);
+        return (
+          '<button type="button" class="active-etf-position-chip' + tone +
+          '" data-closed-stock="' + item.stockCode + '">' +
+          item.stockName + " " + item.stockCode + " <b>" + result + "</b></button>"
+        );
+      })
+      .join("");
+    return (
+      '<div class="active-etf-position-closed"><p>' + ledger.instrumentName +
+      " 追蹤期內已出清（點擊查看績效）</p><div>" + chips + "</div></div>"
     );
   }
 
@@ -274,6 +318,7 @@
       '<div class="active-etf-position-scroll"><table class="active-etf-position-table">' +
       "<thead><tr><th>日期</th><th>動作</th><th>張數</th><th>價格</th><th>金額</th><th>累計持股</th></tr></thead>" +
       "<tbody>" + rows + "</tbody></table></div>" +
+      closedPositionLinks(ledger, position) +
       '<p class="active-etf-position-method">' + ledger.costMethodology +
       " 追蹤期 " + ledger.baselineDate.replace(/-/g, "/") + " ~ " +
       ledger.latestDate.replace(/-/g, "/") + "（" + ledger.sessionCount + " 個交易日）。</p>";
@@ -282,7 +327,8 @@
   function openRecord(etfCode, etfName, stockCode, stockName, trigger) {
     var modal = ensureModal();
     var requestId = ++activeRequest;
-    lastTrigger = trigger;
+    openContext = { etfCode: etfCode, etfName: etfName };
+    if (trigger) lastTrigger = trigger;
     previousBodyOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     modal.querySelector(".active-etf-position-title").textContent =
@@ -368,7 +414,25 @@
     }).observe(document.body, { childList: true, subtree: true });
 
     document.addEventListener("click", function (event) {
-      var item = event.target.closest ? event.target.closest("li[data-position-stock]") : null;
+      if (!event.target.closest) return;
+      var chip = event.target.closest("[data-closed-stock]");
+      if (chip && openContext) {
+        var ledger = ledgers.get(openContext.etfCode);
+        var target = ledger && (ledger.positions || []).find(function (item) {
+          return item.stockCode === chip.dataset.closedStock;
+        });
+        if (target) {
+          openRecord(
+            openContext.etfCode,
+            openContext.etfName,
+            target.stockCode,
+            target.stockName,
+            null,
+          );
+        }
+        return;
+      }
+      var item = event.target.closest("li[data-position-stock]");
       if (item) activate(item);
     });
     document.addEventListener("keydown", function (event) {
