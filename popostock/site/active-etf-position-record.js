@@ -103,7 +103,9 @@
       ".active-etf-position-note{margin:0 0 14px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:12.5px;line-height:1.6}" +
       // The release stylesheet paints every th navy; these selectors are scoped
       // to the dialog so the table reads as a panel, not a site table.
-      ".active-etf-position-dialog .active-etf-position-table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}" +
+      // min-width:0 overrides the release stylesheet's 900px table floor, which
+      // pushed 累計持股 off the edge of the dialog.
+      ".active-etf-position-dialog .active-etf-position-table{width:100%;min-width:0;border-collapse:collapse;font-size:12.5px;background:#fff}" +
       ".active-etf-position-dialog .active-etf-position-table th{padding:6px 6px;border-bottom:1px solid #d6dee6;background:#fff;color:#667483;font-size:11.5px;font-weight:800;text-align:right;white-space:nowrap}" +
       ".active-etf-position-dialog .active-etf-position-table th:first-child,.active-etf-position-dialog .active-etf-position-table td:first-child{text-align:left}" +
       ".active-etf-position-dialog .active-etf-position-table td{padding:6px 6px;border-bottom:1px solid #edf1f4;background:#fff;color:#06275f;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}" +
