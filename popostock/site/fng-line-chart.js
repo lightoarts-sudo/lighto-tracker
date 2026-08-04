@@ -48,6 +48,33 @@
     return zoneFor(value).label;
   }
 
+  function buildContractsReadingBar(latest) {
+    var bar = document.createElement("div");
+    bar.className = "fng-reading-bar";
+    bar.style.cssText =
+      "display:flex;align-items:baseline;gap:10px;padding:10px 0;" +
+      "border-bottom:1px solid #e5eaf0;margin-bottom:10px;";
+
+    var value = document.createElement("span");
+    value.style.cssText =
+      "font-size:28px;font-weight:700;color:" +
+      (latest.value >= 0 ? "#c23d4b" : "#16845b") + ";";
+    value.textContent = Math.round(latest.value).toLocaleString("zh-TW") + " 口";
+
+    var note = document.createElement("span");
+    note.style.cssText = "font-size:13px;color:" + THEME.text + ";";
+    note.textContent = latest.value >= 0 ? "淨空單" : "淨多單";
+
+    var date = document.createElement("span");
+    date.style.cssText = "font-size:13px;color:" + THEME.text + ";margin-left:auto;";
+    date.textContent = latest.time;
+
+    bar.appendChild(value);
+    bar.appendChild(note);
+    bar.appendChild(date);
+    return bar;
+  }
+
   function buildRatioReadingBar(latest) {
     var bar = document.createElement("div");
     bar.className = "fng-reading-bar";
@@ -97,6 +124,18 @@
       // The margin ratio belongs to 台股大盤; the threshold group is 美股大盤.
       joinsThresholdGroup: false,
       readingBar: buildRatioReadingBar,
+      legend: null,
+      point: function (point) {
+        return { time: point.time, value: point.value };
+      },
+    },
+    {
+      attribute: "data-contracts-chart",
+      valueKey: "value",
+      lineColor: "#33485f",
+      // 台股大盤 panel; the 美股大盤 threshold shading must not apply.
+      joinsThresholdGroup: false,
+      readingBar: buildContractsReadingBar,
       legend: null,
       point: function (point) {
         return { time: point.time, value: point.value };
