@@ -54,6 +54,19 @@
 .active-etf-movement-columns section>p{font-size:14px !important;padding:12px 0 !important}
 .active-etf-change-card>header strong{font-size:19px !important}
 .active-etf-change-card>header span{font-size:15px !important}
+
+/* 共識加碼統計：手機版原本一欄四列，整組要捲很久才看得完。
+   改成 2x2 讓四個數字並列，站台斷點為 720px。 */
+@media (width<=720px){
+  .consensus-summary{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .consensus-summary>div{padding:13px 14px !important;gap:4px !important;
+    border-right:1px solid var(--line) !important;
+    border-bottom:1px solid var(--line) !important}
+  .consensus-summary>div:nth-child(2n){border-right:0 !important}
+  .consensus-summary>div:nth-last-child(-n+2){border-bottom:0 !important}
+  .consensus-summary strong{font-size:21px !important;line-height:1.2 !important}
+  .consensus-summary span{font-size:12.5px !important}
+}
 </style>
   <script src="fng-line-chart.js" defer></script>
 <script src="fng-threshold-highlight.js" defer></script>
