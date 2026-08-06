@@ -32,7 +32,7 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-671220a4.js");
+      await import("/popostock/assets/index-675c7450.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js" defer data-popostock-url-state></script>
@@ -40,6 +40,20 @@
 /* 美股大盤區塊：標題放圖表上方（與手機版一致） */
 .taiex-header{flex-direction:column !important;align-items:stretch !important;gap:14px !important}
 .taiex-header .nav-chart-panel{min-width:0;width:100%}
+
+/* 加減碼卡片：原本股名 13px、代號 11px、金額 10px，手機上太小。
+   放大字級並拉開行距，維持原本的左右兩欄結構。 */
+.active-etf-movement-columns h3{font-size:15px !important;margin-bottom:12px !important}
+.active-etf-movement-columns li{padding:12px 0 !important;gap:14px !important}
+.active-etf-movement-columns li>span{gap:3px !important}
+.active-etf-movement-columns li strong{font-size:16px !important;line-height:1.35 !important}
+.active-etf-movement-columns li small{font-size:13px !important}
+.active-etf-movement-columns .active-etf-movement-value{text-align:right}
+.active-etf-movement-columns .active-etf-movement-value b{font-size:17px !important}
+.active-etf-movement-columns .active-etf-movement-value small{font-size:13px !important}
+.active-etf-movement-columns section>p{font-size:14px !important;padding:12px 0 !important}
+.active-etf-change-card>header strong{font-size:19px !important}
+.active-etf-change-card>header span{font-size:15px !important}
 </style>
   <script src="fng-line-chart.js" defer></script>
 <script src="fng-threshold-highlight.js" defer></script>
