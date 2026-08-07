@@ -19918,7 +19918,7 @@
       "name": "利安資金韓國基金(新元)",
       "category": "韓國股票",
       "ytdReturn": 123.04239,
-      "aumDate": "2026-06-30",
+      "aumDate": "2026-07-31",
       "updateCadence": "基金淨值每日更新；成分股依官方或資料供應商揭露更新",
       "basicInfo": [
         {
@@ -19943,7 +19943,7 @@
         },
         {
           "label": "基金規模",
-          "value": "SGD 125.9 百萬（2026-06-30；全基金）；約當新台幣 31.06 億（臺銀月末結帳匯率 24.6700）"
+          "value": "SGD 109.0 百萬（2026-07-31；全基金）；約當新台幣 27.58 億（臺銀月末結帳匯率 25.3000）"
         },
         {
           "label": "基金公司",
@@ -20160,24 +20160,24 @@
         "retrievedAt": "2026-07-26T05:07:10+00:00",
         "aumSourceTitle": "Lion Global Investors－LionGlobal Korea Fund",
         "aumSourceUrl": "https://www.lionglobalinvestors.com/en/fund.html?officialNav=SKFS",
-        "aumRetrievedAt": "2026-07-26T06:36:47+00:00",
+        "aumRetrievedAt": "2026-08-07T03:48:58+00:00",
         "aumFxSourceTitle": "臺灣銀行－外幣結帳價格",
-        "aumFxSourceUrl": "https://rate.bot.com.tw/cr?Lang=en-US",
-        "aumFxRateDate": "2026-06-30",
+        "aumFxSourceUrl": "https://rate.bot.com.tw/cr?Lang=zh-TW",
+        "aumFxRateDate": "2026-07-31",
         "dailyNavSourceTitle": "Lion Global Investors 官方歷史淨值 API",
         "dailyNavSourceUrl": "https://api.lionglobalinvestors.com/fhistorical",
         "dailyNavRetrievedAt": "2026-08-06T10:47:24+00:00"
       },
-      "aumValue": 125900000,
+      "aumValue": 109000000,
       "aumCurrency": "SGD",
-      "aumTwd": 3105953000,
+      "aumTwd": 2757700000,
       "aumFx": {
         "currency": "SGD",
-        "twdPerUnit": "24.6700",
-        "rateDate": "2026-06-30",
+        "twdPerUnit": "25.3000",
+        "rateDate": "2026-07-31",
         "sourceTitle": "臺灣銀行－外幣結帳價格",
-        "sourceUrl": "https://rate.bot.com.tw/cr?Lang=en-US",
-        "dataUrl": "https://rate.bot.com.tw/cr/txt/2026-06",
+        "sourceUrl": "https://rate.bot.com.tw/cr?Lang=zh-TW",
+        "dataUrl": "https://rate.bot.com.tw/cr/csv/2026-07",
         "unit": "TWD per SGD"
       }
     },
@@ -20448,7 +20448,7 @@
       "name": "復華全球物聯網科技基金-新臺幣",
       "category": "行業股票-科技",
       "ytdReturn": 140.22026,
-      "aumDate": "2026-07-31",
+      "aumDate": "2026-08-04",
       "updateCadence": "基金淨值每日更新；成分股依官方或資料供應商揭露更新",
       "basicInfo": [
         {
@@ -20473,7 +20473,7 @@
         },
         {
           "label": "基金規模",
-          "value": "421.32 億新台幣（2026-07-31；新臺幣級別）"
+          "value": "421.32 億新台幣（2026-08-04；新臺幣級別）"
         },
         {
           "label": "基金公司",
@@ -20683,7 +20683,7 @@
         "retrievedAt": "2026-07-26T05:07:10+00:00",
         "aumSourceTitle": "復華投信－共同基金總覽",
         "aumSourceUrl": "https://www.fhtrust.com.tw/funds/funds_list",
-        "aumRetrievedAt": "2026-08-04T10:00:03+00:00",
+        "aumRetrievedAt": "2026-08-07T03:48:58+00:00",
         "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
         "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
         "dailyNavRetrievedAt": "2026-08-06T10:47:23+00:00"
@@ -20700,7 +20700,7 @@
       "name": "統一新亞洲科技能源基金",
       "category": "其他股票",
       "ytdReturn": 133.15552,
-      "aumDate": "2026-06-30",
+      "aumDate": "2026-07-31",
       "updateCadence": "基金淨值每日更新；成分股依官方或資料供應商揭露更新",
       "basicInfo": [
         {
@@ -20725,7 +20725,7 @@
         },
         {
           "label": "基金規模",
-          "value": "67.16 億新台幣（2026-06-30）"
+          "value": "53.72 億新台幣（2026-07-31）"
         },
         {
           "label": "基金公司",
@@ -20936,12 +20936,14 @@
         "retrievedAt": "2026-07-26T05:07:10+00:00",
         "aumSourceTitle": "統一投信基金基本資料",
         "aumSourceUrl": "https://www.ezmoney.com.tw/funds/info/58",
-        "aumRetrievedAt": "2026-07-26T05:33:43+00:00",
+        "aumRetrievedAt": "2026-08-07T03:48:58+00:00",
         "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
         "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
         "dailyNavRetrievedAt": "2026-08-06T10:00:03+00:00"
       },
-      "aumTwd": 6716000000
+      "aumTwd": 5372000000,
+      "aumValue": 5372000000,
+      "aumCurrency": "TWD"
     },
     {
       "id": "upamc-long-ma",
