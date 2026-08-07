@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T18:04:46+08:00",
+  "generatedAt": "2026-08-07T22:28:17+08:00",
   "consensusDate": "2026-08-07",
   "thresholdTwd": 100000000,
   "stocks": [
@@ -3975,7 +3975,7 @@
     },
     {
       "code": "3008",
-      "name": "大立光電",
+      "name": "大立光",
       "sourceDate": "2026-08-07",
       "historyStart": "2025-08-07",
       "historyEnd": "2026-08-07",
@@ -4073,15 +4073,15 @@
         },
         {
           "date": "2026-08-06",
-          "etfCount": 3,
-          "lots": 108,
-          "amountTwd": 501390000
+          "etfCount": 2,
+          "lots": 8,
+          "amountTwd": 37140000
         },
         {
           "date": "2026-08-07",
-          "etfCount": 1,
-          "lots": 1,
-          "amountTwd": 4502500
+          "etfCount": 2,
+          "lots": 101,
+          "amountTwd": 454752500
         }
       ]
     },
@@ -5545,8 +5545,8 @@
         {
           "date": "2026-08-07",
           "etfCount": 1,
-          "lots": 427,
-          "amountTwd": 1904420000
+          "lots": 70,
+          "amountTwd": 312200000
         }
       ]
     },
@@ -8614,10 +8614,10 @@
           "amountTwd": 420099750
         },
         {
-          "date": "2026-08-06",
+          "date": "2026-08-07",
           "etfCount": 1,
           "lots": 10,
-          "amountTwd": 4082500
+          "amountTwd": 4080000
         }
       ]
     },
