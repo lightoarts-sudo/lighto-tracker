@@ -19,6 +19,7 @@
 
   var SERIES_FILE = "data/performance-series.json";
   var PANEL_ID = "performance-custom-range";
+  var CONTROL_ID = "performance-custom-range-control";
   var seriesPromise = null;
 
   function baseUrl() {
@@ -99,13 +100,19 @@
     var style = document.createElement("style");
     style.id = "performance-custom-range-styles";
     style.textContent =
+      ".pcr-row{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px}" +
+      // The preset grid is repeat(8,minmax(82px,1fr)), so as a flex item it
+      // would stretch across the whole row and push this control onto the
+      // next line. Sizing it to content leaves room beside 3 年.
+      ".pcr-row>.performance-periods{flex:0 1 auto;min-width:0}" +
+      "#" + CONTROL_ID + "{flex:0 0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px}" +
+      "#" + CONTROL_ID + " .pcr-field{display:grid;gap:4px}" +
+      "#" + CONTROL_ID + " .pcr-field span{color:#667483;font-size:12px;font-weight:800}" +
+      "#" + CONTROL_ID + " input[type=date]{padding:7px 9px;border:1px solid #d6dee6;border-radius:8px;background:#fff;color:#06275f;font-size:14px;font-family:inherit}" +
+      "#" + CONTROL_ID + " button{padding:8px 16px;border:0;border-radius:8px;background:#06275f;color:#fff;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer}" +
+      "#" + CONTROL_ID + " button:disabled{opacity:.5;cursor:default}" +
       "#" + PANEL_ID + "{margin-top:18px;padding-top:16px;border-top:1px solid #d6dee6}" +
-      "#" + PANEL_ID + " .pcr-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;margin-bottom:12px}" +
-      "#" + PANEL_ID + " .pcr-field{display:grid;gap:4px}" +
-      "#" + PANEL_ID + " .pcr-field span{color:#667483;font-size:12px;font-weight:800}" +
-      "#" + PANEL_ID + " input[type=date]{padding:7px 9px;border:1px solid #d6dee6;border-radius:8px;background:#fff;color:#06275f;font-size:14px;font-family:inherit}" +
-      "#" + PANEL_ID + " button{padding:8px 16px;border:0;border-radius:8px;background:#06275f;color:#fff;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer}" +
-      "#" + PANEL_ID + " button:disabled{opacity:.5;cursor:default}" +
+      "#" + PANEL_ID + " h3{margin:0 0 4px;color:#06275f;font-size:17px}" +
       "#" + PANEL_ID + " .pcr-note{margin:0 0 10px;color:#667483;font-size:12.5px;line-height:1.6}" +
       "#" + PANEL_ID + " .pcr-warn{margin:0 0 10px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:12.5px}" +
       "#" + PANEL_ID + " .pcr-scroll{overflow-x:auto}" +
@@ -116,7 +123,7 @@
       "#" + PANEL_ID + " td.is-up{color:#c23d4b;font-weight:800}" +
       "#" + PANEL_ID + " td.is-down{color:#16845b;font-weight:800}" +
       "#" + PANEL_ID + " td small{display:block;color:#8794a3;font-size:11px}" +
-      "@media(max-width:720px){#" + PANEL_ID + " .pcr-head{gap:9px}#" + PANEL_ID + " .pcr-field{flex:1 1 45%}#" + PANEL_ID + " input[type=date]{width:100%}}";
+      "@media(max-width:720px){.pcr-row{gap:9px}#" + CONTROL_ID + "{width:100%}#" + CONTROL_ID + " .pcr-field{flex:1 1 42%}#" + CONTROL_ID + " input[type=date]{width:100%}}";
     document.head.appendChild(style);
   }
 
@@ -124,9 +131,9 @@
     return (value >= 0 ? "+" : "−") + Math.abs(value).toFixed(2) + "%";
   }
 
-  function render(panel, payload, from, to) {
+  function render(results, payload, from, to) {
     var result = rank(payload, from, to);
-    var body = panel.querySelector(".pcr-result");
+    var body = results.querySelector(".pcr-result");
     if (!result.rows.length) {
       body.innerHTML =
         '<p class="pcr-warn">這個區間沒有任何標的同時具備起訖兩端的官方資料。</p>';
@@ -168,28 +175,24 @@
       "</tbody></table></div>";
   }
 
-  function buildPanel(defaultTo) {
-    var panel = document.createElement("section");
-    panel.id = PANEL_ID;
+  function buildControl(defaultTo, results) {
+    var panel = document.createElement("div");
+    panel.id = CONTROL_ID;
     var from = new Date(defaultTo + "T00:00:00");
     from.setMonth(from.getMonth() - 1);
     var defaultFrom = from.toISOString().slice(0, 10);
     panel.innerHTML =
-      "<h3 style=\"margin:0 0 4px;color:#06275f;font-size:17px\">自訂區間績效</h3>" +
-      '<p class="pcr-note">與上方排行採用相同取值規則：起訖兩端各取當日或之前最近一筆官方淨值／收盤價，未含配息還原。</p>' +
-      '<div class="pcr-head">' +
-      '<label class="pcr-field"><span>起始日</span>' +
+      '<label class="pcr-field"><span>自訂起始日</span>' +
       '<input type="date" class="pcr-from" value="' + defaultFrom + '" max="' + defaultTo + '"></label>' +
       '<label class="pcr-field"><span>結束日</span>' +
       '<input type="date" class="pcr-to" value="' + defaultTo + '" max="' + defaultTo + '"></label>' +
-      "<button type=\"button\" class=\"pcr-apply\">計算</button></div>" +
-      '<div class="pcr-result"></div>';
+      '<button type="button" class="pcr-apply">計算</button>';
 
     var apply = panel.querySelector(".pcr-apply");
     apply.addEventListener("click", function () {
       var fromValue = panel.querySelector(".pcr-from").value;
       var toValue = panel.querySelector(".pcr-to").value;
-      var result = panel.querySelector(".pcr-result");
+      var result = results.querySelector(".pcr-result");
       if (!fromValue || !toValue) {
         result.innerHTML = '<p class="pcr-warn">請選擇起始日與結束日。</p>';
         return;
@@ -202,7 +205,8 @@
       result.innerHTML = '<p class="pcr-note">計算中…</p>';
       loadSeries()
         .then(function (payload) {
-          render(panel, payload, fromValue, toValue);
+          render(results, payload, fromValue, toValue);
+          results.scrollIntoView({ behavior: "smooth", block: "start" });
         })
         .catch(function () {
           result.innerHTML = '<p class="pcr-warn">區間資料載入失敗，請稍後重試。</p>';
@@ -225,9 +229,26 @@
 
   function attach() {
     var host = document.querySelector(".performance-panel");
-    if (!host || document.getElementById(PANEL_ID)) return;
+    var periods = document.querySelector(".performance-periods");
+    if (!host || !periods || document.getElementById(CONTROL_ID)) return;
     installStyles();
-    host.appendChild(buildPanel(latestDateOnPage()));
+
+    var results = document.createElement("section");
+    results.id = PANEL_ID;
+    results.innerHTML =
+      '<h3>自訂區間績效</h3>' +
+      '<p class="pcr-note">與上方排行採用相同取值規則：起訖兩端各取當日或之前最近一筆官方淨值／收盤價，未含配息還原。</p>' +
+      '<div class="pcr-result"></div>';
+    host.appendChild(results);
+
+    // Wrap the preset grid so the custom range sits to its right on wide
+    // screens and wraps underneath on narrow ones, without disturbing the
+    // grid that .performance-controls uses for its own rows.
+    var row = document.createElement("div");
+    row.className = "pcr-row";
+    periods.parentElement.insertBefore(row, periods);
+    row.appendChild(periods);
+    row.appendChild(buildControl(latestDateOnPage(), results));
   }
 
   function watch() {
