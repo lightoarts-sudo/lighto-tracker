@@ -1,13 +1,13 @@
 {
   "date": "2026-08-07",
-  "generatedAt": "2026-08-07T22:27:57+08:00",
+  "generatedAt": "2026-08-08T12:03:32+08:00",
   "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
   "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
   "coverage": {
     "trackedEtfCount": 28,
-    "comparableEtfCount": 20,
+    "comparableEtfCount": 21,
     "baselineEtfCount": 0,
-    "pendingEtfCount": 8,
+    "pendingEtfCount": 7,
     "futureEtfCount": 0,
     "comparableEtfs": [
       "00981A",
@@ -25,6 +25,7 @@
       "00984A",
       "00406A",
       "00995A",
+      "00994A",
       "00996A",
       "00404A",
       "00401A",
@@ -37,7 +38,6 @@
       "00990A",
       "00997A",
       "00402A",
-      "00994A",
       "00998A",
       "00408A",
       "00983A"
@@ -883,12 +883,12 @@
     }
   ],
   "sellSummary": {
-    "sellingEtfCount": 15,
-    "stockCount": 39,
-    "totalLots": 9021.148,
-    "pricedStockCount": 38,
+    "sellingEtfCount": 16,
+    "stockCount": 40,
+    "totalLots": 9246.148,
+    "pricedStockCount": 39,
     "unpricedStockCount": 1,
-    "totalAmountTwd": 6444395841
+    "totalAmountTwd": 6538495841
   },
   "sellStocks": [
     {
@@ -1092,16 +1092,22 @@
     {
       "stockCode": "3231",
       "stockName": "緯創",
-      "totalLots": 1401,
+      "totalLots": 1601,
       "etfs": [
         {
           "code": "00400A",
           "name": "主動國泰動能高息",
           "lotChange": 1401,
           "action": "removed"
+        },
+        {
+          "code": "00994A",
+          "name": "主動第一金台股優",
+          "lotChange": 200,
+          "action": "decrease"
         }
       ],
-      "etfCount": 1,
+      "etfCount": 2,
       "closePrice": 183.5,
       "highPrice": 188.0,
       "lowPrice": 180.5,
@@ -1109,9 +1115,9 @@
       "priceDate": "2026-08-07",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260807&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 257083500,
-      "averageAmountTwd": 258134250,
-      "amountTwd": 258134250
+      "closeAmountTwd": 293783500,
+      "averageAmountTwd": 294984250,
+      "amountTwd": 294984250
     },
     {
       "stockCode": "3131",
@@ -1352,6 +1358,30 @@
       "closeAmountTwd": 65540000,
       "averageAmountTwd": 66555000,
       "amountTwd": 66555000
+    },
+    {
+      "stockCode": "2345",
+      "stockName": "智邦",
+      "totalLots": 25,
+      "etfs": [
+        {
+          "code": "00994A",
+          "name": "主動第一金台股優",
+          "lotChange": 25,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2215.0,
+      "highPrice": 2395.0,
+      "lowPrice": 2185.0,
+      "averagePrice": 2290.0,
+      "priceDate": "2026-08-07",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260807&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 55375000,
+      "averageAmountTwd": 57250000,
+      "amountTwd": 57250000
     },
     {
       "stockCode": "2376",
