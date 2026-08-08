@@ -23,6 +23,7 @@
   var CONTROL_ID = "performance-custom-range-control";
   var BANNER_ID = "performance-custom-range-banner";
   var seriesPromise = null;
+  var activeRange = null;
 
   function baseUrl() {
     var base = document.querySelector("base[href]");
@@ -83,6 +84,7 @@
         code: item.code,
         name: item.name,
         group: GROUP_LABEL[item.group] || item.group || "",
+        groupKey: item.group,
         valueType: item.valueType === "nav" ? "淨值" : "收盤",
         startDate: start[0],
         startValue: start[1],
@@ -91,10 +93,19 @@
         returnPct: (end[1] / start[1] - 1) * 100,
       });
     });
-    rows.sort(function (left, right) {
-      return right.returnPct - left.returnPct;
+    var scope = currentScope();
+    var scoped = scope
+      ? rows.filter(function (row) {
+          return row.groupKey === scope;
+        })
+      : rows;
+    var descending = sortDescending();
+    scoped.sort(function (left, right) {
+      return descending
+        ? right.returnPct - left.returnPct
+        : left.returnPct - right.returnPct;
     });
-    return { rows: rows, skipped: skipped };
+    return { rows: scoped, skipped: skipped, total: rows.length };
   }
 
   function installStyles() {
@@ -115,6 +126,8 @@
       "#" + CONTROL_ID + " button:disabled{opacity:.5;cursor:default}" +
       "#" + CONTROL_ID + " .pcr-warn{color:#8a4b2a;font-size:12.5px;font-weight:750;align-self:center}" +
       "#" + PANEL_ID + " .pcr-warn-box{margin:12px 20px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:13px}" +
+      "body.pcr-custom .performance-periods button.is-active{background:transparent;color:var(--muted)}" +
+      "body.pcr-custom #" + CONTROL_ID + " .pcr-apply{background:#0c8f74}" +
       "#" + BANNER_ID + "{margin:0 0 12px;padding:9px 12px;border-left:3px solid #06275f;border-radius:0 8px 8px 0;background:#eef2f7;color:#06275f;font-size:13px;font-weight:750}" +
       "#" + BANNER_ID + " .pcr-reset{margin-left:4px;padding:4px 10px;border:1px solid #06275f;border-radius:999px;background:#fff;color:#06275f;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer}" +
 
@@ -155,6 +168,22 @@
   };
 
   /* React's own nodes, hidden while a custom range is showing. */
+  var SCOPE_GROUP = {
+    基金: "funds",
+    "主動式 ETF": "activeEtfs",
+    "被動式 ETF": "passiveEtfs",
+  };
+
+  function currentScope() {
+    var active = document.querySelector(".scope-switch button.is-active");
+    return active ? SCOPE_GROUP[active.textContent.trim()] || null : null;
+  }
+
+  function sortDescending() {
+    var button = document.querySelector(".performance-sort");
+    return button ? button.textContent.indexOf("由低至高") === -1 : true;
+  }
+
   function reactBlocks() {
     var table = document.querySelector(".performance-table");
     return [
@@ -164,11 +193,26 @@
   }
 
   function restore() {
+    activeRange = null;
+    document.body.classList.remove("pcr-custom");
     reactBlocks().forEach(function (node) {
       node.style.removeProperty("display");
     });
     var mount = document.getElementById(PANEL_ID);
     if (mount) mount.innerHTML = "";
+  }
+
+  /* Re-run the stored range, e.g. after the scope or sort changed. */
+  function reapply() {
+    if (!activeRange) return;
+    var range = activeRange;
+    loadSeries()
+      .then(function (payload) {
+        render(payload, range.from, range.to);
+      })
+      .catch(function () {
+        restore();
+      });
   }
 
   function mountPoint() {
@@ -187,6 +231,8 @@
   }
 
   function render(payload, from, to) {
+    activeRange = { from: from, to: to };
+    document.body.classList.add("pcr-custom");
     var mount = mountPoint();
     if (!mount) return;
     var result = rank(payload, from, to);
@@ -213,7 +259,7 @@
     mount.innerHTML =
       '<div class="performance-summary" aria-label="排行摘要">' +
       "<article><span>可比較標的</span><strong>" + result.rows.length + " / " +
-      (result.rows.length + result.skipped.length) + "</strong></article>" +
+      (result.total + result.skipped.length) + "</strong></article>" +
       "<article><span>本期第一名</span><strong>" + top.name + "</strong></article>" +
       '<article><span>第一名報酬</span><strong class="is-' +
       (top.returnPct >= 0 ? "positive" : "negative") + '">' +
@@ -320,13 +366,22 @@
 
   function watch() {
     attach();
-    // Any preset or filter click means the user wants React's ranking back.
     document.addEventListener("click", function (event) {
       if (!event.target.closest) return;
-      var control = event.target.closest(
-        ".performance-periods button, .performance-filter-row button",
-      );
-      if (control) restore();
+      // A preset is the other half of the same either/or choice, so picking one
+      // drops the custom range.
+      if (event.target.closest(".performance-periods button")) {
+        restore();
+        return;
+      }
+      // Scope and sort are independent of the period: keep the custom range and
+      // recompute it once React has updated its own active classes.
+      if (
+        activeRange &&
+        event.target.closest(".scope-switch button, .performance-sort")
+      ) {
+        setTimeout(reapply, 0);
+      }
     });
     // The tab strip swaps panels without a reload, so re-attach when the
     // performance panel mounts again.
