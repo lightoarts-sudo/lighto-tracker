@@ -1,18 +1,19 @@
 /*
  * PoPoStock 績效排行 custom date range.
  *
- * The release page offers fixed presets only (1 週 … 3 年). This appends a
- * 自訂區間 panel that computes a ranking for any two dates from
- * data/performance-series.json — one request covering all 76 instruments
- * rather than 76 separate history files.
+ * The release page offers fixed presets only (1 週 … 3 年). This adds a date
+ * pair next to them and rewrites the existing ranking table and summary in
+ * place, so a custom range reads as the same table rather than a second one.
  *
  * The return uses the same rule as the published ranking: the last official
- * value on or before each endpoint. No interpolation, and a date with no prior
- * data is reported as unavailable rather than silently shifted.
+ * value on or before each endpoint, taken from data/performance-series.json
+ * (one request covering all 76 instruments). No interpolation, and an
+ * instrument without data at either endpoint is excluded and counted, never
+ * silently shifted to a nearby date.
  *
- * The panel is our own DOM appended after React's table, never a mutation of
- * it, so a re-render cannot fight us; the observer only re-attaches it when the
- * page swaps tabs.
+ * Rewriting React's own DOM is deliberate here: clicking any preset re-renders
+ * the table and restores it, which is exactly the "go back" behaviour we want.
+ * A banner marks the table as overridden so the state is never ambiguous.
  */
 (function () {
   "use strict";
@@ -20,6 +21,7 @@
   var SERIES_FILE = "data/performance-series.json";
   var PANEL_ID = "performance-custom-range";
   var CONTROL_ID = "performance-custom-range-control";
+  var BANNER_ID = "performance-custom-range-banner";
   var seriesPromise = null;
 
   function baseUrl() {
@@ -111,71 +113,144 @@
       "#" + CONTROL_ID + " input[type=date]{padding:7px 9px;border:1px solid #d6dee6;border-radius:8px;background:#fff;color:#06275f;font-size:14px;font-family:inherit}" +
       "#" + CONTROL_ID + " button{padding:8px 16px;border:0;border-radius:8px;background:#06275f;color:#fff;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer}" +
       "#" + CONTROL_ID + " button:disabled{opacity:.5;cursor:default}" +
-      "#" + PANEL_ID + "{margin-top:18px;padding-top:16px;border-top:1px solid #d6dee6}" +
-      "#" + PANEL_ID + " h3{margin:0 0 4px;color:#06275f;font-size:17px}" +
-      "#" + PANEL_ID + " .pcr-note{margin:0 0 10px;color:#667483;font-size:12.5px;line-height:1.6}" +
-      "#" + PANEL_ID + " .pcr-warn{margin:0 0 10px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:12.5px}" +
-      "#" + PANEL_ID + " .pcr-scroll{overflow-x:auto}" +
-      "#" + PANEL_ID + " table{width:100%;min-width:0;border-collapse:collapse;background:#fff;font-size:13px}" +
-      "#" + PANEL_ID + " th{padding:7px 8px;border-bottom:1px solid #d6dee6;background:#fff;color:#667483;font-size:11.5px;font-weight:800;text-align:right;white-space:nowrap}" +
-      "#" + PANEL_ID + " th:nth-child(-n+3),#" + PANEL_ID + " td:nth-child(-n+3){text-align:left}" +
-      "#" + PANEL_ID + " td{padding:7px 8px;border-bottom:1px solid #edf1f4;background:#fff;color:#06275f;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}" +
-      "#" + PANEL_ID + " td.is-up{color:#c23d4b;font-weight:800}" +
-      "#" + PANEL_ID + " td.is-down{color:#16845b;font-weight:800}" +
-      "#" + PANEL_ID + " td small{display:block;color:#8794a3;font-size:11px}" +
+      "#" + CONTROL_ID + " .pcr-warn{color:#8a4b2a;font-size:12.5px;font-weight:750;align-self:center}" +
+      "#" + PANEL_ID + " .pcr-warn-box{margin:12px 20px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:13px}" +
+      "#" + BANNER_ID + "{margin:0 0 12px;padding:9px 12px;border-left:3px solid #06275f;border-radius:0 8px 8px 0;background:#eef2f7;color:#06275f;font-size:13px;font-weight:750}" +
+      "#" + BANNER_ID + " .pcr-reset{margin-left:4px;padding:4px 10px;border:1px solid #06275f;border-radius:999px;background:#fff;color:#06275f;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer}" +
+
+
+
+
+
+
+
+
+
+
+
       "@media(max-width:720px){.pcr-row{gap:9px}#" + CONTROL_ID + "{width:100%}#" + CONTROL_ID + " .pcr-field{flex:1 1 42%}#" + CONTROL_ID + " input[type=date]{width:100%}}";
     document.head.appendChild(style);
+  }
+
+  function warn(panel, message) {
+    var existing = panel.querySelector(".pcr-warn");
+    if (existing) existing.remove();
+    var note = document.createElement("span");
+    note.className = "pcr-warn";
+    note.textContent = message;
+    panel.appendChild(note);
+    setTimeout(function () {
+      note.remove();
+    }, 6000);
   }
 
   function percent(value) {
     return (value >= 0 ? "+" : "−") + Math.abs(value).toFixed(2) + "%";
   }
 
-  function render(results, payload, from, to) {
+  var GROUP_CLASS = {
+    基金: "funds",
+    "主動式 ETF": "activeEtfs",
+    "被動式 ETF": "passiveEtfs",
+  };
+
+  /* React's own nodes, hidden while a custom range is showing. */
+  function reactBlocks() {
+    var table = document.querySelector(".performance-table");
+    return [
+      table ? table.closest(".table-scroll") || table : null,
+      document.querySelector(".performance-summary"),
+    ].filter(Boolean);
+  }
+
+  function restore() {
+    reactBlocks().forEach(function (node) {
+      node.style.removeProperty("display");
+    });
+    var mount = document.getElementById(PANEL_ID);
+    if (mount) mount.innerHTML = "";
+  }
+
+  function mountPoint() {
+    var host = document.querySelector(".performance-panel");
+    if (!host) return null;
+    var mount = document.getElementById(PANEL_ID);
+    if (!mount) {
+      mount = document.createElement("section");
+      mount.id = PANEL_ID;
+      // Appended as the last child only. Inserting between React's children
+      // made its next reconciliation throw NotFoundError on insertBefore and
+      // blanked the whole panel.
+      host.appendChild(mount);
+    }
+    return mount;
+  }
+
+  function render(payload, from, to) {
+    var mount = mountPoint();
+    if (!mount) return;
     var result = rank(payload, from, to);
-    var body = results.querySelector(".pcr-result");
+
     if (!result.rows.length) {
-      body.innerHTML =
-        '<p class="pcr-warn">這個區間沒有任何標的同時具備起訖兩端的官方資料。</p>';
+      restore();
+      mount.innerHTML =
+        '<p class="pcr-warn-box">這個區間沒有任何標的同時具備起訖兩端的官方資料。</p>';
       return;
     }
+
+    // Replace rather than duplicate: React's table and summary go dark while
+    // ours occupies the same place.
+    reactBlocks().forEach(function (node) {
+      node.style.display = "none";
+    });
+
     var top = result.rows[0];
     var rising = result.rows.filter(function (row) {
       return row.returnPct > 0;
     }).length;
     var middle = result.rows[Math.floor(result.rows.length / 2)];
 
-    body.innerHTML =
-      '<p class="pcr-note">' +
-      "區間 " + from + " ~ " + to + " · 可比較 " + result.rows.length + " 檔 · " +
-      "第一名 " + top.name + " " + percent(top.returnPct) + " · " +
-      "上漲 " + rising + " 檔 · 中位數 " + percent(middle.returnPct) +
-      "</p>" +
-      (result.skipped.length
-        ? '<p class="pcr-warn">' + result.skipped.length +
-          " 檔在此區間資料不足，未列入：" + result.skipped.slice(0, 6).join("、") +
-          (result.skipped.length > 6 ? " 等" : "") + "</p>"
-        : "") +
-      '<div class="pcr-scroll"><table><thead><tr>' +
+    mount.innerHTML =
+      '<div class="performance-summary" aria-label="排行摘要">' +
+      "<article><span>可比較標的</span><strong>" + result.rows.length + " / " +
+      (result.rows.length + result.skipped.length) + "</strong></article>" +
+      "<article><span>本期第一名</span><strong>" + top.name + "</strong></article>" +
+      '<article><span>第一名報酬</span><strong class="is-' +
+      (top.returnPct >= 0 ? "positive" : "negative") + '">' +
+      percent(top.returnPct) + "</strong></article>" +
+      "<article><span>上漲標的／中位數</span><strong>" + rising + " 支 · " +
+      percent(middle.returnPct) + "</strong></article></div>" +
+      '<div id="' + BANNER_ID + '">自訂區間 ' + from + " ~ " + to +
+      (result.skipped.length ? " · " + result.skipped.length + " 檔資料不足已排除" : "") +
+      '　<button type="button" class="pcr-reset">回到預設區間</button></div>' +
+      '<div class="table-scroll"><table class="performance-table"><thead><tr>' +
       "<th>排名</th><th>標的</th><th>類型</th><th>區間報酬</th>" +
-      "<th>起算值</th><th>結束值</th></tr></thead><tbody>" +
+      "<th>起算日</th><th>最新資料日</th><th>最新淨值／收盤價</th></tr></thead><tbody>" +
       result.rows
         .map(function (row, index) {
           return (
-            "<tr><td>" + (index + 1) + "</td>" +
-            "<td>" + row.name + "<small>" + row.code + "</small></td>" +
-            "<td>" + row.group + "</td>" +
-            '<td class="' + (row.returnPct >= 0 ? "is-up" : "is-down") + '">' +
+            "<tr>" +
+            '<td data-label="排名" class="performance-rank">' + (index + 1) + "</td>" +
+            '<td data-label="標的"><span class="performance-instrument">' +
+            "<strong>" + row.name + "</strong><small>" + row.code + "</small></span></td>" +
+            '<td data-label="類型"><span class="performance-group is-' +
+            (GROUP_CLASS[row.group] || "funds") + '">' + row.group + "</span></td>" +
+            '<td data-label="區間報酬" class="performance-return is-' +
+            (row.returnPct >= 0 ? "positive" : "negative") + '">' +
             percent(row.returnPct) + "</td>" +
-            "<td>" + row.startValue + "<small>" + row.startDate + "</small></td>" +
-            "<td>" + row.endValue + "<small>" + row.endDate + "</small></td></tr>"
+            '<td data-label="起算日">' + row.startDate + "</td>" +
+            '<td data-label="最新資料日">' + row.endDate + "</td>" +
+            '<td data-label="最新淨值／收盤價">' + row.endValue +
+            " <small>" + row.valueType + "</small></td></tr>"
           );
         })
         .join("") +
       "</tbody></table></div>";
+
+    mount.querySelector(".pcr-reset").addEventListener("click", restore);
   }
 
-  function buildControl(defaultTo, results) {
+  function buildControl(defaultTo) {
     var panel = document.createElement("div");
     panel.id = CONTROL_ID;
     var from = new Date(defaultTo + "T00:00:00");
@@ -192,27 +267,27 @@
     apply.addEventListener("click", function () {
       var fromValue = panel.querySelector(".pcr-from").value;
       var toValue = panel.querySelector(".pcr-to").value;
-      var result = results.querySelector(".pcr-result");
+      var result = null;
       if (!fromValue || !toValue) {
-        result.innerHTML = '<p class="pcr-warn">請選擇起始日與結束日。</p>';
+        warn(panel, "請選擇起始日與結束日。");
         return;
       }
       if (fromValue >= toValue) {
-        result.innerHTML = '<p class="pcr-warn">起始日必須早於結束日。</p>';
+        warn(panel, "起始日必須早於結束日。");
         return;
       }
       apply.disabled = true;
-      result.innerHTML = '<p class="pcr-note">計算中…</p>';
+      apply.textContent = "計算中…";
       loadSeries()
         .then(function (payload) {
-          render(results, payload, fromValue, toValue);
-          results.scrollIntoView({ behavior: "smooth", block: "start" });
+          render(payload, fromValue, toValue);
         })
         .catch(function () {
-          result.innerHTML = '<p class="pcr-warn">區間資料載入失敗，請稍後重試。</p>';
+          warn(panel, "區間資料載入失敗，請稍後重試。");
         })
         .then(function () {
           apply.disabled = false;
+          apply.textContent = "計算";
         });
     });
     return panel;
@@ -230,16 +305,8 @@
   function attach() {
     var host = document.querySelector(".performance-panel");
     var periods = document.querySelector(".performance-periods");
-    if (!host || !periods || document.getElementById(CONTROL_ID)) return;
+    if (!periods || document.getElementById(CONTROL_ID)) return;
     installStyles();
-
-    var results = document.createElement("section");
-    results.id = PANEL_ID;
-    results.innerHTML =
-      '<h3>自訂區間績效</h3>' +
-      '<p class="pcr-note">與上方排行採用相同取值規則：起訖兩端各取當日或之前最近一筆官方淨值／收盤價，未含配息還原。</p>' +
-      '<div class="pcr-result"></div>';
-    host.appendChild(results);
 
     // Wrap the preset grid so the custom range sits to its right on wide
     // screens and wraps underneath on narrow ones, without disturbing the
@@ -248,11 +315,19 @@
     row.className = "pcr-row";
     periods.parentElement.insertBefore(row, periods);
     row.appendChild(periods);
-    row.appendChild(buildControl(latestDateOnPage(), results));
+    row.appendChild(buildControl(latestDateOnPage()));
   }
 
   function watch() {
     attach();
+    // Any preset or filter click means the user wants React's ranking back.
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest) return;
+      var control = event.target.closest(
+        ".performance-periods button, .performance-filter-row button",
+      );
+      if (control) restore();
+    });
     // The tab strip swaps panels without a reload, so re-attach when the
     // performance panel mounts again.
     new MutationObserver(function () {
