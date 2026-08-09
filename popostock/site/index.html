@@ -32,7 +32,7 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-e2f98ed1.js");
+      await import("/popostock/assets/index-9b65f176.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js" defer data-popostock-url-state></script>
@@ -54,6 +54,15 @@
 .active-etf-movement-columns section>p{font-size:14px !important;padding:12px 0 !important}
 .active-etf-change-card>header strong{font-size:19px !important}
 .active-etf-change-card>header span{font-size:15px !important}
+
+/* 加減碼卡片標題連到該 ETF 的完整頁面；沿用原本的直排間距，
+   不加底線以免與卡片標題樣式衝突，hover 才提示可點。 */
+.active-etf-card-link{display:flex;flex-direction:column;gap:4px;width:100%;
+  color:inherit;text-decoration:none}
+.active-etf-card-link:hover strong{text-decoration:underline;
+  text-decoration-thickness:2px;text-underline-offset:3px}
+.active-etf-card-link:focus-visible{outline:3px solid rgba(255,255,255,.5);
+  outline-offset:3px;border-radius:4px}
 
 /* 共識加碼統計：手機版原本一欄四列，整組要捲很久才看得完。
    改成 2x2 讓四個數字並列，站台斷點為 720px。 */
