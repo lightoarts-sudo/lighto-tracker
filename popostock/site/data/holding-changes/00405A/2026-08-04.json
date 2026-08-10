@@ -11,23 +11,23 @@
   "summary": {
     "total": 49,
     "added": 0,
-    "increased": 3,
+    "increased": 4,
     "decreased": 0,
-    "removed": 1,
+    "removed": 0,
     "pricedChanged": 4,
     "unpricedChanged": 0,
-    "buyAmountTwd": 417130000,
-    "sellAmountTwd": 1486687500
+    "buyAmountTwd": 835605000,
+    "sellAmountTwd": 0
   },
   "holdings": [
     {
-      "rank": 49,
+      "rank": 1,
       "stockCode": "3665",
       "stockName": "貿聯-KY",
-      "heldLots": 0,
-      "lotChange": -675,
-      "weightPct": 0.0,
-      "weightChangePct": -100.0,
+      "heldLots": 865,
+      "lotChange": 190,
+      "weightPct": 6.6818,
+      "weightChangePct": 35.07,
       "closePrice": 2300.0,
       "highPrice": 2300.0,
       "lowPrice": 2105.0,
@@ -35,13 +35,13 @@
       "priceDate": "2026-08-04",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260804&type=ALLBUT0999&response=json",
-      "closeAmountTwd": -1552500000,
-      "averageAmountTwd": -1486687500,
-      "amountTwd": -1486687500,
-      "action": "removed"
+      "closeAmountTwd": 437000000,
+      "averageAmountTwd": 418475000,
+      "amountTwd": 418475000,
+      "action": "increase"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "stockCode": "3653",
       "stockName": "健策",
       "heldLots": 287,
@@ -61,7 +61,7 @@
       "action": "increase"
     },
     {
-      "rank": 16,
+      "rank": 17,
       "stockCode": "2368",
       "stockName": "金像電",
       "heldLots": 727,
@@ -81,7 +81,7 @@
       "action": "increase"
     },
     {
-      "rank": 33,
+      "rank": 34,
       "stockCode": "6831",
       "stockName": "邁科",
       "heldLots": 250,
@@ -101,7 +101,7 @@
       "action": "increase"
     },
     {
-      "rank": 1,
+      "rank": 2,
       "stockCode": "2454",
       "stockName": "聯發科",
       "heldLots": 480,
@@ -121,7 +121,7 @@
       "action": "hold"
     },
     {
-      "rank": 2,
+      "rank": 3,
       "stockCode": "3017",
       "stockName": "奇鋐",
       "heldLots": 693,
@@ -141,7 +141,7 @@
       "action": "hold"
     },
     {
-      "rank": 3,
+      "rank": 4,
       "stockCode": "6223",
       "stockName": "旺矽",
       "heldLots": 273,
@@ -161,7 +161,7 @@
       "action": "hold"
     },
     {
-      "rank": 4,
+      "rank": 5,
       "stockCode": "3037",
       "stockName": "欣興",
       "heldLots": 1570,
@@ -181,7 +181,7 @@
       "action": "hold"
     },
     {
-      "rank": 5,
+      "rank": 6,
       "stockCode": "3443",
       "stockName": "創意",
       "heldLots": 334,
@@ -201,7 +201,7 @@
       "action": "hold"
     },
     {
-      "rank": 6,
+      "rank": 7,
       "stockCode": "2345",
       "stockName": "智邦",
       "heldLots": 529,
@@ -221,7 +221,7 @@
       "action": "hold"
     },
     {
-      "rank": 7,
+      "rank": 8,
       "stockCode": "6669",
       "stockName": "緯穎",
       "heldLots": 195,
@@ -241,7 +241,7 @@
       "action": "hold"
     },
     {
-      "rank": 9,
+      "rank": 10,
       "stockCode": "6488",
       "stockName": "環球晶",
       "heldLots": 1160,
@@ -261,7 +261,7 @@
       "action": "hold"
     },
     {
-      "rank": 10,
+      "rank": 11,
       "stockCode": "2383",
       "stockName": "台光電",
       "heldLots": 212,
@@ -281,7 +281,7 @@
       "action": "hold"
     },
     {
-      "rank": 11,
+      "rank": 12,
       "stockCode": "8046",
       "stockName": "南電",
       "heldLots": 1039,
@@ -301,7 +301,7 @@
       "action": "hold"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "stockCode": "2344",
       "stockName": "華邦電",
       "heldLots": 5896,
@@ -321,7 +321,7 @@
       "action": "hold"
     },
     {
-      "rank": 13,
+      "rank": 14,
       "stockCode": "3131",
       "stockName": "弘塑",
       "heldLots": 327,
@@ -341,7 +341,7 @@
       "action": "hold"
     },
     {
-      "rank": 14,
+      "rank": 15,
       "stockCode": "7769",
       "stockName": "鴻勁",
       "heldLots": 120,
@@ -361,7 +361,7 @@
       "action": "hold"
     },
     {
-      "rank": 15,
+      "rank": 16,
       "stockCode": "6510",
       "stockName": "精測",
       "heldLots": 245,
@@ -381,7 +381,7 @@
       "action": "hold"
     },
     {
-      "rank": 17,
+      "rank": 18,
       "stockCode": "7734",
       "stockName": "印能科技",
       "heldLots": 159,
@@ -401,7 +401,7 @@
       "action": "hold"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "stockCode": "5274",
       "stockName": "信驊",
       "heldLots": 36.3,
@@ -421,7 +421,7 @@
       "action": "hold"
     },
     {
-      "rank": 19,
+      "rank": 20,
       "stockCode": "2308",
       "stockName": "台達電",
       "heldLots": 294,
@@ -441,7 +441,7 @@
       "action": "hold"
     },
     {
-      "rank": 20,
+      "rank": 21,
       "stockCode": "2330",
       "stockName": "台積電",
       "heldLots": 179,
@@ -461,7 +461,7 @@
       "action": "hold"
     },
     {
-      "rank": 21,
+      "rank": 22,
       "stockCode": "6274",
       "stockName": "台燿",
       "heldLots": 306,
@@ -481,7 +481,7 @@
       "action": "hold"
     },
     {
-      "rank": 22,
+      "rank": 23,
       "stockCode": "2059",
       "stockName": "川湖",
       "heldLots": 42,
@@ -501,7 +501,7 @@
       "action": "hold"
     },
     {
-      "rank": 23,
+      "rank": 24,
       "stockCode": "2408",
       "stockName": "南亞科",
       "heldLots": 849,
@@ -521,7 +521,7 @@
       "action": "hold"
     },
     {
-      "rank": 24,
+      "rank": 25,
       "stockCode": "3081",
       "stockName": "聯亞",
       "heldLots": 158.4,
@@ -541,7 +541,7 @@
       "action": "hold"
     },
     {
-      "rank": 25,
+      "rank": 26,
       "stockCode": "8996",
       "stockName": "高力",
       "heldLots": 282,
@@ -561,7 +561,7 @@
       "action": "hold"
     },
     {
-      "rank": 26,
+      "rank": 27,
       "stockCode": "3026",
       "stockName": "禾伸堂",
       "heldLots": 580,
@@ -581,7 +581,7 @@
       "action": "hold"
     },
     {
-      "rank": 27,
+      "rank": 28,
       "stockCode": "8028",
       "stockName": "昇陽半導體",
       "heldLots": 889,
@@ -601,7 +601,7 @@
       "action": "hold"
     },
     {
-      "rank": 28,
+      "rank": 29,
       "stockCode": "6187",
       "stockName": "萬潤",
       "heldLots": 198,
@@ -621,7 +621,7 @@
       "action": "hold"
     },
     {
-      "rank": 29,
+      "rank": 30,
       "stockCode": "2449",
       "stockName": "京元電子",
       "heldLots": 832.65,
@@ -641,7 +641,7 @@
       "action": "hold"
     },
     {
-      "rank": 30,
+      "rank": 31,
       "stockCode": "8210",
       "stockName": "勤誠",
       "heldLots": 168,
@@ -661,7 +661,7 @@
       "action": "hold"
     },
     {
-      "rank": 31,
+      "rank": 32,
       "stockCode": "3583",
       "stockName": "辛耘",
       "heldLots": 274,
@@ -681,7 +681,7 @@
       "action": "hold"
     },
     {
-      "rank": 32,
+      "rank": 33,
       "stockCode": "3711",
       "stockName": "日月光投控",
       "heldLots": 323,
@@ -701,7 +701,7 @@
       "action": "hold"
     },
     {
-      "rank": 34,
+      "rank": 35,
       "stockCode": "6515",
       "stockName": "穎崴",
       "heldLots": 23,
@@ -721,7 +721,7 @@
       "action": "hold"
     },
     {
-      "rank": 35,
+      "rank": 36,
       "stockCode": "6442",
       "stockName": "光聖",
       "heldLots": 70,
@@ -741,7 +741,7 @@
       "action": "hold"
     },
     {
-      "rank": 36,
+      "rank": 37,
       "stockCode": "6526",
       "stockName": "達發",
       "heldLots": 146,
@@ -761,7 +761,7 @@
       "action": "hold"
     },
     {
-      "rank": 37,
+      "rank": 38,
       "stockCode": "4749",
       "stockName": "新應材",
       "heldLots": 95,
@@ -781,7 +781,7 @@
       "action": "hold"
     },
     {
-      "rank": 38,
+      "rank": 39,
       "stockCode": "5347",
       "stockName": "世界",
       "heldLots": 211,
@@ -801,7 +801,7 @@
       "action": "hold"
     },
     {
-      "rank": 39,
+      "rank": 40,
       "stockCode": "4576",
       "stockName": "大銀微系統",
       "heldLots": 72,
@@ -821,7 +821,7 @@
       "action": "hold"
     },
     {
-      "rank": 40,
+      "rank": 41,
       "stockCode": "2303",
       "stockName": "聯電",
       "heldLots": 78,
@@ -841,7 +841,7 @@
       "action": "hold"
     },
     {
-      "rank": 41,
+      "rank": 42,
       "stockCode": "3163",
       "stockName": "波若威",
       "heldLots": 13.3,
@@ -861,7 +861,7 @@
       "action": "hold"
     },
     {
-      "rank": 42,
+      "rank": 43,
       "stockCode": "3264",
       "stockName": "欣銓",
       "heldLots": 34,
@@ -881,7 +881,7 @@
       "action": "hold"
     },
     {
-      "rank": 43,
+      "rank": 44,
       "stockCode": "3008",
       "stockName": "大立光",
       "heldLots": 1,
@@ -901,7 +901,7 @@
       "action": "hold"
     },
     {
-      "rank": 44,
+      "rank": 45,
       "stockCode": "3661",
       "stockName": "世芯-KY",
       "heldLots": 1,
@@ -921,7 +921,7 @@
       "action": "hold"
     },
     {
-      "rank": 45,
+      "rank": 46,
       "stockCode": "3533",
       "stockName": "嘉澤",
       "heldLots": 1,
@@ -941,7 +941,7 @@
       "action": "hold"
     },
     {
-      "rank": 46,
+      "rank": 47,
       "stockCode": "8299",
       "stockName": "群聯",
       "heldLots": 1,
@@ -961,7 +961,7 @@
       "action": "hold"
     },
     {
-      "rank": 47,
+      "rank": 48,
       "stockCode": "6805",
       "stockName": "富世達",
       "heldLots": 1,
@@ -981,7 +981,7 @@
       "action": "hold"
     },
     {
-      "rank": 48,
+      "rank": 49,
       "stockCode": "1590",
       "stockName": "亞德客-KY",
       "heldLots": 1,
