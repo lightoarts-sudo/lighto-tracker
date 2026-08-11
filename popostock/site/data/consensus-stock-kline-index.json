@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T18:07:32+08:00",
-  "consensusDate": "2026-08-10",
+  "generatedAt": "2026-08-11T12:06:42+08:00",
+  "consensusDate": "2026-08-11",
   "thresholdTwd": 100000000,
   "stocks": [
     {
@@ -1044,6 +1044,12 @@
           "etfCount": 4,
           "lots": 1631,
           "amountTwd": 204282750
+        },
+        {
+          "date": "2026-08-10",
+          "etfCount": 1,
+          "lots": 180,
+          "amountTwd": 21645000
         }
       ]
     },
@@ -1178,6 +1184,12 @@
           "etfCount": 1,
           "lots": 52,
           "amountTwd": 11128000
+        },
+        {
+          "date": "2026-08-11",
+          "etfCount": 1,
+          "lots": 40,
+          "amountTwd": null
         }
       ]
     },
@@ -1368,6 +1380,12 @@
           "etfCount": 1,
           "lots": 1000,
           "amountTwd": 567500000
+        },
+        {
+          "date": "2026-08-11",
+          "etfCount": 1,
+          "lots": 15,
+          "amountTwd": null
         }
       ]
     },
@@ -1492,6 +1510,12 @@
           "etfCount": 4,
           "lots": 35,
           "amountTwd": 83125000
+        },
+        {
+          "date": "2026-08-11",
+          "etfCount": 1,
+          "lots": 20,
+          "amountTwd": null
         }
       ]
     },
@@ -2122,6 +2146,12 @@
           "etfCount": 1,
           "lots": 264,
           "amountTwd": 77088000
+        },
+        {
+          "date": "2026-08-10",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 15337500
         }
       ]
     },
@@ -4163,21 +4193,27 @@
         },
         {
           "date": "2026-08-06",
-          "etfCount": 2,
-          "lots": 8,
-          "amountTwd": 37140000
+          "etfCount": 3,
+          "lots": 108,
+          "amountTwd": 501390000
         },
         {
           "date": "2026-08-07",
-          "etfCount": 2,
-          "lots": 101,
-          "amountTwd": 454752500
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 4502500
         },
         {
           "date": "2026-08-10",
           "etfCount": 2,
           "lots": 13,
           "amountTwd": 57915000
+        },
+        {
+          "date": "2026-08-11",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null
         }
       ]
     },
@@ -4284,9 +4320,9 @@
         },
         {
           "date": "2026-08-05",
-          "etfCount": 2,
-          "lots": 53,
-          "amountTwd": 143497500
+          "etfCount": 3,
+          "lots": 163,
+          "amountTwd": 441322500
         },
         {
           "date": "2026-08-06",
@@ -5657,10 +5693,10 @@
           "amountTwd": 624225000
         },
         {
-          "date": "2026-08-07",
+          "date": "2026-08-06",
           "etfCount": 1,
           "lots": 70,
-          "amountTwd": 312200000
+          "amountTwd": 308875000
         }
       ]
     },
@@ -5755,9 +5791,9 @@
         },
         {
           "date": "2026-08-04",
-          "etfCount": 1,
-          "lots": 91,
-          "amountTwd": 200427500
+          "etfCount": 2,
+          "lots": 281,
+          "amountTwd": 618902500
         },
         {
           "date": "2026-08-05",
@@ -5770,12 +5806,6 @@
           "etfCount": 4,
           "lots": 287,
           "amountTwd": 706737500
-        },
-        {
-          "date": "2026-08-10",
-          "etfCount": 1,
-          "lots": 865,
-          "amountTwd": 1909487500
         }
       ]
     },
@@ -6017,9 +6047,9 @@
         },
         {
           "date": "2026-08-10",
-          "etfCount": 2,
-          "lots": 2590,
-          "amountTwd": 1608390000
+          "etfCount": 3,
+          "lots": 2591,
+          "amountTwd": 1609011000
         }
       ]
     },
@@ -8486,9 +8516,9 @@
         },
         {
           "date": "2026-08-10",
-          "etfCount": 1,
-          "lots": 162,
-          "amountTwd": 283905000
+          "etfCount": 2,
+          "lots": 172,
+          "amountTwd": 301430000
         }
       ]
     },
@@ -8854,10 +8884,10 @@
           "amountTwd": 420099750
         },
         {
-          "date": "2026-08-07",
+          "date": "2026-08-06",
           "etfCount": 1,
           "lots": 10,
-          "amountTwd": 4080000
+          "amountTwd": 4082500
         },
         {
           "date": "2026-08-10",
