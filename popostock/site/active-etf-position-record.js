@@ -300,6 +300,7 @@
       ".active-etf-position-stat em.is-up{color:#c23d4b}" +
       ".active-etf-position-stat em.is-down{color:#16845b}" +
       ".active-etf-position-note{margin:0 0 14px;padding:9px 12px;border-left:3px solid #d8a13a;border-radius:0 8px 8px 0;background:#fdf6e8;color:#6b5220;font-size:12.5px;line-height:1.6}" +
+      ".active-etf-position-note.is-footnote{margin:16px 0 0}" +
       // The release stylesheet paints every th navy; these selectors are scoped
       // to the dialog so the table reads as a panel, not a site table.
       // min-width:0 overrides the release stylesheet's 900px table floor, which
@@ -492,8 +493,11 @@
         " 以先進先出沖銷到期初持股，這部分無法計算績效。",
       );
     }
+    // Data-provenance wording belongs with the methodology at the foot of the
+    // panel, not above the numbers it describes.
+    var footnotes = [];
     if (position.externalEventCount > 0 && ledger.officialBaselineDate) {
-      notes.push(
+      footnotes.push(
         ledger.baselineDate.replace(/-/g, "/") + " ~ " +
         ledger.officialBaselineDate.replace(/-/g, "/") +
         " 的持股張數來自第三方每日觀測，非投信官方揭露；" +
@@ -540,6 +544,11 @@
       "<thead><tr><th>日期</th><th>動作</th><th>張數</th><th>價格</th><th>金額</th><th>累計持股</th></tr></thead>" +
       "<tbody>" + rows + "</tbody></table></div>" +
       closedPositionLinks(ledger, position) +
+      footnotes
+        .map(function (note) {
+          return '<p class="active-etf-position-note is-footnote">' + note + "</p>";
+        })
+        .join("") +
       '<p class="active-etf-position-method">' + ledger.costMethodology +
       " 追蹤期 " + ledger.baselineDate.replace(/-/g, "/") + " ~ " +
       ledger.latestDate.replace(/-/g, "/") + "（" + ledger.sessionCount + " 個交易日）。</p>";
