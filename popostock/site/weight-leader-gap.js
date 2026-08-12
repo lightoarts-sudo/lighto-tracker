@@ -140,9 +140,14 @@
       '<div class="weight-gap-summary">' +
       '<div class="weight-gap-stat"><b>' + payload.abovePeakCount + " / " + rows.length +
       "</b><span>已站回六月高點</span></div>" +
-      '<div class="weight-gap-stat"><b>' + number(payload.laggardGapPct, 2) +
+      '<div class="weight-gap-stat"><b>+' + number(payload.laggardGapPct, 2) +
       "%</b><span>落後 " + (payload.belowPeakCount || 0) +
-      " 檔補漲的指數空間</span></div>" +
+      " 檔全回高點的指數漲幅</span></div>" +
+      (payload.projectedTaiex
+        ? '<div class="weight-gap-stat"><b>+' + number(payload.projectedGainPoints, 0) +
+          " 點</b><span>大盤 " + number(payload.taiexClose, 0) + " → 約 " +
+          number(payload.projectedTaiex, 0) + "</span></div>"
+        : "") +
       '<div class="weight-gap-stat"><b>' + number(rows[0].gapPct, 2) +
       "%</b><span>台積電距前高</span></div>" +
       "</div>" +
