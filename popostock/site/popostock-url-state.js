@@ -12,6 +12,7 @@
     "taiwan-market": "台股加權指數大盤",
     "us-market": "美股大盤",
     "election-trend": "台灣選前走勢",
+    "weight-gap": "權值股回前高",
   };
   const labelTabs = new Map(
     Object.entries(tabLabels).map(([tab, label]) => [label, tab]),
