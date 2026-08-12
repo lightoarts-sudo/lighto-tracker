@@ -10,9 +10,16 @@
   const TAB_FLAG = "data-weight-gap-tab";
   const PANEL_FLAG = "data-weight-gap-panel";
 
+  // consensus-stock-kline.js opens its modal for any element carrying this
+  // class, but only for codes present in its own index. Load the same index so
+  // a stock without K-line history stays plain text instead of a dead click.
+  const KLINE_INDEX_URL = "data/consensus-stock-kline-index.json";
+  const KLINE_CLASS = "consensus-stock-kline-cell";
+
   let payload = null;
   let loading = null;
   let active = false;
+  let klineCodes = null;
 
   function style() {
     if (document.getElementById("weight-gap-style")) return;
@@ -105,9 +112,18 @@
             number(Math.abs(row.premiumPct), 2) +
             "%</span>"
           : '<span class="weight-gap-need">還要漲 ' + number(row.gapPct, 2) + "%</span>";
+        const clickable = klineCodes && klineCodes.has(row.code);
+        const nameCell = clickable
+          ? '<td class="weight-gap-name ' + KLINE_CLASS + '"' +
+            ' data-consensus-stock-kline-code="' + row.code + '"' +
+            ' data-consensus-stock-kline-name="' + row.name + '"' +
+            ' role="button" tabindex="0"' +
+            ' title="查看 ' + row.name + "（" + row.code + '）一年日 K"' +
+            ' aria-label="' + row.name + " " + row.code + '，查看一年日 K">'
+          : '<td class="weight-gap-name">';
         return (
           "<tr><td class=\"weight-gap-rank\">" + row.rank + "</td>" +
-          '<td class="weight-gap-name">' + row.name + "<i>" + row.code + "</i></td>" +
+          nameCell + row.name + "<i>" + row.code + "</i></td>" +
           "<td>" + number(row.weightPct, 4) + "%</td>" +
           "<td>" + number(row.close, 2) + "</td>" +
           "<td>" + number(row.peakClose, 2) + "</td>" +
@@ -124,8 +140,9 @@
       '<div class="weight-gap-summary">' +
       '<div class="weight-gap-stat"><b>' + payload.abovePeakCount + " / " + rows.length +
       "</b><span>已站回六月高點</span></div>" +
-      '<div class="weight-gap-stat"><b>' + number(payload.weightedGapPct, 2) +
-      "%</b><span>加權缺口（全部回前高的指數空間）</span></div>" +
+      '<div class="weight-gap-stat"><b>' + number(payload.laggardGapPct, 2) +
+      "%</b><span>落後 " + (payload.belowPeakCount || 0) +
+      " 檔補漲的指數空間</span></div>" +
       '<div class="weight-gap-stat"><b>' + number(rows[0].gapPct, 2) +
       "%</b><span>台積電距前高</span></div>" +
       "</div>" +
@@ -136,15 +153,41 @@
       '<p class="weight-gap-note">' + (payload.methodology || "") +
       "<br>排行與市值比重取自臺灣期貨交易所「臺灣證券交易所發行量加權股價指數成分股暨市值比重」；" +
       "價格取自證交所／櫃買中心每日收盤行情。<b>價格未還原除權息</b>，除息後的股價會使距前高幅度略為高估。" +
+      "「補漲的指數空間」只計入尚未回到六月高點者；若把已超越的 " +
+      (payload.abovePeakCount || 0) + " 檔也一併拉回六月高點（等於要下跌），淨值為 " +
+      number(payload.weightedGapPct, 2) + "%。" +
       "資料更新時間 " + (payload.generatedAt || "").replace("T", " ").slice(0, 16) +
       "。</p>";
   }
 
+  function loadKlineCodes() {
+    return fetch(KLINE_INDEX_URL, { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((index) => {
+        const list = Array.isArray(index)
+          ? index
+          : (index && (index.stocks || index.targets)) || [];
+        klineCodes = new Set(
+          list
+            .map((item) => String(item.code || item.symbol || ""))
+            .filter((code) => /^\d{4}[A-Z]?$/.test(code)),
+        );
+      })
+      .catch(() => {
+        // No index means no K-line modal; the table still renders as text.
+        klineCodes = new Set();
+      });
+  }
+
   function load() {
     if (payload || loading) return loading;
-    loading = fetch(DATA_URL, { cache: "no-store" })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((data) => {
+    loading = Promise.all([
+      fetch(DATA_URL, { cache: "no-store" }).then((response) =>
+        response.ok ? response.json() : null,
+      ),
+      loadKlineCodes(),
+    ])
+      .then(([data]) => {
         payload = data;
         render();
       })
