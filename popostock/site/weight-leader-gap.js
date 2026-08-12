@@ -26,7 +26,10 @@
     const element = document.createElement("style");
     element.id = "weight-gap-style";
     element.textContent = [
-      ".weight-gap-panel{padding:4px 0 28px}",
+      // Match the shell's own panels (.consensus-panel et al) so this tab does
+      // not read as a different site: white card, hairline border, soft shadow.
+      ".weight-gap-panel{background:#fff;border:1px solid #c8d6e8;border-radius:8px;",
+      "box-shadow:0 14px 34px rgba(3,24,63,.1);padding:20px 20px 24px}",
       ".weight-gap-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin:0 0 6px}",
       ".weight-gap-head h2{font-size:20px;font-weight:800;color:#12295c;margin:0}",
       ".weight-gap-head .meta{color:#667483;font-size:13px;font-weight:700}",
