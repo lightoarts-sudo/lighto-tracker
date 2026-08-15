@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T18:05:53+08:00",
+  "generatedAt": "2026-08-15T12:01:33+08:00",
   "consensusDate": "2026-08-14",
   "thresholdTwd": 100000000,
   "stocks": [
@@ -1804,6 +1804,12 @@
           "etfCount": 1,
           "lots": 175,
           "amountTwd": 397687500
+        },
+        {
+          "date": "2026-08-14",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 27960000
         }
       ]
     },
@@ -2465,9 +2471,9 @@
         },
         {
           "date": "2026-08-14",
-          "etfCount": 1,
-          "lots": 55,
-          "amountTwd": 329175000
+          "etfCount": 2,
+          "lots": 55.001,
+          "amountTwd": 329180985
         }
       ]
     },
@@ -8515,6 +8521,12 @@
           "etfCount": 2,
           "lots": 68,
           "amountTwd": 63376000
+        },
+        {
+          "date": "2026-08-14",
+          "etfCount": 1,
+          "lots": 45,
+          "amountTwd": 45855000
         }
       ]
     },
@@ -8887,9 +8899,9 @@
         },
         {
           "date": "2026-08-14",
-          "etfCount": 2,
-          "lots": 140,
-          "amountTwd": 895300000
+          "etfCount": 3,
+          "lots": 145,
+          "amountTwd": 927275000
         }
       ]
     },
@@ -9946,9 +9958,9 @@
         },
         {
           "date": "2026-08-14",
-          "etfCount": 1,
-          "lots": 13,
-          "amountTwd": 16737500
+          "etfCount": 2,
+          "lots": 25,
+          "amountTwd": 32187500
         }
       ]
     },
