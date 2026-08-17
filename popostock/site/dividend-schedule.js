@@ -9,13 +9,19 @@
   const TAB_FLAG = "data-dividend-tab";
   const PANEL_FLAG = "data-dividend-panel";
   const KLINE_INDEX_URL = "data/consensus-stock-kline-index.json";
+  // The same file the 績效排行 page reads, so a YTD shown here can never drift
+  // from the one shown there.
+  const RANKING_URL = "data/performance-ranking.json";
 
   let payload = null;
+  let ranking = null;    // code -> YTD %
   let loading = null;
   let active = false;
   let filter = "all";
   let view = "calendar";
-  let selected = null;   // Set of codes shown in the calendar
+  // Starts empty on purpose: an all-checked calendar shows every ETF paying in
+  // every month, which is the same as showing nothing.
+  let selected = new Set();
 
   function style() {
     if (document.getElementById("dividend-style")) return;
@@ -74,6 +80,14 @@
       "font-weight:800;border-radius:var(--radius,8px);padding:7px 16px;cursor:pointer}",
       ".dividend-views button.is-on{background:#ffd43b;border-color:#e8bd22;color:#12295c}",
       ".dividend-bulk{margin-left:auto;display:flex;gap:8px}",
+      ".dividend-cal th .mn{display:block}",
+      ".dividend-cal th .cnt{display:block;margin-top:2px;font-size:11.5px;font-weight:800;color:#12295c}",
+      ".dividend-cal th .cnt.zero{color:#c3ccda}",
+      ".dividend-cal th.who .hint{display:block;font-weight:700;font-size:11.5px;color:#8b98ab;margin-top:2px}",
+      ".dividend-cal .ytd{margin-left:auto;font-weight:900;font-size:12.5px;",
+      "color:#d92b2b;font-variant-numeric:tabular-nums}",
+      ".dividend-cal .ytd.dn{color:#1a7a3c}",
+      ".dividend-cal .ytd.na{color:#c3ccda}",
     ].join("");
     document.head.appendChild(element);
   }
@@ -108,16 +122,47 @@
     return all.filter((i) => i.payoutCount);
   }
 
+  function ytdOf(code) {
+    const value = ranking && ranking[code];
+    return value === undefined || value === null ? null : value;
+  }
+
   function calendarRows() {
-    return ((payload && payload.instruments) || []).filter((i) => i.payoutCount);
+    // Ranked by this year's return, best first. An ETF the ranking has no YTD
+    // for (too recently listed to have a start-of-year price) sorts last rather
+    // than being treated as 0%.
+    return ((payload && payload.instruments) || [])
+      .filter((i) => i.payoutCount)
+      .slice()
+      .sort((a, b) => {
+        const x = ytdOf(a.code);
+        const y = ytdOf(b.code);
+        if (x === null && y === null) return a.code < b.code ? -1 : 1;
+        if (x === null) return 1;
+        if (y === null) return -1;
+        return y - x;
+      });
   }
 
   function renderCalendar() {
     const list = calendarRows();
-    if (selected === null) selected = new Set(list.map((i) => i.code));
+    // How many of the *checked* ETFs distribute in each month — the point of
+    // the calendar is spotting the thin months once a portfolio is picked.
+    const perMonth = Array.from({ length: 12 }, () => 0);
+    list.forEach((i) => {
+      if (!selected.has(i.code)) return;
+      (i.payoutMonths || []).forEach((m) => {
+        if (m >= 1 && m <= 12) perMonth[m - 1] += 1;
+      });
+    });
+    const any = selected.size > 0;
     const head =
-      '<tr><th class="who">ETF（勾選以顯示）</th>' +
-      Array.from({ length: 12 }, (_, n) => "<th>" + (n + 1) + "月</th>").join("") + "</tr>";
+      '<tr><th class="who">ETF（勾選以顯示）<span class="hint">依今年以來報酬排序</span></th>' +
+      Array.from({ length: 12 }, (_, n) =>
+        '<th><span class="mn">' + (n + 1) + "月</span>" +
+        '<span class="cnt' + (any && perMonth[n] === 0 ? " zero" : "") + '">' +
+        (any ? perMonth[n] + " 次" : "—") + "</span></th>"
+      ).join("") + "</tr>";
     const body = list
       .map((i) => {
         const on = selected.has(i.code);
@@ -127,11 +172,17 @@
           if (!has) return '<td class="dim">·</td>';
           return on ? '<td class="hit">💰</td>' : '<td class="dim">·</td>';
         }).join("");
+        const ytd = ytdOf(i.code);
+        const perf =
+          ytd === null
+            ? '<span class="ytd na">—</span>'
+            : '<span class="ytd' + (ytd < 0 ? " dn" : "") + '">' +
+              (ytd >= 0 ? "+" : "") + num(ytd, 1) + "%</span>";
         return (
           '<tr class="' + (on ? "" : "off") + '"><td class="who"><label>' +
           '<input type="checkbox" data-code="' + i.code + '"' + (on ? " checked" : "") + ">" +
           "<span>" + i.name + ' <span class="code">' + i.code + "</span></span>" +
-          "</label></td>" + cells + "</tr>"
+          perf + "</label></td>" + cells + "</tr>"
         );
       })
       .join("");
@@ -219,10 +270,21 @@
 
   function load() {
     if (payload || loading) return loading;
-    loading = fetch(DATA_URL, { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
+    loading = Promise.all([
+      fetch(DATA_URL, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)),
+      // A missing or failed ranking must not blank the calendar; the YTD column
+      // simply shows "—" and the order falls back to code.
+      fetch(RANKING_URL, { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
+    ])
+      .then(([data, ranked]) => {
         payload = data;
+        ranking = {};
+        ((ranked && ranked.instruments) || []).forEach((i) => {
+          const ytd = i.returns && i.returns.ytd;
+          if (ytd && typeof ytd.returnPct === "number") ranking[i.code] = ytd.returnPct;
+        });
         render();
       })
       .catch(() => {
@@ -336,7 +398,6 @@
   document.addEventListener("change", (event) => {
     const box = event.target.closest?.("[" + PANEL_FLAG + "] input[data-code]");
     if (!box) return;
-    if (selected === null) selected = new Set(calendarRows().map((i) => i.code));
     if (box.checked) selected.add(box.dataset.code);
     else selected.delete(box.dataset.code);
     render();
