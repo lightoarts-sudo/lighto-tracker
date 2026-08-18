@@ -95,9 +95,12 @@
     document.querySelectorAll(CARD).forEach((card) => {
       const header = card.querySelector("header");
       if (!header) return;
-      const label = header.textContent || "";
-      // 標題列格式為「00981A · 2026/08/18」。
-      const match = label.match(/(\d{4,6}[A-Z]?)\s*·\s*(\d{4})\/(\d{2})\/(\d{2})/);
+      // 代號只能取自專屬的那個 <span>。用整個 header 的文字比對會把基金名稱
+      // 尾端的數字一起吃掉（「主動統一升級50」+「00403A」→ 誤判成 000403A）。
+      const link = header.querySelector("a") || header;
+      const spans = link.querySelectorAll("span");
+      const label = spans.length ? spans[spans.length - 1].textContent || "" : "";
+      const match = label.trim().match(/^(\d{4,6}[A-Z]?)\s*·\s*(\d{4})\/(\d{2})\/(\d{2})/);
       if (!match) return;
       const code = match[1];
       const date = match[2] + "-" + match[3] + "-" + match[4];
