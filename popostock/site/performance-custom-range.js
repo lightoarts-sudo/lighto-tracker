@@ -18,7 +18,19 @@
 (function () {
   "use strict";
 
-  var SERIES_FILE = "data/performance-series.json";
+  // 站台網址可能是 /popostock/ 也可能是 /popostock（無結尾斜線）。後者會讓
+  // 相對路徑 "data/..." 解析到網站根目錄而 404，所以基準路徑取自本腳本的位置。
+  var ASSET_BASE = (function () {
+    var self = document.currentScript && document.currentScript.src;
+    if (self) return self.slice(0, self.lastIndexOf("/") + 1);
+    var marker = "/popostock/";
+    var at = location.pathname.indexOf(marker);
+    if (at >= 0) return location.origin + location.pathname.slice(0, at + marker.length);
+    return location.origin + "/popostock/";
+  })();
+
+
+  var SERIES_FILE = ASSET_BASE + "data/performance-series.json";
   var PANEL_ID = "performance-custom-range";
   var CONTROL_ID = "performance-custom-range-control";
   var BANNER_ID = "performance-custom-range-banner";

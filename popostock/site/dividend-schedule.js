@@ -1,17 +1,29 @@
 (() => {
   "use strict";
 
+  // 站台網址可能是 /popostock/ 也可能是 /popostock（無結尾斜線）。後者會讓
+  // 相對路徑 "data/..." 解析到網站根目錄而 404，所以基準路徑取自本腳本的位置。
+  var ASSET_BASE = (function () {
+    var self = document.currentScript && document.currentScript.src;
+    if (self) return self.slice(0, self.lastIndexOf("/") + 1);
+    var marker = "/popostock/";
+    var at = location.pathname.indexOf(marker);
+    if (at >= 0) return location.origin + location.pathname.slice(0, at + marker.length);
+    return location.origin + "/popostock/";
+  })();
+
+
   // Overlay tab, same contract as weight-leader-gap.js: the button is appended
   // as the LAST child of the tab strip and the panel as the LAST child of the
   // shell. Nothing is inserted between React's own children.
   const TAB_LABEL = "配息資訊";
-  const DATA_URL = "data/dividend-schedule.json";
+  const DATA_URL = ASSET_BASE + "data/dividend-schedule.json";
   const TAB_FLAG = "data-dividend-tab";
   const PANEL_FLAG = "data-dividend-panel";
-  const KLINE_INDEX_URL = "data/consensus-stock-kline-index.json";
+  const KLINE_INDEX_URL = ASSET_BASE + "data/consensus-stock-kline-index.json";
   // The same file the 績效排行 page reads, so a YTD shown here can never drift
   // from the one shown there.
-  const RANKING_URL = "data/performance-ranking.json";
+  const RANKING_URL = ASSET_BASE + "data/performance-ranking.json";
 
   let payload = null;
   let ranking = null;    // code -> YTD %

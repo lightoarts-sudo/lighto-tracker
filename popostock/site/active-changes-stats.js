@@ -5,6 +5,14 @@
   //
   // 卡片本身由 React 產生，所以這裡只做兩件事：append 到 <header> 的最後，
   // 以及在 React 重繪後重新補上。絕不插入既有子節點之間（會 NotFoundError）。
+  // 站台網址可能是 /popostock/ 也可能是 /popostock（無結尾斜線）。後者會讓
+  // 相對路徑 "data/..." 解析到網站根目錄而 404，所以基準路徑取自本腳本的位置。
+  const BASE = (() => {
+    const self = document.currentScript && document.currentScript.src;
+    if (self) return self.slice(0, self.lastIndexOf("/") + 1);
+    return new URL("./", location.href).href;
+  })();
+
   const CARD = ".active-etf-change-card";
   const FLAG = "data-ac-stats";
   const cache = new Map();
@@ -83,7 +91,7 @@
     if (!cache.has(key)) {
       cache.set(
         key,
-        fetch("data/holding-changes/" + code + "/" + date + ".json", { cache: "no-store" })
+        fetch(BASE + "data/holding-changes/" + code + "/" + date + ".json", { cache: "no-store" })
           .then((r) => (r.ok ? r.json() : null))
           .catch(() => null),
       );
