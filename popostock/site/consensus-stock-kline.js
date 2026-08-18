@@ -9,20 +9,9 @@
 (function () {
   "use strict";
 
-  // 站台網址可能是 /popostock/ 也可能是 /popostock（無結尾斜線）。後者會讓
-  // 相對路徑 "data/..." 解析到網站根目錄而 404，所以基準路徑取自本腳本的位置。
-  var ASSET_BASE = (function () {
-    var self = document.currentScript && document.currentScript.src;
-    if (self) return self.slice(0, self.lastIndexOf("/") + 1);
-    var marker = "/popostock/";
-    var at = location.pathname.indexOf(marker);
-    if (at >= 0) return location.origin + location.pathname.slice(0, at + marker.length);
-    return location.origin + "/popostock/";
-  })();
-
 
   var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
-  var INDEX_FILE = ASSET_BASE + "data/consensus-stock-kline-index.json";
+  var INDEX_FILE = "data/consensus-stock-kline-index.json";
   var stockNames = new Map();
   var stockBuySessions = new Map();
   var libraryPromise = null;
