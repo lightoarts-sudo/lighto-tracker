@@ -75,6 +75,12 @@
       ".dividend-cal .code{color:#8b98ab;font-weight:700;font-size:12px}",
       ".dividend-cal td.hit{background:#fffbe9}",
       ".dividend-cal td.dim{color:#dfe5ee}",
+      ".dividend-cal td.hit.plan{background:#f6f8fc}",
+      ".dividend-cal td.hit.plan span,.dividend-cal td.hit.plan{opacity:.42}",
+      ".dividend-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 10px;",
+      "color:#667483;font-size:12.5px;font-weight:700}",
+      ".dividend-legend b{font-weight:400}",
+      ".dividend-legend b.plan{opacity:.42}",
       ".dividend-views{display:flex;gap:8px;margin:0 0 12px}",
       ".dividend-views button{border:1px solid #c8d6e8;background:#fff;color:#5b6b80;font-size:13px;",
       "font-weight:800;border-radius:var(--radius,8px);padding:7px 16px;cursor:pointer}",
@@ -151,7 +157,9 @@
     const perMonth = Array.from({ length: 12 }, () => 0);
     list.forEach((i) => {
       if (!selected.has(i.code)) return;
-      (i.payoutMonths || []).forEach((m) => {
+      // 計數用「預期配息月份」而非只有已發生的，否則剛掛牌的季配 ETF 會讓
+      // 下半年看起來完全沒有配息。
+      (i.expectedMonths || i.payoutMonths || []).forEach((m) => {
         if (m >= 1 && m <= 12) perMonth[m - 1] += 1;
       });
     });
@@ -166,11 +174,17 @@
     const body = list
       .map((i) => {
         const on = selected.has(i.code);
-        const months = new Set(i.payoutMonths || []);
+        const paid = new Set(i.payoutMonths || []);
+        const planned = new Set(i.announcedMonths || []);
         const cells = Array.from({ length: 12 }, (_, n) => {
-          const has = months.has(n + 1);
-          if (!has) return '<td class="dim">·</td>';
-          return on ? '<td class="hit">💰</td>' : '<td class="dim">·</td>';
+          const month = n + 1;
+          if (!on || (!paid.has(month) && !planned.has(month))) {
+            return '<td class="dim">·</td>';
+          }
+          // 已除息與僅為公告預期，必須看得出差別，否則等於宣稱錢已經配了。
+          return paid.has(month)
+            ? '<td class="hit">💰</td>'
+            : '<td class="hit plan" title="投信公告之配息月份，尚未除息">💰</td>';
         }).join("");
         const ytd = ytdOf(i.code);
         const perf =
@@ -253,6 +267,10 @@
           '<button type="button" data-bulk="none">全不選</button></span>'
         : "") +
       "</div>" +
+      (view === "calendar"
+        ? '<div class="dividend-legend"><span><b>💰</b> 已完成除息</span>' +
+          '<span><b class="plan">💰</b> 投信公告之配息月份，尚未除息</span></div>'
+        : "") +
       (view === "calendar" ? renderCalendar() : "") +
       (view === "calendar" ? "" :
       '<div class="dividend-filters">' + chip("all", "有配息") + chip("upcoming", "已公告除息") +
