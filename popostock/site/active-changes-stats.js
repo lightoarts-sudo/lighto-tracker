@@ -125,12 +125,28 @@
     style();
     decorate();
     // React 換頁／換日期會整批重繪，重繪後既有節點被丟棄，必須重新補上。
+    // 這裡用 setTimeout 而非 requestAnimationFrame：分頁在背景時 rAF 不會觸發，
+    // 於是在背景開啟的頁面永遠不會補上統計。
     let queued = false;
-    new MutationObserver(() => {
+    const schedule = () => {
       if (queued) return;
       queued = true;
-      requestAnimationFrame(() => { queued = false; decorate(); });
-    }).observe(document.body, { childList: true, subtree: true });
+      setTimeout(() => { queued = false; decorate(); }, 60);
+    };
+    new MutationObserver(schedule).observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+    // 保險：卡片可能在 observer 掛上前就渲染完成，之後不再有任何變動，
+    // 那樣就沒有任何事件會觸發補寫。開頭數秒內定期重試，補齊後自動停止。
+    let attempts = 0;
+    const timer = setInterval(() => {
+      attempts += 1;
+      decorate();
+      const cards = document.querySelectorAll(CARD).length;
+      const done = document.querySelectorAll("[" + FLAG + "]").length;
+      if ((cards && done >= cards) || attempts >= 40) clearInterval(timer);
+    }, 500);
   }
 
   if (document.readyState === "loading") {
