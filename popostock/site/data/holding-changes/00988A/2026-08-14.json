@@ -4,7 +4,7 @@
   "instrumentName": "主動統一全球創新",
   "sourceDate": "2026-08-14",
   "comparisonDate": "2026-08-13",
-  "capturedAt": "2026-08-17T18:03:54+08:00",
+  "capturedAt": "2026-08-18T12:03:46+08:00",
   "sourceTitle": "統一投信 00988A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -643,7 +643,7 @@
     {
       "rank": 29,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 1550,
       "lotChange": 0,
       "weightPct": 1.61,
@@ -658,7 +658,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 31,

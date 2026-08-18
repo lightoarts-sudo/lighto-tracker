@@ -43,7 +43,7 @@
     {
       "rank": 11,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 6000,
       "lotChange": -1000,
       "weightPct": 2.43,
@@ -58,7 +58,8 @@
       "closeAmountTwd": -630000000,
       "averageAmountTwd": -630000000,
       "amountTwd": -630000000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "國巨*"
     },
     {
       "rank": 26,

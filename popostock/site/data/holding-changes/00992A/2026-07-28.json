@@ -4,7 +4,7 @@
   "instrumentName": "主動群益科技創新",
   "sourceDate": "2026-07-28",
   "comparisonDate": "2026-07-27",
-  "capturedAt": "2026-08-17T18:03:55+08:00",
+  "capturedAt": "2026-08-18T12:03:47+08:00",
   "sourceTitle": "群益投信 00992A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -403,7 +403,7 @@
     {
       "rank": 20,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 1247,
       "lotChange": 0,
       "weightPct": 1.9654,
@@ -418,7 +418,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 21,

@@ -4,7 +4,7 @@
   "instrumentName": "主動安聯台灣",
   "sourceDate": "2026-08-17",
   "comparisonDate": "2026-08-14",
-  "capturedAt": "2026-08-17T18:03:54+08:00",
+  "capturedAt": "2026-08-18T12:03:46+08:00",
   "sourceTitle": "安聯投信 00993A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -63,7 +63,7 @@
     {
       "rank": 3,
       "stockCode": "2383",
-      "stockName": "台光電子",
+      "stockName": "台光電",
       "heldLots": 85,
       "lotChange": 0,
       "weightPct": 5.25,
@@ -78,7 +78,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台光電子"
     },
     {
       "rank": 4,
@@ -163,7 +164,7 @@
     {
       "rank": 8,
       "stockCode": "5274",
-      "stockName": "信驊科技",
+      "stockName": "信驊",
       "heldLots": 21.6,
       "lotChange": 0,
       "weightPct": 3.58,
@@ -178,7 +179,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "信驊科技"
     },
     {
       "rank": 9,
@@ -223,7 +225,7 @@
     {
       "rank": 11,
       "stockCode": "2308",
-      "stockName": "台達電子",
+      "stockName": "台達電",
       "heldLots": 168,
       "lotChange": 0,
       "weightPct": 3.08,
@@ -238,12 +240,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台達電子"
     },
     {
       "rank": 12,
       "stockCode": "3189",
-      "stockName": "景碩科技",
+      "stockName": "景碩",
       "heldLots": 333,
       "lotChange": 0,
       "weightPct": 2.93,
@@ -258,7 +261,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "景碩科技"
     },
     {
       "rank": 13,
@@ -363,7 +367,7 @@
     {
       "rank": 18,
       "stockCode": "2344",
-      "stockName": "華邦電子",
+      "stockName": "華邦電",
       "heldLots": 1196,
       "lotChange": 0,
       "weightPct": 2.11,
@@ -378,12 +382,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "華邦電子"
     },
     {
       "rank": 19,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 333,
       "lotChange": 0,
       "weightPct": 1.97,
@@ -398,7 +403,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 20,
@@ -443,7 +449,7 @@
     {
       "rank": 22,
       "stockCode": "3443",
-      "stockName": "創意電子",
+      "stockName": "創意",
       "heldLots": 33,
       "lotChange": 0,
       "weightPct": 1.88,
@@ -458,7 +464,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "創意電子"
     },
     {
       "rank": 23,
@@ -523,7 +530,7 @@
     {
       "rank": 26,
       "stockCode": "3081",
-      "stockName": "聯亞光電",
+      "stockName": "聯亞",
       "heldLots": 53,
       "lotChange": 0,
       "weightPct": 1.44,
@@ -538,7 +545,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "聯亞光電"
     },
     {
       "rank": 27,
@@ -563,7 +571,7 @@
     {
       "rank": 28,
       "stockCode": "3008",
-      "stockName": "大立光電",
+      "stockName": "大立光",
       "heldLots": 25,
       "lotChange": 0,
       "weightPct": 1.23,
@@ -578,12 +586,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "大立光電"
     },
     {
       "rank": 29,
       "stockCode": "2890",
-      "stockName": "永豐金控",
+      "stockName": "永豐金",
       "heldLots": 3016.22,
       "lotChange": 0,
       "weightPct": 1.16,
@@ -598,12 +607,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "永豐金控"
     },
     {
       "rank": 30,
       "stockCode": "2883",
-      "stockName": "凱基金控",
+      "stockName": "凱基金",
       "heldLots": 3587,
       "lotChange": 0,
       "weightPct": 1.1,
@@ -618,12 +628,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "凱基金控"
     },
     {
       "rank": 31,
       "stockCode": "2881",
-      "stockName": "富邦金控",
+      "stockName": "富邦金",
       "heldLots": 555,
       "lotChange": 0,
       "weightPct": 0.68,
@@ -638,7 +649,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "富邦金控"
     },
     {
       "rank": 32,
@@ -663,7 +675,7 @@
     {
       "rank": 33,
       "stockCode": "5289",
-      "stockName": "宜鼎國際",
+      "stockName": "宜鼎",
       "heldLots": 38,
       "lotChange": 0,
       "weightPct": 0.57,
@@ -678,7 +690,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "宜鼎國際"
     },
     {
       "rank": 34,
@@ -743,7 +756,7 @@
     {
       "rank": 37,
       "stockCode": "6446",
-      "stockName": "藥華醫藥",
+      "stockName": "藥華藥",
       "heldLots": 34.228,
       "lotChange": 0,
       "weightPct": 0.47,
@@ -758,7 +771,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "藥華醫藥"
     },
     {
       "rank": 38,
@@ -923,7 +937,7 @@
     {
       "rank": 46,
       "stockCode": "3481",
-      "stockName": "群創光電",
+      "stockName": "群創",
       "heldLots": 543,
       "lotChange": 0,
       "weightPct": 0.27,
@@ -938,7 +952,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "群創光電"
     },
     {
       "rank": 47,

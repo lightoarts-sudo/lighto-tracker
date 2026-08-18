@@ -63,7 +63,7 @@
     {
       "rank": 47,
       "stockCode": "5904",
-      "stockName": "寶雅*",
+      "stockName": "寶雅",
       "heldLots": 0,
       "lotChange": -210,
       "weightPct": 0.0,
@@ -78,7 +78,8 @@
       "closeAmountTwd": -17178000,
       "averageAmountTwd": -16968000,
       "amountTwd": -16968000,
-      "action": "removed"
+      "action": "removed",
+      "declaredName": "寶雅*"
     },
     {
       "rank": 39,
@@ -863,7 +864,7 @@
     {
       "rank": 41,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 10,
       "lotChange": 0,
       "weightPct": 0.4,
@@ -878,7 +879,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 42,

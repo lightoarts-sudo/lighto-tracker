@@ -23,7 +23,7 @@
     {
       "rank": 10,
       "stockCode": "2330",
-      "stockName": "TAIWAN SEMICONDUCTOR MFG CO. LTD",
+      "stockName": "台積電",
       "heldLots": 138,
       "lotChange": 11,
       "weightPct": 11.093348288249501,
@@ -38,12 +38,13 @@
       "closeAmountTwd": 25520000,
       "averageAmountTwd": 25685000,
       "amountTwd": 25685000,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "TAIWAN SEMICONDUCTOR MFG CO. LTD"
     },
     {
       "rank": 59,
       "stockCode": "2454",
-      "stockName": "MEDIATEK INC",
+      "stockName": "聯發科",
       "heldLots": 53.6,
       "lotChange": -4,
       "weightPct": 7.108480281471833,
@@ -58,12 +59,13 @@
       "closeAmountTwd": -15460000,
       "averageAmountTwd": -15790000,
       "amountTwd": -15790000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "MEDIATEK INC"
     },
     {
       "rank": 57,
       "stockCode": "2449",
-      "stockName": "KING YUAN ELECTRONICS CO LTD ORD TWD10",
+      "stockName": "京元電子",
       "heldLots": 7.25,
       "lotChange": -61,
       "weightPct": 0.05741959268473789,
@@ -78,12 +80,13 @@
       "closeAmountTwd": -14975500,
       "averageAmountTwd": -14396000,
       "amountTwd": -14396000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "KING YUAN ELECTRONICS CO LTD ORD TWD10"
     },
     {
       "rank": 6,
       "stockCode": "2379",
-      "stockName": "REALTEK SEMICONDUCTOR CORP",
+      "stockName": "瑞昱",
       "heldLots": 54,
       "lotChange": -12,
       "weightPct": 1.289441474121241,
@@ -98,12 +101,13 @@
       "closeAmountTwd": -8676000,
       "averageAmountTwd": -8394000,
       "amountTwd": -8394000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "REALTEK SEMICONDUCTOR CORP"
     },
     {
       "rank": 1,
       "stockCode": "3034",
-      "stockName": "NOVATEK MICROELECTRONICS CORP LTD",
+      "stockName": "聯詠",
       "heldLots": 15,
       "lotChange": -16,
       "weightPct": 0.26405465793439237,
@@ -118,12 +122,13 @@
       "closeAmountTwd": -8384000,
       "averageAmountTwd": -8368000,
       "amountTwd": -8368000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "NOVATEK MICROELECTRONICS CORP LTD"
     },
     {
       "rank": 26,
       "stockCode": "2885",
-      "stockName": "YUANTA FINANCIAL HOLDING CO LTD ORD TWD10",
+      "stockName": "元大金",
       "heldLots": 425,
       "lotChange": -120,
       "weightPct": 0.9802414405014694,
@@ -138,12 +143,13 @@
       "closeAmountTwd": -8280000,
       "averageAmountTwd": -8340000,
       "amountTwd": -8340000,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "YUANTA FINANCIAL HOLDING CO LTD ORD TWD10"
     },
     {
       "rank": 56,
       "stockCode": "2883",
-      "stockName": "KGI FINANCIAL HOLDING CO LTD",
+      "stockName": "凱基金",
       "heldLots": 1636,
       "lotChange": -266,
       "weightPct": 1.686910723130667,
@@ -158,12 +164,13 @@
       "closeAmountTwd": -8126300,
       "averageAmountTwd": -8046500,
       "amountTwd": -8046500,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "KGI FINANCIAL HOLDING CO LTD"
     },
     {
       "rank": 64,
       "stockCode": "3005",
-      "stockName": "GETAC HOLDINGS CORPORATION ORD TWD10",
+      "stockName": "神基",
       "heldLots": 0,
       "lotChange": -59,
       "weightPct": 0.0,
@@ -178,12 +185,13 @@
       "closeAmountTwd": -6726000,
       "averageAmountTwd": -6696500,
       "amountTwd": -6696500,
-      "action": "removed"
+      "action": "removed",
+      "declaredName": "GETAC HOLDINGS CORPORATION ORD TWD10"
     },
     {
       "rank": 2,
       "stockCode": "4938",
-      "stockName": "PEGATRON CORP ORD TWD10",
+      "stockName": "和碩",
       "heldLots": 124,
       "lotChange": 0,
       "weightPct": 0.3642292278436325,
@@ -198,12 +206,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "PEGATRON CORP ORD TWD10"
     },
     {
       "rank": 3,
       "stockCode": "5904",
-      "stockName": "POYA CO LTD ORD TWD10",
+      "stockName": "寶雅",
       "heldLots": 27,
       "lotChange": 0,
       "weightPct": 0.6593734810847254,
@@ -218,12 +227,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "POYA CO LTD ORD TWD10"
     },
     {
       "rank": 4,
       "stockCode": "2912",
-      "stockName": "PRESIDENT CHAIN STORE CORPORATION",
+      "stockName": "統一超",
       "heldLots": 43,
       "lotChange": 0,
       "weightPct": 0.32159720477905474,
@@ -238,12 +248,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "PRESIDENT CHAIN STORE CORPORATION"
     },
     {
       "rank": 5,
       "stockCode": "2382",
-      "stockName": "QUANTA COMPUTER INC",
+      "stockName": "廣達",
       "heldLots": 193,
       "lotChange": 0,
       "weightPct": 1.9409628481652712,
@@ -258,12 +269,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "QUANTA COMPUTER INC"
     },
     {
       "rank": 7,
       "stockCode": "6415",
-      "stockName": "SILERGY CORP ORD NPV",
+      "stockName": "矽力*-KY",
       "heldLots": 46,
       "lotChange": 0,
       "weightPct": 0.6623243809229132,
@@ -278,12 +290,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "SILERGY CORP ORD NPV"
     },
     {
       "rank": 8,
       "stockCode": "2890",
-      "stockName": "SINOPAC HOLDINGS COMPANY",
+      "stockName": "永豐金",
       "heldLots": 250.92,
       "lotChange": 0,
       "weightPct": 0.34085762626773974,
@@ -298,12 +311,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "SINOPAC HOLDINGS COMPANY"
     },
     {
       "rank": 9,
       "stockCode": "3167",
-      "stockName": "TA LIANG TECHNOLOGY CO LTD ORD TWD10",
+      "stockName": "大量",
       "heldLots": 23,
       "lotChange": 0,
       "weightPct": 0.41658565301865214,
@@ -318,12 +332,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "TA LIANG TECHNOLOGY CO LTD ORD TWD10"
     },
     {
       "rank": 11,
       "stockCode": "8021",
-      "stockName": "TOPOINT TECHNOLOGY CO LTD ORD TWD10",
+      "stockName": "尖點",
       "heldLots": 22,
       "lotChange": 0,
       "weightPct": 0.26490261765800954,
@@ -338,12 +353,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "TOPOINT TECHNOLOGY CO LTD ORD TWD10"
     },
     {
       "rank": 12,
       "stockCode": "3044",
-      "stockName": "TRIPOD TECHNOLOGY CORPORATION TWD10",
+      "stockName": "健鼎",
       "heldLots": 33,
       "lotChange": 0,
       "weightPct": 0.4186207563553334,
@@ -358,12 +374,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "TRIPOD TECHNOLOGY CORPORATION TWD10"
     },
     {
       "rank": 13,
       "stockCode": "2887",
-      "stockName": "TS FINANCIAL HOLDING CO LTD ORD TWD10",
+      "stockName": "台新新光金",
       "heldLots": 969.16,
       "lotChange": 0,
       "weightPct": 1.1603938077860576,
@@ -378,12 +395,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "TS FINANCIAL HOLDING CO LTD ORD TWD10"
     },
     {
       "rank": 14,
       "stockCode": "1216",
-      "stockName": "UNI-PRESIDENT ENTERPRISES CORPORATION",
+      "stockName": "統一",
       "heldLots": 135,
       "lotChange": 0,
       "weightPct": 0.3342657230498955,
@@ -398,12 +416,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "UNI-PRESIDENT ENTERPRISES CORPORATION"
     },
     {
       "rank": 15,
       "stockCode": "3037",
-      "stockName": "UNIMICRON TECHNOLOGY CORPORATION",
+      "stockName": "欣興",
       "heldLots": 78,
       "lotChange": 0,
       "weightPct": 2.288473702098067,
@@ -418,12 +437,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "UNIMICRON TECHNOLOGY CORPORATION"
     },
     {
       "rank": 16,
       "stockCode": "2303",
-      "stockName": "UNITED MICROELECTRONICS CORP ORD TWD10",
+      "stockName": "聯電",
       "heldLots": 246,
       "lotChange": 0,
       "weightPct": 0.9845829942863893,
@@ -438,12 +458,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "UNITED MICROELECTRONICS CORP ORD TWD10"
     },
     {
       "rank": 17,
       "stockCode": "3491",
-      "stockName": "UNIVERSAL MICROWAVE TECHNOLOGY ORD TWD10",
+      "stockName": "昇達科",
       "heldLots": 44,
       "lotChange": 0,
       "weightPct": 1.5894157059480571,
@@ -458,12 +479,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "UNIVERSAL MICROWAVE TECHNOLOGY ORD TWD10"
     },
     {
       "rank": 18,
       "stockCode": "5347",
-      "stockName": "VANGUARD INTERNATIONAL SEMICONDUCTOR CORPORATION ORD TWD10",
+      "stockName": "世界",
       "heldLots": 303,
       "lotChange": 0,
       "weightPct": 1.5518680493862882,
@@ -478,12 +500,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "VANGUARD INTERNATIONAL SEMICONDUCTOR CORPORATION ORD TWD10"
     },
     {
       "rank": 19,
       "stockCode": "2455",
-      "stockName": "VISUAL PHOTONICS EPITAXY CO LT ORD TWD10",
+      "stockName": "全新",
       "heldLots": 118,
       "lotChange": 0,
       "weightPct": 1.2847607364468738,
@@ -498,12 +521,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "VISUAL PHOTONICS EPITAXY CO LT ORD TWD10"
     },
     {
       "rank": 20,
       "stockCode": "2615",
-      "stockName": "WAN HAI LINES LIMITED",
+      "stockName": "萬海",
       "heldLots": 23,
       "lotChange": 0,
       "weightPct": 0.06716858562716468,
@@ -518,12 +542,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WAN HAI LINES LIMITED"
     },
     {
       "rank": 21,
       "stockCode": "2344",
-      "stockName": "WINBOND ELECTRONICS CORP ORD TWD10",
+      "stockName": "華邦電",
       "heldLots": 233,
       "lotChange": 0,
       "weightPct": 1.1301268012480434,
@@ -538,12 +563,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WINBOND ELECTRONICS CORP ORD TWD10"
     },
     {
       "rank": 22,
       "stockCode": "6515",
-      "stockName": "WINWAY TECHNOLOGY CO LTD ORD TWD10.000000000",
+      "stockName": "穎崴",
       "heldLots": 5.512,
       "lotChange": 0,
       "weightPct": 1.168488499144485,
@@ -558,12 +584,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WINWAY TECHNOLOGY CO LTD ORD TWD10.000000000"
     },
     {
       "rank": 23,
       "stockCode": "3231",
-      "stockName": "WISTRON CORPORATION",
+      "stockName": "緯創",
       "heldLots": 69,
       "lotChange": 0,
       "weightPct": 0.4353086037161197,
@@ -578,12 +605,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WISTRON CORPORATION"
     },
     {
       "rank": 24,
       "stockCode": "6669",
-      "stockName": "WIWYNN CORP ORD TWD 10",
+      "stockName": "緯穎",
       "heldLots": 13,
       "lotChange": 0,
       "weightPct": 2.612563908464556,
@@ -598,12 +626,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WIWYNN CORP ORD TWD 10"
     },
     {
       "rank": 25,
       "stockCode": "6285",
-      "stockName": "WNC CORP /TAIWAN",
+      "stockName": "啟碁",
       "heldLots": 213,
       "lotChange": 0,
       "weightPct": 1.7266834260072077,
@@ -618,12 +647,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "WNC CORP /TAIWAN"
     },
     {
       "rank": 27,
       "stockCode": "4958",
-      "stockName": "ZHEN DING TECHNOLOGY HOLDING ORD TWD10",
+      "stockName": "臻鼎-KY",
       "heldLots": 135,
       "lotChange": 0,
       "weightPct": 1.9300411269250817,
@@ -638,12 +668,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ZHEN DING TECHNOLOGY HOLDING ORD TWD10"
     },
     {
       "rank": 28,
       "stockCode": "2345",
-      "stockName": "ACCTON TECHNOLOGY CORP ORD TWD 10",
+      "stockName": "智邦",
       "heldLots": 36.053,
       "lotChange": 0,
       "weightPct": 2.8553773449142827,
@@ -658,12 +689,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ACCTON TECHNOLOGY CORP ORD TWD 10"
     },
     {
       "rank": 29,
       "stockCode": "6187",
-      "stockName": "ALL RING TECH CO LTD ORD TWD10",
+      "stockName": "萬潤",
       "heldLots": 20.305,
       "lotChange": 0,
       "weightPct": 0.6921564519594896,
@@ -678,12 +710,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ALL RING TECH CO LTD ORD TWD10"
     },
     {
       "rank": 30,
       "stockCode": "6531",
-      "stockName": "AP MEMORY TECHNOLOGY CORP ORD TWD5.000000000",
+      "stockName": "愛普",
       "heldLots": 45,
       "lotChange": 0,
       "weightPct": 1.118798059340518,
@@ -698,12 +731,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "AP MEMORY TECHNOLOGY CORP ORD TWD5.000000000"
     },
     {
       "rank": 31,
       "stockCode": "3711",
-      "stockName": "ASE TECHNOLOGY HOLDING CO LTD ORD TWD10",
+      "stockName": "日月光投控",
       "heldLots": 114,
       "lotChange": 0,
       "weightPct": 2.3586847672135702,
@@ -718,12 +752,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ASE TECHNOLOGY HOLDING CO LTD ORD TWD10"
     },
     {
       "rank": 32,
       "stockCode": "5274",
-      "stockName": "ASPEED TECHNOLOGY INC ORD TWD10",
+      "stockName": "信驊",
       "heldLots": 2.131,
       "lotChange": 0,
       "weightPct": 1.1546743872870375,
@@ -738,12 +773,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ASPEED TECHNOLOGY INC ORD TWD10"
     },
     {
       "rank": 33,
       "stockCode": "2357",
-      "stockName": "ASUSTEK COMPUTER INC",
+      "stockName": "華碩",
       "heldLots": 56,
       "lotChange": 0,
       "weightPct": 1.5176443949410985,
@@ -758,12 +794,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ASUSTEK COMPUTER INC"
     },
     {
       "rank": 34,
       "stockCode": "2882",
-      "stockName": "CATHAY FINANCIAL HOLDING CO. LTD.",
+      "stockName": "國泰金",
       "heldLots": 360,
       "lotChange": 0,
       "weightPct": 1.2271673120187945,
@@ -778,12 +815,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CATHAY FINANCIAL HOLDING CO. LTD."
     },
     {
       "rank": 35,
       "stockCode": "5871",
-      "stockName": "CHAILEASE HOLDINGS CO LTD ORD TWD10",
+      "stockName": "中租-KY",
       "heldLots": 46.92,
       "lotChange": 0,
       "weightPct": 0.17983394144917544,
@@ -798,12 +836,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CHAILEASE HOLDINGS CO LTD ORD TWD10"
     },
     {
       "rank": 36,
       "stockCode": "2360",
-      "stockName": "CHROMA ATE INC ORD TWD10",
+      "stockName": "致茂",
       "heldLots": 29,
       "lotChange": 0,
       "weightPct": 1.9279212276160387,
@@ -818,12 +857,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CHROMA ATE INC ORD TWD10"
     },
     {
       "rank": 37,
       "stockCode": "6510",
-      "stockName": "CHUNGHWA PRECISION TEST TECH C ORD TWD10",
+      "stockName": "精測",
       "heldLots": 7.747,
       "lotChange": 0,
       "weightPct": 0.6976430905551821,
@@ -838,12 +878,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CHUNGHWA PRECISION TEST TECH C ORD TWD10"
     },
     {
       "rank": 38,
       "stockCode": "2412",
-      "stockName": "CHUNGHWA TELECOM CO LTD ORD TWD10",
+      "stockName": "中華電",
       "heldLots": 211,
       "lotChange": 0,
       "weightPct": 0.9947924293587403,
@@ -858,12 +899,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CHUNGHWA TELECOM CO LTD ORD TWD10"
     },
     {
       "rank": 39,
       "stockCode": "2313",
-      "stockName": "COMPEQ MANUFACTURING CO LTD ORD TWD10",
+      "stockName": "華通",
       "heldLots": 166.356,
       "lotChange": 0,
       "weightPct": 1.0466888533428922,
@@ -878,12 +920,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "COMPEQ MANUFACTURING CO LTD ORD TWD10"
     },
     {
       "rank": 40,
       "stockCode": "2891",
-      "stockName": "CTBC FINANCIAL HOLDING CO. LTD.",
+      "stockName": "中信金",
       "heldLots": 838,
       "lotChange": 0,
       "weightPct": 1.8418499238299995,
@@ -898,12 +941,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "CTBC FINANCIAL HOLDING CO. LTD."
     },
     {
       "rank": 41,
       "stockCode": "2308",
-      "stockName": "DELTA ELECTRONICS INC TWD10",
+      "stockName": "台達電",
       "heldLots": 68,
       "lotChange": 0,
       "weightPct": 3.6441917082172273,
@@ -918,12 +962,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "DELTA ELECTRONICS INC TWD10"
     },
     {
       "rank": 42,
       "stockCode": "2884",
-      "stockName": "E. SUN FINANCIAL HOLDING COMPANY LIMITED",
+      "stockName": "玉山金",
       "heldLots": 1607,
       "lotChange": 0,
       "weightPct": 2.095788422261639,
@@ -938,12 +983,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "E. SUN FINANCIAL HOLDING COMPANY LIMITED"
     },
     {
       "rank": 43,
       "stockCode": "2383",
-      "stockName": "ELITE MATERIAL CO LTD ORD TWD 10",
+      "stockName": "台光電",
       "heldLots": 11.686,
       "lotChange": 0,
       "weightPct": 1.9739240601739396,
@@ -958,12 +1004,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "ELITE MATERIAL CO LTD ORD TWD 10"
     },
     {
       "rank": 44,
       "stockCode": "3529",
-      "stockName": "EMEMORY TECHNOLOGY INC",
+      "stockName": "力旺",
       "heldLots": 8,
       "lotChange": 0,
       "weightPct": 0.6485195966224254,
@@ -978,12 +1025,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "EMEMORY TECHNOLOGY INC"
     },
     {
       "rank": 45,
       "stockCode": "2603",
-      "stockName": "EVERGREEN MARINE CORPORATION",
+      "stockName": "長榮",
       "heldLots": 163,
       "lotChange": 0,
       "weightPct": 1.1472047100816938,
@@ -998,12 +1046,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "EVERGREEN MARINE CORPORATION"
     },
     {
       "rank": 46,
       "stockCode": "4904",
-      "stockName": "FAR EASTONE TELECOMMUNICATIONS COMPANY LIMITED TWD10",
+      "stockName": "遠傳",
       "heldLots": 267,
       "lotChange": 0,
       "weightPct": 0.9373177192919673,
@@ -1018,12 +1067,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "FAR EASTONE TELECOMMUNICATIONS COMPANY LIMITED TWD10"
     },
     {
       "rank": 47,
       "stockCode": "1301",
-      "stockName": "FORMOSA PLASTICS CORPORATION",
+      "stockName": "台塑",
       "heldLots": 43,
       "lotChange": 0,
       "weightPct": 0.07846680098464011,
@@ -1038,12 +1088,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "FORMOSA PLASTICS CORPORATION"
     },
     {
       "rank": 48,
       "stockCode": "2881",
-      "stockName": "FUBON FINANCIAL HOLDING COMPANY LIMITED",
+      "stockName": "富邦金",
       "heldLots": 433,
       "lotChange": 0,
       "weightPct": 1.9019227824899356,
@@ -1058,12 +1109,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "FUBON FINANCIAL HOLDING COMPANY LIMITED"
     },
     {
       "rank": 49,
       "stockCode": "4991",
-      "stockName": "GCS HOLDINGS  INC.",
+      "stockName": "環宇-KY",
       "heldLots": 44,
       "lotChange": 0,
       "weightPct": 0.5790547360637054,
@@ -1078,12 +1130,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "GCS HOLDINGS  INC."
     },
     {
       "rank": 50,
       "stockCode": "2368",
-      "stockName": "GOLD CIRCUIT ELECTRONICS LTD ORD TWD 10",
+      "stockName": "金像電",
       "heldLots": 12,
       "lotChange": 0,
       "weightPct": 0.35492202191721023,
@@ -1098,12 +1151,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "GOLD CIRCUIT ELECTRONICS LTD ORD TWD 10"
     },
     {
       "rank": 51,
       "stockCode": "3131",
-      "stockName": "GRAND PLASTIC TECHNOLOGY CORP ORD TWD 10",
+      "stockName": "弘塑",
       "heldLots": 5.811,
       "lotChange": 0,
       "weightPct": 0.47698141474134165,
@@ -1118,12 +1172,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "GRAND PLASTIC TECHNOLOGY CORP ORD TWD 10"
     },
     {
       "rank": 52,
       "stockCode": "2317",
-      "stockName": "HON HAI PRECISION IND CO LTD ORD TWD10",
+      "stockName": "鴻海",
       "heldLots": 86,
       "lotChange": 0,
       "weightPct": 0.7379963066585111,
@@ -1138,12 +1193,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "HON HAI PRECISION IND CO LTD ORD TWD10"
     },
     {
       "rank": 53,
       "stockCode": "7769",
-      "stockName": "Hon.Precision  Inc.",
+      "stockName": "鴻勁",
       "heldLots": 13,
       "lotChange": 0,
       "weightPct": 2.833033436605025,
@@ -1158,12 +1214,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "Hon.Precision  Inc."
     },
     {
       "rank": 54,
       "stockCode": "7828",
-      "stockName": "INNOSTAR SERVICE INC ORD TWD 10",
+      "stockName": "創新服務",
       "heldLots": 36,
       "lotChange": 0,
       "weightPct": 1.78885583294282,
@@ -1178,12 +1235,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "INNOSTAR SERVICE INC ORD TWD 10"
     },
     {
       "rank": 55,
       "stockCode": "3653",
-      "stockName": "JENTECH PRECISION INDUSTRIAL",
+      "stockName": "健策",
       "heldLots": 9.653,
       "lotChange": 0,
       "weightPct": 1.2343515659811688,
@@ -1198,12 +1256,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "JENTECH PRECISION INDUSTRIAL"
     },
     {
       "rank": 58,
       "stockCode": "3008",
-      "stockName": "LARGAN PRECISION COMPANY LIMITED",
+      "stockName": "大立光",
       "heldLots": 15,
       "lotChange": 0,
       "weightPct": 2.0147523033144386,
@@ -1218,12 +1277,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "LARGAN PRECISION COMPANY LIMITED"
     },
     {
       "rank": 60,
       "stockCode": "2886",
-      "stockName": "MEGA FINANCIAL HLDGS CO LTD",
+      "stockName": "兆豐金",
       "heldLots": 1008,
       "lotChange": 0,
       "weightPct": 1.7641903805022432,
@@ -1238,12 +1298,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "MEGA FINANCIAL HLDGS CO LTD"
     },
     {
       "rank": 61,
       "stockCode": "6944",
-      "stockName": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000",
+      "stockName": "兆聯實業",
       "heldLots": 20.8,
       "lotChange": 0,
       "weightPct": 0.5121948077759373,
@@ -1258,12 +1319,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000"
     },
     {
       "rank": 62,
       "stockCode": "6223",
-      "stockName": "MPI CORP ORD TWD10",
+      "stockName": "旺矽",
       "heldLots": 12.074,
       "lotChange": 0,
       "weightPct": 2.377325296225902,
@@ -1278,12 +1340,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "MPI CORP ORD TWD10"
     },
     {
       "rank": 63,
       "stockCode": "8464",
-      "stockName": "NIEN MADE ENTERPRISE CO LTD ORD TWD10",
+      "stockName": "億豐",
       "heldLots": 103,
       "lotChange": 0,
       "weightPct": 1.3135913670498582,
@@ -1298,7 +1361,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "NIEN MADE ENTERPRISE CO LTD ORD TWD10"
     }
   ]
 }

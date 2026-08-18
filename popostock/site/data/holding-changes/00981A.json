@@ -4,7 +4,7 @@
   "instrumentName": "主動統一台股增長",
   "sourceDate": "2026-08-17",
   "comparisonDate": "2026-08-14",
-  "capturedAt": "2026-08-17T18:03:54+08:00",
+  "capturedAt": "2026-08-18T12:03:46+08:00",
   "sourceTitle": "統一投信 00981A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -203,7 +203,7 @@
     {
       "rank": 7,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 25437,
       "lotChange": 0,
       "weightPct": 5.01,
@@ -218,7 +218,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 8,

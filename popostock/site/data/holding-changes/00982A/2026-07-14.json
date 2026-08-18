@@ -63,7 +63,7 @@
     {
       "rank": 2,
       "stockCode": "5536",
-      "stockName": "聖暉*",
+      "stockName": "聖暉",
       "heldLots": 3729,
       "lotChange": 13,
       "weightPct": 8.6961,
@@ -78,7 +78,8 @@
       "closeAmountTwd": 15015000,
       "averageAmountTwd": 15015000,
       "amountTwd": 15015000,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "聖暉*"
     },
     {
       "rank": 3,
@@ -443,7 +444,7 @@
     {
       "rank": 30,
       "stockCode": "6531",
-      "stockName": "愛普*",
+      "stockName": "愛普",
       "heldLots": 696,
       "lotChange": 2,
       "weightPct": 1.2057,
@@ -458,7 +459,8 @@
       "closeAmountTwd": 1716000,
       "averageAmountTwd": 1716000,
       "amountTwd": 1716000,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "愛普*"
     },
     {
       "rank": 39,
@@ -723,7 +725,7 @@
     {
       "rank": 25,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 844,
       "lotChange": 0,
       "weightPct": 1.3257,
@@ -738,7 +740,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 31,

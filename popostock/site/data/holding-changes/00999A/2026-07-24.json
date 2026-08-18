@@ -23,7 +23,7 @@
     {
       "rank": 66,
       "stockCode": "4915",
-      "stockName": "致伸科技",
+      "stockName": "致伸",
       "heldLots": 0,
       "lotChange": -252,
       "weightPct": 0.0,
@@ -38,12 +38,13 @@
       "closeAmountTwd": -16430400,
       "averageAmountTwd": -16493400,
       "amountTwd": -16493400,
-      "action": "removed"
+      "action": "removed",
+      "declaredName": "致伸科技"
     },
     {
       "rank": 67,
       "stockCode": "3592",
-      "stockName": "瑞鼎科技",
+      "stockName": "瑞鼎",
       "heldLots": 0,
       "lotChange": -62,
       "weightPct": 0.0,
@@ -58,12 +59,13 @@
       "closeAmountTwd": -14818000,
       "averageAmountTwd": -14756000,
       "amountTwd": -14756000,
-      "action": "removed"
+      "action": "removed",
+      "declaredName": "瑞鼎科技"
     },
     {
       "rank": 65,
       "stockCode": "9907",
-      "stockName": "統一實業",
+      "stockName": "統一實",
       "heldLots": 2221,
       "lotChange": -555,
       "weightPct": 0.27,
@@ -78,12 +80,13 @@
       "closeAmountTwd": -8408250,
       "averageAmountTwd": -8380500,
       "amountTwd": -8380500,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "統一實業"
     },
     {
       "rank": 63,
       "stockCode": "6768",
-      "stockName": "志強國際企業",
+      "stockName": "志強-KY",
       "heldLots": 738,
       "lotChange": -82,
       "weightPct": 0.41,
@@ -98,12 +101,13 @@
       "closeAmountTwd": -5658000,
       "averageAmountTwd": -5707200,
       "amountTwd": -5707200,
-      "action": "decrease"
+      "action": "decrease",
+      "declaredName": "志強國際企業"
     },
     {
       "rank": 1,
       "stockCode": "2330",
-      "stockName": "台灣積體電路製造",
+      "stockName": "台積電",
       "heldLots": 308,
       "lotChange": 0,
       "weightPct": 5.89,
@@ -118,12 +122,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台灣積體電路製造"
     },
     {
       "rank": 2,
       "stockCode": "2059",
-      "stockName": "川湖科技",
+      "stockName": "川湖",
       "heldLots": 69,
       "lotChange": 0,
       "weightPct": 4.34,
@@ -138,12 +143,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "川湖科技"
     },
     {
       "rank": 3,
       "stockCode": "2454",
-      "stockName": "聯發科技",
+      "stockName": "聯發科",
       "heldLots": 129,
       "lotChange": 0,
       "weightPct": 3.94,
@@ -158,12 +164,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "聯發科技"
     },
     {
       "rank": 4,
       "stockCode": "2383",
-      "stockName": "台光電子材料",
+      "stockName": "台光電",
       "heldLots": 99,
       "lotChange": 0,
       "weightPct": 3.83,
@@ -178,12 +185,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台光電子材料"
     },
     {
       "rank": 5,
       "stockCode": "3711",
-      "stockName": "日月光投資控股",
+      "stockName": "日月光投控",
       "heldLots": 712,
       "lotChange": 0,
       "weightPct": 3.55,
@@ -198,12 +206,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "日月光投資控股"
     },
     {
       "rank": 6,
       "stockCode": "2308",
-      "stockName": "台達電子工業",
+      "stockName": "台達電",
       "heldLots": 237,
       "lotChange": 0,
       "weightPct": 3.44,
@@ -218,12 +227,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台達電子工業"
     },
     {
       "rank": 7,
       "stockCode": "7769",
-      "stockName": "鴻勁精密",
+      "stockName": "鴻勁",
       "heldLots": 62,
       "lotChange": 0,
       "weightPct": 3.05,
@@ -238,12 +248,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "鴻勁精密"
     },
     {
       "rank": 8,
       "stockCode": "3653",
-      "stockName": "健策精密工業",
+      "stockName": "健策",
       "heldLots": 95,
       "lotChange": 0,
       "weightPct": 2.65,
@@ -258,12 +269,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "健策精密工業"
     },
     {
       "rank": 9,
       "stockCode": "2368",
-      "stockName": "金像電子（股）公司",
+      "stockName": "金像電",
       "heldLots": 280,
       "lotChange": 0,
       "weightPct": 2.05,
@@ -278,12 +290,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "金像電子（股）公司"
     },
     {
       "rank": 10,
       "stockCode": "6223",
-      "stockName": "旺矽科技",
+      "stockName": "旺矽",
       "heldLots": 42,
       "lotChange": 0,
       "weightPct": 1.95,
@@ -298,12 +311,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "旺矽科技"
     },
     {
       "rank": 11,
       "stockCode": "2408",
-      "stockName": "南亞科技",
+      "stockName": "南亞科",
       "heldLots": 587,
       "lotChange": 0,
       "weightPct": 1.91,
@@ -318,12 +332,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "南亞科技"
     },
     {
       "rank": 12,
       "stockCode": "2345",
-      "stockName": "智邦科技",
+      "stockName": "智邦",
       "heldLots": 103,
       "lotChange": 0,
       "weightPct": 1.86,
@@ -338,12 +353,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "智邦科技"
     },
     {
       "rank": 13,
       "stockCode": "3081",
-      "stockName": "聯亞光電工業",
+      "stockName": "聯亞",
       "heldLots": 128.7,
       "lotChange": 0,
       "weightPct": 1.84,
@@ -358,12 +374,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "聯亞光電工業"
     },
     {
       "rank": 14,
       "stockCode": "6515",
-      "stockName": "穎崴科技",
+      "stockName": "穎崴",
       "heldLots": 36,
       "lotChange": 0,
       "weightPct": 1.84,
@@ -378,12 +395,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "穎崴科技"
     },
     {
       "rank": 15,
       "stockCode": "2887",
-      "stockName": "台新新光金融控股",
+      "stockName": "台新新光金",
       "heldLots": 5894.36,
       "lotChange": 0,
       "weightPct": 1.64,
@@ -398,12 +416,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台新新光金融控股"
     },
     {
       "rank": 16,
       "stockCode": "6669",
-      "stockName": "緯穎科技服務",
+      "stockName": "緯穎",
       "heldLots": 34,
       "lotChange": 0,
       "weightPct": 1.58,
@@ -418,12 +437,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "緯穎科技服務"
     },
     {
       "rank": 17,
       "stockCode": "2357",
-      "stockName": "華碩電腦",
+      "stockName": "華碩",
       "heldLots": 242,
       "lotChange": 0,
       "weightPct": 1.52,
@@ -438,12 +458,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "華碩電腦"
     },
     {
       "rank": 18,
       "stockCode": "2885",
-      "stockName": "元大金融控股",
+      "stockName": "元大金",
       "heldLots": 2926,
       "lotChange": 0,
       "weightPct": 1.5,
@@ -458,12 +479,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "元大金融控股"
     },
     {
       "rank": 19,
       "stockCode": "2360",
-      "stockName": "致茂電子",
+      "stockName": "致茂",
       "heldLots": 88,
       "lotChange": 0,
       "weightPct": 1.49,
@@ -478,12 +500,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "致茂電子"
     },
     {
       "rank": 20,
       "stockCode": "2886",
-      "stockName": "兆豐金融控股",
+      "stockName": "兆豐金",
       "heldLots": 3649,
       "lotChange": 0,
       "weightPct": 1.44,
@@ -498,12 +521,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "兆豐金融控股"
     },
     {
       "rank": 21,
       "stockCode": "5534",
-      "stockName": "長虹建設",
+      "stockName": "長虹",
       "heldLots": 2069,
       "lotChange": 0,
       "weightPct": 1.34,
@@ -518,12 +542,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "長虹建設"
     },
     {
       "rank": 22,
       "stockCode": "3037",
-      "stockName": "欣興電子",
+      "stockName": "欣興",
       "heldLots": 195,
       "lotChange": 0,
       "weightPct": 1.33,
@@ -538,12 +563,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "欣興電子"
     },
     {
       "rank": 23,
       "stockCode": "5274",
-      "stockName": "信驊科技",
+      "stockName": "信驊",
       "heldLots": 11,
       "lotChange": 0,
       "weightPct": 1.32,
@@ -558,12 +584,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "信驊科技"
     },
     {
       "rank": 24,
       "stockCode": "9938",
-      "stockName": "台灣百和工業",
+      "stockName": "百和",
       "heldLots": 3414,
       "lotChange": 0,
       "weightPct": 1.3,
@@ -578,12 +605,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台灣百和工業"
     },
     {
       "rank": 25,
       "stockCode": "2393",
-      "stockName": "億光電子工業",
+      "stockName": "億光",
       "heldLots": 2419,
       "lotChange": 0,
       "weightPct": 1.3,
@@ -598,12 +626,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "億光電子工業"
     },
     {
       "rank": 26,
       "stockCode": "2890",
-      "stockName": "永豐金融控股",
+      "stockName": "永豐金",
       "heldLots": 4017.78,
       "lotChange": 0,
       "weightPct": 1.26,
@@ -618,12 +647,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "永豐金融控股"
     },
     {
       "rank": 27,
       "stockCode": "9941",
-      "stockName": "裕融企業",
+      "stockName": "裕融",
       "heldLots": 1866,
       "lotChange": 0,
       "weightPct": 1.24,
@@ -638,7 +668,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "裕融企業"
     },
     {
       "rank": 28,
@@ -663,7 +694,7 @@
     {
       "rank": 29,
       "stockCode": "2382",
-      "stockName": "廣達電腦",
+      "stockName": "廣達",
       "heldLots": 443.5,
       "lotChange": 0,
       "weightPct": 1.18,
@@ -678,12 +709,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "廣達電腦"
     },
     {
       "rank": 30,
       "stockCode": "3665",
-      "stockName": "貿聯控股（BizLink Holding In",
+      "stockName": "貿聯-KY",
       "heldLots": 65,
       "lotChange": 0,
       "weightPct": 1.17,
@@ -698,12 +730,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "貿聯控股（BizLink Holding In"
     },
     {
       "rank": 31,
       "stockCode": "2727",
-      "stockName": "王品餐飲",
+      "stockName": "王品",
       "heldLots": 647,
       "lotChange": 0,
       "weightPct": 1.16,
@@ -718,12 +751,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "王品餐飲"
     },
     {
       "rank": 32,
       "stockCode": "6121",
-      "stockName": "新普科技",
+      "stockName": "新普",
       "heldLots": 366,
       "lotChange": 0,
       "weightPct": 1.14,
@@ -738,12 +772,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "新普科技"
     },
     {
       "rank": 33,
       "stockCode": "6274",
-      "stockName": "台燿科技",
+      "stockName": "台燿",
       "heldLots": 109,
       "lotChange": 0,
       "weightPct": 1.11,
@@ -758,12 +793,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台燿科技"
     },
     {
       "rank": 34,
       "stockCode": "3026",
-      "stockName": "禾伸堂企業",
+      "stockName": "禾伸堂",
       "heldLots": 213,
       "lotChange": 0,
       "weightPct": 1.11,
@@ -778,12 +814,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "禾伸堂企業"
     },
     {
       "rank": 35,
       "stockCode": "2204",
-      "stockName": "中華汽車工業",
+      "stockName": "中華",
       "heldLots": 2641,
       "lotChange": 0,
       "weightPct": 1.11,
@@ -798,12 +835,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "中華汽車工業"
     },
     {
       "rank": 36,
       "stockCode": "2892",
-      "stockName": "第一金融控股",
+      "stockName": "第一金",
       "heldLots": 3940,
       "lotChange": 0,
       "weightPct": 1.1,
@@ -818,12 +856,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "第一金融控股"
     },
     {
       "rank": 37,
       "stockCode": "3017",
-      "stockName": "奇鋐科技",
+      "stockName": "奇鋐",
       "heldLots": 56,
       "lotChange": 0,
       "weightPct": 1.08,
@@ -838,12 +877,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "奇鋐科技"
     },
     {
       "rank": 38,
       "stockCode": "5439",
-      "stockName": "高技企業",
+      "stockName": "高技",
       "heldLots": 560,
       "lotChange": 0,
       "weightPct": 1.07,
@@ -858,12 +898,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "高技企業"
     },
     {
       "rank": 39,
       "stockCode": "4904",
-      "stockName": "遠傳電信",
+      "stockName": "遠傳",
       "heldLots": 1226,
       "lotChange": 0,
       "weightPct": 1.05,
@@ -878,12 +919,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "遠傳電信"
     },
     {
       "rank": 40,
       "stockCode": "3702",
-      "stockName": "大聯大控股",
+      "stockName": "大聯大",
       "heldLots": 1079,
       "lotChange": 0,
       "weightPct": 1.03,
@@ -898,12 +940,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "大聯大控股"
     },
     {
       "rank": 41,
       "stockCode": "3706",
-      "stockName": "神達控股",
+      "stockName": "神達",
       "heldLots": 1387,
       "lotChange": 0,
       "weightPct": 1.03,
@@ -918,7 +961,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "神達控股"
     },
     {
       "rank": 42,
@@ -943,7 +987,7 @@
     {
       "rank": 43,
       "stockCode": "2880",
-      "stockName": "華南金融控股",
+      "stockName": "華南金",
       "heldLots": 3050.8,
       "lotChange": 0,
       "weightPct": 1.01,
@@ -958,12 +1002,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "華南金融控股"
     },
     {
       "rank": 44,
       "stockCode": "8210",
-      "stockName": "勤誠興業",
+      "stockName": "勤誠",
       "heldLots": 112,
       "lotChange": 0,
       "weightPct": 1.0,
@@ -978,12 +1023,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "勤誠興業"
     },
     {
       "rank": 45,
       "stockCode": "6138",
-      "stockName": "茂達電子",
+      "stockName": "茂達",
       "heldLots": 368,
       "lotChange": 0,
       "weightPct": 1.0,
@@ -998,12 +1044,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "茂達電子"
     },
     {
       "rank": 46,
       "stockCode": "2451",
-      "stockName": "創見資訊",
+      "stockName": "創見",
       "heldLots": 457,
       "lotChange": 0,
       "weightPct": 0.98,
@@ -1018,12 +1065,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "創見資訊"
     },
     {
       "rank": 47,
       "stockCode": "6435",
-      "stockName": "大中積體電路",
+      "stockName": "大中",
       "heldLots": 437,
       "lotChange": 0,
       "weightPct": 0.96,
@@ -1038,12 +1086,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "大中積體電路"
     },
     {
       "rank": 48,
       "stockCode": "4746",
-      "stockName": "台耀化學",
+      "stockName": "台耀",
       "heldLots": 2276,
       "lotChange": 0,
       "weightPct": 0.95,
@@ -1058,12 +1107,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "台耀化學"
     },
     {
       "rank": 49,
       "stockCode": "3293",
-      "stockName": "鈊象電子",
+      "stockName": "鈊象",
       "heldLots": 164,
       "lotChange": 0,
       "weightPct": 0.95,
@@ -1078,12 +1128,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "鈊象電子"
     },
     {
       "rank": 50,
       "stockCode": "5904",
-      "stockName": "寶雅國際",
+      "stockName": "寶雅",
       "heldLots": 177,
       "lotChange": 0,
       "weightPct": 0.94,
@@ -1098,12 +1149,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "寶雅國際"
     },
     {
       "rank": 51,
       "stockCode": "9939",
-      "stockName": "宏全國際",
+      "stockName": "宏全",
       "heldLots": 886,
       "lotChange": 0,
       "weightPct": 0.93,
@@ -1118,12 +1170,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "宏全國際"
     },
     {
       "rank": 52,
       "stockCode": "2884",
-      "stockName": "玉山金融控股",
+      "stockName": "玉山金",
       "heldLots": 3184,
       "lotChange": 0,
       "weightPct": 0.93,
@@ -1138,12 +1191,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "玉山金融控股"
     },
     {
       "rank": 53,
       "stockCode": "5434",
-      "stockName": "崇越科技",
+      "stockName": "崇越",
       "heldLots": 198,
       "lotChange": 0,
       "weightPct": 0.89,
@@ -1158,12 +1212,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "崇越科技"
     },
     {
       "rank": 54,
       "stockCode": "9945",
-      "stockName": "潤泰創新國際",
+      "stockName": "潤泰新",
       "heldLots": 3964,
       "lotChange": 0,
       "weightPct": 0.84,
@@ -1178,12 +1233,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "潤泰創新國際"
     },
     {
       "rank": 55,
       "stockCode": "9958",
-      "stockName": "世紀鋼鐵結構",
+      "stockName": "世紀鋼",
       "heldLots": 886,
       "lotChange": 0,
       "weightPct": 0.8,
@@ -1198,12 +1254,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "世紀鋼鐵結構"
     },
     {
       "rank": 56,
       "stockCode": "2441",
-      "stockName": "超豐電子",
+      "stockName": "超豐",
       "heldLots": 799,
       "lotChange": 0,
       "weightPct": 0.77,
@@ -1218,12 +1275,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "超豐電子"
     },
     {
       "rank": 57,
       "stockCode": "3227",
-      "stockName": "原相科技",
+      "stockName": "原相",
       "heldLots": 460,
       "lotChange": 0,
       "weightPct": 0.75,
@@ -1238,12 +1296,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "原相科技"
     },
     {
       "rank": 58,
       "stockCode": "9802",
-      "stockName": "鈺齊國際",
+      "stockName": "鈺齊-KY",
       "heldLots": 1040,
       "lotChange": 0,
       "weightPct": 0.61,
@@ -1258,12 +1317,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "鈺齊國際"
     },
     {
       "rank": 59,
       "stockCode": "4551",
-      "stockName": "智伸科技",
+      "stockName": "智伸科",
       "heldLots": 398,
       "lotChange": 0,
       "weightPct": 0.6,
@@ -1278,12 +1338,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "智伸科技"
     },
     {
       "rank": 60,
       "stockCode": "6670",
-      "stockName": "復盛應用科技",
+      "stockName": "復盛應用",
       "heldLots": 234,
       "lotChange": 0,
       "weightPct": 0.51,
@@ -1298,7 +1359,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "復盛應用科技"
     },
     {
       "rank": 61,
@@ -1323,7 +1385,7 @@
     {
       "rank": 62,
       "stockCode": "6782",
-      "stockName": "視陽光學",
+      "stockName": "視陽",
       "heldLots": 308,
       "lotChange": 0,
       "weightPct": 0.46,
@@ -1338,12 +1400,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "視陽光學"
     },
     {
       "rank": 64,
       "stockCode": "2618",
-      "stockName": "長榮航空",
+      "stockName": "長榮航",
       "heldLots": 956,
       "lotChange": 0,
       "weightPct": 0.32,
@@ -1358,7 +1421,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "長榮航空"
     }
   ]
 }

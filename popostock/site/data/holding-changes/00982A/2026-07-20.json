@@ -4,7 +4,7 @@
   "instrumentName": "主動群益台灣強棒",
   "sourceDate": "2026-07-20",
   "comparisonDate": "2026-07-17",
-  "capturedAt": "2026-08-17T18:03:55+08:00",
+  "capturedAt": "2026-08-18T12:03:47+08:00",
   "sourceTitle": "群益投信 00982A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -43,7 +43,7 @@
     {
       "rank": 2,
       "stockCode": "5536",
-      "stockName": "聖暉*",
+      "stockName": "聖暉",
       "heldLots": 3775,
       "lotChange": 46,
       "weightPct": 9.2692,
@@ -58,7 +58,8 @@
       "closeAmountTwd": 52440000,
       "averageAmountTwd": 52440000,
       "amountTwd": 52440000,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "聖暉*"
     },
     {
       "rank": 17,
@@ -683,7 +684,7 @@
     {
       "rank": 23,
       "stockCode": "6531",
-      "stockName": "愛普*",
+      "stockName": "愛普",
       "heldLots": 868,
       "lotChange": 6,
       "weightPct": 1.4582,
@@ -698,7 +699,8 @@
       "closeAmountTwd": 4680000,
       "averageAmountTwd": 4680000,
       "amountTwd": 4680000,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "愛普*"
     },
     {
       "rank": 40,
@@ -863,7 +865,7 @@
     {
       "rank": 29,
       "stockCode": "2327",
-      "stockName": "國巨*",
+      "stockName": "國巨",
       "heldLots": 844,
       "lotChange": 0,
       "weightPct": 1.1452,
@@ -878,7 +880,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "國巨*"
     },
     {
       "rank": 41,

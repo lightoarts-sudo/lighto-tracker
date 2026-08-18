@@ -43,7 +43,7 @@
     {
       "rank": 40,
       "stockCode": "6442",
-      "stockName": "光  聖",
+      "stockName": "光聖",
       "heldLots": 112,
       "lotChange": 35,
       "weightPct": 0.58,
@@ -58,7 +58,8 @@
       "closeAmountTwd": 48650000,
       "averageAmountTwd": 50137500,
       "amountTwd": 50137500,
-      "action": "increase"
+      "action": "increase",
+      "declaredName": "光  聖"
     },
     {
       "rank": 1,
@@ -283,7 +284,7 @@
     {
       "rank": 13,
       "stockCode": "5274",
-      "stockName": "信  驊",
+      "stockName": "信驊",
       "heldLots": 52.4,
       "lotChange": 0,
       "weightPct": 3.02,
@@ -298,7 +299,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "信  驊"
     },
     {
       "rank": 14,
@@ -323,7 +325,7 @@
     {
       "rank": 15,
       "stockCode": "6187",
-      "stockName": "萬  潤",
+      "stockName": "萬潤",
       "heldLots": 596,
       "lotChange": 0,
       "weightPct": 2.26,
@@ -338,7 +340,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "萬  潤"
     },
     {
       "rank": 16,
@@ -463,7 +466,7 @@
     {
       "rank": 22,
       "stockCode": "6510",
-      "stockName": "精  測",
+      "stockName": "精測",
       "heldLots": 132,
       "lotChange": 0,
       "weightPct": 1.35,
@@ -478,7 +481,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "精  測"
     },
     {
       "rank": 23,
@@ -743,7 +747,7 @@
     {
       "rank": 36,
       "stockCode": "5347",
-      "stockName": "世界先進",
+      "stockName": "世界",
       "heldLots": 1351,
       "lotChange": 0,
       "weightPct": 0.84,
@@ -758,7 +762,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "世界先進"
     },
     {
       "rank": 37,
@@ -803,7 +808,7 @@
     {
       "rank": 39,
       "stockCode": "3211",
-      "stockName": "順  達",
+      "stockName": "順達",
       "heldLots": 549,
       "lotChange": 0,
       "weightPct": 0.8,
@@ -818,7 +823,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "順  達"
     },
     {
       "rank": 41,
@@ -883,7 +889,7 @@
     {
       "rank": 44,
       "stockCode": "3374",
-      "stockName": "精  材",
+      "stockName": "精材",
       "heldLots": 271,
       "lotChange": 0,
       "weightPct": 0.4,
@@ -898,7 +904,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "精  材"
     },
     {
       "rank": 45,
@@ -943,7 +950,7 @@
     {
       "rank": 47,
       "stockCode": "3293",
-      "stockName": "鈊  象",
+      "stockName": "鈊象",
       "heldLots": 133,
       "lotChange": 0,
       "weightPct": 0.35,
@@ -958,12 +965,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "鈊  象"
     },
     {
       "rank": 48,
       "stockCode": "7769",
-      "stockName": "鴻  勁",
+      "stockName": "鴻勁",
       "heldLots": 13,
       "lotChange": 0,
       "weightPct": 0.31,
@@ -978,12 +986,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "鴻  勁"
     },
     {
       "rank": 49,
       "stockCode": "6121",
-      "stockName": "新  普",
+      "stockName": "新普",
       "heldLots": 178,
       "lotChange": 0,
       "weightPct": 0.25,
@@ -998,12 +1007,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "新  普"
     },
     {
       "rank": 50,
       "stockCode": "6715",
-      "stockName": "嘉  基",
+      "stockName": "嘉基",
       "heldLots": 140,
       "lotChange": 0,
       "weightPct": 0.22,
@@ -1018,12 +1028,13 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "嘉  基"
     },
     {
       "rank": 51,
       "stockCode": "3167",
-      "stockName": "大  量",
+      "stockName": "大量",
       "heldLots": 61,
       "lotChange": 0,
       "weightPct": 0.16,
@@ -1038,7 +1049,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "大  量"
     },
     {
       "rank": 52,
@@ -1103,7 +1115,7 @@
     {
       "rank": 55,
       "stockCode": "6139",
-      "stockName": "亞  翔",
+      "stockName": "亞翔",
       "heldLots": 12,
       "lotChange": 0,
       "weightPct": 0.04,
@@ -1118,7 +1130,8 @@
       "closeAmountTwd": null,
       "averageAmountTwd": null,
       "amountTwd": null,
-      "action": "hold"
+      "action": "hold",
+      "declaredName": "亞  翔"
     },
     {
       "rank": 56,
