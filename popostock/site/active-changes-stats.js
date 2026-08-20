@@ -22,14 +22,15 @@
     const element = document.createElement("style");
     element.id = "ac-stats-style";
     element.textContent = [
-      // 深藍底，所以全部用亮色；數字用等寬避免逐張跳動。
+      // 紅綠沿用站台其他表格的 #d64038 / #2f8d4e，讓同一個意思在全站同色；
+      // 標籤與檔數則用亮色，深藍底上才讀得到。數字用等寬避免逐張跳動。
       "[" + FLAG + "]{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;",
       "margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.16);",
       "font-size:12.5px;font-weight:800;color:#cfdcf0;font-variant-numeric:tabular-nums}",
       "[" + FLAG + "] i{font-style:normal;color:#9fb3d9;font-weight:700;margin-right:4px}",
       "[" + FLAG + "] b{font-weight:900}",
-      "[" + FLAG + "] b.up{color:#ff8a80}",
-      "[" + FLAG + "] b.down{color:#7ee2a8}",
+      "[" + FLAG + "] b.up{color:#d64038}",
+      "[" + FLAG + "] b.down{color:#2f8d4e}",
       "[" + FLAG + "] b.flat{color:#cfdcf0}",
       "[" + FLAG + "] .net{margin-left:auto}",
     ].join("");
