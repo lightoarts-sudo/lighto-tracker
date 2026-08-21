@@ -1,58 +1,502 @@
 {
   "date": "2026-08-21",
-  "generatedAt": "2026-08-21T12:12:19+08:00",
+  "generatedAt": "2026-08-21T18:05:01+08:00",
   "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
   "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
   "coverage": {
     "trackedEtfCount": 28,
-    "comparableEtfCount": 2,
+    "comparableEtfCount": 18,
     "baselineEtfCount": 0,
-    "pendingEtfCount": 26,
+    "pendingEtfCount": 10,
     "futureEtfCount": 0,
     "comparableEtfs": [
-      "00401A",
-      "00989A"
-    ],
-    "baselineEtfs": [],
-    "pendingEtfs": [
       "00981A",
       "00403A",
       "00991A",
-      "00988A",
       "00982A",
-      "00990A",
       "00992A",
       "00407A",
       "00405A",
       "00400A",
       "00980A",
-      "00997A",
       "00999A",
-      "00993A",
       "00985A",
-      "00984A",
       "00406A",
-      "00402A",
       "00995A",
-      "00994A",
       "00996A",
-      "00998A",
       "00404A",
+      "00401A",
       "00987A",
+      "00989A"
+    ],
+    "baselineEtfs": [],
+    "pendingEtfs": [
+      "00988A",
+      "00990A",
+      "00997A",
+      "00993A",
+      "00984A",
+      "00402A",
+      "00994A",
+      "00998A",
       "00408A",
       "00983A"
     ],
     "futureEtfs": []
   },
   "summary": {
-    "buyingEtfCount": 1,
-    "stockCount": 3,
-    "totalLots": 1.915,
-    "pricedStockCount": 0,
+    "buyingEtfCount": 7,
+    "stockCount": 21,
+    "totalLots": 4474.915,
+    "pricedStockCount": 18,
     "unpricedStockCount": 3,
-    "totalAmountTwd": 0
+    "totalAmountTwd": 2404123500
   },
   "stocks": [
+    {
+      "stockCode": "3443",
+      "stockName": "創意",
+      "totalLots": 69,
+      "etfs": [
+        {
+          "code": "00403A",
+          "name": "主動統一升級50",
+          "lotChange": 60,
+          "action": "increase"
+        },
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 9,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 2,
+      "closePrice": 5600.0,
+      "highPrice": 5830.0,
+      "lowPrice": 5425.0,
+      "averagePrice": 5627.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 386400000,
+      "averageAmountTwd": 388297500,
+      "amountTwd": 388297500
+    },
+    {
+      "stockCode": "3653",
+      "stockName": "健策",
+      "totalLots": 60,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 60,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 5395.0,
+      "highPrice": 5560.0,
+      "lowPrice": 5330.0,
+      "averagePrice": 5445.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 323700000,
+      "averageAmountTwd": 326700000,
+      "amountTwd": 326700000
+    },
+    {
+      "stockCode": "3081",
+      "stockName": "聯亞",
+      "totalLots": 115,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 25,
+          "action": "added"
+        },
+        {
+          "code": "00407A",
+          "name": "主動凱基台灣",
+          "lotChange": 90,
+          "action": "added"
+        }
+      ],
+      "etfCount": 2,
+      "closePrice": 2920.0,
+      "highPrice": 2920.0,
+      "lowPrice": 2760.0,
+      "averagePrice": 2840.0,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 335800000,
+      "averageAmountTwd": 326600000,
+      "amountTwd": 326600000
+    },
+    {
+      "stockCode": "2486",
+      "stockName": "一詮",
+      "totalLots": 950,
+      "etfs": [
+        {
+          "code": "00982A",
+          "name": "主動群益台灣強棒",
+          "lotChange": 950,
+          "action": "added"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 243.5,
+      "highPrice": 251.0,
+      "lowPrice": 238.5,
+      "averagePrice": 244.75,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 231325000,
+      "averageAmountTwd": 232512500,
+      "amountTwd": 232512500
+    },
+    {
+      "stockCode": "6531",
+      "stockName": "愛普",
+      "totalLots": 210,
+      "etfs": [
+        {
+          "code": "00982A",
+          "name": "主動群益台灣強棒",
+          "lotChange": 210,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 883.0,
+      "highPrice": 924.0,
+      "lowPrice": 870.0,
+      "averagePrice": 897.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 185430000,
+      "averageAmountTwd": 188370000,
+      "amountTwd": 188370000
+    },
+    {
+      "stockCode": "6274",
+      "stockName": "台燿",
+      "totalLots": 120,
+      "etfs": [
+        {
+          "code": "00403A",
+          "name": "主動統一升級50",
+          "lotChange": 120,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 1495.0,
+      "highPrice": 1580.0,
+      "lowPrice": 1485.0,
+      "averagePrice": 1532.5,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 179400000,
+      "averageAmountTwd": 183900000,
+      "amountTwd": 183900000
+    },
+    {
+      "stockCode": "4991",
+      "stockName": "環宇-KY",
+      "totalLots": 300,
+      "etfs": [
+        {
+          "code": "00405A",
+          "name": "主動富邦台灣龍耀",
+          "lotChange": 300,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 481.0,
+      "highPrice": 520.0,
+      "lowPrice": 481.0,
+      "averagePrice": 500.5,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 144300000,
+      "averageAmountTwd": 150150000,
+      "amountTwd": 150150000
+    },
+    {
+      "stockCode": "6472",
+      "stockName": "保瑞",
+      "totalLots": 258,
+      "etfs": [
+        {
+          "code": "00982A",
+          "name": "主動群益台灣強棒",
+          "lotChange": 258,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 455.0,
+      "highPrice": 462.0,
+      "lowPrice": 432.0,
+      "averagePrice": 447.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 117390000,
+      "averageAmountTwd": 115326000,
+      "amountTwd": 115326000
+    },
+    {
+      "stockCode": "2059",
+      "stockName": "川湖",
+      "totalLots": 8,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 8,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 13385.0,
+      "highPrice": 14000.0,
+      "lowPrice": 13310.0,
+      "averagePrice": 13655.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 107080000,
+      "averageAmountTwd": 109240000,
+      "amountTwd": 109240000
+    },
+    {
+      "stockCode": "2615",
+      "stockName": "萬海",
+      "totalLots": 829,
+      "etfs": [
+        {
+          "code": "00407A",
+          "name": "主動凱基台灣",
+          "lotChange": 829,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 124.5,
+      "highPrice": 124.5,
+      "lowPrice": 111.5,
+      "averagePrice": 118.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 103210500,
+      "averageAmountTwd": 97822000,
+      "amountTwd": 97822000
+    },
+    {
+      "stockCode": "3665",
+      "stockName": "貿聯-KY",
+      "totalLots": 28,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 28,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2275.0,
+      "highPrice": 2360.0,
+      "lowPrice": 2225.0,
+      "averagePrice": 2292.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 63700000,
+      "averageAmountTwd": 64190000,
+      "amountTwd": 64190000
+    },
+    {
+      "stockCode": "3037",
+      "stockName": "欣興",
+      "totalLots": 45,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 45,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 1085.0,
+      "highPrice": 1120.0,
+      "lowPrice": 1030.0,
+      "averagePrice": 1075.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 48825000,
+      "averageAmountTwd": 48375000,
+      "amountTwd": 48375000
+    },
+    {
+      "stockCode": "2327",
+      "stockName": "國巨",
+      "totalLots": 66,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 66,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 554.0,
+      "highPrice": 567.0,
+      "lowPrice": 553.0,
+      "averagePrice": 560.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 36564000,
+      "averageAmountTwd": 36960000,
+      "amountTwd": 36960000
+    },
+    {
+      "stockCode": "2368",
+      "stockName": "金像電",
+      "totalLots": 35,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 35,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 965.0,
+      "highPrice": 1025.0,
+      "lowPrice": 958.0,
+      "averagePrice": 991.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 33775000,
+      "averageAmountTwd": 34702500,
+      "amountTwd": 34702500
+    },
+    {
+      "stockCode": "3017",
+      "stockName": "奇鋐",
+      "totalLots": 10,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 10,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2865.0,
+      "highPrice": 3035.0,
+      "lowPrice": 2850.0,
+      "averagePrice": 2942.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 28650000,
+      "averageAmountTwd": 29425000,
+      "amountTwd": 29425000
+    },
+    {
+      "stockCode": "2383",
+      "stockName": "台光電",
+      "totalLots": 5,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 5,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 5680.0,
+      "highPrice": 6015.0,
+      "lowPrice": 5650.0,
+      "averagePrice": 5832.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 28400000,
+      "averageAmountTwd": 29162500,
+      "amountTwd": 29162500
+    },
+    {
+      "stockCode": "6488",
+      "stockName": "環球晶",
+      "totalLots": 25,
+      "etfs": [
+        {
+          "code": "00406A",
+          "name": "主動中信台灣收益",
+          "lotChange": 25,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 941.0,
+      "highPrice": 1005.0,
+      "lowPrice": 931.0,
+      "averagePrice": 968.0,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 23525000,
+      "averageAmountTwd": 24200000,
+      "amountTwd": 24200000
+    },
+    {
+      "stockCode": "2845",
+      "stockName": "遠東銀",
+      "totalLots": 1340,
+      "etfs": [
+        {
+          "code": "00404A",
+          "name": "主動聯博動能50",
+          "lotChange": 1340,
+          "action": "increase"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 13.65,
+      "highPrice": 13.7,
+      "lowPrice": 13.45,
+      "averagePrice": 13.575,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 18291000,
+      "averageAmountTwd": 18190500,
+      "amountTwd": 18190500
+    },
     {
       "stockCode": "HUBS",
       "stockName": "HUBSPOT INC COM USD0.001",
@@ -127,14 +571,404 @@
     }
   ],
   "sellSummary": {
-    "sellingEtfCount": 1,
-    "stockCount": 2,
-    "totalLots": 0.672,
-    "pricedStockCount": 0,
+    "sellingEtfCount": 9,
+    "stockCount": 18,
+    "totalLots": 4632.902,
+    "pricedStockCount": 16,
     "unpricedStockCount": 2,
-    "totalAmountTwd": 0
+    "totalAmountTwd": 2039776968
   },
   "sellStocks": [
+    {
+      "stockCode": "2360",
+      "stockName": "致茂",
+      "totalLots": 293,
+      "etfs": [
+        {
+          "code": "00981A",
+          "name": "主動統一台股增長",
+          "lotChange": 293,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2100.0,
+      "highPrice": 2190.0,
+      "lowPrice": 2085.0,
+      "averagePrice": 2137.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 615300000,
+      "averageAmountTwd": 626287500,
+      "amountTwd": 626287500
+    },
+    {
+      "stockCode": "3529",
+      "stockName": "力旺",
+      "totalLots": 102,
+      "etfs": [
+        {
+          "code": "00407A",
+          "name": "主動凱基台灣",
+          "lotChange": 102,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2155.0,
+      "highPrice": 2245.0,
+      "lowPrice": 2150.0,
+      "averagePrice": 2197.5,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 219810000,
+      "averageAmountTwd": 224145000,
+      "amountTwd": 224145000
+    },
+    {
+      "stockCode": "2303",
+      "stockName": "聯電",
+      "totalLots": 1710,
+      "etfs": [
+        {
+          "code": "00407A",
+          "name": "主動凱基台灣",
+          "lotChange": 1610,
+          "action": "decrease"
+        },
+        {
+          "code": "00995A",
+          "name": "主動中信台灣卓越",
+          "lotChange": 100,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 2,
+      "closePrice": 116.5,
+      "highPrice": 117.0,
+      "lowPrice": 114.0,
+      "averagePrice": 115.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 199215000,
+      "averageAmountTwd": 197505000,
+      "amountTwd": 197505000
+    },
+    {
+      "stockCode": "3026",
+      "stockName": "禾伸堂",
+      "totalLots": 280,
+      "etfs": [
+        {
+          "code": "00405A",
+          "name": "主動富邦台灣龍耀",
+          "lotChange": 280,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 639.0,
+      "highPrice": 745.0,
+      "lowPrice": 639.0,
+      "averagePrice": 692.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 178920000,
+      "averageAmountTwd": 193760000,
+      "amountTwd": 193760000
+    },
+    {
+      "stockCode": "2383",
+      "stockName": "台光電",
+      "totalLots": 30,
+      "etfs": [
+        {
+          "code": "00991A",
+          "name": "主動復華未來50",
+          "lotChange": 30,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 5680.0,
+      "highPrice": 6015.0,
+      "lowPrice": 5650.0,
+      "averagePrice": 5832.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 170400000,
+      "averageAmountTwd": 174975000,
+      "amountTwd": 174975000
+    },
+    {
+      "stockCode": "3264",
+      "stockName": "欣銓",
+      "totalLots": 795,
+      "etfs": [
+        {
+          "code": "00982A",
+          "name": "主動群益台灣強棒",
+          "lotChange": 795,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 203.0,
+      "highPrice": 206.5,
+      "lowPrice": 202.0,
+      "averagePrice": 204.25,
+      "priceDate": "2026-08-21",
+      "market": "TPEx",
+      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F21&s=0%2Casc%2C0",
+      "closeAmountTwd": 161385000,
+      "averageAmountTwd": 162378750,
+      "amountTwd": 162378750
+    },
+    {
+      "stockCode": "7769",
+      "stockName": "鴻勁",
+      "totalLots": 20,
+      "etfs": [
+        {
+          "code": "00991A",
+          "name": "主動復華未來50",
+          "lotChange": 20,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 6405.0,
+      "highPrice": 6550.0,
+      "lowPrice": 6350.0,
+      "averagePrice": 6450.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 128100000,
+      "averageAmountTwd": 129000000,
+      "amountTwd": 129000000
+    },
+    {
+      "stockCode": "2345",
+      "stockName": "智邦",
+      "totalLots": 50,
+      "etfs": [
+        {
+          "code": "00991A",
+          "name": "主動復華未來50",
+          "lotChange": 50,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 2035.0,
+      "highPrice": 2110.0,
+      "lowPrice": 2020.0,
+      "averagePrice": 2065.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 101750000,
+      "averageAmountTwd": 103250000,
+      "amountTwd": 103250000
+    },
+    {
+      "stockCode": "2481",
+      "stockName": "強茂",
+      "totalLots": 699,
+      "etfs": [
+        {
+          "code": "00403A",
+          "name": "主動統一升級50",
+          "lotChange": 699,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 133.0,
+      "highPrice": 139.5,
+      "lowPrice": 132.0,
+      "averagePrice": 135.75,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 92967000,
+      "averageAmountTwd": 94889250,
+      "amountTwd": 94889250
+    },
+    {
+      "stockCode": "2368",
+      "stockName": "金像電",
+      "totalLots": 43,
+      "etfs": [
+        {
+          "code": "00981A",
+          "name": "主動統一台股增長",
+          "lotChange": 43,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 965.0,
+      "highPrice": 1025.0,
+      "lowPrice": 958.0,
+      "averagePrice": 991.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 41495000,
+      "averageAmountTwd": 42634500,
+      "amountTwd": 42634500
+    },
+    {
+      "stockCode": "3023",
+      "stockName": "信邦",
+      "totalLots": 98,
+      "etfs": [
+        {
+          "code": "00404A",
+          "name": "主動聯博動能50",
+          "lotChange": 98,
+          "action": "removed"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 318.5,
+      "highPrice": 321.0,
+      "lowPrice": 315.0,
+      "averagePrice": 318.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 31213000,
+      "averageAmountTwd": 31164000,
+      "amountTwd": 31164000
+    },
+    {
+      "stockCode": "6526",
+      "stockName": "達發",
+      "totalLots": 38,
+      "etfs": [
+        {
+          "code": "00407A",
+          "name": "主動凱基台灣",
+          "lotChange": 38,
+          "action": "removed"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 572.0,
+      "highPrice": 595.0,
+      "lowPrice": 566.0,
+      "averagePrice": 580.5,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 21736000,
+      "averageAmountTwd": 22059000,
+      "amountTwd": 22059000
+    },
+    {
+      "stockCode": "1210",
+      "stockName": "大成",
+      "totalLots": 376,
+      "etfs": [
+        {
+          "code": "00404A",
+          "name": "主動聯博動能50",
+          "lotChange": 376,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 53.1,
+      "highPrice": 53.4,
+      "lowPrice": 52.7,
+      "averagePrice": 53.05,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 19965600,
+      "averageAmountTwd": 19946800,
+      "amountTwd": 19946800
+    },
+    {
+      "stockCode": "6438",
+      "stockName": "迅得",
+      "totalLots": 69,
+      "etfs": [
+        {
+          "code": "00995A",
+          "name": "主動中信台灣卓越",
+          "lotChange": 69,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 144.0,
+      "highPrice": 145.0,
+      "lowPrice": 141.5,
+      "averagePrice": 143.25,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 9936000,
+      "averageAmountTwd": 9884250,
+      "amountTwd": 9884250
+    },
+    {
+      "stockCode": "3044",
+      "stockName": "健鼎",
+      "totalLots": 15,
+      "etfs": [
+        {
+          "code": "00995A",
+          "name": "主動中信台灣卓越",
+          "lotChange": 15,
+          "action": "decrease"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 459.0,
+      "highPrice": 515.0,
+      "lowPrice": 455.0,
+      "averagePrice": 485.0,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 6885000,
+      "averageAmountTwd": 7275000,
+      "amountTwd": 7275000
+    },
+    {
+      "stockCode": "5876",
+      "stockName": "上海商銀",
+      "totalLots": 14.23,
+      "etfs": [
+        {
+          "code": "00404A",
+          "name": "主動聯博動能50",
+          "lotChange": 14.23,
+          "action": "removed"
+        }
+      ],
+      "etfCount": 1,
+      "closePrice": 44.15,
+      "highPrice": 44.15,
+      "lowPrice": 43.4,
+      "averagePrice": 43.775,
+      "priceDate": "2026-08-21",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260821&type=ALLBUT0999&response=json",
+      "closeAmountTwd": 628254,
+      "averageAmountTwd": 622918,
+      "amountTwd": 622918
+    },
     {
       "stockCode": "GOOG",
       "stockName": "ALPHABET INC COM USD 0.001",
