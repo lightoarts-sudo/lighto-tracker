@@ -16,6 +16,8 @@
   const CARD = ".active-etf-change-card";
   const FLAG = "data-ac-stats";
   const cache = new Map();
+  // 已解析完成的資料，供 React 重繪後重新掛回徽章（fetch 只做一次）。
+  const resolved = new Map();
 
   function style() {
     if (document.getElementById("ac-stats-style")) return;
@@ -33,6 +35,11 @@
       "[" + FLAG + "] b.down{color:#2f8d4e}",
       "[" + FLAG + "] b.flat{color:#cfdcf0}",
       "[" + FLAG + "] .net{margin-left:auto}",
+      // 新建倉／清倉徽章：掛在個股名稱後面，白底列上用實色小標。
+      ".ac-badge{display:inline-block;font-size:10.5px;font-weight:900;line-height:1.5;",
+      "border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:middle;white-space:nowrap}",
+      ".ac-badge.new{background:#d64038;color:#fff}",
+      ".ac-badge.out{background:#2f8d4e;color:#fff}",
     ].join("");
     document.head.appendChild(element);
   }
@@ -58,6 +65,33 @@
       else { sellCount += 1; sellSum += amount || 0; }
     });
     return { buyCount, sellCount, buySum, sellSum, net: buySum + sellSum, unpriced };
+  }
+
+  const BADGE = { added: ["new", "新建倉"], removed: ["out", "清倉"] };
+
+  // 把「首次建立部位」與「整筆出清」標出來。資料端的 action 已經分好
+  // added / removed / increase / decrease，這裡只負責讓它在畫面上看得出來——
+  // 否則新建倉和一般加碼長得一模一樣。
+  function markRows(card, payload) {
+    const byCode = new Map();
+    (payload.holdings || []).forEach((h) => {
+      const badge = BADGE[h.action];
+      if (badge) byCode.set(String(h.stockCode), badge);
+    });
+    if (!byCode.size) return;
+    card.querySelectorAll("li").forEach((row) => {
+      if (row.querySelector(".ac-badge")) return;
+      const label = row.querySelector("span");
+      if (!label) return;
+      // 代號在名稱後面的小字節點，取整列文字比對會誤中金額數字。
+      const code = (label.textContent.match(/(\d{4,6}[A-Z]?)\s*$/) || [])[1];
+      const badge = code && byCode.get(code);
+      if (!badge) return;
+      const tag = document.createElement("span");
+      tag.className = "ac-badge " + badge[0];
+      tag.textContent = badge[1];
+      label.appendChild(tag);
+    });
   }
 
   function render(header, s) {
@@ -94,6 +128,10 @@
         key,
         fetch(BASE + "data/holding-changes/" + code + "/" + date + ".json", { cache: "no-store" })
           .then((r) => (r.ok ? r.json() : null))
+          .then((payload) => {
+            if (payload) resolved.set(key, payload);
+            return payload;
+          })
           .catch(() => null),
       );
     }
@@ -113,11 +151,14 @@
       if (!match) return;
       const code = match[1];
       const date = match[2] + "-" + match[3] + "-" + match[4];
+      const cached = resolved.get(code + "/" + date);
+      if (cached) markRows(card, cached);
       if (header.dataset.acStatsKey === code + "/" + date) return;
       header.dataset.acStatsKey = code + "/" + date;
       load(code, date).then((payload) => {
         if (!payload || header.dataset.acStatsKey !== code + "/" + date) return;
         render(header, summarise(payload));
+        markRows(card, payload);
       });
     });
   }
