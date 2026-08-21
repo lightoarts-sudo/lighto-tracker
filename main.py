@@ -13,7 +13,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import asyncpg
 import aiosqlite
 from crypto_bot import install_crypto_bot
-from youtube_clipper import install_youtube_clipper
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
 if DATABASE_URL.startswith("postgres://"):
@@ -30,7 +29,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 install_crypto_bot(app)
-install_youtube_clipper(app)
 _pg_pool = None
 SQLITE_PATH = "/tmp/clicks.db"
 
