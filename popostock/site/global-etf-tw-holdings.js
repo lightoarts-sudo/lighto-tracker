@@ -139,7 +139,7 @@
 
   function show(on) {
     const panel = document.querySelector(PANEL);
-    const bar = document.querySelector(SWITCH);
+    const bar = panel && panel.querySelector(SWITCH);
     if (!panel || !bar) return;
     active = on;
     const chip = bar.querySelector("[" + CHIP_FLAG + "]");
@@ -187,7 +187,11 @@
   }
 
   function attach() {
-    const bar = document.querySelector(SWITCH);
+    // .scope-switch 不是共同持股統計專用的——績效排行頁也用同一個 class。
+    // 只有在同一個 section.stats-panel 底下的那一列才是我們要掛的，否則標籤會
+    // 出現在其他分頁而點了沒反應（面板不存在）。
+    const panel = document.querySelector(PANEL);
+    const bar = panel && panel.querySelector(SWITCH);
     if (!bar || bar.querySelector("[" + CHIP_FLAG + "]")) return;
     const chip = document.createElement("button");
     chip.type = "button";
@@ -213,6 +217,9 @@
       // 背景分頁不會觸發 requestAnimationFrame，改用 setTimeout。
       setTimeout(() => {
         queued = false;
+        // 離開共同持股統計時面板不再存在，狀態要跟著歸零，
+        // 否則回到該頁會以為仍在「全球佈局」檢視。
+        if (!document.querySelector(PANEL)) { active = false; return; }
         attach();
         if (active && !document.querySelector("[" + VIEW_FLAG + "]")) show(true);
       }, 60);
@@ -222,7 +229,8 @@
     const timer = setInterval(() => {
       attempts += 1;
       attach();
-      if (document.querySelector("[" + CHIP_FLAG + "]") || attempts >= 40) clearInterval(timer);
+      const bar = document.querySelector(PANEL + " " + SWITCH);
+      if ((bar && bar.querySelector("[" + CHIP_FLAG + "]")) || attempts >= 40) clearInterval(timer);
     }, 500);
   }
 
