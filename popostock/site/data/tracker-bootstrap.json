@@ -17082,7 +17082,7 @@
     {
       "id": "uni-023",
       "group": "funds",
-      "groupRank": 8,
+      "groupRank": 1,
       "code": "UNI023",
       "name": "統一奔騰基金",
       "category": "行業股票-科技",
@@ -17341,266 +17341,9 @@
       }
     },
     {
-      "id": "nom-156",
-      "group": "funds",
-      "groupRank": 9,
-      "code": "NOM156",
-      "name": "野村優質基金-TISA類型",
-      "category": "台灣中小型股票",
-      "ytdReturn": 111.77,
-      "aumTwd": 66973220000,
-      "aumDate": "2026-06",
-      "updateCadence": "基金淨值每日更新；成分股每季更新一次",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "FundRich / Morningstar 初始建檔；每日淨值以投信官網更新"
-        },
-        {
-          "label": "官方全名",
-          "value": "【TISA級別】野村優質基金-TISA類型"
-        },
-        {
-          "label": "英文名稱",
-          "value": "Nomura Taiwan Superior Eq Fd TISA"
-        },
-        {
-          "label": "ISIN Code",
-          "value": "TW000T3201A8"
-        },
-        {
-          "label": "成立日期",
-          "value": "2025/09/08"
-        },
-        {
-          "label": "基金規模",
-          "value": "66,973.22(百萬TWD       ) (計算至 2026/06 止)"
-        },
-        {
-          "label": "基金公司",
-          "value": "野村證券投資信託股份有限公司"
-        },
-        {
-          "label": "基金經理人",
-          "value": "陳茹婷"
-        },
-        {
-          "label": "基金類型",
-          "value": "股票基金"
-        },
-        {
-          "label": "基金組別",
-          "value": "台灣中小型股票"
-        },
-        {
-          "label": "投資區域",
-          "value": "台灣"
-        },
-        {
-          "label": "風險收益等級",
-          "value": "中高度風險 (RR4)"
-        },
-        {
-          "label": "配息頻率",
-          "value": "不配息"
-        },
-        {
-          "label": "經理費／保管費",
-          "value": "0.60%／0.14%"
-        },
-        {
-          "label": "保管機構",
-          "value": "Chang Hwa Commercial Bank"
-        },
-        {
-          "label": "最新淨值資料日",
-          "value": "2026-08-21"
-        },
-        {
-          "label": "持股揭露",
-          "value": "前十大持股（2026-06-30）"
-        },
-        {
-          "label": "產業配置",
-          "value": "資料日期：2026/06/30；科技 84.94%、周期性消費 12.10%、工業 2.96%"
-        },
-        {
-          "label": "投資國家",
-          "value": "資料日期：2026/03/31；台灣 94.98%、美國 4.88%、中國 0.14%"
-        }
-      ],
-      "performance": {
-        "date": "2026-08-21",
-        "priceOrNav": "23.5700 TWD",
-        "ytdReturn": 90.74573
-      },
-      "assetClasses": [
-        {
-          "label": "股票",
-          "weight": 98.32,
-          "sourceDate": "2026-03-31",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "label": "現金",
-          "weight": 1.57,
-          "sourceDate": "2026-03-31",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "label": "其他",
-          "weight": 0.11,
-          "sourceDate": "2026-03-31",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        }
-      ],
-      "holdings": [
-        {
-          "stockName": "川湖",
-          "weight": 10.06,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "台光電",
-          "weight": 9.71,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "台積電",
-          "weight": 8.61,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "鴻勁",
-          "weight": 7.67,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "健策",
-          "weight": 7.23,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "聯發科",
-          "weight": 7.05,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "台達電",
-          "weight": 6.77,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "欣興",
-          "weight": 5.91,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "穎崴",
-          "weight": 5.49,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "旺矽",
-          "weight": 5.21,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-        }
-      ],
-      "holdingHistory": [
-        {
-          "period": "2026 Q2",
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar",
-          "holdings": [
-            {
-              "stockName": "川湖",
-              "weight": 10.06,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "台光電",
-              "weight": 9.71,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "台積電",
-              "weight": 8.61,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "鴻勁",
-              "weight": 7.67,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "健策",
-              "weight": 7.23,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "聯發科",
-              "weight": 7.05,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "台達電",
-              "weight": 6.77,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "欣興",
-              "weight": 5.91,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "穎崴",
-              "weight": 5.49,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "旺矽",
-              "weight": 5.21,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "野村優質基金-TISA類型 / FundRich・Morningstar"
-            }
-          ]
-        }
-      ],
-      "sourceMetadata": {
-        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM156",
-        "officialUrl": "https://money.nomurafunds.com.tw/funds/superior",
-        "performanceDate": "2026-06",
-        "assetDate": "2026-03-31",
-        "holdingsDate": "2026-06-30",
-        "retrievedAt": "2026-07-23T14:25:18.197Z",
-        "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "dailyNavRetrievedAt": "2026-08-21T10:00:32+00:00"
-      }
-    },
-    {
       "id": "nom-015",
       "group": "funds",
-      "groupRank": 10,
+      "groupRank": 2,
       "code": "NOM015",
       "name": "野村優質基金",
       "category": "台灣中小型股票",
@@ -17861,7 +17604,7 @@
     {
       "id": "yui-089",
       "group": "funds",
-      "groupRank": 11,
+      "groupRank": 3,
       "code": "YUI089",
       "name": "元大台灣高股息優質龍頭基金-A不配息",
       "category": "台灣大型股票",
@@ -18121,7 +17864,7 @@
     {
       "id": "csi-097",
       "group": "funds",
-      "groupRank": 12,
+      "groupRank": 4,
       "code": "CSI097",
       "name": "國泰台灣高股息基金-A",
       "category": "台灣大型股票",
@@ -18381,7 +18124,7 @@
     {
       "id": "nbg-061",
       "group": "funds",
-      "groupRank": 13,
+      "groupRank": 5,
       "code": "NBG061",
       "name": "路博邁台灣5G股票基金-T累積",
       "category": "行業股票-科技",
@@ -18635,7 +18378,7 @@
     {
       "id": "uni-026",
       "group": "funds",
-      "groupRank": 14,
+      "groupRank": 6,
       "code": "UNI026",
       "name": "統一黑馬基金",
       "category": "台灣中小型股票",
@@ -18896,7 +18639,7 @@
     {
       "id": "csi-002",
       "group": "funds",
-      "groupRank": 15,
+      "groupRank": 7,
       "code": "CSI002",
       "name": "國泰小龍基金",
       "category": "台灣中小型股票",
@@ -19157,7 +18900,7 @@
     {
       "id": "uni-002",
       "group": "funds",
-      "groupRank": 16,
+      "groupRank": 8,
       "code": "UNI002",
       "name": "統一大滿貫基金",
       "category": "台灣中小型股票",
@@ -19418,7 +19161,7 @@
     {
       "id": "schroder-lohas-tisa",
       "group": "funds",
-      "groupRank": 17,
+      "groupRank": 9,
       "code": "SCH044",
       "name": "施羅德台灣樂活中小基金-TISA類型",
       "category": "台灣中小型股票",
@@ -19674,7 +19417,7 @@
     {
       "id": "eastspring-asian-tech-capitalist-sa-twd",
       "group": "funds",
-      "groupRank": 18,
+      "groupRank": 10,
       "code": "ESI217",
       "name": "瀚亞亞洲科技資本家股票基金SA - 新台幣",
       "category": "行業股票-科技",
@@ -19924,7 +19667,7 @@
     {
       "id": "lionglobal-korea-sgd",
       "group": "funds",
-      "groupRank": 19,
+      "groupRank": 11,
       "code": "051023",
       "name": "利安資金韓國基金(新元)",
       "category": "韓國股票",
@@ -20195,7 +19938,7 @@
     {
       "id": "yuanta-high-technology",
       "group": "funds",
-      "groupRank": 20,
+      "groupRank": 12,
       "code": "YUI064",
       "name": "元大高科技基金",
       "category": "行業股票-科技",
@@ -20454,7 +20197,7 @@
     {
       "id": "fuh-hwa-global-iot-tech-twd",
       "group": "funds",
-      "groupRank": 21,
+      "groupRank": 13,
       "code": "FHI039",
       "name": "復華全球物聯網科技基金-新臺幣",
       "category": "行業股票-科技",
@@ -20706,7 +20449,7 @@
     {
       "id": "upamc-new-asian-technology-energy",
       "group": "funds",
-      "groupRank": 22,
+      "groupRank": 14,
       "code": "UNI006",
       "name": "統一新亞洲科技能源基金",
       "category": "其他股票",
@@ -20959,7 +20702,7 @@
     {
       "id": "upamc-long-ma",
       "group": "funds",
-      "groupRank": 23,
+      "groupRank": 15,
       "code": "UNI027",
       "name": "統一龍馬基金",
       "category": "台灣中小型股票",
@@ -33304,22 +33047,6 @@
       "id": "ref-nom-015-official",
       "targetKey": "item:nom-015",
       "title": "野村優質基金 投信官方資料",
-      "url": "https://money.nomurafunds.com.tw/funds/superior",
-      "note": "官方基金資料與每日淨值更新來源",
-      "createdAt": "2026-07-23"
-    },
-    {
-      "id": "ref-nom-156-fundrich",
-      "targetKey": "item:nom-156",
-      "title": "野村優質基金-TISA類型 FundRich 初始資料",
-      "url": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM156",
-      "note": "使用者指定的初始歷史淨值、規模、資產配置、前十大持股與績效來源",
-      "createdAt": "2026-07-23"
-    },
-    {
-      "id": "ref-nom-156-official",
-      "targetKey": "item:nom-156",
-      "title": "野村優質基金-TISA類型 投信官方資料",
       "url": "https://money.nomurafunds.com.tw/funds/superior",
       "note": "官方基金資料與每日淨值更新來源",
       "createdAt": "2026-07-23"
