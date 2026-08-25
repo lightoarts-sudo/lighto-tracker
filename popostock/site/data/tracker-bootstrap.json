@@ -19167,265 +19167,9 @@
       }
     },
     {
-      "id": "schroder-lohas-tisa",
-      "group": "funds",
-      "groupRank": 9,
-      "code": "SCH044",
-      "name": "施羅德台灣樂活中小基金-TISA類型",
-      "category": "台灣中小型股票",
-      "ytdReturn": 142.8063,
-      "aumDate": "2026-07-31",
-      "updateCadence": "基金淨值每日更新；成分股依官方或資料供應商揭露更新",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "FundRich / Morningstar 初始建檔；每日淨值以官方來源更新"
-        },
-        {
-          "label": "官方全名",
-          "value": "施羅德台灣樂活中小基金-TISA類型"
-        },
-        {
-          "label": "英文名稱",
-          "value": "Schroder Taiwan Small & Mid Cap Eq-TISA"
-        },
-        {
-          "label": "ISIN Code",
-          "value": "TW000T4209C6"
-        },
-        {
-          "label": "成立日期",
-          "value": "2025/06/30"
-        },
-        {
-          "label": "基金規模",
-          "value": "4,594.88 百萬新台幣（2026-07-31）"
-        },
-        {
-          "label": "基金公司",
-          "value": "施羅德證券投資信託股份有限公司"
-        },
-        {
-          "label": "基金經理人",
-          "value": "柯鴻旼"
-        },
-        {
-          "label": "基金類型",
-          "value": "股票基金"
-        },
-        {
-          "label": "基金組別",
-          "value": "台灣中小型股票"
-        },
-        {
-          "label": "投資區域",
-          "value": "台灣"
-        },
-        {
-          "label": "風險收益等級",
-          "value": "高度風險 (RR5)"
-        },
-        {
-          "label": "配息頻率",
-          "value": "不配息"
-        },
-        {
-          "label": "經理費／保管費",
-          "value": "0.85%／0.15%"
-        },
-        {
-          "label": "保管機構",
-          "value": "Bank of Taiwan"
-        },
-        {
-          "label": "最新淨值資料日",
-          "value": "2026-08-25"
-        },
-        {
-          "label": "持股揭露",
-          "value": "前十大持股（2026-06-30）"
-        }
-      ],
-      "performance": {
-        "date": "2026-08-25",
-        "priceOrNav": "34.0900 TWD",
-        "ytdReturn": 132.47863,
-        "oneYearReturn": 226.4
-      },
-      "assetClasses": [
-        {
-          "label": "股票",
-          "weight": 81.63,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "label": "現金",
-          "weight": 17.65,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "label": "其他",
-          "weight": 0.72,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        }
-      ],
-      "holdings": [
-        {
-          "stockName": "台光電",
-          "weight": 7.98,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "台積電",
-          "weight": 7.02,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "穎崴",
-          "weight": 6.9,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "台燿",
-          "weight": 6.07,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "致茂",
-          "weight": 5.8,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "健策",
-          "weight": 5.43,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "金像電",
-          "weight": 5.39,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "旺矽",
-          "weight": 5.35,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "奇鋐",
-          "weight": 5.26,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        },
-        {
-          "stockName": "聯發科",
-          "weight": 5.12,
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-        }
-      ],
-      "holdingHistory": [
-        {
-          "period": "2026 Q2",
-          "sourceDate": "2026-06-30",
-          "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar",
-          "holdings": [
-            {
-              "stockName": "台光電",
-              "weight": 7.98,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "台積電",
-              "weight": 7.02,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "穎崴",
-              "weight": 6.9,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "台燿",
-              "weight": 6.07,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "致茂",
-              "weight": 5.8,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "健策",
-              "weight": 5.43,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "金像電",
-              "weight": 5.39,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "旺矽",
-              "weight": 5.35,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "奇鋐",
-              "weight": 5.26,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            },
-            {
-              "stockName": "聯發科",
-              "weight": 5.12,
-              "sourceDate": "2026-06-30",
-              "sourceTitle": "施羅德台灣樂活中小基金-TISA類型 / FundRich・Morningstar"
-            }
-          ]
-        }
-      ],
-      "sourceMetadata": {
-        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH044",
-        "bootstrapSourceFundId": "SCH044",
-        "officialUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/#/fund/SCHDR_F000000LO1/schroder-taiwan-small--mid-cap-equity-funda-share/TW000T4209Y0/profile/",
-        "performanceDate": "2026-06",
-        "assetDate": "2026-06-30",
-        "holdingsDate": "2026-06-30",
-        "retrievedAt": "2026-07-26T05:07:10+00:00",
-        "aumSourceTitle": "施羅德投資基金中心－基金資料",
-        "aumSourceUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/#/fund/SCHDR_F000000LO1/schroder-taiwan-small--mid-cap-equity-funda-share/TW000T4209Y0/profile/",
-        "aumRetrievedAt": "2026-08-03T10:00:04+00:00",
-        "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "dailyNavRetrievedAt": "2026-08-25T10:00:07+00:00"
-      },
-      "aumTwd": 4594880000,
-      "aumValue": 4594880000,
-      "aumCurrency": "TWD"
-    },
-    {
       "id": "eastspring-asian-tech-capitalist-sa-twd",
       "group": "funds",
-      "groupRank": 10,
+      "groupRank": 9,
       "code": "ESI217",
       "name": "瀚亞亞洲科技資本家股票基金SA - 新台幣",
       "category": "行業股票-科技",
@@ -19675,7 +19419,7 @@
     {
       "id": "lionglobal-korea-sgd",
       "group": "funds",
-      "groupRank": 11,
+      "groupRank": 10,
       "code": "051023",
       "name": "利安資金韓國基金(新元)",
       "category": "韓國股票",
@@ -19946,7 +19690,7 @@
     {
       "id": "yuanta-high-technology",
       "group": "funds",
-      "groupRank": 12,
+      "groupRank": 11,
       "code": "YUI064",
       "name": "元大高科技基金",
       "category": "行業股票-科技",
@@ -20205,7 +19949,7 @@
     {
       "id": "fuh-hwa-global-iot-tech-twd",
       "group": "funds",
-      "groupRank": 13,
+      "groupRank": 12,
       "code": "FHI039",
       "name": "復華全球物聯網科技基金-新臺幣",
       "category": "行業股票-科技",
@@ -20457,7 +20201,7 @@
     {
       "id": "upamc-new-asian-technology-energy",
       "group": "funds",
-      "groupRank": 14,
+      "groupRank": 13,
       "code": "UNI006",
       "name": "統一新亞洲科技能源基金",
       "category": "其他股票",
@@ -20710,7 +20454,7 @@
     {
       "id": "upamc-long-ma",
       "group": "funds",
-      "groupRank": 15,
+      "groupRank": 14,
       "code": "UNI027",
       "name": "統一龍馬基金",
       "category": "台灣中小型股票",
@@ -33288,22 +33032,6 @@
       "url": "https://money.nomurafunds.com.tw/funds/superior",
       "note": "官方基金資料與每日淨值更新來源",
       "createdAt": "2026-07-23"
-    },
-    {
-      "id": "ref-schroder-lohas-tisa-fundrich",
-      "targetKey": "item:schroder-lohas-tisa",
-      "title": "施羅德台灣樂活中小基金-TISA類型 FundRich 初始資料",
-      "url": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH044",
-      "note": "初始歷史淨值、資產配置、前十大持股與績效來源",
-      "createdAt": "2026-07-26"
-    },
-    {
-      "id": "ref-schroder-lohas-tisa-official",
-      "targetKey": "item:schroder-lohas-tisa",
-      "title": "施羅德台灣樂活中小基金-TISA類型 官方資料",
-      "url": "https://www.schroders.com/zh-tw/tw/individual/funds-and-strategies/taiwan-lohas-equity-fund/",
-      "note": "官方基金資料與每日淨值更新來源",
-      "createdAt": "2026-07-26"
     },
     {
       "id": "ref-uni-002-fundrich",
