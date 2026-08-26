@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T12:02:16+08:00",
+  "generatedAt": "2026-08-26T14:32:03+08:00",
   "availableDates": [
     "2026-08-26",
     "2026-08-25",
@@ -43,15 +43,15 @@
   "daily": {
     "2026-07-03": {
       "date": "2026-07-03",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:01+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 1,
         "baselineEtfCount": 4,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00997A"
         ],
@@ -85,7 +85,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -109,15 +110,15 @@
     },
     "2026-07-06": {
       "date": "2026-07-06",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:01+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -150,7 +151,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -920,15 +922,15 @@
     },
     "2026-07-07": {
       "date": "2026-07-07",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:01+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -961,7 +963,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -1608,15 +1611,15 @@
     },
     "2026-07-08": {
       "date": "2026-07-08",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:01+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -1649,7 +1652,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -1855,15 +1859,15 @@
     },
     "2026-07-09": {
       "date": "2026-07-09",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -1896,7 +1900,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -2354,15 +2359,15 @@
     },
     "2026-07-13": {
       "date": "2026-07-13",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -2395,7 +2400,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -2733,15 +2739,15 @@
     },
     "2026-07-14": {
       "date": "2026-07-14",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -2774,7 +2780,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -3610,15 +3617,15 @@
     },
     "2026-07-15": {
       "date": "2026-07-15",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 5,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 23,
+        "futureEtfCount": 24,
         "comparableEtfs": [
           "00991A",
           "00982A",
@@ -3651,7 +3658,8 @@
           "00987A",
           "00408A",
           "00989A",
-          "00983A"
+          "00983A",
+          "00411A"
         ]
       },
       "summary": {
@@ -4226,15 +4234,15 @@
     },
     "2026-07-16": {
       "date": "2026-07-16",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 6,
         "baselineEtfCount": 7,
         "pendingEtfCount": 0,
-        "futureEtfCount": 15,
+        "futureEtfCount": 16,
         "comparableEtfs": [
           "00981A",
           "00991A",
@@ -4268,7 +4276,8 @@
           "00404A",
           "00401A",
           "00987A",
-          "00989A"
+          "00989A",
+          "00411A"
         ]
       },
       "summary": {
@@ -4912,15 +4921,15 @@
     },
     "2026-07-17": {
       "date": "2026-07-17",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 13,
         "baselineEtfCount": 14,
         "pendingEtfCount": 0,
-        "futureEtfCount": 1,
+        "futureEtfCount": 2,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -4954,7 +4963,8 @@
         ],
         "pendingEtfs": [],
         "futureEtfs": [
-          "00401A"
+          "00401A",
+          "00411A"
         ]
       },
       "summary": {
@@ -6465,15 +6475,15 @@
     },
     "2026-07-20": {
       "date": "2026-07-20",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 27,
         "baselineEtfCount": 1,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -6507,7 +6517,9 @@
           "00401A"
         ],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 16,
@@ -9010,15 +9022,15 @@
     },
     "2026-07-21": {
       "date": "2026-07-21",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -9051,7 +9063,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 21,
@@ -12802,15 +12816,15 @@
     },
     "2026-07-22": {
       "date": "2026-07-22",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -12843,7 +12857,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 21,
@@ -17521,15 +17537,15 @@
     },
     "2026-07-23": {
       "date": "2026-07-23",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -17562,7 +17578,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 25,
@@ -21067,15 +21085,15 @@
     },
     "2026-07-24": {
       "date": "2026-07-24",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -21108,7 +21126,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 17,
@@ -23665,15 +23685,15 @@
     },
     "2026-07-27": {
       "date": "2026-07-27",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -23706,7 +23726,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 11,
@@ -25861,15 +25883,15 @@
     },
     "2026-07-28": {
       "date": "2026-07-28",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 27,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 1,
+        "futureEtfCount": 2,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -25902,7 +25924,8 @@
         "baselineEtfs": [],
         "pendingEtfs": [],
         "futureEtfs": [
-          "00990A"
+          "00990A",
+          "00411A"
         ]
       },
       "summary": {
@@ -28472,15 +28495,15 @@
     },
     "2026-07-29": {
       "date": "2026-07-29",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 27,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 1,
+        "futureEtfCount": 2,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -28513,7 +28536,8 @@
         "baselineEtfs": [],
         "pendingEtfs": [],
         "futureEtfs": [
-          "00990A"
+          "00990A",
+          "00411A"
         ]
       },
       "summary": {
@@ -32001,15 +32025,15 @@
     },
     "2026-07-30": {
       "date": "2026-07-30",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -32042,7 +32066,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 18,
@@ -35343,15 +35369,15 @@
     },
     "2026-07-31": {
       "date": "2026-07-31",
-      "generatedAt": "2026-08-26T12:02:13+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -35384,7 +35410,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 21,
@@ -37983,15 +38011,15 @@
     },
     "2026-08-03": {
       "date": "2026-08-03",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -38024,7 +38052,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 22,
@@ -43455,15 +43485,15 @@
     },
     "2026-08-04": {
       "date": "2026-08-04",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -43496,7 +43526,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 22,
@@ -50577,15 +50609,15 @@
     },
     "2026-08-05": {
       "date": "2026-08-05",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -50618,7 +50650,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 25,
@@ -56325,15 +56359,15 @@
     },
     "2026-08-06": {
       "date": "2026-08-06",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -56366,7 +56400,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 24,
@@ -61059,15 +61095,15 @@
     },
     "2026-08-07": {
       "date": "2026-08-07",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -61100,7 +61136,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 16,
@@ -64875,15 +64913,15 @@
     },
     "2026-08-10": {
       "date": "2026-08-10",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -64916,7 +64954,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 18,
@@ -69015,15 +69055,15 @@
     },
     "2026-08-11": {
       "date": "2026-08-11",
-      "generatedAt": "2026-08-26T12:02:14+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -69056,7 +69096,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 17,
@@ -71769,15 +71811,15 @@
     },
     "2026-08-12": {
       "date": "2026-08-12",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -71810,7 +71852,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 16,
@@ -74613,15 +74657,15 @@
     },
     "2026-08-13": {
       "date": "2026-08-13",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -74654,7 +74698,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 23,
@@ -78747,15 +78793,15 @@
     },
     "2026-08-14": {
       "date": "2026-08-14",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -78788,7 +78834,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 14,
@@ -80577,15 +80625,15 @@
     },
     "2026-08-17": {
       "date": "2026-08-17",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -80618,7 +80666,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 20,
@@ -83403,15 +83453,15 @@
     },
     "2026-08-18": {
       "date": "2026-08-18",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -83444,7 +83494,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 23,
@@ -89037,15 +89089,15 @@
     },
     "2026-08-19": {
       "date": "2026-08-19",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -89078,7 +89130,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 16,
@@ -92907,15 +92961,15 @@
     },
     "2026-08-20": {
       "date": "2026-08-20",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -92948,7 +93002,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 21,
@@ -98511,15 +98567,15 @@
     },
     "2026-08-21": {
       "date": "2026-08-21",
-      "generatedAt": "2026-08-26T12:02:15+08:00",
+      "generatedAt": "2026-08-26T14:32:02+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
         "baselineEtfCount": 0,
         "pendingEtfCount": 0,
-        "futureEtfCount": 0,
+        "futureEtfCount": 1,
         "comparableEtfs": [
           "00981A",
           "00403A",
@@ -98552,7 +98608,9 @@
         ],
         "baselineEtfs": [],
         "pendingEtfs": [],
-        "futureEtfs": []
+        "futureEtfs": [
+          "00411A"
+        ]
       },
       "summary": {
         "buyingEtfCount": 13,
@@ -100857,13 +100915,13 @@
     },
     "2026-08-24": {
       "date": "2026-08-24",
-      "generatedAt": "2026-08-26T12:02:16+08:00",
+      "generatedAt": "2026-08-26T14:32:03+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 28,
-        "baselineEtfCount": 0,
+        "baselineEtfCount": 1,
         "pendingEtfCount": 0,
         "futureEtfCount": 0,
         "comparableEtfs": [
@@ -100896,7 +100954,9 @@
           "00989A",
           "00983A"
         ],
-        "baselineEtfs": [],
+        "baselineEtfs": [
+          "00411A"
+        ],
         "pendingEtfs": [],
         "futureEtfs": []
       },
@@ -103137,20 +103197,21 @@
     },
     "2026-08-25": {
       "date": "2026-08-25",
-      "generatedAt": "2026-08-26T12:02:16+08:00",
+      "generatedAt": "2026-08-26T14:32:03+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
-        "comparableEtfCount": 23,
+        "trackedEtfCount": 29,
+        "comparableEtfCount": 25,
         "baselineEtfCount": 0,
-        "pendingEtfCount": 5,
+        "pendingEtfCount": 4,
         "futureEtfCount": 0,
         "comparableEtfs": [
           "00981A",
           "00403A",
           "00991A",
           "00982A",
+          "00990A",
           "00992A",
           "00407A",
           "00405A",
@@ -103168,26 +103229,26 @@
           "00404A",
           "00401A",
           "00987A",
+          "00408A",
           "00989A",
           "00983A"
         ],
         "baselineEtfs": [],
         "pendingEtfs": [
           "00988A",
-          "00990A",
           "00997A",
           "00402A",
-          "00408A"
+          "00411A"
         ],
         "futureEtfs": []
       },
       "summary": {
-        "buyingEtfCount": 12,
+        "buyingEtfCount": 13,
         "stockCount": 76,
-        "totalLots": 14346.741,
+        "totalLots": 14691.741,
         "pricedStockCount": 71,
         "unpricedStockCount": 5,
-        "totalAmountTwd": 5193472550
+        "totalAmountTwd": 5231032300
       },
       "stocks": [
         {
@@ -104019,6 +104080,36 @@
           "amountTwd": 42636000
         },
         {
+          "stockCode": "3045",
+          "stockName": "台灣大",
+          "totalLots": 350,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 200,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 150,
+              "action": "added"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 115.5,
+          "highPrice": 115.5,
+          "lowPrice": 114.5,
+          "averagePrice": 115.0,
+          "priceDate": "2026-08-25",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
+          "closeAmountTwd": 40425000,
+          "averageAmountTwd": 40250000,
+          "amountTwd": 40250000
+        },
+        {
           "stockCode": "2308",
           "stockName": "台達電",
           "totalLots": 14,
@@ -104101,30 +104192,6 @@
           "closeAmountTwd": 19910000,
           "averageAmountTwd": 19167500,
           "amountTwd": 19167500
-        },
-        {
-          "stockCode": "3045",
-          "stockName": "台灣大",
-          "totalLots": 150,
-          "etfs": [
-            {
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 150,
-              "action": "added"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 115.5,
-          "highPrice": 115.5,
-          "lowPrice": 114.5,
-          "averagePrice": 115.0,
-          "priceDate": "2026-08-25",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 17325000,
-          "averageAmountTwd": 17250000,
-          "amountTwd": 17250000
         },
         {
           "stockCode": "6139",
@@ -104251,6 +104318,66 @@
           "closeAmountTwd": 8760000,
           "averageAmountTwd": 8500000,
           "amountTwd": 8500000
+        },
+        {
+          "stockCode": "9941",
+          "stockName": "裕融",
+          "totalLots": 91,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 90,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 1,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 86.8,
+          "highPrice": 86.8,
+          "lowPrice": 85.5,
+          "averagePrice": 86.15,
+          "priceDate": "2026-08-25",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
+          "closeAmountTwd": 7898800,
+          "averageAmountTwd": 7839650,
+          "amountTwd": 7839650
+        },
+        {
+          "stockCode": "8436",
+          "stockName": "大江",
+          "totalLots": 57,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 55,
+              "action": "increase"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 2,
+              "action": "increase"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 124.5,
+          "highPrice": 125.0,
+          "lowPrice": 122.5,
+          "averagePrice": 123.75,
+          "priceDate": "2026-08-25",
+          "market": "TPEx",
+          "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F25&s=0%2Casc%2C0",
+          "closeAmountTwd": 7096500,
+          "averageAmountTwd": 7053750,
+          "amountTwd": 7053750
         },
         {
           "stockCode": "2408",
@@ -105021,54 +105148,6 @@
           "amountTwd": 414000
         },
         {
-          "stockCode": "8436",
-          "stockName": "大江",
-          "totalLots": 2,
-          "etfs": [
-            {
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 2,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 124.5,
-          "highPrice": 125.0,
-          "lowPrice": 122.5,
-          "averagePrice": 123.75,
-          "priceDate": "2026-08-25",
-          "market": "TPEx",
-          "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F25&s=0%2Casc%2C0",
-          "closeAmountTwd": 249000,
-          "averageAmountTwd": 247500,
-          "amountTwd": 247500
-        },
-        {
-          "stockCode": "9941",
-          "stockName": "裕融",
-          "totalLots": 1,
-          "etfs": [
-            {
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 1,
-              "action": "increase"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 86.8,
-          "highPrice": 86.8,
-          "lowPrice": 85.5,
-          "averagePrice": 86.15,
-          "priceDate": "2026-08-25",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 86800,
-          "averageAmountTwd": 86150,
-          "amountTwd": 86150
-        },
-        {
           "stockCode": "AGN NA",
           "stockName": "荷蘭保險公司",
           "totalLots": 130,
@@ -105190,12 +105269,12 @@
         }
       ],
       "sellSummary": {
-        "sellingEtfCount": 13,
+        "sellingEtfCount": 14,
         "stockCount": 64,
-        "totalLots": 9050.579,
+        "totalLots": 9184.579,
         "pricedStockCount": 28,
         "unpricedStockCount": 36,
-        "totalAmountTwd": 5611301350
+        "totalAmountTwd": 5679221350
       },
       "sellStocks": [
         {
@@ -105399,8 +105478,14 @@
         {
           "stockCode": "3711",
           "stockName": "日月光投控",
-          "totalLots": 290,
+          "totalLots": 293,
           "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 3,
+              "action": "decrease"
+            },
             {
               "code": "00994A",
               "name": "主動第一金台股優",
@@ -105414,7 +105499,7 @@
               "action": "decrease"
             }
           ],
-          "etfCount": 2,
+          "etfCount": 3,
           "closePrice": 591.0,
           "highPrice": 591.0,
           "lowPrice": 569.0,
@@ -105422,9 +105507,9 @@
           "priceDate": "2026-08-25",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 171390000,
-          "averageAmountTwd": 168200000,
-          "amountTwd": 168200000
+          "closeAmountTwd": 173163000,
+          "averageAmountTwd": 169940000,
+          "amountTwd": 169940000
         },
         {
           "stockCode": "4966",
@@ -105523,6 +105608,36 @@
           "amountTwd": 95965000
         },
         {
+          "stockCode": "8046",
+          "stockName": "南電",
+          "totalLots": 50,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 10,
+              "action": "decrease"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 40,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 1160.0,
+          "highPrice": 1170.0,
+          "lowPrice": 1070.0,
+          "averagePrice": 1120.0,
+          "priceDate": "2026-08-25",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
+          "closeAmountTwd": 58000000,
+          "averageAmountTwd": 56000000,
+          "amountTwd": 56000000
+        },
+        {
           "stockCode": "6121",
           "stockName": "新普",
           "totalLots": 136,
@@ -105547,28 +105662,64 @@
           "amountTwd": 53482000
         },
         {
-          "stockCode": "8046",
-          "stockName": "南電",
-          "totalLots": 40,
+          "stockCode": "2308",
+          "stockName": "台達電",
+          "totalLots": 31,
           "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 13,
+              "action": "decrease"
+            },
             {
               "code": "00994A",
               "name": "主動第一金台股優",
-              "lotChange": 40,
+              "lotChange": 18,
               "action": "decrease"
             }
           ],
-          "etfCount": 1,
-          "closePrice": 1160.0,
-          "highPrice": 1170.0,
-          "lowPrice": 1070.0,
-          "averagePrice": 1120.0,
+          "etfCount": 2,
+          "closePrice": 1710.0,
+          "highPrice": 1715.0,
+          "lowPrice": 1655.0,
+          "averagePrice": 1685.0,
           "priceDate": "2026-08-25",
           "market": "TWSE",
           "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 46400000,
-          "averageAmountTwd": 44800000,
-          "amountTwd": 44800000
+          "closeAmountTwd": 53010000,
+          "averageAmountTwd": 52235000,
+          "amountTwd": 52235000
+        },
+        {
+          "stockCode": "2360",
+          "stockName": "致茂",
+          "totalLots": 23,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 8,
+              "action": "decrease"
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 15,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 1965.0,
+          "highPrice": 2035.0,
+          "lowPrice": 1890.0,
+          "averagePrice": 1962.5,
+          "priceDate": "2026-08-25",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
+          "closeAmountTwd": 45195000,
+          "averageAmountTwd": 45137500,
+          "amountTwd": 45137500
         },
         {
           "stockCode": "4904",
@@ -105625,6 +105776,36 @@
           "amountTwd": 41457000
         },
         {
+          "stockCode": "2344",
+          "stockName": "華邦電",
+          "totalLots": 230,
+          "etfs": [
+            {
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 100,
+              "action": "decrease"
+            },
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lotChange": 130,
+              "action": "decrease"
+            }
+          ],
+          "etfCount": 2,
+          "closePrice": 179.0,
+          "highPrice": 179.0,
+          "lowPrice": 168.5,
+          "averagePrice": 173.75,
+          "priceDate": "2026-08-25",
+          "market": "TWSE",
+          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
+          "closeAmountTwd": 41170000,
+          "averageAmountTwd": 39962500,
+          "amountTwd": 39962500
+        },
+        {
           "stockCode": "5904",
           "stockName": "寶雅",
           "totalLots": 432,
@@ -105671,78 +105852,6 @@
           "closeAmountTwd": 33100000,
           "averageAmountTwd": 32325000,
           "amountTwd": 32325000
-        },
-        {
-          "stockCode": "2308",
-          "stockName": "台達電",
-          "totalLots": 18,
-          "etfs": [
-            {
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 18,
-              "action": "decrease"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 1710.0,
-          "highPrice": 1715.0,
-          "lowPrice": 1655.0,
-          "averagePrice": 1685.0,
-          "priceDate": "2026-08-25",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 30780000,
-          "averageAmountTwd": 30330000,
-          "amountTwd": 30330000
-        },
-        {
-          "stockCode": "2360",
-          "stockName": "致茂",
-          "totalLots": 15,
-          "etfs": [
-            {
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 15,
-              "action": "decrease"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 1965.0,
-          "highPrice": 2035.0,
-          "lowPrice": 1890.0,
-          "averagePrice": 1962.5,
-          "priceDate": "2026-08-25",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 29475000,
-          "averageAmountTwd": 29437500,
-          "amountTwd": 29437500
-        },
-        {
-          "stockCode": "2344",
-          "stockName": "華邦電",
-          "totalLots": 130,
-          "etfs": [
-            {
-              "code": "00996A",
-              "name": "主動兆豐台灣豐收",
-              "lotChange": 130,
-              "action": "decrease"
-            }
-          ],
-          "etfCount": 1,
-          "closePrice": 179.0,
-          "highPrice": 179.0,
-          "lowPrice": 168.5,
-          "averagePrice": 173.75,
-          "priceDate": "2026-08-25",
-          "market": "TWSE",
-          "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260825&type=ALLBUT0999&response=json",
-          "closeAmountTwd": 23270000,
-          "averageAmountTwd": 22587500,
-          "amountTwd": 22587500
         },
         {
           "stockCode": "2472",
@@ -106756,14 +106865,14 @@
     },
     "2026-08-26": {
       "date": "2026-08-26",
-      "generatedAt": "2026-08-26T12:02:16+08:00",
+      "generatedAt": "2026-08-26T14:32:03+08:00",
       "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
       "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
       "coverage": {
-        "trackedEtfCount": 28,
+        "trackedEtfCount": 29,
         "comparableEtfCount": 2,
         "baselineEtfCount": 0,
-        "pendingEtfCount": 26,
+        "pendingEtfCount": 27,
         "futureEtfCount": 0,
         "comparableEtfs": [
           "00401A",
@@ -106796,7 +106905,8 @@
           "00404A",
           "00987A",
           "00408A",
-          "00983A"
+          "00983A",
+          "00411A"
         ],
         "futureEtfs": []
       },
@@ -107126,12 +107236,12 @@
         "comparableEtfCount": 28,
         "participatingEtfCount": 20,
         "stockCount": 179,
-        "buyLots": 24449.733,
-        "sellLots": 26899.821,
-        "netLots": -2450.088,
-        "buyAmountTwd": 9732008150,
-        "sellAmountTwd": 8088558825,
-        "netAmountTwd": 1643449325
+        "buyLots": 24794.733,
+        "sellLots": 27033.821,
+        "netLots": -2239.088,
+        "buyAmountTwd": 9769567900,
+        "sellAmountTwd": 8156478825,
+        "netAmountTwd": 1613089075
       },
       "stocks": [
         {
@@ -108559,9 +108669,9 @@
           "stockCode": "3711",
           "stockName": "日月光投控",
           "buyLots": 473,
-          "sellLots": 618,
+          "sellLots": 621,
           "buyAmountTwd": 280372000,
-          "sellAmountTwd": 362704000,
+          "sellAmountTwd": 364444000,
           "activities": [
             {
               "date": "2026-08-24",
@@ -108576,6 +108686,13 @@
               "code": "00999A",
               "name": "主動野村臺灣高息",
               "lotChange": 328
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 3
             },
             {
               "date": "2026-08-25",
@@ -108606,59 +108723,10 @@
               "lotChange": 230
             }
           ],
-          "netLots": -145,
-          "netAmountTwd": -82332000,
+          "netLots": -148,
+          "netAmountTwd": -84072000,
           "buyEtfCount": 3,
-          "sellEtfCount": 2
-        },
-        {
-          "stockCode": "2308",
-          "stockName": "台達電",
-          "buyLots": 63,
-          "sellLots": 18,
-          "buyAmountTwd": 108972500,
-          "sellAmountTwd": 30330000,
-          "activities": [
-            {
-              "date": "2026-08-24",
-              "direction": "buy",
-              "code": "00406A",
-              "name": "主動中信台灣收益",
-              "lotChange": 36
-            },
-            {
-              "date": "2026-08-24",
-              "direction": "buy",
-              "code": "00999A",
-              "name": "主動野村臺灣高息",
-              "lotChange": 13
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "buy",
-              "code": "00406A",
-              "name": "主動中信台灣收益",
-              "lotChange": 13
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 1
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "sell",
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 18
-            }
-          ],
-          "netLots": 45,
-          "netAmountTwd": 78642500,
-          "buyEtfCount": 3,
-          "sellEtfCount": 1
+          "sellEtfCount": 3
         },
         {
           "stockCode": "3081",
@@ -108801,12 +108869,12 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "2360",
-          "stockName": "致茂",
-          "buyLots": 41,
-          "sellLots": 15,
-          "buyAmountTwd": 85322500,
-          "sellAmountTwd": 29437500,
+          "stockCode": "2308",
+          "stockName": "台達電",
+          "buyLots": 63,
+          "sellLots": 31,
+          "buyAmountTwd": 108972500,
+          "sellAmountTwd": 52235000,
           "activities": [
             {
               "date": "2026-08-24",
@@ -108816,24 +108884,45 @@
               "lotChange": 36
             },
             {
+              "date": "2026-08-24",
+              "direction": "buy",
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lotChange": 13
+            },
+            {
               "date": "2026-08-25",
               "direction": "buy",
-              "code": "00982A",
-              "name": "主動群益台灣強棒",
-              "lotChange": 5
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lotChange": 13
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 13
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 1
             },
             {
               "date": "2026-08-25",
               "direction": "sell",
               "code": "00994A",
               "name": "主動第一金台股優",
-              "lotChange": 15
+              "lotChange": 18
             }
           ],
-          "netLots": 26,
-          "netAmountTwd": 55885000,
-          "buyEtfCount": 2,
-          "sellEtfCount": 1
+          "netLots": 32,
+          "netAmountTwd": 56737500,
+          "buyEtfCount": 3,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "5289",
@@ -108862,6 +108951,41 @@
           "netAmountTwd": 54807500,
           "buyEtfCount": 2,
           "sellEtfCount": 0
+        },
+        {
+          "stockCode": "8046",
+          "stockName": "南電",
+          "buyLots": 3,
+          "sellLots": 50,
+          "buyAmountTwd": 3360000,
+          "sellAmountTwd": 56000000,
+          "activities": [
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 10
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 3
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 40
+            }
+          ],
+          "netLots": -47,
+          "netAmountTwd": -52640000,
+          "buyEtfCount": 1,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "5904",
@@ -108955,32 +109079,74 @@
           "sellEtfCount": 0
         },
         {
-          "stockCode": "8046",
-          "stockName": "南電",
-          "buyLots": 3,
-          "sellLots": 40,
-          "buyAmountTwd": 3360000,
-          "sellAmountTwd": 44800000,
+          "stockCode": "3045",
+          "stockName": "台灣大",
+          "buyLots": 350,
+          "sellLots": 0,
+          "buyAmountTwd": 40250000,
+          "sellAmountTwd": 0,
           "activities": [
             {
               "date": "2026-08-25",
               "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 3
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 200
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 150
+            }
+          ],
+          "netLots": 350,
+          "netAmountTwd": 40250000,
+          "buyEtfCount": 2,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "2360",
+          "stockName": "致茂",
+          "buyLots": 41,
+          "sellLots": 23,
+          "buyAmountTwd": 85322500,
+          "sellAmountTwd": 45137500,
+          "activities": [
+            {
+              "date": "2026-08-24",
+              "direction": "buy",
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lotChange": 36
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 8
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lotChange": 5
             },
             {
               "date": "2026-08-25",
               "direction": "sell",
               "code": "00994A",
               "name": "主動第一金台股優",
-              "lotChange": 40
+              "lotChange": 15
             }
           ],
-          "netLots": -37,
-          "netAmountTwd": -41440000,
-          "buyEtfCount": 1,
-          "sellEtfCount": 1
+          "netLots": 18,
+          "netAmountTwd": 40185000,
+          "buyEtfCount": 2,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "7751",
@@ -109494,25 +109660,46 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "3045",
-          "stockName": "台灣大",
-          "buyLots": 150,
-          "sellLots": 0,
-          "buyAmountTwd": 17250000,
-          "sellAmountTwd": 0,
+          "stockCode": "2344",
+          "stockName": "華邦電",
+          "buyLots": 126,
+          "sellLots": 230,
+          "buyAmountTwd": 21892500,
+          "sellAmountTwd": 39962500,
           "activities": [
             {
               "date": "2026-08-25",
               "direction": "buy",
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 150
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lotChange": 100
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 100
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lotChange": 26
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "sell",
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lotChange": 130
             }
           ],
-          "netLots": 150,
-          "netAmountTwd": 17250000,
-          "buyEtfCount": 1,
-          "sellEtfCount": 0
+          "netLots": -104,
+          "netAmountTwd": -18070000,
+          "buyEtfCount": 2,
+          "sellEtfCount": 2
         },
         {
           "stockCode": "3529",
@@ -109575,6 +109762,41 @@
           "netLots": 22,
           "netAmountTwd": 16577000,
           "buyEtfCount": 1,
+          "sellEtfCount": 0
+        },
+        {
+          "stockCode": "9941",
+          "stockName": "裕融",
+          "buyLots": 192,
+          "sellLots": 0,
+          "buyAmountTwd": 16485250,
+          "sellAmountTwd": 0,
+          "activities": [
+            {
+              "date": "2026-08-24",
+              "direction": "buy",
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lotChange": 101
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 90
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lotChange": 1
+            }
+          ],
+          "netLots": 192,
+          "netAmountTwd": 16485250,
+          "buyEtfCount": 3,
           "sellEtfCount": 0
         },
         {
@@ -109648,60 +109870,11 @@
           "sellEtfCount": 1
         },
         {
-          "stockCode": "4551",
-          "stockName": "智伸科",
-          "buyLots": 0,
-          "sellLots": 85,
-          "buyAmountTwd": 0,
-          "sellAmountTwd": 13217500,
-          "activities": [
-            {
-              "date": "2026-08-24",
-              "direction": "sell",
-              "code": "00999A",
-              "name": "主動野村臺灣高息",
-              "lotChange": 85
-            }
-          ],
-          "netLots": -85,
-          "netAmountTwd": -13217500,
-          "buyEtfCount": 0,
-          "sellEtfCount": 1
-        },
-        {
-          "stockCode": "9941",
-          "stockName": "裕融",
-          "buyLots": 102,
-          "sellLots": 0,
-          "buyAmountTwd": 8731750,
-          "sellAmountTwd": 0,
-          "activities": [
-            {
-              "date": "2026-08-24",
-              "direction": "buy",
-              "code": "00999A",
-              "name": "主動野村臺灣高息",
-              "lotChange": 101
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "buy",
-              "code": "00994A",
-              "name": "主動第一金台股優",
-              "lotChange": 1
-            }
-          ],
-          "netLots": 102,
-          "netAmountTwd": 8731750,
-          "buyEtfCount": 2,
-          "sellEtfCount": 0
-        },
-        {
           "stockCode": "8436",
           "stockName": "大江",
-          "buyLots": 56,
+          "buyLots": 111,
           "sellLots": 0,
-          "buyAmountTwd": 6957000,
+          "buyAmountTwd": 13763250,
           "sellAmountTwd": 0,
           "activities": [
             {
@@ -109721,15 +109894,43 @@
             {
               "date": "2026-08-25",
               "direction": "buy",
+              "code": "00408A",
+              "name": "主動第一金優股息",
+              "lotChange": 55
+            },
+            {
+              "date": "2026-08-25",
+              "direction": "buy",
               "code": "00994A",
               "name": "主動第一金台股優",
               "lotChange": 2
             }
           ],
-          "netLots": 56,
-          "netAmountTwd": 6957000,
+          "netLots": 111,
+          "netAmountTwd": 13763250,
           "buyEtfCount": 2,
           "sellEtfCount": 0
+        },
+        {
+          "stockCode": "4551",
+          "stockName": "智伸科",
+          "buyLots": 0,
+          "sellLots": 85,
+          "buyAmountTwd": 0,
+          "sellAmountTwd": 13217500,
+          "activities": [
+            {
+              "date": "2026-08-24",
+              "direction": "sell",
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lotChange": 85
+            }
+          ],
+          "netLots": -85,
+          "netAmountTwd": -13217500,
+          "buyEtfCount": 0,
+          "sellEtfCount": 1
         },
         {
           "stockCode": "3231",
@@ -110192,41 +110393,6 @@
           "netAmountTwd": 719900,
           "buyEtfCount": 1,
           "sellEtfCount": 0
-        },
-        {
-          "stockCode": "2344",
-          "stockName": "華邦電",
-          "buyLots": 126,
-          "sellLots": 130,
-          "buyAmountTwd": 21892500,
-          "sellAmountTwd": 22587500,
-          "activities": [
-            {
-              "date": "2026-08-25",
-              "direction": "buy",
-              "code": "00406A",
-              "name": "主動中信台灣收益",
-              "lotChange": 100
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "buy",
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lotChange": 26
-            },
-            {
-              "date": "2026-08-25",
-              "direction": "sell",
-              "code": "00996A",
-              "name": "主動兆豐台灣豐收",
-              "lotChange": 130
-            }
-          ],
-          "netLots": -4,
-          "netAmountTwd": -695000,
-          "buyEtfCount": 2,
-          "sellEtfCount": 1
         },
         {
           "stockCode": "6584",
