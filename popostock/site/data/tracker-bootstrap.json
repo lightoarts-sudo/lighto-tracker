@@ -4394,6 +4394,401 @@
       ]
     },
     {
+      "id": "00411a",
+      "group": "activeEtfs",
+      "groupRank": 29,
+      "code": "00411A",
+      "name": "主動統一前沿科技",
+      "category": "全球股票主動式",
+      "aumTwd": 7028609228,
+      "aumDate": "2026/08/24",
+      "updateCadence": "主動式 ETF 持股每天更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "統一投信 ETF 專區"
+        },
+        {
+          "label": "官方全名",
+          "value": "統一前沿科技主動式ETF基金"
+        },
+        {
+          "label": "上櫃",
+          "value": "2026/08/26"
+        },
+        {
+          "label": "市場別",
+          "value": "上櫃（TPEx）"
+        },
+        {
+          "label": "淨資產",
+          "value": "TWD 7,028,609,228"
+        },
+        {
+          "label": "資料日期",
+          "value": "2026/08/24"
+        },
+        {
+          "label": "官方資料日",
+          "value": "2026/08/24"
+        },
+        {
+          "label": "官網更新時間",
+          "value": "2026/08/25 16:20"
+        },
+        {
+          "label": "持股收錄",
+          "value": "本次同步 41 檔"
+        },
+        {
+          "label": "本次同步",
+          "value": "2026-08-26 14:31:32+08:00"
+        }
+      ],
+      "performance": {
+        "date": "2026/08/24",
+        "priceOrNav": "—"
+      },
+      "assetClasses": [
+        {
+          "label": "股票",
+          "weight": 77.78,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信"
+        }
+      ],
+      "holdings": [
+        {
+          "stockCode": "NVDA US",
+          "stockName": "NVIDIA CORP(輝達公司)",
+          "shares": "45961",
+          "weight": 4.35,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "PLTR US",
+          "stockName": "PALANTIR TECHNOLOGIES INC-A",
+          "shares": "51297",
+          "weight": 4.1,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SPCX US",
+          "stockName": "SPACE EXPLORATION TECHN-CL A",
+          "shares": "66056",
+          "weight": 4.05,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "AMD US",
+          "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
+          "shares": "15327",
+          "weight": 3.18,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "BE US",
+          "stockName": "BLOOM ENERGY CORP- A",
+          "shares": "32777",
+          "weight": 3.04,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "8996",
+          "stockName": "高力",
+          "shares": "162000",
+          "weight": 2.64,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "LITE US",
+          "stockName": "LUMENTUM HOLDINGS INC",
+          "shares": "6975",
+          "weight": 2.63,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "2383",
+          "stockName": "台光電",
+          "shares": "33000",
+          "weight": 2.55,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NBIS US",
+          "stockName": "NEBIUS GROUP NV",
+          "shares": "26204",
+          "weight": 2.51,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "6669",
+          "stockName": "緯穎",
+          "shares": "28000",
+          "weight": 2.51,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "CRWD US",
+          "stockName": "CROWDSTRIKE HOLDINGS INC - A",
+          "shares": "27377",
+          "weight": 2.37,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "MU US",
+          "stockName": "MICRON TECHNOLOGY INC",
+          "shares": "5644",
+          "weight": 2.33,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "TSLA US",
+          "stockName": "TESLA INC(特斯拉公司)",
+          "shares": "14518",
+          "weight": 2.3,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "STX US",
+          "stockName": "SEAGATE TECHNOLOGY",
+          "shares": "5884",
+          "weight": 2.12,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3017",
+          "stockName": "奇鋐",
+          "shares": "50000",
+          "weight": 2.03,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "2330",
+          "stockName": "台積電",
+          "shares": "60000",
+          "weight": 2.03,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "GOOGL US",
+          "stockName": "ALPHABET INC-CL A(Alphabet公司)",
+          "shares": "12818",
+          "weight": 2.02,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SITM US",
+          "stockName": "SITIME CORP",
+          "shares": "7614",
+          "weight": 2.01,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "ANET US",
+          "stockName": "ARISTA NETWORKS INC.anet us",
+          "shares": "23297",
+          "weight": 1.99,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "UBER US",
+          "stockName": "UBER TECHNOLOGIES INC",
+          "shares": "54846",
+          "weight": 1.97,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3037",
+          "stockName": "欣興",
+          "shares": "124000",
+          "weight": 1.9,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NET US",
+          "stockName": "CLOUDFLARE INC - CLASS A",
+          "shares": "14742",
+          "weight": 1.88,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3443",
+          "stockName": "創意",
+          "shares": "24000",
+          "weight": 1.83,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SNOW US",
+          "stockName": "SNOWFLAKE INC-CLASS A(Snowflake公司)",
+          "shares": "10763",
+          "weight": 1.58,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "IONQ US",
+          "stockName": "IONQ INC",
+          "shares": "83341",
+          "weight": 1.55,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "AMZN US",
+          "stockName": "AMAZON.COM INC(亞馬遜公司)",
+          "shares": "12621",
+          "weight": 1.5,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "581A JP",
+          "stockName": "GO INC",
+          "shares": "135000",
+          "weight": 1.49,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "4062 JP",
+          "stockName": "IBIDEN CO LTD",
+          "shares": "27300",
+          "weight": 1.46,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NTSK US",
+          "stockName": "NETSKOPE INC-CL A",
+          "shares": "210458",
+          "weight": 1.34,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "CRWV US",
+          "stockName": "COREWEAVE INC-CL A",
+          "shares": "33733",
+          "weight": 1.32,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "MSFT US",
+          "stockName": "MICROSOFT CORP(微軟公司)",
+          "shares": "4564",
+          "weight": 1.01,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "6508 JP",
+          "stockName": "MEIDENSHA CORP",
+          "shares": "30000",
+          "weight": 1,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "6857 JP",
+          "stockName": "ADVANTEST CORP",
+          "shares": "10100",
+          "weight": 0.99,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "DELL US",
+          "stockName": "DELL INC",
+          "shares": "4971",
+          "weight": 0.98,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "285A JP",
+          "stockName": "KIOXIA HOLDINGS CORP",
+          "shares": "6400",
+          "weight": 0.93,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "4979",
+          "stockName": "華星光",
+          "shares": "115000",
+          "weight": 0.89,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "RKLB US",
+          "stockName": "ROCKET LAB USA INC",
+          "shares": "28478",
+          "weight": 0.88,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SNDK US",
+          "stockName": "SANDISK CORP",
+          "shares": "1243",
+          "weight": 0.84,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SMTC US",
+          "stockName": "SEMTECH CORP",
+          "shares": "14336",
+          "weight": 0.79,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "COHR US",
+          "stockName": "COHERENT INC",
+          "shares": "3629",
+          "weight": 0.45,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "2345",
+          "stockName": "智邦",
+          "shares": "15000",
+          "weight": 0.44,
+          "sourceDate": "2026/08/24",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        }
+      ]
+    },
+    {
       "id": "00991a",
       "group": "activeEtfs",
       "groupRank": 3,
