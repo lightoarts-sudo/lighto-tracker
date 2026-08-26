@@ -144,6 +144,8 @@
     });
     const rows = sortKey === "rank" && !sortDesc ? all : sorted;
     // 依市值比重取最大者，而不是畫面上的第一列。
+    const atPeak = all.filter((i) => (i.gapPct ?? 1) <= 0.001).length;
+    const nearPeak = all.filter((i) => (i.gapPct ?? 99) > 0.001 && i.gapPct <= 5).length;
     const leader = all.reduce(
       (best, item) => (!best || (item.weightPct ?? 0) > (best.weightPct ?? 0) ? item : best),
       null,
@@ -187,8 +189,12 @@
       '<span class="meta">市值前 ' + rows.length + " 大成分股　|　基準：" + month +
       "最高收盤　|　收盤日 " + closeDate + "</span></div>" +
       '<div class="weight-gap-summary">' +
-      '<div class="weight-gap-stat"><b>' + payload.abovePeakCount + " / " + rows.length +
-      "</b><span>已站回六月高點</span></div>" +
+      // 前高改為「自六月起的最高收盤」後，沒有人會超越自己的高點，
+      // abovePeakCount 恆為 0；改看「就在高點上」與「距離 5% 以內」才有訊息量。
+      '<div class="weight-gap-stat"><b>' + atPeak + " / " + rows.length +
+      "</b><span>正處於期間高點</span></div>" +
+      '<div class="weight-gap-stat"><b>' + nearPeak + " / " + rows.length +
+      "</b><span>距前高 5% 以內</span></div>" +
       '<div class="weight-gap-stat"><b>+' + number(payload.laggardGapPct, 2) +
       "%</b><span>落後 " + (payload.belowPeakCount || 0) +
       " 檔全回高點的指數漲幅</span></div>" +
@@ -210,9 +216,7 @@
       '<p class="weight-gap-note">' + (payload.methodology || "") +
       "<br>排行與市值比重取自臺灣期貨交易所「臺灣證券交易所發行量加權股價指數成分股暨市值比重」；" +
       "價格取自證交所／櫃買中心每日收盤行情。<b>價格未還原除權息</b>，除息後的股價會使距前高幅度略為高估。" +
-      "「補漲的指數空間」只計入尚未回到六月高點者；若把已超越的 " +
-      (payload.abovePeakCount || 0) + " 檔也一併拉回六月高點（等於要下跌），淨值為 " +
-      number(payload.weightedGapPct, 2) + "%。" +
+      "「補漲的指數空間」為全部 25 檔各自回到自己前高時的加權漲幅（目前已在高點者貢獻 0）。" +
       "資料更新時間 " + (payload.generatedAt || "").replace("T", " ").slice(0, 16) +
       "。</p>";
   }
