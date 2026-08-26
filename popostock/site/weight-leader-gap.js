@@ -29,6 +29,9 @@
   const KLINE_CLASS = "consensus-stock-kline-cell";
 
   let payload = null;
+  // 預設維持期交所的權重排行；使用者可改用「距前高」或「市值比重」重新排序。
+  let sortKey = "rank";
+  let sortDesc = false;
   let loading = null;
   let active = false;
   let klineCodes = null;
@@ -52,6 +55,10 @@
       ".weight-gap-scroll{overflow-x:auto}",
       ".weight-gap-table{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}",
       ".weight-gap-table th{text-align:right;padding:10px 12px;color:#5b6b80;font-weight:800;",
+      ".weight-gap-table th.sortable{cursor:pointer;user-select:none;white-space:nowrap}",
+      ".weight-gap-table th.sortable:hover{color:#fff}",
+      ".weight-gap-table th .arrow{opacity:.45;margin-left:4px;font-size:11px}",
+      ".weight-gap-table th.is-sorted .arrow{opacity:1;color:#ffd43b}",
       "border-bottom:2px solid #e2e8f2;white-space:nowrap;font-size:12.5px}",
       ".weight-gap-table th:nth-child(1),.weight-gap-table th:nth-child(2){text-align:left}",
       ".weight-gap-table td{text-align:right;padding:11px 12px;border-bottom:1px solid #eef2f7;",
@@ -106,6 +113,16 @@
     });
   }
 
+  function head(key, label) {
+    const on = sortKey === key;
+    // 排行由小到大才是「第 1 名在最上面」；距前高與權重預設由大到小才有意義。
+    const arrow = on ? (sortDesc ? "▼" : "▲") : "▲";
+    return (
+      '<th class="sortable' + (on ? " is-sorted" : "") + '" data-sort="' + key + '">' +
+      label + '<span class="arrow">' + arrow + "</span></th>"
+    );
+  }
+
   function render() {
     const panel = ourPanel();
     if (!panel) return;
@@ -113,7 +130,24 @@
       panel.innerHTML = '<div class="weight-gap-empty">資料載入中…</div>';
       return;
     }
-    const rows = payload.instruments || [];
+    const all = payload.instruments || [];
+    const sorted = [...all].sort((a, b) => {
+      const pick = (item) =>
+        sortKey === "weightPct" ? (item.weightPct ?? -1)
+        : sortKey === "gapPct" ? (item.gapPct ?? -1)
+        : (item.rank ?? 0);
+      const left = pick(a);
+      const right = pick(b);
+      // 同值時一律以期交所排行決定，讓每次排序結果穩定。
+      if (left === right) return (a.rank ?? 0) - (b.rank ?? 0);
+      return sortDesc ? right - left : left - right;
+    });
+    const rows = sortKey === "rank" && !sortDesc ? all : sorted;
+    // 依市值比重取最大者，而不是畫面上的第一列。
+    const leader = all.reduce(
+      (best, item) => (!best || (item.weightPct ?? 0) > (best.weightPct ?? 0) ? item : best),
+      null,
+    );
     if (!rows.length) {
       panel.innerHTML = '<div class="weight-gap-empty">目前沒有可顯示的資料。</div>';
       return;
@@ -163,12 +197,15 @@
           " 點</b><span>大盤 " + number(payload.taiexClose, 0) + " → 約 " +
           number(payload.projectedTaiex, 0) + "</span></div>"
         : "") +
-      '<div class="weight-gap-stat"><b>' + number(rows[0].gapPct, 2) +
-      "%</b><span>台積電距前高</span></div>" +
+      // 這格永遠指台積電，不能取排序後的第一列——改變排序不該改變它的數字。
+      (leader
+        ? '<div class="weight-gap-stat"><b>' + number(leader.gapPct, 2) +
+          "%</b><span>" + leader.name + "距前高</span></div>"
+        : "") +
       "</div>" +
       '<div class="weight-gap-scroll"><table class="weight-gap-table"><thead><tr>' +
-      "<th>排行</th><th>證券</th><th>市值比重</th><th>最新收盤</th>" +
-      "<th>六月最高收盤</th><th>高點日</th><th>距前高</th>" +
+      head("rank", "排行") + "<th>證券</th>" + head("weightPct", "市值比重") +
+      "<th>最新收盤</th><th>六月最高收盤</th><th>高點日</th>" + head("gapPct", "距前高") +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="weight-gap-note">' + (payload.methodology || "") +
       "<br>排行與市值比重取自臺灣期貨交易所「臺灣證券交易所發行量加權股價指數成分股暨市值比重」；" +
@@ -178,6 +215,19 @@
       number(payload.weightedGapPct, 2) + "%。" +
       "資料更新時間 " + (payload.generatedAt || "").replace("T", " ").slice(0, 16) +
       "。</p>";
+  }
+
+  function onHeaderClick(event) {
+    const th = event.target.closest("[" + PANEL_FLAG + "] th[data-sort]");
+    if (!th) return;
+    const key = th.dataset.sort;
+    if (sortKey === key) sortDesc = !sortDesc;
+    else {
+      sortKey = key;
+      // 排行預設小到大，其餘預設大到小。
+      sortDesc = key !== "rank";
+    }
+    render();
   }
 
   function loadKlineCodes() {
@@ -292,6 +342,9 @@
     }
     return true;
   }
+
+  // 表頭排序：掛在 document 上做委派，React 或自己重繪表格後都不必重新綁定。
+  document.addEventListener("click", onHeaderClick);
 
   document.addEventListener(
     "click",
