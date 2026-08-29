@@ -18,12 +18,11 @@
     "納斯達克100 +19.9%｜美股半導體SMH +32.5%。以上為過去表現，" +
     "長期規劃一般採較保守的 6–8%。";
 
-  // 曝險可以來自借貸，也可以來自槓桿型 ETF（正二）。兩者成本不同：
-  // 借貸要按月還款、槓桿 ETF 則有每日重設帶來的耗損，提示裡都要講到。
+  // 曝險＝部位跟隨市場的倍數（正二＝2），由持股結構決定；
+  // 貸款則是擴大投入本金。兩者獨立，模型也分開處理。
   const EXPOSURE_HINT =
-    "100% 不開槓桿；可用正二（2 倍槓桿 ETF）加倍曝險，或以借貸提高。" +
-    "下方「需借入」只計算借貸這條路；改用正二則不需借款，但槓桿型 ETF 每日重設，" +
-    "盤整或波動大時會有耗損，長期報酬不等於指數的兩倍。";
+    "100% 不開槓桿；持有正二（2 倍槓桿 ETF）即為 200%。" +
+    "此欄只決定部位跟隨市場的倍數，與貸款無關——貸款是把借來的錢加進本金。";
 
   const DEFAULTS = {
     age: 35,
@@ -34,6 +33,8 @@
     monthlyInvest: 30000,
     annualReturn: 7,
     withdrawRate: 4,
+    withdrawStartAge: 60,
+    investUntilAge: 60,
     targetExposure: 200,
     loans: [{ amount: 1000000, rate: 4, months: 120 }],
   };
@@ -146,18 +147,22 @@
     // 借來的錢一次投入，所以起始部位包含貸款本金。
     const startAssets = Number(s.portfolio || 0) + borrowed;
     const ownCapital = Number(s.portfolio || 0);
-    const exposure = ownCapital > 0 ? (startAssets / ownCapital) * 100 : null;
-    // 反解：要達到目標曝險，總部位需為 自有×目標%，扣掉自有就是需要借入的金額。
-    const targetPct = Number(s.targetExposure || 100);
-    const neededBorrow = Math.max(0, ownCapital * (targetPct / 100 - 1));
-    const borrowGap = neededBorrow - borrowed;
+    // 曝險倍數來自持有槓桿型 ETF（正二＝2 倍），與借貸無關：
+    // 借來的錢只是讓「投入本金」變大，曝險則決定這筆本金放大幾倍跟隨市場。
+    const leverage = Math.max(0, Number(s.targetExposure || 100)) / 100;
+    const marketExposure = startAssets * leverage;
+    // 相對自有資金的總曝險：貸款與槓桿兩者的效果相乘。
+    const exposure = ownCapital > 0 ? (marketExposure / ownCapital) * 100 : null;
 
     const monthlyIncome = Number(s.monthlyExpense || 0) + Number(s.monthlySurplus || 0);
     const annualIncome = monthlyIncome * 12;
     const annualExpense = Number(s.monthlyExpense || 0) * 12;
     const target = annualExpense / (Number(s.withdrawRate || 4) / 100);
 
-    const r = Number(s.annualReturn || 0) / 100;
+    const indexReturn = Number(s.annualReturn || 0) / 100;
+    // 2 倍槓桿部位的價值變動約為指數的兩倍（此處未計入每日重設的耗損與內含費用，
+    // 實際長期報酬會低於這個數字，頁面下方有說明）。
+    const r = indexReturn * leverage;
     const monthlyRate = Math.pow(1 + r, 1 / 12) - 1;
 
     let assets = startAssets;
@@ -176,8 +181,23 @@
     const startAge = Number(s.age || 0);
     const totalMonths = Math.max(1, (Number(s.retireAgeCap || 90) - startAge) * 12);
 
+    let firstMonthInvest = null;
+    let withdrawn = 0;
     for (let m = 1; m <= totalMonths; m += 1) {
-      assets = assets * (1 + monthlyRate) + Number(s.monthlyInvest || 0);
+      // 當月仍在攤還的貸款月付金：繳完的那幾筆不再扣，投入金額會自動回升。
+      const duePayment = balances.reduce((sum, b) => sum + (b.left > 0 ? b.pay : 0), 0);
+      const ageNow = startAge + m / 12;
+      // 過了「可投入到幾歲」就不再有工作收入可投入。
+      const canInvest = ageNow <= Number(s.investUntilAge || 999);
+      const invest = canInvest ? Math.max(0, Number(s.monthlyInvest || 0) - duePayment) : 0;
+      if (firstMonthInvest === null) firstMonthInvest = invest;
+      assets = assets * (1 + monthlyRate) + invest;
+      // 到達提領年齡後，每月依提領率的十二分之一自資產提出並累計。
+      if (ageNow >= Number(s.withdrawStartAge || 999)) {
+        const take = Math.max(0, (assets - 0) * (Number(s.withdrawRate || 4) / 100) / 12);
+        assets = Math.max(0, assets - take);
+        withdrawn += take;
+      }
       let debt = 0;
       balances.forEach((b) => {
         if (b.left > 0) {
@@ -203,6 +223,7 @@
           net,
           passive: net * r,
           withdraw: net * (Number(s.withdrawRate || 4) / 100),
+          withdrawn,
         });
       }
     }
@@ -214,10 +235,13 @@
     return {
       loans, borrowed, payment, maxMonths, startAssets, ownCapital, exposure,
       monthlyIncome, annualIncome, annualExpense, target, rows,
-      targetPct, neededBorrow, borrowGap,
+      leverage, marketExposure, indexReturn, effectiveReturn: r,
+      totalWithdrawn: withdrawn,
+      actualInvest: firstMonthInvest,
+      investShortfall: payment > Number(s.monthlyInvest || 0),
       incomeCrossAge, retireAge, loanRate,
       paymentOverSurplus: payment > Number(s.monthlySurplus || 0),
-      returnBelowLoan: loans.length > 0 && Number(s.annualReturn || 0) <= loanRate,
+      returnBelowLoan: loans.length > 0 && r * 100 <= loanRate,
     };
   }
 
@@ -229,6 +253,7 @@
     portfolio: 10000,
     monthlyExpense: 1000, monthlySurplus: 1000, monthlyInvest: 1000,
     annualReturn: 0.5, withdrawRate: 0.1, targetExposure: 10,
+    withdrawStartAge: 1, investUntilAge: 1,
   };
 
   function field(key, label, hint) {
@@ -260,7 +285,8 @@
           "<td>" + wan(row.debt) + "</td>" +
           "<td>" + wan(row.net) + "</td>" +
           "<td>" + wan(row.passive) + "</td>" +
-          "<td>" + wan(row.withdraw) + "</td></tr>"
+          "<td>" + wan(row.withdraw) + "</td>" +
+          "<td>" + (row.withdrawn > 0 ? wan(row.withdrawn) : "—") + "</td></tr>"
         );
       })
       .join("");
@@ -268,21 +294,21 @@
       '<div class="retire-sum">' +
       '<div class="retire-stat"><b>' + money(s.monthlyIncome) + "</b><span>推估月收入（支出＋盈餘）</span></div>" +
       '<div class="retire-stat"><b>' + money(s.payment) + "</b><span>貸款月付金合計</span></div>" +
+      '<div class="retire-stat' + (s.investShortfall ? " warn" : "") + '"><b>' +
+      money(s.actualInvest) + "</b><span>每月實際投入（可投入−月付金）</span></div>" +
       '<div class="retire-stat' + (s.exposure && s.exposure > 150 ? " warn" : "") + '"><b>' +
       (s.exposure ? s.exposure.toFixed(0) + "%" : "—") + "</b><span>目前曝險（總部位÷自有）</span></div>" +
-      '<div class="retire-stat"><b>' + money(s.neededBorrow) + "</b><span>以借貸達 " +
-      s.targetPct + "% 曝險需借入" +
-      (Math.abs(s.borrowGap) >= 1
-        ? '　<button type="button" data-apply="1" style="border:1px solid #c8d6e8;background:#fff;' +
-          'color:#12295c;font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 9px;' +
-          'cursor:pointer">套用</button>'
-        : "　已達成") +
-      "</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.marketExposure) + "</b><span>市場曝險金額（本金×" +
+      s.leverage.toFixed(1) + " 倍）</span></div>" +
+      '<div class="retire-stat"><b>' + (s.effectiveReturn * 100).toFixed(1) + "%</b><span>有效年化（" +
+      (s.indexReturn * 100).toFixed(1) + "% × " + s.leverage.toFixed(1) + " 倍）</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.target) + "</b><span>退休所需資產（" +
       state.withdrawRate + "% 提領）</span></div>" +
       '<div class="retire-stat' + (s.incomeCrossAge ? " good" : "") + '"><b>' +
       (s.incomeCrossAge ? Math.ceil(s.incomeCrossAge) + " 歲" : "未達成") +
       "</b><span>投資報酬超越工作收入</span></div>" +
+      '<div class="retire-stat"><b>' + wan(s.totalWithdrawn) + "</b><span>累計提領（至 " +
+      state.retireAgeCap + " 歲）</span></div>" +
       '<div class="retire-stat' + (s.retireAge ? " good" : "") + '"><b>' +
       (s.retireAge ? Math.ceil(s.retireAge) + " 歲" : "未達成") +
       "</b><span>達 " + state.withdrawRate + "% 提領門檻</span></div>" +
@@ -299,14 +325,19 @@
         : "") +
       '<div class="retire-scroll"><table class="retire-table"><thead><tr>' +
       "<th>年齡</th><th>總資產</th><th>貸款餘額</th><th>淨資產</th>" +
-      "<th>年報酬金額</th><th>年可提領</th>" +
+      "<th>年報酬金額</th><th>年可提領</th><th>累計提領</th>" +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="retire-note">' +
-      "試算方式：起始部位＝現有股票＋貸款金額（借來的錢一次投入）；每月以年化報酬換算的月報酬複利成長，" +
+      "試算方式：投入本金＝現有股票＋貸款金額（借來的錢一次投入）；市場曝險＝本金×曝險倍數，" +
+      "有效年化＝預期年化×曝險倍數；每月以有效年化換算的月報酬複利成長，" +
+      "每月投入以「可投入金額−當月貸款月付金」計算，貸款繳清後投入金額自動回升；" +
       "再加上每月可投入金額；各筆貸款分別以等額本息攤還，淨資產＝總資產−貸款餘額。" +
       "「投資報酬超越工作收入」以淨資產×年化報酬 ≧ 年收入判定；「退休門檻」以淨資產 ≧ 年支出÷提領率判定。<br>" +
       "<b>這是一份試算，不是預測，更不是建議。</b>實際報酬每年都會波動甚至為負，模型假設每年固定報酬，" +
-      "會低估過程中的下跌風險；借錢投資會同時放大獲利與虧損，且不論市場漲跌都必須按月還款。" +
+      "會低估過程中的下跌風險。<b>曝險倍數是雙向的</b>：200% 曝險在市場下跌時虧損也是兩倍，" +
+      "且槓桿型 ETF 每日重設，盤整或波動劇烈時會產生耗損，長期報酬通常低於指數的兩倍，" +
+      "本試算未計入該耗損與內含費用，因此高曝險情境會偏樂觀。" +
+      "借錢投資同樣會放大獲利與虧損，且不論市場漲跌都必須按月還款。" +
       "4% 提領率源自美國歷史研究，未必適用於不同市場、稅制與壽命假設。" +
       "請自行評估或諮詢合格理財顧問。</p>"
     );
@@ -346,14 +377,24 @@
       field("portfolio", "現有股票價值", "元（自有資金）") +
       field("monthlyExpense", "每月基本支出", "元") +
       field("monthlySurplus", "每月盈餘（扣支出後）", "元") +
-      field("monthlyInvest", "每月可投入金額", "元") +
+      field("monthlyInvest", "每月可投入金額", "元；有貸款時會先扣掉月付金") +
+      field("investUntilAge", "可投入到幾歲", "歲；之後視為沒有工作收入，停止投入") +
       field("annualReturn", "預期年化報酬 %", REF_HINT) +
       field("withdrawRate", "提領率 %", "常見為 4%") +
+      field("withdrawStartAge", "幾歲開始提領", "歲；從這年起每月自資產提出並累計") +
       field("retireAgeCap", "試算到幾歲", "歲") +
-      field("targetExposure", "股市曝險 %", EXPOSURE_HINT) +
       "</div>" +
-      '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
+      '<div class="retire-sub">貸款（可多筆，借入金額計入股票本金）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
       (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
+      '<div class="retire-sub">股市曝險（在上面的本金之上再放大）</div>' +
+      '<div class="retire-grid" style="margin-top:0">' +
+      field("targetExposure", "股市曝險 %", EXPOSURE_HINT) +
+      '<div class="retire-field"><label>計算順序</label>' +
+      '<div class="hint" style="margin-top:6px">現有股票 ' + money(state.portfolio) +
+      " ＋ 貸款 " + money(s.borrowed) + " ＝ 本金 " + money(s.startAssets) +
+      "，再 × " + s.leverage.toFixed(2) + " 倍曝險 ＝ 市場曝險 " + money(s.marketExposure) +
+      "</div></div>" +
+      "</div>" +
       '<div data-retire-results></div>';
     renderResults();
   }
@@ -432,19 +473,6 @@
     const add = event.target.closest("[" + PANEL_FLAG + "] [data-add]");
     if (add) {
       state.loans = [...(state.loans || []), { amount: 0, rate: 3, months: 84 }];
-      save(); render(); return;
-    }
-    const apply = event.target.closest("[" + PANEL_FLAG + "] [data-apply]");
-    if (apply) {
-      // 只調整第一筆貸款的金額，利率與期數維持使用者原本的設定；
-      // 沒有任何貸款時才新增一筆，用預設利率並提示要自行確認。
-      const s = simulate(state);
-      const amount = Math.round(s.neededBorrow);
-      if (!state.loans || !state.loans.length) {
-        state.loans = [{ amount, rate: 3, months: 84 }];
-      } else {
-        state.loans[0].amount = amount;
-      }
       save(); render(); return;
     }
     const del = event.target.closest("[" + PANEL_FLAG + "] [data-del]");
