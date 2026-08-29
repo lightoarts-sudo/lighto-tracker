@@ -183,6 +183,7 @@
 
     let firstMonthInvest = null;
     let withdrawn = 0;
+    let invested = 0;
     for (let m = 1; m <= totalMonths; m += 1) {
       // 當月仍在攤還的貸款月付金：繳完的那幾筆不再扣，投入金額會自動回升。
       const duePayment = balances.reduce((sum, b) => sum + (b.left > 0 ? b.pay : 0), 0);
@@ -192,6 +193,7 @@
       const invest = canInvest ? Math.max(0, Number(s.monthlyInvest || 0) - duePayment) : 0;
       if (firstMonthInvest === null) firstMonthInvest = invest;
       assets = assets * (1 + monthlyRate) + invest;
+      invested += invest;
       // 到達提領年齡後，每月依提領率的十二分之一自資產提出並累計。
       if (ageNow >= Number(s.withdrawStartAge || 999)) {
         const take = Math.max(0, (assets - 0) * (Number(s.withdrawRate || 4) / 100) / 12);
@@ -224,6 +226,7 @@
           passive: net * r,
           withdraw: net * (Number(s.withdrawRate || 4) / 100),
           withdrawn,
+          invested,
         });
       }
     }
@@ -237,6 +240,7 @@
       monthlyIncome, annualIncome, annualExpense, target, rows,
       leverage, marketExposure, indexReturn, effectiveReturn: r,
       totalWithdrawn: withdrawn,
+      totalInvested: invested,
       actualInvest: firstMonthInvest,
       investShortfall: payment > Number(s.monthlyInvest || 0),
       incomeCrossAge, retireAge, loanRate,
@@ -285,7 +289,7 @@
           "<td>" + wan(row.debt) + "</td>" +
           "<td>" + wan(row.net) + "</td>" +
           "<td>" + wan(row.passive) + "</td>" +
-          "<td>" + wan(row.withdraw) + "</td>" +
+          "<td>" + wan(row.invested) + "</td>" +
           "<td>" + (row.withdrawn > 0 ? wan(row.withdrawn) : "—") + "</td></tr>"
         );
       })
@@ -298,15 +302,17 @@
       money(s.actualInvest) + "</b><span>每月實際投入（可投入−月付金）</span></div>" +
       '<div class="retire-stat' + (s.exposure && s.exposure > 150 ? " warn" : "") + '"><b>' +
       (s.exposure ? s.exposure.toFixed(0) + "%" : "—") + "</b><span>目前曝險（總部位÷自有）</span></div>" +
-      '<div class="retire-stat"><b>' + money(s.marketExposure) + "</b><span>市場曝險金額（本金×" +
-      s.leverage.toFixed(1) + " 倍）</span></div>" +
-      '<div class="retire-stat"><b>' + (s.effectiveReturn * 100).toFixed(1) + "%</b><span>有效年化（" +
-      (s.indexReturn * 100).toFixed(1) + "% × " + s.leverage.toFixed(1) + " 倍）</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.marketExposure) + "</b><span>名目市場曝險（參考，非帳戶價值）</span></div>" +
+      '<div class="retire-stat"><b>' + (s.effectiveReturn * 100).toFixed(1) + "%</b><span>有效年化＝指數 " + (s.indexReturn * 100).toFixed(1) +
+      "% × " + s.leverage.toFixed(2) + " 倍</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.target) + "</b><span>退休所需資產（" +
       state.withdrawRate + "% 提領）</span></div>" +
       '<div class="retire-stat' + (s.incomeCrossAge ? " good" : "") + '"><b>' +
       (s.incomeCrossAge ? Math.ceil(s.incomeCrossAge) + " 歲" : "未達成") +
       "</b><span>投資報酬超越工作收入</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.annualExpense) + "</b><span>每年支出金額</span></div>" +
+      '<div class="retire-stat"><b>' + wan(s.totalInvested) + "</b><span>持續投入金額（至 " +
+      state.investUntilAge + " 歲）</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.totalWithdrawn) + "</b><span>累計提領（至 " +
       state.retireAgeCap + " 歲）</span></div>" +
       '<div class="retire-stat' + (s.retireAge ? " good" : "") + '"><b>' +
@@ -325,11 +331,12 @@
         : "") +
       '<div class="retire-scroll"><table class="retire-table"><thead><tr>' +
       "<th>年齡</th><th>總資產</th><th>貸款餘額</th><th>淨資產</th>" +
-      "<th>年報酬金額</th><th>年可提領</th><th>累計提領</th>" +
+      "<th>年報酬金額</th><th>累計投入</th><th>累計提領</th>" +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="retire-note">' +
       "試算方式：投入本金＝現有股票＋貸款金額（借來的錢一次投入）；市場曝險＝本金×曝險倍數，" +
-      "有效年化＝預期年化×曝險倍數；每月以有效年化換算的月報酬複利成長，" +
+      "有效年化＝預期年化×曝險倍數（倍數只在此處使用一次，本金不重複放大）；" +
+      "每月以有效年化換算的月報酬複利成長，" +
       "每月投入以「可投入金額−當月貸款月付金」計算，貸款繳清後投入金額自動回升；" +
       "再加上每月可投入金額；各筆貸款分別以等額本息攤還，淨資產＝總資產−貸款餘額。" +
       "「投資報酬超越工作收入」以淨資產×年化報酬 ≧ 年收入判定；「退休門檻」以淨資產 ≧ 年支出÷提領率判定。<br>" +
@@ -392,7 +399,9 @@
       '<div class="retire-field"><label>計算順序</label>' +
       '<div class="hint" style="margin-top:6px">現有股票 ' + money(state.portfolio) +
       " ＋ 貸款 " + money(s.borrowed) + " ＝ 本金 " + money(s.startAssets) +
-      "，再 × " + s.leverage.toFixed(2) + " 倍曝險 ＝ 市場曝險 " + money(s.marketExposure) +
+      "。曝險倍數 " + s.leverage.toFixed(2) +
+      " 倍只作用在報酬率上（有效年化＝指數×倍數），本金本身不會再乘一次；" +
+      "「名目市場曝險 " + money(s.marketExposure) + "」僅供理解跟隨市場的規模，不是帳戶餘額。" +
       "</div></div>" +
       "</div>" +
       '<div data-retire-results></div>';
