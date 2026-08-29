@@ -20,6 +20,7 @@
     monthlyInvest: 30000,
     annualReturn: 7,
     withdrawRate: 4,
+    targetExposure: 200,
     loans: [{ amount: 1000000, rate: 4, months: 120 }],
   };
 
@@ -132,6 +133,10 @@
     const startAssets = Number(s.portfolio || 0) + borrowed;
     const ownCapital = Number(s.portfolio || 0);
     const exposure = ownCapital > 0 ? (startAssets / ownCapital) * 100 : null;
+    // 反解：要達到目標曝險，總部位需為 自有×目標%，扣掉自有就是需要借入的金額。
+    const targetPct = Number(s.targetExposure || 100);
+    const neededBorrow = Math.max(0, ownCapital * (targetPct / 100 - 1));
+    const borrowGap = neededBorrow - borrowed;
 
     const monthlyIncome = Number(s.monthlyExpense || 0) + Number(s.monthlySurplus || 0);
     const annualIncome = monthlyIncome * 12;
@@ -195,39 +200,27 @@
     return {
       loans, borrowed, payment, maxMonths, startAssets, ownCapital, exposure,
       monthlyIncome, annualIncome, annualExpense, target, rows,
+      targetPct, neededBorrow, borrowGap,
       incomeCrossAge, retireAge, loanRate,
       paymentOverSurplus: payment > Number(s.monthlySurplus || 0),
       returnBelowLoan: loans.length > 0 && Number(s.annualReturn || 0) <= loanRate,
     };
   }
 
-  function field(key, label, hint, suffix) {
+  // 用 text + inputmode 而不是 number：number 在部分瀏覽器會擋掉中途的無效字串，
+  // 而且我們要允許使用者把欄位清空重打，不能一清空就被當成 0。
+  function field(key, label, hint) {
     return (
       '<div class="retire-field"><label>' + label + "</label>" +
-      '<input type="number" data-key="' + key + '" value="' + (state[key] ?? "") + '">' +
+      '<input type="text" inputmode="decimal" autocomplete="off" data-key="' + key +
+      '" value="' + (state[key] ?? "") + '">' +
       (hint ? '<div class="hint">' + hint + "</div>" : "") + "</div>"
     );
   }
 
-  function render() {
-    const panel = ourPanel();
-    if (!panel) return;
-    const s = simulate(state);
 
-    const loanRows = (state.loans || [])
-      .map(
-        (l, i) =>
-          '<div class="retire-loan">' +
-          '<div class="retire-field"><label>貸款金額</label><input type="number" data-loan="' +
-          i + '" data-lk="amount" value="' + l.amount + '"></div>' +
-          '<div class="retire-field"><label>年利率 %</label><input type="number" step="0.01" data-loan="' +
-          i + '" data-lk="rate" value="' + l.rate + '"></div>' +
-          '<div class="retire-field"><label>期數（月）</label><input type="number" data-loan="' +
-          i + '" data-lk="months" value="' + l.months + '"></div>' +
-          '<button type="button" class="del" data-del="' + i + '">刪除</button></div>',
-      )
-      .join("");
-
+  // 結果區獨立產生：打字時只換這一塊，輸入框不會被銷毀重建，游標也不會跳。
+  function resultsHtml(s) {
     const milestones = new Set();
     if (s.incomeCrossAge) milestones.add(Math.ceil(s.incomeCrossAge));
     if (s.retireAge) milestones.add(Math.ceil(s.retireAge));
@@ -249,27 +242,20 @@
         );
       })
       .join("");
-
-    panel.innerHTML =
-      '<div class="retire-head"><h2>退休計算機</h2>' +
-      '<span class="meta">所有結果由你輸入的假設推導，非預測</span></div>' +
-      '<div class="retire-grid">' +
-      field("age", "目前年齡", "歲") +
-      field("portfolio", "現有股票價值", "元（自有資金）") +
-      field("monthlyExpense", "每月基本支出", "元") +
-      field("monthlySurplus", "每月盈餘（扣支出後）", "元") +
-      field("monthlyInvest", "每月可投入金額", "元") +
-      field("annualReturn", "預期年化報酬 %", "長期股市約 6–8%；勿用近年高報酬外推") +
-      field("withdrawRate", "提領率 %", "常見為 4%") +
-      field("retireAgeCap", "試算到幾歲", "歲") +
-      "</div>" +
-      '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
-      (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
+    return (
       '<div class="retire-sum">' +
       '<div class="retire-stat"><b>' + money(s.monthlyIncome) + "</b><span>推估月收入（支出＋盈餘）</span></div>" +
       '<div class="retire-stat"><b>' + money(s.payment) + "</b><span>貸款月付金合計</span></div>" +
       '<div class="retire-stat' + (s.exposure && s.exposure > 150 ? " warn" : "") + '"><b>' +
-      (s.exposure ? s.exposure.toFixed(0) + "%" : "—") + "</b><span>起始曝險（總部位÷自有）</span></div>" +
+      (s.exposure ? s.exposure.toFixed(0) + "%" : "—") + "</b><span>目前曝險（總部位÷自有）</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.neededBorrow) + "</b><span>達 " +
+      s.targetPct + "% 曝險需借入" +
+      (Math.abs(s.borrowGap) >= 1
+        ? '　<button type="button" data-apply="1" style="border:1px solid #c8d6e8;background:#fff;' +
+          'color:#12295c;font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 9px;' +
+          'cursor:pointer">套用</button>'
+        : "　已達成") +
+      "</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.target) + "</b><span>退休所需資產（" +
       state.withdrawRate + "% 提領）</span></div>" +
       '<div class="retire-stat' + (s.incomeCrossAge ? " good" : "") + '"><b>' +
@@ -300,7 +286,54 @@
       "<b>這是一份試算，不是預測，更不是建議。</b>實際報酬每年都會波動甚至為負，模型假設每年固定報酬，" +
       "會低估過程中的下跌風險；借錢投資會同時放大獲利與虧損，且不論市場漲跌都必須按月還款。" +
       "4% 提領率源自美國歷史研究，未必適用於不同市場、稅制與壽命假設。" +
-      "請自行評估或諮詢合格理財顧問。</p>";
+      "請自行評估或諮詢合格理財顧問。</p>"
+    );
+  }
+
+  function renderResults() {
+    const box = document.querySelector("[" + PANEL_FLAG + "] [data-retire-results]");
+    if (!box) return;
+    box.innerHTML = resultsHtml(simulate(state));
+  }
+
+  function render() {
+    const panel = ourPanel();
+    if (!panel) return;
+    const s = simulate(state);
+
+    const loanRows = (state.loans || [])
+      .map(
+        (l, i) =>
+          '<div class="retire-loan">' +
+          '<div class="retire-field"><label>貸款金額</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          i + '" data-lk="amount" value="' + l.amount + '"></div>' +
+          '<div class="retire-field"><label>年利率 %</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          i + '" data-lk="rate" value="' + l.rate + '"></div>' +
+          '<div class="retire-field"><label>期數（月）</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          i + '" data-lk="months" value="' + l.months + '"></div>' +
+          '<button type="button" class="del" data-del="' + i + '">刪除</button></div>',
+      )
+      .join("");
+
+
+    panel.innerHTML =
+      '<div class="retire-head"><h2>退休計算機</h2>' +
+      '<span class="meta">所有結果由你輸入的假設推導，非預測</span></div>' +
+      '<div class="retire-grid">' +
+      field("age", "目前年齡", "歲") +
+      field("portfolio", "現有股票價值", "元（自有資金）") +
+      field("monthlyExpense", "每月基本支出", "元") +
+      field("monthlySurplus", "每月盈餘（扣支出後）", "元") +
+      field("monthlyInvest", "每月可投入金額", "元") +
+      field("annualReturn", "預期年化報酬 %", "長期股市約 6–8%；勿用近年高報酬外推") +
+      field("withdrawRate", "提領率 %", "常見為 4%") +
+      field("retireAgeCap", "試算到幾歲", "歲") +
+      field("targetExposure", "目標曝險 %", "100%＝完全不借；200%＝借與自有等額") +
+      "</div>" +
+      '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
+      (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
+      '<div data-retire-results></div>';
+    renderResults();
   }
 
   function ensure() {
@@ -379,6 +412,19 @@
       state.loans = [...(state.loans || []), { amount: 0, rate: 3, months: 84 }];
       save(); render(); return;
     }
+    const apply = event.target.closest("[" + PANEL_FLAG + "] [data-apply]");
+    if (apply) {
+      // 只調整第一筆貸款的金額，利率與期數維持使用者原本的設定；
+      // 沒有任何貸款時才新增一筆，用預設利率並提示要自行確認。
+      const s = simulate(state);
+      const amount = Math.round(s.neededBorrow);
+      if (!state.loans || !state.loans.length) {
+        state.loans = [{ amount, rate: 3, months: 84 }];
+      } else {
+        state.loans[0].amount = amount;
+      }
+      save(); render(); return;
+    }
     const del = event.target.closest("[" + PANEL_FLAG + "] [data-del]");
     if (del) {
       state.loans.splice(Number(del.dataset.del), 1);
@@ -390,24 +436,28 @@
     if (!active) return;
     const input = event.target.closest("[" + PANEL_FLAG + "] input");
     if (!input) return;
-    const value = input.value === "" ? 0 : Number(input.value);
+    // 允許中途輸入「」「1,000」「3.」這類還不是合法數字的字串：
+    // 清成空字串視為 0 參與試算，但不覆寫使用者正在打的內容。
+    const raw = String(input.value).replace(/,/g, "").trim();
+    const value = raw === "" || raw === "-" || raw === "." ? 0 : Number(raw);
+    if (!isFinite(value)) return;
     if (input.dataset.key) state[input.dataset.key] = value;
     else if (input.dataset.loan !== undefined) {
       state.loans[Number(input.dataset.loan)][input.dataset.lk] = value;
     }
     save();
-    // 只重算結果區，避免重繪整個表單讓輸入游標跳掉。
-    const focused = document.activeElement;
-    const key = focused && (focused.dataset.key || focused.dataset.loan + ":" + focused.dataset.lk);
-    render();
-    if (key) {
-      const back = focused.dataset.key
-        ? document.querySelector('[' + PANEL_FLAG + '] input[data-key="' + focused.dataset.key + '"]')
-        : document.querySelector('[' + PANEL_FLAG + '] input[data-loan="' + focused.dataset.loan +
-            '"][data-lk="' + focused.dataset.lk + '"]');
-      if (back) { back.focus(); back.selectionStart = back.selectionEnd = back.value.length; }
-    }
+    // 只重算結果區，表單與游標完全不受影響。
+    renderResults();
   });
+
+  // 離開欄位時才把顯示值正規化（去掉逗號、空白），避免打字途中被改寫。
+  document.addEventListener("blur", (event) => {
+    if (!active) return;
+    const input = event.target.closest?.("[" + PANEL_FLAG + "] input");
+    if (!input) return;
+    const raw = String(input.value).replace(/,/g, "").trim();
+    input.value = raw === "" ? 0 : Number(raw);
+  }, true);
 
   function boot() {
     state = load();
