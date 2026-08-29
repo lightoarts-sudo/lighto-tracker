@@ -11,6 +11,13 @@
   let active = false;
   let state = null;
 
+  // 近十年價格年化報酬，取自本站行情（2016-08 → 2026-08，未含股息／配息）。
+  // 這是「過去發生過什麼」，不是未來預期；半導體那一欄尤其是極端值。
+  const REF_HINT =
+    "近十年年化（本站行情試算，未含股息）：台股 +17.6%｜S&P 500 +13.5%｜" +
+    "納斯達克100 +19.9%｜美股半導體SMH +32.5%。以上為過去表現，" +
+    "長期規劃一般採較保守的 6–8%。";
+
   const DEFAULTS = {
     age: 35,
     retireAgeCap: 90,
@@ -57,7 +64,7 @@
       ".retire-field label{display:block;font-size:12.5px;font-weight:800;color:#5b6b80;margin-bottom:4px}",
       ".retire-field input{width:100%;border:1px solid #c8d6e8;border-radius:8px;padding:8px 10px;",
       "font-size:15px;font-weight:800;color:#12295c;font-variant-numeric:tabular-nums}",
-      ".retire-field .hint{font-size:11.5px;color:#8b98ab;font-weight:700;margin-top:3px}",
+      ".retire-field .hint{font-size:11.5px;color:#8b98ab;font-weight:700;margin-top:3px;line-height:1.6}",
       ".retire-sub{font-size:15px;font-weight:900;color:#12295c;margin:16px 0 8px;",
       "display:flex;align-items:center;gap:10px}",
       ".retire-sub button{border:1px solid #c8d6e8;background:#fff;color:#5b6b80;font-size:12.5px;",
@@ -207,13 +214,21 @@
     };
   }
 
-  // 用 text + inputmode 而不是 number：number 在部分瀏覽器會擋掉中途的無效字串，
-  // 而且我們要允許使用者把欄位清空重打，不能一清空就被當成 0。
+  // 上下鍵的級距：金額欄位用整數級距才好調，比率欄位用小數。
+  // 先前改成 type=text 是為了讓打字順暢，但真正的原因是「每按一鍵重繪整個面板」，
+  // 那個已改為只重繪結果區，所以改回 number 可以同時保有打字與上下鍵。
+  const STEP = {
+    age: 1, retireAgeCap: 1,
+    portfolio: 10000,
+    monthlyExpense: 1000, monthlySurplus: 1000, monthlyInvest: 1000,
+    annualReturn: 0.5, withdrawRate: 0.1, targetExposure: 10,
+  };
+
   function field(key, label, hint) {
     return (
       '<div class="retire-field"><label>' + label + "</label>" +
-      '<input type="text" inputmode="decimal" autocomplete="off" data-key="' + key +
-      '" value="' + (state[key] ?? "") + '">' +
+      '<input type="number" inputmode="decimal" autocomplete="off" step="' +
+      (STEP[key] ?? 1) + '" data-key="' + key + '" value="' + (state[key] ?? "") + '">' +
       (hint ? '<div class="hint">' + hint + "</div>" : "") + "</div>"
     );
   }
@@ -305,11 +320,11 @@
       .map(
         (l, i) =>
           '<div class="retire-loan">' +
-          '<div class="retire-field"><label>貸款金額</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          '<div class="retire-field"><label>貸款金額</label><input type="number" inputmode="decimal" autocomplete="off" step="10000" data-loan="' +
           i + '" data-lk="amount" value="' + l.amount + '"></div>' +
-          '<div class="retire-field"><label>年利率 %</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          '<div class="retire-field"><label>年利率 %</label><input type="number" inputmode="decimal" autocomplete="off" step="0.1" data-loan="' +
           i + '" data-lk="rate" value="' + l.rate + '"></div>' +
-          '<div class="retire-field"><label>期數（月）</label><input type="text" inputmode="decimal" autocomplete="off" data-loan="' +
+          '<div class="retire-field"><label>期數（月）</label><input type="number" inputmode="decimal" autocomplete="off" step="12" data-loan="' +
           i + '" data-lk="months" value="' + l.months + '"></div>' +
           '<button type="button" class="del" data-del="' + i + '">刪除</button></div>',
       )
@@ -325,7 +340,7 @@
       field("monthlyExpense", "每月基本支出", "元") +
       field("monthlySurplus", "每月盈餘（扣支出後）", "元") +
       field("monthlyInvest", "每月可投入金額", "元") +
-      field("annualReturn", "預期年化報酬 %", "長期股市約 6–8%；勿用近年高報酬外推") +
+      field("annualReturn", "預期年化報酬 %", REF_HINT) +
       field("withdrawRate", "提領率 %", "常見為 4%") +
       field("retireAgeCap", "試算到幾歲", "歲") +
       field("targetExposure", "目標曝險 %", "100%＝完全不借；200%＝借與自有等額") +
@@ -450,14 +465,6 @@
     renderResults();
   });
 
-  // 離開欄位時才把顯示值正規化（去掉逗號、空白），避免打字途中被改寫。
-  document.addEventListener("blur", (event) => {
-    if (!active) return;
-    const input = event.target.closest?.("[" + PANEL_FLAG + "] input");
-    if (!input) return;
-    const raw = String(input.value).replace(/,/g, "").trim();
-    input.value = raw === "" ? 0 : Number(raw);
-  }, true);
 
   function boot() {
     state = load();
@@ -466,7 +473,15 @@
     const schedule = () => {
       if (queued) return;
       queued = true;
-      setTimeout(() => { queued = false; ensure(); if (active) render(); }, 60);
+      setTimeout(() => {
+        queued = false;
+        ensure();
+        // 只有在自己的內容被 React 清掉時才整個重建。
+        // 少了這個判斷，renderResults() 改 DOM 會觸發本 observer，
+        // observer 再呼叫 render() 重建表單，使用者打字時焦點就會被踢掉。
+        const panel = ourPanel();
+        if (active && panel && !panel.querySelector("[data-retire-results]")) render();
+      }, 60);
     };
     new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
     let attempts = 0;
