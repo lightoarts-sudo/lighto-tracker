@@ -18,6 +18,13 @@
     "納斯達克100 +19.9%｜美股半導體SMH +32.5%。以上為過去表現，" +
     "長期規劃一般採較保守的 6–8%。";
 
+  // 曝險可以來自借貸，也可以來自槓桿型 ETF（正二）。兩者成本不同：
+  // 借貸要按月還款、槓桿 ETF 則有每日重設帶來的耗損，提示裡都要講到。
+  const EXPOSURE_HINT =
+    "100% 不開槓桿；可用正二（2 倍槓桿 ETF）加倍曝險，或以借貸提高。" +
+    "下方「需借入」只計算借貸這條路；改用正二則不需借款，但槓桿型 ETF 每日重設，" +
+    "盤整或波動大時會有耗損，長期報酬不等於指數的兩倍。";
+
   const DEFAULTS = {
     age: 35,
     retireAgeCap: 90,
@@ -263,7 +270,7 @@
       '<div class="retire-stat"><b>' + money(s.payment) + "</b><span>貸款月付金合計</span></div>" +
       '<div class="retire-stat' + (s.exposure && s.exposure > 150 ? " warn" : "") + '"><b>' +
       (s.exposure ? s.exposure.toFixed(0) + "%" : "—") + "</b><span>目前曝險（總部位÷自有）</span></div>" +
-      '<div class="retire-stat"><b>' + money(s.neededBorrow) + "</b><span>達 " +
+      '<div class="retire-stat"><b>' + money(s.neededBorrow) + "</b><span>以借貸達 " +
       s.targetPct + "% 曝險需借入" +
       (Math.abs(s.borrowGap) >= 1
         ? '　<button type="button" data-apply="1" style="border:1px solid #c8d6e8;background:#fff;' +
@@ -343,7 +350,7 @@
       field("annualReturn", "預期年化報酬 %", REF_HINT) +
       field("withdrawRate", "提領率 %", "常見為 4%") +
       field("retireAgeCap", "試算到幾歲", "歲") +
-      field("targetExposure", "目標曝險 %", "100%＝完全不借；200%＝借與自有等額") +
+      field("targetExposure", "股市曝險 %", EXPOSURE_HINT) +
       "</div>" +
       '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
       (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
