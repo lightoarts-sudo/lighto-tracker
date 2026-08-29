@@ -350,10 +350,27 @@
     );
   }
 
+  function orderHtml(s) {
+    return (
+      "現有股票 " + money(state.portfolio) + " ＋ 貸款 " + money(s.borrowed) +
+      " ＝ 本金 " + money(s.startAssets) + "。<br>" +
+      "曝險 " + s.leverage.toFixed(2) + " 倍只作用在報酬率：有效年化 " +
+      (s.effectiveReturn * 100).toFixed(1) + "% ＝ 指數 " + (s.indexReturn * 100).toFixed(1) +
+      "% × " + s.leverage.toFixed(2) + " 倍。<br>" +
+      "第一年成長 ≈ " + money(s.startAssets) + " × " +
+      (1 + s.effectiveReturn).toFixed(3) + " ＝ " +
+      money(s.startAssets * (1 + s.effectiveReturn)) + "（再加當年投入）。<br>" +
+      "「名目市場曝險 " + money(s.marketExposure) +
+      "」是跟隨市場的規模，<b>不是帳戶餘額</b>，不可用它乘報酬率。"
+    );
+  }
+
   function renderResults() {
+    const s = simulate(state);
     const box = document.querySelector("[" + PANEL_FLAG + "] [data-retire-results]");
-    if (!box) return;
-    box.innerHTML = resultsHtml(simulate(state));
+    if (box) box.innerHTML = resultsHtml(s);
+    const order = document.querySelector("[" + PANEL_FLAG + "] [data-retire-order]");
+    if (order) order.innerHTML = orderHtml(s);
   }
 
   function render() {
@@ -398,13 +415,9 @@
       '<div class="retire-sub">股市曝險（在上面的本金之上再放大）</div>' +
       '<div class="retire-grid" style="margin-top:0">' +
       field("targetExposure", "股市曝險 %", EXPOSURE_HINT) +
+      // 這段會隨輸入變動，必須放在會即時重算的容器裡，否則會停在舊值。
       '<div class="retire-field"><label>計算順序</label>' +
-      '<div class="hint" style="margin-top:6px">現有股票 ' + money(state.portfolio) +
-      " ＋ 貸款 " + money(s.borrowed) + " ＝ 本金 " + money(s.startAssets) +
-      "。曝險倍數 " + s.leverage.toFixed(2) +
-      " 倍只作用在報酬率上（有效年化＝指數×倍數），本金本身不會再乘一次；" +
-      "「名目市場曝險 " + money(s.marketExposure) + "」僅供理解跟隨市場的規模，不是帳戶餘額。" +
-      "</div></div>" +
+      '<div class="hint" style="margin-top:6px" data-retire-order></div></div>' +
       "</div>" +
       '<div data-retire-results></div>';
     renderResults();
