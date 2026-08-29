@@ -391,7 +391,9 @@
       field("withdrawStartAge", "幾歲開始提領", "歲；從這年起每月自資產提出並累計") +
       field("retireAgeCap", "試算到幾歲", "歲") +
       "</div>" +
-      '<div class="retire-sub">貸款（可多筆，借入金額計入股票本金）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
+      '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
+      '<div class="hint" style="color:#8b98ab;font-size:12.5px;font-weight:700;margin:-4px 0 10px;line-height:1.6">' +
+      "當你貸款時，就會將金額投入股市曝險；並將你原本每月可投入金額扣除貸款的每月還款金額。</div>" +
       (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
       '<div class="retire-sub">股市曝險（在上面的本金之上再放大）</div>' +
       '<div class="retire-grid" style="margin-top:0">' +
