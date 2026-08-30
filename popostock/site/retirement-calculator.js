@@ -37,13 +37,21 @@
     withdrawStartAge: 60,
     investUntilAge: 60,
     targetExposure: 200,
-    loans: [{ amount: 1000000, rate: 4, months: 120 }],
+    loans: [{ amount: 1000000, rate: 4, months: 120, startAge: 35 }],
   };
 
   function load() {
     try {
       const raw = localStorage.getItem(STORE_KEY);
-      if (raw) return { ...DEFAULTS, ...JSON.parse(raw) };
+      if (raw) {
+        const saved = { ...DEFAULTS, ...JSON.parse(raw) };
+        // 舊版存檔沒有 startAge，一律視為「現在就貸」，結果與升級前一致。
+        saved.loans = (saved.loans || []).map((l) => ({
+          ...l,
+          startAge: l.startAge === undefined ? Number(saved.age || 0) : l.startAge,
+        }));
+        return saved;
+      }
     } catch (error) {
       // 私密視窗或封鎖儲存時直接用預設值，不能讓頁面因此打不開。
     }
@@ -79,7 +87,7 @@
       ".retire-sub button{border:1px solid #c8d6e8;background:#fff;color:#5b6b80;font-size:12.5px;",
       "font-weight:800;border-radius:999px;padding:4px 12px;cursor:pointer}",
       ".retire-sub button:hover{background:#f4f7fb}",
-      ".retire-loan{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;",
+      ".retire-loan{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:8px;",
       "align-items:end;margin-bottom:8px}",
       ".retire-loan .del{border:1px solid #f0c8c8;background:#fff;color:#d64038;font-size:12.5px;",
       "font-weight:800;border-radius:8px;padding:8px 12px;cursor:pointer;height:37px}",
@@ -143,16 +151,25 @@
   }
 
   function simulate(s) {
-    const loans = (s.loans || []).filter((l) => l.amount > 0 && l.months > 0);
+    const startAge = Number(s.age || 0);
+    // 起貸月：第 1 個月代表「現在就貸」。過去的年齡一律夾到現在，不回溯。
+    const loanMonth = (l) =>
+      Math.max(1, Math.round((Number(l.startAge ?? startAge) - startAge) * 12) + 1);
+    const loans = (s.loans || [])
+      .filter((l) => l.amount > 0 && l.months > 0)
+      .map((l) => ({ ...l, startMonth: loanMonth(l) }));
     const borrowed = loans.reduce((sum, l) => sum + Number(l.amount || 0), 0);
-    const payment = loans.reduce(
+    // 只有「現在就貸」的錢算進起始本金；未來才貸的在該月才撥入。
+    const drawnNow = loans.filter((l) => l.startMonth === 1);
+    const borrowedNow = drawnNow.reduce((sum, l) => sum + Number(l.amount || 0), 0);
+    const payment = drawnNow.reduce(
       (sum, l) => sum + monthlyPayment(Number(l.amount), Number(l.rate), Number(l.months)),
       0,
     );
     const maxMonths = loans.reduce((m, l) => Math.max(m, Number(l.months)), 0);
 
     // 借來的錢一次投入，所以起始部位包含貸款本金。
-    const startAssets = Number(s.portfolio || 0) + borrowed;
+    const startAssets = Number(s.portfolio || 0) + borrowedNow;
     const ownCapital = Number(s.portfolio || 0);
     // 曝險倍數來自持有槓桿型 ETF（正二＝2 倍），與借貸無關：
     // 借來的錢只是讓「投入本金」變大，曝險則決定這筆本金放大幾倍跟隨市場。
@@ -180,12 +197,15 @@
       months: Number(l.months),
       pay: monthlyPayment(Number(l.amount), Number(l.rate), Number(l.months)),
       left: Number(l.months),
+      startMonth: l.startMonth,
+      // 未撥款前既不算負債，也不算進資產。
+      drawn: l.startMonth === 1,
     }));
 
     const rows = [];
     let incomeCrossAge = null;
     let retireAge = null;
-    const startAge = Number(s.age || 0);
+    let peakPayment = payment;
     const totalMonths = Math.max(1, (Number(s.retireAgeCap || 90) - startAge) * 12);
 
     let firstMonthInvest = null;
@@ -196,8 +216,16 @@
     const monthlyCash = Math.max(0, Number(s.monthlySurplus || 0) - Number(s.monthlyInvest || 0));
     let cash = Number(s.cashReserve || 0);
     for (let m = 1; m <= totalMonths; m += 1) {
-      // 當月仍在攤還的貸款月付金：繳完的那幾筆不再扣，投入金額會自動回升。
-      const duePayment = balances.reduce((sum, b) => sum + (b.left > 0 ? b.pay : 0), 0);
+      // 到期起貸的那一筆，本金在當月撥入股市，同月開始還款。
+      balances.forEach((b) => {
+        if (!b.drawn && b.startMonth === m) {
+          b.drawn = true;
+          assets += b.balance;
+        }
+      });
+      // 當月仍在攤還的貸款月付金：還沒撥款或已繳完的都不扣，投入金額會自動回升。
+      const duePayment = balances.reduce((sum, b) => sum + (b.drawn && b.left > 0 ? b.pay : 0), 0);
+      if (duePayment > peakPayment) peakPayment = duePayment;
       const ageNow = startAge + m / 12;
       // 過了「可投入到幾歲」就不再有工作收入可投入。
       const canInvest = ageNow <= Number(s.investUntilAge || 999);
@@ -215,12 +243,12 @@
       }
       let debt = 0;
       balances.forEach((b) => {
-        if (b.left > 0) {
+        if (b.drawn && b.left > 0) {
           const interest = b.balance * b.rate;
           b.balance = Math.max(0, b.balance + interest - b.pay);
           b.left -= 1;
         }
-        debt += b.balance;
+        debt += b.drawn ? b.balance : 0;
       });
       const net = assets - debt;
       const age = startAge + m / 12;
@@ -251,7 +279,7 @@
       : 0;
 
     return {
-      loans, borrowed, payment, maxMonths, startAssets, ownCapital, exposure,
+      loans, borrowed, borrowedNow, payment, peakPayment, maxMonths, startAssets, ownCapital, exposure,
       monthlyIncome, annualIncome, annualExpense, target, rows,
       leverage, marketExposure, indexReturn, effectiveReturn: r,
       totalWithdrawn: withdrawn,
@@ -260,7 +288,7 @@
       actualInvest: firstMonthInvest,
       investShortfall: payment > Number(s.monthlyInvest || 0),
       incomeCrossAge, retireAge, loanRate,
-      paymentOverSurplus: payment > Number(s.monthlySurplus || 0),
+      paymentOverSurplus: peakPayment > Number(s.monthlySurplus || 0),
       returnBelowLoan: loans.length > 0 && r * 100 <= loanRate,
     };
   }
@@ -315,9 +343,17 @@
     const inRange = (age) =>
       age > Number(state.age || 0) && age <= Number(state.retireAgeCap || 0);
 
+    // 每筆貸款的起貸年齡（同一年可能有多筆，去重後只標一次）。
+    const loanAges = new Set(
+      (s.loans || [])
+        .filter((l) => l.startMonth > 1)
+        .map((l) => Math.ceil(Number(l.startAge))),
+    );
+
     const milestones = new Set();
     if (s.incomeCrossAge) milestones.add(Math.ceil(s.incomeCrossAge));
     if (s.retireAge) milestones.add(Math.ceil(s.retireAge));
+    loanAges.forEach((age) => { if (inRange(age)) milestones.add(age); });
     if (inRange(stopWorkAge)) milestones.add(stopWorkAge);
     if (inRange(drawAge)) milestones.add(drawAge);
 
@@ -325,6 +361,9 @@
       .filter((row) => row.age % 1 === 0)
       .map((row) => {
         const tags = [];
+        if (loanAges.has(row.age) && inRange(row.age)) {
+          tags.push('<span class="retire-flag set">開始貸款</span>');
+        }
         if (inRange(stopWorkAge) && stopWorkAge === row.age) {
           tags.push('<span class="retire-flag set">開始無工作收入</span>');
         }
@@ -349,7 +388,8 @@
     return (
       '<div class="retire-sum">' +
       '<div class="retire-stat"><b>' + money(s.monthlyIncome) + "</b><span>推估月收入（支出＋盈餘）</span></div>" +
-      '<div class="retire-stat"><b>' + money(s.payment) + "</b><span>貸款月付金合計</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.payment) + "</b><span>貸款月付金合計（目前）" +
+      (s.peakPayment > s.payment ? "；期間最高 " + money(s.peakPayment) : "") + "</span></div>" +
       '<div class="retire-stat' + (s.investShortfall ? " warn" : "") + '"><b>' +
       money(s.actualInvest) + "</b><span>每月實際投入（可投入−月付金）</span></div>" +
       '<div class="retire-stat' + (s.exposure && s.exposure > 150 ? " warn" : "") + '"><b>' +
@@ -375,7 +415,7 @@
       "</b><span>達 " + state.withdrawRate + "% 提領門檻</span></div>" +
       "</div>" +
       (s.paymentOverSurplus
-        ? '<p class="retire-note"><b>注意：</b>貸款月付金 ' + money(s.payment) +
+        ? '<p class="retire-note"><b>注意：</b>期間最高貸款月付金 ' + money(s.peakPayment) +
           " 元已超過每月盈餘 " + money(state.monthlySurplus) +
           " 元，代表要動用其他資金才付得出來，這個情境在現實中難以維持。</p>"
         : "") +
@@ -389,7 +429,7 @@
       "<th>年報酬金額</th><th>現金</th><th>總淨值</th><th>累計提領</th>" +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="retire-note">' +
-      "試算方式：投入本金＝現有股票＋貸款金額（借來的錢一次投入）；市場曝險＝本金×曝險倍數，" +
+      "試算方式：投入本金＝現有股票＋現在動用的貸款（借來的錢一次投入）；設定為未來年齡的貸款，於該年撥入股市並同時開始還款，撥款前不計入資產與負債；市場曝險＝本金×曝險倍數，" +
       "有效年化＝預期年化×曝險倍數（倍數只在此處使用一次，本金不重複放大）；" +
       "每月以有效年化換算的月報酬複利成長，" +
       "每月投入以「可投入金額−當月貸款月付金」計算，貸款繳清後投入金額自動回升；" +
@@ -409,8 +449,11 @@
 
   function orderHtml(s) {
     return (
-      "現有股票 " + money(state.portfolio) + " ＋ 貸款 " + money(s.borrowed) +
+      "現有股票 " + money(state.portfolio) + " ＋ 現在動用的貸款 " + money(s.borrowedNow) +
       " ＝ 本金 " + money(s.startAssets) + "。<br>" +
+      (s.borrowed > s.borrowedNow
+        ? "另有 " + money(s.borrowed - s.borrowedNow) + " 於設定的年齡才撥入，不計在起始本金。<br>"
+        : "") +
       "曝險 " + s.leverage.toFixed(2) + " 倍只作用在報酬率：有效年化 " +
       (s.effectiveReturn * 100).toFixed(1) + "% ＝ 指數 " + (s.indexReturn * 100).toFixed(1) +
       "% × " + s.leverage.toFixed(2) + " 倍。<br>" +
@@ -445,6 +488,8 @@
           i + '" data-lk="rate" value="' + l.rate + '"></div>' +
           '<div class="retire-field"><label>期數（月）</label><input type="number" inputmode="decimal" autocomplete="off" step="12" data-loan="' +
           i + '" data-lk="months" value="' + l.months + '"></div>' +
+          '<div class="retire-field"><label>幾歲開始貸</label><input type="number" inputmode="decimal" autocomplete="off" step="1" data-loan="' +
+          i + '" data-lk="startAge" value="' + (l.startAge ?? state.age) + '"></div>' +
           '<button type="button" class="del" data-del="' + i + '">刪除</button></div>',
       )
       .join("");
@@ -468,7 +513,9 @@
       "</div>" +
       '<div class="retire-sub">貸款（可多筆）<button type="button" data-add="1">＋ 新增一筆</button></div>' +
       '<div class="hint" style="color:#8b98ab;font-size:12.5px;font-weight:700;margin:-4px 0 10px;line-height:1.6">' +
-      "當你貸款時，就會將金額投入股市曝險；並將你原本每月可投入金額扣除貸款的每月還款金額。</div>" +
+      "當你貸款時，就會將金額投入股市曝險；並將你原本每月可投入金額扣除貸款的每月還款金額。" +
+      "「幾歲開始貸」填目前年齡代表現在就貸；填未來的年齡，本金會在那一年才撥入股市，" +
+      "還款也從那時才開始扣，在那之前不計入負債。</div>" +
       (loanRows || '<div class="hint" style="color:#8b98ab;font-size:12.5px">目前沒有貸款，可直接看純自有資金的結果。</div>') +
       '<div class="retire-sub">股市曝險（在上面的本金之上再放大）</div>' +
       '<div class="retire-grid" style="margin-top:0">' +
@@ -608,7 +655,7 @@
     if (!active) return;
     const add = event.target.closest("[" + PANEL_FLAG + "] [data-add]");
     if (add) {
-      state.loans = [...(state.loans || []), { amount: 0, rate: 3, months: 84 }];
+      state.loans = [...(state.loans || []), { amount: 0, rate: 3, months: 84, startAge: Number(state.age || 0) }];
       save(); render(); return;
     }
     const del = event.target.closest("[" + PANEL_FLAG + "] [data-del]");
