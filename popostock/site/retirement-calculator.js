@@ -436,7 +436,12 @@
     if (!ourTab()) {
       const model = bar.querySelector("button, [role='tab']");
       const tab = document.createElement(model ? model.tagName : "button");
-      if (model) tab.className = model.className;
+      // 複製樣板分頁的 class 取得一致外觀，但必須去掉「選中」狀態：
+      // 樣板剛好是當前分頁時會把 is-active 一起帶進來，讓底線變成看運氣。
+      if (model) {
+        tab.className = model.className;
+        tab.classList.remove("is-active", "is-on", "active");
+      }
       tab.type = "button";
       tab.setAttribute("role", "tab");
       tab.setAttribute(TAB_FLAG, "");
@@ -494,9 +499,18 @@
     const panel = ourPanel();
     panel.style.display = "";
     const tab = ourTab();
-    if (tab) tab.setAttribute("aria-selected", "true");
+    if (tab) {
+      tab.setAttribute("aria-selected", "true");
+      tab.classList.add("is-active");
+    }
     strip().querySelectorAll("[role='tab']").forEach((b) => {
-      if (!b.hasAttribute(TAB_FLAG)) b.setAttribute("aria-selected", "false");
+      if (b.hasAttribute(TAB_FLAG)) return;
+      b.setAttribute("aria-selected", "false");
+      // React 的選中樣式靠 class，不是 aria；不移除的話會同時亮兩個分頁。
+      if (b.classList.contains("is-active")) {
+        b.dataset.retireWasActive = "1";
+        b.classList.remove("is-active");
+      }
     });
     render();
   }
@@ -513,7 +527,18 @@
       }
     });
     const tab = ourTab();
-    if (tab) tab.setAttribute("aria-selected", "false");
+    if (tab) {
+      tab.setAttribute("aria-selected", "false");
+      tab.classList.remove("is-active");
+    }
+    // 把先前被我們取消的 React 分頁樣式還原。
+    const bar = strip();
+    if (bar) {
+      bar.querySelectorAll("[data-retire-was-active]").forEach((b) => {
+        b.classList.add("is-active");
+        delete b.dataset.retireWasActive;
+      });
+    }
   }
 
   document.addEventListener(
@@ -574,6 +599,11 @@
         // observer 再呼叫 render() 重建表單，使用者打字時焦點就會被踢掉。
         const panel = ourPanel();
         if (active && panel && !panel.querySelector("[data-retire-results]")) render();
+        // React 重繪分頁列後，我們的選中樣式會被沖掉，要補回來。
+        const tab = ourTab();
+        if (active && tab && !tab.classList.contains("is-active")) {
+          tab.classList.add("is-active");
+        }
       }, 60);
     };
     new MutationObserver(schedule).observe(document.body, { childList: true, subtree: true });
