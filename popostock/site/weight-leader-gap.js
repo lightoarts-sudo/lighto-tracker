@@ -154,7 +154,10 @@
       panel.innerHTML = '<div class="weight-gap-empty">目前沒有可顯示的資料。</div>';
       return;
     }
-    const month = String(payload.peakMonth || "").replace("-", " 年 ") + " 月";
+    const windowLabel =
+      (payload.peakWindowStart || "").replace(/-/g, "/") +
+      "～" +
+      (payload.peakWindowEnd || "").replace(/-/g, "/");
     const closeDate = rows[0].closeDate || "";
     const body = rows
       .map((row) => {
@@ -186,11 +189,11 @@
 
     panel.innerHTML =
       '<div class="weight-gap-head"><h2>權值股回前高</h2>' +
-      '<span class="meta">市值前 ' + rows.length + " 大成分股　|　基準：" + month +
-      "最高收盤　|　收盤日 " + closeDate + "</span></div>" +
+      '<span class="meta">市值前 ' + rows.length + " 大成分股　|　前高基準區間：" + windowLabel +
+      "　|　收盤日 " + closeDate + "</span></div>" +
       '<div class="weight-gap-summary">' +
-      // 前高改為「自六月起的最高收盤」後，沒有人會超越自己的高點，
-      // abovePeakCount 恆為 0；改看「就在高點上」與「距離 5% 以內」才有訊息量。
+      // 前高固定在 5/1～7/30 這段窗口（不再隨今天延伸），所以今天創新高的
+      // 個股會被標記「已超越」，abovePeakCount 不再恆為 0。
       '<div class="weight-gap-stat"><b>' + atPeak + " / " + rows.length +
       "</b><span>正處於期間高點</span></div>" +
       '<div class="weight-gap-stat"><b>' + nearPeak + " / " + rows.length +
@@ -211,7 +214,7 @@
       "</div>" +
       '<div class="weight-gap-scroll"><table class="weight-gap-table"><thead><tr>' +
       head("rank", "排行") + "<th>證券</th>" + head("weightPct", "市值比重") +
-      "<th>最新收盤</th><th>六月最高收盤</th><th>高點日</th>" + head("gapPct", "距前高") +
+      "<th>最新收盤</th><th>區間最高收盤</th><th>高點日</th>" + head("gapPct", "距前高") +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="weight-gap-note">' + (payload.methodology || "") +
       "<br>排行與市值比重取自臺灣期貨交易所「臺灣證券交易所發行量加權股價指數成分股暨市值比重」；" +
