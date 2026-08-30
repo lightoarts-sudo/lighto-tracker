@@ -106,6 +106,7 @@
       ".retire-table tr.milestone td:first-child::after{content:\" ★\";color:#e8bd22}",
       ".retire-flag{display:inline-block;font-size:11px;font-weight:900;border-radius:999px;",
       "padding:1px 8px;margin-left:6px;background:#12295c;color:#fff}",
+      "[" + PANEL_FLAG + "] .retire-flag.set{background:#e8bd22;color:#12295c}",
     ].join("");
     document.head.appendChild(el);
   }
@@ -307,14 +308,29 @@
 
   // 結果區獨立產生：打字時只換這一塊，輸入框不會被銷毀重建，游標也不會跳。
   function resultsHtml(s) {
+    // 兩種標籤：達成型（由試算算出）與設定型（使用者自己指定的年齡）。
+    // 設定型只在該年齡確實落在表格範圍內時才標，否則會標在不存在的列上。
+    const stopWorkAge = Math.ceil(Number(state.investUntilAge || 0));
+    const drawAge = Math.ceil(Number(state.withdrawStartAge || 0));
+    const inRange = (age) =>
+      age > Number(state.age || 0) && age <= Number(state.retireAgeCap || 0);
+
     const milestones = new Set();
     if (s.incomeCrossAge) milestones.add(Math.ceil(s.incomeCrossAge));
     if (s.retireAge) milestones.add(Math.ceil(s.retireAge));
+    if (inRange(stopWorkAge)) milestones.add(stopWorkAge);
+    if (inRange(drawAge)) milestones.add(drawAge);
 
     const body = s.rows
       .filter((row) => row.age % 1 === 0)
       .map((row) => {
         const tags = [];
+        if (inRange(stopWorkAge) && stopWorkAge === row.age) {
+          tags.push('<span class="retire-flag set">開始無工作收入</span>');
+        }
+        if (inRange(drawAge) && drawAge === row.age) {
+          tags.push('<span class="retire-flag set">開始提領</span>');
+        }
         if (s.retireAge && Math.ceil(s.retireAge) === row.age) tags.push('<span class="retire-flag">達 4% 退休門檻</span>');
         if (s.incomeCrossAge && Math.ceil(s.incomeCrossAge) === row.age) tags.push('<span class="retire-flag">報酬超越工作收入</span>');
         return (
