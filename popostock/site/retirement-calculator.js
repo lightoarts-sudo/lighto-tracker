@@ -456,15 +456,28 @@
 
   const URL_TAB = "retirement";
 
-  function syncUrl(on) {
-    // 讓分頁可被分享與重新整理。用 replaceState 不污染上一頁的返回行為。
+  function writeUrl(on) {
     try {
       const url = new URL(window.location.href);
       if (on) url.searchParams.set("tab", URL_TAB);
       else if (url.searchParams.get("tab") === URL_TAB) url.searchParams.delete("tab");
-      window.history.replaceState(window.history.state, "", url);
+      if (url.href !== window.location.href) {
+        window.history.replaceState(window.history.state, "", url);
+      }
     } catch (error) {
       /* 網址同步失敗不該影響試算 */
+    }
+  }
+
+  function syncUrl(on) {
+    // 站台本身的 popostock-url-state.js 也在寫網址，它會在 React 分頁狀態
+    // 變動後把 tab 改回自己認得的值。我們的分頁不在它的清單裡，所以先寫一次、
+    // 再於它跑完後補寫，確保最後停在 tab=retirement。
+    writeUrl(on);
+    if (on) {
+      [80, 300, 800].forEach((delay) =>
+        setTimeout(() => { if (active) writeUrl(true); }, delay),
+      );
     }
   }
 
