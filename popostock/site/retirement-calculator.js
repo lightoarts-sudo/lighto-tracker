@@ -124,6 +124,11 @@
 
   const money = (v) =>
     v === null || !isFinite(v) ? "—" : Math.round(v).toLocaleString("zh-TW");
+  // 需要看到零頭時用的兩位小數版本（每年支出這種金額不大、差幾千元也有意義）。
+  const wan2 = (v) =>
+    !isFinite(v) ? "—" : (v / 10000).toLocaleString("zh-TW", {
+      minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " 萬";
+
   const wan = (v) => (!isFinite(v) ? "—" : (v / 10000).toLocaleString("zh-TW", {
     minimumFractionDigits: 0, maximumFractionDigits: 0 }) + " 萬");
 
@@ -310,7 +315,7 @@
       '<div class="retire-stat' + (s.incomeCrossAge ? " good" : "") + '"><b>' +
       (s.incomeCrossAge ? Math.ceil(s.incomeCrossAge) + " 歲" : "未達成") +
       "</b><span>投資報酬超越工作收入</span></div>" +
-      '<div class="retire-stat"><b>' + money(s.annualExpense) + "</b><span>每年支出金額</span></div>" +
+      '<div class="retire-stat"><b>' + wan2(s.annualExpense) + "</b><span>每年支出金額</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.totalInvested) + "</b><span>持續投入金額（至 " +
       state.investUntilAge + " 歲）</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.totalWithdrawn) + "</b><span>累計提領（至 " +
@@ -449,9 +454,24 @@
     return true;
   }
 
+  const URL_TAB = "retirement";
+
+  function syncUrl(on) {
+    // 讓分頁可被分享與重新整理。用 replaceState 不污染上一頁的返回行為。
+    try {
+      const url = new URL(window.location.href);
+      if (on) url.searchParams.set("tab", URL_TAB);
+      else if (url.searchParams.get("tab") === URL_TAB) url.searchParams.delete("tab");
+      window.history.replaceState(window.history.state, "", url);
+    } catch (error) {
+      /* 網址同步失敗不該影響試算 */
+    }
+  }
+
   function activate() {
     if (!ensure()) return;
     active = true;
+    syncUrl(true);
     reactPanels().forEach((node) => {
       if (node.dataset.retireHidden === undefined) {
         node.dataset.retireHidden = node.style.display || "";
@@ -470,6 +490,7 @@
 
   function deactivate() {
     active = false;
+    syncUrl(false);
     const panel = ourPanel();
     if (panel) panel.style.display = "none";
     reactPanels().forEach((node) => {
@@ -547,7 +568,19 @@
     const timer = setInterval(() => {
       attempts += 1;
       ensure();
-      if (ourTab() || attempts >= 40) clearInterval(timer);
+      // 直接用 ?tab=retirement 進站時自動切到本頁。
+      if (ourTab()) {
+        try {
+          if (!active && new URL(window.location.href).searchParams.get("tab") === URL_TAB) {
+            activate();
+          }
+        } catch (error) {
+          /* 忽略網址解析錯誤 */
+        }
+        clearInterval(timer);
+      } else if (attempts >= 40) {
+        clearInterval(timer);
+      }
     }, 500);
   }
 
