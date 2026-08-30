@@ -28,6 +28,7 @@
     age: 35,
     retireAgeCap: 90,
     portfolio: 1000000,
+    cashReserve: 500000,
     monthlyExpense: 40000,
     monthlySurplus: 30000,
     monthlyInvest: 30000,
@@ -189,6 +190,10 @@
     let firstMonthInvest = null;
     let withdrawn = 0;
     let invested = 0;
+    // 現金水位：每月盈餘扣掉要投入股市的部分，剩下的存起來。
+    // 貸款月付金不在這裡扣——它已經從「可投入金額」裡扣過，重複扣會少算現金。
+    const monthlyCash = Math.max(0, Number(s.monthlySurplus || 0) - Number(s.monthlyInvest || 0));
+    let cash = Number(s.cashReserve || 0);
     for (let m = 1; m <= totalMonths; m += 1) {
       // 當月仍在攤還的貸款月付金：繳完的那幾筆不再扣，投入金額會自動回升。
       const duePayment = balances.reduce((sum, b) => sum + (b.left > 0 ? b.pay : 0), 0);
@@ -199,6 +204,8 @@
       if (firstMonthInvest === null) firstMonthInvest = invest;
       assets = assets * (1 + monthlyRate) + invest;
       invested += invest;
+      // 沒有工作收入之後就不再有新的盈餘可存。
+      if (canInvest) cash += monthlyCash;
       // 到達提領年齡後，每月依提領率的十二分之一自資產提出並累計。
       if (ageNow >= Number(s.withdrawStartAge || 999)) {
         const take = Math.max(0, (assets - 0) * (Number(s.withdrawRate || 4) / 100) / 12);
@@ -232,6 +239,8 @@
           withdraw: net * (Number(s.withdrawRate || 4) / 100),
           withdrawn,
           invested,
+          cash,
+          totalWealth: net + cash,
         });
       }
     }
@@ -246,6 +255,7 @@
       leverage, marketExposure, indexReturn, effectiveReturn: r,
       totalWithdrawn: withdrawn,
       totalInvested: invested,
+      monthlyCash, finalCash: cash,
       actualInvest: firstMonthInvest,
       investShortfall: payment > Number(s.monthlyInvest || 0),
       incomeCrossAge, retireAge, loanRate,
@@ -260,6 +270,7 @@
   const STEP = {
     age: 1, retireAgeCap: 1,
     portfolio: 10000,
+    cashReserve: 10000,
     monthlyExpense: 1000, monthlySurplus: 1000, monthlyInvest: 1000,
     annualReturn: 0.5, withdrawRate: 0.1, targetExposure: 10,
     withdrawStartAge: 1, investUntilAge: 1,
@@ -294,7 +305,8 @@
           "<td>" + wan(row.debt) + "</td>" +
           "<td>" + wan(row.net) + "</td>" +
           "<td>" + wan(row.passive) + "</td>" +
-          "<td>" + wan(row.invested) + "</td>" +
+          "<td>" + wan(row.cash) + "</td>" +
+          "<td>" + wan(row.totalWealth) + "</td>" +
           "<td>" + (row.withdrawn > 0 ? wan(row.withdrawn) : "—") + "</td></tr>"
         );
       })
@@ -316,6 +328,9 @@
       (s.incomeCrossAge ? Math.ceil(s.incomeCrossAge) + " 歲" : "未達成") +
       "</b><span>投資報酬超越工作收入</span></div>" +
       '<div class="retire-stat"><b>' + wan2(s.annualExpense) + "</b><span>每年支出金額</span></div>" +
+      '<div class="retire-stat"><b>' + money(s.monthlyCash) + "</b><span>每月存下現金（盈餘−可投入）</span></div>" +
+      '<div class="retire-stat"><b>' + wan(s.finalCash) + "</b><span>現金水位（至 " +
+      state.retireAgeCap + " 歲）</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.totalInvested) + "</b><span>持續投入金額（至 " +
       state.investUntilAge + " 歲）</span></div>" +
       '<div class="retire-stat"><b>' + wan(s.totalWithdrawn) + "</b><span>累計提領（至 " +
@@ -336,13 +351,15 @@
         : "") +
       '<div class="retire-scroll"><table class="retire-table"><thead><tr>' +
       "<th>年齡</th><th>總資產</th><th>貸款餘額</th><th>淨資產</th>" +
-      "<th>年報酬金額</th><th>累計投入</th><th>累計提領</th>" +
+      "<th>年報酬金額</th><th>現金</th><th>總淨值</th><th>累計提領</th>" +
       "</tr></thead><tbody>" + body + "</tbody></table></div>" +
       '<p class="retire-note">' +
       "試算方式：投入本金＝現有股票＋貸款金額（借來的錢一次投入）；市場曝險＝本金×曝險倍數，" +
       "有效年化＝預期年化×曝險倍數（倍數只在此處使用一次，本金不重複放大）；" +
       "每月以有效年化換算的月報酬複利成長，" +
       "每月投入以「可投入金額−當月貸款月付金」計算，貸款繳清後投入金額自動回升；" +
+      "現金水位＝現金儲備＋每月（盈餘−可投入金額）累加，貸款月付金不重複自現金扣除；" +
+      "現金不計入報酬成長，也不計入 4% 提領門檻的判定（該門檻只看股票淨資產）；" +
       "再加上每月可投入金額；各筆貸款分別以等額本息攤還，淨資產＝總資產−貸款餘額。" +
       "「投資報酬超越工作收入」以淨資產×年化報酬 ≧ 年收入判定；「退休門檻」以淨資產 ≧ 年支出÷提領率判定。<br>" +
       "<b>這是一份試算，不是預測，更不是建議。</b>實際報酬每年都會波動甚至為負，模型假設每年固定報酬，" +
@@ -404,6 +421,7 @@
       '<div class="retire-grid">' +
       field("age", "目前年齡", "歲") +
       field("portfolio", "現有股票價值", "元（自有資金）") +
+      field("cashReserve", "現金儲備", "元；股票以外的現金水位") +
       field("monthlyExpense", "每月基本支出", "元") +
       field("monthlySurplus", "每月盈餘（扣支出後）", "元") +
       field("monthlyInvest", "每月可投入金額", "元；有貸款時會先扣掉月付金") +
