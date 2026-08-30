@@ -276,7 +276,26 @@
     withdrawStartAge: 1, investUntilAge: 1,
   };
 
+  // 金額欄位顯示千分位。HTML type=number 不接受逗號，所以這些改用 text，
+  // 上下鍵改由下方的 keydown 自行處理，功能與 number 相同。
+  const MONEY_KEYS = new Set([
+    "portfolio", "cashReserve", "monthlyExpense", "monthlySurplus", "monthlyInvest",
+  ]);
+  const group = (v) =>
+    v === "" || v === null || v === undefined || !isFinite(Number(v))
+      ? ""
+      : Number(v).toLocaleString("zh-TW", { maximumFractionDigits: 2 });
+  const ungroup = (v) => String(v).replace(/,/g, "").trim();
+
   function field(key, label, hint) {
+    if (MONEY_KEYS.has(key)) {
+      return (
+        '<div class="retire-field"><label>' + label + "</label>" +
+        '<input type="text" inputmode="numeric" autocomplete="off" data-money="1" step="' +
+        (STEP[key] ?? 1) + '" data-key="' + key + '" value="' + group(state[key]) + '">' +
+        (hint ? '<div class="hint">' + hint + "</div>" : "") + "</div>"
+      );
+    }
     return (
       '<div class="retire-field"><label>' + label + "</label>" +
       '<input type="number" inputmode="decimal" autocomplete="off" step="' +
@@ -404,8 +423,8 @@
       .map(
         (l, i) =>
           '<div class="retire-loan">' +
-          '<div class="retire-field"><label>貸款金額</label><input type="number" inputmode="decimal" autocomplete="off" step="10000" data-loan="' +
-          i + '" data-lk="amount" value="' + l.amount + '"></div>' +
+          '<div class="retire-field"><label>貸款金額</label><input type="text" inputmode="numeric" autocomplete="off" data-money="1" step="10000" data-loan="' +
+          i + '" data-lk="amount" value="' + group(l.amount) + '"></div>' +
           '<div class="retire-field"><label>年利率 %</label><input type="number" inputmode="decimal" autocomplete="off" step="0.1" data-loan="' +
           i + '" data-lk="rate" value="' + l.rate + '"></div>' +
           '<div class="retire-field"><label>期數（月）</label><input type="number" inputmode="decimal" autocomplete="off" step="12" data-loan="' +
@@ -583,15 +602,46 @@
     }
   });
 
+  // text 欄位沒有原生的上下鍵微調，這裡補上，級距沿用 STEP。
+  document.addEventListener("keydown", (event) => {
+    if (!active) return;
+    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+    const input = event.target.closest?.("[" + PANEL_FLAG + "] input[data-money]");
+    if (!input) return;
+    event.preventDefault();
+    const step = Number(input.getAttribute("step")) || 1;
+    const current = Number(ungroup(input.value)) || 0;
+    const next = Math.max(0, current + (event.key === "ArrowUp" ? step : -step));
+    input.value = group(next);
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+
   document.addEventListener("input", (event) => {
     if (!active) return;
     const input = event.target.closest("[" + PANEL_FLAG + "] input");
     if (!input) return;
     // 允許中途輸入「」「1,000」「3.」這類還不是合法數字的字串：
     // 清成空字串視為 0 參與試算，但不覆寫使用者正在打的內容。
-    const raw = String(input.value).replace(/,/g, "").trim();
+    const raw = ungroup(input.value);
     const value = raw === "" || raw === "-" || raw === "." ? 0 : Number(raw);
     if (!isFinite(value)) return;
+    if (input.dataset.money) {
+      // 重新加上千分位後，游標要停在「同樣多的數字之後」，否則會跳到字尾。
+      const caret = input.selectionStart ?? input.value.length;
+      const digitsBefore = ungroup(input.value.slice(0, caret)).length;
+      const formatted = group(raw === "" ? "" : value);
+      if (formatted !== input.value) {
+        input.value = formatted;
+        let seen = 0;
+        let pos = formatted.length;
+        for (let i = 0; i < formatted.length; i += 1) {
+          if (formatted[i] !== ",") seen += 1;
+          if (seen === digitsBefore) { pos = i + 1; break; }
+        }
+        if (digitsBefore === 0) pos = 0;
+        input.setSelectionRange(pos, pos);
+      }
+    }
     if (input.dataset.key) state[input.dataset.key] = value;
     else if (input.dataset.loan !== undefined) {
       state.loans[Number(input.dataset.loan)][input.dataset.lk] = value;
