@@ -14,6 +14,7 @@
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
   var stockNames = new Map();
   var stockBuySessions = new Map();
+  var stockSellSessions = new Map();
   var libraryPromise = null;
   var activeChart = null;
   var activeResizeObserver = null;
@@ -141,6 +142,19 @@
       ".consensus-kline-reading span:last-child{margin-left:auto}" +
       ".consensus-kline-chart{width:100%;height:430px}" +
       ".consensus-kline-marker-note{margin:10px 0 0;color:#667483;font-size:12px;font-weight:700}" +
+      ".consensus-kline-moves{margin:18px 0 0;border-top:1px solid #e4e9ee;padding-top:14px}" +
+      ".consensus-kline-moves h4{margin:0 0 2px;color:#06275f;font-size:15px;font-weight:900}" +
+      ".consensus-kline-moves .hint{margin:0 0 10px;color:#8b98ab;font-size:12px;font-weight:700}" +
+      ".consensus-kline-moves table{width:100%;border-collapse:collapse;font-size:13px}" +
+      ".consensus-kline-moves th{padding:7px 8px;background:#06275f;color:#ffd43b;font-size:12px;font-weight:900;text-align:left;white-space:nowrap}" +
+      ".consensus-kline-moves th.num,.consensus-kline-moves td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}" +
+      ".consensus-kline-moves td{padding:7px 8px;border-bottom:1px solid #eef1f5;color:#33485f;vertical-align:top}" +
+      ".consensus-kline-moves tr.is-first td{border-top:1px solid #dde3ea}" +
+      ".consensus-kline-moves td.date{color:#06275f;font-weight:900;white-space:nowrap}" +
+      ".consensus-kline-moves td.etf i{font-style:normal;color:#8b98ab;font-weight:700;margin-left:6px}" +
+      ".consensus-kline-moves .dir{display:inline-block;border-radius:999px;padding:1px 9px;color:#fff;font-size:11px;font-weight:900}" +
+      ".consensus-kline-moves .dir.buy{background:#c23d4b}.consensus-kline-moves .dir.sell{background:#16845b}" +
+      ".consensus-kline-moves td.buy{color:#c23d4b;font-weight:900}.consensus-kline-moves td.sell{color:#16845b;font-weight:900}" +
       ".consensus-kline-message{display:grid;place-items:center;min-height:260px;color:#667483;font-weight:750}" +
       "@media(max-width:720px){.consensus-kline-modal{padding:10px}.consensus-kline-dialog{max-height:calc(100vh - 20px);border-radius:12px}.consensus-kline-header{padding:16px}.consensus-kline-title{font-size:20px}.consensus-kline-body{padding:14px 12px 16px}.consensus-kline-chart{height:340px}.consensus-kline-reading{align-items:flex-start;flex-wrap:wrap}.consensus-kline-reading span:last-child{width:100%;margin-left:0}}";
     document.head.appendChild(style);
@@ -208,18 +222,14 @@
    * the consensus history only reaches back to the holding-change baseline,
    * while the chart shows a full year.
    */
-  function applyBuyMarkers(lc, series, code, values) {
-    var sessions = stockBuySessions.get(code) || [];
-    if (!sessions.length) return 0;
-    var chartDates = new Set(
-      values.map(function (point) {
-        return point.time;
-      }),
-    );
-    var markers = sessions
-      .filter(function (session) {
-        return session && chartDates.has(session.date);
-      })
+  function visibleSessions(map, code, chartDates) {
+    return (map.get(code) || []).filter(function (session) {
+      return session && chartDates.has(session.date);
+    });
+  }
+
+  function applyMoveMarkers(lc, series, buys, sells) {
+    var markers = buys
       .map(function (session) {
         return {
           time: session.date,
@@ -228,6 +238,21 @@
           shape: "arrowUp",
           size: 1,
         };
+      })
+      .concat(
+        sells.map(function (session) {
+          return {
+            time: session.date,
+            position: "aboveBar",
+            color: "#16845b",
+            shape: "arrowDown",
+            size: 1,
+          };
+        }),
+      )
+      // 同一天可能同時有加碼與減碼，標記必須按時間排序才畫得出來。
+      .sort(function (left, right) {
+        return left.time < right.time ? -1 : left.time > right.time ? 1 : 0;
       });
     if (!markers.length) return 0;
     if (typeof lc.createSeriesMarkers === "function") {
@@ -238,6 +263,69 @@
       return 0;
     }
     return markers.length;
+  }
+
+  // 金額用億／萬分段，和站上其他地方一致；沒有官方收盤價時不編金額。
+  function moneyText(amount) {
+    if (typeof amount !== "number" || !isFinite(amount)) return "—";
+    var value = Math.abs(amount);
+    if (value >= 1e8) return (value / 1e8).toFixed(2) + " 億";
+    if (value >= 1e4) return Math.round(value / 1e4).toLocaleString("en-US") + " 萬";
+    return Math.round(value).toLocaleString("en-US") + " 元";
+  }
+
+  /*
+   * 每一天一組列，每檔 ETF 一列：使用者要的是「哪一天、哪一檔、幾張、大約多少
+   * 錢」，只給日期加總看不出是誰買的。日期新到舊排，最近的動作在最上面。
+   */
+  function renderMoveList(body, buys, sells) {
+    var rows = [];
+    buys.forEach(function (session) {
+      rows.push({ dir: "buy", session: session });
+    });
+    sells.forEach(function (session) {
+      rows.push({ dir: "sell", session: session });
+    });
+    if (!rows.length) return;
+    rows.sort(function (left, right) {
+      if (left.session.date !== right.session.date) {
+        return left.session.date < right.session.date ? 1 : -1;
+      }
+      return left.dir === right.dir ? 0 : left.dir === "buy" ? -1 : 1;
+    });
+
+    var html = "";
+    rows.forEach(function (row) {
+      var etfs = row.session.etfs || [];
+      var label = row.dir === "buy" ? "加碼" : "減碼";
+      var sign = row.dir === "buy" ? "+" : "−";
+      if (!etfs.length) {
+        etfs = [{ code: "", name: "—", lots: row.session.lots, amountTwd: row.session.amountTwd }];
+      }
+      etfs.forEach(function (etf, index) {
+        html +=
+          '<tr' + (index === 0 ? ' class="is-first"' : "") + ">" +
+          '<td class="date">' + (index === 0 ? row.session.date : "") + "</td>" +
+          "<td>" + (index === 0 ? '<span class="dir ' + row.dir + '">' + label + "</span>" : "") + "</td>" +
+          '<td class="etf">' + (etf.name || etf.code || "—") +
+          (etf.code ? "<i>" + etf.code + "</i>" : "") + "</td>" +
+          '<td class="num ' + row.dir + '">' +
+          (typeof etf.lots === "number" ? sign + etf.lots.toLocaleString("en-US") + " 張" : "—") + "</td>" +
+          '<td class="num ' + row.dir + '">' +
+          (typeof etf.amountTwd === "number" ? sign + moneyText(etf.amountTwd) : "—") + "</td>" +
+          "</tr>";
+      });
+    });
+
+    var section = document.createElement("div");
+    section.className = "consensus-kline-moves";
+    section.innerHTML =
+      "<h4>共識加減碼明細 · 加碼 " + buys.length + " 天、減碼 " + sells.length + " 天</h4>" +
+      '<p class="hint">僅涵蓋共識統計起算後的交易日；金額以當日官方均價推估，非實際成交價。</p>' +
+      "<table><thead><tr><th>日期</th><th>方向</th><th>ETF</th>" +
+      '<th class="num">張數</th><th class="num">約當金額</th></tr></thead>' +
+      "<tbody>" + html + "</tbody></table>";
+    body.appendChild(section);
   }
 
   function renderChart(modal, lc, code, payload) {
@@ -347,14 +435,23 @@
         };
       }),
     );
-    var markerCount = applyBuyMarkers(lc, candles, code, values);
+    var chartDates = new Set(
+      values.map(function (point) {
+        return point.time;
+      }),
+    );
+    var buys = visibleSessions(stockBuySessions, code, chartDates);
+    var sells = visibleSessions(stockSellSessions, code, chartDates);
+    var markerCount = applyMoveMarkers(lc, candles, buys, sells);
     if (markerCount) {
       var legend = document.createElement("p");
       legend.className = "consensus-kline-marker-note";
       legend.textContent =
-        "🔼 主動 ETF 加碼日 · 共 " + markerCount + " 天（僅涵蓋共識統計起算後的交易日）";
+        "🔼 主動 ETF 加碼 " + buys.length + " 天　🔽 減碼 " + sells.length +
+        " 天（僅涵蓋共識統計起算後的交易日）";
       body.appendChild(legend);
     }
+    renderMoveList(body, buys, sells);
     chart.timeScale().fitContent();
     activeChart = chart;
 
@@ -427,6 +524,10 @@
             stockBuySessions.set(
               code,
               Array.isArray(stock.buySessions) ? stock.buySessions : [],
+            );
+            stockSellSessions.set(
+              code,
+              Array.isArray(stock.sellSessions) ? stock.sellSessions : [],
             );
           }
         });
