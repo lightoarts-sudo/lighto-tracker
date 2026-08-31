@@ -6104,6 +6104,256 @@
       }
     },
     {
+      "id": "schroder-taiwan-lohas-smid-a",
+      "group": "funds",
+      "groupRank": 22,
+      "code": "SCH004",
+      "name": "施羅德台灣樂活中小基金-A類型",
+      "category": "台灣中小型股票",
+      "ytdReturn": 152.5926,
+      "aumDate": "2026-08-28",
+      "updateCadence": "基金淨值每日更新；成分股依官方或資料供應商揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "FundRich / Morningstar 初始建檔；每日淨值以官方來源更新"
+        },
+        {
+          "label": "官方全名",
+          "value": "施羅德台灣樂活中小基金-A類型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Schroder Taiwan Small & Mid Cap Eq A"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4209Y0"
+        },
+        {
+          "label": "成立日期",
+          "value": "2007/11/16"
+        },
+        {
+          "label": "基金規模",
+          "value": "4,594.87(百萬TWD       )"
+        },
+        {
+          "label": "基金公司",
+          "value": "施羅德證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "依施羅德投信最新公告"
+        },
+        {
+          "label": "基金類型",
+          "value": "股票基金"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "台灣"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "高度風險 (RR5)"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費／保管費",
+          "value": "1.60%／0.15%"
+        },
+        {
+          "label": "保管機構",
+          "value": "Bank of Taiwan"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-08-28"
+        },
+        {
+          "label": "持股揭露",
+          "value": "前十大持股（2026-06-30）"
+        }
+      ],
+      "performance": {
+        "date": "2026-08-28",
+        "priceOrNav": "201.1900 TWD",
+        "ytdReturn": 104.41933,
+        "oneYearReturn": 178.80137,
+        "threeYearReturn": 267.70556,
+        "fiveYearReturn": 340.29222,
+        "tenYearReturn": 931.81295
+      },
+      "assetClasses": [
+        {
+          "label": "股票",
+          "weight": 81.63,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "label": "現金",
+          "weight": 17.65,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "label": "其他",
+          "weight": 0.72,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        }
+      ],
+      "holdings": [
+        {
+          "stockName": "台光電",
+          "weight": 7.98,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 7.02,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "穎崴",
+          "weight": 6.9,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台燿",
+          "weight": 6.07,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "致茂",
+          "weight": 5.8,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "健策",
+          "weight": 5.43,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "金像電",
+          "weight": 5.39,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 5.35,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "奇鋐",
+          "weight": 5.26,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯發科",
+          "weight": 5.12,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "台光電",
+              "weight": 7.98,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 7.02,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "穎崴",
+              "weight": 6.9,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台燿",
+              "weight": 6.07,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "致茂",
+              "weight": 5.8,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "健策",
+              "weight": 5.43,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "金像電",
+              "weight": 5.39,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 5.35,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "奇鋐",
+              "weight": 5.26,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯發科",
+              "weight": 5.12,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "施羅德台灣樂活中小基金-A類型 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH004",
+        "bootstrapSourceFundId": "SCH004",
+        "officialUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/",
+        "performanceDate": "2026-07",
+        "assetDate": "2026-06-30",
+        "holdingsDate": "2026-06-30",
+        "retrievedAt": "2026-08-31T00:58:17+00:00"
+      }
+    },
+    {
       "id": "00981a",
       "group": "activeEtfs",
       "groupRank": 1,
@@ -33055,6 +33305,22 @@
       "url": "https://money.nomurafunds.com.tw/funds/superior",
       "note": "官方基金資料與每日淨值更新來源",
       "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-schroder-taiwan-lohas-smid-a-fundrich",
+      "targetKey": "item:schroder-taiwan-lohas-smid-a",
+      "title": "施羅德台灣樂活中小基金-A類型 FundRich 初始資料",
+      "url": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH004",
+      "note": "初始歷史淨值、資產配置、前十大持股與績效來源",
+      "createdAt": "2026-08-31"
+    },
+    {
+      "id": "ref-schroder-taiwan-lohas-smid-a-official",
+      "targetKey": "item:schroder-taiwan-lohas-smid-a",
+      "title": "施羅德台灣樂活中小基金-A類型 官方資料",
+      "url": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/",
+      "note": "官方基金資料與每日淨值更新來源",
+      "createdAt": "2026-08-31"
     },
     {
       "id": "ref-uni-002-fundrich",

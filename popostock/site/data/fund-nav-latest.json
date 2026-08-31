@@ -1,5 +1,5 @@
 {
-  "retrievedAt": "2026-08-30T13:00:22+00:00",
+  "retrievedAt": "2026-08-31T00:58:29+00:00",
   "funds": {
     "ALI005": {
       "date": "2026-08-28",
@@ -204,6 +204,16 @@
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "sitcaTaxId": "92012762",
       "sitcaFundCode": "DDO03"
+    },
+    "SCH004": {
+      "date": "2026-08-28",
+      "nav": 201.19,
+      "sourceUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH004",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "48948834A",
+      "sitcaFundCode": "DDO09"
     }
   },
   "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
