@@ -265,6 +265,45 @@
     return markers.length;
   }
 
+  /*
+   * 累積買超：把每天各檔 ETF 的加碼張數減去減碼張數，沿著交易日累加。
+   * 用張數而非金額——同一檔股票的價格在這幾個月動輒差一倍，用金額累加
+   * 會把「價格漲了」混進「買了多少」裡面。
+   *
+   * 從第一筆異動的前一個交易日以 0 起算，線才看得出是從哪裡開始爬的；
+   * 之後每個交易日都補一個點，沒有異動的日子維持前一天的水位。
+   */
+  function buildNetBuySeries(values, buys, sells) {
+    var delta = new Map();
+    buys.forEach(function (session) {
+      delta.set(session.date, (delta.get(session.date) || 0) + (session.lots || 0));
+    });
+    sells.forEach(function (session) {
+      delta.set(session.date, (delta.get(session.date) || 0) - (session.lots || 0));
+    });
+    if (!delta.size) return [];
+    var firstIndex = -1;
+    for (var i = 0; i < values.length; i += 1) {
+      if (delta.has(values[i].time)) {
+        firstIndex = i;
+        break;
+      }
+    }
+    if (firstIndex < 0) return [];
+    var start = Math.max(0, firstIndex - 1);
+    var total = 0;
+    var points = [];
+    for (var j = start; j < values.length; j += 1) {
+      total += delta.get(values[j].time) || 0;
+      points.push({ time: values[j].time, value: Math.round(total * 100) / 100 });
+    }
+    return points;
+  }
+
+  function lotText(value) {
+    return Number(value).toLocaleString("en-US", { maximumFractionDigits: 2 });
+  }
+
   // 金額用億／萬分段，和站上其他地方一致；沒有官方收盤價時不編金額。
   function moneyText(amount) {
     if (typeof amount !== "number" || !isFinite(amount)) return "—";
@@ -442,13 +481,41 @@
     );
     var buys = visibleSessions(stockBuySessions, code, chartDates);
     var sells = visibleSessions(stockSellSessions, code, chartDates);
+    // 累積買超放在獨立的窗格，和 K 線共用同一條時間軸（Lightweight Charts v5）。
+    var netData = buildNetBuySeries(values, buys, sells);
+    if (netData.length) {
+      var net = chart.addSeries(
+        lc.BaselineSeries,
+        {
+          baseValue: { type: "price", price: 0 },
+          topLineColor: "#c23d4b",
+          topFillColor1: "rgba(194,61,75,.30)",
+          topFillColor2: "rgba(194,61,75,.03)",
+          bottomLineColor: "#16845b",
+          bottomFillColor1: "rgba(22,132,91,.03)",
+          bottomFillColor2: "rgba(22,132,91,.30)",
+          lineWidth: 2,
+          priceLineVisible: false,
+          priceFormat: { type: "custom", minMove: 0.01, formatter: lotText },
+        },
+        1,
+      );
+      net.setData(netData);
+      chartElement.style.height = "540px";
+      var panes = typeof chart.panes === "function" ? chart.panes() : [];
+      if (panes.length > 1) {
+        panes[0].setHeight(390);
+        panes[1].setHeight(150);
+      }
+    }
     var markerCount = applyMoveMarkers(lc, candles, buys, sells);
     if (markerCount) {
       var legend = document.createElement("p");
       legend.className = "consensus-kline-marker-note";
       legend.textContent =
         "🔼 主動 ETF 加碼 " + buys.length + " 天　🔽 減碼 " + sells.length +
-        " 天（僅涵蓋共識統計起算後的交易日）";
+        " 天　下方為累積買超張數（加碼減去減碼，紅色為淨買超、綠色為淨賣超）" +
+        "；僅涵蓋共識統計起算後的交易日";
       body.appendChild(legend);
     }
     renderMoveList(body, buys, sells);
