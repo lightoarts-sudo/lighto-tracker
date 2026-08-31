@@ -70,6 +70,8 @@
       ".dividend-next{color:#12295c;font-weight:900}",
       ".dividend-next.soon{background:#ffd43b;border-radius:999px;padding:2px 10px}",
       ".dividend-none{color:#a8b3c4}",
+      ".dividend-next-amt{display:block;margin-top:3px;color:#12295c;font-size:11.5px;font-weight:900;white-space:nowrap}",
+      ".dividend-next-amt em{font-style:normal;color:#8b6b00;background:#fff3cd;border-radius:999px;padding:1px 6px;margin-left:5px;font-size:10.5px}",
       ".dividend-yield{font-weight:900;color:#d92b2b}",
       ".dividend-note{margin-top:14px;color:#667483;font-size:12.5px;line-height:1.7}",
       ".dividend-empty{padding:40px 0;text-align:center;color:#8b98ab;font-weight:700}",
@@ -229,9 +231,25 @@
     const soon = payload.instruments.filter((i) => i.nextExDate);
     const body = list
       .map((i) => {
-        const next = i.nextExDate
-          ? '<span class="dividend-next soon">' + i.nextExDate.slice(5) + "</span>"
-          : '<span class="dividend-none">未公告</span>';
+        // 公告的金額是投信的預估數，除息後會被交易所的實際數取代，所以標出來，
+        // 並把最後買進日／發放日與出處放進 title，欄位才不會被撐爆。
+        let next = '<span class="dividend-none">未公告</span>';
+        if (i.nextExDate) {
+          const hint = [
+            i.nextLastBuyDate ? "最後買進日 " + i.nextLastBuyDate : "",
+            i.nextPayDate ? "發放日 " + i.nextPayDate : "",
+            i.nextSourceTier || "",
+            i.nextSourceTitle || "",
+          ].filter(Boolean).join("　");
+          const amount =
+            typeof i.nextAmount === "number"
+              ? '<span class="dividend-next-amt">每單位 ' + num(i.nextAmount, 2) +
+                (i.nextAmountStatus ? "<em>" + i.nextAmountStatus + "</em>" : "") + "</span>"
+              : "";
+          next =
+            '<span class="dividend-next soon"' + (hint ? ' title="' + hint + '"' : "") + ">" +
+            i.nextExDate.slice(5) + "</span>" + amount;
+        }
         const tag =
           '<span class="dividend-tag' + (i.group === "activeEtfs" ? " act" : "") + '">' +
           i.groupLabel + "</span>";
