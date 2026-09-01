@@ -367,7 +367,7 @@
         ? '<div class="dividend-scroll"><table><thead><tr>' +
           "<th>ETF</th><th class=\"n\">張數</th><th class=\"n\">市值</th>" +
           "<th class=\"n\">整年每單位</th><th class=\"n\">整年配息</th>" +
-          "<th class=\"n\">殖利率</th><th></th></tr></thead><tbody>" + body +
+          "<th class=\"n\">推估整年殖利率</th><th></th></tr></thead><tbody>" + body +
           '</tbody><tfoot><tr><td colspan="2">合計</td>' +
           '<td class="n">' + money(totalValue) + "</td><td></td>" +
           '<td class="n">' + money(totalCash) + "</td>" +
@@ -380,7 +380,7 @@
           "<div><b>" + money(totalValue) + "</b><span>持股市值（元）</span></div>" +
           "<div><b>" +
           (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") +
-          "</b><span>綜合殖利率</span></div></div>"
+          "</b><span>推估整年綜合殖利率</span></div></div>"
         : '<div class="empty">還沒有持股。上面選一檔 ETF、填張數，就會算出近一年大概配多少。</div>') +
       '<p class="note">' +
       "配息以「整年每單位 × 張數 × 1000」計算，實配金額來自交易所除權除息計算結果表；" +
