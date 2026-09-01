@@ -293,21 +293,28 @@
       const perUnit = info && typeof info.trailingAmount === "number" ? info.trailingAmount : 0;
       const close = info && typeof info.latestClose === "number" ? info.latestClose : null;
       const times = CADENCE_TIMES[info?.cadence] || 0;
+      const count = info?.trailingCount || 0;
+      // 配過但還沒滿一輪（00981A 季配、近一年只有兩次）：直接加總會少算一半。
+      // 用「已配的每次平均 × 年配次數」補成整年，比抓最近一次乘上去穩——
+      // 主動式 ETF 的單次金額波動大，只取最後一次會被單一數字帶著跑。
+      const thin = count > 0 && times > 0 && count < times;
+      const annual = thin ? (perUnit / count) * times : perUnit;
       return {
         code: h.code,
         lots: Number(h.lots) || 0,
         name: info ? info.name : h.code,
         cadence: info?.cadence || "—",
         perUnit,
+        annual,
         shares,
-        cash: shares * perUnit,
+        cash: shares * annual,
         value: close === null ? null : shares * close,
         // 沒配過就沒有殖利率可言；印 0.00% 會被讀成「算出來是零」而不是「沒有資料」。
-        yieldPct: close && perUnit ? (perUnit / close) * 100 : null,
+        yieldPct: close && annual ? (annual / close) * 100 : null,
         // 兩種「估不準」要分開講：完全沒配過，和配了但還沒滿一輪。
         never: !info || !info.payoutCount,
-        thin: !!info && info.payoutCount > 0 && times > 0 && info.trailingCount < times,
-        trailingCount: info?.trailingCount || 0,
+        thin,
+        trailingCount: count,
         times,
       };
     });
@@ -321,6 +328,7 @@
       .join("");
 
     const list = calcRows();
+    const estimated = list.some((r) => r.thin);
     const totalCash = list.reduce((sum, r) => sum + r.cash, 0);
     const totalValue = list.reduce((sum, r) => sum + (r.value || 0), 0);
     const body = list
@@ -328,14 +336,15 @@
         const flag = r.never
           ? '<b class="thin">尚無配息紀錄</b>'
           : r.thin
-            ? '<b class="thin">近一年只配 ' + r.trailingCount + " 次／應配 " + r.times + " 次，低估</b>"
+            ? '<b class="thin">年化推估：已配 ' + r.trailingCount + " 次共 " +
+              num(r.perUnit, 3) + " 元 × " + r.times + "／" + r.trailingCount + "</b>"
             : "";
         return (
           "<tr>" +
           '<td class="nm">' + r.name + "<i>" + r.code + "</i>" + flag + "</td>" +
           '<td class="n">' + r.lots.toLocaleString("en-US") + " 張</td>" +
           '<td class="n">' + (r.value === null ? "—" : money(r.value)) + "</td>" +
-          '<td class="n">' + (r.perUnit ? num(r.perUnit, 3) : "—") + "</td>" +
+          '<td class="n">' + (r.annual ? num(r.annual, 3) : "—") + "</td>" +
           '<td class="n cash">' + (r.cash ? money(r.cash) : "—") + "</td>" +
           '<td class="n">' + (r.yieldPct === null ? "—" : num(r.yieldPct, 2) + "%") + "</td>" +
           '<td class="n"><button type="button" class="del" data-calc-del="' + index + '">刪除</button></td>' +
@@ -357,7 +366,7 @@
       (list.length
         ? '<div class="dividend-scroll"><table><thead><tr>' +
           "<th>ETF</th><th class=\"n\">張數</th><th class=\"n\">市值</th>" +
-          "<th class=\"n\">近一年每單位</th><th class=\"n\">近一年配息</th>" +
+          "<th class=\"n\">整年每單位</th><th class=\"n\">整年配息</th>" +
           "<th class=\"n\">殖利率</th><th></th></tr></thead><tbody>" + body +
           '</tbody><tfoot><tr><td colspan="2">合計</td>' +
           '<td class="n">' + money(totalValue) + "</td><td></td>" +
@@ -365,7 +374,8 @@
           '<td class="n">' + (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") + "</td>" +
           "<td></td></tr></tfoot></table></div>" +
           '<div class="sum">' +
-          "<div><b>" + money(totalCash) + "</b><span>近一年配息合計（元）</span></div>" +
+          "<div><b>" + money(totalCash) + "</b><span>整年配息合計（元）" +
+          (estimated ? "・含推估" : "") + "</span></div>" +
           "<div><b>" + money(totalCash / 12) + "</b><span>平均每月（元）</span></div>" +
           "<div><b>" + money(totalValue) + "</b><span>持股市值（元）</span></div>" +
           "<div><b>" +
@@ -373,10 +383,11 @@
           "</b><span>綜合殖利率</span></div></div>"
         : '<div class="empty">還沒有持股。上面選一檔 ETF、填張數，就會算出近一年大概配多少。</div>') +
       '<p class="note">' +
-      "配息以「近十二個月實際除息金額 × 張數 × 1000」推估，資料來自交易所除權除息計算結果表；" +
-      "市值與殖利率以最新收盤價計算。<b>這是用過去一年的實際配息回推，不是預測</b>——" +
-      "配息金額每期由投信依已實現損益決定，會變動甚至不配。新掛牌或剛改配息頻率的 ETF，" +
-      "近一年紀錄不足一輪時會標示並且低估。持股只存在你自己的瀏覽器，不會上傳。</p>" +
+      "配息以「整年每單位 × 張數 × 1000」計算，實配金額來自交易所除權除息計算結果表；" +
+      "市值與殖利率以最新收盤價計算。近十二個月已配滿一輪的，整年金額就是實配加總；" +
+      "<b>還沒配滿一輪的（如新掛牌的主動式 ETF），以「已配次數的平均 × 年配次數」年化推估</b>，" +
+      "並在該列標示計算過程。<b>這不是預測</b>——配息每期由投信依已實現損益決定，" +
+      "會變動甚至不配，推估值只是把已知的幾次攤成整年。持股只存在你自己的瀏覽器，不會上傳。</p>" +
       "</div>"
     );
   }
