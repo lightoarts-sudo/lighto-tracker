@@ -34,6 +34,29 @@
   // Starts empty on purpose: an all-checked calendar shows every ETF paying in
   // every month, which is the same as showing nothing.
   let selected = new Set();
+  // 使用者的持股（代號＋張數）。存在瀏覽器本機，不上傳。
+  const CALC_KEY = "popostock-dividend-calc-v1";
+  let holdings = loadHoldings();
+
+  function loadHoldings() {
+    try {
+      const raw = localStorage.getItem(CALC_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed)
+        ? parsed.filter((h) => h && h.code).map((h) => ({ code: String(h.code), lots: Number(h.lots) || 0 }))
+        : [];
+    } catch (error) {
+      return [];  // 私密視窗擋儲存時照常可用，只是不會記住。
+    }
+  }
+
+  function saveHoldings() {
+    try {
+      localStorage.setItem(CALC_KEY, JSON.stringify(holdings));
+    } catch (error) {
+      /* 存不進去不影響試算 */
+    }
+  }
 
   function style() {
     if (document.getElementById("dividend-style")) return;
@@ -108,6 +131,40 @@
       "color:#d92b2b;font-variant-numeric:tabular-nums}",
       ".dividend-cal .ytd.dn{color:#1a7a3c}",
       ".dividend-cal .ytd.na{color:#c3ccda}",
+      ".dividend-calc{margin-top:4px}",
+      ".dividend-calc .add{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:14px}",
+      ".dividend-calc .fld{display:flex;flex-direction:column;gap:5px}",
+      ".dividend-calc .fld label{color:#8b98ab;font-size:12px;font-weight:900}",
+      ".dividend-calc input{border:1px solid #d6dee6;border-radius:8px;padding:8px 11px;",
+      "font-size:14px;font-weight:800;color:#12295c;background:#fff;min-height:38px}",
+      ".dividend-calc input:focus{outline:2px solid rgba(8,117,111,.3);outline-offset:-1px}",
+      ".dividend-calc .pick{min-width:260px;flex:1 1 260px}",
+      ".dividend-calc .lots{width:110px}",
+      ".dividend-calc .go{border:1px solid #e8bd22;background:#ffd43b;color:#12295c;font-weight:900;",
+      "border-radius:8px;padding:9px 18px;cursor:pointer;min-height:38px}",
+      ".dividend-calc .go:hover{background:#ffdc57}",
+      ".dividend-calc .warn{color:#d64038;font-size:12.5px;font-weight:800;margin:-6px 0 10px}",
+      ".dividend-calc table{width:100%;border-collapse:collapse;font-size:13.5px}",
+      ".dividend-calc th{background:#12295c;color:#ffd43b;font-size:12px;font-weight:900;",
+      "padding:8px 10px;text-align:left;white-space:nowrap}",
+      ".dividend-calc th.n,.dividend-calc td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}",
+      ".dividend-calc td{padding:9px 10px;border-bottom:1px solid #eef1f5;color:#33485f}",
+      ".dividend-calc td.nm{color:#12295c;font-weight:900}",
+      ".dividend-calc td.nm i{font-style:normal;color:#8b98ab;font-weight:700;margin-left:6px}",
+      ".dividend-calc td.nm b.thin{display:block;margin-top:3px;color:#b26a00;background:#fff3cd;",
+      "border-radius:999px;padding:1px 8px;font-size:11px;font-weight:900;width:fit-content}",
+      ".dividend-calc td.cash{color:#12295c;font-weight:900}",
+      ".dividend-calc tfoot td{border-top:2px solid #12295c;border-bottom:0;padding-top:11px;",
+      "color:#12295c;font-weight:900;font-size:15px}",
+      ".dividend-calc .del{border:1px solid #f0c8c8;background:#fff;color:#d64038;font-size:12px;",
+      "font-weight:900;border-radius:7px;padding:5px 11px;cursor:pointer}",
+      ".dividend-calc .sum{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}",
+      ".dividend-calc .sum div{background:#f4f7fb;border:1px solid #e2e8f2;border-radius:12px;",
+      "padding:10px 16px;min-width:150px;flex:1}",
+      ".dividend-calc .sum b{display:block;color:#12295c;font-size:23px;font-weight:900}",
+      ".dividend-calc .sum span{color:#7b8aa6;font-size:12px;font-weight:800}",
+      ".dividend-calc .note{margin-top:12px;color:#7b8aa6;font-size:12px;font-weight:700;line-height:1.7}",
+      ".dividend-calc .empty{color:#8b98ab;font-weight:800;padding:26px 0;text-align:center}",
     ].join("");
     document.head.appendChild(element);
   }
@@ -220,6 +277,110 @@
     );
   }
 
+  // 每年配幾次，用來判斷近十二個月的紀錄是否已經走完一輪。走不完一輪就不能
+  // 把 trailingAmount 當成「一年配多少」，新掛牌的 ETF 會被嚴重低估。
+  const CADENCE_TIMES = { "月配": 12, "季配": 4, "半年配": 2, "年配": 1 };
+
+  function money(value) {
+    return Math.round(value).toLocaleString("en-US");
+  }
+
+  function calcRows() {
+    const byCode = new Map((payload?.instruments || []).map((i) => [i.code, i]));
+    return holdings.map((h) => {
+      const info = byCode.get(h.code);
+      const shares = (Number(h.lots) || 0) * 1000;
+      const perUnit = info && typeof info.trailingAmount === "number" ? info.trailingAmount : 0;
+      const close = info && typeof info.latestClose === "number" ? info.latestClose : null;
+      const times = CADENCE_TIMES[info?.cadence] || 0;
+      return {
+        code: h.code,
+        lots: Number(h.lots) || 0,
+        name: info ? info.name : h.code,
+        cadence: info?.cadence || "—",
+        perUnit,
+        shares,
+        cash: shares * perUnit,
+        value: close === null ? null : shares * close,
+        // 沒配過就沒有殖利率可言；印 0.00% 會被讀成「算出來是零」而不是「沒有資料」。
+        yieldPct: close && perUnit ? (perUnit / close) * 100 : null,
+        // 兩種「估不準」要分開講：完全沒配過，和配了但還沒滿一輪。
+        never: !info || !info.payoutCount,
+        thin: !!info && info.payoutCount > 0 && times > 0 && info.trailingCount < times,
+        trailingCount: info?.trailingCount || 0,
+        times,
+      };
+    });
+  }
+
+  function renderCalc() {
+    const options = (payload?.instruments || [])
+      .slice()
+      .sort((a, b) => a.code.localeCompare(b.code))
+      .map((i) => '<option value="' + i.code + " " + i.name + '"></option>')
+      .join("");
+
+    const list = calcRows();
+    const totalCash = list.reduce((sum, r) => sum + r.cash, 0);
+    const totalValue = list.reduce((sum, r) => sum + (r.value || 0), 0);
+    const body = list
+      .map((r, index) => {
+        const flag = r.never
+          ? '<b class="thin">尚無配息紀錄</b>'
+          : r.thin
+            ? '<b class="thin">近一年只配 ' + r.trailingCount + " 次／應配 " + r.times + " 次，低估</b>"
+            : "";
+        return (
+          "<tr>" +
+          '<td class="nm">' + r.name + "<i>" + r.code + "</i>" + flag + "</td>" +
+          '<td class="n">' + r.lots.toLocaleString("en-US") + " 張</td>" +
+          '<td class="n">' + (r.value === null ? "—" : money(r.value)) + "</td>" +
+          '<td class="n">' + (r.perUnit ? num(r.perUnit, 3) : "—") + "</td>" +
+          '<td class="n cash">' + (r.cash ? money(r.cash) : "—") + "</td>" +
+          '<td class="n">' + (r.yieldPct === null ? "—" : num(r.yieldPct, 2) + "%") + "</td>" +
+          '<td class="n"><button type="button" class="del" data-calc-del="' + index + '">刪除</button></td>' +
+          "</tr>"
+        );
+      })
+      .join("");
+
+    return (
+      '<div class="dividend-calc">' +
+      '<div class="add">' +
+      '<div class="fld pick"><label>ETF（輸入代號或名稱會自動列出）</label>' +
+      '<input type="text" list="dividend-calc-options" data-calc-pick placeholder="例如 00919 或 群益" autocomplete="off"></div>' +
+      '<div class="fld lots"><label>張數</label>' +
+      '<input type="number" min="0" step="1" data-calc-lots placeholder="1" autocomplete="off"></div>' +
+      '<button type="button" class="go" data-calc-add>＋ 加入</button>' +
+      '<datalist id="dividend-calc-options">' + options + "</datalist></div>" +
+      '<p class="warn" data-calc-warn hidden></p>' +
+      (list.length
+        ? '<div class="dividend-scroll"><table><thead><tr>' +
+          "<th>ETF</th><th class=\"n\">張數</th><th class=\"n\">市值</th>" +
+          "<th class=\"n\">近一年每單位</th><th class=\"n\">近一年配息</th>" +
+          "<th class=\"n\">殖利率</th><th></th></tr></thead><tbody>" + body +
+          '</tbody><tfoot><tr><td colspan="2">合計</td>' +
+          '<td class="n">' + money(totalValue) + "</td><td></td>" +
+          '<td class="n">' + money(totalCash) + "</td>" +
+          '<td class="n">' + (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") + "</td>" +
+          "<td></td></tr></tfoot></table></div>" +
+          '<div class="sum">' +
+          "<div><b>" + money(totalCash) + "</b><span>近一年配息合計（元）</span></div>" +
+          "<div><b>" + money(totalCash / 12) + "</b><span>平均每月（元）</span></div>" +
+          "<div><b>" + money(totalValue) + "</b><span>持股市值（元）</span></div>" +
+          "<div><b>" +
+          (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") +
+          "</b><span>綜合殖利率</span></div></div>"
+        : '<div class="empty">還沒有持股。上面選一檔 ETF、填張數，就會算出近一年大概配多少。</div>') +
+      '<p class="note">' +
+      "配息以「近十二個月實際除息金額 × 張數 × 1000」推估，資料來自交易所除權除息計算結果表；" +
+      "市值與殖利率以最新收盤價計算。<b>這是用過去一年的實際配息回推，不是預測</b>——" +
+      "配息金額每期由投信依已實現損益決定，會變動甚至不配。新掛牌或剛改配息頻率的 ETF，" +
+      "近一年紀錄不足一輪時會標示並且低估。持股只存在你自己的瀏覽器，不會上傳。</p>" +
+      "</div>"
+    );
+  }
+
   function render() {
     const panel = ourPanel();
     if (!panel) return;
@@ -292,6 +453,8 @@
       (view === "calendar" ? ' class="is-on"' : "") + ">配息行事曆</button>" +
       '<button type="button" data-view="table"' +
       (view === "table" ? ' class="is-on"' : "") + ">明細表</button>" +
+      '<button type="button" data-view="calc"' +
+      (view === "calc" ? ' class="is-on"' : "") + ">配息計算機</button>" +
       (view === "calendar"
         ? '<span class="dividend-bulk">' +
           '<button type="button" data-bulk="all">全選</button>' +
@@ -303,7 +466,8 @@
           '<span><b class="plan">💰</b> 投信公告之配息月份，尚未除息</span></div>'
         : "") +
       (view === "calendar" ? renderCalendar() : "") +
-      (view === "calendar" ? "" :
+      (view === "calc" ? renderCalc() : "") +
+      (view !== "table" ? "" :
       '<div class="dividend-filters">' + chip("all", "有配息") + chip("upcoming", "已公告除息") +
       chip("monthly", "月配") + chip("active", "主動式") + chip("none", "尚未配息") + "</div>" +
       '<div class="dividend-scroll"><table class="dividend-table"><thead><tr>' +
@@ -424,6 +588,18 @@
         render();
         return;
       }
+      const add = event.target.closest?.("[" + PANEL_FLAG + "] [data-calc-add]");
+      if (add) {
+        addHolding();
+        return;
+      }
+      const del = event.target.closest?.("[" + PANEL_FLAG + "] [data-calc-del]");
+      if (del) {
+        holdings.splice(Number(del.dataset.calcDel), 1);
+        saveHoldings();
+        render();
+        return;
+      }
       const bulk = event.target.closest?.("[" + PANEL_FLAG + "] button[data-bulk]");
       if (bulk) {
         const list = calendarRows();
@@ -443,6 +619,56 @@
     },
     true,
   );
+
+  /*
+   * datalist 的值是「代號 名稱」，使用者也可能只打代號或只打名稱就按加入。
+   * 三種都接：先抓開頭的代號，抓不到就用名稱比對，仍找不到才報錯——與其
+   * 靜靜加進一筆查無此檔的持股，不如當場說清楚。
+   */
+  function addHolding() {
+    const panel = ourPanel();
+    if (!panel) return;
+    const pick = panel.querySelector("[data-calc-pick]");
+    const lotsInput = panel.querySelector("[data-calc-lots]");
+    const warn = panel.querySelector("[data-calc-warn]");
+    const raw = (pick.value || "").trim();
+    const lots = Number(lotsInput.value);
+    const say = (message) => {
+      warn.textContent = message;
+      warn.hidden = !message;
+    };
+
+    if (!raw) return say("請先選一檔 ETF。");
+    const all = payload?.instruments || [];
+    const code = (raw.split(/\s+/)[0] || "").toUpperCase();
+    const found =
+      all.find((i) => i.code.toUpperCase() === code) ||
+      all.find((i) => i.name === raw) ||
+      all.find((i) => i.name.includes(raw));
+    if (!found) return say("找不到「" + raw + "」，請從下拉選單挑一檔。");
+    if (!(lots > 0)) return say("張數要大於 0。");
+
+    const existing = holdings.find((h) => h.code === found.code);
+    if (existing) existing.lots += lots;
+    else holdings.push({ code: found.code, lots: lots });
+    saveHoldings();
+    say("");
+    pick.value = "";
+    lotsInput.value = "";
+    render();
+    ourPanel()?.querySelector("[data-calc-pick]")?.focus();
+  }
+
+  // Enter 直接加入，不用移到按鈕；輸入框在表單之外，沒有原生 submit 可用。
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    const field = event.target.closest?.(
+      "[" + PANEL_FLAG + "] [data-calc-pick], [" + PANEL_FLAG + "] [data-calc-lots]",
+    );
+    if (!field) return;
+    event.preventDefault();
+    addHolding();
+  });
 
   document.addEventListener("change", (event) => {
     const box = event.target.closest?.("[" + PANEL_FLAG + "] input[data-code]");
