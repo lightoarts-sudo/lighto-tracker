@@ -142,7 +142,30 @@
 
 
 
-      "@media(max-width:720px){.pcr-row{gap:9px}#" + CONTROL_ID + "{width:100%}#" + CONTROL_ID + " .pcr-field{flex:1 1 42%}#" + CONTROL_ID + " input[type=date]{width:100%}}";
+      "@media(max-width:720px){.pcr-row{gap:9px}#" + CONTROL_ID + "{width:100%}#" + CONTROL_ID + " .pcr-field{flex:1 1 42%}#" + CONTROL_ID + " input[type=date]{width:100%}}" +
+      /*
+       * 手機版的績效排行只留「名次 · 標的 · 報酬」。站台的通用手機表格會把每一格
+       * 攤成「標籤＋值」的兩欄卡片，七個欄位就變成四行高的區塊，一個螢幕只看得到
+       * 兩三名，排行榜失去意義。類型、起算日、最新資料日、最新淨值在手機上都是
+       * 桌機才需要的佐證欄位，收起來後一頁能看十幾名。
+       *
+       * 用 nth-child 而非 data-label：React 的表格沒有帶 data-label 屬性，
+       * 兩張表（React 與本檔自訂區間）欄位順序相同，以位置對齊才涵蓋得到兩者。
+       */
+      "@media(max-width:720px){" +
+      ".performance-table tbody tr{grid-template-columns:auto minmax(0,1fr) auto;align-items:center}" +
+      // 多帶一層 tr 是為了蓋過站台給前兩欄的淡藍底：桌機是七欄時的分區色，
+      // 手機只剩三欄會變成一張卡左深右白，看起來像沒對齊。
+      ".performance-table tbody tr td:nth-child(3)," +
+      ".performance-table tbody tr td:nth-child(5)," +
+      ".performance-table tbody tr td:nth-child(6)," +
+      ".performance-table tbody tr td:nth-child(7){display:none}" +
+      ".performance-table tbody tr td{border-right:0;border-bottom:0;padding:11px 10px;background:#fff}" +
+      ".performance-table tbody tr td:before{display:none}" +
+      ".performance-table tbody tr td:nth-child(4){justify-items:end;text-align:right;font-size:16px}" +
+      ".performance-table tbody tr td.performance-rank{width:auto;min-width:26px;font-size:15px}" +
+      ".performance-table tbody tr .performance-instrument{gap:1px}" +
+      "}";
     document.head.appendChild(style);
   }
 
