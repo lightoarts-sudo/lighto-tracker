@@ -26,7 +26,16 @@
   const RANKING_URL = ASSET_BASE + "data/performance-ranking.json";
 
   let payload = null;
-  let ranking = null;    // code -> YTD %
+  let ranking = null;    // code -> { ytd, month3, ... } 各期間報酬 %
+  const PERIODS = [
+    ["month3", "三個月"],
+    ["month6", "半年"],
+    ["ytd", "今年以來"],
+    ["year1", "一年"],
+    ["year3", "三年"],
+  ];
+  let calPeriod = "ytd";
+  let calSort = "perf";
   let loading = null;
   let active = false;
   let filter = "all";
@@ -161,6 +170,18 @@
       "color:#d92b2b;font-variant-numeric:tabular-nums}",
       ".dividend-cal .ytd.dn{color:#1a7a3c}",
       ".dividend-cal .ytd.na{color:#c3ccda}",
+      ".dividend-cal .dy{margin-left:auto;font-weight:900;font-size:12.5px;color:#0b6b63;",
+      "font-variant-numeric:tabular-nums}",
+      ".dividend-cal .dy.est{color:#b26a00}",
+      ".dividend-cal .dy.na{color:#c3ccda}",
+      ".dividend-cal .ytd{margin-left:10px}",
+      ".dividend-calbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:0 0 10px}",
+      ".dividend-calbar label{color:#7b8aa6;font-size:12.5px;font-weight:900;display:flex;",
+      "align-items:center;gap:6px}",
+      ".dividend-calbar select{border:1px solid #d6dee6;border-radius:8px;padding:6px 10px;",
+      "font-size:13px;font-weight:800;color:#12295c;background:#fff}",
+      ".dividend-calbar .key{color:#8b98ab;font-size:12px;font-weight:800;margin-left:auto}",
+      ".dividend-calbar .key b.dy{color:#0b6b63}.dividend-calbar .key b.ytd{color:#d92b2b}",
       ".dividend-calc{margin-top:4px}",
       ".dividend-calc .add{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-bottom:14px}",
       ".dividend-calc .fld{display:flex;flex-direction:column;gap:5px}",
@@ -231,20 +252,41 @@
   }
 
   function ytdOf(code) {
-    const value = ranking && ranking[code];
-    return value === undefined || value === null ? null : value;
+    const box = ranking && ranking[code];
+    if (!box) return null;
+    const value = box[calPeriod];
+    return value === undefined ? null : value;
+  }
+
+  /*
+   * 行事曆與計算機共用同一套年化推估，兩邊的殖利率才不會各說各話：
+   * 已配滿一輪就用實配加總，還沒滿一輪的用「已配平均 × 年配次數」補成整年。
+   */
+  function annualOf(info) {
+    const perUnit = typeof info.trailingAmount === "number" ? info.trailingAmount : 0;
+    const close = typeof info.latestClose === "number" ? info.latestClose : null;
+    const times = CADENCE_TIMES[info.cadence] || 0;
+    const count = info.trailingCount || 0;
+    const thin = count > 0 && times > 0 && count < times;
+    const annual = thin ? (perUnit / count) * times : perUnit;
+    return {
+      annual,
+      thin,
+      yieldPct: close && annual ? (annual / close) * 100 : null,
+    };
   }
 
   function calendarRows() {
-    // Ranked by this year's return, best first. An ETF the ranking has no YTD
-    // for (too recently listed to have a start-of-year price) sorts last rather
-    // than being treated as 0%.
+    // 由高至低排序。沒有該期間報酬（掛牌太新，算不出起點價）或沒有殖利率的
+    // 一律排在最後，而不是當成 0% 混在中間。
+    const key = (item) =>
+      calSort === "yield" ? annualOf(item).yieldPct : ytdOf(item.code);
     return ((payload && payload.instruments) || [])
       .filter((i) => i.payoutCount)
       .slice()
       .sort((a, b) => {
-        const x = ytdOf(a.code);
-        const y = ytdOf(b.code);
+        const x = key(a);
+        const y = key(b);
         if (x === null && y === null) return a.code < b.code ? -1 : 1;
         if (x === null) return 1;
         if (y === null) return -1;
@@ -266,8 +308,10 @@
       });
     });
     const any = selected.size > 0;
+    const periodLabel = (PERIODS.find(([k]) => k === calPeriod) || [])[1] || "";
     const head =
-      '<tr><th class="who">ETF（勾選以顯示）<span class="hint">依今年以來報酬排序</span></th>' +
+      '<tr><th class="who">ETF（勾選以顯示）<span class="hint">依' +
+      (calSort === "yield" ? "整年殖利率（推估）" : periodLabel + "報酬") + "排序</span></th>" +
       Array.from({ length: 12 }, (_, n) =>
         '<th><span class="mn">' + (n + 1) + "月</span>" +
         '<span class="cnt' + (any && perMonth[n] === 0 ? " zero" : "") + '">' +
@@ -291,18 +335,40 @@
         const ytd = ytdOf(i.code);
         const perf =
           ytd === null
-            ? '<span class="ytd na">—</span>'
-            : '<span class="ytd' + (ytd < 0 ? " dn" : "") + '">' +
+            ? '<span class="ytd na" title="' + periodLabel + '報酬">—</span>'
+            : '<span class="ytd' + (ytd < 0 ? " dn" : "") + '" title="' + periodLabel + '報酬">' +
               (ytd >= 0 ? "+" : "") + num(ytd, 1) + "%</span>";
+        const est = annualOf(i);
+        const dy =
+          est.yieldPct === null
+            ? '<span class="dy na">—</span>'
+            : '<span class="dy' + (est.thin ? " est" : "") + '" title="整年殖利率（推估）' +
+              (est.thin ? "：近一年未配滿一輪，以已配次數平均年化" : "") + '">' +
+              num(est.yieldPct, 1) + "%</span>";
         return (
           '<tr class="' + (on ? "" : "off") + '"><td class="who"><label>' +
           '<input type="checkbox" data-code="' + i.code + '"' + (on ? " checked" : "") + ">" +
           "<span>" + i.name + ' <span class="code">' + i.code + "</span></span>" +
-          perf + "</label></td>" + cells + "</tr>"
+          dy + perf + "</label></td>" + cells + "</tr>"
         );
       })
       .join("");
+    const select = (name, value, options) =>
+      '<select data-cal="' + name + '">' +
+      options
+        .map(
+          ([key, label]) =>
+            '<option value="' + key + '"' + (key === value ? " selected" : "") + ">" + label + "</option>",
+        )
+        .join("") + "</select>";
     return (
+      '<div class="dividend-calbar">' +
+      "<label>報酬期間 " + select("period", calPeriod, PERIODS) + "</label>" +
+      "<label>排序 " +
+      select("sort", calSort, [["perf", "報酬由高至低"], ["yield", "整年殖利率由高至低"]]) +
+      "</label>" +
+      '<span class="key">每列右側：<b class="dy">整年殖利率（推估）</b>　<b class="ytd">' +
+      periodLabel + "報酬</b></span></div>" +
       '<div class="dividend-scroll"><table class="dividend-cal"><thead>' + head +
       "</thead><tbody>" + body + "</tbody></table></div>"
     );
@@ -328,8 +394,9 @@
       // 配過但還沒滿一輪（00981A 季配、近一年只有兩次）：直接加總會少算一半。
       // 用「已配的每次平均 × 年配次數」補成整年，比抓最近一次乘上去穩——
       // 主動式 ETF 的單次金額波動大，只取最後一次會被單一數字帶著跑。
-      const thin = count > 0 && times > 0 && count < times;
-      const annual = thin ? (perUnit / count) * times : perUnit;
+      const est = info ? annualOf(info) : { annual: 0, thin: false, yieldPct: null };
+      const thin = est.thin;
+      const annual = est.annual;
       return {
         code: h.code,
         lots: Number(h.lots) || 0,
@@ -341,7 +408,7 @@
         cash: shares * annual,
         value: close === null ? null : shares * close,
         // 沒配過就沒有殖利率可言；印 0.00% 會被讀成「算出來是零」而不是「沒有資料」。
-        yieldPct: close && annual ? (annual / close) * 100 : null,
+        yieldPct: est.yieldPct,
         // 兩種「估不準」要分開講：完全沒配過，和配了但還沒滿一輪。
         never: !info || !info.payoutCount,
         thin,
@@ -572,8 +639,12 @@
         payload = data;
         ranking = {};
         ((ranked && ranked.instruments) || []).forEach((i) => {
-          const ytd = i.returns && i.returns.ytd;
-          if (ytd && typeof ytd.returnPct === "number") ranking[i.code] = ytd.returnPct;
+          const box = {};
+          PERIODS.forEach(([key]) => {
+            const entry = i.returns && i.returns[key];
+            box[key] = entry && typeof entry.returnPct === "number" ? entry.returnPct : null;
+          });
+          ranking[i.code] = box;
         });
         render();
       })
@@ -779,6 +850,13 @@
   });
 
   document.addEventListener("change", (event) => {
+    const cal = event.target.closest?.("[" + PANEL_FLAG + "] select[data-cal]");
+    if (cal) {
+      if (cal.dataset.cal === "period") calPeriod = cal.value;
+      else calSort = cal.value;
+      render();
+      return;
+    }
     const box = event.target.closest?.("[" + PANEL_FLAG + "] input[data-code]");
     if (!box) return;
     if (box.checked) selected.add(box.dataset.code);
