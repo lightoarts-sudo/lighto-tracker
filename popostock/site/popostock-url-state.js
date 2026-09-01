@@ -102,6 +102,9 @@
     } else {
       url.searchParams.delete("code");
     }
+    // view 是配息資訊的子分頁參數（dividend-schedule.js 自己維護）。切到別的
+    // 主分頁時要清掉，否則網址會殘留一個對該頁毫無意義的參數。
+    if (tab !== "dividends") url.searchParams.delete("view");
     if (url.href === window.location.href) return;
     window.history[mode === "replace" ? "replaceState" : "pushState"](
       { popostock: true },

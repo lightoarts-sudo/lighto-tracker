@@ -30,7 +30,37 @@
   let loading = null;
   let active = false;
   let filter = "all";
-  let view = "calendar";
+  const VIEWS = new Set(["calendar", "table", "calc"]);
+  let view = viewFromUrl();
+
+  function viewFromUrl() {
+    try {
+      const value = new URL(window.location.href).searchParams.get("view");
+      return VIEWS.has(value) ? value : "calendar";
+    } catch (error) {
+      return "calendar";
+    }
+  }
+
+  /*
+   * 三個子分頁各有自己的網址（?tab=dividends&view=calendar|table|calc），
+   * 才分享得出去、也才能用上一頁回到前一個子分頁。
+   *
+   * 站台的 popostock-url-state.js 會在切換主分頁時重寫網址，但它是從現有
+   * 網址複製再改 tab／code，不會動 view，所以這裡只要負責自己那一個參數。
+   * 預設的行事曆不寫進網址，維持 ?tab=dividends 這個既有的乾淨連結。
+   */
+  function syncViewUrl(mode) {
+    try {
+      const url = new URL(window.location.href);
+      if (view === "calendar") url.searchParams.delete("view");
+      else url.searchParams.set("view", view);
+      if (url.href === window.location.href) return;
+      window.history[mode === "push" ? "pushState" : "replaceState"]({ popostock: true }, "", url);
+    } catch (error) {
+      /* 網址寫不進去不影響頁面 */
+    }
+  }
   // Starts empty on purpose: an all-checked calendar shows every ETF paying in
   // every month, which is the same as showing nothing.
   let selected = new Set();
@@ -543,9 +573,21 @@
       button.setAttribute("aria-selected", "false");
       button.classList.remove("is-active");
     });
+    view = viewFromUrl();
+    // 認不得的 view=xxx 會退回行事曆，網址也一併正規化，不留一個沒有作用的參數。
+    syncViewUrl("replace");
     render();
     load();
   }
+
+  // 上一頁／下一頁回到不同子分頁時要跟著換，否則網址變了畫面沒變。
+  window.addEventListener("popstate", () => {
+    if (!active) return;
+    const next = viewFromUrl();
+    if (next === view) return;
+    view = next;
+    render();
+  });
 
   function deactivate() {
     active = false;
@@ -600,6 +642,7 @@
       const viewBtn = event.target.closest?.("[" + PANEL_FLAG + "] .dividend-views button[data-view]");
       if (viewBtn) {
         view = viewBtn.dataset.view;
+        syncViewUrl("push");
         render();
         return;
       }
