@@ -237,6 +237,7 @@
         if (i.nextExDate) {
           const hint = [
             i.nextLastBuyDate ? "最後買進日 " + i.nextLastBuyDate : "",
+            i.nextRecordDate ? "基準日 " + i.nextRecordDate : "",
             i.nextPayDate ? "發放日 " + i.nextPayDate : "",
             i.nextSourceTier || "",
             i.nextSourceTitle || "",
