@@ -186,6 +186,7 @@
       ".dividend-calc td.cash{color:#12295c;font-weight:900}",
       ".dividend-calc tfoot td{border-top:2px solid #12295c;border-bottom:0;padding-top:11px;",
       "color:#12295c;font-weight:900;font-size:15px}",
+      ".dividend-calc input.edit{width:78px;text-align:right;padding:5px 8px;min-height:32px;font-size:13.5px}",
       ".dividend-calc .del{border:1px solid #f0c8c8;background:#fff;color:#d64038;font-size:12px;",
       "font-weight:900;border-radius:7px;padding:5px 11px;cursor:pointer}",
       ".dividend-calc .sum{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}",
@@ -350,6 +351,35 @@
     });
   }
 
+  /*
+   * 改張數時只重寫受影響的數字，不重畫整個面板——重畫會把使用者正在打字的
+   * 輸入框銷毀重建，游標會跳掉（退休計算機踩過同一個坑）。
+   */
+  function refreshCalcNumbers() {
+    const panel = ourPanel();
+    if (!panel) return;
+    const list = calcRows();
+    const totalCash = list.reduce((sum, r) => sum + r.cash, 0);
+    const totalValue = list.reduce((sum, r) => sum + (r.value || 0), 0);
+    list.forEach((r, index) => {
+      const row = panel.querySelector('[data-calc-row="' + index + '"]');
+      if (!row) return;
+      const put = (key, text) => {
+        const cell = row.querySelector('[data-cell="' + key + '"]');
+        if (cell) cell.textContent = text;
+      };
+      put("value", r.value === null ? "—" : money(r.value));
+      put("cash", r.cash ? money(r.cash) : "—");
+    });
+    const yieldText = totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—";
+    panel.querySelectorAll('[data-total="cash"]').forEach((n) => { n.textContent = money(totalCash); });
+    panel.querySelectorAll('[data-total="value"]').forEach((n) => { n.textContent = money(totalValue); });
+    panel.querySelectorAll('[data-total="yield"]').forEach((n) => { n.textContent = yieldText; });
+    panel.querySelectorAll('[data-total="monthly"]').forEach((n) => {
+      n.textContent = money(totalCash / 12);
+    });
+  }
+
   function renderCalc() {
     const options = (payload?.instruments || [])
       .slice()
@@ -370,12 +400,13 @@
               num(r.perUnit, 3) + " 元 × " + r.times + "／" + r.trailingCount + "</b>"
             : "";
         return (
-          "<tr>" +
+          '<tr data-calc-row="' + index + '">' +
           '<td class="nm">' + r.name + "<i>" + r.code + "</i>" + flag + "</td>" +
-          '<td class="n">' + r.lots.toLocaleString("en-US") + " 張</td>" +
-          '<td class="n">' + (r.value === null ? "—" : money(r.value)) + "</td>" +
+          '<td class="n"><input type="number" min="0" step="1" class="edit" ' +
+          'data-calc-edit="' + index + '" value="' + r.lots + '"> 張</td>' +
+          '<td class="n" data-cell="value">' + (r.value === null ? "—" : money(r.value)) + "</td>" +
           '<td class="n">' + (r.annual ? num(r.annual, 3) : "—") + "</td>" +
-          '<td class="n cash">' + (r.cash ? money(r.cash) : "—") + "</td>" +
+          '<td class="n cash" data-cell="cash">' + (r.cash ? money(r.cash) : "—") + "</td>" +
           '<td class="n">' + (r.yieldPct === null ? "—" : num(r.yieldPct, 2) + "%") + "</td>" +
           '<td class="n"><button type="button" class="del" data-calc-del="' + index + '">刪除</button></td>' +
           "</tr>"
@@ -399,16 +430,17 @@
           "<th class=\"n\">整年每單位</th><th class=\"n\">整年配息</th>" +
           "<th class=\"n\">推估整年殖利率</th><th></th></tr></thead><tbody>" + body +
           '</tbody><tfoot><tr><td colspan="2">合計</td>' +
-          '<td class="n">' + money(totalValue) + "</td><td></td>" +
-          '<td class="n">' + money(totalCash) + "</td>" +
-          '<td class="n">' + (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") + "</td>" +
+          '<td class="n" data-total="value">' + money(totalValue) + "</td><td></td>" +
+          '<td class="n" data-total="cash">' + money(totalCash) + "</td>" +
+          '<td class="n" data-total="yield">' +
+          (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") + "</td>" +
           "<td></td></tr></tfoot></table></div>" +
           '<div class="sum">' +
-          "<div><b>" + money(totalCash) + "</b><span>整年配息合計（元）" +
+          '<div><b data-total="cash">' + money(totalCash) + "</b><span>整年配息合計（元）" +
           (estimated ? "・含推估" : "") + "</span></div>" +
-          "<div><b>" + money(totalCash / 12) + "</b><span>平均每月（元）</span></div>" +
-          "<div><b>" + money(totalValue) + "</b><span>持股市值（元）</span></div>" +
-          "<div><b>" +
+          '<div><b data-total="monthly">' + money(totalCash / 12) + "</b><span>平均每月（元）</span></div>" +
+          '<div><b data-total="value">' + money(totalValue) + "</b><span>持股市值（元）</span></div>" +
+          '<div><b data-total="yield">' +
           (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") +
           "</b><span>推估整年綜合殖利率</span></div></div>"
         : '<div class="empty">還沒有持股。上面選一檔 ETF、填張數，就會算出近一年大概配多少。</div>') +
@@ -717,9 +749,27 @@
     ourPanel()?.querySelector("[data-calc-pick]")?.focus();
   }
 
+  document.addEventListener("input", (event) => {
+    const edit = event.target.closest?.("[" + PANEL_FLAG + "] [data-calc-edit]");
+    if (!edit) return;
+    const index = Number(edit.dataset.calcEdit);
+    if (!holdings[index]) return;
+    // 清空欄位當成 0 參與試算，但不覆寫使用者正在打的內容。
+    const value = edit.value === "" ? 0 : Number(edit.value);
+    if (!isFinite(value) || value < 0) return;
+    holdings[index].lots = value;
+    saveHoldings();
+    refreshCalcNumbers();
+  });
+
   // Enter 直接加入，不用移到按鈕；輸入框在表單之外，沒有原生 submit 可用。
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
+    // 在張數欄位按 Enter 只是收工，不該再加一筆新持股。
+    if (event.target.closest?.("[" + PANEL_FLAG + "] [data-calc-edit]")) {
+      event.target.blur();
+      return;
+    }
     const field = event.target.closest?.(
       "[" + PANEL_FLAG + "] [data-calc-pick], [" + PANEL_FLAG + "] [data-calc-lots]",
     );
