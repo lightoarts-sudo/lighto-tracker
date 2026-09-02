@@ -11,36 +11,15 @@
   "summary": {
     "total": 50,
     "added": 0,
-    "increased": 2,
-    "decreased": 4,
+    "increased": 1,
+    "decreased": 5,
     "removed": 0,
     "pricedChanged": 6,
     "unpricedChanged": 0,
-    "buyAmountTwd": 3494704600,
-    "sellAmountTwd": 933750000
+    "buyAmountTwd": 355150000,
+    "sellAmountTwd": 933766380
   },
   "holdings": [
-    {
-      "rank": 6,
-      "stockCode": "6669",
-      "stockName": "緯穎",
-      "heldLots": 1730.02,
-      "lotChange": 1150.02,
-      "weightPct": 5.596,
-      "weightChangePct": 2.53,
-      "closePrice": 2610.0,
-      "highPrice": 2875.0,
-      "lowPrice": 2585.0,
-      "averagePrice": 2730.0,
-      "priceDate": "2026-09-02",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 3001552200,
-      "averageAmountTwd": 3139554600,
-      "amountTwd": 3139554600,
-      "action": "increase",
-      "declaredName": "緯穎科技"
-    },
     {
       "rank": 15,
       "stockCode": "5274",
@@ -145,6 +124,27 @@
       "amountTwd": -115750000,
       "action": "decrease",
       "declaredName": "鴻勁精密"
+    },
+    {
+      "rank": 6,
+      "stockCode": "6669",
+      "stockName": "緯穎",
+      "heldLots": 1730.02,
+      "lotChange": -0.006,
+      "weightPct": 5.596,
+      "weightChangePct": 2.53,
+      "closePrice": 2610.0,
+      "highPrice": 2875.0,
+      "lowPrice": 2585.0,
+      "averagePrice": 2730.0,
+      "priceDate": "2026-09-02",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
+      "closeAmountTwd": -15660,
+      "averageAmountTwd": -16380,
+      "amountTwd": -16380,
+      "action": "decrease",
+      "declaredName": "緯穎科技"
     },
     {
       "rank": 1,

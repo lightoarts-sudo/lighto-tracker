@@ -11,35 +11,15 @@
   "summary": {
     "total": 40,
     "added": 0,
-    "increased": 1,
-    "decreased": 1,
+    "increased": 0,
+    "decreased": 2,
     "removed": 0,
     "pricedChanged": 2,
     "unpricedChanged": 0,
-    "buyAmountTwd": 416802750,
-    "sellAmountTwd": 385375000
+    "buyAmountTwd": 0,
+    "sellAmountTwd": 385377730
   },
   "holdings": [
-    {
-      "rank": 23,
-      "stockCode": "6669",
-      "stockName": "緯穎",
-      "heldLots": 229.675,
-      "lotChange": 152.675,
-      "weightPct": 1.4009,
-      "weightChangePct": 1.8,
-      "closePrice": 2610.0,
-      "highPrice": 2875.0,
-      "lowPrice": 2585.0,
-      "averagePrice": 2730.0,
-      "priceDate": "2026-09-02",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 398481750,
-      "averageAmountTwd": 416802750,
-      "amountTwd": 416802750,
-      "action": "increase"
-    },
     {
       "rank": 8,
       "stockCode": "3008",
@@ -58,6 +38,26 @@
       "closeAmountTwd": -390500000,
       "averageAmountTwd": -385375000,
       "amountTwd": -385375000,
+      "action": "decrease"
+    },
+    {
+      "rank": 23,
+      "stockCode": "6669",
+      "stockName": "緯穎",
+      "heldLots": 229.675,
+      "lotChange": -0.001,
+      "weightPct": 1.4009,
+      "weightChangePct": 1.8,
+      "closePrice": 2610.0,
+      "highPrice": 2875.0,
+      "lowPrice": 2585.0,
+      "averagePrice": 2730.0,
+      "priceDate": "2026-09-02",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
+      "closeAmountTwd": -2610,
+      "averageAmountTwd": -2730,
+      "amountTwd": -2730,
       "action": "decrease"
     },
     {

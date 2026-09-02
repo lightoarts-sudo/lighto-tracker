@@ -11,13 +11,13 @@
   "summary": {
     "total": 57,
     "added": 0,
-    "increased": 1,
-    "decreased": 31,
+    "increased": 0,
+    "decreased": 32,
     "removed": 0,
     "pricedChanged": 32,
     "unpricedChanged": 0,
-    "buyAmountTwd": 2405744250,
-    "sellAmountTwd": 206099550
+    "buyAmountTwd": 0,
+    "sellAmountTwd": 561013200
   },
   "holdings": [
     {
@@ -25,7 +25,7 @@
       "stockCode": "6669",
       "stockName": "緯穎",
       "heldLots": 1391.225,
-      "lotChange": 881.225,
+      "lotChange": -130.005,
       "weightPct": 7.0185,
       "weightChangePct": -6.54,
       "closePrice": 2610.0,
@@ -35,10 +35,10 @@
       "priceDate": "2026-09-02",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 2299997250,
-      "averageAmountTwd": 2405744250,
-      "amountTwd": 2405744250,
-      "action": "increase"
+      "closeAmountTwd": -339313050,
+      "averageAmountTwd": -354913650,
+      "amountTwd": -354913650,
+      "action": "decrease"
     },
     {
       "rank": 3,

@@ -11,12 +11,12 @@
   "summary": {
     "total": 126,
     "added": 0,
-    "increased": 17,
+    "increased": 16,
     "decreased": 0,
     "removed": 4,
-    "pricedChanged": 21,
+    "pricedChanged": 20,
     "unpricedChanged": 0,
-    "buyAmountTwd": 112787938,
+    "buyAmountTwd": 84275938,
     "sellAmountTwd": 139793565
   },
   "holdings": [
@@ -79,27 +79,6 @@
       "averageAmountTwd": -44454150,
       "amountTwd": -44454150,
       "action": "removed"
-    },
-    {
-      "rank": 81,
-      "stockCode": "5904",
-      "stockName": "寶雅",
-      "heldLots": 400,
-      "lotChange": 360,
-      "weightPct": 0.32,
-      "weightChangePct": 6.67,
-      "closePrice": 79.2,
-      "highPrice": 79.2,
-      "lowPrice": 79.2,
-      "averagePrice": 79.2,
-      "priceDate": "2026-08-10",
-      "market": "TPEx",
-      "priceSourceUrl": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?l=zh-tw&d=115%2F08%2F10&s=0%2Casc%2C0",
-      "closeAmountTwd": 28512000,
-      "averageAmountTwd": 28512000,
-      "amountTwd": 28512000,
-      "action": "increase",
-      "declaredName": "寶雅*"
     },
     {
       "rank": 6,
@@ -1823,6 +1802,27 @@
       "averageAmountTwd": null,
       "amountTwd": null,
       "action": "hold"
+    },
+    {
+      "rank": 81,
+      "stockCode": "5904",
+      "stockName": "寶雅",
+      "heldLots": 400,
+      "lotChange": 0,
+      "weightPct": 0.32,
+      "weightChangePct": 6.67,
+      "closePrice": null,
+      "highPrice": null,
+      "lowPrice": null,
+      "averagePrice": null,
+      "priceDate": null,
+      "market": null,
+      "priceSourceUrl": null,
+      "closeAmountTwd": null,
+      "averageAmountTwd": null,
+      "amountTwd": null,
+      "action": "hold",
+      "declaredName": "寶雅*"
     },
     {
       "rank": 82,

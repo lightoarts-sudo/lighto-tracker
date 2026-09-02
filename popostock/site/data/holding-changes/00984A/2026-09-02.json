@@ -11,35 +11,15 @@
   "summary": {
     "total": 164,
     "added": 0,
-    "increased": 2,
-    "decreased": 0,
+    "increased": 1,
+    "decreased": 1,
     "removed": 0,
     "pricedChanged": 2,
     "unpricedChanged": 0,
-    "buyAmountTwd": 81844152,
-    "sellAmountTwd": 0
+    "buyAmountTwd": 651222,
+    "sellAmountTwd": 2730
   },
   "holdings": [
-    {
-      "rank": 16,
-      "stockCode": "6669",
-      "stockName": "緯穎",
-      "heldLots": 44.741,
-      "lotChange": 29.741,
-      "weightPct": 1.16,
-      "weightChangePct": 0.87,
-      "closePrice": 2610.0,
-      "highPrice": 2875.0,
-      "lowPrice": 2585.0,
-      "averagePrice": 2730.0,
-      "priceDate": "2026-09-02",
-      "market": "TWSE",
-      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 77624010,
-      "averageAmountTwd": 81192930,
-      "amountTwd": 81192930,
-      "action": "increase"
-    },
     {
       "rank": 62,
       "stockCode": "2845",
@@ -60,6 +40,26 @@
       "amountTwd": 651222,
       "action": "increase",
       "declaredName": "遠東銀行"
+    },
+    {
+      "rank": 16,
+      "stockCode": "6669",
+      "stockName": "緯穎",
+      "heldLots": 44.741,
+      "lotChange": -0.001,
+      "weightPct": 1.16,
+      "weightChangePct": 0.87,
+      "closePrice": 2610.0,
+      "highPrice": 2875.0,
+      "lowPrice": 2585.0,
+      "averagePrice": 2730.0,
+      "priceDate": "2026-09-02",
+      "market": "TWSE",
+      "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
+      "closeAmountTwd": -2610,
+      "averageAmountTwd": -2730,
+      "amountTwd": -2730,
+      "action": "decrease"
     },
     {
       "rank": 1,

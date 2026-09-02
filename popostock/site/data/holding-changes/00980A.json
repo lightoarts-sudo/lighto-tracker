@@ -11,13 +11,13 @@
   "summary": {
     "total": 50,
     "added": 0,
-    "increased": 1,
-    "decreased": 0,
+    "increased": 0,
+    "decreased": 1,
     "removed": 0,
     "pricedChanged": 1,
     "unpricedChanged": 0,
-    "buyAmountTwd": 281476650,
-    "sellAmountTwd": 0
+    "buyAmountTwd": 0,
+    "sellAmountTwd": 2730
   },
   "holdings": [
     {
@@ -25,7 +25,7 @@
       "stockCode": "6669",
       "stockName": "緯穎",
       "heldLots": 155.105,
-      "lotChange": 103.105,
+      "lotChange": -0.001,
       "weightPct": 2.02,
       "weightChangePct": 2.02,
       "closePrice": 2610.0,
@@ -35,10 +35,10 @@
       "priceDate": "2026-09-02",
       "market": "TWSE",
       "priceSourceUrl": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20260902&type=ALLBUT0999&response=json",
-      "closeAmountTwd": 269104050,
-      "averageAmountTwd": 281476650,
-      "amountTwd": 281476650,
-      "action": "increase",
+      "closeAmountTwd": -2610,
+      "averageAmountTwd": -2730,
+      "amountTwd": -2730,
+      "action": "decrease",
       "declaredName": "緯穎科技服務"
     },
     {
