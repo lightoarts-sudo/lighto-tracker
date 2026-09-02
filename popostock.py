@@ -159,6 +159,7 @@ CREATE TABLE IF NOT EXISTS popostock_picks (
     exit_price NUMERIC,
     entry_image BYTEA,
     entry_image_type TEXT,
+    stop_loss_price NUMERIC,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -170,6 +171,7 @@ ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS stock_name TEXT;
 ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS observed_date DATE;
 ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS entry_image BYTEA;
 ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS entry_image_type TEXT;
+ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS stop_loss_price NUMERIC;
 ALTER TABLE popostock_picks ALTER COLUMN entry_date DROP NOT NULL;
 ALTER TABLE popostock_picks ALTER COLUMN entry_price DROP NOT NULL;
 """
@@ -284,6 +286,10 @@ PICKS_PAGE_HTML = """<!doctype html>
     </div>
     <div class="row">
       <div>
+        <label>停損價格（選填）</label>
+        <input id="f-stoploss" type="number" step="0.01" placeholder="例：95">
+      </div>
+      <div>
         <label>觀察到的圖檔（選填）</label>
         <input id="f-image" type="file" accept="image/*">
       </div>
@@ -292,16 +298,16 @@ PICKS_PAGE_HTML = """<!doctype html>
     <div id="add-msg"></div>
   </div>
 
-  <div class="card" style="max-width:1040px;">
+  <div class="card" style="max-width:1100px;">
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
             <th>進場日</th><th>股號</th><th>名稱</th><th>理由</th>
-            <th>進場價</th><th>現價/出場價</th><th>報酬率</th><th>狀態</th><th></th>
+            <th>進場價</th><th>停損價</th><th>現價/出場價</th><th>報酬率</th><th>狀態</th><th></th>
           </tr>
         </thead>
-        <tbody id="rows"><tr><td colspan="9" class="empty">載入中...</td></tr></tbody>
+        <tbody id="rows"><tr><td colspan="10" class="empty">載入中...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -367,11 +373,13 @@ async function addPick() {
     msg.textContent = "圖檔讀取失敗。";
     return;
   }
+  const stopLossRaw = document.getElementById("f-stoploss").value.trim();
   const body = {
     password: ADMIN_PWD,
     date: document.getElementById("f-date").value,
     stockCode: document.getElementById("f-code").value.trim(),
     reason: document.getElementById("f-reason").value.trim(),
+    stopLossPrice: stopLossRaw ? Number(stopLossRaw) : null,
     image: imageDataUrl,
   };
   if (!body.date || !body.stockCode) {
@@ -393,6 +401,7 @@ async function addPick() {
       : `已新增，觀察日 ${data.observedDate}。進場價還查不到，會在你重新打開這頁時自動補上。`;
     document.getElementById("f-code").value = "";
     document.getElementById("f-reason").value = "";
+    document.getElementById("f-stoploss").value = "";
     document.getElementById("f-image").value = "";
     load();
   } catch (e) {
@@ -444,7 +453,7 @@ function toggleDetail(id, evt) {
   render();
 }
 
-function drawCandles(canvas, candles, entryDate, dimAfterEntry) {
+function drawCandles(canvas, candles, entryDate, dimAfterEntry, stopLossPrice) {
   const ctx = canvas.getContext("2d");
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -458,16 +467,40 @@ function drawCandles(canvas, candles, entryDate, dimAfterEntry) {
     ctx.fillText("沒有可顯示的K線資料", 10, h / 2);
     return;
   }
-  const pad = { top: 10, bottom: 18, left: 6, right: 6 };
+  const pad = { top: 10, bottom: 18, left: 54, right: 10 };
   const plotW = w - pad.left - pad.right;
   const plotH = h - pad.top - pad.bottom;
-  const lo = Math.min(...candles.map(c => c.low));
-  const hi = Math.max(...candles.map(c => c.high));
+  let lo = Math.min(...candles.map(c => c.low));
+  let hi = Math.max(...candles.map(c => c.high));
+  if (stopLossPrice !== null && stopLossPrice !== undefined) {
+    lo = Math.min(lo, stopLossPrice);
+    hi = Math.max(hi, stopLossPrice);
+  }
   const span = (hi - lo) || 1;
   const n = candles.length;
   const slot = plotW / n;
   const bodyW = Math.max(2, slot * 0.6);
   const y = v => pad.top + plotH - ((v - lo) / span) * plotH;
+
+  // Price axis: a handful of evenly spaced gridlines with labels.
+  const steps = 4;
+  ctx.strokeStyle = "#eef1fa";
+  ctx.fillStyle = "#9aa8c7";
+  ctx.font = "10px sans-serif";
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  for (let i = 0; i <= steps; i++) {
+    const price = lo + (span * i) / steps;
+    const yy = y(price);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, yy);
+    ctx.lineTo(w - pad.right, yy);
+    ctx.stroke();
+    ctx.fillText(price.toFixed(price < 100 ? 2 : 1), pad.left - 6, yy);
+  }
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+
   candles.forEach((c, i) => {
     const x = pad.left + i * slot + slot / 2;
     const dimmed = dimAfterEntry && c.date >= entryDate;
@@ -484,6 +517,7 @@ function drawCandles(canvas, candles, entryDate, dimAfterEntry) {
     ctx.fillRect(x - bodyW / 2, top, bodyW, bh);
   });
   ctx.globalAlpha = 1;
+
   if (entryDate) {
     const idx = candles.findIndex(c => c.date >= entryDate);
     if (idx >= 0) {
@@ -496,6 +530,20 @@ function drawCandles(canvas, candles, entryDate, dimAfterEntry) {
       ctx.stroke();
       ctx.setLineDash([]);
     }
+  }
+
+  if (stopLossPrice !== null && stopLossPrice !== undefined) {
+    const yy = y(stopLossPrice);
+    ctx.strokeStyle = "#3b6bd6";
+    ctx.setLineDash([6, 3]);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, yy);
+    ctx.lineTo(w - pad.right, yy);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#3b6bd6";
+    ctx.font = "10px sans-serif";
+    ctx.fillText(`停損 ${stopLossPrice}`, pad.left + 4, yy - 4);
   }
 }
 
@@ -527,7 +575,7 @@ async function loadDetail(pick) {
     </div>`;
   const canvas = document.getElementById(`canvas-${pick.id}`);
   const checkbox = document.getElementById(`dim-${pick.id}`);
-  const redraw = () => drawCandles(canvas, data.candles, data.entryDate, checkbox.checked);
+  const redraw = () => drawCandles(canvas, data.candles, data.entryDate, checkbox.checked, data.stopLossPrice);
   checkbox.addEventListener("change", redraw);
   window.addEventListener("resize", redraw);
   redraw();
@@ -538,10 +586,47 @@ function toggleImage(id) {
   if (img) img.style.display = img.style.display === "block" ? "none" : "block";
 }
 
+async function patchPick(id, patch) {
+  const res = await fetch(`/popostock/api/picks/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ password: ADMIN_PWD, ...patch }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.detail || "更新失敗");
+  return data;
+}
+
+async function editReason(id, current, evt) {
+  evt.stopPropagation();
+  if (!ADMIN_PWD) return;
+  const next = prompt("修改理由：", current || "");
+  if (next === null) return;
+  try {
+    await patchPick(id, { reason: next.trim() });
+    load();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function editStopLoss(id, current, evt) {
+  evt.stopPropagation();
+  if (!ADMIN_PWD) return;
+  const next = prompt("修改停損價格（留空可清除）：", current ?? "");
+  if (next === null) return;
+  try {
+    await patchPick(id, { stopLossPrice: next.trim() === "" ? null : Number(next) });
+    load();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
 function render() {
   const tbody = document.getElementById("rows");
   if (!PICKS.length) {
-    tbody.innerHTML = '<tr><td colspan="9" class="empty">尚無追蹤中的股票</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="10" class="empty">尚無追蹤中的股票</td></tr>';
     return;
   }
   tbody.innerHTML = PICKS.map(p => {
@@ -560,19 +645,26 @@ function render() {
           : `<button class="btn-danger" onclick="deletePick(${p.id})">刪除</button>`)
       : "";
     const dateCol = p.entryDate || `${p.observedDate}（觀察，進場待定）`;
+    const reasonCell = ADMIN_PWD
+      ? `${esc(p.reason)} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editReason(${p.id}, ${JSON.stringify(p.reason || "")}, event)">✎</button>`
+      : esc(p.reason);
+    const stopLossCell = ADMIN_PWD
+      ? `${p.stopLossPrice ?? "-"} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editStopLoss(${p.id}, ${p.stopLossPrice ?? "null"}, event)">✎</button>`
+      : (p.stopLossPrice ?? "-");
     const mainRow = `<tr class="pick-row" onclick="toggleDetail(${p.id}, event)">
       <td>${dateCol}</td>
       <td>${esc(p.stockCode)}</td>
       <td>${esc(p.stockName) || "-"}</td>
-      <td class="reason">${esc(p.reason)}</td>
+      <td class="reason">${reasonCell}</td>
       <td>${pending ? "-" : p.entryPrice}</td>
+      <td>${stopLossCell}</td>
       <td>${pending ? "-" : priceCol}</td>
       <td>${fmtPct(p.returnPct)}</td>
       <td>${tag}</td>
       <td>${actions}</td>
     </tr>`;
     if (EXPANDED_ID !== p.id) return mainRow;
-    return mainRow + `<tr><td colspan="9" class="detail-cell"><div id="detail-${p.id}"></div></td></tr>`;
+    return mainRow + `<tr><td colspan="10" class="detail-cell"><div id="detail-${p.id}"></div></td></tr>`;
   }).join("");
   if (EXPANDED_ID !== null) {
     const pick = PICKS.find(p => p.id === EXPANDED_ID);
@@ -587,7 +679,7 @@ async function load() {
     render();
   } catch (e) {
     document.getElementById("rows").innerHTML =
-      '<tr><td colspan="9" class="empty">載入失敗，請重新整理</td></tr>';
+      '<tr><td colspan="10" class="empty">載入失敗，請重新整理</td></tr>';
   }
 }
 
@@ -872,6 +964,7 @@ def _picks_row(row: asyncpg.Record) -> dict[str, Any]:
         "exitDate": row["exit_date"].isoformat() if row["exit_date"] else None,
         "exitPrice": _number(row["exit_price"]),
         "hasImage": row["entry_image"] is not None,
+        "stopLossPrice": _number(row["stop_loss_price"]),
     }
 
 
@@ -1497,6 +1590,14 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
             raise HTTPException(status_code=400, detail="日期不可以是未來")
         reason = str(body.get("reason", "")).strip() or None
 
+        stop_loss_price: float | None = None
+        raw_stop_loss = body.get("stopLossPrice")
+        if raw_stop_loss not in (None, ""):
+            try:
+                stop_loss_price = float(raw_stop_loss)
+            except (TypeError, ValueError):
+                raise HTTPException(status_code=400, detail="停損價格格式不正確")
+
         # `date` is the day the pick was observed after market close, so the
         # earliest it could realistically have been bought is the *next*
         # trading day's open — not that day's own close. Never block the save
@@ -1533,13 +1634,55 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 """
                 INSERT INTO popostock_picks (
                     stock_code, stock_name, reason, observed_date,
-                    entry_date, entry_price, entry_image, entry_image_type
+                    entry_date, entry_price, entry_image, entry_image_type,
+                    stop_loss_price
                 )
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
                 RETURNING *
                 """,
                 code, stock_name, reason, observed_date,
                 entry_date, entry_price, image_bytes, image_type,
+                stop_loss_price,
+            )
+        return JSONResponse(_picks_row(row))
+
+    @app.patch("/popostock/api/picks/{pick_id}")
+    async def popostock_picks_update(pick_id: int, request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        body = await request.json()
+        if str(body.get("password", "")) != PICKS_ADMIN_PASSWORD:
+            raise HTTPException(status_code=401, detail="密碼錯誤")
+
+        async with pool.acquire() as conn:
+            existing = await conn.fetchrow(
+                "SELECT * FROM popostock_picks WHERE id = $1", pick_id
+            )
+            if not existing:
+                raise HTTPException(status_code=404, detail="找不到這筆紀錄")
+
+            reason = existing["reason"]
+            if "reason" in body:
+                reason = str(body["reason"]).strip() or None
+
+            stop_loss_price = existing["stop_loss_price"]
+            if "stopLossPrice" in body:
+                raw = body["stopLossPrice"]
+                if raw in (None, ""):
+                    stop_loss_price = None
+                else:
+                    try:
+                        stop_loss_price = float(raw)
+                    except (TypeError, ValueError):
+                        raise HTTPException(status_code=400, detail="停損價格格式不正確")
+
+            row = await conn.fetchrow(
+                """
+                UPDATE popostock_picks
+                SET reason = $2, stop_loss_price = $3, updated_at = NOW()
+                WHERE id = $1
+                RETURNING *
+                """,
+                pick_id, reason, stop_loss_price,
             )
         return JSONResponse(_picks_row(row))
 
@@ -1618,9 +1761,12 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
             )
         if not row:
             raise HTTPException(status_code=404, detail="找不到這筆紀錄")
+        # Show the whole picture, not a narrow slice: well before entry so the
+        # setup that was observed is visible, and all the way to today even
+        # for an exited pick, so the exit decision can be judged in hindsight.
         anchor = row["entry_date"] or row["observed_date"] or date.today()
-        start = anchor - timedelta(days=35)
-        end = row["exit_date"] or date.today()
+        start = anchor - timedelta(days=120)
+        end = date.today()
         candles = await _picks_candles_since(row["stock_code"], start, end)
         return JSONResponse(
             {
@@ -1628,6 +1774,7 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 "stockName": row["stock_name"],
                 "entryDate": row["entry_date"].isoformat() if row["entry_date"] else None,
                 "exitDate": row["exit_date"].isoformat() if row["exit_date"] else None,
+                "stopLossPrice": _number(row["stop_loss_price"]),
                 "candles": candles,
             }
         )
