@@ -149,6 +149,13 @@
       ".dividend-cal label{display:flex;align-items:center;gap:8px;cursor:pointer}",
       ".dividend-cal input{width:15px;height:15px;accent-color:#12295c;flex:none;margin:0}",
       ".dividend-cal .code{color:#8b98ab;font-weight:700;font-size:12px}",
+      // 行事曆同時列被動與主動 ETF，但只有主動掛標籤：兩者都標等於每一列都有
+      // 一塊底色，反而看不出差別。標籤放在名稱那一段之內，不影響 .dy/.ytd
+      // 靠 margin-left:auto 推到右側的排版。
+      ".dividend-cal .dividend-tag{margin-left:6px;font-size:11px;padding:1px 7px;",
+      "vertical-align:1px}",
+      // 未勾選的列整體轉灰，標籤若維持原本的橘底會比基金名稱還搶眼。
+      ".dividend-cal tr.off .dividend-tag{background:#eef1f5;color:#a8b3c4}",
       ".dividend-cal td.hit{background:#fffbe9}",
       ".dividend-cal td.dim{color:#dfe5ee}",
       ".dividend-cal td.hit.plan{background:#f6f8fc}",
@@ -348,7 +355,11 @@
         return (
           '<tr class="' + (on ? "" : "off") + '"><td class="who"><label>' +
           '<input type="checkbox" data-code="' + i.code + '"' + (on ? " checked" : "") + ">" +
-          "<span>" + i.name + ' <span class="code">' + i.code + "</span></span>" +
+          "<span>" + i.name + ' <span class="code">' + i.code + "</span>" +
+          (i.group === "activeEtfs"
+            ? '<span class="dividend-tag act">' + i.groupLabel + "</span>"
+            : "") +
+          "</span>" +
           dy + perf + "</label></td>" + cells + "</tr>"
         );
       })
