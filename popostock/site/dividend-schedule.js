@@ -376,7 +376,8 @@
 
   // 每年配幾次，用來判斷近十二個月的紀錄是否已經走完一輪。走不完一輪就不能
   // 把 trailingAmount 當成「一年配多少」，新掛牌的 ETF 會被嚴重低估。
-  const CADENCE_TIMES = { "月配": 12, "季配": 4, "半年配": 2, "年配": 1 };
+  // 「首次配息」「不定期」「尚未配息」刻意不列：次數不確定，年化只會是猜的。
+  const CADENCE_TIMES = { "月配": 12, "雙月配": 6, "季配": 4, "半年配": 2, "年配": 1 };
 
   function money(value) {
     return Math.round(value).toLocaleString("en-US");

@@ -32769,9 +32769,137 @@
       "holdings": []
     },
     {
-      "id": "00877",
+      "id": "00702",
       "group": "passiveEtfs",
       "groupRank": 68,
+      "code": "00702",
+      "name": "國泰標普低波高息",
+      "category": "美國標普低波高息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "國泰投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2017/08/17"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國標普低波高息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00730",
+      "group": "passiveEtfs",
+      "groupRank": 69,
+      "code": "00730",
+      "name": "富邦臺灣優質高息",
+      "category": "台灣優質高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "富邦投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2018/02/08"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣優質高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00731",
+      "group": "passiveEtfs",
+      "groupRank": 70,
+      "code": "00731",
+      "name": "復華富時高息低波",
+      "category": "台灣高息低波動",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "復華投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2018/04/20"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣高息低波動"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00771",
+      "group": "passiveEtfs",
+      "groupRank": 71,
+      "code": "00771",
+      "name": "元大US高息特別股",
+      "category": "美國高息特別股",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "元大投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2019/05/16"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國高息特別股"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00877",
+      "group": "passiveEtfs",
+      "groupRank": 72,
       "code": "00877",
       "name": "FH中國5G",
       "category": "中國 5G",
@@ -32814,9 +32942,137 @@
       "holdings": []
     },
     {
+      "id": "00882",
+      "group": "passiveEtfs",
+      "groupRank": 73,
+      "code": "00882",
+      "name": "中信中國高股息",
+      "category": "中國高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2021/02/04"
+        },
+        {
+          "label": "基金類型",
+          "value": "中國高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00907",
+      "group": "passiveEtfs",
+      "groupRank": 74,
+      "code": "00907",
+      "name": "永豐優息存股",
+      "category": "台灣優息存股",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "永豐投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2022/05/24"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣優息存股"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00915",
+      "group": "passiveEtfs",
+      "groupRank": 75,
+      "code": "00915",
+      "name": "凱基優選高股息30",
+      "category": "台灣優選高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "凱基投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2022/08/09"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣優選高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00926",
+      "group": "passiveEtfs",
+      "groupRank": 76,
+      "code": "00926",
+      "name": "凱基全球菁英55",
+      "category": "全球菁英 55",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "凱基投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/06/02"
+        },
+        {
+          "label": "基金類型",
+          "value": "全球菁英 55"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
       "id": "00928",
       "group": "passiveEtfs",
-      "groupRank": 69,
+      "groupRank": 77,
       "code": "00928",
       "name": "中信上櫃ESG 30",
       "category": "台灣上櫃 ESG",
@@ -32856,6 +33112,358 @@
         "date": "2026/09/01",
         "priceOrNav": "33.88 TWD"
       },
+      "holdings": []
+    },
+    {
+      "id": "00930",
+      "group": "passiveEtfs",
+      "groupRank": 78,
+      "code": "00930",
+      "name": "永豐ESG低碳高息",
+      "category": "台灣 ESG 低碳高息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "永豐投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/07/13"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣 ESG 低碳高息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00932",
+      "group": "passiveEtfs",
+      "groupRank": 79,
+      "code": "00932",
+      "name": "兆豐永續高息等權",
+      "category": "台灣永續高息等權",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "兆豐投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/09/01"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣永續高息等權"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00934",
+      "group": "passiveEtfs",
+      "groupRank": 80,
+      "code": "00934",
+      "name": "中信成長高股息",
+      "category": "台灣成長高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/11/01"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣成長高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00936",
+      "group": "passiveEtfs",
+      "groupRank": 81,
+      "code": "00936",
+      "name": "台新永續高息中小",
+      "category": "台灣永續高息中小",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "台新投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/11/08"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣永續高息中小"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00943",
+      "group": "passiveEtfs",
+      "groupRank": 82,
+      "code": "00943",
+      "name": "兆豐電子高息等權",
+      "category": "台灣電子高息等權",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "兆豐投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/05/20"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣電子高息等權"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00944",
+      "group": "passiveEtfs",
+      "groupRank": 83,
+      "code": "00944",
+      "name": "野村趨勢動能高息",
+      "category": "台灣趨勢動能高息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "野村投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/05/09"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣趨勢動能高息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00956",
+      "group": "passiveEtfs",
+      "groupRank": 84,
+      "code": "00956",
+      "name": "中信日經高股息",
+      "category": "日本高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/08/20"
+        },
+        {
+          "label": "基金類型",
+          "value": "日本高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00961",
+      "group": "passiveEtfs",
+      "groupRank": 85,
+      "code": "00961",
+      "name": "FT臺灣永續高息",
+      "category": "台灣永續高息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "富蘭克林華美投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/10/15"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣永續高息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00963",
+      "group": "passiveEtfs",
+      "groupRank": 86,
+      "code": "00963",
+      "name": "中信全球高股息",
+      "category": "全球高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/11/14"
+        },
+        {
+          "label": "基金類型",
+          "value": "全球高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00964",
+      "group": "passiveEtfs",
+      "groupRank": 87,
+      "code": "00964",
+      "name": "中信亞太高股息",
+      "category": "亞太高股息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/11/14"
+        },
+        {
+          "label": "基金類型",
+          "value": "亞太高股息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00972",
+      "group": "passiveEtfs",
+      "groupRank": 88,
+      "code": "00972",
+      "name": "野村日本動能高息",
+      "category": "日本動能高息",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "野村投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2025/01/09"
+        },
+        {
+          "label": "基金類型",
+          "value": "日本動能高息"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
       "holdings": []
     }
   ],
@@ -33981,6 +34589,158 @@
       "createdAt": "2026-07-22"
     },
     {
+      "id": "ref-passive-nav-00702",
+      "targetKey": "item:00702",
+      "title": "00702 國泰標普低波高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00702",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00730",
+      "targetKey": "item:00730",
+      "title": "00730 富邦臺灣優質高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00730",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00731",
+      "targetKey": "item:00731",
+      "title": "00731 復華富時高息低波 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00731",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00771",
+      "targetKey": "item:00771",
+      "title": "00771 元大US高息特別股 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00771",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00882",
+      "targetKey": "item:00882",
+      "title": "00882 中信中國高股息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00882",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00907",
+      "targetKey": "item:00907",
+      "title": "00907 永豐優息存股 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00907",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00915",
+      "targetKey": "item:00915",
+      "title": "00915 凱基優選高股息30 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00915",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00926",
+      "targetKey": "item:00926",
+      "title": "00926 凱基全球菁英55 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00926",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00930",
+      "targetKey": "item:00930",
+      "title": "00930 永豐ESG低碳高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00930",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00932",
+      "targetKey": "item:00932",
+      "title": "00932 兆豐永續高息等權 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00932",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00934",
+      "targetKey": "item:00934",
+      "title": "00934 中信成長高股息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00934",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00936",
+      "targetKey": "item:00936",
+      "title": "00936 台新永續高息中小 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00936",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00943",
+      "targetKey": "item:00943",
+      "title": "00943 兆豐電子高息等權 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00943",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00944",
+      "targetKey": "item:00944",
+      "title": "00944 野村趨勢動能高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00944",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00956",
+      "targetKey": "item:00956",
+      "title": "00956 中信日經高股息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00956",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00961",
+      "targetKey": "item:00961",
+      "title": "00961 FT臺灣永續高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00961",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00963",
+      "targetKey": "item:00963",
+      "title": "00963 中信全球高股息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00963",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00964",
+      "targetKey": "item:00964",
+      "title": "00964 中信亞太高股息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00964",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00972",
+      "targetKey": "item:00972",
+      "title": "00972 野村日本動能高息 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00972",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
       "id": "ref-passive-holdings-bootstrap-0050",
       "targetKey": "item:0050",
       "title": "0050 元大台灣50 成分股初始快照",
@@ -34460,6 +35220,139 @@
       "id": "ref-passive-holdings-bootstrap-00631L",
       "targetKey": "item:00631L",
       "title": "00631L 元大台灣50正2 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00702",
+      "targetKey": "item:00702",
+      "title": "00702 國泰標普低波高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00730",
+      "targetKey": "item:00730",
+      "title": "00730 富邦臺灣優質高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00731",
+      "targetKey": "item:00731",
+      "title": "00731 復華富時高息低波 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00771",
+      "targetKey": "item:00771",
+      "title": "00771 元大US高息特別股 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00882",
+      "targetKey": "item:00882",
+      "title": "00882 中信中國高股息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00907",
+      "targetKey": "item:00907",
+      "title": "00907 永豐優息存股 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00915",
+      "targetKey": "item:00915",
+      "title": "00915 凱基優選高股息30 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00926",
+      "targetKey": "item:00926",
+      "title": "00926 凱基全球菁英55 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00930",
+      "targetKey": "item:00930",
+      "title": "00930 永豐ESG低碳高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00932",
+      "targetKey": "item:00932",
+      "title": "00932 兆豐永續高息等權 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00934",
+      "targetKey": "item:00934",
+      "title": "00934 中信成長高股息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00936",
+      "targetKey": "item:00936",
+      "title": "00936 台新永續高息中小 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00943",
+      "targetKey": "item:00943",
+      "title": "00943 兆豐電子高息等權 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00944",
+      "targetKey": "item:00944",
+      "title": "00944 野村趨勢動能高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00956",
+      "targetKey": "item:00956",
+      "title": "00956 中信日經高股息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00961",
+      "targetKey": "item:00961",
+      "title": "00961 FT臺灣永續高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00963",
+      "targetKey": "item:00963",
+      "title": "00963 中信全球高股息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00964",
+      "targetKey": "item:00964",
+      "title": "00964 中信亞太高股息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00972",
+      "targetKey": "item:00972",
+      "title": "00972 野村日本動能高息 成分股初始快照",
       "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
       "createdAt": "2026-07-23"
     }
