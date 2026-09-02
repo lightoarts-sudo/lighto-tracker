@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
+import asyncio
 import gzip
 import json
 import logging
-from datetime import date
+import re
+import ssl
+import urllib.parse
+import urllib.request
+from datetime import date, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -13,7 +18,7 @@ from urllib.parse import urlencode
 
 import asyncpg
 from fastapi import FastAPI, HTTPException, Query, Request, Response
-from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 
@@ -139,6 +144,286 @@ CREATE TABLE IF NOT EXISTS popostock_page_views (
     view_count BIGINT NOT NULL DEFAULT 0 CHECK (view_count >= 0),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS popostock_picks (
+    id BIGSERIAL PRIMARY KEY,
+    stock_code TEXT NOT NULL,
+    reason TEXT,
+    entry_date DATE NOT NULL,
+    entry_price NUMERIC NOT NULL,
+    status TEXT NOT NULL DEFAULT 'active',
+    exit_date DATE,
+    exit_price NUMERIC,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_popostock_picks_status
+    ON popostock_picks (status, entry_date DESC);
+"""
+
+PICKS_ADMIN_PASSWORD = "poadmin"
+
+PICKS_PAGE_HTML = """<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popo選股 | 波波流 PoPoStock</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px 64px;
+    background: #12295c; color: #fff;
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  }
+  h1 { text-align: center; font-size: 28px; margin: 0 0 4px; }
+  h1 b { color: #ffd43b; }
+  .sub { text-align: center; color: #9fb3d9; font-size: 14px; margin-bottom: 24px; }
+  .card {
+    max-width: 720px; margin: 0 auto 20px; background: #fff; color: #12295c;
+    border-radius: 14px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .row > * { flex: 1 1 140px; }
+  label { display: block; font-size: 12px; color: #56698f; margin-bottom: 4px; font-weight: 700; }
+  input, textarea {
+    width: 100%; padding: 9px 10px; border: 1px solid #d7deee; border-radius: 8px;
+    font-size: 14px; font-family: inherit; background: #f7f9ff; color: #12295c;
+  }
+  textarea { resize: vertical; min-height: 44px; }
+  button {
+    cursor: pointer; border: none; border-radius: 8px; padding: 10px 18px;
+    font-size: 14px; font-weight: 700; font-family: inherit;
+  }
+  .btn-primary { background: #12295c; color: #ffd43b; }
+  .btn-primary:hover { background: #1c3a7a; }
+  .btn-danger { background: #c0392b; color: #fff; padding: 5px 12px; font-size: 12px; }
+  .btn-danger:hover { background: #a5301f; }
+  .locked-hint { font-size: 13px; color: #7a8bb0; }
+  #unlock-msg, #add-msg { font-size: 13px; margin-top: 6px; min-height: 16px; }
+  .ok { color: #1a7a3c; }
+  .err { color: #c0392b; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 9px 8px; text-align: right; border-bottom: 1px solid #eef1fa; white-space: nowrap; }
+  th:nth-child(1), td:nth-child(1),
+  th:nth-child(2), td:nth-child(2),
+  th:nth-child(3), td:nth-child(3) { text-align: left; }
+  td.reason { white-space: normal; text-align: left; color: #445; max-width: 220px; }
+  th { color: #56698f; font-size: 12px; }
+  .up { color: #d0342c; font-weight: 700; }
+  .down { color: #1a7a3c; font-weight: 700; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .tag-active { background: #fff4cc; color: #8a6d00; }
+  .tag-exited { background: #eef1fa; color: #56698f; }
+  .table-wrap { overflow-x: auto; }
+  .empty { text-align: center; color: #9fb3d9; padding: 24px 0; }
+  .foot { text-align: center; color: #6e83ad; font-size: 12px; margin-top: 24px; }
+  .foot a { color: #9fb3d9; }
+</style>
+</head>
+<body>
+  <h1>Popo<b>選股</b></h1>
+  <div class="sub">波波流自選股績效追蹤 &middot; 僅供個人紀錄，不構成投資建議</div>
+
+  <div class="card">
+    <div class="row">
+      <div>
+        <label>管理員密碼</label>
+        <input id="pwd" type="password" placeholder="輸入密碼以新增/出場" autocomplete="off">
+      </div>
+      <div style="flex:0 0 auto; align-self:flex-end;">
+        <button class="btn-primary" onclick="unlock()">解鎖</button>
+      </div>
+    </div>
+    <div id="unlock-msg" class="locked-hint">尚未解鎖，僅能檢視績效。</div>
+  </div>
+
+  <div class="card" id="add-card" style="display:none;">
+    <div class="row">
+      <div>
+        <label>日期</label>
+        <input id="f-date" type="date">
+      </div>
+      <div>
+        <label>股號</label>
+        <input id="f-code" type="text" placeholder="例：2330" maxlength="10">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>理由</label>
+        <textarea id="f-reason" placeholder="為什麼選這檔？"></textarea>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="addPick()">新增追蹤</button>
+    <div id="add-msg"></div>
+  </div>
+
+  <div class="card" style="max-width:960px;">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>進場日</th><th>股號</th><th>理由</th>
+            <th>進場價</th><th>現價/出場價</th><th>報酬率</th><th>狀態</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="8" class="empty">載入中...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot">
+    資料來源：TWSE／TPEx 官方收盤 &middot; <a href="/popostock/">回主站</a>
+  </div>
+
+<script>
+let ADMIN_PWD = "";
+
+function fmtPct(p) {
+  if (p === null || p === undefined) return "-";
+  const sign = p > 0 ? "+" : "";
+  const cls = p > 0 ? "up" : (p < 0 ? "down" : "");
+  return `<span class="${cls}">${sign}${p.toFixed(2)}%</span>`;
+}
+
+function unlock() {
+  const v = document.getElementById("pwd").value;
+  const msg = document.getElementById("unlock-msg");
+  if (v === "poadmin") {
+    ADMIN_PWD = v;
+    document.getElementById("add-card").style.display = "block";
+    msg.textContent = "已解鎖，可以新增股票、標記出場。";
+    msg.className = "ok";
+  } else {
+    ADMIN_PWD = "";
+    document.getElementById("add-card").style.display = "none";
+    msg.textContent = "密碼錯誤。";
+    msg.className = "err";
+  }
+  render();
+}
+
+async function addPick() {
+  const msg = document.getElementById("add-msg");
+  msg.className = "";
+  msg.textContent = "送出中...";
+  const body = {
+    password: ADMIN_PWD,
+    date: document.getElementById("f-date").value,
+    stockCode: document.getElementById("f-code").value.trim(),
+    reason: document.getElementById("f-reason").value.trim(),
+  };
+  if (!body.date || !body.stockCode) {
+    msg.className = "err";
+    msg.textContent = "請填日期與股號。";
+    return;
+  }
+  try {
+    const res = await fetch("/popostock/api/picks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "新增失敗");
+    msg.className = "ok";
+    msg.textContent = `已新增，進場價 ${data.entryPrice}（${data.entryDate}）`;
+    document.getElementById("f-code").value = "";
+    document.getElementById("f-reason").value = "";
+    load();
+  } catch (e) {
+    msg.className = "err";
+    msg.textContent = e.message;
+  }
+}
+
+async function exitPick(id) {
+  if (!ADMIN_PWD) return;
+  if (!confirm("確定要標記這檔出場嗎？")) return;
+  try {
+    const res = await fetch(`/popostock/api/picks/${id}/exit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: ADMIN_PWD }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "出場失敗");
+    load();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function deletePick(id) {
+  if (!ADMIN_PWD) return;
+  if (!confirm("確定要刪除這筆紀錄嗎？此動作無法復原。")) return;
+  try {
+    const res = await fetch(`/popostock/api/picks/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: ADMIN_PWD }),
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      throw new Error(data.detail || "刪除失敗");
+    }
+    load();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+let PICKS = [];
+
+function render() {
+  const tbody = document.getElementById("rows");
+  if (!PICKS.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty">尚無追蹤中的股票</td></tr>';
+    return;
+  }
+  tbody.innerHTML = PICKS.map(p => {
+    const priceCol = p.status === "exited"
+      ? `${p.exitPrice}<br><span style="font-size:11px;color:#9aa8c7;">${p.exitDate}</span>`
+      : (p.currentPrice ?? "-");
+    const tag = p.status === "exited"
+      ? '<span class="tag tag-exited">已出場</span>'
+      : '<span class="tag tag-active">追蹤中</span>';
+    const actions = ADMIN_PWD
+      ? (p.status === "active"
+          ? `<button class="btn-danger" onclick="exitPick(${p.id})">出場</button>`
+          : `<button class="btn-danger" onclick="deletePick(${p.id})">刪除</button>`)
+      : "";
+    return `<tr>
+      <td>${p.entryDate}</td>
+      <td>${p.stockCode}</td>
+      <td class="reason">${p.reason ? p.reason.replace(/</g,"&lt;") : ""}</td>
+      <td>${p.entryPrice}</td>
+      <td>${priceCol}</td>
+      <td>${fmtPct(p.returnPct)}</td>
+      <td>${tag}</td>
+      <td>${actions}</td>
+    </tr>`;
+  }).join("");
+}
+
+async function load() {
+  try {
+    const res = await fetch("/popostock/api/picks");
+    PICKS = await res.json();
+    render();
+  } catch (e) {
+    document.getElementById("rows").innerHTML =
+      '<tr><td colspan="8" class="empty">載入失敗，請重新整理</td></tr>';
+  }
+}
+
+document.getElementById("f-date").valueAsDate = new Date();
+load();
+</script>
+</body>
+</html>
 """
 
 UPSERT_CANDLE_SQL = """
@@ -193,6 +478,116 @@ def _nav_value(item: dict[str, Any]) -> float | None:
         return float(value)
     except ValueError:
         return None
+
+
+# --- Popo picks: minimal TWSE/TPEx close-price lookup -----------------------
+# Mirrors the working fetch logic in this project's data pipeline
+# (scripts/official_close_prices.py), trimmed to what a live web request
+# needs: one whole-market snapshot per calendar day, cached in memory so
+# repeat page loads don't re-hit the exchanges.
+
+_PICKS_TLS_CONTEXT = ssl.create_default_context()
+_PICKS_TLS_CONTEXT.verify_flags &= ~ssl.VERIFY_X509_STRICT
+_PICKS_USER_AGENT = "Mozilla/5.0 (compatible; PopoPicks/1.0)"
+_PICKS_QUOTE_CACHE: dict[str, dict[str, float]] = {}
+
+
+def _picks_parse_decimal(value: Any) -> float | None:
+    cleaned = re.sub(r"[^0-9.\-]", "", str(value or ""))
+    if not re.fullmatch(r"-?(?:\d+(?:\.\d*)?|\.\d+)", cleaned):
+        return None
+    return float(cleaned)
+
+
+def _picks_roc_date(value: date) -> str:
+    return f"{value.year - 1911:03d}/{value.month:02d}/{value.day:02d}"
+
+
+def _picks_fetch_json(url: str) -> Any:
+    request = urllib.request.Request(
+        url, headers={"Accept": "application/json", "User-Agent": _PICKS_USER_AGENT}
+    )
+    with urllib.request.urlopen(request, timeout=15, context=_PICKS_TLS_CONTEXT) as response:
+        return json.load(response)
+
+
+def _picks_fetch_quotes_sync(target: date) -> dict[str, float]:
+    """One day's close price for every TWSE + TPEx stock, keyed by code."""
+    quotes: dict[str, float] = {}
+    compact = target.strftime("%Y%m%d")
+    try:
+        payload = _picks_fetch_json(
+            "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?"
+            + urllib.parse.urlencode({"date": compact, "type": "ALLBUT0999", "response": "json"})
+        )
+        if payload.get("stat") == "OK" and str(payload.get("date", "")) == compact:
+            for table in payload.get("tables", []):
+                fields = table.get("fields") or []
+                if not {"證券代號", "收盤價"}.issubset(fields):
+                    continue
+                code_index = fields.index("證券代號")
+                close_index = fields.index("收盤價")
+                for row in table.get("data", []):
+                    if len(row) <= max(code_index, close_index):
+                        continue
+                    close = _picks_parse_decimal(row[close_index])
+                    code = str(row[code_index]).strip()
+                    if code and close is not None:
+                        quotes[code] = close
+                break
+    except Exception:
+        LOGGER.warning("popo picks: TWSE quote fetch failed for %s", compact, exc_info=True)
+    try:
+        rows = _picks_fetch_json(
+            "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?"
+            + urllib.parse.urlencode({"l": "zh-tw", "d": _picks_roc_date(target), "s": "0,asc,0"})
+        )
+        expected = _picks_roc_date(target).replace("/", "")
+        for row in rows:
+            if str(row.get("Date", "")) != expected:
+                continue
+            close = _picks_parse_decimal(row.get("Close"))
+            code = str(row.get("SecuritiesCompanyCode", "")).strip()
+            if code and close is not None:
+                quotes[code] = close
+    except Exception:
+        LOGGER.warning("popo picks: TPEx quote fetch failed for %s", compact, exc_info=True)
+    return quotes
+
+
+async def _picks_quotes_for_date(target: date) -> dict[str, float]:
+    key = target.isoformat()
+    if key not in _PICKS_QUOTE_CACHE:
+        _PICKS_QUOTE_CACHE[key] = await asyncio.to_thread(_picks_fetch_quotes_sync, target)
+    return _PICKS_QUOTE_CACHE[key]
+
+
+async def _picks_resolve_price(
+    code: str, start: date, *, max_lookback: int = 10
+) -> tuple[date, float] | None:
+    """Most recent close on or before `start` (skips weekends/holidays with no data)."""
+    cursor = start
+    for _ in range(max_lookback):
+        if cursor.weekday() < 5:  # Mon-Fri only; exchanges are closed weekends
+            quotes = await _picks_quotes_for_date(cursor)
+            price = quotes.get(code)
+            if price is not None:
+                return cursor, price
+        cursor -= timedelta(days=1)
+    return None
+
+
+def _picks_row(row: asyncpg.Record) -> dict[str, Any]:
+    return {
+        "id": row["id"],
+        "stockCode": row["stock_code"],
+        "reason": row["reason"],
+        "entryDate": row["entry_date"].isoformat(),
+        "entryPrice": _number(row["entry_price"]),
+        "status": row["status"],
+        "exitDate": row["exit_date"].isoformat() if row["exit_date"] else None,
+        "exitPrice": _number(row["exit_price"]),
+    }
 
 
 async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
@@ -723,6 +1118,135 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
                 for row in rows
             ]
         )
+
+    @app.get("/popostock/picks", response_class=HTMLResponse)
+    async def popostock_picks_page() -> HTMLResponse:
+        return HTMLResponse(PICKS_PAGE_HTML)
+
+    @app.get("/popostock/api/picks")
+    async def popostock_picks_list(request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            rows = await conn.fetch(
+                "SELECT * FROM popostock_picks ORDER BY entry_date DESC, id DESC"
+            )
+
+        today = date.today()
+        picks = [_picks_row(row) for row in rows]
+        active_codes = {p["stockCode"] for p in picks if p["status"] == "active"}
+        current_prices: dict[str, float] = {}
+        if active_codes:
+            resolved = await asyncio.gather(
+                *(_picks_resolve_price(code, today) for code in active_codes)
+            )
+            for code, hit in zip(active_codes, resolved):
+                if hit:
+                    current_prices[code] = hit[1]
+
+        for pick in picks:
+            entry_price = pick["entryPrice"]
+            if pick["status"] == "exited":
+                exit_price = pick["exitPrice"]
+                pick["returnPct"] = (
+                    round((exit_price / entry_price - 1) * 100, 2)
+                    if entry_price else None
+                )
+                pick["currentPrice"] = None
+            else:
+                current = current_prices.get(pick["stockCode"])
+                pick["currentPrice"] = current
+                pick["returnPct"] = (
+                    round((current / entry_price - 1) * 100, 2)
+                    if current is not None and entry_price else None
+                )
+        return JSONResponse(picks)
+
+    @app.post("/popostock/api/picks")
+    async def popostock_picks_add(request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        body = await request.json()
+        if str(body.get("password", "")) != PICKS_ADMIN_PASSWORD:
+            raise HTTPException(status_code=401, detail="密碼錯誤")
+        code = str(body.get("stockCode", "")).strip().upper()
+        if not code or not re.fullmatch(r"[0-9A-Z]{2,10}", code):
+            raise HTTPException(status_code=400, detail="股號格式不正確")
+        try:
+            entry_date = date.fromisoformat(str(body.get("date", "")))
+        except ValueError:
+            raise HTTPException(status_code=400, detail="日期格式不正確")
+        if entry_date > date.today():
+            raise HTTPException(status_code=400, detail="日期不可以是未來")
+        reason = str(body.get("reason", "")).strip() or None
+
+        resolved = await _picks_resolve_price(code, entry_date)
+        if not resolved:
+            raise HTTPException(
+                status_code=400,
+                detail=f"查無 {code} 在 {entry_date.isoformat()} 前後的收盤價，請確認股號",
+            )
+        priced_date, price = resolved
+
+        async with pool.acquire() as conn:
+            row = await conn.fetchrow(
+                """
+                INSERT INTO popostock_picks (stock_code, reason, entry_date, entry_price)
+                VALUES ($1, $2, $3, $4)
+                RETURNING *
+                """,
+                code, reason, priced_date, price,
+            )
+        return JSONResponse(_picks_row(row))
+
+    @app.post("/popostock/api/picks/{pick_id}/exit")
+    async def popostock_picks_exit(pick_id: int, request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        body = await request.json()
+        if str(body.get("password", "")) != PICKS_ADMIN_PASSWORD:
+            raise HTTPException(status_code=401, detail="密碼錯誤")
+        raw_date = body.get("date")
+        try:
+            exit_date = date.fromisoformat(str(raw_date)) if raw_date else date.today()
+        except ValueError:
+            raise HTTPException(status_code=400, detail="日期格式不正確")
+
+        async with pool.acquire() as conn:
+            existing = await conn.fetchrow(
+                "SELECT * FROM popostock_picks WHERE id = $1", pick_id
+            )
+            if not existing:
+                raise HTTPException(status_code=404, detail="找不到這筆紀錄")
+            if existing["status"] != "active":
+                raise HTTPException(status_code=400, detail="這筆已經出場過了")
+
+            resolved = await _picks_resolve_price(existing["stock_code"], exit_date)
+            if not resolved:
+                raise HTTPException(status_code=400, detail="查無出場當日收盤價")
+            priced_date, price = resolved
+
+            row = await conn.fetchrow(
+                """
+                UPDATE popostock_picks
+                SET status = 'exited', exit_date = $2, exit_price = $3, updated_at = NOW()
+                WHERE id = $1
+                RETURNING *
+                """,
+                pick_id, priced_date, price,
+            )
+        return JSONResponse(_picks_row(row))
+
+    @app.delete("/popostock/api/picks/{pick_id}")
+    async def popostock_picks_delete(pick_id: int, request: Request) -> Response:
+        pool = pool_for(request)
+        body = await request.json()
+        if str(body.get("password", "")) != PICKS_ADMIN_PASSWORD:
+            raise HTTPException(status_code=401, detail="密碼錯誤")
+        async with pool.acquire() as conn:
+            deleted = await conn.fetchval(
+                "DELETE FROM popostock_picks WHERE id = $1 RETURNING id", pick_id
+            )
+        if not deleted:
+            raise HTTPException(status_code=404, detail="找不到這筆紀錄")
+        return Response(status_code=204)
 
     app.mount(
         "/popostock",
