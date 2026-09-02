@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import gzip
 import json
 import logging
@@ -13,7 +14,7 @@ import urllib.request
 from datetime import date, timedelta
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 from urllib.parse import urlencode
 
 import asyncpg
@@ -148,18 +149,29 @@ CREATE TABLE IF NOT EXISTS popostock_page_views (
 CREATE TABLE IF NOT EXISTS popostock_picks (
     id BIGSERIAL PRIMARY KEY,
     stock_code TEXT NOT NULL,
+    stock_name TEXT,
     reason TEXT,
-    entry_date DATE NOT NULL,
-    entry_price NUMERIC NOT NULL,
+    observed_date DATE,
+    entry_date DATE,
+    entry_price NUMERIC,
     status TEXT NOT NULL DEFAULT 'active',
     exit_date DATE,
     exit_price NUMERIC,
+    entry_image BYTEA,
+    entry_image_type TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS idx_popostock_picks_status
     ON popostock_picks (status, entry_date DESC);
+
+ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS stock_name TEXT;
+ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS observed_date DATE;
+ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS entry_image BYTEA;
+ALTER TABLE popostock_picks ADD COLUMN IF NOT EXISTS entry_image_type TEXT;
+ALTER TABLE popostock_picks ALTER COLUMN entry_date DROP NOT NULL;
+ALTER TABLE popostock_picks ALTER COLUMN entry_price DROP NOT NULL;
 """
 
 PICKS_ADMIN_PASSWORD = "poadmin"
@@ -191,6 +203,7 @@ PICKS_PAGE_HTML = """<!doctype html>
     width: 100%; padding: 9px 10px; border: 1px solid #d7deee; border-radius: 8px;
     font-size: 14px; font-family: inherit; background: #f7f9ff; color: #12295c;
   }
+  input[type=file] { padding: 6px 8px; }
   textarea { resize: vertical; min-height: 44px; }
   button {
     cursor: pointer; border: none; border-radius: 8px; padding: 10px 18px;
@@ -200,6 +213,8 @@ PICKS_PAGE_HTML = """<!doctype html>
   .btn-primary:hover { background: #1c3a7a; }
   .btn-danger { background: #c0392b; color: #fff; padding: 5px 12px; font-size: 12px; }
   .btn-danger:hover { background: #a5301f; }
+  .btn-ghost { background: #eef1fa; color: #12295c; padding: 5px 12px; font-size: 12px; }
+  .btn-ghost:hover { background: #dfe5f7; }
   .locked-hint { font-size: 13px; color: #7a8bb0; }
   #unlock-msg, #add-msg { font-size: 13px; margin-top: 6px; min-height: 16px; }
   .ok { color: #1a7a3c; }
@@ -208,9 +223,12 @@ PICKS_PAGE_HTML = """<!doctype html>
   th, td { padding: 9px 8px; text-align: right; border-bottom: 1px solid #eef1fa; white-space: nowrap; }
   th:nth-child(1), td:nth-child(1),
   th:nth-child(2), td:nth-child(2),
-  th:nth-child(3), td:nth-child(3) { text-align: left; }
-  td.reason { white-space: normal; text-align: left; color: #445; max-width: 220px; }
+  th:nth-child(3), td:nth-child(3),
+  th:nth-child(4), td:nth-child(4) { text-align: left; }
+  td.reason { white-space: normal; text-align: left; color: #445; max-width: 200px; }
   th { color: #56698f; font-size: 12px; }
+  tr.pick-row { cursor: pointer; }
+  tr.pick-row:hover { background: #f7f9ff; }
   .up { color: #d0342c; font-weight: 700; }
   .down { color: #1a7a3c; font-weight: 700; }
   .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
@@ -220,6 +238,14 @@ PICKS_PAGE_HTML = """<!doctype html>
   .empty { text-align: center; color: #9fb3d9; padding: 24px 0; }
   .foot { text-align: center; color: #6e83ad; font-size: 12px; margin-top: 24px; }
   .foot a { color: #9fb3d9; }
+  .detail-cell { background: #f7f9ff; text-align: left; white-space: normal; }
+  .detail-wrap { padding: 14px 6px; }
+  .detail-toggle { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #56698f; margin-bottom: 8px; }
+  .detail-toggle input { width: auto; }
+  canvas.candles { width: 100%; height: 240px; display: block; background: #fff; border-radius: 8px; }
+  .detail-loading { font-size: 12px; color: #9fb3d9; padding: 20px 0; text-align: center; }
+  .image-btn { margin-top: 10px; }
+  .observed-image { margin-top: 10px; max-width: 100%; border-radius: 8px; border: 1px solid #eef1fa; display: none; }
 </style>
 </head>
 <body>
@@ -242,7 +268,7 @@ PICKS_PAGE_HTML = """<!doctype html>
   <div class="card" id="add-card" style="display:none;">
     <div class="row">
       <div>
-        <label>日期</label>
+        <label>日期（觀察到的日期，通常是盤後）</label>
         <input id="f-date" type="date">
       </div>
       <div>
@@ -256,20 +282,26 @@ PICKS_PAGE_HTML = """<!doctype html>
         <textarea id="f-reason" placeholder="為什麼選這檔？"></textarea>
       </div>
     </div>
+    <div class="row">
+      <div>
+        <label>觀察到的圖檔（選填）</label>
+        <input id="f-image" type="file" accept="image/*">
+      </div>
+    </div>
     <button class="btn-primary" onclick="addPick()">新增追蹤</button>
     <div id="add-msg"></div>
   </div>
 
-  <div class="card" style="max-width:960px;">
+  <div class="card" style="max-width:1040px;">
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th>進場日</th><th>股號</th><th>理由</th>
+            <th>進場日</th><th>股號</th><th>名稱</th><th>理由</th>
             <th>進場價</th><th>現價/出場價</th><th>報酬率</th><th>狀態</th><th></th>
           </tr>
         </thead>
-        <tbody id="rows"><tr><td colspan="8" class="empty">載入中...</td></tr></tbody>
+        <tbody id="rows"><tr><td colspan="9" class="empty">載入中...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -280,12 +312,19 @@ PICKS_PAGE_HTML = """<!doctype html>
 
 <script>
 let ADMIN_PWD = "";
+let PICKS = [];
+let EXPANDED_ID = null;
+const CANDLE_CACHE = {};
 
 function fmtPct(p) {
   if (p === null || p === undefined) return "-";
   const sign = p > 0 ? "+" : "";
   const cls = p > 0 ? "up" : (p < 0 ? "down" : "");
   return `<span class="${cls}">${sign}${p.toFixed(2)}%</span>`;
+}
+
+function esc(s) {
+  return s ? String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])) : "";
 }
 
 function unlock() {
@@ -305,15 +344,35 @@ function unlock() {
   render();
 }
 
+function readImageAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    if (!file) { resolve(null); return; }
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 async function addPick() {
   const msg = document.getElementById("add-msg");
   msg.className = "";
   msg.textContent = "送出中...";
+  const imageFile = document.getElementById("f-image").files[0] || null;
+  let imageDataUrl = null;
+  try {
+    imageDataUrl = await readImageAsDataUrl(imageFile);
+  } catch (e) {
+    msg.className = "err";
+    msg.textContent = "圖檔讀取失敗。";
+    return;
+  }
   const body = {
     password: ADMIN_PWD,
     date: document.getElementById("f-date").value,
     stockCode: document.getElementById("f-code").value.trim(),
     reason: document.getElementById("f-reason").value.trim(),
+    image: imageDataUrl,
   };
   if (!body.date || !body.stockCode) {
     msg.className = "err";
@@ -329,9 +388,12 @@ async function addPick() {
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || "新增失敗");
     msg.className = "ok";
-    msg.textContent = `已新增，進場價 ${data.entryPrice}（${data.entryDate}）`;
+    msg.textContent = data.entryPrice !== null
+      ? `已新增，觀察日 ${data.observedDate} → 進場日 ${data.entryDate}（開盤價 ${data.entryPrice}）`
+      : `已新增，觀察日 ${data.observedDate}。進場價還查不到，會在你重新打開這頁時自動補上。`;
     document.getElementById("f-code").value = "";
     document.getElementById("f-reason").value = "";
+    document.getElementById("f-image").value = "";
     load();
   } catch (e) {
     msg.className = "err";
@@ -350,6 +412,7 @@ async function exitPick(id) {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || "出場失敗");
+    delete CANDLE_CACHE[id];
     load();
   } catch (e) {
     alert(e.message);
@@ -375,37 +438,146 @@ async function deletePick(id) {
   }
 }
 
-let PICKS = [];
+function toggleDetail(id, evt) {
+  if (evt && evt.target && evt.target.tagName === "BUTTON") return;
+  EXPANDED_ID = EXPANDED_ID === id ? null : id;
+  render();
+}
+
+function drawCandles(canvas, candles, entryDate, dimAfterEntry) {
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  if (!candles.length) {
+    ctx.fillStyle = "#9fb3d9";
+    ctx.font = "12px sans-serif";
+    ctx.fillText("沒有可顯示的K線資料", 10, h / 2);
+    return;
+  }
+  const pad = { top: 10, bottom: 18, left: 6, right: 6 };
+  const plotW = w - pad.left - pad.right;
+  const plotH = h - pad.top - pad.bottom;
+  const lo = Math.min(...candles.map(c => c.low));
+  const hi = Math.max(...candles.map(c => c.high));
+  const span = (hi - lo) || 1;
+  const n = candles.length;
+  const slot = plotW / n;
+  const bodyW = Math.max(2, slot * 0.6);
+  const y = v => pad.top + plotH - ((v - lo) / span) * plotH;
+  candles.forEach((c, i) => {
+    const x = pad.left + i * slot + slot / 2;
+    const dimmed = dimAfterEntry && c.date >= entryDate;
+    ctx.globalAlpha = dimmed ? 0.28 : 1;
+    const up = c.close >= c.open;
+    ctx.strokeStyle = ctx.fillStyle = up ? "#d0342c" : "#1a7a3c";
+    ctx.beginPath();
+    ctx.moveTo(x, y(c.high));
+    ctx.lineTo(x, y(c.low));
+    ctx.stroke();
+    const yOpen = y(c.open), yClose = y(c.close);
+    const top = Math.min(yOpen, yClose);
+    const bh = Math.max(1, Math.abs(yClose - yOpen));
+    ctx.fillRect(x - bodyW / 2, top, bodyW, bh);
+  });
+  ctx.globalAlpha = 1;
+  if (entryDate) {
+    const idx = candles.findIndex(c => c.date >= entryDate);
+    if (idx >= 0) {
+      const x = pad.left + idx * slot;
+      ctx.strokeStyle = "#ffb020";
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(x, pad.top);
+      ctx.lineTo(x, pad.top + plotH);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+}
+
+async function loadDetail(pick) {
+  const container = document.getElementById(`detail-${pick.id}`);
+  if (!container) return;
+  if (!CANDLE_CACHE[pick.id]) {
+    container.innerHTML = '<div class="detail-loading">載入K線中...</div>';
+    try {
+      const res = await fetch(`/popostock/api/picks/${pick.id}/candles`);
+      CANDLE_CACHE[pick.id] = await res.json();
+    } catch (e) {
+      container.innerHTML = '<div class="detail-loading">K線載入失敗</div>';
+      return;
+    }
+  }
+  const data = CANDLE_CACHE[pick.id];
+  container.innerHTML = `
+    <div class="detail-wrap">
+      <label class="detail-toggle">
+        <input type="checkbox" id="dim-${pick.id}" checked>
+        進場後半透明
+      </label>
+      <canvas class="candles" id="canvas-${pick.id}"></canvas>
+      ${pick.hasImage ? `
+        <button class="btn-ghost image-btn" onclick="toggleImage(${pick.id})">查看進場時觀測圖</button>
+        <img class="observed-image" id="img-${pick.id}" src="/popostock/api/picks/${pick.id}/image">
+      ` : ""}
+    </div>`;
+  const canvas = document.getElementById(`canvas-${pick.id}`);
+  const checkbox = document.getElementById(`dim-${pick.id}`);
+  const redraw = () => drawCandles(canvas, data.candles, data.entryDate, checkbox.checked);
+  checkbox.addEventListener("change", redraw);
+  window.addEventListener("resize", redraw);
+  redraw();
+}
+
+function toggleImage(id) {
+  const img = document.getElementById(`img-${id}`);
+  if (img) img.style.display = img.style.display === "block" ? "none" : "block";
+}
 
 function render() {
   const tbody = document.getElementById("rows");
   if (!PICKS.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="empty">尚無追蹤中的股票</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" class="empty">尚無追蹤中的股票</td></tr>';
     return;
   }
   tbody.innerHTML = PICKS.map(p => {
     const priceCol = p.status === "exited"
       ? `${p.exitPrice}<br><span style="font-size:11px;color:#9aa8c7;">${p.exitDate}</span>`
       : (p.currentPrice ?? "-");
+    const pending = p.entryPrice === null;
     const tag = p.status === "exited"
       ? '<span class="tag tag-exited">已出場</span>'
-      : '<span class="tag tag-active">追蹤中</span>';
+      : (pending
+          ? '<span class="tag tag-active">待補價</span>'
+          : '<span class="tag tag-active">追蹤中</span>');
     const actions = ADMIN_PWD
       ? (p.status === "active"
           ? `<button class="btn-danger" onclick="exitPick(${p.id})">出場</button>`
           : `<button class="btn-danger" onclick="deletePick(${p.id})">刪除</button>`)
       : "";
-    return `<tr>
-      <td>${p.entryDate}</td>
-      <td>${p.stockCode}</td>
-      <td class="reason">${p.reason ? p.reason.replace(/</g,"&lt;") : ""}</td>
-      <td>${p.entryPrice}</td>
-      <td>${priceCol}</td>
+    const dateCol = p.entryDate || `${p.observedDate}（觀察，進場待定）`;
+    const mainRow = `<tr class="pick-row" onclick="toggleDetail(${p.id}, event)">
+      <td>${dateCol}</td>
+      <td>${esc(p.stockCode)}</td>
+      <td>${esc(p.stockName) || "-"}</td>
+      <td class="reason">${esc(p.reason)}</td>
+      <td>${pending ? "-" : p.entryPrice}</td>
+      <td>${pending ? "-" : priceCol}</td>
       <td>${fmtPct(p.returnPct)}</td>
       <td>${tag}</td>
       <td>${actions}</td>
     </tr>`;
+    if (EXPANDED_ID !== p.id) return mainRow;
+    return mainRow + `<tr><td colspan="9" class="detail-cell"><div id="detail-${p.id}"></div></td></tr>`;
   }).join("");
+  if (EXPANDED_ID !== null) {
+    const pick = PICKS.find(p => p.id === EXPANDED_ID);
+    if (pick) loadDetail(pick);
+  }
 }
 
 async function load() {
@@ -415,7 +587,7 @@ async function load() {
     render();
   } catch (e) {
     document.getElementById("rows").innerHTML =
-      '<tr><td colspan="8" class="empty">載入失敗，請重新整理</td></tr>';
+      '<tr><td colspan="9" class="empty">載入失敗，請重新整理</td></tr>';
   }
 }
 
@@ -483,13 +655,18 @@ def _nav_value(item: dict[str, Any]) -> float | None:
 # --- Popo picks: minimal TWSE/TPEx close-price lookup -----------------------
 # Mirrors the working fetch logic in this project's data pipeline
 # (scripts/official_close_prices.py), trimmed to what a live web request
-# needs: one whole-market snapshot per calendar day, cached in memory so
-# repeat page loads don't re-hit the exchanges.
+# needs: one stock's whole month of OHLC at a time, cached in memory so
+# repeat page loads don't re-hit the exchanges. A whole-market snapshot
+# would be cheaper for many codes at once, but TPEx's snapshot endpoint
+# silently ignores its own date parameter and always returns the latest
+# trading day, which made any historical lookup fail — the per-stock
+# month endpoint (TWSE STOCK_DAY / TPEx afterTrading/tradingStock) is the
+# only one of the two that actually answers "what happened on date X".
 
 _PICKS_TLS_CONTEXT = ssl.create_default_context()
 _PICKS_TLS_CONTEXT.verify_flags &= ~ssl.VERIFY_X509_STRICT
 _PICKS_USER_AGENT = "Mozilla/5.0 (compatible; PopoPicks/1.0)"
-_PICKS_QUOTE_CACHE: dict[str, dict[str, float]] = {}
+_PICKS_MONTH_CACHE: dict[tuple[str, int, int], list[tuple[date, float, float]]] = {}
 
 
 def _picks_parse_decimal(value: Any) -> float | None:
@@ -499,94 +676,202 @@ def _picks_parse_decimal(value: Any) -> float | None:
     return float(cleaned)
 
 
-def _picks_roc_date(value: date) -> str:
-    return f"{value.year - 1911:03d}/{value.month:02d}/{value.day:02d}"
+def _picks_parse_roc_date(value: str) -> date | None:
+    try:
+        year, month, day = str(value).split("/")
+        return date(int(year) + 1911, int(month), int(day))
+    except Exception:
+        return None
 
 
-def _picks_fetch_json(url: str) -> Any:
+class PicksCandle(NamedTuple):
+    trade_date: date
+    open: float
+    high: float
+    low: float
+    close: float
+
+
+def _picks_fetch_twse_month(code: str, year: int, month: int) -> tuple[str | None, list[PicksCandle]]:
+    """(company_name, candles) for one TWSE-listed stock/month."""
+    url = (
+        "https://www.twse.com.tw/rwd/zh/afterTrading/STOCK_DAY?"
+        + urllib.parse.urlencode({"date": f"{year:04d}{month:02d}01", "stockNo": code, "response": "json"})
+    )
     request = urllib.request.Request(
         url, headers={"Accept": "application/json", "User-Agent": _PICKS_USER_AGENT}
     )
-    with urllib.request.urlopen(request, timeout=15, context=_PICKS_TLS_CONTEXT) as response:
-        return json.load(response)
-
-
-def _picks_fetch_quotes_sync(target: date) -> dict[str, float]:
-    """One day's close price for every TWSE + TPEx stock, keyed by code."""
-    quotes: dict[str, float] = {}
-    compact = target.strftime("%Y%m%d")
     try:
-        payload = _picks_fetch_json(
-            "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?"
-            + urllib.parse.urlencode({"date": compact, "type": "ALLBUT0999", "response": "json"})
-        )
-        if payload.get("stat") == "OK" and str(payload.get("date", "")) == compact:
-            for table in payload.get("tables", []):
-                fields = table.get("fields") or []
-                if not {"證券代號", "收盤價"}.issubset(fields):
-                    continue
-                code_index = fields.index("證券代號")
-                close_index = fields.index("收盤價")
-                for row in table.get("data", []):
-                    if len(row) <= max(code_index, close_index):
-                        continue
-                    close = _picks_parse_decimal(row[close_index])
-                    code = str(row[code_index]).strip()
-                    if code and close is not None:
-                        quotes[code] = close
-                break
+        with urllib.request.urlopen(request, timeout=15, context=_PICKS_TLS_CONTEXT) as response:
+            payload = json.load(response)
     except Exception:
-        LOGGER.warning("popo picks: TWSE quote fetch failed for %s", compact, exc_info=True)
+        LOGGER.warning("popo picks: TWSE month fetch failed for %s %04d-%02d", code, year, month, exc_info=True)
+        return None, []
+    if payload.get("stat") != "OK":
+        return None, []
+    fields = payload.get("fields") or []
+    required = {"日期", "開盤價", "最高價", "最低價", "收盤價"}
+    if not required.issubset(fields):
+        return None, []
+    date_i = fields.index("日期")
+    open_i = fields.index("開盤價")
+    high_i = fields.index("最高價")
+    low_i = fields.index("最低價")
+    close_i = fields.index("收盤價")
+    name_match = re.search(rf"\d+年\d+月\s+{re.escape(code)}\s+(\S+)", str(payload.get("title", "")))
+    name = name_match.group(1) if name_match else None
+    candles: list[PicksCandle] = []
+    for row in payload.get("data", []):
+        if len(row) <= max(date_i, open_i, high_i, low_i, close_i):
+            continue
+        trade_date = _picks_parse_roc_date(row[date_i])
+        o = _picks_parse_decimal(row[open_i])
+        h = _picks_parse_decimal(row[high_i])
+        l = _picks_parse_decimal(row[low_i])
+        c = _picks_parse_decimal(row[close_i])
+        if trade_date and None not in (o, h, l, c):
+            candles.append(PicksCandle(trade_date, o, h, l, c))
+    return name, candles
+
+
+def _picks_fetch_tpex_month(code: str, year: int, month: int) -> tuple[str | None, list[PicksCandle]]:
+    """(company_name, candles) for one TPEx-listed stock/month."""
+    url = "https://www.tpex.org.tw/www/zh-tw/afterTrading/tradingStock"
+    body = urllib.parse.urlencode({"code": code, "date": f"{year:04d}/{month:02d}/01"}).encode()
+    request = urllib.request.Request(
+        url,
+        data=body,
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": _PICKS_USER_AGENT,
+        },
+    )
     try:
-        rows = _picks_fetch_json(
-            "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes?"
-            + urllib.parse.urlencode({"l": "zh-tw", "d": _picks_roc_date(target), "s": "0,asc,0"})
-        )
-        expected = _picks_roc_date(target).replace("/", "")
-        for row in rows:
-            if str(row.get("Date", "")) != expected:
-                continue
-            close = _picks_parse_decimal(row.get("Close"))
-            code = str(row.get("SecuritiesCompanyCode", "")).strip()
-            if code and close is not None:
-                quotes[code] = close
+        with urllib.request.urlopen(request, timeout=15, context=_PICKS_TLS_CONTEXT) as response:
+            payload = json.load(response)
     except Exception:
-        LOGGER.warning("popo picks: TPEx quote fetch failed for %s", compact, exc_info=True)
-    return quotes
+        LOGGER.warning("popo picks: TPEx month fetch failed for %s %04d-%02d", code, year, month, exc_info=True)
+        return None, []
+    if payload.get("stat") != "ok" or not payload.get("tables"):
+        return None, []
+    table = payload["tables"][0]
+    fields = table.get("fields") or []
+    required = {"日 期", "開盤", "最高", "最低", "收盤"}
+    if not required.issubset(fields):
+        return None, []
+    date_i = fields.index("日 期")
+    open_i = fields.index("開盤")
+    high_i = fields.index("最高")
+    low_i = fields.index("最低")
+    close_i = fields.index("收盤")
+    name_match = re.search(rf"^{re.escape(code)}\s+(\S+)\s+\d+年\d+月", str(table.get("subtitle", "")))
+    name = name_match.group(1) if name_match else None
+    candles: list[PicksCandle] = []
+    for row in table.get("data", []):
+        if len(row) <= max(date_i, open_i, high_i, low_i, close_i):
+            continue
+        trade_date = _picks_parse_roc_date(row[date_i])
+        o = _picks_parse_decimal(row[open_i])
+        h = _picks_parse_decimal(row[high_i])
+        l = _picks_parse_decimal(row[low_i])
+        c = _picks_parse_decimal(row[close_i])
+        if trade_date and None not in (o, h, l, c):
+            candles.append(PicksCandle(trade_date, o, h, l, c))
+    return name, candles
 
 
-async def _picks_quotes_for_date(target: date) -> dict[str, float]:
-    key = target.isoformat()
-    if key not in _PICKS_QUOTE_CACHE:
-        _PICKS_QUOTE_CACHE[key] = await asyncio.to_thread(_picks_fetch_quotes_sync, target)
-    return _PICKS_QUOTE_CACHE[key]
+_PICKS_NAME_CACHE: dict[str, str] = {}
 
 
-async def _picks_resolve_price(
-    code: str, start: date, *, max_lookback: int = 10
+async def _picks_month_data(code: str, year: int, month: int) -> list[PicksCandle]:
+    key = (code, year, month)
+    if key not in _PICKS_MONTH_CACHE:
+        def _fetch() -> list[PicksCandle]:
+            name, candles = _picks_fetch_twse_month(code, year, month)
+            if not candles:
+                name, candles = _picks_fetch_tpex_month(code, year, month)
+            if name and code not in _PICKS_NAME_CACHE:
+                _PICKS_NAME_CACHE[code] = name
+            return candles
+        _PICKS_MONTH_CACHE[key] = await asyncio.to_thread(_fetch)
+    return _PICKS_MONTH_CACHE[key]
+
+
+async def _picks_stock_name(code: str) -> str | None:
+    if code not in _PICKS_NAME_CACHE:
+        today = date.today()
+        await _picks_month_data(code, today.year, today.month)
+    return _PICKS_NAME_CACHE.get(code)
+
+
+def _picks_shift_month(year: int, month: int, delta: int) -> tuple[int, int]:
+    index = (year * 12 + (month - 1)) + delta
+    return index // 12, index % 12 + 1
+
+
+async def _picks_close_on_or_before(
+    code: str, start: date, *, max_lookback_months: int = 4
 ) -> tuple[date, float] | None:
-    """Most recent close on or before `start` (skips weekends/holidays with no data)."""
-    cursor = start
-    for _ in range(max_lookback):
-        if cursor.weekday() < 5:  # Mon-Fri only; exchanges are closed weekends
-            quotes = await _picks_quotes_for_date(cursor)
-            price = quotes.get(code)
-            if price is not None:
-                return cursor, price
-        cursor -= timedelta(days=1)
+    """Most recent (date, close) at or before `start` — for current/exit prices."""
+    year, month = start.year, start.month
+    for step in range(max_lookback_months):
+        y, m = _picks_shift_month(year, month, -step)
+        candles = await _picks_month_data(code, y, m)
+        candidates = [c for c in candles if c.trade_date <= start]
+        if candidates:
+            latest = max(candidates, key=lambda c: c.trade_date)
+            return latest.trade_date, latest.close
     return None
+
+
+async def _picks_open_on_or_after(
+    code: str, start: date, *, max_lookahead_months: int = 4
+) -> tuple[date, float] | None:
+    """Earliest (date, open) at or after `start` — for entry price the day after
+    the pick was actually observed (post-market), since that's the first price
+    it could realistically have been bought at."""
+    year, month = start.year, start.month
+    today = date.today()
+    for step in range(max_lookahead_months):
+        y, m = _picks_shift_month(year, month, step)
+        if date(y, m, 1) > today:
+            break
+        candles = await _picks_month_data(code, y, m)
+        candidates = [c for c in candles if c.trade_date >= start]
+        if candidates:
+            earliest = min(candidates, key=lambda c: c.trade_date)
+            return earliest.trade_date, earliest.open
+    return None
+
+
+async def _picks_candles_since(code: str, start: date, end: date) -> list[dict[str, Any]]:
+    """Every candle for `code` from `start` through `end`, inclusive, ascending."""
+    out: list[PicksCandle] = []
+    year, month = start.year, start.month
+    while (year, month) <= (end.year, end.month):
+        out.extend(await _picks_month_data(code, year, month))
+        year, month = _picks_shift_month(year, month, 1)
+    seen: dict[date, PicksCandle] = {c.trade_date: c for c in out if start <= c.trade_date <= end}
+    return [
+        {"date": c.trade_date.isoformat(), "open": c.open, "high": c.high, "low": c.low, "close": c.close}
+        for c in sorted(seen.values(), key=lambda c: c.trade_date)
+    ]
 
 
 def _picks_row(row: asyncpg.Record) -> dict[str, Any]:
     return {
         "id": row["id"],
         "stockCode": row["stock_code"],
+        "stockName": row["stock_name"],
         "reason": row["reason"],
-        "entryDate": row["entry_date"].isoformat(),
+        "observedDate": row["observed_date"].isoformat() if row["observed_date"] else None,
+        "entryDate": row["entry_date"].isoformat() if row["entry_date"] else None,
         "entryPrice": _number(row["entry_price"]),
         "status": row["status"],
         "exitDate": row["exit_date"].isoformat() if row["exit_date"] else None,
         "exitPrice": _number(row["exit_price"]),
+        "hasImage": row["entry_image"] is not None,
     }
 
 
@@ -1128,18 +1413,52 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
         pool = pool_for(request)
         async with pool.acquire() as conn:
             rows = await conn.fetch(
-                "SELECT * FROM popostock_picks ORDER BY entry_date DESC, id DESC"
+                "SELECT * FROM popostock_picks "
+                "ORDER BY COALESCE(entry_date, observed_date) DESC, id DESC"
             )
 
         today = date.today()
         picks = [_picks_row(row) for row in rows]
-        active_codes = {p["stockCode"] for p in picks if p["status"] == "active"}
+
+        # A pick can be saved before its entry price is known (see add()) —
+        # retry resolving it on every read, and persist as soon as it lands.
+        pending = [p for p in picks if p["status"] == "active" and p["entryPrice"] is None]
+        if pending:
+            resolved = await asyncio.gather(
+                *(
+                    _picks_open_on_or_after(
+                        p["stockCode"], date.fromisoformat(p["observedDate"]) + timedelta(days=1)
+                    )
+                    for p in pending
+                ),
+                return_exceptions=True,
+            )
+            newly_priced = [
+                (p, hit) for p, hit in zip(pending, resolved)
+                if isinstance(hit, tuple)
+            ]
+            if newly_priced:
+                async with pool.acquire() as conn:
+                    for p, (entry_date, entry_price) in newly_priced:
+                        await conn.execute(
+                            """
+                            UPDATE popostock_picks
+                            SET entry_date = $2, entry_price = $3, updated_at = NOW()
+                            WHERE id = $1
+                            """,
+                            p["id"], entry_date, entry_price,
+                        )
+                        p["entryDate"] = entry_date.isoformat()
+                        p["entryPrice"] = entry_price
+
+        active_codes = {p["stockCode"] for p in picks if p["status"] == "active" and p["entryPrice"] is not None}
         current_prices: dict[str, float] = {}
         if active_codes:
+            active_codes_list = list(active_codes)
             resolved = await asyncio.gather(
-                *(_picks_resolve_price(code, today) for code in active_codes)
+                *(_picks_close_on_or_before(code, today) for code in active_codes_list)
             )
-            for code, hit in zip(active_codes, resolved):
+            for code, hit in zip(active_codes_list, resolved):
                 if hit:
                     current_prices[code] = hit[1]
 
@@ -1171,29 +1490,56 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
         if not code or not re.fullmatch(r"[0-9A-Z]{2,10}", code):
             raise HTTPException(status_code=400, detail="股號格式不正確")
         try:
-            entry_date = date.fromisoformat(str(body.get("date", "")))
+            observed_date = date.fromisoformat(str(body.get("date", "")))
         except ValueError:
             raise HTTPException(status_code=400, detail="日期格式不正確")
-        if entry_date > date.today():
+        if observed_date > date.today():
             raise HTTPException(status_code=400, detail="日期不可以是未來")
         reason = str(body.get("reason", "")).strip() or None
 
-        resolved = await _picks_resolve_price(code, entry_date)
-        if not resolved:
-            raise HTTPException(
-                status_code=400,
-                detail=f"查無 {code} 在 {entry_date.isoformat()} 前後的收盤價，請確認股號",
-            )
-        priced_date, price = resolved
+        # `date` is the day the pick was observed after market close, so the
+        # earliest it could realistically have been bought is the *next*
+        # trading day's open — not that day's own close. Never block the save
+        # on this: if the exchange doesn't have next-day data yet (or any
+        # other lookup hiccup), record the pick anyway with the price left
+        # pending — GET /api/picks retries it on every read until it resolves.
+        try:
+            resolved = await _picks_open_on_or_after(code, observed_date + timedelta(days=1))
+        except Exception:
+            LOGGER.warning("popo picks: entry price lookup failed for %s", code, exc_info=True)
+            resolved = None
+        entry_date, entry_price = resolved if resolved else (None, None)
+        try:
+            stock_name = await _picks_stock_name(code)
+        except Exception:
+            stock_name = None
+
+        image_bytes: bytes | None = None
+        image_type: str | None = None
+        raw_image = body.get("image")
+        if raw_image:
+            match = re.fullmatch(r"data:(image/[\w.+-]+);base64,(.+)", str(raw_image), re.DOTALL)
+            payload_b64 = match.group(2) if match else str(raw_image)
+            image_type = match.group(1) if match else "image/png"
+            try:
+                image_bytes = base64.b64decode(payload_b64, validate=True)
+            except Exception:
+                raise HTTPException(status_code=400, detail="圖檔格式不正確")
+            if len(image_bytes) > 6 * 1024 * 1024:
+                raise HTTPException(status_code=400, detail="圖檔太大，請控制在 6MB 以內")
 
         async with pool.acquire() as conn:
             row = await conn.fetchrow(
                 """
-                INSERT INTO popostock_picks (stock_code, reason, entry_date, entry_price)
-                VALUES ($1, $2, $3, $4)
+                INSERT INTO popostock_picks (
+                    stock_code, stock_name, reason, observed_date,
+                    entry_date, entry_price, entry_image, entry_image_type
+                )
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 RETURNING *
                 """,
-                code, reason, priced_date, price,
+                code, stock_name, reason, observed_date,
+                entry_date, entry_price, image_bytes, image_type,
             )
         return JSONResponse(_picks_row(row))
 
@@ -1218,7 +1564,7 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
             if existing["status"] != "active":
                 raise HTTPException(status_code=400, detail="這筆已經出場過了")
 
-            resolved = await _picks_resolve_price(existing["stock_code"], exit_date)
+            resolved = await _picks_close_on_or_before(existing["stock_code"], exit_date)
             if not resolved:
                 raise HTTPException(status_code=400, detail="查無出場當日收盤價")
             priced_date, price = resolved
@@ -1247,6 +1593,44 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
         if not deleted:
             raise HTTPException(status_code=404, detail="找不到這筆紀錄")
         return Response(status_code=204)
+
+    @app.get("/popostock/api/picks/{pick_id}/image")
+    async def popostock_picks_image(pick_id: int, request: Request) -> Response:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            row = await conn.fetchrow(
+                "SELECT entry_image, entry_image_type FROM popostock_picks WHERE id = $1",
+                pick_id,
+            )
+        if not row or row["entry_image"] is None:
+            raise HTTPException(status_code=404, detail="這筆沒有圖檔")
+        return Response(
+            content=bytes(row["entry_image"]),
+            media_type=row["entry_image_type"] or "image/png",
+        )
+
+    @app.get("/popostock/api/picks/{pick_id}/candles")
+    async def popostock_picks_candles(pick_id: int, request: Request) -> JSONResponse:
+        pool = pool_for(request)
+        async with pool.acquire() as conn:
+            row = await conn.fetchrow(
+                "SELECT * FROM popostock_picks WHERE id = $1", pick_id
+            )
+        if not row:
+            raise HTTPException(status_code=404, detail="找不到這筆紀錄")
+        anchor = row["entry_date"] or row["observed_date"] or date.today()
+        start = anchor - timedelta(days=35)
+        end = row["exit_date"] or date.today()
+        candles = await _picks_candles_since(row["stock_code"], start, end)
+        return JSONResponse(
+            {
+                "stockCode": row["stock_code"],
+                "stockName": row["stock_name"],
+                "entryDate": row["entry_date"].isoformat() if row["entry_date"] else None,
+                "exitDate": row["exit_date"].isoformat() if row["exit_date"] else None,
+                "candles": candles,
+            }
+        )
 
     app.mount(
         "/popostock",
