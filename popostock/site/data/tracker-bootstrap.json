@@ -33391,9 +33391,105 @@
       "holdings": []
     },
     {
-      "id": "00877",
+      "id": "00712",
       "group": "passiveEtfs",
       "groupRank": 73,
+      "code": "00712",
+      "name": "復華富時不動產",
+      "category": "美國不動產 REITs",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "復華投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2017/08/21"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國不動產 REITs"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00728",
+      "group": "passiveEtfs",
+      "groupRank": 74,
+      "code": "00728",
+      "name": "第一金工業30",
+      "category": "台灣工業 30",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "第一金投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2018/04/18"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣工業 30"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00770",
+      "group": "passiveEtfs",
+      "groupRank": 75,
+      "code": "00770",
+      "name": "國泰北美科技",
+      "category": "美國北美科技",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "國泰投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2019/01/29"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國北美科技"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00877",
+      "group": "passiveEtfs",
+      "groupRank": 76,
       "code": "00877",
       "name": "FH中國5G",
       "category": "中國 5G",
@@ -33438,7 +33534,7 @@
     {
       "id": "00907",
       "group": "passiveEtfs",
-      "groupRank": 74,
+      "groupRank": 77,
       "code": "00907",
       "name": "永豐優息存股",
       "category": "台灣優息存股",
@@ -33470,7 +33566,7 @@
     {
       "id": "00915",
       "group": "passiveEtfs",
-      "groupRank": 75,
+      "groupRank": 78,
       "code": "00915",
       "name": "凱基優選高股息30",
       "category": "台灣優選高股息",
@@ -33500,9 +33596,41 @@
       "holdings": []
     },
     {
+      "id": "00921",
+      "group": "passiveEtfs",
+      "groupRank": 79,
+      "code": "00921",
+      "name": "兆豐龍頭等權重",
+      "category": "台灣龍頭等權重",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "兆豐投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/01/13"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣龍頭等權重"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
       "id": "00926",
       "group": "passiveEtfs",
-      "groupRank": 76,
+      "groupRank": 80,
       "code": "00926",
       "name": "凱基全球菁英55",
       "category": "全球菁英 55",
@@ -33534,7 +33662,7 @@
     {
       "id": "00928",
       "group": "passiveEtfs",
-      "groupRank": 77,
+      "groupRank": 81,
       "code": "00928",
       "name": "中信上櫃ESG 30",
       "category": "台灣上櫃 ESG",
@@ -33579,7 +33707,7 @@
     {
       "id": "00930",
       "group": "passiveEtfs",
-      "groupRank": 78,
+      "groupRank": 82,
       "code": "00930",
       "name": "永豐ESG低碳高息",
       "category": "台灣 ESG 低碳高息",
@@ -33611,7 +33739,7 @@
     {
       "id": "00932",
       "group": "passiveEtfs",
-      "groupRank": 79,
+      "groupRank": 83,
       "code": "00932",
       "name": "兆豐永續高息等權",
       "category": "台灣永續高息等權",
@@ -33643,7 +33771,7 @@
     {
       "id": "00934",
       "group": "passiveEtfs",
-      "groupRank": 80,
+      "groupRank": 84,
       "code": "00934",
       "name": "中信成長高股息",
       "category": "台灣成長高股息",
@@ -33675,7 +33803,7 @@
     {
       "id": "00936",
       "group": "passiveEtfs",
-      "groupRank": 81,
+      "groupRank": 85,
       "code": "00936",
       "name": "台新永續高息中小",
       "category": "台灣永續高息中小",
@@ -33707,7 +33835,7 @@
     {
       "id": "00943",
       "group": "passiveEtfs",
-      "groupRank": 82,
+      "groupRank": 86,
       "code": "00943",
       "name": "兆豐電子高息等權",
       "category": "台灣電子高息等權",
@@ -33739,7 +33867,7 @@
     {
       "id": "00944",
       "group": "passiveEtfs",
-      "groupRank": 83,
+      "groupRank": 87,
       "code": "00944",
       "name": "野村趨勢動能高息",
       "category": "台灣趨勢動能高息",
@@ -33769,9 +33897,41 @@
       "holdings": []
     },
     {
+      "id": "00952",
+      "group": "passiveEtfs",
+      "groupRank": 88,
+      "code": "00952",
+      "name": "凱基台灣AI50",
+      "category": "台灣 AI 50",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "凱基投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/09/05"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣 AI 50"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
       "id": "00956",
       "group": "passiveEtfs",
-      "groupRank": 84,
+      "groupRank": 89,
       "code": "00956",
       "name": "中信日經高股息",
       "category": "日本高股息",
@@ -33803,7 +33963,7 @@
     {
       "id": "00961",
       "group": "passiveEtfs",
-      "groupRank": 85,
+      "groupRank": 90,
       "code": "00961",
       "name": "FT臺灣永續高息",
       "category": "台灣永續高息",
@@ -33835,7 +33995,7 @@
     {
       "id": "00963",
       "group": "passiveEtfs",
-      "groupRank": 86,
+      "groupRank": 91,
       "code": "00963",
       "name": "中信全球高股息",
       "category": "全球高股息",
@@ -33867,7 +34027,7 @@
     {
       "id": "00964",
       "group": "passiveEtfs",
-      "groupRank": 87,
+      "groupRank": 92,
       "code": "00964",
       "name": "中信亞太高股息",
       "category": "亞太高股息",
@@ -33899,7 +34059,7 @@
     {
       "id": "00972",
       "group": "passiveEtfs",
-      "groupRank": 88,
+      "groupRank": 93,
       "code": "00972",
       "name": "野村日本動能高息",
       "category": "日本動能高息",
@@ -35203,6 +35363,46 @@
       "createdAt": "2026-07-22"
     },
     {
+      "id": "ref-passive-nav-00712",
+      "targetKey": "item:00712",
+      "title": "00712 復華富時不動產 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00712",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00728",
+      "targetKey": "item:00728",
+      "title": "00728 第一金工業30 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00728",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00770",
+      "targetKey": "item:00770",
+      "title": "00770 國泰北美科技 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00770",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00921",
+      "targetKey": "item:00921",
+      "title": "00921 兆豐龍頭等權重 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00921",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00952",
+      "targetKey": "item:00952",
+      "title": "00952 凱基台灣AI50 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00952",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
       "id": "ref-passive-holdings-bootstrap-0050",
       "targetKey": "item:0050",
       "title": "0050 元大台灣50 成分股初始快照",
@@ -35815,6 +36015,41 @@
       "id": "ref-passive-holdings-bootstrap-00972",
       "targetKey": "item:00972",
       "title": "00972 野村日本動能高息 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00712",
+      "targetKey": "item:00712",
+      "title": "00712 復華富時不動產 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00728",
+      "targetKey": "item:00728",
+      "title": "00728 第一金工業30 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00770",
+      "targetKey": "item:00770",
+      "title": "00770 國泰北美科技 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00921",
+      "targetKey": "item:00921",
+      "title": "00921 兆豐龍頭等權重 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00952",
+      "targetKey": "item:00952",
+      "title": "00952 凱基台灣AI50 成分股初始快照",
       "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
       "createdAt": "2026-07-23"
     }
