@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-09-02T18:13:30+08:00",
-  "consensusDate": "2026-09-02",
+  "generatedAt": "2026-09-03T12:13:34+08:00",
+  "consensusDate": "2026-09-03",
   "thresholdTwd": 100000000,
   "stocks": [
     {
       "code": "1102",
       "name": "亞泥",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -89,9 +89,9 @@
       "code": "1210",
       "name": "大成長城企業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -157,9 +157,9 @@
       "code": "1216",
       "name": "統一",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -353,9 +353,9 @@
       "code": "1229",
       "name": "聯華實業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -449,9 +449,9 @@
       "code": "1301",
       "name": "台塑",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -600,6 +600,20 @@
               "amountTwd": 69759000
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 40,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 40,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -607,9 +621,9 @@
       "code": "1303",
       "name": "南亞",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -1175,9 +1189,9 @@
       "code": "1319",
       "name": "東陽實業廠",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -1228,9 +1242,9 @@
       "code": "1326",
       "name": "台灣化學纖維",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1357,9 +1371,9 @@
       "code": "1402",
       "name": "遠東新",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1439,9 +1453,9 @@
       "code": "1409",
       "name": "新纖",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1521,9 +1535,9 @@
       "code": "1419",
       "name": "新紡",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -1575,9 +1589,9 @@
       "code": "1477",
       "name": "MAKALOT INDUSTRIAL CO LTD ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -1727,9 +1741,9 @@
       "code": "1504",
       "name": "東元",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -1780,9 +1794,9 @@
       "code": "1513",
       "name": "中興電工",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1834,9 +1848,9 @@
       "code": "1519",
       "name": "華城",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -1874,9 +1888,9 @@
       "code": "1537",
       "name": "廣隆",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-17",
@@ -1942,9 +1956,9 @@
       "code": "1560",
       "name": "中砂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -2216,9 +2230,9 @@
       "code": "1590",
       "name": "亞德客-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -2408,9 +2422,9 @@
       "code": "1714",
       "name": "和桐",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -2476,9 +2490,9 @@
       "code": "1717",
       "name": "長興",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-31",
@@ -2641,9 +2655,9 @@
       "code": "1736",
       "name": "喬山健康",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -2695,9 +2709,9 @@
       "code": "1785",
       "name": "光洋科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -2853,9 +2867,9 @@
       "code": "1795",
       "name": "美時製藥",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -2949,9 +2963,9 @@
       "code": "1802",
       "name": "台灣玻璃工業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -3016,9 +3030,9 @@
       "code": "1808",
       "name": "潤隆",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 236,
+      "historyPoints": 235,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -3041,9 +3055,9 @@
       "code": "1815",
       "name": "富喬",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -3137,9 +3151,9 @@
       "code": "1907",
       "name": "永豐餘",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -3205,9 +3219,9 @@
       "code": "2006",
       "name": "東和鋼鐵",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -3273,9 +3287,9 @@
       "code": "2015",
       "name": "豐興",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -3341,9 +3355,9 @@
       "code": "2027",
       "name": "大成鋼",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -3581,9 +3595,9 @@
       "code": "2049",
       "name": "上銀",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -3753,9 +3767,9 @@
       "code": "2059",
       "name": "川湖",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-08",
@@ -4455,9 +4469,9 @@
       "code": "2105",
       "name": "正新",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4537,9 +4551,9 @@
       "code": "2201",
       "name": "裕隆汽車",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -4619,9 +4633,9 @@
       "code": "2204",
       "name": "中華",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4743,9 +4757,9 @@
       "code": "2206",
       "name": "三陽工業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4811,9 +4825,9 @@
       "code": "2301",
       "name": "光寶科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -5095,9 +5109,9 @@
       "code": "2303",
       "name": "聯電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -6007,9 +6021,9 @@
         },
         {
           "date": "2026-09-02",
-          "etfCount": 3,
-          "lots": 1145,
-          "amountTwd": 148277500,
+          "etfCount": 4,
+          "lots": 1265,
+          "amountTwd": 163817500,
           "etfs": [
             {
               "code": "00407A",
@@ -6028,6 +6042,12 @@
               "name": "主動安聯台灣",
               "lots": 62,
               "amountTwd": 8029000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 120,
+              "amountTwd": 15540000
             }
           ]
         }
@@ -6037,9 +6057,9 @@
       "code": "2308",
       "name": "台達電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -7067,15 +7087,21 @@
         },
         {
           "date": "2026-09-02",
-          "etfCount": 1,
-          "lots": 130,
-          "amountTwd": 230425000,
+          "etfCount": 2,
+          "lots": 140,
+          "amountTwd": 248150000,
           "etfs": [
             {
               "code": "00403A",
               "name": "主動統一升級50",
               "lots": 130,
               "amountTwd": 230425000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 10,
+              "amountTwd": 17725000
             }
           ]
         }
@@ -7085,9 +7111,9 @@
       "code": "2313",
       "name": "華通",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -7257,9 +7283,9 @@
       "code": "2316",
       "name": "楠梓電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -7395,9 +7421,9 @@
       "code": "2317",
       "name": "鴻海",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -7663,9 +7689,9 @@
       "code": "2324",
       "name": "仁寶",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -7717,9 +7743,9 @@
       "code": "2327",
       "name": "國巨",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -8691,9 +8717,9 @@
       "code": "2330",
       "name": "台積電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -9907,9 +9933,9 @@
         },
         {
           "date": "2026-09-02",
-          "etfCount": 2,
-          "lots": 322,
-          "amountTwd": 773605000,
+          "etfCount": 3,
+          "lots": 343,
+          "amountTwd": 824057500,
           "etfs": [
             {
               "code": "00403A",
@@ -9922,6 +9948,12 @@
               "name": "主動安聯台灣",
               "lots": 22,
               "amountTwd": 52855000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 21,
+              "amountTwd": 50452500
             }
           ]
         }
@@ -9931,9 +9963,9 @@
       "code": "2337",
       "name": "旺宏",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -10215,9 +10247,9 @@
       "code": "2344",
       "name": "華邦電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -10777,9 +10809,9 @@
       "code": "2345",
       "name": "智邦",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -11773,9 +11805,9 @@
       "code": "2347",
       "name": "聯強國際",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -12069,9 +12101,9 @@
       "code": "2351",
       "name": "順德",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-13",
@@ -12247,9 +12279,9 @@
       "code": "2353",
       "name": "宏碁",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -12301,9 +12333,9 @@
       "code": "2356",
       "name": "英業達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -12340,9 +12372,9 @@
       "code": "2357",
       "name": "華碩",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -12506,9 +12538,9 @@
       "code": "2360",
       "name": "致茂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -13260,9 +13292,9 @@
         },
         {
           "date": "2026-09-02",
-          "etfCount": 2,
-          "lots": 18,
-          "amountTwd": 35685000,
+          "etfCount": 3,
+          "lots": 27,
+          "amountTwd": 53527500,
           "etfs": [
             {
               "code": "00982A",
@@ -13275,6 +13307,12 @@
               "name": "主動安聯台灣",
               "lots": 11,
               "amountTwd": 21807500
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 9,
+              "amountTwd": 17842500
             }
           ]
         }
@@ -13284,9 +13322,9 @@
       "code": "2368",
       "name": "金像電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -13938,9 +13976,9 @@
       "code": "2371",
       "name": "大同",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -14020,9 +14058,9 @@
       "code": "2375",
       "name": "凱美",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -14074,9 +14112,9 @@
       "code": "2376",
       "name": "技嘉",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -14552,9 +14590,9 @@
       "code": "2377",
       "name": "微星",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -14800,9 +14838,9 @@
       "code": "2379",
       "name": "瑞昱",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -14958,9 +14996,9 @@
       "code": "2382",
       "name": "QUANTA COMPUTER INC",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -15256,9 +15294,9 @@
       "code": "2383",
       "name": "台光電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -16378,9 +16416,9 @@
       "code": "2385",
       "name": "群光",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -16460,9 +16498,9 @@
       "code": "2393",
       "name": "億光電子工業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -16590,9 +16628,9 @@
       "code": "2395",
       "name": "研華",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -16974,9 +17012,9 @@
       "code": "2402",
       "name": "毅嘉科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -16999,9 +17037,9 @@
       "code": "2404",
       "name": "漢唐",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -17202,6 +17240,20 @@
               "amountTwd": 1082500
             }
           ]
+        },
+        {
+          "date": "2026-09-02",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 1055000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 1,
+              "amountTwd": 1055000
+            }
+          ]
         }
       ]
     },
@@ -17209,9 +17261,9 @@
       "code": "2408",
       "name": "南亞科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -17833,9 +17885,9 @@
       "code": "2409",
       "name": "友達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -17915,9 +17967,9 @@
       "code": "2412",
       "name": "中華電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -18285,9 +18337,9 @@
       "code": "2428",
       "name": "興勤",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -18429,9 +18481,9 @@
       "code": "2439",
       "name": "美律實業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -18454,9 +18506,9 @@
       "code": "2441",
       "name": "超豐電子",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -18626,9 +18678,9 @@
       "code": "2449",
       "name": "京元電子",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-16",
@@ -19082,9 +19134,9 @@
       "code": "2451",
       "name": "創見",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -19206,9 +19258,9 @@
       "code": "2454",
       "name": "聯發科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -19794,9 +19846,9 @@
         },
         {
           "date": "2026-09-02",
-          "etfCount": 2,
-          "lots": 71,
-          "amountTwd": 312222500,
+          "etfCount": 3,
+          "lots": 77,
+          "amountTwd": 338607500,
           "etfs": [
             {
               "code": "00406A",
@@ -19809,6 +19861,12 @@
               "name": "主動安聯台灣",
               "lots": 31,
               "amountTwd": 136322500
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 6,
+              "amountTwd": 26385000
             }
           ]
         }
@@ -20314,9 +20372,9 @@
       "code": "2455",
       "name": "全新",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -20582,9 +20640,9 @@
       "code": "2458",
       "name": "義隆電子",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -20678,9 +20736,9 @@
       "code": "2464",
       "name": "盟立",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -20746,9 +20804,9 @@
       "code": "2467",
       "name": "志聖",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -21044,9 +21102,9 @@
       "code": "2472",
       "name": "立隆電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -21354,9 +21412,9 @@
       "code": "2474",
       "name": "可成",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -21422,9 +21480,9 @@
       "code": "2476",
       "name": "鉅祥",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -21588,9 +21646,9 @@
       "code": "2478",
       "name": "大毅",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -21740,9 +21798,9 @@
       "code": "2481",
       "name": "強茂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -21938,9 +21996,9 @@
       "code": "2486",
       "name": "一詮",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -22101,9 +22159,9 @@
       "code": "2492",
       "name": "華新科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -22141,9 +22199,9 @@
       "code": "2501",
       "name": "國建",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -22209,9 +22267,9 @@
       "code": "2520",
       "name": "冠德",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -22234,9 +22292,9 @@
       "code": "2535",
       "name": "達工",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -22288,9 +22346,9 @@
       "code": "2542",
       "name": "興富發",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -22313,9 +22371,9 @@
       "code": "2546",
       "name": "根基",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -22381,9 +22439,9 @@
       "code": "2603",
       "name": "長榮",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -22567,9 +22625,9 @@
       "code": "2606",
       "name": "裕民",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -22635,9 +22693,9 @@
       "code": "2610",
       "name": "華航",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -22745,9 +22803,9 @@
       "code": "2615",
       "name": "WAN HAI LINES LIMITED",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -22820,6 +22878,20 @@
               "amountTwd": 8436000
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 8,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -22827,9 +22899,9 @@
       "code": "2618",
       "name": "長榮航",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -23061,9 +23133,9 @@
       "code": "2633",
       "name": "台灣高鐵",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -23157,9 +23229,9 @@
       "code": "2634",
       "name": "漢翔公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -23225,9 +23297,9 @@
       "code": "2637",
       "name": "慧洋海運股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -23335,9 +23407,9 @@
       "code": "2645",
       "name": "長榮航太",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -23389,9 +23461,9 @@
       "code": "2646",
       "name": "星宇航空",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -23443,9 +23515,9 @@
       "code": "2727",
       "name": "王品餐飲",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -23524,9 +23596,9 @@
       "code": "2801",
       "name": "彰銀",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -23604,9 +23676,9 @@
       "code": "2812",
       "name": "台中銀",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -23658,9 +23730,9 @@
       "code": "2834",
       "name": "台企",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -23712,9 +23784,9 @@
       "code": "2845",
       "name": "遠東國際商業銀行股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -23785,9 +23857,9 @@
       "code": "2850",
       "name": "新光產險",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -23810,9 +23882,9 @@
       "code": "2851",
       "name": "中央再保",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -23835,9 +23907,9 @@
       "code": "2855",
       "name": "統一證券",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -23903,9 +23975,9 @@
       "code": "2880",
       "name": "華南金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -24217,9 +24289,9 @@
       "code": "2881",
       "name": "富邦金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -24483,9 +24555,9 @@
       "code": "2882",
       "name": "國泰金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -24703,9 +24775,9 @@
       "code": "2883",
       "name": "KGI FINANCIAL HOLDING CO LTD",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -24971,9 +25043,9 @@
       "code": "2884",
       "name": "E. SUN FINANCIAL HOLDING COMPANY LIMITED",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 242,
+      "historyPoints": 241,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -25081,9 +25153,9 @@
       "code": "2885",
       "name": "元大金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -25627,9 +25699,9 @@
       "code": "2886",
       "name": "兆豐金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -26003,9 +26075,9 @@
       "code": "2887",
       "name": "台新新光金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -26159,9 +26231,9 @@
       "code": "2890",
       "name": "SINOPAC HOLDINGS COMPANY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -26487,9 +26559,9 @@
       "code": "2891",
       "name": "中信金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -26793,9 +26865,9 @@
       "code": "2892",
       "name": "第一金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -27041,9 +27113,9 @@
       "code": "2897",
       "name": "王道銀行",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -27123,9 +27195,9 @@
       "code": "2903",
       "name": "遠百",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -27148,9 +27220,9 @@
       "code": "2912",
       "name": "PRESIDENT CHAIN STORE CORPORATION",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -27302,9 +27374,9 @@
       "code": "3005",
       "name": "GETAC HOLDINGS CORPORATION ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -27376,9 +27448,9 @@
       "code": "3006",
       "name": "晶豪",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -27401,9 +27473,9 @@
       "code": "3008",
       "name": "大立光",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -28234,6 +28306,20 @@
               "amountTwd": 385375000
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 1.412,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.412,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -28241,9 +28327,9 @@
       "code": "3014",
       "name": "聯陽半導體股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -28266,9 +28352,9 @@
       "code": "3017",
       "name": "奇鋐",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -29222,9 +29308,9 @@
       "code": "3022",
       "name": "威強電工業電腦股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -29276,9 +29362,9 @@
       "code": "3023",
       "name": "信邦電子",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -29428,9 +29514,9 @@
       "code": "3026",
       "name": "禾伸堂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -29760,9 +29846,9 @@
       "code": "3033",
       "name": "威健",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -29814,9 +29900,9 @@
       "code": "3034",
       "name": "NOVATEK MICROELECTRONICS CORP LTD",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -30006,9 +30092,9 @@
       "code": "3036",
       "name": "文曄",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -30430,9 +30516,9 @@
       "code": "3037",
       "name": "欣興",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -31334,9 +31420,9 @@
       "code": "3042",
       "name": "台灣晶技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -31436,9 +31522,9 @@
       "code": "3044",
       "name": "TRIPOD TECHNOLOGY CORPORATION TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -31622,9 +31708,9 @@
       "code": "3045",
       "name": "台灣大",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -31870,9 +31956,9 @@
       "code": "3081",
       "name": "聯亞",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-27",
@@ -32276,9 +32362,9 @@
       "code": "3090",
       "name": "日電貿",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -32414,9 +32500,9 @@
       "code": "3105",
       "name": "穩懋",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -32598,9 +32684,9 @@
       "code": "3131",
       "name": "弘塑",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -32848,9 +32934,9 @@
       "code": "3135",
       "name": "凌航科技股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -32902,9 +32988,9 @@
       "code": "3163",
       "name": "波若威",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-28",
@@ -32942,9 +33028,9 @@
       "code": "3167",
       "name": "大  量",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -33099,6 +33185,20 @@
               "amountTwd": 768500
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 22,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 22,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -33106,9 +33206,9 @@
       "code": "3189",
       "name": "景碩",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -33558,9 +33658,9 @@
       "code": "3211",
       "name": "順達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -33640,9 +33740,9 @@
       "code": "3227",
       "name": "原相",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -33708,9 +33808,9 @@
       "code": "3231",
       "name": "緯創",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -34214,9 +34314,9 @@
       "code": "3260",
       "name": "威剛",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 242,
+      "historyPoints": 241,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -34352,9 +34452,9 @@
       "code": "3264",
       "name": "欣銓",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -34808,9 +34908,9 @@
       "code": "3265",
       "name": "台星科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -34932,9 +35032,9 @@
       "code": "3293",
       "name": "鈊象",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -35194,9 +35294,9 @@
       "code": "3324",
       "name": "雙鴻科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -35219,9 +35319,9 @@
       "code": "3357",
       "name": "西北臺慶科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -35285,9 +35385,9 @@
       "code": "3363",
       "name": "上詮",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -35423,9 +35523,9 @@
       "code": "3374",
       "name": "精  材",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-31",
@@ -35462,9 +35562,9 @@
       "code": "3376",
       "name": "新日興",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -35501,9 +35601,9 @@
       "code": "3443",
       "name": "創意",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -36099,9 +36199,9 @@
       "code": "3450",
       "name": "聯鈞",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-27",
@@ -36349,9 +36449,9 @@
       "code": "3481",
       "name": "群創光電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -36499,9 +36599,9 @@
       "code": "3491",
       "name": "昇達科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 242,
+      "historyPoints": 241,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -36787,9 +36887,9 @@
       "code": "3529",
       "name": "力旺",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -37015,9 +37115,9 @@
       "code": "3532",
       "name": "台勝科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -37069,9 +37169,9 @@
       "code": "3533",
       "name": "嘉澤",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -37267,9 +37367,9 @@
       "code": "3583",
       "name": "辛耘",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -37659,9 +37759,9 @@
       "code": "3592",
       "name": "瑞鼎",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -37769,9 +37869,9 @@
       "code": "3596",
       "name": "智易科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -37823,9 +37923,9 @@
       "code": "3617",
       "name": "碩天",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -37933,9 +38033,9 @@
       "code": "3653",
       "name": "健策",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -38703,9 +38803,9 @@
       "code": "3661",
       "name": "世芯-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -38915,9 +39015,9 @@
       "code": "3665",
       "name": "貿聯-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 242,
+      "historyPoints": 241,
       "buySessions": [
         {
           "date": "2026-07-15",
@@ -39797,9 +39897,9 @@
       "code": "3693",
       "name": "營邦",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -39865,9 +39965,9 @@
       "code": "3702",
       "name": "大聯大",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -40325,9 +40425,9 @@
       "code": "3706",
       "name": "神達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -40435,9 +40535,9 @@
       "code": "3711",
       "name": "日月光投控",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -41453,9 +41553,9 @@
       "code": "4123",
       "name": "晟德",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -41535,9 +41635,9 @@
       "code": "4551",
       "name": "智伸科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -41575,9 +41675,9 @@
       "code": "4746",
       "name": "台耀",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -41657,9 +41757,9 @@
       "code": "4749",
       "name": "新應材",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -41682,9 +41782,9 @@
       "code": "4763",
       "name": "濟南大自然新材料股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -41750,9 +41850,9 @@
       "code": "4764",
       "name": "雙鍵",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -41846,9 +41946,9 @@
       "code": "4904",
       "name": "遠傳",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -42250,9 +42350,9 @@
       "code": "4915",
       "name": "致伸科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -42317,9 +42417,9 @@
       "code": "4919",
       "name": "新唐科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -42371,9 +42471,9 @@
       "code": "4938",
       "name": "PEGATRON CORP ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -42467,9 +42567,9 @@
       "code": "4958",
       "name": "臻鼎-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -43101,9 +43201,9 @@
       "code": "4966",
       "name": "譜瑞-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -43239,9 +43339,9 @@
       "code": "4967",
       "name": "十銓",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -43264,9 +43364,9 @@
       "code": "4979",
       "name": "華星光",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -43432,9 +43532,9 @@
       "code": "4991",
       "name": "環宇-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-12",
@@ -43492,9 +43592,9 @@
       "code": "5269",
       "name": "祥碩科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -43531,9 +43631,9 @@
       "code": "5274",
       "name": "信驊",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -44241,9 +44341,9 @@
       "code": "5288",
       "name": "豐祥-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -44295,9 +44395,9 @@
       "code": "5289",
       "name": "宜鼎國際",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -44649,9 +44749,9 @@
       "code": "5306",
       "name": "桂盟",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -44674,9 +44774,9 @@
       "code": "5347",
       "name": "世界",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -44804,9 +44904,9 @@
       "code": "5351",
       "name": "鈺創",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-06",
@@ -44872,9 +44972,9 @@
       "code": "5425",
       "name": "台半",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -45010,9 +45110,9 @@
       "code": "5434",
       "name": "崇越科技股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -45196,9 +45296,9 @@
       "code": "5439",
       "name": "高技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -45436,9 +45536,9 @@
       "code": "5483",
       "name": "中美晶",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -45662,9 +45762,9 @@
       "code": "5534",
       "name": "長虹",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -45743,9 +45843,9 @@
       "code": "5536",
       "name": "聖暉",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -46053,9 +46153,9 @@
       "code": "5871",
       "name": "CHAILEASE HOLDINGS CO LTD ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -46181,9 +46281,9 @@
       "code": "5876",
       "name": "上海商銀",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -46379,9 +46479,9 @@
       "code": "5880",
       "name": "合庫金",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -46447,9 +46547,9 @@
       "code": "5903",
       "name": "全家商店",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -46513,11 +46613,11 @@
     },
     {
       "code": "5904",
-      "name": "寶雅",
+      "name": "POYA CO LTD ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 236,
+      "historyPoints": 235,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -46530,44 +46630,6 @@
               "name": "主動安聯台灣高息",
               "lots": 2,
               "amountTwd": 1262000
-            }
-          ]
-        },
-        {
-          "date": "2026-08-10",
-          "etfCount": 5,
-          "lots": 5377.05,
-          "amountTwd": 425862360,
-          "etfs": [
-            {
-              "code": "00401A",
-              "name": "主動摩根台灣鑫收",
-              "lots": 243,
-              "amountTwd": 19245600
-            },
-            {
-              "code": "00408A",
-              "name": "主動第一金優股息",
-              "lots": 369,
-              "amountTwd": 29224800
-            },
-            {
-              "code": "00980A",
-              "name": "主動野村臺灣優選",
-              "lots": 2812.05,
-              "amountTwd": 222714360
-            },
-            {
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lots": 360,
-              "amountTwd": 28512000
-            },
-            {
-              "code": "00999A",
-              "name": "主動野村臺灣高息",
-              "lots": 1593,
-              "amountTwd": 126165600
             }
           ]
         },
@@ -46781,9 +46843,9 @@
       "code": "6005",
       "name": "群益證券",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -46849,9 +46911,9 @@
       "code": "6023",
       "name": "元大期貨",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -46917,9 +46979,9 @@
       "code": "6121",
       "name": "新普科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -47013,9 +47075,9 @@
       "code": "6138",
       "name": "茂達電子",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -47081,9 +47143,9 @@
       "code": "6139",
       "name": "亞翔",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -47495,9 +47557,9 @@
       "code": "6147",
       "name": "頎邦",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -47813,9 +47875,9 @@
       "code": "6173",
       "name": "信昌電陶",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -47838,9 +47900,9 @@
       "code": "6176",
       "name": "瑞儀光電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 236,
+      "historyPoints": 235,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -47892,9 +47954,9 @@
       "code": "6177",
       "name": "達麗",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -47917,9 +47979,9 @@
       "code": "6182",
       "name": "合晶",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -48013,9 +48075,9 @@
       "code": "6187",
       "name": "萬潤",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -48555,9 +48617,9 @@
       "code": "6196",
       "name": "帆宣系統科技股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -48847,9 +48909,9 @@
       "code": "6197",
       "name": "佳必琪",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -48915,9 +48977,9 @@
       "code": "6202",
       "name": "盛群",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -48969,9 +49031,9 @@
       "code": "6206",
       "name": "飛捷科技股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -49008,9 +49070,9 @@
       "code": "6213",
       "name": "聯茂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -49330,9 +49392,9 @@
       "code": "6214",
       "name": "精誠",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -49426,9 +49488,9 @@
       "code": "6223",
       "name": "旺矽",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -49953,6 +50015,20 @@
               "amountTwd": 106300000
             }
           ]
+        },
+        {
+          "date": "2026-09-02",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 16192500,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 3,
+              "amountTwd": 16192500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -50254,9 +50330,9 @@
       "code": "6239",
       "name": "力成",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -50552,9 +50628,9 @@
       "code": "6257",
       "name": "矽格",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -50888,9 +50964,9 @@
       "code": "6271",
       "name": "同欣電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -50983,9 +51059,9 @@
       "code": "6274",
       "name": "台燿",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -51717,9 +51793,9 @@
       "code": "6278",
       "name": "台表科",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -52035,9 +52111,9 @@
       "code": "6282",
       "name": "康舒",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -52103,9 +52179,9 @@
       "code": "6285",
       "name": "啟碁",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -52317,9 +52393,9 @@
       "code": "6291",
       "name": "沛亨",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -52356,9 +52432,9 @@
       "code": "6415",
       "name": "矽力*-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -52659,6 +52735,20 @@
               "amountTwd": 936000
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 26,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 26,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -52666,9 +52756,9 @@
       "code": "6426",
       "name": "統新",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -52691,9 +52781,9 @@
       "code": "6435",
       "name": "大中積體電路",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -52787,9 +52877,9 @@
       "code": "6438",
       "name": "迅得機械",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -52826,9 +52916,9 @@
       "code": "6442",
       "name": "光聖",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -52984,9 +53074,9 @@
       "code": "6446",
       "name": "藥華藥",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -53286,9 +53376,9 @@
       "code": "6469",
       "name": "大樹醫藥",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -53368,9 +53458,9 @@
       "code": "6472",
       "name": "保瑞",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -53435,9 +53525,9 @@
       "code": "6488",
       "name": "環球晶",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -54039,9 +54129,9 @@
       "code": "6491",
       "name": "晶碩光學",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -54135,9 +54225,9 @@
       "code": "6505",
       "name": "台塑化",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -54202,9 +54292,9 @@
       "code": "6510",
       "name": "精測",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -54506,9 +54596,9 @@
       "code": "6515",
       "name": "穎崴",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -55088,9 +55178,9 @@
       "code": "6526",
       "name": "達發",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -55161,9 +55251,9 @@
       "code": "6531",
       "name": "愛普",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -55599,9 +55689,9 @@
       "code": "6548",
       "name": "長科*",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -55652,9 +55742,9 @@
       "code": "6584",
       "name": "南俊國際",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -55790,9 +55880,9 @@
       "code": "6592",
       "name": "和潤企業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -55844,9 +55934,9 @@
       "code": "6640",
       "name": "均華",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-31",
@@ -55883,9 +55973,9 @@
       "code": "6669",
       "name": "緯穎",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -56518,110 +56608,6 @@
               "amountTwd": 14850000
             }
           ]
-        },
-        {
-          "date": "2026-09-02",
-          "etfCount": 16,
-          "lots": 9606.162,
-          "amountTwd": 26224822260,
-          "etfs": [
-            {
-              "code": "00400A",
-              "name": "主動國泰動能高息",
-              "lots": 438.197,
-              "amountTwd": 1196277810
-            },
-            {
-              "code": "00401A",
-              "name": "主動摩根台灣鑫收",
-              "lots": 20.476,
-              "amountTwd": 55899480
-            },
-            {
-              "code": "00403A",
-              "name": "主動統一升級50",
-              "lots": 1387.956,
-              "amountTwd": 3789119880
-            },
-            {
-              "code": "00405A",
-              "name": "主動富邦台灣龍耀",
-              "lots": 99.139,
-              "amountTwd": 270649470
-            },
-            {
-              "code": "00406A",
-              "name": "主動中信台灣收益",
-              "lots": 263.711,
-              "amountTwd": 719931030
-            },
-            {
-              "code": "00407A",
-              "name": "主動凱基台灣",
-              "lots": 386.644,
-              "amountTwd": 1055538120
-            },
-            {
-              "code": "00980A",
-              "name": "主動野村臺灣優選",
-              "lots": 103.105,
-              "amountTwd": 281476650
-            },
-            {
-              "code": "00981A",
-              "name": "主動統一台股增長",
-              "lots": 4314.561,
-              "amountTwd": 11778751530
-            },
-            {
-              "code": "00982A",
-              "name": "主動群益台灣強棒",
-              "lots": 881.225,
-              "amountTwd": 2405744250
-            },
-            {
-              "code": "00984A",
-              "name": "主動安聯台灣高息",
-              "lots": 29.741,
-              "amountTwd": 81192930
-            },
-            {
-              "code": "00985A",
-              "name": "主動野村台灣50",
-              "lots": 111.036,
-              "amountTwd": 303128280
-            },
-            {
-              "code": "00991A",
-              "name": "主動復華未來50",
-              "lots": 1150.02,
-              "amountTwd": 3139554600
-            },
-            {
-              "code": "00992A",
-              "name": "主動群益科技創新",
-              "lots": 152.675,
-              "amountTwd": 416802750
-            },
-            {
-              "code": "00993A",
-              "name": "主動安聯台灣",
-              "lots": 93.191,
-              "amountTwd": 254411430
-            },
-            {
-              "code": "00995A",
-              "name": "主動中信台灣卓越",
-              "lots": 85.26,
-              "amountTwd": 232759800
-            },
-            {
-              "code": "00999A",
-              "name": "主動野村臺灣高息",
-              "lots": 89.225,
-              "amountTwd": 243584250
-            }
-          ]
         }
       ],
       "sellSessions": [
@@ -56888,6 +56874,104 @@
               "amountTwd": 59400000
             }
           ]
+        },
+        {
+          "date": "2026-09-02",
+          "etfCount": 15,
+          "lots": 130.05,
+          "amountTwd": 355036500,
+          "etfs": [
+            {
+              "code": "00400A",
+              "name": "主動國泰動能高息",
+              "lots": 0.002,
+              "amountTwd": 5460
+            },
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 0.006,
+              "amountTwd": 16380
+            },
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lots": 0.002,
+              "amountTwd": 5460
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 0.003,
+              "amountTwd": 8190
+            },
+            {
+              "code": "00980A",
+              "name": "主動野村臺灣優選",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 0.018,
+              "amountTwd": 49140
+            },
+            {
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lots": 130.005,
+              "amountTwd": 354913650
+            },
+            {
+              "code": "00984A",
+              "name": "主動安聯台灣高息",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00985A",
+              "name": "主動野村台灣50",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 0.006,
+              "amountTwd": 16380
+            },
+            {
+              "code": "00992A",
+              "name": "主動群益科技創新",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00995A",
+              "name": "主動中信台灣卓越",
+              "lots": 0.001,
+              "amountTwd": 2730
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 0.001,
+              "amountTwd": 2730
+            }
+          ]
         }
       ]
     },
@@ -56895,9 +56979,9 @@
       "code": "6670",
       "name": "復盛應用",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -57061,9 +57145,9 @@
       "code": "6672",
       "name": "騰輝電子-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -57171,9 +57255,9 @@
       "code": "6683",
       "name": "雍智科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -57196,9 +57280,9 @@
       "code": "6691",
       "name": "洋基工程股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -57264,9 +57348,9 @@
       "code": "6715",
       "name": "嘉  基",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -57289,9 +57373,9 @@
       "code": "6739",
       "name": "竹陞科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -57328,9 +57412,9 @@
       "code": "6768",
       "name": "志強國際企業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -57479,9 +57563,9 @@
       "code": "6770",
       "name": "力積電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -57589,9 +57673,9 @@
       "code": "6782",
       "name": "視陽光學",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -57670,9 +57754,9 @@
       "code": "6805",
       "name": "富世達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -58136,9 +58220,9 @@
       "code": "6830",
       "name": "汎銓",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-24",
@@ -58421,9 +58505,9 @@
       "code": "6890",
       "name": "來億-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -58475,9 +58559,9 @@
       "code": "6944",
       "name": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -58578,6 +58662,20 @@
               "amountTwd": 51191000
             }
           ]
+        },
+        {
+          "date": "2026-09-03",
+          "etfCount": 1,
+          "lots": 14,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 14,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -58585,9 +58683,9 @@
       "code": "7734",
       "name": "印能科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -58776,9 +58874,9 @@
       "code": "7751",
       "name": "竑騰",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-24",
@@ -59791,9 +59889,9 @@
       "code": "8016",
       "name": "矽創",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -60011,9 +60109,9 @@
       "code": "8021",
       "name": "尖點",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -60217,9 +60315,9 @@
       "code": "8028",
       "name": "昇陽半導體",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -60285,9 +60383,9 @@
       "code": "8039",
       "name": "台虹科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -60339,9 +60437,9 @@
       "code": "8046",
       "name": "南電",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -61021,9 +61119,9 @@
       "code": "8064",
       "name": "東捷",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -61075,9 +61173,9 @@
       "code": "8069",
       "name": "元太科技工業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -61100,9 +61198,9 @@
       "code": "8070",
       "name": "長華",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -61210,9 +61308,9 @@
       "code": "8081",
       "name": "致新科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -61278,9 +61376,9 @@
       "code": "8096",
       "name": "擎亞科技",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -61317,9 +61415,9 @@
       "code": "8150",
       "name": "南茂",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -61405,9 +61503,9 @@
       "code": "8155",
       "name": "博智",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -61444,9 +61542,9 @@
       "code": "8210",
       "name": "勤誠",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -61788,9 +61886,9 @@
       "code": "8261",
       "name": "富鼎",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -61827,9 +61925,9 @@
       "code": "8271",
       "name": "宇瞻科技股份有限公司",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -61923,9 +62021,9 @@
       "code": "8299",
       "name": "群聯",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -62287,9 +62385,9 @@
       "code": "8358",
       "name": "金居",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -62603,9 +62701,9 @@
       "code": "8415",
       "name": "大國鋼",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -62671,9 +62769,9 @@
       "code": "8436",
       "name": "大江",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -62835,9 +62933,9 @@
       "code": "8464",
       "name": "NIEN MADE ENTERPRISE CO LTD ORD TWD10",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -62888,9 +62986,9 @@
       "code": "8996",
       "name": "高力",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -63386,9 +63484,9 @@
       "code": "9802",
       "name": "鈺齊-KY",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -63482,9 +63580,9 @@
       "code": "9907",
       "name": "統一實業",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -63577,9 +63675,9 @@
       "code": "9914",
       "name": "美利達",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -63645,9 +63743,9 @@
       "code": "9933",
       "name": "中鼎",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -63670,9 +63768,9 @@
       "code": "9938",
       "name": "百和",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -63850,9 +63948,9 @@
       "code": "9939",
       "name": "宏全",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -63988,9 +64086,9 @@
       "code": "9941",
       "name": "裕融",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -64215,9 +64313,9 @@
       "code": "9945",
       "name": "潤泰創新國際",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [],
       "sellSessions": [
         {
@@ -64268,9 +64366,9 @@
       "code": "9958",
       "name": "世紀鋼構",
       "sourceDate": "2026-09-02",
-      "historyStart": "2025-09-02",
+      "historyStart": "2025-09-03",
       "historyEnd": "2026-09-02",
-      "historyPoints": 243,
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-21",
