@@ -288,6 +288,10 @@
       ".active-etf-position-eyebrow{margin:0 0 4px;color:#08756f;font-size:12px;font-weight:900;letter-spacing:.08em}" +
       ".active-etf-position-title{margin:0;color:#06275f;font-size:23px;line-height:1.25}" +
       ".active-etf-position-subtitle{margin:6px 0 0;color:#667483;font-size:13px}" +
+      ".active-etf-position-consensus{margin:10px 0 0;border:1px solid #b9dedb;background:#eef8f7;" +
+      "color:#08756f;font-size:13px;font-weight:900;border-radius:999px;padding:6px 15px;cursor:pointer}" +
+      ".active-etf-position-consensus:hover{background:#dff2f0}" +
+      ".active-etf-position-consensus:focus-visible{outline:3px solid rgba(8,117,111,.32);outline-offset:2px}" +
       ".active-etf-position-close{flex:0 0 auto;width:38px;height:38px;border:1px solid #d6dee6;border-radius:50%;background:#fff;color:#33485f;font-size:22px;line-height:1;cursor:pointer}" +
       ".active-etf-position-close:hover{background:#f3f6f8}" +
       ".active-etf-position-body{padding:18px 22px 22px}" +
@@ -344,7 +348,9 @@
       '<header class="active-etf-position-header"><div>' +
       '<p class="active-etf-position-eyebrow">主動式 ETF 操作紀錄</p>' +
       '<h2 class="active-etf-position-title" id="active-etf-position-title"></h2>' +
-      '<p class="active-etf-position-subtitle"></p></div>' +
+      '<p class="active-etf-position-subtitle"></p>' +
+      '<button type="button" class="active-etf-position-consensus" hidden>' +
+      "🔍 查看共識加減碼紀錄</button></div>" +
       '<button class="active-etf-position-close" type="button" aria-label="關閉操作紀錄">×</button></header>' +
       '<div class="active-etf-position-body"><div class="active-etf-position-message">載入中…</div></div></section>';
     document.body.appendChild(modal);
@@ -354,6 +360,17 @@
     });
     return modal;
   }
+
+  document.addEventListener("click", function (event) {
+    var jump = event.target.closest
+      ? event.target.closest(".active-etf-position-consensus")
+      : null;
+    if (!jump) return;
+    var consensus = window.popostockConsensusStock;
+    if (!consensus || typeof consensus.open !== "function") return;
+    closeModal();
+    consensus.open(jump.dataset.stockCode, jump.dataset.stockName);
+  });
 
   function closeModal() {
     var modal = document.getElementById("active-etf-position-modal");
@@ -604,6 +621,22 @@
       });
   }
 
+  /*
+   * 兩個彈窗互相導航：共識彈窗列出「哪些 ETF 動了這檔股票」，這裡則有單一
+   * ETF 的完整成本與進出。任一支腳本沒載入時，另一支只是少一個按鈕。
+   */
+  window.popostockPositionRecord = {
+    open: function (etfCode, etfName, stockCode, stockName) {
+      openRecord(
+        String(etfCode),
+        etfName || String(etfCode),
+        String(stockCode),
+        stockName || String(stockCode),
+        null,
+      );
+    },
+  };
+
   function openRecord(etfCode, etfName, stockCode, stockName, trigger) {
     var modal = ensureModal();
     var requestId = ++activeRequest;
@@ -615,6 +648,15 @@
       stockName + "（" + stockCode + "）";
     modal.querySelector(".active-etf-position-subtitle").textContent =
       etfName + " " + etfCode + " 的操作紀錄與成本";
+    // 只有共識統計涵蓋得到的股票才給按鈕；點下去卻查無資料比沒有按鈕更糟。
+    var jump = modal.querySelector(".active-etf-position-consensus");
+    var consensus = window.popostockConsensusStock;
+    var available =
+      !!consensus && typeof consensus.open === "function" &&
+      (typeof consensus.has !== "function" || consensus.has(stockCode));
+    jump.hidden = !available;
+    jump.dataset.stockCode = stockCode;
+    jump.dataset.stockName = stockName;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     showMessage(modal, "載入操作紀錄…");

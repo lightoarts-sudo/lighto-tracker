@@ -155,6 +155,13 @@
       ".consensus-kline-moves .dir{display:inline-block;border-radius:999px;padding:1px 9px;color:#fff;font-size:11px;font-weight:900}" +
       ".consensus-kline-moves .dir.buy{background:#c23d4b}.consensus-kline-moves .dir.sell{background:#16845b}" +
       ".consensus-kline-moves td.buy{color:#c23d4b;font-weight:900}.consensus-kline-moves td.sell{color:#16845b;font-weight:900}" +
+      ".consensus-kline-moves tr.is-link{cursor:pointer}" +
+      ".consensus-kline-moves tr.is-link:hover td{background:#eef8f7}" +
+      ".consensus-kline-moves tr.is-link:focus-visible td{outline:2px solid rgba(8,117,111,.4);outline-offset:-2px}" +
+      ".consensus-kline-moves td.etf b.go{display:inline-block;margin-left:8px;color:#08756f;" +
+      "font-size:11.5px;font-weight:900;opacity:0;transition:opacity .14s ease}" +
+      ".consensus-kline-moves tr.is-link:hover td.etf b.go," +
+      ".consensus-kline-moves tr.is-link:focus-visible td.etf b.go{opacity:1}" +
       ".consensus-kline-message{display:grid;place-items:center;min-height:260px;color:#667483;font-weight:750}" +
       "@media(max-width:720px){.consensus-kline-modal{padding:10px}.consensus-kline-dialog{max-height:calc(100vh - 20px);border-radius:12px}.consensus-kline-header{padding:16px}.consensus-kline-title{font-size:20px}.consensus-kline-body{padding:14px 12px 16px}.consensus-kline-chart{height:340px}.consensus-kline-reading{align-items:flex-start;flex-wrap:wrap}.consensus-kline-reading span:last-child{width:100%;margin-left:0}}";
     document.head.appendChild(style);
@@ -342,12 +349,22 @@
         etfs = [{ code: "", name: "—", lots: row.session.lots, amountTwd: row.session.amountTwd }];
       }
       etfs.forEach(function (etf, index) {
+        // 只有主動式 ETF 有操作紀錄可查（代號形如 00981A）；其餘不給點，
+        // 否則點下去只會開一個「查無紀錄」的空視窗。
+        var linkable = /^[0-9]{5}[A-Z]$/.test(etf.code || "");
+        var classes = (index === 0 ? "is-first " : "") + (linkable ? "is-link" : "");
         html +=
-          '<tr' + (index === 0 ? ' class="is-first"' : "") + ">" +
+          "<tr" + (classes.trim() ? ' class="' + classes.trim() + '"' : "") +
+          (linkable
+            ? ' data-etf="' + etf.code + '" data-etf-name="' +
+              String(etf.name || etf.code).replace(/"/g, "&quot;") + '" tabindex="0"' +
+              ' title="查看 ' + etf.code + ' 對這檔股票的完整操作紀錄"'
+            : "") + ">" +
           '<td class="date">' + (index === 0 ? row.session.date : "") + "</td>" +
           "<td>" + (index === 0 ? '<span class="dir ' + row.dir + '">' + label + "</span>" : "") + "</td>" +
           '<td class="etf">' + (etf.name || etf.code || "—") +
-          (etf.code ? "<i>" + etf.code + "</i>" : "") + "</td>" +
+          (etf.code ? "<i>" + etf.code + "</i>" : "") +
+          (linkable ? '<b class="go">操作紀錄 ›</b>' : "") + "</td>" +
           '<td class="num ' + row.dir + '">' +
           (typeof etf.lots === "number" ? sign + etf.lots.toLocaleString("en-US") + " 張" : "—") + "</td>" +
           '<td class="num ' + row.dir + '">' +
@@ -538,6 +555,34 @@
     resize();
   }
 
+  /*
+   * 兩個彈窗互相導航：這裡列出「哪些 ETF 動了這檔股票」，個別 ETF 的操作紀錄
+   * 則有完整成本與進出。彼此用 window 上的小介面呼叫，任一支腳本沒載入時
+   * 另一支只是少一個按鈕，不會壞。
+   */
+  window.popostockConsensusStock = {
+    open: function (code, name) {
+      openStock(String(code), name || stockNames.get(String(code)) || String(code), null);
+    },
+    has: function (code) {
+      return stockNames.has(String(code));
+    },
+  };
+
+  /*
+   * 從共識明細跳到「某檔 ETF 對這檔股票」的操作紀錄。股票代號與名稱從對話框
+   * 標題取回（開窗時就是這樣寫進去的），免得再存一份會走味的狀態。
+   */
+  function openEtfRecord(row) {
+    var api = window.popostockPositionRecord;
+    if (!api || typeof api.open !== "function") return;
+    var title = document.querySelector(".consensus-kline-title");
+    var match = ((title && title.textContent) || "").match(/^(.*)（(\d{4})）$/);
+    if (!match) return;
+    closeModal();
+    api.open(row.dataset.etf, row.dataset.etfName || row.dataset.etf, match[2], match[1]);
+  }
+
   function openStock(code, name, trigger) {
     var modal = ensureModal();
     var requestId = ++activeRequest;
@@ -612,6 +657,14 @@
       });
 
     document.addEventListener("click", function (event) {
+      // 明細表裡點某一檔 ETF → 轉去看它對這檔股票的完整操作紀錄與成本。
+      var row = event.target.closest
+        ? event.target.closest(".consensus-kline-moves tr.is-link")
+        : null;
+      if (row) {
+        openEtfRecord(row);
+        return;
+      }
       var cell = event.target.closest
         ? event.target.closest(".consensus-stock-kline-cell")
         : null;
@@ -620,6 +673,14 @@
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
         closeModal();
+        return;
+      }
+      var row = event.target.closest
+        ? event.target.closest(".consensus-kline-moves tr.is-link")
+        : null;
+      if (row && (event.key === "Enter" || event.key === " ")) {
+        event.preventDefault();
+        openEtfRecord(row);
         return;
       }
       var cell = event.target.closest
