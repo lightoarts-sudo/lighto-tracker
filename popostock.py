@@ -532,17 +532,22 @@ function drawCandles(canvas, candles, entryDate, dimAfterEntry, stopLossPrice) {
     }
   }
 
+  // Red, and drawn last so it sits above the candles. Kept dashed and a full
+  // 2px so it reads as a level rather than as another up-candle: the bullish
+  // bodies above use #d0342c, so a solid thin red line would blend into them.
   if (stopLossPrice !== null && stopLossPrice !== undefined) {
     const yy = y(stopLossPrice);
-    ctx.strokeStyle = "#3b6bd6";
+    ctx.strokeStyle = "#e02020";
+    ctx.lineWidth = 2;
     ctx.setLineDash([6, 3]);
     ctx.beginPath();
     ctx.moveTo(pad.left, yy);
     ctx.lineTo(w - pad.right, yy);
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = "#3b6bd6";
-    ctx.font = "10px sans-serif";
+    ctx.lineWidth = 1;
+    ctx.fillStyle = "#e02020";
+    ctx.font = "bold 10px sans-serif";
     ctx.fillText(`停損 ${stopLossPrice}`, pad.left + 4, yy - 4);
   }
 }
@@ -597,10 +602,11 @@ async function patchPick(id, patch) {
   return data;
 }
 
-async function editReason(id, current, evt) {
+async function editReason(id, evt) {
   evt.stopPropagation();
   if (!ADMIN_PWD) return;
-  const next = prompt("修改理由：", current || "");
+  const pick = PICKS.find(p => p.id === id);
+  const next = prompt("修改理由：", (pick && pick.reason) || "");
   if (next === null) return;
   try {
     await patchPick(id, { reason: next.trim() });
@@ -610,13 +616,25 @@ async function editReason(id, current, evt) {
   }
 }
 
-async function editStopLoss(id, current, evt) {
+async function editStopLoss(id, evt) {
   evt.stopPropagation();
   if (!ADMIN_PWD) return;
+  const pick = PICKS.find(p => p.id === id);
+  const current = pick ? pick.stopLossPrice : null;
   const next = prompt("修改停損價格（留空可清除）：", current ?? "");
   if (next === null) return;
+  const value = next.trim() === "" ? null : Number(next);
+  if (value !== null && !Number.isFinite(value)) {
+    alert("停損價格格式不正確");
+    return;
+  }
   try {
-    await patchPick(id, { stopLossPrice: next.trim() === "" ? null : Number(next) });
+    await patchPick(id, { stopLossPrice: value });
+    // The candle payload is cached per pick, and the stop-loss line is drawn
+    // from that cache — without this the chart kept showing the old level
+    // until the cache was dropped. Patch the cached copy so the redraw that
+    // load() triggers picks up the new line straight away.
+    if (CANDLE_CACHE[id]) CANDLE_CACHE[id].stopLossPrice = value;
     load();
   } catch (e) {
     alert(e.message);
@@ -645,11 +663,17 @@ function render() {
           : `<button class="btn-danger" onclick="deletePick(${p.id})">刪除</button>`)
       : "";
     const dateCol = p.entryDate || `${p.observedDate}（觀察，進場待定）`;
+    // Pass the id only and look the record up in PICKS. Inlining the reason
+    // here as JSON put its double quotes inside a double-quoted onclick
+    // attribute, which closed the attribute early and left the ✎ button dead
+    // for every pick whose reason was non-empty — that is why the reason could
+    // never be edited. A number (the stop-loss) happened to survive, so only
+    // this column was affected.
     const reasonCell = ADMIN_PWD
-      ? `${esc(p.reason)} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editReason(${p.id}, ${JSON.stringify(p.reason || "")}, event)">✎</button>`
+      ? `${esc(p.reason)} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editReason(${p.id}, event)">✎</button>`
       : esc(p.reason);
     const stopLossCell = ADMIN_PWD
-      ? `${p.stopLossPrice ?? "-"} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editStopLoss(${p.id}, ${p.stopLossPrice ?? "null"}, event)">✎</button>`
+      ? `${p.stopLossPrice ?? "-"} <button class="btn-ghost" style="padding:2px 6px;font-size:11px;" onclick="editStopLoss(${p.id}, event)">✎</button>`
       : (p.stopLossPrice ?? "-");
     const mainRow = `<tr class="pick-row" onclick="toggleDetail(${p.id}, event)">
       <td>${dateCol}</td>
@@ -1512,6 +1536,34 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
 
         today = date.today()
         picks = [_picks_row(row) for row in rows]
+
+        # stock_name was added to the table after the first picks were saved,
+        # so those rows still carry NULL and the 名稱 column showed "-".
+        # Resolve them on read and write the name back, the same way a pending
+        # entry price is resolved below — the backfill then needs no manual
+        # database work and cannot be forgotten for future rows.
+        unnamed = [p for p in picks if not p["stockName"]]
+        if unnamed:
+            resolved_names = await asyncio.gather(
+                *(_picks_stock_name(p["stockCode"]) for p in unnamed),
+                return_exceptions=True,
+            )
+            named = [
+                (p, name) for p, name in zip(unnamed, resolved_names)
+                if isinstance(name, str) and name
+            ]
+            if named:
+                async with pool.acquire() as conn:
+                    for p, name in named:
+                        await conn.execute(
+                            """
+                            UPDATE popostock_picks
+                            SET stock_name = $2, updated_at = NOW()
+                            WHERE id = $1 AND stock_name IS NULL
+                            """,
+                            p["id"], name,
+                        )
+                        p["stockName"] = name
 
         # A pick can be saved before its entry price is known (see add()) —
         # retry resolving it on every read, and persist as soon as it lands.
