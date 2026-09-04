@@ -33,6 +33,38 @@
     );
   }
 
+  /*
+   * 把「共識加碼」排到第二個位置。
+   *
+   * 用 CSS order 而不是搬 DOM：這排按鈕是 React 畫的，重排它的子節點會跟
+   * reconciliation 打架（這個站已經有過 NotFoundError 的教訓）。.workspace-tabs
+   * 是 flex，order 純視覺、不動樹狀結構，React 重繪也不會踩到。
+   *
+   * 每顆都給明確 order（索引 ×10），共識加碼給 5——落在第一顆的 0 與第二顆的
+   * 10 之間。沒有明確 order 的元素預設 0，會全部擠到最前面，所以不能只設一顆。
+   */
+  const SECOND_TAB_LABEL = "共識加碼";
+
+  function applyTabOrder() {
+    const buttons = workspaceTabs();
+    if (buttons.length < 3) return;
+    let moved = null;
+    buttons.forEach((button, index) => {
+      if (cleanText(button) === SECOND_TAB_LABEL) moved = button;
+      else button.style.order = String(index * 10);
+    });
+    if (moved) moved.style.order = "5";
+  }
+
+  function watchTabOrder() {
+    const strip = document.querySelector(".workspace-tabs");
+    if (!strip) return;
+    applyTabOrder();
+    // 只看子節點增減：覆蓋層之後才把自己的分頁掛上來，順序要跟著重算。
+    // 不觀察 attributes，否則自己設 style 會把 observer 叫回來變成迴圈。
+    new MutationObserver(applyTabOrder).observe(strip, { childList: true });
+  }
+
   function selectedWorkspaceTab() {
     return (
       workspaceTabs().find(
@@ -206,6 +238,7 @@
     });
     if (!tabs) return;
     initialized = true;
+    watchTabOrder();
     defaultTab = tabForButton(selectedWorkspaceTab());
     document.addEventListener("click", clickChangesLocation);
     window.addEventListener("popstate", () =>
