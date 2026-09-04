@@ -236,6 +236,15 @@ PICKS_PAGE_HTML = """<!doctype html>
   .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
   .tag-active { background: #fff4cc; color: #8a6d00; }
   .tag-exited { background: #eef1fa; color: #56698f; }
+  .summary { max-width: 1100px; margin: 0 auto 20px; display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .summary div { background: #fff; color: #12295c; border-radius: 12px; padding: 12px 16px; }
+  .summary b { display: block; font-size: 24px; font-weight: 800; line-height: 1.25; }
+  /* fmtPct 回傳的是帶 .up/.down 的 span，那組樣式是為表格內文寫的，
+     直接放進摘要會比旁邊的純數字小一號。字級與字重一律吃外層的。 */
+  .summary b span { font-size: inherit; font-weight: inherit; }
+  .summary span { display: block; color: #56698f; font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .summary small { display: block; color: #9aa8c7; font-size: 11px; margin-top: 3px; }
   .table-wrap { overflow-x: auto; }
   .empty { text-align: center; color: #9fb3d9; padding: 24px 0; }
   .foot { text-align: center; color: #6e83ad; font-size: 12px; margin-top: 24px; }
@@ -297,6 +306,8 @@ PICKS_PAGE_HTML = """<!doctype html>
     <button class="btn-primary" onclick="addPick()">新增追蹤</button>
     <div id="add-msg"></div>
   </div>
+
+  <div class="summary" id="summary"></div>
 
   <div class="card" style="max-width:1100px;">
     <div class="table-wrap">
@@ -641,7 +652,43 @@ async function editStopLoss(id, evt) {
   }
 }
 
+/*
+ * 目前績效。已出場與追蹤中分開算：前者是已實現、後者只是帳面，混在一起
+ * 平均會讓一筆還沒走完的部位看起來像已經賺到。待補進場價的不列入任何統計
+ * ——沒有成本就沒有報酬可談。
+ */
+function renderSummary() {
+  const box = document.getElementById("summary");
+  const scored = PICKS.filter(p => typeof p.returnPct === "number");
+  if (!scored.length) {
+    box.innerHTML = "";
+    return;
+  }
+  const exited = scored.filter(p => p.status === "exited");
+  const active = scored.filter(p => p.status !== "exited");
+  const avg = list => list.reduce((sum, p) => sum + p.returnPct, 0) / list.length;
+  const wins = scored.filter(p => p.returnPct > 0).length;
+  const best = scored.reduce((a, b) => (b.returnPct > a.returnPct ? b : a));
+  const worst = scored.reduce((a, b) => (b.returnPct < a.returnPct ? b : a));
+  const pending = PICKS.length - scored.length;
+  const cell = (value, label, sub) =>
+    `<div><b>${value}</b><span>${label}</span>${sub ? `<small>${sub}</small>` : ""}</div>`;
+
+  box.innerHTML =
+    cell(fmtPct(avg(scored)), "平均報酬率",
+      `${scored.length} 檔計入${pending ? ` · ${pending} 檔待補價未計` : ""}`) +
+    cell(`${wins}/${scored.length}`, "勝率",
+      `${((wins / scored.length) * 100).toFixed(0)}% 為正報酬`) +
+    cell(active.length ? fmtPct(avg(active)) : "-", "追蹤中（未實現）",
+      `${active.length} 檔`) +
+    cell(exited.length ? fmtPct(avg(exited)) : "-", "已出場（已實現）",
+      `${exited.length} 檔`) +
+    cell(fmtPct(best.returnPct), "最佳", `${esc(best.stockName || best.stockCode)}`) +
+    cell(fmtPct(worst.returnPct), "最差", `${esc(worst.stockName || worst.stockCode)}`);
+}
+
 function render() {
+  renderSummary();
   const tbody = document.getElementById("rows");
   if (!PICKS.length) {
     tbody.innerHTML = '<tr><td colspan="10" class="empty">尚無追蹤中的股票</td></tr>';
