@@ -33542,6 +33542,38 @@
         }
       ],
       "holdings": []
+    },
+    {
+      "id": "009828",
+      "group": "passiveEtfs",
+      "groupRank": 94,
+      "code": "009828",
+      "name": "中信台日韓PCB",
+      "category": "台日韓 PCB 供應鏈",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2026/09/02"
+        },
+        {
+          "label": "基金類型",
+          "value": "台日韓 PCB 供應鏈"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
     }
   ],
   "references": [
@@ -34858,6 +34890,14 @@
       "createdAt": "2026-07-22"
     },
     {
+      "id": "ref-passive-nav-009828",
+      "targetKey": "item:009828",
+      "title": "009828 中信台日韓PCB 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009828",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
       "id": "ref-passive-holdings-bootstrap-0050",
       "targetKey": "item:0050",
       "title": "0050 元大台灣50 成分股初始快照",
@@ -35505,6 +35545,13 @@
       "id": "ref-passive-holdings-bootstrap-00952",
       "targetKey": "item:00952",
       "title": "00952 凱基台灣AI50 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-009828",
+      "targetKey": "item:009828",
+      "title": "009828 中信台日韓PCB 成分股初始快照",
       "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
       "createdAt": "2026-07-23"
     }
