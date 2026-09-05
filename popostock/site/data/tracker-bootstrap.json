@@ -6125,60 +6125,95 @@
       "groupRank": 22,
       "code": "ABL01",
       "name": "聯博大利基金-A2類型(新台幣)",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "聯博大利基金-A2類型(新台幣)"
         },
         {
-          "label": "基金公司",
-          "value": "聯博投信"
+          "label": "英文名稱",
+          "value": "ABITL Da Li Fund - A2"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T1802Y5"
         },
         {
           "label": "基金統編",
           "value": "97997635A"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO01"
+          "label": "成立日期",
+          "value": "1997-01-07"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "20.67 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "聯博證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Guo You Yu"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "華南商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "251.88 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A18002/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A18002",
+        "sitcaTaxId": "97997635A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 114.512
     },
     {
       "id": "sitca-esu01",
@@ -6186,60 +6221,95 @@
       "groupRank": 23,
       "code": "ESU01",
       "name": "玉山金滿意基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣大型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "玉山金滿意基金"
         },
         {
-          "label": "基金公司",
-          "value": "玉山投信"
+          "label": "英文名稱",
+          "value": "E.SUN Maxima Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0803Y4"
         },
         {
           "label": "基金統編",
           "value": "92013967A"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO02"
+          "label": "成立日期",
+          "value": "1995-05-01"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "203.97 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "玉山證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Guo Ming Yu"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣大型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "合作金庫商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "279.53 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A08003/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A08003",
+        "sitcaTaxId": "92013967A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 99.5788
     },
     {
       "id": "sitca-fhw01",
@@ -6247,60 +6317,95 @@
       "groupRank": 24,
       "code": "FHW01",
       "name": "復華全方位基金A類型",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "復華全方位基金A類型"
         },
         {
-          "label": "基金公司",
-          "value": "復華投信"
+          "label": "英文名稱",
+          "value": "Fuh Hwa OMNI Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2216Y7"
         },
         {
           "label": "基金統編",
           "value": "21759676A"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO12"
+          "label": "成立日期",
+          "value": "2005-07-31"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "110.18 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "復華證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Rong Yi Ping"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "玉山商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "197.52 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A23015/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A23015",
+        "sitcaTaxId": "21759676A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 88.5632
     },
     {
       "id": "sitca-fir01",
@@ -6308,614 +6413,868 @@
       "groupRank": 25,
       "code": "FIR01",
       "name": "第一金小型精選基金-A類型",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "第一金小型精選基金-A類型"
         },
         {
-          "label": "基金公司",
-          "value": "第一金投信"
+          "label": "英文名稱",
+          "value": "FSITC Smallcap Fund- A"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0313Y4"
         },
         {
           "label": "基金統編",
           "value": "73989002A"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO09"
+          "label": "成立日期",
+          "value": "1998-08-12"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "18.40 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "第一金證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Luo De You"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "國泰世華商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "235.55 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
-    },
-    {
-      "id": "sitca-fub01",
-      "group": "funds",
-      "groupRank": 26,
-      "code": "FUB01",
-      "name": "富邦台灣科技指數基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
-        },
-        {
-          "label": "官方全名",
-          "value": "富邦台灣科技指數基金"
-        },
-        {
-          "label": "基金公司",
-          "value": "富邦投信"
-        },
-        {
-          "label": "基金統編",
-          "value": "48790067"
-        },
-        {
-          "label": "公會基金代號",
-          "value": "DDE01"
-        },
-        {
-          "label": "幣別",
-          "value": "TWD"
-        },
-        {
-          "label": "最新淨值資料日",
-          "value": "2026-09-04"
-        },
-        {
-          "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
-        }
-      ],
-      "performance": {
-        "date": "2026-09-04",
-        "priceOrNav": "62.65 TWD"
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A03016/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A03016",
+        "sitcaTaxId": "73989002A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
       },
-      "assetClasses": [],
-      "holdings": [],
-      "holdingHistory": [],
-      "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+      "ytdReturn": 103.4989
     },
     {
       "id": "sitca-fub02",
       "group": "funds",
-      "groupRank": 27,
+      "groupRank": 26,
       "code": "FUB02",
       "name": "富邦精選五虎基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "富邦精選五虎基金"
         },
         {
-          "label": "基金公司",
-          "value": "富邦投信"
+          "label": "英文名稱",
+          "value": "Fubon Top Five Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2005Y4"
         },
         {
           "label": "基金統編",
           "value": "17147078"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO40"
+          "label": "成立日期",
+          "value": "1999-11-16"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "19.51 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "富邦證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Gu Han Bin"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "中國信託商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "219.05 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A20006/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A20006",
+        "sitcaTaxId": "17147078",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 91.6616
     },
     {
       "id": "sitca-inv01",
       "group": "funds",
-      "groupRank": 28,
+      "groupRank": 27,
       "code": "INV01",
       "name": "景順台灣科技基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "景順台灣科技基金"
         },
         {
-          "label": "基金公司",
-          "value": "景順投信"
+          "label": "英文名稱",
+          "value": "Invesco Taiwan Technology Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0605Y3"
         },
         {
           "label": "基金統編",
           "value": "73989256"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO05"
+          "label": "成立日期",
+          "value": "1998-08-23"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "18.95 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "景順證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Zheng Zong Hao"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "中國信託商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "245.27 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A06010/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A06010",
+        "sitcaTaxId": "73989256",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 112.3734
     },
     {
       "id": "sitca-inv02",
       "group": "funds",
-      "groupRank": 29,
+      "groupRank": 28,
       "code": "INV02",
       "name": "景順潛力基金累積型新台幣",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "景順潛力基金累積型新台幣"
         },
         {
-          "label": "基金公司",
-          "value": "景順投信"
+          "label": "英文名稱",
+          "value": "Invesco Capital Appreciation Fund Acc TWD"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0601Y2"
         },
         {
           "label": "基金統編",
           "value": "92019786A"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO02"
+          "label": "成立日期",
+          "value": "1995-08-08"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "46.84 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "景順證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Zheng Zong Hao"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "中國信託商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "187.23 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A06004/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A06004",
+        "sitcaTaxId": "92019786A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 108.3806
     },
     {
       "id": "sitca-jko01",
       "group": "funds",
-      "groupRank": 30,
+      "groupRank": 29,
       "code": "JKO01",
       "name": "街口台灣基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣大型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "街口台灣基金"
         },
         {
-          "label": "基金公司",
-          "value": "街口投信"
+          "label": "英文名稱",
+          "value": "JKO Taiwan Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4301Y5"
         },
         {
           "label": "基金統編",
           "value": "14694495"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO01"
+          "label": "成立日期",
+          "value": "2002-06-03"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "10.07 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "街口證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Su Yu Lin"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣大型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "中國信託商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "195.33 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A43001/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A43001",
+        "sitcaTaxId": "14694495",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 90.8451
     },
     {
       "id": "sitca-jko02",
       "group": "funds",
-      "groupRank": 31,
+      "groupRank": 30,
       "code": "JKO02",
       "name": "街口中小型基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "街口中小型基金"
         },
         {
-          "label": "基金公司",
-          "value": "街口投信"
+          "label": "英文名稱",
+          "value": "JKO Small Capital Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4303Y1"
         },
         {
           "label": "基金統編",
           "value": "80892778"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO03"
+          "label": "成立日期",
+          "value": "2003-03-11"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "8.15 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "街口證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Wu Bo Ya"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "彰化商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "199.94 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A43003/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A43003",
+        "sitcaTaxId": "80892778",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 96.1542
     },
     {
       "id": "sitca-nom004",
       "group": "funds",
-      "groupRank": 32,
+      "groupRank": 31,
       "code": "NOM004",
       "name": "野村鴻運基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "野村鴻運基金"
         },
         {
-          "label": "基金公司",
-          "value": "野村投信"
+          "label": "英文名稱",
+          "value": "Nomura Taiwan Growth Selection Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3219Y0"
         },
         {
           "label": "基金統編",
           "value": "00968493"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO18"
+          "label": "成立日期",
+          "value": "1988-02-02"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "140.28 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Qiu Cui Xin"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.5%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台北富邦商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "307.55 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32007/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A32007",
+        "sitcaTaxId": "00968493",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 123.4128
     },
     {
       "id": "sitca-nom006",
       "group": "funds",
-      "groupRank": 33,
+      "groupRank": 32,
       "code": "NOM006",
       "name": "野村台灣運籌基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "野村台灣運籌基金"
         },
         {
-          "label": "基金公司",
-          "value": "野村投信"
+          "label": "英文名稱",
+          "value": "Nomura Taiwan Growth Selection Focus Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3218Y2"
         },
         {
           "label": "基金統編",
           "value": "00988316"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO07"
+          "label": "成立日期",
+          "value": "1987-04-28"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "120.61 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Yao Yu Ru"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.5%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台北富邦商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "479.13 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32002/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A32002",
+        "sitcaTaxId": "00988316",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 113.497
     },
     {
       "id": "sitca-nom011",
       "group": "funds",
-      "groupRank": 34,
+      "groupRank": 33,
       "code": "NOM011",
       "name": "野村成長基金",
-      "category": "國內股票型基金",
-      "aumDate": "2026-09-04",
-      "updateCadence": "基金淨值每日更新；本檔無成分股揭露來源",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-03",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
       "basicInfo": [
         {
           "label": "資料來源",
-          "value": "投信投顧公會「證券投資信託基金每日淨值」"
+          "value": "鉅亨網基金資料（Morningstar 授權）"
         },
         {
           "label": "官方全名",
           "value": "野村成長基金"
         },
         {
-          "label": "基金公司",
-          "value": "野村投信"
+          "label": "英文名稱",
+          "value": "Nomura Taiwan Growth Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3203Y4"
         },
         {
           "label": "基金統編",
           "value": "17146752"
         },
         {
-          "label": "公會基金代號",
-          "value": "DDO03"
+          "label": "成立日期",
+          "value": "1999-11-15"
         },
         {
-          "label": "幣別",
-          "value": "TWD"
+          "label": "基金規模",
+          "value": "86.59 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Yao Yu Ru"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "彰化商業銀行股份有限公司"
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-03"
         },
         {
           "label": "持股揭露",
-          "value": "本檔未取得成分股與費用率來源，僅追蹤每日淨值"
-        },
-        {
-          "label": "淨值歷史",
-          "value": "自 2026-09-04 起累積，之前的淨值不在資料庫內"
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
         }
       ],
       "performance": {
-        "date": "2026-09-04",
+        "date": "2026-09-03",
         "priceOrNav": "434.15 TWD"
       },
       "assetClasses": [],
       "holdings": [],
       "holdingHistory": [],
       "sourceMetadata": {
-        "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-        "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-        "retrievedAt": "2026-09-05T05:30:33+00:00",
-        "note": "FundRich 未收錄本檔，無法取得成分股、費用率與回溯淨值；profile 僅由公會每日淨值建立。"
-      }
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32004/",
+        "retrievedAt": "2026-09-05T05:48:20+00:00",
+        "cnyesId": "A32004",
+        "sitcaTaxId": "17146752",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 111.0495
     },
     {
       "id": "schroder-taiwan-lohas-smid-a",
       "group": "funds",
-      "groupRank": 35,
+      "groupRank": 34,
       "code": "SCH004",
       "name": "施羅德台灣樂活中小基金-A類型",
       "category": "台灣中小型股票",
