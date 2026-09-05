@@ -20449,6 +20449,292 @@
       ]
     },
     {
+      "id": "00410a",
+      "group": "activeEtfs",
+      "groupRank": 29,
+      "code": "00410A",
+      "name": "主動永豐科技趨勢",
+      "category": "台灣股票主動式",
+      "aumTwd": 0,
+      "aumDate": "2026/09/04",
+      "updateCadence": "主動式 ETF 持股每天更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "MoneyDJ ETF基智網"
+        },
+        {
+          "label": "發行公司",
+          "value": "永豐投信"
+        },
+        {
+          "label": "市場行情",
+          "value": "臺灣證券交易所每日成交資訊"
+        },
+        {
+          "label": "同步備註",
+          "value": "2026-08-03 掛牌；持股每日取自 MoneyDJ 全部成分股。"
+        },
+        {
+          "label": "官方資料日",
+          "value": "2026/09/04"
+        },
+        {
+          "label": "持股收錄",
+          "value": "本次同步 30 檔"
+        },
+        {
+          "label": "本次同步",
+          "value": "2026-09-05 21:57:47+08:00"
+        }
+      ],
+      "performance": {
+        "date": "2026/09/04"
+      },
+      "holdings": [
+        {
+          "stockCode": "3008",
+          "stockName": "大立光",
+          "shares": "20,000",
+          "weight": 7.78,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2330",
+          "stockName": "台積電",
+          "shares": "45,000",
+          "weight": 5.71,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3491",
+          "stockName": "昇達科",
+          "shares": "72,000",
+          "weight": 5.69,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2455",
+          "stockName": "全新",
+          "shares": "200,000",
+          "weight": 5.56,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3017",
+          "stockName": "奇鋐",
+          "shares": "28,000",
+          "weight": 5.26,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "6669",
+          "stockName": "緯穎",
+          "shares": "38,776",
+          "weight": 5.23,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3653",
+          "stockName": "健策",
+          "shares": "15,000",
+          "weight": 4.64,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3081",
+          "stockName": "聯亞",
+          "shares": "25,000",
+          "weight": 4.17,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "8996",
+          "stockName": "高力",
+          "shares": "60,000",
+          "weight": 4.1,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2059",
+          "stockName": "川湖",
+          "shares": "5,000",
+          "weight": 3.65,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2454",
+          "stockName": "聯發科",
+          "shares": "15,000",
+          "weight": 3.48,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2383",
+          "stockName": "台光電",
+          "shares": "12,000",
+          "weight": 3.42,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3529",
+          "stockName": "力旺",
+          "shares": "27,000",
+          "weight": 3.39,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3665",
+          "stockName": "貿聯-KY",
+          "shares": "27,000",
+          "weight": 3.05,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "6223",
+          "stockName": "旺矽",
+          "shares": "10,000",
+          "weight": 2.71,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "8358",
+          "stockName": "金居",
+          "shares": "100,000",
+          "weight": 2.63,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2408",
+          "stockName": "南亞科",
+          "shares": "100,000",
+          "weight": 2.61,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3037",
+          "stockName": "欣興",
+          "shares": "53,000",
+          "weight": 2.51,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3450",
+          "stockName": "聯鈞",
+          "shares": "80,000",
+          "weight": 2.44,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "4958",
+          "stockName": "臻鼎-KY",
+          "shares": "89,000",
+          "weight": 2.17,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "5347",
+          "stockName": "世界",
+          "shares": "265,000",
+          "weight": 2.09,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "8046",
+          "stockName": "南電",
+          "shares": "36,000",
+          "weight": 2,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "4749",
+          "stockName": "新應材",
+          "shares": "45,000",
+          "weight": 1.84,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "1560",
+          "stockName": "中砂",
+          "shares": "50,000",
+          "weight": 1.83,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "6274",
+          "stockName": "台燿",
+          "shares": "25,000",
+          "weight": 1.8,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "3711",
+          "stockName": "日月光投控",
+          "shares": "44,000",
+          "weight": 1.36,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2486",
+          "stockName": "一詮",
+          "shares": "100,000",
+          "weight": 1.35,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "1303",
+          "stockName": "南亞",
+          "shares": "100,000",
+          "weight": 1.19,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "2368",
+          "stockName": "金像電",
+          "shares": "20,000",
+          "weight": 1.1,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        },
+        {
+          "stockCode": "1519",
+          "stockName": "華城",
+          "shares": "9,000",
+          "weight": 0.35,
+          "sourceDate": "2026/09/04",
+          "sourceTitle": "MoneyDJ 00410A 全部持股"
+        }
+      ]
+    },
+    {
       "id": "0050",
       "group": "passiveEtfs",
       "groupRank": 1,
@@ -35000,6 +35286,14 @@
       "title": "中國信託投信 00995A 官方資料",
       "url": "https://www.ctbcinvestments.com/fund/pdf/ETF_eDM/00995A_DM.pdf",
       "note": "官方基本資料、規模與持股來源",
+      "createdAt": "2026-07-16"
+    },
+    {
+      "id": "ref-00410a-official",
+      "targetKey": "item:00410a",
+      "title": "00410A MoneyDJ ETF基智網",
+      "url": "https://www.moneydj.com/ETF/X/Basic/Basic0007B.xdjhtm?etfid=00410A.TW",
+      "note": "MoneyDJ 全部持股；永豐投信無可自動取用的規模端點，基金規模暫缺",
       "createdAt": "2026-07-16"
     },
     {
