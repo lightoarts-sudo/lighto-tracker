@@ -322,5 +322,17 @@
       "2026-09"
     ],
     "syncError": "official market data temporarily unavailable"
+  },
+  {
+    "code": "00410A",
+    "name": "主動永豐科技趨勢",
+    "issuer": "永豐投信",
+    "listingDate": "2026-08-03",
+    "officialUrl": "https://www.moneydj.com/ETF/X/Basic/Basic0007B.xdjhtm?etfid=00410A.TW",
+    "holdingSourceUrl": "https://www.moneydj.com/ETF/X/Basic/Basic0007B.xdjhtm?etfid=00410A.TW",
+    "historyPoints": 25,
+    "historyStart": "2026-08-03",
+    "historyEnd": "2026-09-04",
+    "missingOfficialMonths": []
   }
 ]

@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-09-05T13:58:28+00:00",
+  "sourceTitle": "各投信官方持股揭露（資產分類：衍生品）",
+  "methodology": "口數與權重取自投信官方揭露的衍生品區塊；變動以同一契約年月的前一次揭露為基準，換月不相減。此區不計入加減碼共識——共識以股票張數計算，混入口數會失真。",
+  "instrumentCount": 1,
+  "instruments": [
+    {
+      "code": "00981A",
+      "name": "主動統一台股增長",
+      "sourceDate": "2026-09-04",
+      "comparisonDate": null,
+      "status": "baseline",
+      "positions": [
+        {
+          "code": "TX",
+          "name": "台指期貨",
+          "position": "B",
+          "contracts": 679,
+          "amountTwd": 6343082200,
+          "weight": 2.24,
+          "contractMonth": "2026/09",
+          "positionLabel": "買方（多方）",
+          "contractChange": null,
+          "weightChange": null,
+          "action": "baseline"
+        }
+      ]
+    }
+  ]
+}
