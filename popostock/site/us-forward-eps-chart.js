@@ -60,14 +60,19 @@
   }
 
   function readingBar(index, eps) {
-    var pe = eps ? index[1] / eps[1] : null;
     var bar = document.createElement("div");
     bar.className = "forward-eps-reading";
+    // 指數是每日、預估 EPS 是每週，最新的兩個點通常不同天。這裡同時給出
+    // FactSet 當期自述的 P/E（與 EPS 同一天，可回溯到來源），以及用最新收盤
+    // 重算的 P/E（每天會動）。只標一個「forward P/E」會讓讀者拿去跟 FactSet
+    // 的數字對照時對不上。
+    var live = eps ? index[1] / eps[1] : null;
     bar.innerHTML =
-      '<span class="fe-item"><b>' + fmt(index[1], 2) + "</b><i>S&P 500（" + index[0] + "）</i></span>" +
+      '<span class="fe-item"><b>' + fmt(index[1], 2) + "</b><i>S&P 500 收盤（" + index[0] + "）</i></span>" +
       (eps
         ? '<span class="fe-item"><b>$' + fmt(eps[1], 2) + "</b><i>未來 12 個月預估 EPS（" + eps[0] + "）</i></span>" +
-          '<span class="fe-item"><b>' + fmt(pe, 1) + "</b><i>forward P/E</i></span>"
+          '<span class="fe-item"><b>' + fmt(eps[2], 1) + "</b><i>FactSet forward P/E（" + eps[0] + "）</i></span>" +
+          '<span class="fe-item"><b>' + fmt(live, 1) + "</b><i>以 " + index[0] + " 收盤重算</i></span>"
         : "");
     return bar;
   }
