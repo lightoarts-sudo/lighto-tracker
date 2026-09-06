@@ -73,20 +73,36 @@
   // Starts empty on purpose: an all-checked calendar shows every ETF paying in
   // every month, which is the same as showing nothing.
   let selected = new Set();
-  // 使用者的持股（代號＋張數）。存在瀏覽器本機，不上傳。
-  const CALC_KEY = "popostock-dividend-calc-v1";
+  // 使用者的持股（代號＋股數）。存在瀏覽器本機，不上傳。
+  const CALC_KEY = "popostock-dividend-calc-v2";
+  const CALC_KEY_LOTS = "popostock-dividend-calc-v1";
   let holdings = loadHoldings();
 
   function loadHoldings() {
     try {
       const raw = localStorage.getItem(CALC_KEY);
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed)
-        ? parsed.filter((h) => h && h.code).map((h) => ({ code: String(h.code), lots: Number(h.lots) || 0 }))
-        : [];
+      if (raw) return parseHoldings(JSON.parse(raw), 1);
+      // v1 存的是張數。單位改成股之後照原值讀會少算一千倍，換算後另存 v2；
+      // v1 保留不刪，使用者若在舊分頁還開著也不會被洗掉。
+      const legacy = localStorage.getItem(CALC_KEY_LOTS);
+      if (!legacy) return [];
+      const migrated = parseHoldings(JSON.parse(legacy), 1000);
+      if (migrated.length) localStorage.setItem(CALC_KEY, JSON.stringify(migrated));
+      return migrated;
     } catch (error) {
       return [];  // 私密視窗擋儲存時照常可用，只是不會記住。
     }
+  }
+
+  function parseHoldings(parsed, scale) {
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((h) => h && h.code)
+      .map((h) => ({
+        code: String(h.code),
+        // v2 寫 shares、v1 寫 lots，讀哪個欄位由 scale 決定的來源決定。
+        shares: (Number(scale === 1 ? h.shares : h.lots) || 0) * scale,
+      }));
   }
 
   function saveHoldings() {
@@ -398,7 +414,7 @@
     const byCode = new Map((payload?.instruments || []).map((i) => [i.code, i]));
     return holdings.map((h) => {
       const info = byCode.get(h.code);
-      const shares = (Number(h.lots) || 0) * 1000;
+      const shares = Number(h.shares) || 0;
       const perUnit = info && typeof info.trailingAmount === "number" ? info.trailingAmount : 0;
       const close = info && typeof info.latestClose === "number" ? info.latestClose : null;
       const times = CADENCE_TIMES[info?.cadence] || 0;
@@ -411,7 +427,7 @@
       const annual = est.annual;
       return {
         code: h.code,
-        lots: Number(h.lots) || 0,
+        shares: Number(h.shares) || 0,
         name: info ? info.name : h.code,
         cadence: info?.cadence || "—",
         perUnit,
@@ -431,7 +447,7 @@
   }
 
   /*
-   * 改張數時只重寫受影響的數字，不重畫整個面板——重畫會把使用者正在打字的
+   * 改股數時只重寫受影響的數字，不重畫整個面板——重畫會把使用者正在打字的
    * 輸入框銷毀重建，游標會跳掉（退休計算機踩過同一個坑）。
    */
   function refreshCalcNumbers() {
@@ -482,7 +498,7 @@
           '<tr data-calc-row="' + index + '">' +
           '<td class="nm">' + r.name + "<i>" + r.code + "</i>" + flag + "</td>" +
           '<td class="n"><input type="number" min="0" step="1" class="edit" ' +
-          'data-calc-edit="' + index + '" value="' + r.lots + '"> 張</td>' +
+          'data-calc-edit="' + index + '" value="' + r.shares + '"> 股</td>' +
           '<td class="n" data-cell="value">' + (r.value === null ? "—" : money(r.value)) + "</td>" +
           '<td class="n">' + (r.annual ? num(r.annual, 3) : "—") + "</td>" +
           '<td class="n cash" data-cell="cash">' + (r.cash ? money(r.cash) : "—") + "</td>" +
@@ -498,14 +514,14 @@
       '<div class="add">' +
       '<div class="fld pick"><label>ETF（輸入代號或名稱會自動列出）</label>' +
       '<input type="text" list="dividend-calc-options" data-calc-pick placeholder="例如 00919 或 群益" autocomplete="off"></div>' +
-      '<div class="fld lots"><label>張數</label>' +
-      '<input type="number" min="0" step="1" data-calc-lots placeholder="1" autocomplete="off"></div>' +
+      '<div class="fld lots"><label>股數</label>' +
+      '<input type="number" min="0" step="1" data-calc-lots placeholder="1000" autocomplete="off"></div>' +
       '<button type="button" class="go" data-calc-add>＋ 加入</button>' +
       '<datalist id="dividend-calc-options">' + options + "</datalist></div>" +
       '<p class="warn" data-calc-warn hidden></p>' +
       (list.length
         ? '<div class="dividend-scroll"><table><thead><tr>' +
-          "<th>ETF</th><th class=\"n\">張數</th><th class=\"n\">市值</th>" +
+          "<th>ETF</th><th class=\"n\">股數</th><th class=\"n\">市值</th>" +
           "<th class=\"n\">整年每單位</th><th class=\"n\">整年配息</th>" +
           "<th class=\"n\">推估整年殖利率</th><th></th></tr></thead><tbody>" + body +
           '</tbody><tfoot><tr><td colspan="2">合計</td>' +
@@ -522,9 +538,9 @@
           '<div><b data-total="yield">' +
           (totalValue ? num((totalCash / totalValue) * 100, 2) + "%" : "—") +
           "</b><span>推估整年綜合殖利率</span></div></div>"
-        : '<div class="empty">還沒有持股。上面選一檔 ETF、填張數，就會算出近一年大概配多少。</div>') +
+        : '<div class="empty">還沒有持股。上面選一檔 ETF、填股數（一張是 1000 股），就會算出近一年大概配多少。</div>') +
       '<p class="note">' +
-      "配息以「整年每單位 × 張數 × 1000」計算，實配金額來自交易所除權除息計算結果表；" +
+      "配息以「整年每單位 × 股數」計算，實配金額來自交易所除權除息計算結果表；" +
       "市值與殖利率以最新收盤價計算。近十二個月已配滿一輪的，整年金額就是實配加總；" +
       "<b>還沒配滿一輪的（如新掛牌的主動式 ETF），以「已配次數的平均 × 年配次數」年化推估</b>，" +
       "並在該列標示計算過程。<b>這不是預測</b>——配息每期由投信依已實現損益決定，" +
@@ -805,7 +821,7 @@
     const lotsInput = panel.querySelector("[data-calc-lots]");
     const warn = panel.querySelector("[data-calc-warn]");
     const raw = (pick.value || "").trim();
-    const lots = Number(lotsInput.value);
+    const shares = Number(lotsInput.value);
     const say = (message) => {
       warn.textContent = message;
       warn.hidden = !message;
@@ -819,11 +835,11 @@
       all.find((i) => i.name === raw) ||
       all.find((i) => i.name.includes(raw));
     if (!found) return say("找不到「" + raw + "」，請從下拉選單挑一檔。");
-    if (!(lots > 0)) return say("張數要大於 0。");
+    if (!(shares > 0)) return say("股數要大於 0。");
 
     const existing = holdings.find((h) => h.code === found.code);
-    if (existing) existing.lots += lots;
-    else holdings.push({ code: found.code, lots: lots });
+    if (existing) existing.shares += shares;
+    else holdings.push({ code: found.code, shares: shares });
     saveHoldings();
     say("");
     pick.value = "";
@@ -840,7 +856,7 @@
     // 清空欄位當成 0 參與試算，但不覆寫使用者正在打的內容。
     const value = edit.value === "" ? 0 : Number(edit.value);
     if (!isFinite(value) || value < 0) return;
-    holdings[index].lots = value;
+    holdings[index].shares = value;
     saveHoldings();
     refreshCalcNumbers();
   });
@@ -848,7 +864,7 @@
   // Enter 直接加入，不用移到按鈕；輸入框在表單之外，沒有原生 submit 可用。
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
-    // 在張數欄位按 Enter 只是收工，不該再加一筆新持股。
+    // 在股數欄位按 Enter 只是收工，不該再加一筆新持股。
     if (event.target.closest?.("[" + PANEL_FLAG + "] [data-calc-edit]")) {
       event.target.blur();
       return;
