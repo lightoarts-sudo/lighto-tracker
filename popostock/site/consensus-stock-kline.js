@@ -12,6 +12,7 @@
 
   var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
+  var US_INDEX_FILE = "data/us-holding-index.json";
   var stockNames = new Map();
   var stockBuySessions = new Map();
   var stockSellSessions = new Map();
@@ -59,6 +60,25 @@
     return libraryPromise;
   }
 
+  /*
+   * 美股清單獨立一個檔案，不併進共識索引：共識索引由台股的加減碼金額門檻
+   * 產生，把沒有價格的外國持股塞進去會讓那份資料的意義變糊。檔案不存在或
+   * 讀失敗時回空陣列，台股那側照常運作。
+   */
+  function loadUsHoldingIndex() {
+    return fetch(baseUrl() + "/" + US_INDEX_FILE, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .then(function (payload) {
+        return Array.isArray(payload.stocks) ? payload.stocks : [];
+      })
+      .catch(function () {
+        return [];
+      });
+  }
+
   function loadStockIndex() {
     return fetch(baseUrl() + "/" + INDEX_FILE, { cache: "no-store" })
       .then(function (response) {
@@ -87,11 +107,37 @@
       });
   }
 
+  /*
+   * 台股是四碼數字；外國持股多數投信寫成彭博式的 "NVDA US"，00989A 寫純代號。
+   * 英文代號不像數字那樣好認——公司名稱裡本來就有大寫字母（"ADVANCED MICRO
+   * DEVICES"），純靠字型比對會誤判。所以英文這條一律要求命中 stockNames，
+   * 也就是真的有抓到 K 線的那批，抓不到的就維持不可點。
+   */
   function stockCodeFromCell(cell) {
-    if (cell.dataset.consensusStockCode) return cell.dataset.consensusStockCode;
+    if (cell.dataset.consensusStockCode) {
+      return normalizeForeignCode(cell.dataset.consensusStockCode);
+    }
     var codeNote = cell.querySelector(".code-note");
-    var match = (codeNote ? codeNote.textContent : cell.textContent).match(/\b\d{4}\b/);
-    return match ? match[0] : "";
+    var text = (codeNote ? codeNote.textContent : cell.textContent) || "";
+    /*
+     * 日股、韓股、港股的代號也是數字（"6981 JP" 村田、"3308 HK" 中際旭創），
+     * 直接套四碼規則會當成台股，開出另一家公司的 K 線。今天還不會踩到是因為
+     * 這些號碼剛好不在共識清單裡，但兩邊的號碼段本來就重疊，清單一長就會中。
+     * 看到非美股的市場後綴就直接放棄——這些市場我們本來就沒有行情。
+     */
+    if (/\b\d{3,6}\s+(?!US\b)[A-Z]{2}\b/.test(text)) return "";
+    var tw = text.match(/\b\d{4}\b/);
+    if (tw) return tw[0];
+    var tokens = text.match(/\b[A-Z]{1,5}(?:\s+US)?\b/g) || [];
+    for (var i = 0; i < tokens.length; i += 1) {
+      var candidate = normalizeForeignCode(tokens[i]);
+      if (candidate && stockNames.has(candidate)) return candidate;
+    }
+    return "";
+  }
+
+  function normalizeForeignCode(raw) {
+    return String(raw || "").trim().replace(/\s+US$/, "").trim();
   }
 
   function decorateCell(cell) {
@@ -627,9 +673,9 @@
 
   function watch() {
     installStyles();
-    loadStockIndex()
-      .then(function (stocks) {
-        stocks.forEach(function (stock) {
+    Promise.all([loadStockIndex(), loadUsHoldingIndex()])
+      .then(function (results) {
+        results[0].forEach(function (stock) {
           var code = String(stock.code || stock.symbol || "");
           if (/^\d{4}$/.test(code)) {
             stockNames.set(code, String(stock.name || code));
@@ -642,6 +688,18 @@
               Array.isArray(stock.sellSessions) ? stock.sellSessions : [],
             );
           }
+        });
+        /*
+         * 主動式 ETF 持有的美股。這批沒有加減碼標記——holding-changes 裡外國
+         * 持股的 closePrice 是 null，推不出可信的張數與金額，硬標會是假的。
+         * 先給得出 K 線，標記等價格來源補上再說。
+         */
+        results[1].forEach(function (stock) {
+          var code = String(stock.code || "");
+          if (!code || stockNames.has(code)) return;
+          stockNames.set(code, String(stock.name || code));
+          stockBuySessions.set(code, []);
+          stockSellSessions.set(code, []);
         });
         scan(document);
         new MutationObserver(function (mutations) {
