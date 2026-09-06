@@ -776,6 +776,24 @@ ON CONFLICT (instrument_id, trade_date, timeframe) DO UPDATE SET
 """
 
 
+# index.html 沒有指紋，而它裡面才寫著各覆蓋層腳本的 ?v=<hash>。Starlette 只送
+# etag/last-modified 不送 Cache-Control，瀏覽器就用啟發式規則自己決定快取多久，
+# 於是改版後仍讀到舊的 index、跟著要求舊的腳本網址——今天發生過好幾次，得手動
+# 硬重新整理才看得到新版。這裡對 HTML 要求每次回源驗證（304 很便宜），
+# 帶指紋的靜態資產維持原本的長快取。
+NO_STORE_HTML = {"Cache-Control": "no-cache, must-revalidate"}
+
+
+class RevalidateHtmlStatic(StaticFiles):
+    """StaticFiles，但 .html 一律附上 no-cache。"""
+
+    def file_response(self, full_path, stat_result, scope, status_code=200):
+        response = super().file_response(full_path, stat_result, scope, status_code)
+        if str(full_path).endswith(".html"):
+            response.headers.update(NO_STORE_HTML)
+        return response
+
+
 def _read_seed() -> dict[str, Any] | None:
     if not SEED_PATH.exists():
         return None
@@ -1309,7 +1327,7 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
 
     @app.get("/popostock", response_class=FileResponse)
     async def popostock_page() -> FileResponse:
-        return FileResponse(SITE_DIR / "index.html")
+        return FileResponse(SITE_DIR / "index.html", headers=NO_STORE_HTML)
 
     @app.get("/popostock/api/summary")
     async def popostock_summary(request: Request) -> JSONResponse:
@@ -1880,6 +1898,6 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
 
     app.mount(
         "/popostock",
-        StaticFiles(directory=SITE_DIR, html=True),
+        RevalidateHtmlStatic(directory=SITE_DIR, html=True),
         name="popostock-static",
     )
