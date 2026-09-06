@@ -178,13 +178,14 @@
       }
 
       if (instrumentTabs.has(tab)) {
-        const groupButton = await waitFor(() => groupButtonForTab(tab), 10);
-        if (
-          groupButton &&
-          !groupButton.classList.contains("is-active") &&
-          !buttonForTab(tab)
-        ) {
-          groupButton.click();
+        // 只有在分頁列沒有這一組的按鈕時，才需要退回去按版面裡的 .group-switch。
+        // 兩者都在時原本仍會空等 10 輪（400ms）才確定用不到——條件已經寫在下面
+        // 的 if 裡，先判斷一次就能省掉那段等待。
+        if (!buttonForTab(tab)) {
+          const groupButton = await waitFor(() => groupButtonForTab(tab), 10);
+          if (groupButton && !groupButton.classList.contains("is-active")) {
+            groupButton.click();
+          }
         }
         if (code) {
           const item = await waitFor(() => itemForCode(code));
