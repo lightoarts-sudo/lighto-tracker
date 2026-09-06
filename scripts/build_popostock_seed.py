@@ -29,6 +29,11 @@ def load_market(source: Path) -> list[dict]:
         if path.name in {"index.json", "passive-index.json", "us-index.json"}:
             continue
         item = json.loads(path.read_text(encoding="utf-8"))
+        # market/ 下不是只有個股行情：索引檔、以及像 us-forward-eps.json 這種
+        # 全市場資料集也放在這裡。名單擋不完（已經漏掉兩次，各害一次發布失敗），
+        # 改以「有沒有 code 與 values」判斷，不是行情就跳過。
+        if not isinstance(item, dict) or "code" not in item or "values" not in item:
+            continue
         symbol = str(item["code"]).upper()
         declared_category = item.get("category")
         if declared_category:
