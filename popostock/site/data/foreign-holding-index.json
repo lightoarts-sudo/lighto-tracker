@@ -1,12 +1,32 @@
 {
-  "generatedAt": "2026-09-07T21:27:01+08:00",
+  "generatedAt": "2026-09-07T21:52:46+08:00",
   "sourceTitles": {
     "US": "Nasdaq 官方個股歷史行情",
-    "JP": "Yahoo Finance 東京證交所歷史行情"
+    "other": "Yahoo Finance 各交易所歷史行情"
   },
-  "count": 162,
+  "count": 194,
   "failures": [],
   "stocks": [
+    {
+      "code": "000660-KS",
+      "name": "SK HYNIX INC",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 490,
+      "sourceUrl": "https://finance.yahoo.com/quote/000660.KS/history/"
+    },
+    {
+      "code": "009150-KS",
+      "name": "Samsung Electro-Mechanics co(009150 ks)",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 490,
+      "sourceUrl": "https://finance.yahoo.com/quote/009150.KS/history/"
+    },
     {
       "code": "285A-JP",
       "name": "KIOXIA HOLDINGS CORP",
@@ -16,6 +36,26 @@
       "historyEnd": "2026-09-07",
       "historyPoints": 418,
       "sourceUrl": "https://finance.yahoo.com/quote/285A.T/history/"
+    },
+    {
+      "code": "300408-CH",
+      "name": "CHAOZHOU THREE-CIRCLE GROU-A",
+      "market": "CH",
+      "currency": "CNY",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 491,
+      "sourceUrl": "https://finance.yahoo.com/quote/300408.SZ/history/"
+    },
+    {
+      "code": "3308-HK",
+      "name": "ZHONGJI INNOLIGHT CO LTD-H",
+      "market": "HK",
+      "currency": "HKD",
+      "historyStart": "2026-07-30",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 28,
+      "sourceUrl": "https://finance.yahoo.com/quote/3308.HK/history/"
     },
     {
       "code": "4062-JP",
@@ -148,6 +188,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/8377.T/history/"
     },
     {
+      "code": "992-HK",
+      "name": "LENOVO GROUP LTD",
+      "market": "HK",
+      "currency": "HKD",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 497,
+      "sourceUrl": "https://finance.yahoo.com/quote/0992.HK/history/"
+    },
+    {
       "code": "AAPL",
       "name": "Apple Inc",
       "market": "US",
@@ -156,6 +206,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aapl/historical"
+    },
+    {
+      "code": "ABN-NA",
+      "name": "荷蘭銀行公眾有限公司",
+      "market": "NA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/ABN.AS/history/"
     },
     {
       "code": "ACHR",
@@ -188,6 +248,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/adi/historical"
     },
     {
+      "code": "ADM-LN",
+      "name": "Admiral集團公開有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/ADM.L/history/"
+    },
+    {
       "code": "AEM",
       "name": "AGNICO EAGLE MINES LTD",
       "market": "US",
@@ -196,6 +266,26 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aem/historical"
+    },
+    {
+      "code": "AGN-NA",
+      "name": "荷蘭保險公司",
+      "market": "NA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/AGN.AS/history/"
+    },
+    {
+      "code": "AIXA-GY",
+      "name": "AIXTRON SE",
+      "market": "GY",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/AIXA.DE/history/"
     },
     {
       "code": "ALAB",
@@ -246,6 +336,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amd/historical"
+    },
+    {
+      "code": "AMUN-FP",
+      "name": "東方匯理資產管理有限責任公司",
+      "market": "FP",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/AMUN.PA/history/"
     },
     {
       "code": "AMZN",
@@ -318,6 +418,26 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/asml/historical"
     },
     {
+      "code": "ASRNL-NA",
+      "name": "ASR荷蘭公眾有限公司",
+      "market": "NA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/ASRNL.AS/history/"
+    },
+    {
+      "code": "AV-LN",
+      "name": "英傑華保險",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/AV.L/history/"
+    },
+    {
       "code": "AVGO",
       "name": "Broadcom Inc",
       "market": "US",
@@ -356,6 +476,26 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bac/historical"
+    },
+    {
+      "code": "BAMI-IM",
+      "name": "BPM銀行股份公司",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/BAMI.MI/history/"
+    },
+    {
+      "code": "BARC-LN",
+      "name": "巴克萊集團",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/BARC.L/history/"
     },
     {
       "code": "BE",
@@ -418,6 +558,26 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bmnr/historical"
     },
     {
+      "code": "BMPS-IM",
+      "name": "義大利西恩那銀行股份公司",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/BMPS.MI/history/"
+    },
+    {
+      "code": "BNP-FP",
+      "name": "法國巴黎銀行股份有限公司",
+      "market": "FP",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/BNP.PA/history/"
+    },
+    {
       "code": "BNY",
       "name": "紐約梅隆銀行",
       "market": "US",
@@ -446,6 +606,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bx/historical"
+    },
+    {
+      "code": "CABK-SM",
+      "name": "凱克薩銀行有限責任公司",
+      "market": "SM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/CABK.MC/history/"
     },
     {
       "code": "CBRS",
@@ -608,6 +778,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dash/historical"
     },
     {
+      "code": "DBK-GY",
+      "name": "德意志銀行",
+      "market": "GY",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/DBK.DE/history/"
+    },
+    {
       "code": "DE",
       "name": "迪爾",
       "market": "US",
@@ -668,6 +848,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/estc/historical"
     },
     {
+      "code": "ETE-GA",
+      "name": "希臘國家銀行",
+      "market": "GA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 503,
+      "sourceUrl": "https://finance.yahoo.com/quote/ETE.AT/history/"
+    },
+    {
       "code": "FIG",
       "name": "Figma Inc",
       "market": "US",
@@ -708,6 +898,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ftnt/historical"
     },
     {
+      "code": "G-IM",
+      "name": "忠意保險股份公司",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/G.MI/history/"
+    },
+    {
       "code": "GE",
       "name": "奇異公司",
       "market": "US",
@@ -716,6 +916,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ge/historical"
+    },
+    {
+      "code": "GLE-FP",
+      "name": "法國興業銀行股份有限公司",
+      "market": "FP",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/GLE.PA/history/"
     },
     {
       "code": "GLW",
@@ -768,6 +978,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hood/historical"
     },
     {
+      "code": "HSBA-LN",
+      "name": "匯豐控股有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/HSBA.L/history/"
+    },
+    {
       "code": "HUBS",
       "name": "HUBSPOT INC COM USD0.001",
       "market": "US",
@@ -788,6 +1008,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hwm/historical"
     },
     {
+      "code": "IFX-GY",
+      "name": "INFINEON TECHNOLOGIES AG",
+      "market": "GY",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/IFX.DE/history/"
+    },
+    {
       "code": "ILMN",
       "name": "伊魯米納公司",
       "market": "US",
@@ -796,6 +1026,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ilmn/historical"
+    },
+    {
+      "code": "INGA-NA",
+      "name": "荷蘭國際集團",
+      "market": "NA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 518,
+      "sourceUrl": "https://finance.yahoo.com/quote/INGA.AS/history/"
     },
     {
       "code": "INTC",
@@ -888,6 +1128,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ktos/historical"
     },
     {
+      "code": "LGEN-LN",
+      "name": "法通保險集團公開有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/LGEN.L/history/"
+    },
+    {
       "code": "LITE",
       "name": "Lumentum Holdings Inc",
       "market": "US",
@@ -896,6 +1146,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lite/historical"
+    },
+    {
+      "code": "LLOY-LN",
+      "name": "勞埃德銀行集團",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/LLOY.L/history/"
     },
     {
       "code": "LLY",
@@ -956,6 +1216,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/meta/historical"
+    },
+    {
+      "code": "MNG-LN",
+      "name": "M&G公開有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/MNG.L/history/"
     },
     {
       "code": "MPWR",
@@ -1116,6 +1386,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/historical"
+    },
+    {
+      "code": "NWG-LN",
+      "name": "國民西敏集團公開有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/NWG.L/history/"
     },
     {
       "code": "OKTA",
@@ -1348,6 +1628,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/spot/historical"
     },
     {
+      "code": "STAN-LN",
+      "name": "渣打集團有限公司",
+      "market": "LN",
+      "currency": "GBp",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 514,
+      "sourceUrl": "https://finance.yahoo.com/quote/STAN.L/history/"
+    },
+    {
       "code": "STX",
       "name": "Seagate Technology Holdings PLC",
       "market": "US",
@@ -1396,6 +1686,16 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ter/historical"
+    },
+    {
+      "code": "TPEIR-GA",
+      "name": "Piraeus Bank SA",
+      "market": "GA",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 502,
+      "sourceUrl": "https://finance.yahoo.com/quote/TPEIR.AT/history/"
     },
     {
       "code": "TSEM",
@@ -1516,6 +1816,26 @@
       "historyEnd": "2026-09-04",
       "historyPoints": 508,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ubs/historical"
+    },
+    {
+      "code": "UCG-IM",
+      "name": "裕信銀行",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/UCG.MI/history/"
+    },
+    {
+      "code": "UNI-IM",
+      "name": "Unipol保險股份公司",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-07",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/UNI.MI/history/"
     },
     {
       "code": "V",

@@ -13,6 +13,8 @@
   var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
   var FOREIGN_INDEX_FILE = "data/foreign-holding-index.json";
+  // KP 與 KS 都是韓國，抓取端已收斂成 KS，這裡要跟著對齊。
+  var FOREIGN_MARKET_ALIAS = { KP: "KS" };
   var stockNames = new Map();
   var stockBuySessions = new Map();
   var stockSellSessions = new Map();
@@ -120,15 +122,17 @@
     var codeNote = cell.querySelector(".code-note");
     var text = (codeNote ? codeNote.textContent : cell.textContent) || "";
     /*
-     * 日股代號也是數字（"6981 JP" 是村田，台股 6981 是另一家公司），直接套
-     * 四碼規則會開出錯誤公司的 K 線。日股一律轉成 "6981-JP" 這個獨立代號。
+     * 帶市場後綴的外國股。這些代號會跟台股撞號（"6981 JP" 是村田，台股 6981
+     * 是另一家公司；"3308 HK" 中際旭創同理），所以存成 "<代號>-<市場>"。
+     *
+     * 一旦看到市場後綴就在這裡結束，絕不往下掉進台股的四碼規則——認不出來
+     * 頂多不能點，掉下去就會開出另一家公司的 K 線。
      */
-    var jp = text.match(/\b(\d{4}|\d{3}[A-Z])\s+JP\b/);
-    if (jp) return jp[1] + "-JP";
-    /*
-     * 韓、港、英、德…的代號同樣會撞號，而且還沒有行情來源，直接放棄比讓它
-     * 掉進台股規則安全。
-     */
+    var foreign = text.match(/\b([0-9A-Z/]{1,8})\s+(JP|KS|KP|HK|LN|GY|FP|IM|NA|SM|GA|CH)\b/);
+    if (foreign) {
+      var market = FOREIGN_MARKET_ALIAS[foreign[2]] || foreign[2];
+      return foreign[1].replace(/\//g, "") + "-" + market;
+    }
     if (/\b\d{3,6}\s+(?!US\b)[A-Z]{2}\b/.test(text)) return "";
     var tw = text.match(/\b\d{4}\b/);
     if (tw) return tw[0];
