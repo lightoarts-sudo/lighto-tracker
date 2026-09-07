@@ -236,6 +236,7 @@ PICKS_PAGE_HTML = """<!doctype html>
   .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
   .tag-active { background: #fff4cc; color: #8a6d00; }
   .tag-exited { background: #eef1fa; color: #56698f; }
+  .tag-stop { background: #fde3e3; color: #c0201f; margin-left: 4px; }
   .summary { max-width: 1100px; margin: 0 auto 20px; display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
   .summary div { background: #fff; color: #12295c; border-radius: 12px; padding: 12px 16px; }
@@ -699,11 +700,21 @@ function render() {
       ? `${p.exitPrice}<br><span style="font-size:11px;color:#9aa8c7;">${p.exitDate}</span>`
       : (p.currentPrice ?? "-");
     const pending = p.entryPrice === null;
-    const tag = p.status === "exited"
+    // 現價跌到停損價以下就多掛一個紅標。只看追蹤中且兩個價格都有的：已出場
+    // 的看的是出場價、待補價的根本還沒有現價，對這兩種標「需停損」沒有意義。
+    // 用 <= 是因為剛好觸價就該停損，不必等跌破。
+    const hitStop =
+      p.status === "active" &&
+      !pending &&
+      typeof p.currentPrice === "number" &&
+      typeof p.stopLossPrice === "number" &&
+      p.currentPrice <= p.stopLossPrice;
+    const tag = (p.status === "exited"
       ? '<span class="tag tag-exited">已出場</span>'
       : (pending
           ? '<span class="tag tag-active">待補價</span>'
-          : '<span class="tag tag-active">追蹤中</span>');
+          : '<span class="tag tag-active">追蹤中</span>'))
+      + (hitStop ? '<span class="tag tag-stop">需停損</span>' : "");
     const actions = ADMIN_PWD
       ? (p.status === "active"
           ? `<button class="btn-danger" onclick="exitPick(${p.id})">出場</button>`
