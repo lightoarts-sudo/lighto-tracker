@@ -1675,13 +1675,37 @@ def install_popostock(app: FastAPI, database_url: str) -> None:
         active_codes = {p["stockCode"] for p in picks if p["status"] == "active" and p["entryPrice"] is not None}
         current_prices: dict[str, float] = {}
         if active_codes:
-            active_codes_list = list(active_codes)
-            resolved = await asyncio.gather(
-                *(_picks_close_on_or_before(code, today) for code in active_codes_list)
-            )
-            for code, hit in zip(active_codes_list, resolved):
-                if hit:
-                    current_prices[code] = hit[1]
+            # 這些股票的日 K 每天都會同步進本站資料庫，先在自己家裡查。
+            # 以前每次載入都對交易所現打，一檔查不到還會往前翻四個月，冷啟動
+            # 時就是幾十次外部請求疊在一個頁面載入上。
+            async with pool.acquire() as conn:
+                rows = await conn.fetch(
+                    """
+                    SELECT DISTINCT ON (i.symbol) i.symbol, c.close
+                    FROM popostock_candles c
+                    JOIN popostock_instruments i ON i.id = c.instrument_id
+                    WHERE i.symbol = ANY($1::text[])
+                      AND c.timeframe = '1d'
+                      AND c.trade_date <= $2
+                    ORDER BY i.symbol, c.trade_date DESC
+                    """,
+                    list(active_codes),
+                    today,
+                )
+            for row in rows:
+                current_prices[row["symbol"]] = float(row["close"])
+
+            # 剛加入、還沒被納入每日同步的股票才走交易所。下一次每日流程跑完
+            # 就會進資料庫，這條路只在空窗期用得到。
+            missing = sorted(active_codes - set(current_prices))
+            if missing:
+                resolved = await asyncio.gather(
+                    *(_picks_close_on_or_before(code, today) for code in missing),
+                    return_exceptions=True,
+                )
+                for code, hit in zip(missing, resolved):
+                    if isinstance(hit, tuple):
+                        current_prices[code] = hit[1]
 
         for pick in picks:
             entry_price = pick["entryPrice"]
