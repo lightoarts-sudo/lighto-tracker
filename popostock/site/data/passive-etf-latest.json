@@ -1,57 +1,57 @@
 {
-  "syncedAt": "2026-09-07T12:17:44+08:00",
-  "expectedDate": "2026-09-04",
+  "syncedAt": "2026-09-07T18:19:27+08:00",
+  "expectedDate": "2026-09-07",
   "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
   "snapshots": {
     "0050": {
       "code": "0050",
       "name": "元大台灣50",
-      "sourceDate": "2026-09-04",
-      "nav": 107.94,
+      "sourceDate": "2026-09-07",
+      "nav": 110.19,
       "aumTwd": 2382008000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/0050",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "0052": {
       "code": "0052",
       "name": "富邦科技",
-      "sourceDate": "2026-09-04",
-      "nav": 62.65,
+      "sourceDate": "2026-09-07",
+      "nav": 64.08,
       "aumTwd": 160882000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/0052",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "0053": {
       "code": "0053",
       "name": "元大電子",
-      "sourceDate": "2026-09-04",
-      "nav": 242.85,
+      "sourceDate": "2026-09-07",
+      "nav": 247.82,
       "aumTwd": 2426000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/0053",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "0056": {
       "code": "0056",
       "name": "元大高股息",
-      "sourceDate": "2026-09-04",
-      "nav": 55.62,
+      "sourceDate": "2026-09-07",
+      "nav": 56.0,
       "aumTwd": 782186000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/0056",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "0057": {
       "code": "0057",
       "name": "富邦摩台",
-      "sourceDate": "2026-09-04",
-      "nav": 321.5,
+      "sourceDate": "2026-09-07",
+      "nav": 328.26,
       "aumTwd": 491000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/0057",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "006201": {
       "code": "006201",
@@ -61,77 +61,77 @@
       "aumTwd": null,
       "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "006203": {
       "code": "006203",
       "name": "元大MSCI台灣",
-      "sourceDate": "2026-09-04",
-      "nav": 195.9,
+      "sourceDate": "2026-09-07",
+      "nav": 200.04,
       "aumTwd": 2002000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/006203",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "006208": {
       "code": "006208",
       "name": "富邦台50",
-      "sourceDate": "2026-09-04",
-      "nav": 247.29,
+      "sourceDate": "2026-09-07",
+      "nav": 252.44,
       "aumTwd": 460094000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/006208",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00690": {
       "code": "00690",
       "name": "兆豐藍籌30",
-      "sourceDate": "2026-09-04",
-      "nav": 79.64,
+      "sourceDate": "2026-09-07",
+      "nav": 81.53,
       "aumTwd": 6676000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00690",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00692": {
       "code": "00692",
       "name": "富邦公司治理",
-      "sourceDate": "2026-09-04",
-      "nav": 92.51,
+      "sourceDate": "2026-09-07",
+      "nav": 94.36,
       "aumTwd": 56736000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00692",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00713": {
       "code": "00713",
       "name": "元大台灣高息低波",
-      "sourceDate": "2026-09-04",
-      "nav": 63.73,
+      "sourceDate": "2026-09-07",
+      "nav": 63.63,
       "aumTwd": 107515000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00713",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00733": {
       "code": "00733",
       "name": "富邦臺灣中小",
-      "sourceDate": "2026-09-04",
-      "nav": 67.21,
+      "sourceDate": "2026-09-07",
+      "nav": 68.16,
       "aumTwd": 4299000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00733",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00735": {
       "code": "00735",
       "name": "國泰臺韓科技",
-      "sourceDate": "2026-09-04",
-      "nav": 103.83,
+      "sourceDate": "2026-09-07",
+      "nav": 107.57,
       "aumTwd": 12437000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00735",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00737": {
       "code": "00737",
@@ -141,7 +141,7 @@
       "aumTwd": 916000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00737",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00757": {
       "code": "00757",
@@ -151,7 +151,7 @@
       "aumTwd": 37815000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00757",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00830": {
       "code": "00830",
@@ -161,7 +161,7 @@
       "aumTwd": 68252000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00830",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00851": {
       "code": "00851",
@@ -171,17 +171,17 @@
       "aumTwd": 390000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00851",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00850": {
       "code": "00850",
       "name": "元大臺灣ESG永續",
-      "sourceDate": "2026-09-04",
-      "nav": 92.96,
+      "sourceDate": "2026-09-07",
+      "nav": 94.71,
       "aumTwd": 38713000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00850",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00875": {
       "code": "00875",
@@ -191,7 +191,7 @@
       "aumTwd": 797000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00875",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00876": {
       "code": "00876",
@@ -201,17 +201,17 @@
       "aumTwd": 7967000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00876",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00878": {
       "code": "00878",
       "name": "國泰永續高股息",
-      "sourceDate": "2026-09-04",
-      "nav": 34.29,
+      "sourceDate": "2026-09-07",
+      "nav": 34.57,
       "aumTwd": 645680000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00878",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00877": {
       "code": "00877",
@@ -221,97 +221,97 @@
       "aumTwd": null,
       "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00881": {
       "code": "00881",
       "name": "國泰台灣科技龍頭",
-      "sourceDate": "2026-09-04",
-      "nav": 50.41,
+      "sourceDate": "2026-09-07",
+      "nav": 51.58,
       "aumTwd": 149977000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00881",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00887": {
       "code": "00887",
       "name": "永豐中國科技50大",
-      "sourceDate": "2026-09-03",
-      "nav": 15.83,
-      "aumTwd": 7082367857,
+      "sourceDate": "2026-09-04",
+      "nav": 15.56,
+      "aumTwd": 6960942919,
       "sourceTitle": "永豐投信 ETF 每日現金申購買回清單",
       "sourceUrl": "https://sitc.sinopac.com/SinopacEtfs/Etfs/Pcf/00887",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00888": {
       "code": "00888",
       "name": "永豐台灣ESG",
-      "sourceDate": "2026-09-04",
-      "nav": 33.77,
-      "aumTwd": 22167821633,
+      "sourceDate": "2026-09-07",
+      "nav": 34.99,
+      "aumTwd": 22882046542,
       "sourceTitle": "永豐投信 ETF 每日現金申購買回清單",
       "sourceUrl": "https://sitc.sinopac.com/SinopacEtfs/Etfs/Pcf/00888",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00891": {
       "code": "00891",
       "name": "中信關鍵半導體",
-      "sourceDate": "2026-09-04",
-      "nav": 34.95,
+      "sourceDate": "2026-09-07",
+      "nav": 36.05,
       "aumTwd": 67116000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00891",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00892": {
       "code": "00892",
       "name": "富邦台灣半導體",
-      "sourceDate": "2026-09-04",
-      "nav": 40.8,
+      "sourceDate": "2026-09-07",
+      "nav": 42.54,
       "aumTwd": 13210000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00892",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00894": {
       "code": "00894",
       "name": "中信小資高價30",
-      "sourceDate": "2026-09-04",
-      "nav": 47.47,
+      "sourceDate": "2026-09-07",
+      "nav": 48.65,
       "aumTwd": 7027000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00894",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00896": {
       "code": "00896",
       "name": "中信綠能及電動車",
-      "sourceDate": "2026-09-04",
-      "nav": 28.4,
+      "sourceDate": "2026-09-07",
+      "nav": 28.71,
       "aumTwd": 12508000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00896",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00901": {
       "code": "00901",
       "name": "永豐智能車供應鏈",
-      "sourceDate": "2026-09-04",
-      "nav": 46.41,
+      "sourceDate": "2026-09-07",
+      "nav": 47.63,
       "aumTwd": 2894000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00901",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00900": {
       "code": "00900",
       "name": "富邦特選高股息30",
-      "sourceDate": "2026-09-04",
-      "nav": 19.82,
+      "sourceDate": "2026-09-07",
+      "nav": 19.71,
       "aumTwd": 30536000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00900",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00903": {
       "code": "00903",
@@ -321,7 +321,7 @@
       "aumTwd": 1007000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00903",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00902": {
       "code": "00902",
@@ -331,7 +331,7 @@
       "aumTwd": 2938000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00902",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00904": {
       "code": "00904",
@@ -341,17 +341,17 @@
       "aumTwd": 6433000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00904",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00905": {
       "code": "00905",
       "name": "FT臺灣SMART",
-      "sourceDate": "2026-09-04",
-      "nav": 26.47,
+      "sourceDate": "2026-09-07",
+      "nav": 27.05,
       "aumTwd": 9525000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00905",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00911": {
       "code": "00911",
@@ -361,17 +361,17 @@
       "aumTwd": 1639000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00911",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00912": {
       "code": "00912",
       "name": "中信臺灣智慧50",
-      "sourceDate": "2026-09-04",
-      "nav": 35.2,
+      "sourceDate": "2026-09-07",
+      "nav": 35.99,
       "aumTwd": 2051000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00912",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00910": {
       "code": "00910",
@@ -381,57 +381,57 @@
       "aumTwd": 6505000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00910",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00913": {
       "code": "00913",
       "name": "兆豐台灣晶圓製造",
-      "sourceDate": "2026-09-04",
-      "nav": 47.62,
+      "sourceDate": "2026-09-07",
+      "nav": 49.94,
       "aumTwd": 2823000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00913",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00919": {
       "code": "00919",
       "name": "群益台灣精選高息",
-      "sourceDate": "2026-09-04",
-      "nav": 33.02,
+      "sourceDate": "2026-09-07",
+      "nav": 32.9,
       "aumTwd": 604361000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00919",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00918": {
       "code": "00918",
       "name": "大華優利高填息30",
-      "sourceDate": "2026-09-04",
-      "nav": 35.88,
+      "sourceDate": "2026-09-07",
+      "nav": 35.71,
       "aumTwd": 133656000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00918",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00923": {
       "code": "00923",
       "name": "群益台ESG低碳50",
-      "sourceDate": "2026-09-04",
-      "nav": 40.23,
+      "sourceDate": "2026-09-07",
+      "nav": 41.07,
       "aumTwd": 38339000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00923",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00922": {
       "code": "00922",
       "name": "國泰台灣領袖50",
-      "sourceDate": "2026-09-04",
-      "nav": 42.22,
+      "sourceDate": "2026-09-07",
+      "nav": 43.0,
       "aumTwd": 90263000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00922",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00928": {
       "code": "00928",
@@ -441,67 +441,67 @@
       "aumTwd": null,
       "sourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00927": {
       "code": "00927",
       "name": "群益半導體收益",
-      "sourceDate": "2026-09-04",
-      "nav": 36.81,
+      "sourceDate": "2026-09-07",
+      "nav": 38.09,
       "aumTwd": 50211000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00927",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00929": {
       "code": "00929",
       "name": "復華台灣科技優息",
-      "sourceDate": "2026-09-04",
+      "sourceDate": "2026-09-07",
       "nav": 29.36,
       "aumTwd": 149464000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00929",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00935": {
       "code": "00935",
       "name": "野村臺灣創新科技50",
-      "sourceDate": "2026-09-04",
-      "nav": 58.72,
+      "sourceDate": "2026-09-07",
+      "nav": 60.74,
       "aumTwd": 52083000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00935",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00939": {
       "code": "00939",
       "name": "統一台灣高息動能",
-      "sourceDate": "2026-09-04",
-      "nav": 23.97,
+      "sourceDate": "2026-09-07",
+      "nav": 23.93,
       "aumTwd": 27922000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00939",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00940": {
       "code": "00940",
       "name": "元大台灣價值高息",
-      "sourceDate": "2026-09-04",
-      "nav": 13.08,
+      "sourceDate": "2026-09-07",
+      "nav": 13.06,
       "aumTwd": 68111000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00940",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00946": {
       "code": "00946",
       "name": "群益科技高息成長",
-      "sourceDate": "2026-09-04",
+      "sourceDate": "2026-09-07",
       "nav": 15.6,
       "aumTwd": 6916000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00946",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00947": {
       "code": "00947",
@@ -511,7 +511,7 @@
       "aumTwd": 10581000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00947",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00965": {
       "code": "00965",
@@ -521,7 +521,7 @@
       "aumTwd": 10196000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00965",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00962": {
       "code": "00962",
@@ -531,7 +531,7 @@
       "aumTwd": 1047000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00962",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00971": {
       "code": "00971",
@@ -541,77 +541,77 @@
       "aumTwd": 975000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00971",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009803": {
       "code": "009803",
       "name": "玉山市值動能50",
-      "sourceDate": "2026-09-04",
-      "nav": 22.1,
+      "sourceDate": "2026-09-07",
+      "nav": 22.41,
       "aumTwd": 4460000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009803",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009802": {
       "code": "009802",
       "name": "富邦旗艦50",
-      "sourceDate": "2026-09-04",
-      "nav": 20.25,
+      "sourceDate": "2026-09-07",
+      "nav": 20.68,
       "aumTwd": 11715000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009802",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009804": {
       "code": "009804",
       "name": "聯邦台精彩50",
-      "sourceDate": "2026-09-04",
-      "nav": 23.14,
+      "sourceDate": "2026-09-07",
+      "nav": 23.62,
       "aumTwd": 3515000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009804",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009808": {
       "code": "009808",
       "name": "華南永昌優選50",
-      "sourceDate": "2026-09-04",
-      "nav": 31.33,
+      "sourceDate": "2026-09-07",
+      "nav": 31.9,
       "aumTwd": 1238000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009808",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009809": {
       "code": "009809",
       "name": "富邦淨零ESG50",
-      "sourceDate": "2026-09-04",
-      "nav": 17.96,
+      "sourceDate": "2026-09-07",
+      "nav": 18.33,
       "aumTwd": 545000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009809",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009816": {
       "code": "009816",
       "name": "凱基台灣TOP50",
-      "sourceDate": "2026-09-04",
-      "nav": 15.91,
+      "sourceDate": "2026-09-07",
+      "nav": 16.2,
       "aumTwd": 190401000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009816",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009820": {
       "code": "009820",
       "name": "元大納斯達克精選",
-      "sourceDate": "2026-09-04",
+      "sourceDate": "2026-09-07",
       "nav": 9.92,
       "aumTwd": 11107000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009820",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009821": {
       "code": "009821",
@@ -621,7 +621,7 @@
       "aumTwd": 7904000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009821",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "009829": {
       "code": "009829",
@@ -631,7 +631,7 @@
       "aumTwd": 3048000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009829",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00895": {
       "code": "00895",
@@ -641,7 +641,7 @@
       "aumTwd": 7196000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00895",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00893": {
       "code": "00893",
@@ -651,7 +651,7 @@
       "aumTwd": 15210000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00893",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00909": {
       "code": "00909",
@@ -661,7 +661,7 @@
       "aumTwd": 5252000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00909",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00951": {
       "code": "00951",
@@ -671,7 +671,7 @@
       "aumTwd": 3923000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00951",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00941": {
       "code": "00941",
@@ -681,17 +681,17 @@
       "aumTwd": 11231000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00941",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00631L": {
       "code": "00631L",
       "name": "元大台灣50正2",
-      "sourceDate": "2026-09-04",
-      "nav": 36.66,
+      "sourceDate": "2026-09-07",
+      "nav": 37.92,
       "aumTwd": 268105000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00631L",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00702": {
       "code": "00702",
@@ -701,134 +701,130 @@
       "aumTwd": 169000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00702",
-      "retrievedAt": "2026-09-07T12:17:44+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00730": {
       "code": "00730",
       "name": "富邦臺灣優質高息",
-      "sourceDate": "2026-09-04",
-      "nav": 29.11,
+      "sourceDate": "2026-09-07",
+      "nav": 29.08,
       "aumTwd": 2010000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00730",
-      "retrievedAt": "2026-09-05T12:07:43+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00731": {
       "code": "00731",
       "name": "復華富時高息低波",
-      "sourceDate": "2026-09-02",
-      "nav": 97.38,
-      "aumTwd": 1952000000,
+      "sourceDate": "2026-09-07",
+      "nav": 97.71,
+      "aumTwd": 1979000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00731",
-      "retrievedAt": "2026-09-02T18:13:40+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00771": {
       "code": "00771",
       "name": "元大US高息特別股",
-      "sourceDate": "2026-09-01",
-      "nav": 15.29,
+      "sourceDate": "2026-09-04",
+      "nav": 15.26,
       "aumTwd": 218000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00771",
-      "retrievedAt": "2026-09-02T18:13:40+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     },
     "00882": {
       "code": "00882",
       "name": "中信中國高股息",
-      "sourceDate": "2026-09-01",
-      "nav": 14.94,
-      "aumTwd": 29558000000,
+      "sourceDate": "2026-09-04",
+      "nav": 15.08,
+      "aumTwd": 29735000000,
       "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00882",
-      "retrievedAt": "2026-09-02T18:13:40+08:00"
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00907": {
+      "code": "00907",
+      "name": "永豐優息存股",
+      "sourceDate": "2026-09-07",
+      "nav": 17.73,
+      "aumTwd": 2637000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00907",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00915": {
+      "code": "00915",
+      "name": "凱基優選高股息30",
+      "sourceDate": "2026-09-07",
+      "nav": 33.09,
+      "aumTwd": 16739000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00915",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00926": {
+      "code": "00926",
+      "name": "凱基全球菁英55",
+      "sourceDate": "2026-09-04",
+      "nav": 26.36,
+      "aumTwd": 2767000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00926",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00930": {
+      "code": "00930",
+      "name": "永豐ESG低碳高息",
+      "sourceDate": "2026-09-07",
+      "nav": 24.32,
+      "aumTwd": 3100000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00930",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00932": {
+      "code": "00932",
+      "name": "兆豐永續高息等權",
+      "sourceDate": "2026-09-07",
+      "nav": 17.49,
+      "aumTwd": 1942000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00932",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00934": {
+      "code": "00934",
+      "name": "中信成長高股息",
+      "sourceDate": "2026-09-07",
+      "nav": 30.69,
+      "aumTwd": 13051000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00934",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00936": {
+      "code": "00936",
+      "name": "台新永續高息中小",
+      "sourceDate": "2026-09-04",
+      "nav": 21.53,
+      "aumTwd": 4151000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00936",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
+    },
+    "00943": {
+      "code": "00943",
+      "name": "兆豐電子高息等權",
+      "sourceDate": "2026-09-07",
+      "nav": 21.37,
+      "aumTwd": 867000000,
+      "sourceTitle": "臺灣證券交易所 ETF e添富每日盤後淨值",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00943",
+      "retrievedAt": "2026-09-07T18:19:27+08:00"
     }
   },
   "missing": [
-    {
-      "code": "00730",
-      "name": "富邦臺灣優質高息",
-      "sourceDate": "2026-09-04",
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00730"
-    },
-    {
-      "code": "00731",
-      "name": "復華富時高息低波",
-      "sourceDate": "2026-09-02",
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00731"
-    },
-    {
-      "code": "00771",
-      "name": "元大US高息特別股",
-      "sourceDate": "2026-09-01",
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00771"
-    },
-    {
-      "code": "00882",
-      "name": "中信中國高股息",
-      "sourceDate": "2026-09-01",
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00882"
-    },
-    {
-      "code": "00907",
-      "name": "永豐優息存股",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00907"
-    },
-    {
-      "code": "00915",
-      "name": "凱基優選高股息30",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00915"
-    },
-    {
-      "code": "00926",
-      "name": "凱基全球菁英55",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00926"
-    },
-    {
-      "code": "00930",
-      "name": "永豐ESG低碳高息",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00930"
-    },
-    {
-      "code": "00932",
-      "name": "兆豐永續高息等權",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00932"
-    },
-    {
-      "code": "00934",
-      "name": "中信成長高股息",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00934"
-    },
-    {
-      "code": "00936",
-      "name": "台新永續高息中小",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00936"
-    },
-    {
-      "code": "00943",
-      "name": "兆豐電子高息等權",
-      "sourceDate": null,
-      "reason": "HTTP Error 428: ",
-      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00943"
-    },
     {
       "code": "00944",
       "name": "野村趨勢動能高息",
@@ -914,11 +910,221 @@
       "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009828"
     },
     {
+      "code": "006201",
+      "name": "元大富櫃50",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv"
+    },
+    {
+      "code": "00737",
+      "name": "國泰AI機器人",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00737"
+    },
+    {
+      "code": "00757",
+      "name": "統一FANG+",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00757"
+    },
+    {
+      "code": "00830",
+      "name": "國泰費城半導體",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00830"
+    },
+    {
+      "code": "00851",
+      "name": "台新全球AI",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00851"
+    },
+    {
+      "code": "00875",
+      "name": "國泰網路資安",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00875"
+    },
+    {
+      "code": "00876",
+      "name": "元大全球5G",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00876"
+    },
+    {
+      "code": "00877",
+      "name": "FH中國5G",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv"
+    },
+    {
       "code": "00887",
       "name": "永豐中國科技50大",
-      "sourceDate": "2026-09-03",
-      "reason": "官網最新淨值日期仍為 2026-09-03，最近官方交易日為 2026-09-04",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
       "sourceUrl": "https://sitc.sinopac.com/SinopacEtfs/Etfs/Pcf/00887"
+    },
+    {
+      "code": "00903",
+      "name": "富邦元宇宙",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00903"
+    },
+    {
+      "code": "00902",
+      "name": "中信電池及儲能",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00902"
+    },
+    {
+      "code": "00904",
+      "name": "新光臺灣半導體30",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00904"
+    },
+    {
+      "code": "00911",
+      "name": "兆豐洲際半導體",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00911"
+    },
+    {
+      "code": "00910",
+      "name": "第一金太空衛星",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00910"
+    },
+    {
+      "code": "00928",
+      "name": "中信上櫃ESG 30",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv"
+    },
+    {
+      "code": "00947",
+      "name": "台新臺灣IC設計",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00947"
+    },
+    {
+      "code": "00965",
+      "name": "元大航太防衛科技",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00965"
+    },
+    {
+      "code": "00962",
+      "name": "台新AI優息動能",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00962"
+    },
+    {
+      "code": "00971",
+      "name": "野村美國研發龍頭",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00971"
+    },
+    {
+      "code": "009821",
+      "name": "野村稀土關鍵資源",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009821"
+    },
+    {
+      "code": "009829",
+      "name": "大華韓國KOSPI50",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009829"
+    },
+    {
+      "code": "00895",
+      "name": "富邦未來車",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00895"
+    },
+    {
+      "code": "00893",
+      "name": "國泰智能電動車",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00893"
+    },
+    {
+      "code": "00909",
+      "name": "國泰數位支付服務",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00909"
+    },
+    {
+      "code": "00951",
+      "name": "台新日本半導體",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00951"
+    },
+    {
+      "code": "00941",
+      "name": "中信上游半導體",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00941"
+    },
+    {
+      "code": "00702",
+      "name": "國泰標普低波高息",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00702"
+    },
+    {
+      "code": "00771",
+      "name": "元大US高息特別股",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00771"
+    },
+    {
+      "code": "00882",
+      "name": "中信中國高股息",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00882"
+    },
+    {
+      "code": "00926",
+      "name": "凱基全球菁英55",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00926"
+    },
+    {
+      "code": "00936",
+      "name": "台新永續高息中小",
+      "sourceDate": "2026-09-04",
+      "reason": "官網最新淨值日期仍為 2026-09-04，最近官方交易日為 2026-09-07",
+      "sourceUrl": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00936"
     }
   ]
 }
