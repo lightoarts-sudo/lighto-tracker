@@ -754,11 +754,44 @@ function render() {
   }
 }
 
+/*
+ * 表格畫完之後，在背景把每一檔的 K 線都抓回來放進 CANDLE_CACHE。展開某一列
+ * 時就不必再等一次網路往返，直接畫。
+ *
+ * 刻意不 await：一檔約 6.5KB，二十檔加起來一百多 KB，擺在首次顯示前面會讓
+ * 表格白等。同時開四條也是為此——排隊一檔一檔抓，最後一檔要等五秒才進快取。
+ * 抓失敗不處理，展開那列時 loadDetail 會自己再試一次。
+ */
+let PREFETCHING = false;
+async function prefetchCandles() {
+  if (PREFETCHING) return;
+  PREFETCHING = true;
+  const queue = PICKS.map(p => p.id).filter(id => !CANDLE_CACHE[id]);
+  const worker = async () => {
+    while (queue.length) {
+      const id = queue.shift();
+      if (id === undefined || CANDLE_CACHE[id]) continue;
+      try {
+        const res = await fetch(`/popostock/api/picks/${id}/candles`);
+        if (res.ok) CANDLE_CACHE[id] = await res.json();
+      } catch (e) {
+        /* 交給 loadDetail 重試 */
+      }
+    }
+  };
+  try {
+    await Promise.all([worker(), worker(), worker(), worker()]);
+  } finally {
+    PREFETCHING = false;
+  }
+}
+
 async function load() {
   try {
     const res = await fetch("/popostock/api/picks");
     PICKS = await res.json();
     render();
+    prefetchCandles();
   } catch (e) {
     document.getElementById("rows").innerHTML =
       '<tr><td colspan="10" class="empty">載入失敗，請重新整理</td></tr>';
