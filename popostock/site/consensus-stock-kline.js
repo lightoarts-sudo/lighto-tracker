@@ -12,7 +12,7 @@
 
   var LIBRARY_FILE = "lightweight-charts.standalone.production.js";
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
-  var US_INDEX_FILE = "data/us-holding-index.json";
+  var FOREIGN_INDEX_FILE = "data/foreign-holding-index.json";
   var stockNames = new Map();
   var stockBuySessions = new Map();
   var stockSellSessions = new Map();
@@ -61,12 +61,12 @@
   }
 
   /*
-   * 美股清單獨立一個檔案，不併進共識索引：共識索引由台股的加減碼金額門檻
-   * 產生，把沒有價格的外國持股塞進去會讓那份資料的意義變糊。檔案不存在或
-   * 讀失敗時回空陣列，台股那側照常運作。
+   * 外國標的（美股、日股）清單獨立一個檔案，不併進共識索引：共識索引由台股
+   * 的加減碼金額門檻產生，把沒有價格的外國持股塞進去會讓那份資料的意義變糊。
+   * 檔案不存在或讀失敗時回空陣列，台股那側照常運作。
    */
-  function loadUsHoldingIndex() {
-    return fetch(baseUrl() + "/" + US_INDEX_FILE, { cache: "no-store" })
+  function loadForeignHoldingIndex() {
+    return fetch(baseUrl() + "/" + FOREIGN_INDEX_FILE, { cache: "no-store" })
       .then(function (response) {
         if (!response.ok) throw new Error("HTTP " + response.status);
         return response.json();
@@ -120,10 +120,14 @@
     var codeNote = cell.querySelector(".code-note");
     var text = (codeNote ? codeNote.textContent : cell.textContent) || "";
     /*
-     * 日股、韓股、港股的代號也是數字（"6981 JP" 村田、"3308 HK" 中際旭創），
-     * 直接套四碼規則會當成台股，開出另一家公司的 K 線。今天還不會踩到是因為
-     * 這些號碼剛好不在共識清單裡，但兩邊的號碼段本來就重疊，清單一長就會中。
-     * 看到非美股的市場後綴就直接放棄——這些市場我們本來就沒有行情。
+     * 日股代號也是數字（"6981 JP" 是村田，台股 6981 是另一家公司），直接套
+     * 四碼規則會開出錯誤公司的 K 線。日股一律轉成 "6981-JP" 這個獨立代號。
+     */
+    var jp = text.match(/\b(\d{4}|\d{3}[A-Z])\s+JP\b/);
+    if (jp) return jp[1] + "-JP";
+    /*
+     * 韓、港、英、德…的代號同樣會撞號，而且還沒有行情來源，直接放棄比讓它
+     * 掉進台股規則安全。
      */
     if (/\b\d{3,6}\s+(?!US\b)[A-Z]{2}\b/.test(text)) return "";
     var tw = text.match(/\b\d{4}\b/);
@@ -673,7 +677,7 @@
 
   function watch() {
     installStyles();
-    Promise.all([loadStockIndex(), loadUsHoldingIndex()])
+    Promise.all([loadStockIndex(), loadForeignHoldingIndex()])
       .then(function (results) {
         results[0].forEach(function (stock) {
           var code = String(stock.code || stock.symbol || "");
@@ -690,9 +694,9 @@
           }
         });
         /*
-         * 主動式 ETF 持有的美股。這批沒有加減碼標記——holding-changes 裡外國
-         * 持股的 closePrice 是 null，推不出可信的張數與金額，硬標會是假的。
-         * 先給得出 K 線，標記等價格來源補上再說。
+         * 主動式 ETF 持有的外國股（美股純代號、日股帶 -JP）。這批沒有加減碼
+         * 標記——holding-changes 裡外國持股的 closePrice 是 null，推不出可信的
+         * 張數與金額，硬標會是假的。先給得出 K 線，標記等價格來源補上再說。
          */
         results[1].forEach(function (stock) {
           var code = String(stock.code || "");
