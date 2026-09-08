@@ -6290,7 +6290,7 @@
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-08"
         },
         {
           "label": "持股揭露",
@@ -6298,8 +6298,8 @@
         }
       ],
       "performance": {
-        "date": "2026-09-04",
-        "priceOrNav": "279.53 TWD"
+        "date": "2026-09-08",
+        "priceOrNav": "278.4200 TWD"
       },
       "assetClasses": [],
       "holdings": [],
@@ -6310,9 +6310,12 @@
         "retrievedAt": "2026-09-05T06:01:27+00:00",
         "cnyesId": "A08003",
         "sitcaTaxId": "92013967A",
-        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+        "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+        "dailyNavRetrievedAt": "2026-09-08T13:00:18+00:00"
       },
-      "ytdReturn": 99.5788
+      "ytdReturn": 98.7862
     },
     {
       "id": "sitca-fhw01",
@@ -6386,7 +6389,7 @@
         },
         {
           "label": "最新淨值資料日",
-          "value": "2026-09-04"
+          "value": "2026-09-08"
         },
         {
           "label": "持股揭露",
@@ -6394,8 +6397,8 @@
         }
       ],
       "performance": {
-        "date": "2026-09-04",
-        "priceOrNav": "197.52 TWD"
+        "date": "2026-09-08",
+        "priceOrNav": "197.9200 TWD"
       },
       "assetClasses": [],
       "holdings": [],
@@ -6406,9 +6409,12 @@
         "retrievedAt": "2026-09-05T06:01:27+00:00",
         "cnyesId": "A23015",
         "sitcaTaxId": "21759676A",
-        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "dailyNavSourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+        "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+        "dailyNavRetrievedAt": "2026-09-08T13:00:18+00:00"
       },
-      "ytdReturn": 88.5632
+      "ytdReturn": 88.9451
     },
     {
       "id": "sitca-fir01",
