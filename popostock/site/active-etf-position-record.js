@@ -105,6 +105,7 @@
           .sort(function (left, right) {
             return left.time < right.time ? -1 : left.time > right.time ? 1 : 0;
           });
+        values.currency = payload.currency || "";
         candles.set(stockCode, values);
         return values;
       })
@@ -243,8 +244,25 @@
     return counts;
   }
 
+  /*
+   * 投信對外國持股一樣用「張」揭露。這不是筆誤——拿權重 × 基金規模除以
+   * 「張數 × 1000 × 當地收盤」反推，22 檔美股的隱含匯率都落在 30~35，正好是
+   * 台幣兌美元；不乘 1000 反推出來會是三萬多。所以單位確實是張。
+   *
+   * 但美股沒有「張」這個概念，畫面一律換算成股顯示。一次只開一檔標的，
+   * 用模組層旗標切換就夠，不必把單位一路傳進每個格式化函式。
+   */
+  var showShares = false;
+
+  function usesShares(stockCode) {
+    return !/^\d{4,6}[A-Z]?$/.test(String(stockCode || "").trim().toUpperCase());
+  }
+
   function lots(value) {
     var number = Number(value || 0);
+    if (showShares) {
+      return Math.round(number * 1000).toLocaleString("zh-TW") + " 股";
+    }
     return (Math.round(number * 100) / 100).toLocaleString("zh-TW") + " 張";
   }
 
@@ -443,6 +461,8 @@
 
   function renderRecord(modal, ledger, position) {
     var body = modal.querySelector(".active-etf-position-body");
+    // 一次只渲染一檔標的，先決定這一輪的單位再往下走。
+    showShares = usesShares(position.stockCode);
     var stats = "";
 
     stats += statCard("目前持股", lots(position.currentLots),
@@ -545,8 +565,9 @@
           '<td class="' + (isBuy ? "is-buy" : "is-sell") + '">' + (isBuy ? "加碼" : "減碼") + "</td>" +
           '<td class="' + (isBuy ? "is-buy" : "is-sell") + '">' +
           (isBuy ? "+" : "−") + lots(Math.abs(event.lots)) + "</td>" +
-          "<td>" + price(event.price) + "</td>" +
-          "<td>" + money(event.amountTwd) + "</td>" +
+          '<td data-fill="price" data-date="' + event.date + '">' + price(event.price) + "</td>" +
+          '<td data-fill="amount" data-date="' + event.date +
+          '" data-lots="' + Math.abs(event.lots) + '">' + money(event.amountTwd) + "</td>" +
           "<td>" + lots(event.heldLots) + "</td></tr>"
         );
       })
@@ -561,7 +582,8 @@
         .join("") +
       '<div class="active-etf-position-chart-slot"></div>' +
       '<div class="active-etf-position-scroll"><table class="active-etf-position-table">' +
-      "<thead><tr><th>日期</th><th>動作</th><th>張數</th><th>價格</th><th>金額</th><th>累計持股</th></tr></thead>" +
+      "<thead><tr><th>日期</th><th>動作</th><th>" + (showShares ? "股數" : "張數") +
+      "</th><th>價格</th><th data-amount-head>金額</th><th>累計持股</th></tr></thead>" +
       "<tbody>" + rows + "</tbody></table></div>" +
       closedPositionLinks(ledger, position) +
       footnotes
@@ -605,6 +627,41 @@
    * a market we have no feed for, and any stock not yet backfilled — never
    * blocks the numbers the user came for.
    */
+  /*
+   * 投信對外國持股不揭露價格與金額（closePrice、amountTwd 全是 null），所以
+   * 明細表的價格、金額原本整欄都是「—」。等日 K 載進來之後，用當天的官方收盤
+   * 把它們補上：金額＝股數 × 當日收盤。
+   *
+   * 刻意不換算成台幣。台幣金額要用「與交易日完全相同」的官方匯率，臺灣銀行
+   * 目前整站掛機器人驗證牆抓不到，沿用他日匯率會讓數字看起來精確但其實是猜的
+   * ——這正是 config/fund-aum-fx-rates.json 那條政策要防的事。所以照當地幣別
+   * 顯示，並在表頭標示是哪一種幣別。
+   */
+  function fillForeignPrices(modal, values) {
+    if (!showShares) return;
+    var closeByDate = new Map();
+    values.forEach(function (point) {
+      closeByDate.set(point.time, point.close);
+    });
+    var filled = 0;
+    modal.querySelectorAll('[data-fill="price"]').forEach(function (cell) {
+      var close = closeByDate.get(cell.dataset.date);
+      if (close === undefined) return;
+      cell.textContent = price(close);
+      filled += 1;
+    });
+    modal.querySelectorAll('[data-fill="amount"]').forEach(function (cell) {
+      var close = closeByDate.get(cell.dataset.date);
+      if (close === undefined) return;
+      var shares = Math.round(Number(cell.dataset.lots || 0) * 1000);
+      cell.textContent = money(shares * close);
+    });
+    var head = modal.querySelector("[data-amount-head]");
+    if (head && filled && values.currency) {
+      head.textContent = "金額（" + values.currency + "）";
+    }
+  }
+
   function mountChart(modal, slot, position) {
     if (!slot) return;
     var requestId = activeRequest;
@@ -624,6 +681,7 @@
             '<p class="active-etf-position-chart-missing">目前沒有這檔股票的官方日 K 資料。</p>';
           return;
         }
+        fillForeignPrices(modal, values);
         slot.innerHTML =
           '<div class="active-etf-position-chart"></div>' +
           '<p class="active-etf-position-chart-note"></p>';
