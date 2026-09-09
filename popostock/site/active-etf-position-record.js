@@ -218,15 +218,17 @@
     // A chart created while the container still measures 0 wide keeps a bar
     // spacing that leaves the candles crushed against the right edge, so the
     // range has to be reapplied once a real width arrives.
-    var sized = container.clientWidth > 0;
+    // 只判斷「從 0 變成非 0」不夠：彈窗展開時容器可能已經有寬度、但還不是最終
+    // 值，那一次就補不到，棒子照樣縮在右邊。改成記住寬度，只要真的變了就重算。
+    var lastWidth = 0;
     var resize = function () {
       if (!activeChart || !container.clientWidth) return;
       activeChart.applyOptions({
         width: container.clientWidth,
         height: container.clientHeight,
       });
-      if (!sized) {
-        sized = true;
+      if (container.clientWidth !== lastWidth) {
+        lastWidth = container.clientWidth;
         applyRange();
       }
     };
@@ -575,20 +577,44 @@
   }
 
   /*
+   * 投信揭露的代號轉成行情檔的代號。台股是四到六碼數字；外國持股寫成彭博式的
+   * "DASH US"／"6981 JP"，其中美股存純代號，其餘存 "<代號>-<市場>"——因為外國
+   * 代號會跟台股撞號（6981 在東京是村田，在台灣是另一家公司）。
+   *
+   * 還沒接來源的市場回 null，讓呼叫端顯示說明而不是送出一個必然 404 的請求。
+   */
+  var FOREIGN_MARKETS = "JP|KS|KP|HK|LN|GY|FP|IM|NA|SM|GA|CH";
+
+  function chartCode(stockCode) {
+    var raw = String(stockCode || "").trim().toUpperCase();
+    if (!raw) return null;
+    if (/^\d{4,6}[A-Z]?$/.test(raw)) return raw;          // 台股
+    var foreign = raw.match(new RegExp("^([0-9A-Z/.]{1,8})\\s+(" + FOREIGN_MARKETS + "|US)$"));
+    if (foreign) {
+      var ticker = foreign[1].replace(/\//g, "");
+      if (foreign[2] === "US") return ticker;
+      return ticker + "-" + (foreign[2] === "KP" ? "KS" : foreign[2]);
+    }
+    // 00989A 只寫純代號，那些都是美股。
+    if (/^[A-Z]{1,5}(\.[A-Z])?$/.test(raw)) return raw;
+    return null;
+  }
+
+  /*
    * The chart is filled in after the rest of the dialog so a missing K-line —
-   * every overseas holding, and any domestic stock not yet backfilled — never
+   * a market we have no feed for, and any stock not yet backfilled — never
    * blocks the numbers the user came for.
    */
   function mountChart(modal, slot, position) {
     if (!slot) return;
     var requestId = activeRequest;
-    var domestic = /^\d{4,6}$/.test(position.stockCode);
-    if (!domestic) {
+    var code = chartCode(position.stockCode);
+    if (!code) {
       slot.innerHTML =
-        '<p class="active-etf-position-chart-missing">海外標的沒有台灣官方日 K，僅顯示操作明細。</p>';
+        '<p class="active-etf-position-chart-missing">這個市場還沒有行情來源，僅顯示操作明細。</p>';
       return;
     }
-    Promise.all([loadCandles(position.stockCode), loadLibrary()])
+    Promise.all([loadCandles(code), loadLibrary()])
       .then(function (results) {
         if (requestId !== activeRequest || !modal.classList.contains("is-open")) return;
         var values = results[0];
