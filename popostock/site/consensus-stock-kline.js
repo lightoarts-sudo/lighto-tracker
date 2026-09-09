@@ -466,6 +466,16 @@
       "　高 " + Number(latest.high).toLocaleString("zh-TW") +
       "　低 " + Number(latest.low).toLocaleString("zh-TW") + "</span>" +
       "<span>" + latest.time.replaceAll("-", "/") + " · " + values.length + " 個交易日</span>";
+    /*
+     * 副標題原本寫死「近一年」，但台股共識抓一年、外國持股抓兩年，畫面上會
+     * 出現「近一年 … 508 個交易日」這種自相矛盾。改成照實際涵蓋區間標示。
+     */
+    var subtitle = modal.querySelector(".consensus-kline-subtitle");
+    if (subtitle) {
+      var spanYears = (new Date(latest.time) - new Date(values[0].time)) / 31557600000;
+      subtitle.textContent =
+        (spanYears >= 1.5 ? "近兩年" : "近一年") + "官方日 K · 含成交量";
+    }
     var chartElement = document.createElement("div");
     chartElement.className = "consensus-kline-chart";
     body.appendChild(reading);
@@ -593,12 +603,20 @@
     chart.timeScale().fitContent();
     activeChart = chart;
 
+    /*
+     * 改完寬度一定要重新 fitContent。applyOptions 只換畫布尺寸、不動 barSpacing，
+     * 而 K 線是靠右對齊的——彈窗開啟時容器還沒展開到最終寬度，第一次 fitContent
+     * 算出來的間距偏小，等 ResizeObserver 把畫布撐開，那些棒子就縮在右邊、左半
+     * 邊整片空白。台股一年 243 根還看得出形狀，外國股兩年 508 根就只剩右側一小
+     * 撮，看起來像沒有 K 棒。
+     */
     var resize = function () {
       if (!activeChart || !chartElement.clientWidth) return;
       activeChart.applyOptions({
         width: chartElement.clientWidth,
         height: chartElement.clientHeight,
       });
+      activeChart.timeScale().fitContent();
     };
     if (typeof ResizeObserver === "function") {
       activeResizeObserver = new ResizeObserver(resize);
