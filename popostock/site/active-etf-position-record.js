@@ -415,11 +415,12 @@
     body.appendChild(message);
   }
 
-  function statCard(label, value, tone, sub, subTone) {
+  function statCard(label, value, tone, sub, subTone, key) {
     return (
-      '<div class="active-etf-position-stat"><span>' + label + "</span>" +
+      '<div class="active-etf-position-stat"' + (key ? ' data-stat="' + key + '"' : "") +
+      '><span>' + label + "</span>" +
       "<strong" + (tone || "") + ">" + value + "</strong>" +
-      (sub ? "<em" + (subTone || "") + ">" + sub + "</em>" : "") +
+      (sub ? "<em" + (subTone || "") + ">" + sub + "</em>" : '<em hidden></em>') +
       "</div>"
     );
   }
@@ -490,7 +491,7 @@
           : null,
       );
     } else {
-      stats += statCard("追蹤期平均成本", "—", "", "期間內無可計價加碼");
+      stats += statCard("追蹤期平均成本", "—", "", "期間內無可計價加碼", "", "avgCost");
     }
 
     stats += statCard(
@@ -498,6 +499,8 @@
       price(position.closePrice),
       "",
       position.priceDate ? position.priceDate.replace(/-/g, "/") : null,
+      "",
+      "close",
     );
 
     if (position.unrealizedTwd !== null && position.unrealizedTwd !== undefined) {
@@ -547,7 +550,10 @@
     }
     if (position.unknownCostLotsHeld > 0 && position.baselineLots === 0) {
       notes.push(
-        "有 " + lots(position.unknownCostLotsHeld) + " 的加碼當日沒有官方價格，未列入成本計算。",
+        showShares
+          ? "投信沒有揭露這檔的成交價，下表價格與成本一律以當日官方收盤重新計價，" +
+            "不是實際成交價；真實成本會落在當日高低之間。"
+          : "有 " + lots(position.unknownCostLotsHeld) + " 的加碼當日沒有官方價格，未列入成本計算。",
       );
     }
 
@@ -637,7 +643,7 @@
    * ——這正是 config/fund-aum-fx-rates.json 那條政策要防的事。所以照當地幣別
    * 顯示，並在表頭標示是哪一種幣別。
    */
-  function fillForeignPrices(modal, values) {
+  function fillForeignPrices(modal, values, currentPosition) {
     if (!showShares) return;
     var closeByDate = new Map();
     values.forEach(function (point) {
@@ -660,6 +666,48 @@
     if (head && filled && values.currency) {
       head.textContent = "金額（" + values.currency + "）";
     }
+
+    /*
+     * 上面只補了明細表，成本統計還是帳本算的——而帳本對外國持股拿不到價格，
+     * 所以會顯示「期間內無可計價加碼」，跟下面那張有價格的表自相矛盾。
+     * 這裡用同一批官方收盤把成本也算出來，兩邊才會一致。
+     */
+    var cur = values.currency ? "（" + values.currency + "）" : "";
+    var shares = 0;
+    var cost = 0;
+    (currentPosition.events || []).forEach(function (event) {
+      var close = closeByDate.get(event.date);
+      if (close === undefined) return;
+      var qty = Math.round(Math.abs(event.lots) * 1000);
+      if (event.action === "buy") {
+        shares += qty;
+        cost += qty * close;
+      } else {
+        // 先進先出太細，這裡用移動平均：賣出按當時均價扣掉相同比例的成本。
+        var avg = shares ? cost / shares : 0;
+        var out = Math.min(qty, shares);
+        shares -= out;
+        cost -= out * avg;
+      }
+    });
+
+    var avgCard = modal.querySelector('[data-stat="avgCost"]');
+    if (avgCard && shares > 0) {
+      avgCard.querySelector("strong").textContent = price(cost / shares);
+      var sub = avgCard.querySelector("em");
+      sub.hidden = false;
+      sub.textContent = shares.toLocaleString("zh-TW") + " 股 · 成本 " +
+        money(cost) + cur;
+    }
+
+    var last = values[values.length - 1];
+    var closeCard = modal.querySelector('[data-stat="close"]');
+    if (closeCard && last) {
+      closeCard.querySelector("strong").textContent = price(last.close);
+      var csub = closeCard.querySelector("em");
+      csub.hidden = false;
+      csub.textContent = last.time.replace(/-/g, "/");
+    }
   }
 
   function mountChart(modal, slot, position) {
@@ -681,7 +729,7 @@
             '<p class="active-etf-position-chart-missing">目前沒有這檔股票的官方日 K 資料。</p>';
           return;
         }
-        fillForeignPrices(modal, values);
+        fillForeignPrices(modal, values, position);
         slot.innerHTML =
           '<div class="active-etf-position-chart"></div>' +
           '<p class="active-etf-position-chart-note"></p>';
