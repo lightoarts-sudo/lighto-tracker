@@ -611,7 +611,7 @@
    *
    * 還沒接來源的市場回 null，讓呼叫端顯示說明而不是送出一個必然 404 的請求。
    */
-  var FOREIGN_MARKETS = "JP|KS|KP|HK|LN|GY|FP|IM|NA|SM|GA|CH";
+  var FOREIGN_MARKETS = "JP|KS|KP|HK|LN|GY|GR|FP|IM|NA|SM|GA|CH";
 
   function chartCode(stockCode) {
     var raw = String(stockCode || "").trim().toUpperCase();
@@ -621,7 +621,9 @@
     if (foreign) {
       var ticker = foreign[1].replace(/\//g, "");
       if (foreign[2] === "US") return ticker;
-      return ticker + "-" + (foreign[2] === "KP" ? "KS" : foreign[2]);
+      // KP／KS 同為韓國，GR／GY 同為德國，收斂成單一代號免得同一家公司存兩份。
+      var alias = { KP: "KS", GR: "GY" };
+      return ticker + "-" + (alias[foreign[2]] || foreign[2]);
     }
     // 00989A 只寫純代號，那些都是美股。
     if (/^[A-Z]{1,5}(\.[A-Z])?$/.test(raw)) return raw;

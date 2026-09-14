@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-14T18:20:41+08:00",
+  "generatedAt": "2026-09-14T20:12:39+08:00",
   "sourceTitles": {
     "US": "Nasdaq 官方個股歷史行情",
     "other": "Yahoo Finance 各交易所歷史行情"
   },
-  "count": 196,
+  "count": 257,
   "failures": [],
   "stocks": [
     {
@@ -18,6 +18,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/000660.KS/history/"
     },
     {
+      "code": "005930-KS",
+      "name": "SAMSUNG ELECTRONICS CO LTD",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 490,
+      "sourceUrl": "https://finance.yahoo.com/quote/005930.KS/history/"
+    },
+    {
       "code": "009150-KS",
       "name": "Samsung Electro-Mechanics co(009150 ks)",
       "market": "KS",
@@ -26,6 +36,26 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 495,
       "sourceUrl": "https://finance.yahoo.com/quote/009150.KS/history/"
+    },
+    {
+      "code": "032830-KS",
+      "name": "三星人壽保險有限公司",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 490,
+      "sourceUrl": "https://finance.yahoo.com/quote/032830.KS/history/"
+    },
+    {
+      "code": "095340-KS",
+      "name": "ISC CO LTD",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2026-07-16",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 40,
+      "sourceUrl": "https://finance.yahoo.com/quote/095340.KS/history/"
     },
     {
       "code": "285A-JP",
@@ -38,6 +68,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/285A.T/history/"
     },
     {
+      "code": "300408-CH",
+      "name": "CHAOZHOU THREE-CIRCLE GROU-A",
+      "market": "CH",
+      "currency": "CNY",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 496,
+      "sourceUrl": "https://finance.yahoo.com/quote/300408.SZ/history/"
+    },
+    {
       "code": "300757-CH",
       "name": "ROBOTECHNIK INTELLIGENT TE-A",
       "market": "CH",
@@ -48,6 +88,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/300757.SZ/history/"
     },
     {
+      "code": "301377-CH",
+      "name": "GUANGDONG DTECH TECHNOLOGY-A",
+      "market": "CH",
+      "currency": "CNY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 491,
+      "sourceUrl": "https://finance.yahoo.com/quote/301377.SZ/history/"
+    },
+    {
       "code": "3308-HK",
       "name": "ZHONGJI INNOLIGHT CO LTD-H",
       "market": "HK",
@@ -56,6 +106,26 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 33,
       "sourceUrl": "https://finance.yahoo.com/quote/3308.HK/history/"
+    },
+    {
+      "code": "3436-JP",
+      "name": "SUMCO CORP",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/3436.T/history/"
+    },
+    {
+      "code": "402340-KS",
+      "name": "SK Square有限公司",
+      "market": "KS",
+      "currency": "KRW",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 490,
+      "sourceUrl": "https://finance.yahoo.com/quote/402340.KS/history/"
     },
     {
       "code": "4062-JP",
@@ -78,6 +148,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/4180.T/history/"
     },
     {
+      "code": "5706-JP",
+      "name": "MITSUI KINZOKU CO LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/5706.T/history/"
+    },
+    {
       "code": "5801-JP",
       "name": "FURUKAWA ELECTRIC CO LTD",
       "market": "JP",
@@ -98,6 +178,56 @@
       "sourceUrl": "https://finance.yahoo.com/quote/581A.T/history/"
     },
     {
+      "code": "6278-JP",
+      "name": "UNION TOOL CO",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6278.T/history/"
+    },
+    {
+      "code": "6508-JP",
+      "name": "MEIDENSHA CORP",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-08-28",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 499,
+      "sourceUrl": "https://finance.yahoo.com/quote/6508.T/history/"
+    },
+    {
+      "code": "6525-JP",
+      "name": "KOKUSAI ELECTRIC CORP",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6525.T/history/"
+    },
+    {
+      "code": "6723-JP",
+      "name": "RENESAS ELECTRONICS CORP",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6723.T/history/"
+    },
+    {
+      "code": "6787-JP",
+      "name": "MEIKO ELECTRONICS CO LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6787.T/history/"
+    },
+    {
       "code": "6857-JP",
       "name": "ADVANTEST CORP",
       "market": "JP",
@@ -106,6 +236,36 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 499,
       "sourceUrl": "https://finance.yahoo.com/quote/6857.T/history/"
+    },
+    {
+      "code": "6871-JP",
+      "name": "MICRONICS JAPAN CO LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6871.T/history/"
+    },
+    {
+      "code": "6920-JP",
+      "name": "LASERTEC CORP",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6920.T/history/"
+    },
+    {
+      "code": "6976-JP",
+      "name": "TAIYO YUDEN CO LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/6976.T/history/"
     },
     {
       "code": "6981-JP",
@@ -136,6 +296,46 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 499,
       "sourceUrl": "https://finance.yahoo.com/quote/7167.T/history/"
+    },
+    {
+      "code": "7180-JP",
+      "name": "九州金融集團公司",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/7180.T/history/"
+    },
+    {
+      "code": "7182-JP",
+      "name": "日本郵政銀行有限公司",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/7182.T/history/"
+    },
+    {
+      "code": "7735-JP",
+      "name": "SCREEN HOLDINGS CO LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/7735.T/history/"
+    },
+    {
+      "code": "8035-JP",
+      "name": "TOKYO ELECTRON LTD",
+      "market": "JP",
+      "currency": "JPY",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 494,
+      "sourceUrl": "https://finance.yahoo.com/quote/8035.T/history/"
     },
     {
       "code": "8308-JP",
@@ -198,6 +398,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/0992.HK/history/"
     },
     {
+      "code": "9988-HK",
+      "name": "ALIBABA GROUP HOLDING LTD",
+      "market": "HK",
+      "currency": "HKD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 497,
+      "sourceUrl": "https://finance.yahoo.com/quote/9988.HK/history/"
+    },
+    {
       "code": "AAPL",
       "name": "Apple Inc",
       "market": "US",
@@ -258,6 +468,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/ADM.L/history/"
     },
     {
+      "code": "AEHR",
+      "name": "AEHR TEST SYSTEMS",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aehr/historical"
+    },
+    {
       "code": "AEM",
       "name": "AGNICO EAGLE MINES LTD",
       "market": "US",
@@ -288,6 +508,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/AIXA.DE/history/"
     },
     {
+      "code": "AJG",
+      "name": "Arthur J Gallagher & Co",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ajg/historical"
+    },
+    {
       "code": "ALAB",
       "name": "Astera實驗室公司",
       "market": "US",
@@ -308,6 +538,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/algm/historical"
     },
     {
+      "code": "ALNY",
+      "name": "ALNYLAM PHARMACEUTICALS INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 512,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/alny/historical"
+    },
+    {
       "code": "AMAT",
       "name": "應用材料",
       "market": "US",
@@ -326,6 +566,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amd/historical"
+    },
+    {
+      "code": "AMKR",
+      "name": "AMKOR TECHNOLOGY INC COM USD0.001",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amkr/historical"
     },
     {
       "code": "AMUN-FP",
@@ -446,6 +696,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/axon/historical"
+    },
+    {
+      "code": "AXTI",
+      "name": "AXT INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/axti/historical"
     },
     {
       "code": "BABA",
@@ -588,6 +848,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/BOCHGR.AT/history/"
     },
     {
+      "code": "BPE-IM",
+      "name": "BPER銀行有限公司",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-09-03",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 512,
+      "sourceUrl": "https://finance.yahoo.com/quote/BPE.MI/history/"
+    },
+    {
       "code": "BWXT",
       "name": "BWX科技股份有限公司",
       "market": "US",
@@ -626,6 +896,16 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 523,
       "sourceUrl": "https://finance.yahoo.com/quote/CABK.MC/history/"
+    },
+    {
+      "code": "CBK-GY",
+      "name": "德國商業銀行",
+      "market": "GY",
+      "currency": "EUR",
+      "historyStart": "2024-09-03",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 513,
+      "sourceUrl": "https://finance.yahoo.com/quote/CBK.DE/history/"
     },
     {
       "code": "CBRS",
@@ -798,6 +1078,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/DBK.DE/history/"
     },
     {
+      "code": "DDOG",
+      "name": "DATADOG INC - CLASS A",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ddog/historical"
+    },
+    {
       "code": "DE",
       "name": "迪爾",
       "market": "US",
@@ -818,6 +1108,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dell/historical"
     },
     {
+      "code": "DIOD",
+      "name": "DIODES INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/diod/historical"
+    },
+    {
       "code": "DOCN",
       "name": "DIGITALOCEAN HOLDINGS INC COM USD.000025000",
       "market": "US",
@@ -836,6 +1136,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dt/historical"
+    },
+    {
+      "code": "ENPH",
+      "name": "ENPHASE ENERGY INC COM USD0.00001",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/enph/historical"
     },
     {
       "code": "ENTG",
@@ -878,6 +1188,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/ETE.AT/history/"
     },
     {
+      "code": "EW",
+      "name": "愛德華生命科學",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ew/historical"
+    },
+    {
       "code": "FIG",
       "name": "Figma Inc",
       "market": "US",
@@ -896,6 +1216,26 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 252,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/figr/historical"
+    },
+    {
+      "code": "FN",
+      "name": "FABRINET ORD USD0.01",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/fn/historical"
+    },
+    {
+      "code": "FORM",
+      "name": "FORMFACTOR INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/form/historical"
     },
     {
       "code": "FSLY",
@@ -926,6 +1266,36 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 518,
       "sourceUrl": "https://finance.yahoo.com/quote/G.MI/history/"
+    },
+    {
+      "code": "GE",
+      "name": "奇異公司",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 512,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ge/historical"
+    },
+    {
+      "code": "GEV",
+      "name": "奇異維諾瓦公司",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gev/historical"
+    },
+    {
+      "code": "GFS",
+      "name": "GLOBALFOUNDRIES INC ORD USD.020000000",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gfs/historical"
     },
     {
       "code": "GLE-FP",
@@ -978,6 +1348,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gpn/historical"
     },
     {
+      "code": "GS",
+      "name": "高盛集團",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gs/historical"
+    },
+    {
       "code": "HOOD",
       "name": "羅賓漢市場公司",
       "market": "US",
@@ -1016,6 +1396,26 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hwm/historical"
+    },
+    {
+      "code": "IBKR",
+      "name": "盈透證券集團公司",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ibkr/historical"
+    },
+    {
+      "code": "ICHR",
+      "name": "ICHOR HOLDINGS LTD",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ichr/historical"
     },
     {
       "code": "IFX-GY",
@@ -1086,6 +1486,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/iot/historical"
+    },
+    {
+      "code": "ISP-IM",
+      "name": "聯合聖保羅銀行",
+      "market": "IM",
+      "currency": "EUR",
+      "historyStart": "2024-09-03",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 512,
+      "sourceUrl": "https://finance.yahoo.com/quote/ISP.MI/history/"
     },
     {
       "code": "JPM",
@@ -1188,6 +1598,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lmnd/historical"
     },
     {
+      "code": "LMT",
+      "name": "LOCKHEED MARTIN CORP",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lmt/historical"
+    },
+    {
       "code": "LRCX",
       "name": "Lam Research Corp",
       "market": "US",
@@ -1226,6 +1646,26 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/meta/historical"
+    },
+    {
+      "code": "MFG",
+      "name": "瑞穗金融集團",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mfg/historical"
+    },
+    {
+      "code": "MKSI",
+      "name": "MKS INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mksi/historical"
     },
     {
       "code": "MNG-LN",
@@ -1278,6 +1718,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mrx/historical"
     },
     {
+      "code": "MS",
+      "name": "摩根士丹利",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ms/historical"
+    },
+    {
       "code": "MSFT",
       "name": "Microsoft Corp",
       "market": "US",
@@ -1308,6 +1758,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mu/historical"
     },
     {
+      "code": "MXL",
+      "name": "MAXLINEAR INC COM NPV",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mxl/historical"
+    },
+    {
       "code": "NBIS",
       "name": "NEBIUS GROUP NV",
       "market": "US",
@@ -1336,6 +1796,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nflx/historical"
+    },
+    {
+      "code": "NLY",
+      "name": "安納利資本管理公司",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nly/historical"
     },
     {
       "code": "NOK",
@@ -1418,6 +1888,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/NWG.L/history/"
     },
     {
+      "code": "NXPI",
+      "name": "NXP Semiconductors NV",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nxpi/historical"
+    },
+    {
       "code": "OKTA",
       "name": "OKTA INC COM NPV",
       "market": "US",
@@ -1436,6 +1916,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/on/historical"
+    },
+    {
+      "code": "ONTO",
+      "name": "ONTO INNOVATION INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/onto/historical"
     },
     {
       "code": "ORCL",
@@ -1458,6 +1948,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/panw/historical"
     },
     {
+      "code": "PFG",
+      "name": "信安金融保險集團",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/pfg/historical"
+    },
+    {
       "code": "PLTR",
       "name": "Palantir Technologies Inc",
       "market": "US",
@@ -1476,6 +1976,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rblx/historical"
+    },
+    {
+      "code": "RBRK",
+      "name": "RUBRIK INC-A",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rbrk/historical"
     },
     {
       "code": "RELY",
@@ -1526,6 +2036,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rtx/historical"
+    },
+    {
+      "code": "RVMD",
+      "name": "REVOLUTION MEDICINES INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-08-27",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 512,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rvmd/historical"
     },
     {
       "code": "RXRX",
@@ -1608,6 +2128,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/sndk/historical"
     },
     {
+      "code": "SNEX",
+      "name": "StoneX集團公司",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/snex/historical"
+    },
+    {
       "code": "SNOW",
       "name": "Snowflake Inc",
       "market": "US",
@@ -1656,6 +2186,26 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 519,
       "sourceUrl": "https://finance.yahoo.com/quote/STAN.L/history/"
+    },
+    {
+      "code": "STM",
+      "name": "STMICROELECTRONICS NV-NY SHS",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/stm/historical"
+    },
+    {
+      "code": "STMPA-FP",
+      "name": "意法半導體公司",
+      "market": "FP",
+      "currency": "EUR",
+      "historyStart": "2024-09-03",
+      "historyEnd": "2026-09-14",
+      "historyPoints": 517,
+      "sourceUrl": "https://finance.yahoo.com/quote/STMPA.PA/history/"
     },
     {
       "code": "STX",
@@ -1848,6 +2398,16 @@
       "sourceUrl": "https://finance.yahoo.com/quote/UCG.MI/history/"
     },
     {
+      "code": "UCTT",
+      "name": "ULTRA CLEAN HOLDINGS INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/uctt/historical"
+    },
+    {
       "code": "UNI-IM",
       "name": "Unipol保險股份公司",
       "market": "IM",
@@ -1856,6 +2416,16 @@
       "historyEnd": "2026-09-14",
       "historyPoints": 518,
       "sourceUrl": "https://finance.yahoo.com/quote/UNI.MI/history/"
+    },
+    {
+      "code": "USB",
+      "name": "美國合眾銀行",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/usb/historical"
     },
     {
       "code": "V",
@@ -1878,6 +2448,16 @@
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/vcyt/historical"
     },
     {
+      "code": "VECO",
+      "name": "VEECO INSTRUMENTS INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/veco/historical"
+    },
+    {
       "code": "VEEV",
       "name": "VEEVA SYSTEMS INC A SHRS COM USD0.00001",
       "market": "US",
@@ -1896,6 +2476,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/vicr/historical"
+    },
+    {
+      "code": "WDAY",
+      "name": "WORKDAY INC-CLASS A",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wday/historical"
     },
     {
       "code": "WDC",
@@ -1926,6 +2516,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wgs/historical"
+    },
+    {
+      "code": "WOLF",
+      "name": "WOLFSPEED INC/DE COM NPV",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wolf/historical"
     },
     {
       "code": "WRBY",
@@ -1966,6 +2566,16 @@
       "historyEnd": "2026-09-11",
       "historyPoints": 512,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/zm/historical"
+    },
+    {
+      "code": "ZS",
+      "name": "Zscaler Inc",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-04",
+      "historyEnd": "2026-09-11",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/zs/historical"
     }
   ]
 }

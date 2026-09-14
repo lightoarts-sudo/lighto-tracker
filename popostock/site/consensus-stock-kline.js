@@ -14,7 +14,7 @@
   var INDEX_FILE = "data/consensus-stock-kline-index.json";
   var FOREIGN_INDEX_FILE = "data/foreign-holding-index.json";
   // KP 與 KS 都是韓國，抓取端已收斂成 KS，這裡要跟著對齊。
-  var FOREIGN_MARKET_ALIAS = { KP: "KS" };
+  var FOREIGN_MARKET_ALIAS = { KP: "KS", GR: "GY" };
   var stockNames = new Map();
   var stockBuySessions = new Map();
   var stockSellSessions = new Map();
@@ -128,7 +128,7 @@
      * 一旦看到市場後綴就在這裡結束，絕不往下掉進台股的四碼規則——認不出來
      * 頂多不能點，掉下去就會開出另一家公司的 K 線。
      */
-    var foreign = text.match(/\b([0-9A-Z/]{1,8})\s+(JP|KS|KP|HK|LN|GY|FP|IM|NA|SM|GA|CH)\b/);
+    var foreign = text.match(/\b([0-9A-Z/]{1,8})\s+(JP|KS|KP|HK|LN|GY|GR|FP|IM|NA|SM|GA|CH)\b/);
     if (foreign) {
       var market = FOREIGN_MARKET_ALIAS[foreign[2]] || foreign[2];
       return foreign[1].replace(/\//g, "") + "-" + market;
