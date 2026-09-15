@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-14T18:14:02+08:00",
-  "consensusDate": "2026-09-14",
+  "generatedAt": "2026-09-15T12:14:49+08:00",
+  "consensusDate": "2026-09-15",
   "thresholdTwd": 100000000,
   "stocks": [
     {
@@ -321,6 +321,20 @@
               "name": "主動野村台灣50",
               "lots": 354,
               "amountTwd": 26709300
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 5,
+              "amountTwd": null
             }
           ]
         }
@@ -1173,6 +1187,20 @@
               "amountTwd": 4498250
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 6,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -1956,6 +1984,20 @@
               "name": "主動摩根台灣鑫收",
               "lots": 30,
               "amountTwd": 5925000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 6,
+              "amountTwd": null
             }
           ]
         }
@@ -4853,6 +4895,20 @@
               "amountTwd": 12125000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.117,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.117,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -6525,6 +6581,20 @@
               "amountTwd": 14229000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 17,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 17,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -7937,6 +8007,20 @@
               "amountTwd": 3190000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.99,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.99,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -8617,6 +8701,20 @@
               "amountTwd": 1479000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 10,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -9049,6 +9147,20 @@
               "name": "主動聯博動能50",
               "lots": 18,
               "amountTwd": 4468500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 3,
+              "amountTwd": null
             }
           ]
         }
@@ -9635,6 +9747,20 @@
               "name": "主動中信台灣收益",
               "lots": 355,
               "amountTwd": 189925000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2,
+              "amountTwd": null
             }
           ]
         }
@@ -10950,9 +11076,9 @@
         },
         {
           "date": "2026-09-14",
-          "etfCount": 2,
-          "lots": 277,
-          "amountTwd": 661337500,
+          "etfCount": 3,
+          "lots": 287,
+          "amountTwd": 685212500,
           "etfs": [
             {
               "code": "00404A",
@@ -10965,6 +11091,26 @@
               "name": "主動中信台灣收益",
               "lots": 260,
               "amountTwd": 620750000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 10,
+              "amountTwd": 23875000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 11.96,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 11.96,
+              "amountTwd": null
             }
           ]
         }
@@ -13347,6 +13493,20 @@
               "amountTwd": 1862500
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.37,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.37,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -14644,6 +14804,20 @@
               "amountTwd": 3684000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 3,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -15224,6 +15398,20 @@
               "name": "主動聯博動能50",
               "lots": 3,
               "amountTwd": 6532500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.12,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.12,
+              "amountTwd": null
             }
           ]
         }
@@ -15966,6 +16154,20 @@
               "name": "主動國泰動能高息",
               "lots": 25,
               "amountTwd": 27312500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.36,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.36,
+              "amountTwd": null
             }
           ]
         }
@@ -17586,6 +17788,20 @@
               "amountTwd": 5568000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -17892,6 +18108,20 @@
               "name": "主動聯博動能50",
               "lots": 9,
               "amountTwd": 2981250
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 9,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 9,
+              "amountTwd": null
             }
           ]
         }
@@ -18826,6 +19056,20 @@
               "name": "主動聯博動能50",
               "lots": 1,
               "amountTwd": 5312500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.22,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.22,
+              "amountTwd": null
             }
           ]
         }
@@ -21113,6 +21357,20 @@
               "amountTwd": 10032000
             }
           ]
+        },
+        {
+          "date": "2026-09-14",
+          "etfCount": 1,
+          "lots": 45,
+          "amountTwd": 21510000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 45,
+              "amountTwd": 21510000
+            }
+          ]
         }
       ]
     },
@@ -21335,6 +21593,20 @@
               "name": "主動野村台灣50",
               "lots": 241,
               "amountTwd": 32896500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 8,
+              "amountTwd": null
             }
           ]
         }
@@ -23550,6 +23822,20 @@
               "name": "主動聯博動能50",
               "lots": 2,
               "amountTwd": 9085000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2.01,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2.01,
+              "amountTwd": null
             }
           ]
         }
@@ -26830,6 +27116,20 @@
               "amountTwd": 273253750
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 6,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 6,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -28095,6 +28395,20 @@
               "amountTwd": 1052000
             }
           ]
+        },
+        {
+          "date": "2026-09-14",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 28225,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 1,
+              "amountTwd": 28225
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -29120,6 +29434,20 @@
               "amountTwd": 60400500
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 19,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 19,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -29426,6 +29754,20 @@
               "amountTwd": 82547500
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 13,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -29672,6 +30014,20 @@
               "name": "主動安聯台灣高息",
               "lots": 1712,
               "amountTwd": 65270000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 62,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 62,
+              "amountTwd": null
             }
           ]
         }
@@ -29940,6 +30296,20 @@
               "name": "主動野村臺灣優選",
               "lots": 1978,
               "amountTwd": 73729950
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 61,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 61,
+              "amountTwd": null
             }
           ]
         }
@@ -30850,6 +31220,20 @@
               "amountTwd": 4817800
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 38,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 38,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -31192,6 +31576,20 @@
               "amountTwd": 64484000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 37,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 37,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -31442,6 +31840,20 @@
               "name": "主動安聯台灣高息",
               "lots": 1411,
               "amountTwd": 62436750
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 10,
+              "amountTwd": null
             }
           ]
         }
@@ -31806,6 +32218,20 @@
               "name": "主動安聯台灣高息",
               "lots": 827,
               "amountTwd": 55657100
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 32,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 32,
+              "amountTwd": null
             }
           ]
         }
@@ -32566,6 +32992,20 @@
               "name": "主動第一金台股優",
               "lots": 1,
               "amountTwd": 239750
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2,
+              "amountTwd": null
             }
           ]
         }
@@ -33417,6 +33857,20 @@
               "amountTwd": 27110000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.52,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.52,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -33762,9 +34216,9 @@
         },
         {
           "date": "2026-09-14",
-          "etfCount": 2,
-          "lots": 65,
-          "amountTwd": 403487500,
+          "etfCount": 3,
+          "lots": 70,
+          "amountTwd": 434525000,
           "etfs": [
             {
               "code": "00400A",
@@ -33777,6 +34231,12 @@
               "name": "主動統一升級50",
               "lots": 64,
               "amountTwd": 397280000
+            },
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 5,
+              "amountTwd": 31037500
             }
           ]
         }
@@ -35682,6 +36142,20 @@
               "amountTwd": 5415000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -37034,6 +37508,20 @@
               "amountTwd": 286650000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 3,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -37437,10 +37925,16 @@
         },
         {
           "date": "2026-09-14",
-          "etfCount": 1,
-          "lots": 14,
-          "amountTwd": 13377000,
+          "etfCount": 2,
+          "lots": 29,
+          "amountTwd": 27709500,
           "etfs": [
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 15,
+              "amountTwd": 14332500
+            },
             {
               "code": "00984A",
               "name": "主動安聯台灣高息",
@@ -39116,6 +39610,20 @@
               "amountTwd": 237965000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.43,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.43,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -40744,6 +41252,20 @@
               "name": "主動摩根台灣鑫收",
               "lots": 177,
               "amountTwd": 32081250
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 13,
+              "amountTwd": null
             }
           ]
         }
@@ -42977,9 +43499,9 @@
         },
         {
           "date": "2026-09-14",
-          "etfCount": 2,
-          "lots": 81,
-          "amountTwd": 503212500,
+          "etfCount": 3,
+          "lots": 84,
+          "amountTwd": 521850000,
           "etfs": [
             {
               "code": "00403A",
@@ -42992,6 +43514,12 @@
               "name": "主動統一台股增長",
               "lots": 41,
               "amountTwd": 254712500
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 3,
+              "amountTwd": 18637500
             }
           ]
         }
@@ -43868,6 +44396,20 @@
               "name": "主動凱基台灣",
               "lots": 66,
               "amountTwd": 97185000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.66,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.66,
+              "amountTwd": null
             }
           ]
         }
@@ -48923,6 +49465,20 @@
               "amountTwd": 3040000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 5,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -50199,6 +50755,20 @@
               "amountTwd": 15873000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 10,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -50656,6 +51226,20 @@
               "amountTwd": 8206200
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 5,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -50976,6 +51560,20 @@
               "name": "主動台新優勢成長",
               "lots": 100,
               "amountTwd": 51200000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 5,
+              "amountTwd": null
             }
           ]
         }
@@ -52033,6 +52631,20 @@
               "amountTwd": 36937750
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 3,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -52598,6 +53210,20 @@
               "name": "主動聯博動能50",
               "lots": 1,
               "amountTwd": 18382500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.158,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.158,
+              "amountTwd": null
             }
           ]
         }
@@ -53462,6 +54088,20 @@
               "name": "主動群益科技創新",
               "lots": 629,
               "amountTwd": 93406500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 11,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 11,
+              "amountTwd": null
             }
           ]
         }
@@ -55107,6 +55747,20 @@
               "amountTwd": 17209500
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -55681,6 +56335,20 @@
               "name": "主動聯博動能50",
               "lots": 46,
               "amountTwd": 3323500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 11,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 11,
+              "amountTwd": null
             }
           ]
         }
@@ -57592,6 +58260,20 @@
               "name": "主動凱基台灣",
               "lots": 40,
               "amountTwd": 55700000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.76,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.76,
+              "amountTwd": null
             }
           ]
         }
@@ -59642,6 +60324,20 @@
               "name": "主動中信台灣收益",
               "lots": 27,
               "amountTwd": 148905000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.44,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.44,
+              "amountTwd": null
             }
           ]
         }
@@ -62252,6 +62948,20 @@
               "amountTwd": 102500000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 8,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 8,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -64815,6 +65525,20 @@
               "amountTwd": 10335000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.31,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.31,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -65281,6 +66005,20 @@
               "name": "主動摩根台灣鑫收",
               "lots": 5,
               "amountTwd": 33337500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.43,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.43,
+              "amountTwd": null
             }
           ]
         }
@@ -66080,6 +66818,20 @@
               "name": "主動摩根台灣鑫收",
               "lots": 10,
               "amountTwd": 9635000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 2,
+              "amountTwd": null
             }
           ]
         }
@@ -67483,6 +68235,20 @@
               "name": "主動中信台灣收益",
               "lots": 45,
               "amountTwd": 102487500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.28,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.28,
+              "amountTwd": null
             }
           ]
         }
@@ -70770,6 +71536,20 @@
               "amountTwd": 12650000
             }
           ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 0.38,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 0.38,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -71268,6 +72048,20 @@
               "name": "主動摩根台灣鑫收",
               "lots": 3,
               "amountTwd": 4440000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 1.37,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 1.37,
+              "amountTwd": null
             }
           ]
         }
@@ -75014,7 +75808,22 @@
       "historyStart": "2025-09-15",
       "historyEnd": "2026-09-14",
       "historyPoints": 242,
-      "buySessions": [],
+      "buySessions": [
+        {
+          "date": "2026-09-15",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 4,
+              "amountTwd": null
+            }
+          ]
+        }
+      ],
       "sellSessions": [
         {
           "date": "2026-07-23",
