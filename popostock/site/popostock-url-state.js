@@ -231,12 +231,45 @@
     });
   }
 
+  /*
+   * 等分頁列出現——不設期限。
+   *
+   * 原本用 waitFor()（50 次 × 40ms ＝ 2 秒）等，但頁面是先 fetch api/tracker
+   * （約 750KB）再 import 6MB 的主 bundle，React 要到 6 秒後才畫得出分頁列。
+   * 這支覆蓋層在 DOMContentLoaded（約 1.1 秒）就跑，2 秒預算在 3.1 秒用完，
+   * 比分頁列出現早了三秒多，於是直接放棄且不再重試——所有 ?tab= 深連結因此
+   * 全部落到預設分頁，共識加碼也不會被排到第二位。
+   *
+   * 資料量只會愈長愈大，任何固定秒數都只是把這顆地雷往後挪，所以改用
+   * MutationObserver 等到真的出現為止（站上其他覆蓋層都是這個做法）。
+   */
+  function waitForTabs() {
+    return new Promise((resolve) => {
+      const found = () => {
+        const values = workspaceTabs();
+        return values.length ? values : null;
+      };
+      const immediate = found();
+      if (immediate) {
+        resolve(immediate);
+        return;
+      }
+      const observer = new MutationObserver(() => {
+        const values = found();
+        if (!values) return;
+        observer.disconnect();
+        resolve(values);
+      });
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+      });
+    });
+  }
+
   async function initialize() {
     if (initialized) return;
-    const tabs = await waitFor(() => {
-      const values = workspaceTabs();
-      return values.length ? values : null;
-    });
+    const tabs = await waitForTabs();
     if (!tabs) return;
     initialized = true;
     watchTabOrder();
