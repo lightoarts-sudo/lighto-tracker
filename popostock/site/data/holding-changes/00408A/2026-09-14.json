@@ -4,7 +4,7 @@
   "instrumentName": "主動第一金優股息",
   "sourceDate": "2026-09-14",
   "comparisonDate": "2026-09-11",
-  "capturedAt": "2026-09-15T18:03:50+08:00",
+  "capturedAt": "2026-09-16T12:03:47+08:00",
   "sourceTitle": "第一金投信 00408A 官方持股",
   "status": "complete",
   "amountMethodology": "加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
@@ -41,7 +41,7 @@
       "action": "increase"
     },
     {
-      "rank": 44,
+      "rank": 46,
       "stockCode": "3443",
       "stockName": "創意",
       "heldLots": 1,
@@ -81,7 +81,7 @@
       "action": "increase"
     },
     {
-      "rank": 39,
+      "rank": 38,
       "stockCode": "2408",
       "stockName": "南亞科",
       "heldLots": 28,
@@ -801,7 +801,7 @@
       "action": "hold"
     },
     {
-      "rank": 38,
+      "rank": 39,
       "stockCode": "2382",
       "stockName": "廣達",
       "heldLots": 40,
@@ -822,9 +822,9 @@
     },
     {
       "rank": 40,
-      "stockCode": "2345",
-      "stockName": "智邦",
-      "heldLots": 7,
+      "stockCode": "2449",
+      "stockName": "京元電子",
+      "heldLots": 50,
       "lotChange": 0,
       "weightPct": 0.87,
       "weightChangePct": 0.0,
@@ -842,9 +842,9 @@
     },
     {
       "rank": 41,
-      "stockCode": "2449",
-      "stockName": "京元電子",
-      "heldLots": 50,
+      "stockCode": "2345",
+      "stockName": "智邦",
+      "heldLots": 7,
       "lotChange": 0,
       "weightPct": 0.87,
       "weightChangePct": 0.0,
@@ -901,13 +901,13 @@
       "action": "hold"
     },
     {
-      "rank": 45,
-      "stockCode": "2344",
-      "stockName": "華邦電",
-      "heldLots": 40,
+      "rank": 44,
+      "stockCode": "2360",
+      "stockName": "致茂",
+      "heldLots": 3,
       "lotChange": 0,
       "weightPct": 0.43,
-      "weightChangePct": -4.44,
+      "weightChangePct": 0.0,
       "closePrice": null,
       "highPrice": null,
       "lowPrice": null,
@@ -921,13 +921,13 @@
       "action": "hold"
     },
     {
-      "rank": 46,
-      "stockCode": "2360",
-      "stockName": "致茂",
-      "heldLots": 3,
+      "rank": 45,
+      "stockCode": "2344",
+      "stockName": "華邦電",
+      "heldLots": 40,
       "lotChange": 0,
       "weightPct": 0.43,
-      "weightChangePct": 0.0,
+      "weightChangePct": -4.44,
       "closePrice": null,
       "highPrice": null,
       "lowPrice": null,

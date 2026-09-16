@@ -1,13 +1,11 @@
 {
-  "generatedAt": "2026-09-15T18:24:41+08:00",
+  "generatedAt": "2026-09-16T12:37:11+08:00",
   "sourceTitles": {
     "US": "Nasdaq 官方個股歷史行情",
     "other": "Yahoo Finance 各交易所歷史行情"
   },
-  "count": 256,
-  "failures": [
-    "BMNR: RuntimeError"
-  ],
+  "count": 259,
+  "failures": [],
   "stocks": [
     {
       "code": "000660-KS",
@@ -15,8 +13,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 496,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 497,
       "sourceUrl": "https://finance.yahoo.com/quote/000660.KS/history/"
     },
     {
@@ -25,8 +23,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 491,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 492,
       "sourceUrl": "https://finance.yahoo.com/quote/005930.KS/history/"
     },
     {
@@ -35,8 +33,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 496,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 497,
       "sourceUrl": "https://finance.yahoo.com/quote/009150.KS/history/"
     },
     {
@@ -45,8 +43,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 491,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 492,
       "sourceUrl": "https://finance.yahoo.com/quote/032830.KS/history/"
     },
     {
@@ -55,8 +53,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2026-07-16",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 41,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 42,
       "sourceUrl": "https://finance.yahoo.com/quote/095340.KS/history/"
     },
     {
@@ -65,8 +63,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-12-18",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 424,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 425,
       "sourceUrl": "https://finance.yahoo.com/quote/285A.T/history/"
     },
     {
@@ -75,8 +73,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 497,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 498,
       "sourceUrl": "https://finance.yahoo.com/quote/300408.SZ/history/"
     },
     {
@@ -85,8 +83,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-08-30",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/300757.SZ/history/"
     },
     {
@@ -95,8 +93,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 492,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 493,
       "sourceUrl": "https://finance.yahoo.com/quote/301377.SZ/history/"
     },
     {
@@ -105,8 +103,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2026-07-30",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 34,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 35,
       "sourceUrl": "https://finance.yahoo.com/quote/3308.HK/history/"
     },
     {
@@ -115,8 +113,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/3436.T/history/"
     },
     {
@@ -125,8 +123,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 491,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 492,
       "sourceUrl": "https://finance.yahoo.com/quote/402340.KS/history/"
     },
     {
@@ -135,8 +133,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/4062.T/history/"
     },
     {
@@ -145,8 +143,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/4180.T/history/"
     },
     {
@@ -155,8 +153,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/5706.T/history/"
     },
     {
@@ -165,8 +163,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/5801.T/history/"
     },
     {
@@ -175,8 +173,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2026-06-16",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 64,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 65,
       "sourceUrl": "https://finance.yahoo.com/quote/581A.T/history/"
     },
     {
@@ -185,8 +183,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6278.T/history/"
     },
     {
@@ -195,8 +193,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/6508.T/history/"
     },
     {
@@ -205,8 +203,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6525.T/history/"
     },
     {
@@ -215,8 +213,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6723.T/history/"
     },
     {
@@ -225,8 +223,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6787.T/history/"
     },
     {
@@ -235,8 +233,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/6857.T/history/"
     },
     {
@@ -245,8 +243,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6871.T/history/"
     },
     {
@@ -255,8 +253,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6920.T/history/"
     },
     {
@@ -265,8 +263,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/6976.T/history/"
     },
     {
@@ -275,8 +273,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/6981.T/history/"
     },
     {
@@ -285,8 +283,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/6997.T/history/"
     },
     {
@@ -295,8 +293,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/7167.T/history/"
     },
     {
@@ -305,8 +303,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/7180.T/history/"
     },
     {
@@ -315,8 +313,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/7182.T/history/"
     },
     {
@@ -325,8 +323,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/7735.T/history/"
     },
     {
@@ -335,8 +333,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/8035.T/history/"
     },
     {
@@ -345,8 +343,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/8308.T/history/"
     },
     {
@@ -355,8 +353,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/8309.T/history/"
     },
     {
@@ -365,8 +363,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/8331.T/history/"
     },
     {
@@ -375,8 +373,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/8377.T/history/"
     },
     {
@@ -385,8 +383,8 @@
       "market": "JP",
       "currency": "JPY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/8411.T/history/"
     },
     {
@@ -395,8 +393,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 503,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 504,
       "sourceUrl": "https://finance.yahoo.com/quote/0992.HK/history/"
     },
     {
@@ -405,8 +403,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-15",
-      "historyPoints": 498,
+      "historyEnd": "2026-09-16",
+      "historyPoints": 499,
       "sourceUrl": "https://finance.yahoo.com/quote/9988.HK/history/"
     },
     {
@@ -415,8 +413,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aapl/historical"
     },
     {
@@ -435,8 +433,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/achr/historical"
     },
     {
@@ -445,8 +443,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/adbe/historical"
     },
     {
@@ -455,8 +453,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/adi/historical"
     },
     {
@@ -470,13 +468,23 @@
       "sourceUrl": "https://finance.yahoo.com/quote/ADM.L/history/"
     },
     {
+      "code": "ADSK",
+      "name": "AUTODESK INC COM",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-06",
+      "historyEnd": "2026-09-15",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/adsk/historical"
+    },
+    {
       "code": "AEHR",
       "name": "AEHR TEST SYSTEMS",
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aehr/historical"
     },
     {
@@ -485,8 +493,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aem/historical"
     },
     {
@@ -515,8 +523,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ajg/historical"
     },
     {
@@ -525,8 +533,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/alab/historical"
     },
     {
@@ -535,8 +543,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/algm/historical"
     },
     {
@@ -545,8 +553,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/alny/historical"
     },
     {
@@ -555,8 +563,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amat/historical"
     },
     {
@@ -565,8 +573,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amd/historical"
     },
     {
@@ -575,8 +583,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amkr/historical"
     },
     {
@@ -595,8 +603,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/amzn/historical"
     },
     {
@@ -605,8 +613,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/anet/historical"
     },
     {
@@ -615,8 +623,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/aph/historical"
     },
     {
@@ -625,8 +633,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/app/historical"
     },
     {
@@ -635,8 +643,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ares/historical"
     },
     {
@@ -645,8 +653,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/arm/historical"
     },
     {
@@ -655,8 +663,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/asml/historical"
     },
     {
@@ -685,8 +693,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/avgo/historical"
     },
     {
@@ -695,8 +703,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/axon/historical"
     },
     {
@@ -705,8 +713,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/axti/historical"
     },
     {
@@ -715,8 +723,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/baba/historical"
     },
     {
@@ -725,8 +733,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bac/historical"
     },
     {
@@ -755,8 +763,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/be/historical"
     },
     {
@@ -765,8 +773,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/beam/historical"
     },
     {
@@ -775,8 +783,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bkng/historical"
     },
     {
@@ -785,8 +793,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/blk/historical"
     },
     {
@@ -795,9 +803,19 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-08-13",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 273,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 274,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/blsh/historical"
+    },
+    {
+      "code": "BMNR",
+      "name": "BitMine Immersion Technologi",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2025-05-16",
+      "historyEnd": "2026-09-15",
+      "historyPoints": 334,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bmnr/historical"
     },
     {
       "code": "BMPS-IM",
@@ -825,8 +843,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bny/historical"
     },
     {
@@ -855,8 +873,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bwxt/historical"
     },
     {
@@ -865,8 +883,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/bx/historical"
     },
     {
@@ -875,8 +893,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/c/historical"
     },
     {
@@ -905,8 +923,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2026-05-14",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 84,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 85,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cbrs/historical"
     },
     {
@@ -915,8 +933,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cdns/historical"
     },
     {
@@ -925,8 +943,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cers/historical"
     },
     {
@@ -935,8 +953,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-06-12",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 315,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 316,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/chym/historical"
     },
     {
@@ -945,8 +963,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cien/historical"
     },
     {
@@ -955,8 +973,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cls/historical"
     },
     {
@@ -965,8 +983,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/cohr/historical"
     },
     {
@@ -975,8 +993,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/coin/historical"
     },
     {
@@ -985,8 +1003,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-06-05",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 320,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 321,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crcl/historical"
     },
     {
@@ -995,8 +1013,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crdo/historical"
     },
     {
@@ -1005,8 +1023,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crm/historical"
     },
     {
@@ -1015,8 +1033,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crsp/historical"
     },
     {
@@ -1025,8 +1043,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crwd/historical"
     },
     {
@@ -1035,8 +1053,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-03-28",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 367,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 368,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crwv/historical"
     },
     {
@@ -1045,8 +1063,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/csco/historical"
     },
     {
@@ -1055,8 +1073,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dash/historical"
     },
     {
@@ -1075,8 +1093,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ddog/historical"
     },
     {
@@ -1085,8 +1103,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/de/historical"
     },
     {
@@ -1095,8 +1113,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dell/historical"
     },
     {
@@ -1105,8 +1123,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/diod/historical"
     },
     {
@@ -1115,8 +1133,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/docn/historical"
     },
     {
@@ -1125,8 +1143,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/dt/historical"
     },
     {
@@ -1135,8 +1153,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/enph/historical"
     },
     {
@@ -1145,8 +1163,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/entg/historical"
     },
     {
@@ -1155,8 +1173,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/eqh/historical"
     },
     {
@@ -1165,8 +1183,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/estc/historical"
     },
     {
@@ -1185,8 +1203,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ew/historical"
     },
     {
@@ -1195,8 +1213,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-07-31",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 282,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 283,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/fig/historical"
     },
     {
@@ -1205,8 +1223,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-09-11",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 253,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 254,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/figr/historical"
     },
     {
@@ -1215,8 +1233,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/fn/historical"
     },
     {
@@ -1225,8 +1243,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/form/historical"
     },
     {
@@ -1235,8 +1253,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/fsly/historical"
     },
     {
@@ -1245,8 +1263,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ftnt/historical"
     },
     {
@@ -1265,9 +1283,19 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ge/historical"
+    },
+    {
+      "code": "GENB",
+      "name": "GENERATE BIOMEDICINES INC COM NPV",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2026-02-27",
+      "historyEnd": "2026-09-15",
+      "historyPoints": 138,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/genb/historical"
     },
     {
       "code": "GEV",
@@ -1275,8 +1303,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gev/historical"
     },
     {
@@ -1285,8 +1313,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gfs/historical"
     },
     {
@@ -1305,8 +1333,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/glw/historical"
     },
     {
@@ -1315,8 +1343,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/goog/historical"
     },
     {
@@ -1325,8 +1353,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/googl/historical"
     },
     {
@@ -1335,8 +1363,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gpn/historical"
     },
     {
@@ -1345,8 +1373,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/gs/historical"
     },
     {
@@ -1355,8 +1383,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hood/historical"
     },
     {
@@ -1375,8 +1403,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hubs/historical"
     },
     {
@@ -1385,8 +1413,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/hwm/historical"
     },
     {
@@ -1395,8 +1423,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ibkr/historical"
     },
     {
@@ -1405,8 +1433,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ichr/historical"
     },
     {
@@ -1425,8 +1453,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ilmn/historical"
     },
     {
@@ -1445,8 +1473,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/intc/historical"
     },
     {
@@ -1455,8 +1483,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/intu/historical"
     },
     {
@@ -1465,8 +1493,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
     },
     {
@@ -1475,8 +1503,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/iot/historical"
     },
     {
@@ -1495,8 +1523,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/jpm/historical"
     },
     {
@@ -1505,8 +1533,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/keys/historical"
     },
     {
@@ -1515,8 +1543,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 512,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 513,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/kgc/historical"
     },
     {
@@ -1525,8 +1553,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/klac/historical"
     },
     {
@@ -1535,8 +1563,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ktos/historical"
     },
     {
@@ -1555,8 +1583,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lite/historical"
     },
     {
@@ -1575,8 +1603,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lly/historical"
     },
     {
@@ -1585,8 +1613,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lmnd/historical"
     },
     {
@@ -1595,8 +1623,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lmt/historical"
     },
     {
@@ -1605,8 +1633,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/lrcx/historical"
     },
     {
@@ -1615,8 +1643,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mchp/historical"
     },
     {
@@ -1625,8 +1653,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mdb/historical"
     },
     {
@@ -1635,8 +1663,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/meta/historical"
     },
     {
@@ -1645,8 +1673,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mfg/historical"
     },
     {
@@ -1655,8 +1683,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mksi/historical"
     },
     {
@@ -1675,8 +1703,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mpwr/historical"
     },
     {
@@ -1685,8 +1713,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mrk/historical"
     },
     {
@@ -1695,8 +1723,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mrvl/historical"
     },
     {
@@ -1705,8 +1733,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mrx/historical"
     },
     {
@@ -1715,8 +1743,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ms/historical"
     },
     {
@@ -1725,8 +1753,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/msft/historical"
     },
     {
@@ -1735,8 +1763,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mtsi/historical"
     },
     {
@@ -1745,8 +1773,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mu/historical"
     },
     {
@@ -1755,8 +1783,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/mxl/historical"
     },
     {
@@ -1765,8 +1793,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nbis/historical"
     },
     {
@@ -1775,8 +1803,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/net/historical"
     },
     {
@@ -1785,8 +1813,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nflx/historical"
     },
     {
@@ -1795,8 +1823,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nly/historical"
     },
     {
@@ -1805,8 +1833,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-03",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 509,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 510,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nok/historical"
     },
     {
@@ -1815,8 +1843,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/now/historical"
     },
     {
@@ -1825,8 +1853,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ntla/historical"
     },
     {
@@ -1835,8 +1863,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ntra/historical"
     },
     {
@@ -1845,8 +1873,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-09-18",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 248,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 249,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ntsk/historical"
     },
     {
@@ -1855,8 +1883,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nu/historical"
     },
     {
@@ -1865,8 +1893,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/historical"
     },
     {
@@ -1885,8 +1913,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nxpi/historical"
     },
     {
@@ -1895,8 +1923,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/okta/historical"
     },
     {
@@ -1905,8 +1933,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/on/historical"
     },
     {
@@ -1915,8 +1943,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/onto/historical"
     },
     {
@@ -1925,8 +1953,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/orcl/historical"
     },
     {
@@ -1935,8 +1963,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/panw/historical"
     },
     {
@@ -1945,8 +1973,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/pfg/historical"
     },
     {
@@ -1955,8 +1983,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/pltr/historical"
     },
     {
@@ -1965,8 +1993,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rblx/historical"
     },
     {
@@ -1975,8 +2003,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rbrk/historical"
     },
     {
@@ -1985,8 +2013,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rely/historical"
     },
     {
@@ -1995,8 +2023,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rivn/historical"
     },
     {
@@ -2005,8 +2033,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
     },
     {
@@ -2015,8 +2043,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rok/historical"
     },
     {
@@ -2025,8 +2053,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rtx/historical"
     },
     {
@@ -2035,8 +2063,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rvmd/historical"
     },
     {
@@ -2045,8 +2073,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/rxrx/historical"
     },
     {
@@ -2065,8 +2093,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/shop/historical"
     },
     {
@@ -2075,8 +2103,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/simo/historical"
     },
     {
@@ -2085,8 +2113,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/sitm/historical"
     },
     {
@@ -2095,8 +2123,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2026-07-10",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 46,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 47,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/skhy/historical"
     },
     {
@@ -2105,8 +2133,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/smtc/historical"
     },
     {
@@ -2115,8 +2143,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2025-02-13",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 397,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 398,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/sndk/historical"
     },
     {
@@ -2125,8 +2153,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/snex/historical"
     },
     {
@@ -2135,8 +2163,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/snow/historical"
     },
     {
@@ -2145,8 +2173,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/sofi/historical"
     },
     {
@@ -2155,8 +2183,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2026-06-12",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 64,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 65,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/spcx/historical"
     },
     {
@@ -2165,8 +2193,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/spot/historical"
     },
     {
@@ -2185,8 +2213,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/stm/historical"
     },
     {
@@ -2205,8 +2233,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/stx/historical"
     },
     {
@@ -2215,8 +2243,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/sym/historical"
     },
     {
@@ -2225,8 +2253,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/team/historical"
     },
     {
@@ -2235,8 +2263,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/tem/historical"
     },
     {
@@ -2245,8 +2273,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ter/historical"
     },
     {
@@ -2265,8 +2293,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/tsem/historical"
     },
     {
@@ -2275,8 +2303,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/tsla/historical"
     },
     {
@@ -2285,8 +2313,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/tsm/historical"
     },
     {
@@ -2295,8 +2323,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ttmi/historical"
     },
     {
@@ -2305,8 +2333,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ttwo/historical"
     },
     {
@@ -2315,8 +2343,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/twlo/historical"
     },
     {
@@ -2325,8 +2353,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/twst/historical"
     },
     {
@@ -2335,8 +2363,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/txg/historical"
     },
     {
@@ -2345,8 +2373,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/txn/historical"
     },
     {
@@ -2355,8 +2383,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/u/historical"
     },
     {
@@ -2365,8 +2393,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/uber/historical"
     },
     {
@@ -2375,8 +2403,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/ubs/historical"
     },
     {
@@ -2395,8 +2423,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/uctt/historical"
     },
     {
@@ -2415,8 +2443,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/usb/historical"
     },
     {
@@ -2425,8 +2453,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/v/historical"
     },
     {
@@ -2435,8 +2463,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/vcyt/historical"
     },
     {
@@ -2445,8 +2473,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/veco/historical"
     },
     {
@@ -2455,8 +2483,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/veev/historical"
     },
     {
@@ -2465,8 +2493,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/vicr/historical"
     },
     {
@@ -2475,8 +2503,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wday/historical"
     },
     {
@@ -2485,8 +2513,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wdc/historical"
     },
     {
@@ -2495,8 +2523,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wfc/historical"
     },
     {
@@ -2505,8 +2533,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wgs/historical"
     },
     {
@@ -2515,8 +2543,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wolf/historical"
     },
     {
@@ -2525,8 +2553,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/wrby/historical"
     },
     {
@@ -2535,8 +2563,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2026-04-24",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 98,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 99,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/xe/historical"
     },
     {
@@ -2545,8 +2573,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/xyz/historical"
     },
     {
@@ -2555,8 +2583,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 513,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 514,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/zm/historical"
     },
     {
@@ -2565,8 +2593,8 @@
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-14",
-      "historyPoints": 508,
+      "historyEnd": "2026-09-15",
+      "historyPoints": 509,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/zs/historical"
     }
   ]
