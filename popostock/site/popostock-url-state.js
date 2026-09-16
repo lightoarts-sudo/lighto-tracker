@@ -22,6 +22,14 @@
   let defaultTab = null;
   let applyingLocation = false;
   let initialized = false;
+  /*
+   * 目標分頁還沒掛上來時記在這裡，等它出現再套用。
+   *
+   * 分頁列不是一次長齊的：React 先畫 10 個，「權值股回前高」「配息資訊」
+   * 「退休計算機」是另外三支覆蓋層稍後自己 append 上去的。所以「分頁列出現了」
+   * 不等於「我要的那個分頁出現了」，對這三個深連結來說固定秒數一樣會落空。
+   */
+  let pendingTab = null;
 
   function cleanText(element) {
     return element?.textContent?.replace(/\s+/g, " ").trim() || "";
@@ -56,13 +64,19 @@
     if (moved) moved.style.order = "5";
   }
 
+  function onStripChanged() {
+    applyTabOrder();
+    // 剛掛上來的可能正是深連結要的那一頁，是的話補套用。
+    if (pendingTab && buttonForTab(pendingTab)) applyLocation();
+  }
+
   function watchTabOrder() {
     const strip = document.querySelector(".workspace-tabs");
     if (!strip) return;
     applyTabOrder();
     // 只看子節點增減：覆蓋層之後才把自己的分頁掛上來，順序要跟著重算。
     // 不觀察 attributes，否則自己設 style 會把 observer 叫回來變成迴圈。
-    new MutationObserver(applyTabOrder).observe(strip, { childList: true });
+    new MutationObserver(onStripChanged).observe(strip, { childList: true });
   }
 
   function selectedWorkspaceTab() {
@@ -205,6 +219,15 @@
     const selected = selectedWorkspaceTab();
     const actualTab = tabForButton(selected) || tab;
     const actualCode = instrumentTabs.has(actualTab) ? activeItemCode() : null;
+
+    // 沒切成功代表那顆按鈕還沒被掛上來。這時候千萬不能往下改寫網址——原本會把
+    // 使用者的 ?tab=dividends 直接換成預設分頁，深連結不只失效還被抹掉。
+    if (actualTab !== tab) {
+      pendingTab = tab;
+      return;
+    }
+    pendingTab = null;
+
     if (
       actualTab !== url.searchParams.get("tab") ||
       (instrumentTabs.has(actualTab) &&
@@ -226,6 +249,7 @@
     ) {
       return;
     }
+    pendingTab = null; // 使用者自己選了，就別再事後把他拉到深連結指定的分頁
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => syncLocationFromPage("push"));
     });
