@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T18:13:37+08:00",
+  "generatedAt": "2026-09-19T12:11:43+08:00",
   "consensusDate": "2026-09-18",
   "thresholdTwd": 100000000,
   "stocks": [
@@ -2616,6 +2616,20 @@
               "amountTwd": 23475000
             }
           ]
+        },
+        {
+          "date": "2026-09-18",
+          "etfCount": 1,
+          "lots": 16,
+          "amountTwd": 13672000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 16,
+              "amountTwd": 13672000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -3220,6 +3234,20 @@
               "name": "主動永豐科技趨勢",
               "lots": 12,
               "amountTwd": 840600
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "etfCount": 1,
+          "lots": 238,
+          "amountTwd": 17052700,
+          "etfs": [
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 238,
+              "amountTwd": 17052700
             }
           ]
         }
@@ -6854,15 +6882,21 @@
         },
         {
           "date": "2026-09-18",
-          "etfCount": 2,
-          "lots": 2119,
-          "amountTwd": 332683000,
+          "etfCount": 3,
+          "lots": 2289,
+          "amountTwd": 359373000,
           "etfs": [
             {
               "code": "00403A",
               "name": "主動統一升級50",
               "lots": 2000,
               "amountTwd": 314000000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 170,
+              "amountTwd": 26690000
             },
             {
               "code": "00996A",
@@ -8334,15 +8368,21 @@
         },
         {
           "date": "2026-09-18",
-          "etfCount": 1,
-          "lots": 20,
-          "amountTwd": 34650000,
+          "etfCount": 2,
+          "lots": 33,
+          "amountTwd": 57172500,
           "etfs": [
             {
               "code": "00406A",
               "name": "主動中信台灣收益",
               "lots": 20,
               "amountTwd": 34650000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 13,
+              "amountTwd": 22522500
             }
           ]
         }
@@ -21850,15 +21890,21 @@
         },
         {
           "date": "2026-09-18",
-          "etfCount": 1,
-          "lots": 800,
-          "amountTwd": 413200000,
+          "etfCount": 2,
+          "lots": 880,
+          "amountTwd": 454520000,
           "etfs": [
             {
               "code": "00403A",
               "name": "主動統一升級50",
               "lots": 800,
               "amountTwd": 413200000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 80,
+              "amountTwd": 41320000
             }
           ]
         }
@@ -36489,15 +36535,21 @@
         },
         {
           "date": "2026-09-18",
-          "etfCount": 1,
-          "lots": 13,
-          "amountTwd": 43810000,
+          "etfCount": 2,
+          "lots": 25,
+          "amountTwd": 84250000,
           "etfs": [
             {
               "code": "00985A",
               "name": "主動野村台灣50",
               "lots": 13,
               "amountTwd": 43810000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 12,
+              "amountTwd": 40440000
             }
           ]
         }
@@ -43908,6 +43960,20 @@
               "amountTwd": 379600000
             }
           ]
+        },
+        {
+          "date": "2026-09-18",
+          "etfCount": 1,
+          "lots": 56,
+          "amountTwd": 14532000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 56,
+              "amountTwd": 14532000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -45006,6 +45072,20 @@
               "name": "主動永豐科技趨勢",
               "lots": 20,
               "amountTwd": 19920000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-18",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 9770000,
+          "etfs": [
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 10,
+              "amountTwd": 9770000
             }
           ]
         }
@@ -72927,9 +73007,9 @@
         },
         {
           "date": "2026-09-18",
-          "etfCount": 2,
-          "lots": 44,
-          "amountTwd": 97900000,
+          "etfCount": 3,
+          "lots": 51,
+          "amountTwd": 113475000,
           "etfs": [
             {
               "code": "00403A",
@@ -72942,6 +73022,12 @@
               "name": "主動統一台股增長",
               "lots": 42,
               "amountTwd": 93450000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 7,
+              "amountTwd": 15575000
             }
           ]
         }
