@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-09-19T12:21:34+08:00",
+  "generatedAt": "2026-09-19T18:13:29+08:00",
   "sourceTitles": {
     "US": "Nasdaq 官方個股歷史行情",
     "other": "Yahoo Finance 各交易所歷史行情"
   },
-  "count": 260,
-  "failures": [],
+  "count": 259,
+  "failures": [
+    "095340-KS: RuntimeError"
+  ],
   "stocks": [
     {
       "code": "000660-KS",
@@ -56,16 +58,6 @@
       "historyEnd": "2026-09-18",
       "historyPoints": 491,
       "sourceUrl": "https://finance.yahoo.com/quote/055550.KS/history/"
-    },
-    {
-      "code": "095340-KS",
-      "name": "ISC CO LTD",
-      "market": "KS",
-      "currency": "KRW",
-      "historyStart": "2026-07-16",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 45,
-      "sourceUrl": "https://finance.yahoo.com/quote/095340.KS/history/"
     },
     {
       "code": "285A-JP",
