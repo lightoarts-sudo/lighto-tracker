@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-20T18:12:17+08:00",
+  "generatedAt": "2026-09-21T12:28:09+08:00",
   "sourceTitles": {
     "US": "Nasdaq 官方個股歷史行情",
     "other": "Yahoo Finance 各交易所歷史行情"
   },
-  "count": 259,
+  "count": 261,
   "failures": [
     "095340-KS: RuntimeError"
   ],
@@ -15,8 +15,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 499,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 500,
       "sourceUrl": "https://finance.yahoo.com/quote/000660.KS/history/"
     },
     {
@@ -25,8 +25,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 494,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 495,
       "sourceUrl": "https://finance.yahoo.com/quote/005930.KS/history/"
     },
     {
@@ -35,8 +35,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 499,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 500,
       "sourceUrl": "https://finance.yahoo.com/quote/009150.KS/history/"
     },
     {
@@ -45,8 +45,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 494,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 495,
       "sourceUrl": "https://finance.yahoo.com/quote/032830.KS/history/"
     },
     {
@@ -55,8 +55,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-09",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 491,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 492,
       "sourceUrl": "https://finance.yahoo.com/quote/055550.KS/history/"
     },
     {
@@ -75,8 +75,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 500,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 501,
       "sourceUrl": "https://finance.yahoo.com/quote/300408.SZ/history/"
     },
     {
@@ -85,8 +85,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-08-30",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 498,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 499,
       "sourceUrl": "https://finance.yahoo.com/quote/300757.SZ/history/"
     },
     {
@@ -95,8 +95,8 @@
       "market": "CH",
       "currency": "CNY",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 495,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 496,
       "sourceUrl": "https://finance.yahoo.com/quote/301377.SZ/history/"
     },
     {
@@ -105,8 +105,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2026-07-30",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 37,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 38,
       "sourceUrl": "https://finance.yahoo.com/quote/3308.HK/history/"
     },
     {
@@ -125,8 +125,8 @@
       "market": "KS",
       "currency": "KRW",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 494,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 495,
       "sourceUrl": "https://finance.yahoo.com/quote/402340.KS/history/"
     },
     {
@@ -395,8 +395,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2024-08-28",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 506,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 507,
       "sourceUrl": "https://finance.yahoo.com/quote/0992.HK/history/"
     },
     {
@@ -405,8 +405,8 @@
       "market": "HK",
       "currency": "HKD",
       "historyStart": "2024-09-04",
-      "historyEnd": "2026-09-18",
-      "historyPoints": 501,
+      "historyEnd": "2026-09-21",
+      "historyPoints": 502,
       "sourceUrl": "https://finance.yahoo.com/quote/9988.HK/history/"
     },
     {
@@ -531,7 +531,7 @@
     },
     {
       "code": "ALAB",
-      "name": "Astera實驗室公司",
+      "name": "ASTERA LABS INC COM USD.000100000",
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
@@ -1011,7 +1011,7 @@
     },
     {
       "code": "CRDO",
-      "name": "Credo科技集團控股有限公司",
+      "name": "CREDO TECHNOLOGY GROUP HOLDI ORD USD.000050000",
       "market": "US",
       "currency": "USD",
       "historyStart": "2024-08-27",
@@ -1058,6 +1058,16 @@
       "historyEnd": "2026-09-18",
       "historyPoints": 371,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crwv/historical"
+    },
+    {
+      "code": "CS-FP",
+      "name": "安盛有限責任公司",
+      "market": "FP",
+      "currency": "EUR",
+      "historyStart": "2024-09-10",
+      "historyEnd": "2026-09-18",
+      "historyPoints": 516,
+      "sourceUrl": "https://finance.yahoo.com/quote/CS.PA/history/"
     },
     {
       "code": "CSCO",
@@ -2128,6 +2138,16 @@
       "historyEnd": "2026-09-18",
       "historyPoints": 50,
       "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/skhy/historical"
+    },
+    {
+      "code": "SMCI",
+      "name": "SUPER MICRO COMPUTER INC",
+      "market": "US",
+      "currency": "USD",
+      "historyStart": "2024-09-11",
+      "historyEnd": "2026-09-18",
+      "historyPoints": 507,
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/smci/historical"
     },
     {
       "code": "SMTC",
