@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-21T18:16:25+08:00",
-  "consensusDate": "2026-09-21",
+  "generatedAt": "2026-09-22T12:14:30+08:00",
+  "consensusDate": "2026-09-22",
   "thresholdTwd": 100000000,
   "stocks": [
     {
@@ -6983,6 +6983,20 @@
               "amountTwd": 18252000
             }
           ]
+        },
+        {
+          "date": "2026-09-22",
+          "etfCount": 1,
+          "lots": 60,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 60,
+              "amountTwd": null
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -8472,9 +8486,9 @@
         },
         {
           "date": "2026-09-21",
-          "etfCount": 3,
-          "lots": 965,
-          "amountTwd": 1749062500,
+          "etfCount": 4,
+          "lots": 975,
+          "amountTwd": 1767187500,
           "etfs": [
             {
               "code": "00403A",
@@ -8493,6 +8507,12 @@
               "name": "主動復華未來50",
               "lots": 870,
               "amountTwd": 1576875000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 10,
+              "amountTwd": 18125000
             }
           ]
         }
@@ -9289,6 +9309,20 @@
               "amountTwd": 14355000
             }
           ]
+        },
+        {
+          "date": "2026-09-22",
+          "etfCount": 1,
+          "lots": 30,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 30,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -9769,6 +9803,20 @@
               "name": "主動安聯台灣高息",
               "lots": 274,
               "amountTwd": 68774000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 250500,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 1,
+              "amountTwd": 250500
             }
           ]
         }
@@ -14807,6 +14855,20 @@
               "amountTwd": 234315000
             }
           ]
+        },
+        {
+          "date": "2026-09-22",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 7,
+              "amountTwd": null
+            }
+          ]
         }
       ]
     },
@@ -16300,6 +16362,20 @@
               "name": "主動群益台灣強棒",
               "lots": 1,
               "amountTwd": 2100000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 9660000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 4,
+              "amountTwd": 9660000
             }
           ]
         }
@@ -31532,6 +31608,20 @@
               "amountTwd": 43553000
             }
           ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 130,
+          "amountTwd": 14527500,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 130,
+              "amountTwd": 14527500
+            }
+          ]
         }
       ]
     },
@@ -39544,6 +39634,20 @@
               "amountTwd": 196100000
             }
           ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 4,
+          "amountTwd": 4108000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 4,
+              "amountTwd": 4108000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -44370,6 +44474,20 @@
               "name": "主動第一金台股優",
               "lots": 56,
               "amountTwd": 14532000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 35,
+          "amountTwd": 9625000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 35,
+              "amountTwd": 9625000
             }
           ]
         }
@@ -69864,6 +69982,20 @@
               "amountTwd": 133402500
             }
           ]
+        },
+        {
+          "date": "2026-09-21",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 12365000,
+          "etfs": [
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 2,
+              "amountTwd": 12365000
+            }
+          ]
         }
       ]
     },
@@ -70321,6 +70453,20 @@
               "name": "主動中信台灣收益",
               "lots": 55,
               "amountTwd": 52442500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-22",
+          "etfCount": 1,
+          "lots": 11,
+          "amountTwd": null,
+          "etfs": [
+            {
+              "code": "00401A",
+              "name": "主動摩根台灣鑫收",
+              "lots": 11,
+              "amountTwd": null
             }
           ]
         }
@@ -75772,15 +75918,21 @@
         },
         {
           "date": "2026-09-21",
-          "etfCount": 1,
-          "lots": 249,
-          "amountTwd": 1550025000,
+          "etfCount": 2,
+          "lots": 255,
+          "amountTwd": 1587375000,
           "etfs": [
             {
               "code": "00991A",
               "name": "主動復華未來50",
               "lots": 249,
               "amountTwd": 1550025000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 6,
+              "amountTwd": 37350000
             }
           ]
         }
