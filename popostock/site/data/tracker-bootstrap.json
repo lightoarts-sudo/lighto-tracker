@@ -6219,9 +6219,297 @@
       "ytdReturn": 123.9567
     },
     {
-      "id": "sitca-esu01",
+      "id": "cnyes-cap01",
       "group": "funds",
       "groupRank": 23,
+      "code": "CAP01",
+      "name": "群益創新科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "群益創新科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Capital High-Tech Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T1614Y4"
+        },
+        {
+          "label": "基金統編",
+          "value": "19339782A"
+        },
+        {
+          "label": "成立日期",
+          "value": "1999-06-05"
+        },
+        {
+          "label": "基金規模",
+          "value": "126.80 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "群益證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Chen Chao Zheng"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "臺灣中小企業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "187.54 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A16009/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A16009",
+        "sitcaTaxId": "19339782A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 86.9604
+    },
+    {
+      "id": "cnyes-csi003",
+      "group": "funds",
+      "groupRank": 24,
+      "code": "CSI003",
+      "name": "國泰科技生化基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "國泰科技生化基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Cathay Technology Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3707Y4"
+        },
+        {
+          "label": "基金統編",
+          "value": "14705562"
+        },
+        {
+          "label": "成立日期",
+          "value": "2002-07-18"
+        },
+        {
+          "label": "基金規模",
+          "value": "104.84 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "國泰證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Huang Wei Tai"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台北富邦商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "292.7 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A37007/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A37007",
+        "sitcaTaxId": "14705562",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 92.3759
+    },
+    {
+      "id": "cnyes-esi002",
+      "group": "funds",
+      "groupRank": 25,
+      "code": "ESI002",
+      "name": "瀚亞高科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "瀚亞高科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Eastspring Investments High-Tech Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0704Y4"
+        },
+        {
+          "label": "基金統編",
+          "value": "92003102"
+        },
+        {
+          "label": "成立日期",
+          "value": "1994-11-14"
+        },
+        {
+          "label": "基金規模",
+          "value": "133.78 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "瀚亞證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Liu Jia Hong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.5%"
+        },
+        {
+          "label": "保管機構",
+          "value": "兆豐國際商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "694.68 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A07004/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A07004",
+        "sitcaTaxId": "92003102",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 110.9374
+    },
+    {
+      "id": "sitca-esu01",
+      "group": "funds",
+      "groupRank": 26,
       "code": "ESU01",
       "name": "玉山金滿意基金",
       "category": "台灣大型股票",
@@ -6318,9 +6606,489 @@
       "ytdReturn": 101.5136
     },
     {
+      "id": "cnyes-esu02",
+      "group": "funds",
+      "groupRank": 27,
+      "code": "ESU02",
+      "name": "玉山科技島基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "玉山科技島基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "E.SUN High-Tech Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0808Y3"
+        },
+        {
+          "label": "基金統編",
+          "value": "73990649"
+        },
+        {
+          "label": "成立日期",
+          "value": "1998-08-25"
+        },
+        {
+          "label": "基金規模",
+          "value": "76.92 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "玉山證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Lin Zhe Yu"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "臺灣土地銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "208.31 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A08009/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A08009",
+        "sitcaTaxId": "73990649",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 101.6359
+    },
+    {
+      "id": "cnyes-fhi001",
+      "group": "funds",
+      "groupRank": 28,
+      "code": "FHI001",
+      "name": "復華復華基金",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "復華復華基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Fuh Hwa Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2203Y5"
+        },
+        {
+          "label": "基金統編",
+          "value": "81587889"
+        },
+        {
+          "label": "成立日期",
+          "value": "1998-01-23"
+        },
+        {
+          "label": "基金規模",
+          "value": "146.36 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "復華證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Lu Hong Yu, Cai Sheng Yu"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "玉山商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "128.25 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A23001/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A23001",
+        "sitcaTaxId": "81587889",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 84.4528
+    },
+    {
+      "id": "cnyes-fhi003",
+      "group": "funds",
+      "groupRank": 29,
+      "code": "FHI003",
+      "name": "復華高成長基金",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "復華高成長基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Fuh Hwa High Growth Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2205Y0"
+        },
+        {
+          "label": "基金統編",
+          "value": "73998086"
+        },
+        {
+          "label": "成立日期",
+          "value": "1998-10-17"
+        },
+        {
+          "label": "基金規模",
+          "value": "198.36 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "復華證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Lu Hong Yu"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "永豐商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "457.03 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A23003/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A23003",
+        "sitcaTaxId": "73998086",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 85.0474
+    },
+    {
+      "id": "cnyes-fhi008",
+      "group": "funds",
+      "groupRank": 30,
+      "code": "FHI008",
+      "name": "復華中小精選基金",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "復華中小精選基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Fuh Hwa Small Capital Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2210Y0"
+        },
+        {
+          "label": "基金統編",
+          "value": "18488279"
+        },
+        {
+          "label": "成立日期",
+          "value": "2001-04-03"
+        },
+        {
+          "label": "基金規模",
+          "value": "211.21 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "復華證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Zhao Jian Zhang"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "永豐商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "453.43 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A23008/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A23008",
+        "sitcaTaxId": "18488279",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 86.3436
+    },
+    {
+      "id": "cnyes-fhi028",
+      "group": "funds",
+      "groupRank": 31,
+      "code": "FHI028",
+      "name": "復華大中華中小策略基金",
+      "category": "大中華股票",
+      "aumDate": "2026-09-21",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "復華大中華中小策略基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Fuh Hwa Greater China Mid and Small Cap Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2271Y2"
+        },
+        {
+          "label": "基金統編",
+          "value": "26276235"
+        },
+        {
+          "label": "成立日期",
+          "value": "2010-12-27"
+        },
+        {
+          "label": "基金規模",
+          "value": "12.89 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "復華證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Yang Shu Ting"
+        },
+        {
+          "label": "基金組別",
+          "value": "大中華股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "China (Greater)"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "2%"
+        },
+        {
+          "label": "保管機構",
+          "value": "玉山商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-21"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-21",
+        "priceOrNav": "20.75 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A23028/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A23028",
+        "sitcaTaxId": "26276235",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 89.6709
+    },
+    {
       "id": "sitca-fhw01",
       "group": "funds",
-      "groupRank": 24,
+      "groupRank": 32,
       "code": "FHW01",
       "name": "復華全方位基金A類型",
       "category": "台灣中小型股票",
@@ -6419,7 +7187,7 @@
     {
       "id": "sitca-fir01",
       "group": "funds",
-      "groupRank": 25,
+      "groupRank": 33,
       "code": "FIR01",
       "name": "第一金小型精選基金-A類型",
       "category": "台灣中小型股票",
@@ -6516,9 +7284,201 @@
       "ytdReturn": 111.8186
     },
     {
+      "id": "cnyes-fir02",
+      "group": "funds",
+      "groupRank": 34,
+      "code": "FIR02",
+      "name": "第一金電子基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "第一金電子基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "FSITC High-Tech"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0314Y2"
+        },
+        {
+          "label": "基金統編",
+          "value": "19341318"
+        },
+        {
+          "label": "成立日期",
+          "value": "1999-07-19"
+        },
+        {
+          "label": "基金規模",
+          "value": "57.31 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "第一金證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Zhang Zheng Zhong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "元大商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "267.56 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A03018/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A03018",
+        "sitcaTaxId": "19341318",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 87.4194
+    },
+    {
+      "id": "cnyes-frk01",
+      "group": "funds",
+      "groupRank": 35,
+      "code": "FRK01",
+      "name": "富蘭克林華美台股傘型基金之高科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "富蘭克林華美台股傘型基金之高科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Franklin Templeton SinoAm High -tech Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4510Y1"
+        },
+        {
+          "label": "基金統編",
+          "value": "26310297"
+        },
+        {
+          "label": "成立日期",
+          "value": "2011-05-16"
+        },
+        {
+          "label": "基金規模",
+          "value": "57.78 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "富蘭克林華美證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Lin Mei Ru, Luo Zhao Hong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "合作金庫商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "200.67 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A45012/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A45012",
+        "sitcaTaxId": "26310297",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 99.9103
+    },
+    {
       "id": "sitca-fub02",
       "group": "funds",
-      "groupRank": 26,
+      "groupRank": 36,
       "code": "FUB02",
       "name": "富邦精選五虎基金",
       "category": "台灣中小型股票",
@@ -6617,7 +7577,7 @@
     {
       "id": "sitca-inv01",
       "group": "funds",
-      "groupRank": 27,
+      "groupRank": 37,
       "code": "INV01",
       "name": "景順台灣科技基金",
       "category": "行業股票 - 科技",
@@ -6716,7 +7676,7 @@
     {
       "id": "sitca-inv02",
       "group": "funds",
-      "groupRank": 28,
+      "groupRank": 38,
       "code": "INV02",
       "name": "景順潛力基金累積型新台幣",
       "category": "台灣中小型股票",
@@ -6815,7 +7775,7 @@
     {
       "id": "sitca-jko01",
       "group": "funds",
-      "groupRank": 29,
+      "groupRank": 39,
       "code": "JKO01",
       "name": "街口台灣基金",
       "category": "台灣大型股票",
@@ -6914,7 +7874,7 @@
     {
       "id": "sitca-jko02",
       "group": "funds",
-      "groupRank": 30,
+      "groupRank": 40,
       "code": "JKO02",
       "name": "街口中小型基金",
       "category": "台灣中小型股票",
@@ -7011,9 +7971,201 @@
       "ytdReturn": 102.4625
     },
     {
+      "id": "cnyes-jpm01",
+      "group": "funds",
+      "groupRank": 41,
+      "code": "JPM01",
+      "name": "摩根新興科技基金-一般型",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "摩根新興科技基金-一般型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "JPMorgan (Taiwan) New Technology Fund - Generic"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T1104Y6"
+        },
+        {
+          "label": "基金統編",
+          "value": "92012025A"
+        },
+        {
+          "label": "成立日期",
+          "value": "1995-03-23"
+        },
+        {
+          "label": "基金規模",
+          "value": "267.97 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "摩根證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Ye Hong Ru"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.5%"
+        },
+        {
+          "label": "保管機構",
+          "value": "第一商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "479.03 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A11004/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A11004",
+        "sitcaTaxId": "92012025A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 112.2137
+    },
+    {
+      "id": "cnyes-nom002",
+      "group": "funds",
+      "groupRank": 42,
+      "code": "NOM002",
+      "name": "野村ｅ科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "野村ｅ科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "NomuraTaiwan High Tech Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3205Y9"
+        },
+        {
+          "label": "基金統編",
+          "value": "18037937"
+        },
+        {
+          "label": "成立日期",
+          "value": "2000-09-16"
+        },
+        {
+          "label": "基金規模",
+          "value": "173.33 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Xie Wen Xiong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "彰化商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "228.91 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32006/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A32006",
+        "sitcaTaxId": "18037937",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 91.9259
+    },
+    {
       "id": "sitca-nom004",
       "group": "funds",
-      "groupRank": 31,
+      "groupRank": 43,
       "code": "NOM004",
       "name": "野村鴻運基金",
       "category": "台灣中小型股票",
@@ -7112,7 +8264,7 @@
     {
       "id": "sitca-nom006",
       "group": "funds",
-      "groupRank": 32,
+      "groupRank": 44,
       "code": "NOM006",
       "name": "野村台灣運籌基金",
       "category": "台灣中小型股票",
@@ -7211,7 +8363,7 @@
     {
       "id": "sitca-nom011",
       "group": "funds",
-      "groupRank": 33,
+      "groupRank": 45,
       "code": "NOM011",
       "name": "野村成長基金",
       "category": "台灣中小型股票",
@@ -7308,9 +8460,105 @@
       "ytdReturn": 114.0392
     },
     {
+      "id": "cnyes-nom012",
+      "group": "funds",
+      "groupRank": 46,
+      "code": "NOM012",
+      "name": "野村高科技基金-累積類型",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "野村高科技基金-累積類型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Nomura Taiwan High Tech Selection Fund - A"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3228Y1"
+        },
+        {
+          "label": "基金統編",
+          "value": "17600534A"
+        },
+        {
+          "label": "成立日期",
+          "value": "2000-01-31"
+        },
+        {
+          "label": "基金規模",
+          "value": "232.62 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Xie Wen Xiong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台北富邦商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "126.03 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32026/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A32026",
+        "sitcaTaxId": "17600534A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 92.8834
+    },
+    {
       "id": "schroder-taiwan-lohas-smid-a",
       "group": "funds",
-      "groupRank": 34,
+      "groupRank": 47,
       "code": "SCH004",
       "name": "施羅德台灣樂活中小基金-A類型",
       "category": "台灣中小型股票",
@@ -7559,6 +8807,294 @@
         "dailyNavSourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
         "dailyNavRetrievedAt": "2026-09-22T13:00:13+00:00"
       }
+    },
+    {
+      "id": "cnyes-spf01",
+      "group": "funds",
+      "groupRank": 48,
+      "code": "SPF01",
+      "name": "永豐領航科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "永豐領航科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "SinoPac Pilot Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T2520Y2"
+        },
+        {
+          "label": "基金統編",
+          "value": "73992013"
+        },
+        {
+          "label": "成立日期",
+          "value": "1998-09-04"
+        },
+        {
+          "label": "基金規模",
+          "value": "17.13 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "永豐證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Wu Min Lin"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.75%"
+        },
+        {
+          "label": "保管機構",
+          "value": "中國信託商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "179.24 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A25014/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A25014",
+        "sitcaTaxId": "73992013",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 82.025
+    },
+    {
+      "id": "cnyes-tsi01",
+      "group": "funds",
+      "groupRank": 49,
+      "code": "TSI01",
+      "name": "台新創新科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "台新創新科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Taishin Innovative Technology Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T1405Y7"
+        },
+        {
+          "label": "基金統編",
+          "value": "81585242"
+        },
+        {
+          "label": "成立日期",
+          "value": "1998-03-04"
+        },
+        {
+          "label": "基金規模",
+          "value": "44.54 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "台新證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Shen Jian Hong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台新國際商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "114.2 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A14010/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A14010",
+        "sitcaTaxId": "81585242",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 98.2639
+    },
+    {
+      "id": "cnyes-tsi02",
+      "group": "funds",
+      "groupRank": 50,
+      "code": "TSI02",
+      "name": "台新2000高科技基金",
+      "category": "行業股票 - 科技",
+      "aumDate": "2026-09-22",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "台新2000高科技基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Taishin 2000 High Technology Equity Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4720Y6"
+        },
+        {
+          "label": "基金統編",
+          "value": "17602821A"
+        },
+        {
+          "label": "成立日期",
+          "value": "2000-03-07"
+        },
+        {
+          "label": "基金規模",
+          "value": "84.72 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "台新證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Shen Jian Hong"
+        },
+        {
+          "label": "基金組別",
+          "value": "行業股票 - 科技"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "陽信商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-22"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-22",
+        "priceOrNav": "282.88 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [],
+      "holdingHistory": [],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A47019/",
+        "retrievedAt": "2026-09-22T14:34:38+00:00",
+        "cnyesId": "A47019",
+        "sitcaTaxId": "17602821A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。"
+      },
+      "ytdReturn": 101.2235
     },
     {
       "id": "00981a",
