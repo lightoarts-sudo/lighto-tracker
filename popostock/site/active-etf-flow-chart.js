@@ -125,7 +125,7 @@
       time: r.time, value: r.net, color: r.net >= 0 ? UP : DOWN,
     })));
     chart.timeScale().fitContent();
-    keepSynced(chart);
+    keepSynced(chart, rows);
     attachTooltip(chart, series, stage, tip, rows);
 
     // 改變寬度時只調寬度，**不要** fitContent——那會經由同步把大盤的
@@ -154,32 +154,38 @@
     }
   }
 
-  /* 單向同步：大盤 → 本圖。
-     不做雙向：兩張圖的資料長度差很多（大盤上萬根 vs 本圖數十根），把範圍推
-     回去會被夾取後彈回，實測會把主圖重設成全區間。 */
-  /* 滑鼠移到柱子上時顯示當天的加碼／減碼／淨額。
-     以日期對回原始資料，不從圖上的數值反推——圖上只有淨額，
-     買賣雙方的金額必須從資料取。 */
-  function attachTooltip(chart, series, stage, tip, rows) {
-    const byDate = new Map(rows.map((r) => [r.time, r]));
-    chart.subscribeCrosshairMove((param) => {
-      const key = param && param.time;
-      const row = key ? byDate.get(String(key)) : null;
-      if (!row || !param.point) { tip.style.display = "none"; return; }
-      const colour = row.net >= 0 ? UP : DOWN;
-      tip.innerHTML =
-        "<div><i>" + row.time + "</i></div>" +
-        "<div>淨額 <b style=\"color:" + colour + "\">" + fmt(row.net) + " 億</b></div>" +
-        "<div><i>加碼</i> " + row.buy.toFixed(1) + "　<i>減碼</i> " + row.sell.toFixed(1) + "</div>" +
-        "<div><i>納入比較 " + row.comparable + "/" + row.tracked + " 檔</i></div>";
-      tip.style.display = "block";
-      // 靠近右緣時往左翻，免得被裁掉
-      const width = tip.offsetWidth || 150;
-      const max = stage.clientWidth - width - 8;
-      tip.style.left = Math.max(8, Math.min(param.point.x + 14, max)) + "px";
-      tip.style.top = Math.max(6, Math.min(param.point.y - 10, stage.clientHeight - 90)) + "px";
-    });
-    stage.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  /* 單向同步：大盤 → 本圖，而且必須同步**時間範圍**，不能同步邏輯索引。
+     大盤有一萬多根 K 棒，本圖只有數十根；直接套用索引範圍（實測是
+     [11068, 11157]）會落在本圖資料尾端之外，畫面只剩最後一根柱子。
+     改用 getVisibleRange() 的日期，並夾在本圖資料的起訖之內。 */
+  function keepSynced(mine, rows) {
+    const first = rows[0].time;
+    const last = rows[rows.length - 1].time;
+    const clamp = (value) => (value < first ? first : (value > last ? last : value));
+    let bound = null;
+    let guard = false;
+
+    const apply = (range) => {
+      if (!range || guard) return;
+      const from = clamp(String(range.from));
+      const to = clamp(String(range.to));
+      if (from >= to) return;   // 大盤視窗完全落在本圖資料之外，維持現狀
+      guard = true;
+      try { mine.timeScale().setVisibleRange({ from: from, to: to }); } catch (_) {}
+      guard = false;
+    };
+
+    const tick = () => {
+      const other = mainChart();
+      if (!other || other === bound) return;
+      bound = other;
+      other.timeScale().subscribeVisibleTimeRangeChange(apply);
+      try { apply(other.timeScale().getVisibleRange()); } catch (_) {}
+    };
+    tick();
+    window.addEventListener("popostock:chart", tick);
+    const timer = window.setInterval(tick, 500);
+    window.addEventListener("beforeunload", () => window.clearInterval(timer));
   }
 
   function keepSynced(mine) {
