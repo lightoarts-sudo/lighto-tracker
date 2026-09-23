@@ -11,12 +11,11 @@
    * 再把父層設成 flex column 並給每個子元素明確的 order。實測把父層從
    * block 改成 flex，七個子元素的寬高完全沒有變化。
    *
-   * 時間軸**沒有**與大盤連動，原因記在這裡免得有人再試一次：
-   * 主 bundle 自己打包了一份 lightweight-charts，並不是讀 window 上的全域，
-   * 所以攔截 LightweightCharts.createChart 只會抓到覆蓋層自己建的圖
-   * （本圖與 fng-line-chart 的三張），永遠拿不到大盤那張的實例；
-   * 圖表實例也沒掛在 DOM 上、React fiber 裡同樣找不到。
-   * 真要連動，得走 patch-popostock-*.mjs 直接改 bundle 的路線。
+   * 時間軸與大盤連動：大盤那張圖是主 bundle 自己建立的
+   * （它內嵌了一份 lightweight-charts，不讀 window 上的全域），所以攔截
+   * LightweightCharts.createChart 只抓得到覆蓋層自己的圖。實例也沒掛在 DOM、
+   * React fiber 裡同樣找不到。因此改由 patch-popostock-chart-registry.mjs
+   * 在 bundle 的建立點把實例推進 window.__popostockCharts，這裡再讀它。
    */
 
   const DATA_URL = "data/active-etf-flow.json";
@@ -25,53 +24,16 @@
   const UP = "#c23d4b";      // 加碼（台股慣例紅）
   const DOWN = "#16845b";    // 減碼
 
-  // container → chart，攔截工廠函式後累積
-  const charts = new Map();
-
-  function hookCreateChart() {
-    const lc = window.LightweightCharts;
-    if (!lc || typeof lc.createChart !== "function" || lc.__popostockFlowHooked) return;
-    const original = lc.createChart;
-    const wrapped = function (container) {
-      const chart = original.apply(this, arguments);
-      try { charts.set(container, chart); } catch (_) {}
-      return chart;
-    };
-    // standalone build 的匯出物件是 frozen 的：直接指派會丟
-    // "Cannot assign to read only property"，defineProperty 也會被擋。
-    // 換上一份可寫的淺拷貝，應用程式在呼叫時才讀 window.LightweightCharts，
-    // 所以拿到的是包裝後的版本。
-    let host = lc;
-    if (!Object.isExtensible(lc) || !Object.getOwnPropertyDescriptor(lc, "createChart").writable) {
-      host = Object.assign({}, lc);
-      window.LightweightCharts = host;
-    }
-    try {
-      host.createChart = wrapped;
-      host.__popostockFlowHooked = true;
-    } catch (error) {
-      // 掛不上就放棄同步，圖表照畫——寧可少一個聯動，也不要整支覆蓋層死掉。
-      console.warn("[popostock] 無法攔截 createChart，加減碼圖表將不與大盤同步", error);
-      charts.set(null, null);
-    }
-  }
-  hookCreateChart();
-  // LightweightCharts 可能比本檔晚載入，短暫重試直到掛上
-  const hookTimer = window.setInterval(() => {
-    hookCreateChart();
-    const cur = window.LightweightCharts;
-    if (cur && (cur.__popostockFlowHooked || charts.has(null))) {
-      window.clearInterval(hookTimer);
-    }
-  }, 120);
-  window.setTimeout(() => window.clearInterval(hookTimer), 60000);
-
+  /* 大盤圖表實例由 bundle patch 推進 window.__popostockCharts。
+     取「容器不是比較區塊」的那一張，也就是主圖。 */
   function mainChart() {
-    // 大盤那張的容器是 .nav-chart-stage，且不是比較區塊用的
-    for (const [container, chart] of charts) {
-      if (!container || !container.closest) continue;
-      const stage = container.closest(".nav-chart-stage");
-      if (stage && !stage.classList.contains("market-comparison-stage")) return chart;
+    const list = window.__popostockCharts || [];
+    for (let i = list.length - 1; i >= 0; i -= 1) {
+      const entry = list[i];
+      if (!entry || !entry.container || !entry.container.closest) continue;
+      if (!document.contains(entry.container)) continue;
+      const stage = entry.container.closest(".nav-chart-stage");
+      if (stage && !stage.classList.contains("market-comparison-stage")) return entry.chart;
     }
     return null;
   }
@@ -90,6 +52,12 @@
       "font-size:13px;font-weight:700;color:#5b6b80}",
       "." + PANEL + " .flow-summary b{font-variant-numeric:tabular-nums}",
       "." + PANEL + " .flow-note{margin-top:6px;font-size:12px;color:#8b98ab;line-height:1.5}",
+      "." + PANEL + " .flow-stage{position:relative}",
+      "." + PANEL + " .flow-tip{position:absolute;pointer-events:none;z-index:6;display:none;",
+      "background:#12295cf2;color:#fff;border-radius:8px;padding:7px 10px;font-size:12px;",
+      "line-height:1.55;white-space:nowrap;box-shadow:0 4px 14px rgba(18,41,92,.28)}",
+      "." + PANEL + " .flow-tip b{font-size:14px;font-variant-numeric:tabular-nums}",
+      "." + PANEL + " .flow-tip i{font-style:normal;color:#9fb3d9}",
     ].join("");
     document.head.appendChild(el);
   }
@@ -125,9 +93,13 @@
     block.appendChild(summary);
 
     const stage = document.createElement("div");
-    stage.className = "nav-chart-stage market-comparison-stage";
+    stage.className = "nav-chart-stage market-comparison-stage flow-stage";
     stage.style.height = "180px";
     block.appendChild(stage);
+
+    const tip = document.createElement("div");
+    tip.className = "flow-tip";
+    stage.appendChild(tip);
 
     const note = document.createElement("div");
     note.className = "market-comparison-note flow-note";
@@ -154,6 +126,7 @@
     })));
     chart.timeScale().fitContent();
     keepSynced(chart);
+    attachTooltip(chart, series, stage, tip, rows);
 
     // 改變寬度時只調寬度，**不要** fitContent——那會經由同步把大盤的
     // 可視範圍一起拉回全區間，使用者拖曳過的位置就被重設了。
@@ -182,12 +155,33 @@
   }
 
   /* 單向同步：大盤 → 本圖。
-     不做雙向：兩張圖的資料長度不同（大盤上萬根、本圖數十根），把範圍推回去
-     會被夾取成不同值再彈回來，實測會把主圖重設成全區間。需求是「跟著大盤
-     動」，單向就完全滿足。
+     不做雙向：兩張圖的資料長度差很多（大盤上萬根 vs 本圖數十根），把範圍推
+     回去會被夾取後彈回，實測會把主圖重設成全區間。 */
+  /* 滑鼠移到柱子上時顯示當天的加碼／減碼／淨額。
+     以日期對回原始資料，不從圖上的數值反推——圖上只有淨額，
+     買賣雙方的金額必須從資料取。 */
+  function attachTooltip(chart, series, stage, tip, rows) {
+    const byDate = new Map(rows.map((r) => [r.time, r]));
+    chart.subscribeCrosshairMove((param) => {
+      const key = param && param.time;
+      const row = key ? byDate.get(String(key)) : null;
+      if (!row || !param.point) { tip.style.display = "none"; return; }
+      const colour = row.net >= 0 ? UP : DOWN;
+      tip.innerHTML =
+        "<div><i>" + row.time + "</i></div>" +
+        "<div>淨額 <b style=\"color:" + colour + "\">" + fmt(row.net) + " 億</b></div>" +
+        "<div><i>加碼</i> " + row.buy.toFixed(1) + "　<i>減碼</i> " + row.sell.toFixed(1) + "</div>" +
+        "<div><i>納入比較 " + row.comparable + "/" + row.tracked + " 檔</i></div>";
+      tip.style.display = "block";
+      // 靠近右緣時往左翻，免得被裁掉
+      const width = tip.offsetWidth || 150;
+      const max = stage.clientWidth - width - 8;
+      tip.style.left = Math.max(8, Math.min(param.point.x + 14, max)) + "px";
+      tip.style.top = Math.max(6, Math.min(param.point.y - 10, stage.clientHeight - 90)) + "px";
+    });
+    stage.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  }
 
-     綁定要持續監看，不能只在建立時試一次：React 掛上 DOM 與建立圖表不在同
-     一步，切換分頁時還會整個重建，實測有時綁得到、有時綁不到。 */
   function keepSynced(mine) {
     let bound = null;
     const tick = () => {
@@ -207,9 +201,9 @@
       } catch (_) {}
     };
     tick();
-    const timer = window.setInterval(tick, 400);
+    window.addEventListener("popostock:chart", tick);
+    const timer = window.setInterval(tick, 500);
     window.addEventListener("beforeunload", () => window.clearInterval(timer));
-    return () => bound !== null;
   }
 
   let installed = false;
