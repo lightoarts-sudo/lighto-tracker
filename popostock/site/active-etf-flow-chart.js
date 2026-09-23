@@ -188,30 +188,6 @@
     window.addEventListener("beforeunload", () => window.clearInterval(timer));
   }
 
-  function keepSynced(mine) {
-    let bound = null;
-    const tick = () => {
-      const other = mainChart();
-      if (!other || other === bound) return;
-      bound = other;
-      let guard = false;
-      other.timeScale().subscribeVisibleLogicalRangeChange((range) => {
-        if (guard || !range) return;
-        guard = true;
-        try { mine.timeScale().setVisibleLogicalRange(range); } catch (_) {}
-        guard = false;
-      });
-      try {
-        const range = other.timeScale().getVisibleLogicalRange();
-        if (range) mine.timeScale().setVisibleLogicalRange(range);
-      } catch (_) {}
-    };
-    tick();
-    window.addEventListener("popostock:chart", tick);
-    const timer = window.setInterval(tick, 500);
-    window.addEventListener("beforeunload", () => window.clearInterval(timer));
-  }
-
   let installed = false;
 
   function attempt(data) {
