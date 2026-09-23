@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-09-23T12:05:38+08:00",
+  "generatedAt": "2026-09-23T18:06:04+08:00",
   "consensusDate": "2026-09-23",
   "thresholdTwd": 100000000,
   "stocks": [
     {
       "code": "1102",
       "name": "亞泥",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -130,10 +130,10 @@
     {
       "code": "1210",
       "name": "大成長城企業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -198,10 +198,10 @@
     {
       "code": "1215",
       "name": "卜蜂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-10",
@@ -237,10 +237,10 @@
     {
       "code": "1216",
       "name": "統一",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -447,10 +447,10 @@
     {
       "code": "1229",
       "name": "聯華實業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -585,10 +585,10 @@
     {
       "code": "1301",
       "name": "台塑",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -763,10 +763,10 @@
     {
       "code": "1303",
       "name": "南亞",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -1517,16 +1517,42 @@
               "amountTwd": 8435000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 1180,
+          "amountTwd": 270220000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 27,
+              "amountTwd": 6183000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 1058,
+              "amountTwd": 242282000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 95,
+              "amountTwd": 21755000
+            }
+          ]
         }
       ]
     },
     {
       "code": "1319",
       "name": "東陽實業廠",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -1576,10 +1602,10 @@
     {
       "code": "1326",
       "name": "台灣化學纖維",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1734,10 +1760,10 @@
     {
       "code": "1402",
       "name": "遠東新",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1858,10 +1884,10 @@
     {
       "code": "1409",
       "name": "新纖",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -1954,10 +1980,10 @@
     {
       "code": "1419",
       "name": "新紡",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -2022,10 +2048,10 @@
     {
       "code": "1477",
       "name": "MAKALOT INDUSTRIAL CO LTD ORD TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -2202,10 +2228,10 @@
     {
       "code": "1504",
       "name": "東元",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -2270,10 +2296,10 @@
     {
       "code": "1513",
       "name": "中興電工",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -2324,10 +2350,10 @@
     {
       "code": "1519",
       "name": "華城",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -2364,10 +2390,10 @@
     {
       "code": "1537",
       "name": "廣隆",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-17",
@@ -2432,10 +2458,10 @@
     {
       "code": "1560",
       "name": "中砂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -2684,6 +2710,20 @@
               "amountTwd": 13327500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 93,
+          "amountTwd": 90163500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 93,
+              "amountTwd": 90163500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -2852,16 +2892,30 @@
               "amountTwd": 11334000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 9695000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 10,
+              "amountTwd": 9695000
+            }
+          ]
         }
       ]
     },
     {
       "code": "1590",
       "name": "亞德客-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -3064,10 +3118,10 @@
     {
       "code": "1714",
       "name": "和桐",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -3146,10 +3200,10 @@
     {
       "code": "1717",
       "name": "長興",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-31",
@@ -3348,16 +3402,30 @@
               "amountTwd": 121280000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 600,
+          "amountTwd": 42930000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 600,
+              "amountTwd": 42930000
+            }
+          ]
         }
       ]
     },
     {
       "code": "1736",
       "name": "喬山健康",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -3422,10 +3490,10 @@
     {
       "code": "1785",
       "name": "光洋科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -3580,10 +3648,10 @@
     {
       "code": "1795",
       "name": "美時製藥",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -3690,10 +3758,10 @@
     {
       "code": "1802",
       "name": "台灣玻璃工業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -3757,10 +3825,10 @@
     {
       "code": "1808",
       "name": "潤隆",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 235,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 236,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -3825,10 +3893,10 @@
     {
       "code": "1815",
       "name": "富喬",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -3935,10 +4003,10 @@
     {
       "code": "1907",
       "name": "永豐餘",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4031,10 +4099,10 @@
     {
       "code": "2006",
       "name": "東和鋼鐵",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4091,6 +4159,20 @@
               "amountTwd": 9834000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 628,
+          "amountTwd": 54165000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 628,
+              "amountTwd": 54165000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -4141,10 +4223,10 @@
     {
       "code": "2015",
       "name": "豐興",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -4223,10 +4305,10 @@
     {
       "code": "2027",
       "name": "大成鋼",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -4401,6 +4483,20 @@
               "amountTwd": 5166000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 416,
+          "amountTwd": 19375200,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 416,
+              "amountTwd": 19375200
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -4533,10 +4629,10 @@
     {
       "code": "2049",
       "name": "上銀",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -4719,10 +4815,10 @@
     {
       "code": "2059",
       "name": "川湖",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-08",
@@ -5685,16 +5781,42 @@
               "amountTwd": 25975000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 20,
+          "amountTwd": 250450000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 2,
+              "amountTwd": 25045000
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 10,
+              "amountTwd": 125225000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 8,
+              "amountTwd": 100180000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2105",
       "name": "正新",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -5787,10 +5909,10 @@
     {
       "code": "2201",
       "name": "裕隆汽車",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -5883,10 +6005,10 @@
     {
       "code": "2204",
       "name": "中華",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -6007,10 +6129,10 @@
     {
       "code": "2206",
       "name": "三陽工業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -6075,10 +6197,10 @@
     {
       "code": "2301",
       "name": "光寶科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -6317,6 +6439,20 @@
               "amountTwd": 5590000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 80,
+          "amountTwd": 22760000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 80,
+              "amountTwd": 22760000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -6499,16 +6635,30 @@
               "amountTwd": 16892500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 46,
+          "amountTwd": 13087000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 46,
+              "amountTwd": 13087000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2303",
       "name": "聯電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -7090,9 +7240,9 @@
         },
         {
           "date": "2026-09-22",
-          "etfCount": 3,
-          "lots": 210,
-          "amountTwd": 34492500,
+          "etfCount": 4,
+          "lots": 1410,
+          "amountTwd": 231592500,
           "etfs": [
             {
               "code": "00401A",
@@ -7107,10 +7257,30 @@
               "amountTwd": 16425000
             },
             {
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lots": 1200,
+              "amountTwd": 197100000
+            },
+            {
               "code": "00994A",
               "name": "主動第一金台股優",
               "lots": 50,
               "amountTwd": 8212500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 638,
+          "amountTwd": 102399000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 638,
+              "amountTwd": 102399000
             }
           ]
         }
@@ -7863,16 +8033,30 @@
               "amountTwd": 7227000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 35,
+          "amountTwd": 5617500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 35,
+              "amountTwd": 5617500
+            }
+          ]
         }
       ]
     },
     {
       "code": "2308",
       "name": "台達電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -9293,16 +9477,30 @@
               "amountTwd": 30920000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": 24765000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 13,
+              "amountTwd": 24765000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2313",
       "name": "華通",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -9541,16 +9739,30 @@
               "amountTwd": 6765000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 55,
+          "amountTwd": 12292500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 55,
+              "amountTwd": 12292500
+            }
+          ]
         }
       ]
     },
     {
       "code": "2316",
       "name": "楠梓電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -9685,10 +9897,10 @@
     {
       "code": "2317",
       "name": "鴻海",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -10049,10 +10261,10 @@
     {
       "code": "2324",
       "name": "仁寶",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -10117,10 +10329,10 @@
     {
       "code": "2327",
       "name": "國巨",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -10569,6 +10781,20 @@
               "name": "主動統一台股增長",
               "lots": 120,
               "amountTwd": 69240000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 202,
+          "amountTwd": 118271000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 202,
+              "amountTwd": 118271000
             }
           ]
         }
@@ -11237,16 +11463,36 @@
               "amountTwd": 25965000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 835,
+          "amountTwd": 488892500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 35,
+              "amountTwd": 20492500
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 800,
+              "amountTwd": 468400000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2330",
       "name": "台積電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -12043,6 +12289,26 @@
               "name": "主動中信台灣收益",
               "lots": 43,
               "amountTwd": 105995000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 51,
+          "amountTwd": 126990000,
+          "etfs": [
+            {
+              "code": "00406A",
+              "name": "主動中信台灣收益",
+              "lots": 40,
+              "amountTwd": 99600000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 11,
+              "amountTwd": 27390000
             }
           ]
         }
@@ -12864,9 +13130,9 @@
         },
         {
           "date": "2026-09-22",
-          "etfCount": 5,
-          "lots": 262,
-          "amountTwd": 651070000,
+          "etfCount": 6,
+          "lots": 462,
+          "amountTwd": 1148070000,
           "etfs": [
             {
               "code": "00403A",
@@ -12893,10 +13159,36 @@
               "amountTwd": 4970000
             },
             {
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lots": 200,
+              "amountTwd": 497000000
+            },
+            {
               "code": "00994A",
               "name": "主動第一金台股優",
               "lots": 16,
               "amountTwd": 39760000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 1033,
+          "amountTwd": 2572170000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 1000,
+              "amountTwd": 2490000000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 33,
+              "amountTwd": 82170000
             }
           ]
         }
@@ -12905,10 +13197,10 @@
     {
       "code": "2337",
       "name": "旺宏",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -13225,16 +13517,30 @@
               "amountTwd": 124125750
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 637,
+          "amountTwd": 77236250,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 637,
+              "amountTwd": 77236250
+            }
+          ]
         }
       ]
     },
     {
       "code": "2344",
       "name": "華邦電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -13919,16 +14225,36 @@
               "amountTwd": 1579500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 39,
+          "amountTwd": 6805500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 7,
+              "amountTwd": 1221500
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 32,
+              "amountTwd": 5584000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2345",
       "name": "智邦",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -15185,16 +15511,48 @@
               "amountTwd": 28500000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 4,
+          "lots": 231,
+          "amountTwd": 438900000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 160,
+              "amountTwd": 304000000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 12,
+              "amountTwd": 22800000
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 50,
+              "amountTwd": 95000000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 9,
+              "amountTwd": 17100000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2347",
       "name": "聯強國際",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -15367,6 +15725,20 @@
               "name": "主動聯博動能50",
               "lots": 46,
               "amountTwd": 4112400
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 17,
+          "amountTwd": 1574200,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 17,
+              "amountTwd": 1574200
             }
           ]
         }
@@ -15571,10 +15943,10 @@
     {
       "code": "2351",
       "name": "順德",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-13",
@@ -15791,10 +16163,10 @@
     {
       "code": "2353",
       "name": "宏碁",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -15859,10 +16231,10 @@
     {
       "code": "2356",
       "name": "英業達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -15898,10 +16270,10 @@
     {
       "code": "2357",
       "name": "華碩",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -16204,10 +16576,10 @@
     {
       "code": "2360",
       "name": "致茂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -16712,6 +17084,20 @@
               "name": "主動第一金台股優",
               "lots": 4,
               "amountTwd": 9660000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 14,
+          "amountTwd": 33425000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 14,
+              "amountTwd": 33425000
             }
           ]
         }
@@ -17226,16 +17612,42 @@
               "amountTwd": 22005000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 236,
+          "amountTwd": 563450000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 210,
+              "amountTwd": 501375000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 7,
+              "amountTwd": 16712500
+            },
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lots": 19,
+              "amountTwd": 45362500
+            }
+          ]
         }
       ]
     },
     {
       "code": "2368",
       "name": "金像電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -17548,6 +17960,20 @@
               "name": "主動野村臺灣高息",
               "lots": 15,
               "amountTwd": 15750000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 300,
+          "amountTwd": 325500000,
+          "etfs": [
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 300,
+              "amountTwd": 325500000
             }
           ]
         }
@@ -18098,16 +18524,36 @@
               "amountTwd": 6300000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 205,
+          "amountTwd": 222425000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 5425000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 200,
+              "amountTwd": 217000000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2371",
       "name": "大同",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -18200,10 +18646,10 @@
     {
       "code": "2375",
       "name": "凱美",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -18268,10 +18714,10 @@
     {
       "code": "2376",
       "name": "技嘉",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -18816,10 +19262,10 @@
     {
       "code": "2377",
       "name": "微星",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -19148,10 +19594,10 @@
     {
       "code": "2379",
       "name": "瑞昱",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -19398,16 +19844,30 @@
               "amountTwd": 2265000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 2319000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 3,
+              "amountTwd": 2319000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2382",
       "name": "廣達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -19758,10 +20218,10 @@
     {
       "code": "2383",
       "name": "台光電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -20608,6 +21068,20 @@
               "amountTwd": 19910000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 9970000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 2,
+              "amountTwd": 9970000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -21258,16 +21732,36 @@
               "amountTwd": 54752500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 12,
+          "amountTwd": 59820000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 9,
+              "amountTwd": 44865000
+            },
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lots": 3,
+              "amountTwd": 14955000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2385",
       "name": "群光",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -21360,10 +21854,10 @@
     {
       "code": "2393",
       "name": "億光電子工業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -21512,16 +22006,30 @@
               "amountTwd": 13791600
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 245,
+          "amountTwd": 15422750,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 245,
+              "amountTwd": 15422750
+            }
+          ]
         }
       ]
     },
     {
       "code": "2395",
       "name": "研華",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -21754,6 +22262,20 @@
               "name": "主動野村台灣50",
               "lots": 38,
               "amountTwd": 26600000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 76,
+          "amountTwd": 53808000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 76,
+              "amountTwd": 53808000
             }
           ]
         }
@@ -22060,16 +22582,36 @@
               "amountTwd": 89586000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 389,
+          "amountTwd": 275412000,
+          "etfs": [
+            {
+              "code": "00982A",
+              "name": "主動群益台灣強棒",
+              "lots": 326,
+              "amountTwd": 230808000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 63,
+              "amountTwd": 44604000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2402",
       "name": "毅嘉科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -22091,10 +22633,10 @@
     {
       "code": "2404",
       "name": "漢唐",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -22343,16 +22885,30 @@
               "amountTwd": 36576000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 249,
+          "amountTwd": 297555000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 249,
+              "amountTwd": 297555000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2408",
       "name": "南亞科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -22751,6 +23307,20 @@
               "name": "主動第一金台股優",
               "lots": 80,
               "amountTwd": 41320000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 800,
+          "amountTwd": 415600000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 800,
+              "amountTwd": 415600000
             }
           ]
         }
@@ -23155,16 +23725,42 @@
               "amountTwd": 10804500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 369,
+          "amountTwd": 191695500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 17,
+              "amountTwd": 8831500
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 300,
+              "amountTwd": 155850000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 52,
+              "amountTwd": 27014000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2409",
       "name": "友達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -23257,10 +23853,10 @@
     {
       "code": "2412",
       "name": "中華電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -23405,6 +24001,20 @@
               "name": "主動野村台灣50",
               "lots": 152,
               "amountTwd": 21888000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 319,
+          "amountTwd": 46255000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 319,
+              "amountTwd": 46255000
             }
           ]
         }
@@ -23677,16 +24287,30 @@
               "amountTwd": 432000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 435000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 3,
+              "amountTwd": 435000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2428",
       "name": "興勤",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -23883,10 +24507,10 @@
     {
       "code": "2436",
       "name": "偉詮電子",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-09",
@@ -23965,10 +24589,10 @@
     {
       "code": "2439",
       "name": "美律實業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -24046,11 +24670,11 @@
     },
     {
       "code": "2441",
-      "name": "超豐電子",
-      "sourceDate": "2026-09-22",
+      "name": "超豐",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -24269,16 +24893,30 @@
               "amountTwd": 82818000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 888,
+          "amountTwd": 113442000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 888,
+              "amountTwd": 113442000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2449",
       "name": "京元電子",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-16",
@@ -24831,16 +25469,30 @@
               "amountTwd": 1959312
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 134,
+          "amountTwd": 41808000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 134,
+              "amountTwd": 41808000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2451",
       "name": "創見",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -24983,16 +25635,30 @@
               "amountTwd": 3711500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 2860000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 10,
+              "amountTwd": 2860000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2454",
       "name": "聯發科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -25891,6 +26557,20 @@
               "amountTwd": 5846500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 36417500,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 7,
+              "amountTwd": 36417500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -26491,16 +27171,42 @@
               "amountTwd": 69095000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 41,
+          "amountTwd": 213302500,
+          "etfs": [
+            {
+              "code": "00400A",
+              "name": "主動國泰動能高息",
+              "lots": 28,
+              "amountTwd": 145670000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 11,
+              "amountTwd": 57227500
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 2,
+              "amountTwd": 10405000
+            }
+          ]
         }
       ]
     },
     {
       "code": "2455",
       "name": "全新",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -26903,10 +27609,10 @@
     {
       "code": "2458",
       "name": "義隆電子",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -27041,10 +27747,10 @@
     {
       "code": "2464",
       "name": "盟立",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -27137,10 +27843,10 @@
     {
       "code": "2467",
       "name": "志聖",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -27463,10 +28169,10 @@
     {
       "code": "2472",
       "name": "立隆電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -27821,10 +28527,10 @@
     {
       "code": "2474",
       "name": "可成",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -27903,10 +28609,10 @@
     {
       "code": "2476",
       "name": "鉅祥",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -28097,10 +28803,10 @@
     {
       "code": "2478",
       "name": "大毅",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -28291,10 +28997,10 @@
     {
       "code": "2481",
       "name": "強茂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -28559,10 +29265,10 @@
     {
       "code": "2486",
       "name": "一詮",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -28722,10 +29428,10 @@
     {
       "code": "2492",
       "name": "華新科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -28762,10 +29468,10 @@
     {
       "code": "2501",
       "name": "國建",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -28830,10 +29536,10 @@
     {
       "code": "2520",
       "name": "冠德",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -28898,10 +29604,10 @@
     {
       "code": "2535",
       "name": "達工",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -28966,10 +29672,10 @@
     {
       "code": "2542",
       "name": "興富發建設",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -29174,10 +29880,10 @@
     {
       "code": "2546",
       "name": "根基",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -29256,10 +29962,10 @@
     {
       "code": "2603",
       "name": "長榮",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -29414,6 +30120,20 @@
               "amountTwd": 1405500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 121,
+          "amountTwd": 29161000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 121,
+              "amountTwd": 29161000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -29498,10 +30218,10 @@
     {
       "code": "2606",
       "name": "裕民",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -29514,6 +30234,20 @@
               "name": "主動安聯台灣高息",
               "lots": 8,
               "amountTwd": 512800
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 446,
+          "amountTwd": 34230500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 446,
+              "amountTwd": 34230500
             }
           ]
         }
@@ -29580,10 +30314,10 @@
     {
       "code": "2610",
       "name": "華航",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -29690,10 +30424,10 @@
     {
       "code": "2615",
       "name": "WAN HAI LINES LIMITED",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -29822,16 +30556,30 @@
               "amountTwd": 7906000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 53,
+          "amountTwd": 6121500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 53,
+              "amountTwd": 6121500
+            }
+          ]
         }
       ]
     },
     {
       "code": "2618",
       "name": "長榮航",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -29948,6 +30696,26 @@
               "name": "主動野村臺灣高息",
               "lots": 1143,
               "amountTwd": 48148875
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 1094,
+          "amountTwd": 46850550,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 429,
+              "amountTwd": 18371925
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 665,
+              "amountTwd": 28478625
             }
           ]
         }
@@ -30118,10 +30886,10 @@
     {
       "code": "2633",
       "name": "台灣高鐵",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -30228,10 +30996,10 @@
     {
       "code": "2634",
       "name": "漢翔公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -30296,10 +31064,10 @@
     {
       "code": "2637",
       "name": "慧洋-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -30454,10 +31222,10 @@
     {
       "code": "2645",
       "name": "長榮航太",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -30508,10 +31276,10 @@
     {
       "code": "2646",
       "name": "星宇航空",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -30562,10 +31330,10 @@
     {
       "code": "2727",
       "name": "王品餐飲",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -30651,16 +31419,30 @@
               "amountTwd": 7288000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 43,
+          "amountTwd": 9857750,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 43,
+              "amountTwd": 9857750
+            }
+          ]
         }
       ]
     },
     {
       "code": "2801",
       "name": "彰銀",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -30825,10 +31607,10 @@
     {
       "code": "2812",
       "name": "台中銀",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -30907,10 +31689,10 @@
     {
       "code": "2834",
       "name": "台企",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -30989,10 +31771,10 @@
     {
       "code": "2845",
       "name": "遠東國際商業銀行股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -31133,10 +31915,10 @@
     {
       "code": "2850",
       "name": "新光產險",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -31201,10 +31983,10 @@
     {
       "code": "2851",
       "name": "CENTRAL REINSURANCE CO LTD ORD TWD 10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -31296,10 +32078,10 @@
     {
       "code": "2855",
       "name": "統一證券",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -31392,10 +32174,10 @@
     {
       "code": "2880",
       "name": "華南金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -31748,10 +32530,10 @@
     {
       "code": "2881",
       "name": "富邦金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -32084,10 +32866,10 @@
     {
       "code": "2882",
       "name": "國泰金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -32406,10 +33188,10 @@
     {
       "code": "2883",
       "name": "KGI FINANCIAL HOLDING CO LTD",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-09",
@@ -32750,10 +33532,10 @@
     {
       "code": "2884",
       "name": "E. SUN FINANCIAL HOLDING COMPANY LIMITED",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 241,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -32874,10 +33656,10 @@
     {
       "code": "2885",
       "name": "元大金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -33572,10 +34354,10 @@
     {
       "code": "2886",
       "name": "兆豐金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -34038,10 +34820,10 @@
     {
       "code": "2887",
       "name": "台新新光金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -34284,10 +35066,10 @@
     {
       "code": "2890",
       "name": "SINOPAC HOLDINGS COMPANY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -34688,10 +35470,10 @@
     {
       "code": "2891",
       "name": "中信金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -35106,10 +35888,10 @@
     {
       "code": "2892",
       "name": "第一金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -35396,10 +36178,10 @@
     {
       "code": "2897",
       "name": "王道銀行",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -35520,10 +36302,10 @@
     {
       "code": "2903",
       "name": "遠百",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -35588,10 +36370,10 @@
     {
       "code": "2912",
       "name": "PRESIDENT CHAIN STORE CORPORATION",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -35770,10 +36552,10 @@
     {
       "code": "3005",
       "name": "GETAC HOLDINGS CORPORATION ORD TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -35858,10 +36640,10 @@
     {
       "code": "3006",
       "name": "晶豪",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -35911,10 +36693,10 @@
     {
       "code": "3008",
       "name": "大立光",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -36577,6 +37359,20 @@
               "amountTwd": 26280000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 18915000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 3,
+              "amountTwd": 18915000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -36993,16 +37789,36 @@
               "amountTwd": 19710000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 5,
+          "amountTwd": 31525000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 2,
+              "amountTwd": 12610000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 3,
+              "amountTwd": 18915000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3014",
       "name": "聯陽半導體股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -37024,10 +37840,10 @@
     {
       "code": "3017",
       "name": "奇鋐",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -37894,6 +38710,32 @@
               "amountTwd": 24115000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 60,
+          "amountTwd": 210000000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 53,
+              "amountTwd": 185500000
+            },
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lots": 3,
+              "amountTwd": 10500000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 4,
+              "amountTwd": 14000000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -38327,15 +39169,35 @@
         },
         {
           "date": "2026-09-22",
-          "etfCount": 1,
-          "lots": 19,
-          "amountTwd": 65455000,
+          "etfCount": 2,
+          "lots": 28,
+          "amountTwd": 96460000,
           "etfs": [
             {
               "code": "00407A",
               "name": "主動凱基台灣",
               "lots": 19,
               "amountTwd": 65455000
+            },
+            {
+              "code": "00411A",
+              "name": "主動統一前沿科技",
+              "lots": 9,
+              "amountTwd": 31005000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 15,
+          "amountTwd": 52500000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 15,
+              "amountTwd": 52500000
             }
           ]
         }
@@ -38344,10 +39206,10 @@
     {
       "code": "3022",
       "name": "威強電工業電腦股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -38398,10 +39260,10 @@
     {
       "code": "3023",
       "name": "信邦電子",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -38564,10 +39426,10 @@
     {
       "code": "3026",
       "name": "禾伸堂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -38966,10 +39828,10 @@
     {
       "code": "3033",
       "name": "威健",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -39034,10 +39896,10 @@
     {
       "code": "3034",
       "name": "NOVATEK MICROELECTRONICS CORP LTD",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -39318,16 +40180,30 @@
               "amountTwd": 8370000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 12,
+          "amountTwd": 6618000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 12,
+              "amountTwd": 6618000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3036",
       "name": "文曄",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -39784,16 +40660,30 @@
               "amountTwd": 4985500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 312,
+          "amountTwd": 64272000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 312,
+              "amountTwd": 64272000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3037",
       "name": "欣興",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -40612,6 +41502,32 @@
               "amountTwd": 4108000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 248,
+          "amountTwd": 287060000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 187,
+              "amountTwd": 216452500
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 11,
+              "amountTwd": 12732500
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 50,
+              "amountTwd": 57875000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -41074,16 +41990,30 @@
               "amountTwd": 61187500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 43,
+          "amountTwd": 49772500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 43,
+              "amountTwd": 49772500
+            }
+          ]
         }
       ]
     },
     {
       "code": "3042",
       "name": "台灣晶技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -41218,16 +42148,30 @@
               "amountTwd": 21586500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 196,
+          "amountTwd": 37289000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 196,
+              "amountTwd": 37289000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3044",
       "name": "TRIPOD TECHNOLOGY CORPORATION TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -41438,16 +42382,30 @@
               "amountTwd": 7263750
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 36,
+          "amountTwd": 19296000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 36,
+              "amountTwd": 19296000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3045",
       "name": "台灣大",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -41768,10 +42726,10 @@
     {
       "code": "3081",
       "name": "聯亞",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-27",
@@ -42138,6 +43096,20 @@
               "amountTwd": 23100000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 9,
+          "amountTwd": 24435000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 9,
+              "amountTwd": 24435000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -42362,16 +43334,36 @@
               "amountTwd": 17325000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 32,
+          "amountTwd": 86880000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 13575000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 27,
+              "amountTwd": 73305000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3090",
       "name": "日電貿",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -42440,6 +43432,20 @@
               "name": "主動野村臺灣高息",
               "lots": 134,
               "amountTwd": 22277500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 102,
+          "amountTwd": 17034000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 102,
+              "amountTwd": 17034000
             }
           ]
         }
@@ -42562,10 +43568,10 @@
     {
       "code": "3105",
       "name": "穩懋",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -42788,10 +43794,10 @@
     {
       "code": "3131",
       "name": "弘塑",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -42934,6 +43940,20 @@
               "name": "主動安聯台灣",
               "lots": 2,
               "amountTwd": 4680000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 1,
+          "amountTwd": 2402500,
+          "etfs": [
+            {
+              "code": "00992A",
+              "name": "主動群益科技創新",
+              "lots": 1,
+              "amountTwd": 2402500
             }
           ]
         }
@@ -43144,16 +44164,36 @@
               "amountTwd": 9860000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 27,
+          "amountTwd": 64867500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 3,
+              "amountTwd": 7207500
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 24,
+              "amountTwd": 57660000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3135",
       "name": "凌航科技股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -43232,10 +44272,10 @@
     {
       "code": "3163",
       "name": "波若威",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-28",
@@ -43286,10 +44326,10 @@
     {
       "code": "3167",
       "name": "大量",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -43492,10 +44532,10 @@
     {
       "code": "3189",
       "name": "景碩",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -43970,6 +45010,20 @@
               "amountTwd": 124875000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 162,
+          "amountTwd": 146043000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 162,
+              "amountTwd": 146043000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -44124,10 +45178,10 @@
     {
       "code": "3211",
       "name": "順達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -44206,10 +45260,10 @@
     {
       "code": "3227",
       "name": "原相",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -44236,6 +45290,20 @@
               "name": "主動野村臺灣高息",
               "lots": 110,
               "amountTwd": 20377500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 129,
+          "amountTwd": 23897250,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 129,
+              "amountTwd": 23897250
             }
           ]
         }
@@ -44288,10 +45356,10 @@
     {
       "code": "3231",
       "name": "緯創",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -44974,16 +46042,42 @@
               "amountTwd": 8107000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 1149,
+          "amountTwd": 207969000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 35,
+              "amountTwd": 6335000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 1003,
+              "amountTwd": 181543000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 111,
+              "amountTwd": 20091000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3234",
       "name": "光環",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-03",
@@ -45034,10 +46128,10 @@
     {
       "code": "3260",
       "name": "威剛",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 241,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -45250,16 +46344,30 @@
               "amountTwd": 3108000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 2702000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 7,
+              "amountTwd": 2702000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3264",
       "name": "欣銓",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -45910,16 +47018,30 @@
               "amountTwd": 407772000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 559,
+          "amountTwd": 146458000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 559,
+              "amountTwd": 146458000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3265",
       "name": "台星科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -46082,10 +47204,10 @@
     {
       "code": "3293",
       "name": "鈊象",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -46216,6 +47338,20 @@
               "name": "主動野村臺灣高息",
               "lots": 39,
               "amountTwd": 28236000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 23,
+          "amountTwd": 16721000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 23,
+              "amountTwd": 16721000
             }
           ]
         }
@@ -46380,17 +47516,46 @@
               "amountTwd": 6516000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 7,
+          "amountTwd": 5089000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 7,
+              "amountTwd": 5089000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3324",
       "name": "雙鴻科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
-      "buySessions": [],
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 35,
+          "amountTwd": 55737500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 35,
+              "amountTwd": 55737500
+            }
+          ]
+        }
+      ],
       "sellSessions": [
         {
           "date": "2026-07-09",
@@ -46411,10 +47576,10 @@
     {
       "code": "3357",
       "name": "西北臺慶科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -46477,10 +47642,10 @@
     {
       "code": "3363",
       "name": "上詮",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -46643,10 +47808,10 @@
     {
       "code": "3374",
       "name": "精  材",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-31",
@@ -46711,10 +47876,10 @@
     {
       "code": "3376",
       "name": "新日興",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -46750,10 +47915,10 @@
     {
       "code": "3406",
       "name": "玉晶光",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-17",
@@ -46782,6 +47947,20 @@
               "amountTwd": 9770000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 29,
+          "amountTwd": 26767000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 29,
+              "amountTwd": 26767000
+            }
+          ]
         }
       ],
       "sellSessions": []
@@ -46789,10 +47968,10 @@
     {
       "code": "3443",
       "name": "創意",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -47271,6 +48450,20 @@
               "amountTwd": 8372500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 15,
+          "amountTwd": 125550000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 15,
+              "amountTwd": 125550000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -47535,16 +48728,42 @@
               "amountTwd": 58607500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 28,
+          "amountTwd": 234360000,
+          "etfs": [
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 20,
+              "amountTwd": 167400000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 41850000
+            },
+            {
+              "code": "00987A",
+              "name": "主動台新優勢成長",
+              "lots": 3,
+              "amountTwd": 25110000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3450",
       "name": "聯鈞",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-27",
@@ -47847,10 +49066,10 @@
     {
       "code": "3481",
       "name": "群創光電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -47997,10 +49216,10 @@
     {
       "code": "3491",
       "name": "昇達科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 241,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -48269,6 +49488,32 @@
               "amountTwd": 156560000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 31,
+          "amountTwd": 47507500,
+          "etfs": [
+            {
+              "code": "00987A",
+              "name": "主動台新優勢成長",
+              "lots": 11,
+              "amountTwd": 16857500
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 10,
+              "amountTwd": 15325000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 10,
+              "amountTwd": 15325000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -48387,16 +49632,30 @@
               "amountTwd": 18210000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 7662500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 7662500
+            }
+          ]
         }
       ]
     },
     {
       "code": "3529",
       "name": "力旺",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -48513,6 +49772,26 @@
               "name": "主動國泰動能高息",
               "lots": 10,
               "amountTwd": 30000000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 30,
+          "amountTwd": 95550000,
+          "etfs": [
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 3,
+              "amountTwd": 9555000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 27,
+              "amountTwd": 85995000
             }
           ]
         }
@@ -48685,16 +49964,30 @@
               "amountTwd": 6000000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 6370000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 2,
+              "amountTwd": 6370000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3532",
       "name": "台勝科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -48751,6 +50044,20 @@
               "amountTwd": 5540500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 70,
+          "amountTwd": 31167500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 70,
+              "amountTwd": 31167500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -48787,10 +50094,10 @@
     {
       "code": "3533",
       "name": "嘉澤",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -49097,10 +50404,10 @@
     {
       "code": "3583",
       "name": "辛耘",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -49601,10 +50908,10 @@
     {
       "code": "3592",
       "name": "瑞鼎",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -49711,10 +51018,10 @@
     {
       "code": "3596",
       "name": "智易科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -49763,12 +51070,37 @@
       ]
     },
     {
+      "code": "3605",
+      "name": "宏致",
+      "sourceDate": "2026-09-23",
+      "historyStart": "2025-09-23",
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
+      "buySessions": [
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 10,
+          "amountTwd": 1815000,
+          "etfs": [
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 10,
+              "amountTwd": 1815000
+            }
+          ]
+        }
+      ],
+      "sellSessions": []
+    },
+    {
       "code": "3617",
       "name": "碩天",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -49903,10 +51235,10 @@
     {
       "code": "3653",
       "name": "健策",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -50909,16 +52241,30 @@
               "amountTwd": 35490000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 30850000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 30850000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3661",
       "name": "世芯-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -51237,10 +52583,10 @@
     {
       "code": "3665",
       "name": "貿聯-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 241,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 242,
       "buySessions": [
         {
           "date": "2026-07-15",
@@ -52333,16 +53679,36 @@
               "amountTwd": 768360000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 24,
+          "amountTwd": 54960000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 8,
+              "amountTwd": 18320000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 16,
+              "amountTwd": 36640000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3680",
       "name": "家登精密工業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-09",
@@ -52378,10 +53744,10 @@
     {
       "code": "3693",
       "name": "營邦",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-29",
@@ -52446,10 +53812,10 @@
     {
       "code": "3702",
       "name": "大聯大",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -52970,16 +54336,36 @@
               "amountTwd": 134452500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 2051,
+          "amountTwd": 234839500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 359,
+              "amountTwd": 41105500
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 1692,
+              "amountTwd": 193734000
+            }
+          ]
         }
       ]
     },
     {
       "code": "3706",
       "name": "神達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -53108,16 +54494,30 @@
               "amountTwd": 88154400
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 1561,
+          "amountTwd": 123397050,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 1561,
+              "amountTwd": 123397050
+            }
+          ]
         }
       ]
     },
     {
       "code": "3711",
       "name": "日月光投控",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -53782,6 +55182,20 @@
               "amountTwd": 2101500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 76,
+          "amountTwd": 53200000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 76,
+              "amountTwd": 53200000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -54442,16 +55856,48 @@
               "amountTwd": 33624000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 4,
+          "lots": 2532,
+          "amountTwd": 1772400000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 999,
+              "amountTwd": 699300000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 38,
+              "amountTwd": 26600000
+            },
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 1345,
+              "amountTwd": 941500000
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 150,
+              "amountTwd": 105000000
+            }
+          ]
         }
       ]
     },
     {
       "code": "4123",
       "name": "晟德",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -54558,10 +56004,10 @@
     {
       "code": "4551",
       "name": "智伸科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -54612,10 +56058,10 @@
     {
       "code": "4583",
       "name": "台灣精銳",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -54637,10 +56083,10 @@
     {
       "code": "4746",
       "name": "台耀",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -54727,16 +56173,30 @@
               "amountTwd": 4440800
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 109,
+          "amountTwd": 5297400,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 109,
+              "amountTwd": 5297400
+            }
+          ]
         }
       ]
     },
     {
       "code": "4749",
       "name": "新應材",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -54758,10 +56218,10 @@
     {
       "code": "4763",
       "name": "濟南大自然新材料股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -54896,10 +56356,10 @@
     {
       "code": "4764",
       "name": "雙鍵",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -55006,10 +56466,10 @@
     {
       "code": "4904",
       "name": "遠傳",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -55188,6 +56648,26 @@
               "name": "主動野村臺灣高息",
               "lots": 201,
               "amountTwd": 21255750
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 394,
+          "amountTwd": 41665500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 237,
+              "amountTwd": 25062750
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 157,
+              "amountTwd": 16602750
             }
           ]
         }
@@ -55480,10 +56960,10 @@
     {
       "code": "4915",
       "name": "致伸科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -55547,10 +57027,10 @@
     {
       "code": "4919",
       "name": "新唐科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -55601,10 +57081,10 @@
     {
       "code": "4938",
       "name": "PEGATRON CORP ORD TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -55725,10 +57205,10 @@
     {
       "code": "4958",
       "name": "臻鼎-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -56607,16 +58087,36 @@
               "amountTwd": 10342500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 150,
+          "amountTwd": 71437500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 17,
+              "amountTwd": 8096250
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 133,
+              "amountTwd": 63341250
+            }
+          ]
         }
       ]
     },
     {
       "code": "4966",
       "name": "譜瑞-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -56785,10 +58285,10 @@
     {
       "code": "4967",
       "name": "十銓",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -56838,10 +58338,10 @@
     {
       "code": "4979",
       "name": "華星光",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-24",
@@ -57098,16 +58598,30 @@
               "amountTwd": 152799500
             }
           ]
+        },
+        {
+          "date": "2026-09-22",
+          "etfCount": 1,
+          "lots": 610,
+          "amountTwd": 378810000,
+          "etfs": [
+            {
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lots": 610,
+              "amountTwd": 378810000
+            }
+          ]
         }
       ]
     },
     {
       "code": "4991",
       "name": "環宇-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-12",
@@ -57200,16 +58714,30 @@
               "amountTwd": 73050000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 1050,
+          "amountTwd": 481425000,
+          "etfs": [
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 1050,
+              "amountTwd": 481425000
+            }
+          ]
         }
       ]
     },
     {
       "code": "5269",
       "name": "祥碩科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -57245,10 +58773,10 @@
     {
       "code": "5274",
       "name": "信驊",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -57827,6 +59355,20 @@
               "amountTwd": 76740000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 101000000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 5,
+              "amountTwd": 101000000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -58169,16 +59711,36 @@
               "amountTwd": 21212500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 26,
+          "amountTwd": 525200000,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 25,
+              "amountTwd": 505000000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 1,
+              "amountTwd": 20200000
+            }
+          ]
         }
       ]
     },
     {
       "code": "5288",
       "name": "豐祥-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -58243,10 +59805,10 @@
     {
       "code": "5289",
       "name": "宜鼎國際",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -58619,16 +60181,36 @@
               "amountTwd": 3937500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 52,
+          "amountTwd": 69420000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 2,
+              "amountTwd": 2670000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 50,
+              "amountTwd": 66750000
+            }
+          ]
         }
       ]
     },
     {
       "code": "5306",
       "name": "桂盟",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -58693,10 +60275,10 @@
     {
       "code": "5347",
       "name": "世界",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -58865,10 +60447,10 @@
     {
       "code": "5351",
       "name": "鈺創",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-06",
@@ -58947,10 +60529,10 @@
     {
       "code": "5425",
       "name": "台半",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -59127,10 +60709,10 @@
     {
       "code": "5434",
       "name": "崇越科技股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -59377,16 +60959,30 @@
               "amountTwd": 2156000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 1623000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 3,
+              "amountTwd": 1623000
+            }
+          ]
         }
       ]
     },
     {
       "code": "5439",
       "name": "高技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -59419,6 +61015,20 @@
               "name": "主動野村臺灣高息",
               "lots": 119,
               "amountTwd": 29869000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 85,
+          "amountTwd": 21590000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 85,
+              "amountTwd": 21590000
             }
           ]
         }
@@ -59637,10 +61247,10 @@
     {
       "code": "5483",
       "name": "中美晶",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -59919,10 +61529,10 @@
     {
       "code": "5534",
       "name": "長虹",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -60023,16 +61633,30 @@
               "amountTwd": 8871450
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 113,
+          "amountTwd": 8412850,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 113,
+              "amountTwd": 8412850
+            }
+          ]
         }
       ]
     },
     {
       "code": "5536",
       "name": "聖暉",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -60353,10 +61977,10 @@
     {
       "code": "5871",
       "name": "中租-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -60537,10 +62161,10 @@
     {
       "code": "5876",
       "name": "上海商銀",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-17",
@@ -60777,10 +62401,10 @@
     {
       "code": "5880",
       "name": "合庫金",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -60873,10 +62497,10 @@
     {
       "code": "5903",
       "name": "全家商店",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -60955,10 +62579,10 @@
     {
       "code": "5904",
       "name": "POYA CO LTD ORD TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 235,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 236,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -61055,6 +62679,20 @@
               "name": "主動野村臺灣高息",
               "lots": 139,
               "amountTwd": 9917650
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 69,
+          "amountTwd": 4909350,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 69,
+              "amountTwd": 4909350
             }
           ]
         }
@@ -61239,10 +62877,10 @@
     {
       "code": "6005",
       "name": "群益證券",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -61335,10 +62973,10 @@
     {
       "code": "6023",
       "name": "元大期貨",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -61403,10 +63041,10 @@
     {
       "code": "6121",
       "name": "新普科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -61433,6 +63071,20 @@
               "name": "主動野村臺灣高息",
               "lots": 97,
               "amountTwd": 36520500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 73,
+          "amountTwd": 27502750,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 73,
+              "amountTwd": 27502750
             }
           ]
         }
@@ -61527,10 +63179,10 @@
     {
       "code": "6138",
       "name": "茂達電子",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -61623,10 +63275,10 @@
     {
       "code": "6139",
       "name": "亞翔",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -62101,16 +63753,30 @@
               "amountTwd": 17928000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 165,
+          "amountTwd": 121275000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 165,
+              "amountTwd": 121275000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6147",
       "name": "頎邦",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -62521,16 +64187,30 @@
               "amountTwd": 56336250
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 265,
+          "amountTwd": 58366250,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 265,
+              "amountTwd": 58366250
+            }
+          ]
         }
       ]
     },
     {
       "code": "6173",
       "name": "信昌電陶",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -62608,10 +64288,10 @@
     {
       "code": "6176",
       "name": "瑞儀光電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 235,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 236,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -62662,10 +64342,10 @@
     {
       "code": "6177",
       "name": "達麗",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -62730,10 +64410,10 @@
     {
       "code": "6182",
       "name": "合晶",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -62826,10 +64506,10 @@
     {
       "code": "6187",
       "name": "萬潤",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -63480,16 +65160,36 @@
               "amountTwd": 16152500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 22,
+          "amountTwd": 26510000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 10,
+              "amountTwd": 12050000
+            },
+            {
+              "code": "00994A",
+              "name": "主動第一金台股優",
+              "lots": 12,
+              "amountTwd": 14460000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6196",
       "name": "帆宣系統科技股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -63848,10 +65548,10 @@
     {
       "code": "6197",
       "name": "佳必琪",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -63930,10 +65630,10 @@
     {
       "code": "6202",
       "name": "盛群",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -63998,10 +65698,10 @@
     {
       "code": "6206",
       "name": "飛捷科技股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-09",
@@ -64080,10 +65780,10 @@
     {
       "code": "6213",
       "name": "聯茂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -64302,6 +66002,20 @@
               "amountTwd": 51300000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 95,
+          "amountTwd": 50920000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 95,
+              "amountTwd": 50920000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -64470,10 +66184,10 @@
     {
       "code": "6214",
       "name": "精誠",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -64636,10 +66350,10 @@
     {
       "code": "6223",
       "name": "旺矽",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -65354,6 +67068,32 @@
               "amountTwd": 27062500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 82,
+          "amountTwd": 449360000,
+          "etfs": [
+            {
+              "code": "00992A",
+              "name": "主動群益科技創新",
+              "lots": 76,
+              "amountTwd": 416480000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 3,
+              "amountTwd": 16440000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 3,
+              "amountTwd": 16440000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -65776,16 +67516,36 @@
               "amountTwd": 811875000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 25,
+          "amountTwd": 137000000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 5,
+              "amountTwd": 27400000
+            },
+            {
+              "code": "00991A",
+              "name": "主動復華未來50",
+              "lots": 20,
+              "amountTwd": 109600000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6239",
       "name": "力成",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -66158,16 +67918,36 @@
               "amountTwd": 532504000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 212,
+          "amountTwd": 61851000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 165,
+              "amountTwd": 48138750
+            },
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lots": 47,
+              "amountTwd": 13712250
+            }
+          ]
         }
       ]
     },
     {
       "code": "6257",
       "name": "矽格",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -66584,10 +68364,10 @@
     {
       "code": "6271",
       "name": "同欣電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-10",
@@ -66694,10 +68474,10 @@
     {
       "code": "6274",
       "name": "台燿",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -67208,6 +68988,26 @@
               "amountTwd": 26145000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 251,
+          "amountTwd": 364577500,
+          "etfs": [
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 240,
+              "amountTwd": 348600000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 11,
+              "amountTwd": 15977500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -67678,16 +69478,42 @@
               "amountTwd": 39217500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 70,
+          "amountTwd": 101675000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 21,
+              "amountTwd": 30502500
+            },
+            {
+              "code": "00410A",
+              "name": "主動永豐科技趨勢",
+              "lots": 25,
+              "amountTwd": 36312500
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 24,
+              "amountTwd": 34860000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6278",
       "name": "台表科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -68002,10 +69828,10 @@
     {
       "code": "6282",
       "name": "康舒",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -68084,10 +69910,10 @@
     {
       "code": "6285",
       "name": "啟碁",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -68326,10 +70152,10 @@
     {
       "code": "6291",
       "name": "沛亨",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -68365,10 +70191,10 @@
     {
       "code": "6415",
       "name": "矽力*-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -68711,16 +70537,30 @@
               "amountTwd": 6780000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 93,
+          "amountTwd": 40083000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 93,
+              "amountTwd": 40083000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6426",
       "name": "統新",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -68771,10 +70611,10 @@
     {
       "code": "6435",
       "name": "大中積體電路",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -68867,10 +70707,10 @@
     {
       "code": "6438",
       "name": "迅得機械",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -68906,10 +70746,10 @@
     {
       "code": "6442",
       "name": "光聖",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -69098,10 +70938,10 @@
     {
       "code": "6446",
       "name": "藥華藥",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -69422,16 +71262,30 @@
               "amountTwd": 3457500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 2,
+          "amountTwd": 2355000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 2,
+              "amountTwd": 2355000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6469",
       "name": "大樹醫藥",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -69524,10 +71378,10 @@
     {
       "code": "6472",
       "name": "保瑞",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-20",
@@ -69591,10 +71445,10 @@
     {
       "code": "6488",
       "name": "環球晶",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -70297,10 +72151,10 @@
     {
       "code": "6491",
       "name": "晶碩光學",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -70435,10 +72289,10 @@
     {
       "code": "6505",
       "name": "台塑化",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-10",
@@ -70479,6 +72333,20 @@
               "name": "主動國泰動能高息",
               "lots": 1594,
               "amountTwd": 133896000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 339,
+          "amountTwd": 29662500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 339,
+              "amountTwd": 29662500
             }
           ]
         }
@@ -70545,10 +72413,10 @@
     {
       "code": "6510",
       "name": "精測",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -70929,6 +72797,20 @@
               "amountTwd": 35225000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 17900000,
+          "etfs": [
+            {
+              "code": "00996A",
+              "name": "主動兆豐台灣豐收",
+              "lots": 5,
+              "amountTwd": 17900000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -71113,16 +72995,42 @@
               "amountTwd": 166405000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 166,
+          "amountTwd": 594280000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 4,
+              "amountTwd": 14320000
+            },
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 144,
+              "amountTwd": 515520000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 18,
+              "amountTwd": 64440000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6515",
       "name": "穎崴",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-07",
@@ -71457,6 +73365,20 @@
               "name": "主動野村臺灣高息",
               "lots": 5,
               "amountTwd": 28562500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 17677500,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 3,
+              "amountTwd": 17677500
             }
           ]
         }
@@ -71884,9 +73806,9 @@
         },
         {
           "date": "2026-09-22",
-          "etfCount": 2,
-          "lots": 3.5,
-          "amountTwd": 19993750,
+          "etfCount": 3,
+          "lots": 63.5,
+          "amountTwd": 362743750,
           "etfs": [
             {
               "code": "00408A",
@@ -71895,10 +73817,30 @@
               "amountTwd": 8568750
             },
             {
+              "code": "00988A",
+              "name": "主動統一全球創新",
+              "lots": 60,
+              "amountTwd": 342750000
+            },
+            {
               "code": "00994A",
               "name": "主動第一金台股優",
               "lots": 2,
               "amountTwd": 11425000
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 32,
+          "amountTwd": 188560000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 32,
+              "amountTwd": 188560000
             }
           ]
         }
@@ -71907,10 +73849,10 @@
     {
       "code": "6526",
       "name": "達發",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -71980,10 +73922,10 @@
     {
       "code": "6531",
       "name": "愛普",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -72600,16 +74542,30 @@
               "amountTwd": 3824000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 3,
+          "amountTwd": 2908500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 3,
+              "amountTwd": 2908500
+            }
+          ]
         }
       ]
     },
     {
       "code": "6548",
       "name": "長科*",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -72688,10 +74644,10 @@
     {
       "code": "6584",
       "name": "南俊國際",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -72862,16 +74818,30 @@
               "amountTwd": 48285000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 18,
+          "amountTwd": 9873000,
+          "etfs": [
+            {
+              "code": "00992A",
+              "name": "主動群益科技創新",
+              "lots": 18,
+              "amountTwd": 9873000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6592",
       "name": "和潤企業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -72964,10 +74934,10 @@
     {
       "code": "6640",
       "name": "均華",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-31",
@@ -73087,10 +75057,10 @@
     {
       "code": "6669",
       "name": "緯穎",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -73875,6 +75845,26 @@
               "amountTwd": 57645000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 125,
+          "amountTwd": 264687500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 106,
+              "amountTwd": 224455000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 19,
+              "amountTwd": 40232500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -74489,16 +76479,42 @@
               "amountTwd": 256200000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 485,
+          "amountTwd": 1026987500,
+          "etfs": [
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 40,
+              "amountTwd": 84700000
+            },
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 1,
+              "amountTwd": 2117500
+            },
+            {
+              "code": "00981A",
+              "name": "主動統一台股增長",
+              "lots": 444,
+              "amountTwd": 940170000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6670",
       "name": "復盛應用",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -74703,10 +76719,10 @@
     {
       "code": "6672",
       "name": "騰輝電子-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -74855,10 +76871,10 @@
     {
       "code": "6683",
       "name": "雍智科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-07",
@@ -74959,16 +76975,30 @@
               "amountTwd": 29125000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 18,
+          "amountTwd": 28305000,
+          "etfs": [
+            {
+              "code": "00987A",
+              "name": "主動台新優勢成長",
+              "lots": 18,
+              "amountTwd": 28305000
+            }
+          ]
         }
       ]
     },
     {
       "code": "6691",
       "name": "洋基工程股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -75033,10 +77063,10 @@
     {
       "code": "6715",
       "name": "嘉  基",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -75058,10 +77088,10 @@
     {
       "code": "6739",
       "name": "竹陞科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -75097,10 +77127,10 @@
     {
       "code": "6768",
       "name": "志強國際企業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -75248,10 +77278,10 @@
     {
       "code": "6770",
       "name": "力積電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -75358,10 +77388,10 @@
     {
       "code": "6782",
       "name": "視陽光學",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -75439,10 +77469,10 @@
     {
       "code": "6805",
       "name": "富世達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -75847,6 +77877,20 @@
               "amountTwd": 100700000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 50,
+          "amountTwd": 130625000,
+          "etfs": [
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 50,
+              "amountTwd": 130625000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -76063,16 +78107,42 @@
               "amountTwd": 25175000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 3,
+          "lots": 67,
+          "amountTwd": 175037500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 8,
+              "amountTwd": 20900000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 50,
+              "amountTwd": 130625000
+            },
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 9,
+              "amountTwd": 23512500
+            }
+          ]
         }
       ]
     },
     {
       "code": "6830",
       "name": "汎銓",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-24",
@@ -76136,10 +78206,10 @@
     {
       "code": "6831",
       "name": "邁科",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-11-25",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 201,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 202,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -76368,10 +78438,10 @@
     {
       "code": "6890",
       "name": "來億-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -76422,10 +78492,10 @@
     {
       "code": "6944",
       "name": "MEGA UNION TECHNOLOGY INC ORD TWD10.000000000",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-23",
@@ -76566,10 +78636,10 @@
     {
       "code": "7734",
       "name": "印能科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -76712,16 +78782,30 @@
               "amountTwd": 39375000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 25,
+          "amountTwd": 64500000,
+          "etfs": [
+            {
+              "code": "00405A",
+              "name": "主動富邦台灣龍耀",
+              "lots": 25,
+              "amountTwd": 64500000
+            }
+          ]
         }
       ]
     },
     {
       "code": "7750",
       "name": "新代",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -76870,10 +78954,10 @@
     {
       "code": "7751",
       "name": "竑騰",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-24",
@@ -77106,10 +79190,10 @@
     {
       "code": "7769",
       "name": "鴻勁",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-11-27",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 199,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 200,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -77552,6 +79636,20 @@
               "amountTwd": 30375000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 5,
+          "amountTwd": 30412500,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 5,
+              "amountTwd": 30412500
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -77986,16 +80084,36 @@
               "amountTwd": 37350000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 63,
+          "amountTwd": 383197500,
+          "etfs": [
+            {
+              "code": "00400A",
+              "name": "主動國泰動能高息",
+              "lots": 13,
+              "amountTwd": 79072500
+            },
+            {
+              "code": "00403A",
+              "name": "主動統一升級50",
+              "lots": 50,
+              "amountTwd": 304125000
+            }
+          ]
         }
       ]
     },
     {
       "code": "7780",
       "name": "大研生醫*",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 236,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 237,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -78060,10 +80178,10 @@
     {
       "code": "7828",
       "name": "INNOSTAR SERVICE INC ORD TWD 10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2026-04-22",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 107,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 108,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -78140,12 +80258,22 @@
       ]
     },
     {
+      "code": "7856",
+      "name": "HERMES TESTING SOLUTIONS INC ORD TWD 10",
+      "sourceDate": "2026-09-23",
+      "historyStart": "2026-09-22",
+      "historyEnd": "2026-09-23",
+      "historyPoints": 2,
+      "buySessions": [],
+      "sellSessions": []
+    },
+    {
       "code": "8016",
       "name": "矽創",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-14",
@@ -78404,10 +80532,10 @@
     {
       "code": "8021",
       "name": "尖點",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -78638,10 +80766,10 @@
     {
       "code": "8028",
       "name": "昇陽半導體",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -78706,10 +80834,10 @@
     {
       "code": "8039",
       "name": "台虹科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-04",
@@ -78774,10 +80902,10 @@
     {
       "code": "8046",
       "name": "南電",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-06",
@@ -79354,6 +81482,20 @@
               "amountTwd": 50370000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 66,
+          "amountTwd": 78375000,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 66,
+              "amountTwd": 78375000
+            }
+          ]
         }
       ],
       "sellSessions": [
@@ -79754,16 +81896,30 @@
               "amountTwd": 19422500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 13,
+          "amountTwd": 15437500,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 13,
+              "amountTwd": 15437500
+            }
+          ]
         }
       ]
     },
     {
       "code": "8064",
       "name": "東捷",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -79814,10 +81970,10 @@
     {
       "code": "8069",
       "name": "元太科技工業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -79839,10 +81995,10 @@
     {
       "code": "8070",
       "name": "長華",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-18",
@@ -79977,10 +82133,10 @@
     {
       "code": "8081",
       "name": "致新科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -80087,10 +82243,10 @@
     {
       "code": "8096",
       "name": "擎亞科技",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -80126,10 +82282,10 @@
     {
       "code": "8150",
       "name": "南茂",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -80214,10 +82370,10 @@
     {
       "code": "8155",
       "name": "博智",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -80253,10 +82409,10 @@
     {
       "code": "8210",
       "name": "勤誠",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -80737,16 +82893,30 @@
               "amountTwd": 185115000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 75,
+          "amountTwd": 67612500,
+          "etfs": [
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 75,
+              "amountTwd": 67612500
+            }
+          ]
         }
       ]
     },
     {
       "code": "8261",
       "name": "富鼎",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -80782,10 +82952,10 @@
     {
       "code": "8271",
       "name": "宇瞻科技股份有限公司",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -80906,10 +83076,10 @@
     {
       "code": "8299",
       "name": "群聯",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -81368,16 +83538,36 @@
               "amountTwd": 4405000
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 15,
+          "amountTwd": 34125000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 1,
+              "amountTwd": 2275000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 14,
+              "amountTwd": 31850000
+            }
+          ]
         }
       ]
     },
     {
       "code": "8358",
       "name": "金居",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -81732,10 +83922,10 @@
     {
       "code": "8415",
       "name": "大國鋼",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -81856,10 +84046,10 @@
     {
       "code": "8436",
       "name": "大江",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -82094,10 +84284,10 @@
     {
       "code": "8464",
       "name": "NIEN MADE ENTERPRISE CO LTD ORD TWD10",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-15",
@@ -82162,10 +84352,10 @@
     {
       "code": "8996",
       "name": "高力",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-20",
@@ -82826,16 +85016,36 @@
               "amountTwd": 23587500
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 2,
+          "lots": 146,
+          "amountTwd": 230315000,
+          "etfs": [
+            {
+              "code": "00407A",
+              "name": "主動凱基台灣",
+              "lots": 12,
+              "amountTwd": 18930000
+            },
+            {
+              "code": "00993A",
+              "name": "主動安聯台灣",
+              "lots": 134,
+              "amountTwd": 211385000
+            }
+          ]
         }
       ]
     },
     {
       "code": "9802",
       "name": "鈺齊-KY",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -83066,10 +85276,10 @@
     {
       "code": "9907",
       "name": "統一實業",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -83161,10 +85371,10 @@
     {
       "code": "9914",
       "name": "美利達",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-22",
@@ -83243,10 +85453,10 @@
     {
       "code": "9933",
       "name": "中鼎",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-09-01",
@@ -83325,10 +85535,10 @@
     {
       "code": "9938",
       "name": "百和",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-03",
@@ -83519,10 +85729,10 @@
     {
       "code": "9939",
       "name": "宏全",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -83657,10 +85867,10 @@
     {
       "code": "9941",
       "name": "裕融",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-08-05",
@@ -84003,16 +86213,30 @@
               "amountTwd": 8730900
             }
           ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 131,
+          "amountTwd": 10440700,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 131,
+              "amountTwd": 10440700
+            }
+          ]
         }
       ]
     },
     {
       "code": "9945",
       "name": "潤泰創新國際",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [],
       "sellSessions": [
         {
@@ -84062,10 +86286,10 @@
     {
       "code": "9958",
       "name": "世紀鋼構",
-      "sourceDate": "2026-09-22",
+      "sourceDate": "2026-09-23",
       "historyStart": "2025-09-23",
-      "historyEnd": "2026-09-22",
-      "historyPoints": 242,
+      "historyEnd": "2026-09-23",
+      "historyPoints": 243,
       "buySessions": [
         {
           "date": "2026-07-21",
@@ -84106,6 +86330,20 @@
               "name": "主動安聯台灣高息",
               "lots": 9,
               "amountTwd": 1003500
+            }
+          ]
+        },
+        {
+          "date": "2026-09-23",
+          "etfCount": 1,
+          "lots": 175,
+          "amountTwd": 16065000,
+          "etfs": [
+            {
+              "code": "00999A",
+              "name": "主動野村臺灣高息",
+              "lots": 175,
+              "amountTwd": 16065000
             }
           ]
         }
