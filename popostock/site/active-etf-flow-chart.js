@@ -158,6 +158,29 @@
      大盤有一萬多根 K 棒，本圖只有數十根；直接套用索引範圍（實測是
      [11068, 11157]）會落在本圖資料尾端之外，畫面只剩最後一根柱子。
      改用 getVisibleRange() 的日期，並夾在本圖資料的起訖之內。 */
+  /* 滑鼠移到柱子上時顯示當天的加碼／減碼／淨額。
+     以日期對回原始資料，不從圖上的數值反推——圖上只有淨額，
+     買賣雙方的金額必須從資料取。 */
+  function attachTooltip(chart, series, stage, tip, rows) {
+    const byDate = new Map(rows.map((r) => [String(r.time), r]));
+    chart.subscribeCrosshairMove((param) => {
+      const row = (param && param.time) ? byDate.get(String(param.time)) : null;
+      if (!row || !param.point) { tip.style.display = "none"; return; }
+      const colour = row.net >= 0 ? UP : DOWN;
+      tip.innerHTML =
+        "<div><i>" + row.time + "</i></div>" +
+        "<div>淨額 <b style=\"color:" + colour + "\">" + fmt(row.net) + " 億</b></div>" +
+        "<div><i>加碼</i> " + row.buy.toFixed(1) + "　<i>減碼</i> " + row.sell.toFixed(1) + "</div>" +
+        "<div><i>納入比較 " + row.comparable + "/" + row.tracked + " 檔</i></div>";
+      tip.style.display = "block";
+      const width = tip.offsetWidth || 150;
+      const max = stage.clientWidth - width - 8;
+      tip.style.left = Math.max(8, Math.min(param.point.x + 14, max)) + "px";
+      tip.style.top = Math.max(6, Math.min(param.point.y - 10, stage.clientHeight - 96)) + "px";
+    });
+    stage.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  }
+
   function keepSynced(mine, rows) {
     const first = rows[0].time;
     const last = rows[rows.length - 1].time;
