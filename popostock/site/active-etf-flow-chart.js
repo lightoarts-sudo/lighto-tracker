@@ -11,10 +11,12 @@
    * 再把父層設成 flex column 並給每個子元素明確的 order。實測把父層從
    * block 改成 flex，七個子元素的寬高完全沒有變化。
    *
-   * 取得主圖表實例的方式：**攔截 LightweightCharts.createChart**。
-   * 圖表實例沒有掛在 DOM 上，React fiber 也找不到；而覆蓋層在
-   * DOMContentLoaded（約 1.1 秒）就執行，主 bundle 要到約 6 秒後才建圖，
-   * 所以先包裝工廠函式一定攔得到。不碰 React 內部，也不改既有 DOM。
+   * 時間軸**沒有**與大盤連動，原因記在這裡免得有人再試一次：
+   * 主 bundle 自己打包了一份 lightweight-charts，並不是讀 window 上的全域，
+   * 所以攔截 LightweightCharts.createChart 只會抓到覆蓋層自己建的圖
+   * （本圖與 fng-line-chart 的三張），永遠拿不到大盤那張的實例；
+   * 圖表實例也沒掛在 DOM 上、React fiber 裡同樣找不到。
+   * 真要連動，得走 patch-popostock-*.mjs 直接改 bundle 的路線。
    */
 
   const DATA_URL = "data/active-etf-flow.json";
@@ -108,7 +110,7 @@
     head.className = "market-comparison-heading flow-heading";
     head.innerHTML =
       "<div><h4>主動式 ETF 共識加減碼</h4>" +
-      "<span>時間軸跟隨大盤 K 線 · 拖曳或縮放大盤即同步移動</span></div>" +
+      "<span>與大盤同一段日期 · 可自行拖曳縮放</span></div>" +
       "<strong>單位：新台幣億元</strong>";
     block.appendChild(head);
 
