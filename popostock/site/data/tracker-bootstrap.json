@@ -12925,7 +12925,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -13412,7 +13412,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -13875,7 +13875,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -14341,7 +14341,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -14730,7 +14730,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -15232,7 +15232,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -15774,7 +15774,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -16156,7 +16156,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -16602,7 +16602,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -17020,7 +17020,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -17430,7 +17430,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -17876,7 +17876,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -18292,8 +18292,8 @@
       "code": "00409A",
       "name": "主動復華全球50",
       "category": "全球股票主動式",
-      "aumTwd": 17637895918,
-      "aumDate": "2026/09/22",
+      "aumTwd": 17285623583,
+      "aumDate": "2026/09/23",
       "updateCadence": "主動式 ETF 持股每天更新",
       "basicInfo": [
         {
@@ -18310,419 +18310,411 @@
         },
         {
           "label": "官方資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "持股收錄",
-          "value": "本次同步 50 檔"
+          "value": "本次同步 49 檔"
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
-        "date": "2026/09/22"
+        "date": "2026/09/23"
       },
       "holdings": [
-        {
-          "stockCode": "HOOD US",
-          "stockName": "羅賓漢市場公司",
-          "shares": "203,000",
-          "weight": 4.536,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
         {
           "stockCode": "PLTR US",
           "stockName": "帕蘭提爾科技公司",
           "shares": "135,500",
-          "weight": 4.508,
-          "sourceDate": "2026/09/22",
+          "weight": 4.77,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "HOOD US",
+          "stockName": "羅賓漢市場公司",
+          "shares": "203,000",
+          "weight": 4.572,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "LITE US",
           "stockName": "魯門特姆控股公司",
           "shares": "25,500",
-          "weight": 4.337,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "BE US",
-          "stockName": "布魯姆能源公司",
-          "shares": "85,000",
-          "weight": 4.227,
-          "sourceDate": "2026/09/22",
+          "weight": 4.385,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "000660 KS",
           "stockName": "愛思開海力士公司",
           "shares": "17,254",
-          "weight": 4.19,
-          "sourceDate": "2026/09/22",
+          "weight": 4.316,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "BE US",
+          "stockName": "布魯姆能源公司",
+          "shares": "85,000",
+          "weight": 4.293,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "MU US",
           "stockName": "美光科技公司",
           "shares": "19,800",
-          "weight": 3.903,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "5274",
-          "stockName": "信驊科技",
-          "shares": "29,000",
-          "weight": 3.437,
-          "sourceDate": "2026/09/22",
+          "weight": 3.895,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "SNDK US",
           "stockName": "晟碟公司（德拉瓦州）",
-          "shares": "10,000",
-          "weight": 3.394,
-          "sourceDate": "2026/09/22",
+          "shares": "11,000",
+          "weight": 3.668,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "3017",
           "stockName": "奇鋐科技",
           "shares": "173,000",
-          "weight": 3.325,
-          "sourceDate": "2026/09/22",
+          "weight": 3.473,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "NVDA US",
-          "stockName": "輝達公司",
-          "shares": "80,000",
-          "weight": 3.293,
-          "sourceDate": "2026/09/22",
+          "stockCode": "5274",
+          "stockName": "信驊科技",
+          "shares": "29,000",
+          "weight": 3.402,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "2454",
           "stockName": "聯發科技",
           "shares": "111,000",
-          "weight": 3.26,
-          "sourceDate": "2026/09/22",
+          "weight": 3.33,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "NVDA US",
+          "stockName": "輝達公司",
+          "shares": "80,000",
+          "weight": 3.311,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "3026",
           "stockName": "禾伸堂企",
           "shares": "659,000",
-          "weight": 2.914,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "INTC US",
-          "stockName": "英特爾",
-          "shares": "120,000",
-          "weight": 2.673,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "SPCX US",
-          "stockName": "太空探索科技公司",
-          "shares": "94,000",
-          "weight": 2.616,
-          "sourceDate": "2026/09/22",
+          "weight": 2.928,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "8046",
           "stockName": "南亞電路",
           "shares": "391,000",
-          "weight": 2.583,
-          "sourceDate": "2026/09/22",
+          "weight": 2.737,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "INTC US",
+          "stockName": "英特爾",
+          "shares": "120,000",
+          "weight": 2.7,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "CRWD US",
           "stockName": "Crowdstrike控股公司",
           "shares": "55,000",
-          "weight": 2.474,
-          "sourceDate": "2026/09/22",
+          "weight": 2.65,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "SPCX US",
+          "stockName": "太空探索科技公司",
+          "shares": "94,000",
+          "weight": 2.56,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "3653",
           "stockName": "健策精密",
           "shares": "69,000",
-          "weight": 2.281,
-          "sourceDate": "2026/09/22",
+          "weight": 2.559,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "MSFT US",
           "stockName": "微軟公司",
           "shares": "25,000",
-          "weight": 2.239,
-          "sourceDate": "2026/09/22",
+          "weight": 2.297,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "DELL US",
-          "stockName": "戴爾科技公司",
-          "shares": "21,000",
-          "weight": 2.073,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "TSM US",
-          "stockName": "台灣積體電路製造股份有限公司",
-          "shares": "25,000",
-          "weight": 2.032,
-          "sourceDate": "2026/09/22",
+          "stockCode": "BMNR US",
+          "stockName": "BitMine Immersion技術公司",
+          "shares": "438,640",
+          "weight": 2.211,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "009150 KS",
           "stockName": "三星電機",
           "shares": "10,300",
-          "weight": 2.02,
-          "sourceDate": "2026/09/22",
+          "weight": 2.085,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "BMNR US",
-          "stockName": "BitMine Immersion技術公司",
-          "shares": "388,640",
-          "weight": 2.01,
-          "sourceDate": "2026/09/22",
+          "stockCode": "TSM US",
+          "stockName": "台灣積體電路製造股份有限公司",
+          "shares": "25,000",
+          "weight": 2.049,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "SNOW US",
-          "stockName": "Snowflake公司",
-          "shares": "32,500",
-          "weight": 1.967,
-          "sourceDate": "2026/09/22",
+          "stockCode": "ALAB US",
+          "stockName": "Astera實驗室公司",
+          "shares": "28,000",
+          "weight": 1.852,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "6510",
-          "stockName": "中華精測",
-          "shares": "93,000",
-          "weight": 1.951,
-          "sourceDate": "2026/09/22",
+          "stockCode": "DELL US",
+          "stockName": "戴爾科技公司",
+          "shares": "18,000",
+          "weight": 1.816,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "AMD US",
           "stockName": "超微半導體公司",
           "shares": "16,000",
-          "weight": 1.795,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "AXTI US",
-          "stockName": "AXT公司",
-          "shares": "125,000",
-          "weight": 1.749,
-          "sourceDate": "2026/09/22",
+          "weight": 1.805,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "3189",
           "stockName": "景碩科技",
           "shares": "337,000",
-          "weight": 1.737,
-          "sourceDate": "2026/09/22",
+          "weight": 1.766,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "PANW US",
-          "stockName": "Palo Alto Networks Inc",
-          "shares": "25,300",
-          "weight": 1.704,
-          "sourceDate": "2026/09/22",
+          "stockCode": "SNOW US",
+          "stockName": "Snowflake公司",
+          "shares": "27,500",
+          "weight": 1.69,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "AMZN US",
-          "stockName": "亞馬遜公司",
-          "shares": "36,000",
-          "weight": 1.651,
-          "sourceDate": "2026/09/22",
+          "stockCode": "AXTI US",
+          "stockName": "AXT公司",
+          "shares": "125,000",
+          "weight": 1.674,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "2360",
           "stockName": "致茂電子",
           "shares": "117,000",
-          "weight": 1.619,
-          "sourceDate": "2026/09/22",
+          "weight": 1.574,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "6981 JP",
           "stockName": "村田製作所有限公司",
           "shares": "160,000",
-          "weight": 1.416,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "ALAB US",
-          "stockName": "Astera實驗室公司",
-          "shares": "21,000",
-          "weight": 1.373,
-          "sourceDate": "2026/09/22",
+          "weight": 1.445,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "MRVL US",
           "stockName": "Marvell Technology Inc",
           "shares": "28,000",
+          "weight": 1.341,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "PANW US",
+          "stockName": "Palo Alto Networks Inc",
+          "shares": "18,300",
           "weight": 1.321,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "6510",
+          "stockName": "中華精測",
+          "shares": "63,000",
+          "weight": 1.267,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "COHR US",
           "stockName": "連貫公司",
           "shares": "22,800",
-          "weight": 1.273,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "NET US",
-          "stockName": "Cloudflare公司",
-          "shares": "18,100",
-          "weight": 1.149,
-          "sourceDate": "2026/09/22",
+          "weight": 1.258,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "2383",
           "stockName": "台光電子",
           "shares": "41,000",
-          "weight": 1.13,
-          "sourceDate": "2026/09/22",
+          "weight": 1.191,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "NET US",
+          "stockName": "Cloudflare公司",
+          "shares": "18,100",
+          "weight": 1.17,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "2449",
           "stockName": "京元電子",
           "shares": "613,000",
-          "weight": 1.102,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "301377 CH",
-          "stockName": "廣東鼎泰高科技術股份有限公司",
-          "shares": "100,300",
-          "weight": 1.072,
-          "sourceDate": "2026/09/22",
+          "weight": 1.078,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "STX US",
           "stockName": "希捷科技控股公開有限公司",
           "shares": "6,000",
-          "weight": 0.993,
-          "sourceDate": "2026/09/22",
+          "weight": 1.017,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "GOOGL US",
           "stockName": "Alphabet公司",
           "shares": "15,000",
-          "weight": 0.947,
-          "sourceDate": "2026/09/22",
+          "weight": 0.93,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "AEHR US",
-          "stockName": "愛赫測試系統",
-          "shares": "45,000",
-          "weight": 0.814,
-          "sourceDate": "2026/09/22",
+          "stockCode": "6805",
+          "stockName": "富世達股",
+          "shares": "59,000",
+          "weight": 0.887,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "6098 JP",
           "stockName": "瑞可利控股有限公司",
           "shares": "41,000",
-          "weight": 0.811,
-          "sourceDate": "2026/09/22",
+          "weight": 0.828,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "AMZN US",
+          "stockName": "亞馬遜公司",
+          "shares": "18,000",
+          "weight": 0.824,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "AEHR US",
+          "stockName": "愛赫測試系統",
+          "shares": "45,000",
+          "weight": 0.804,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "NTRA US",
           "stockName": "那提拉公司",
           "shares": "11,000",
-          "weight": 0.773,
-          "sourceDate": "2026/09/22",
+          "weight": 0.789,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "TSLA US",
           "stockName": "特斯拉公司",
           "shares": "11,000",
-          "weight": 0.75,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "NOW US",
-          "stockName": "ServiceNow公司",
-          "shares": "26,000",
-          "weight": 0.641,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00409A 官方持股"
-        },
-        {
-          "stockCode": "6805",
-          "stockName": "富世達股",
-          "shares": "40,000",
-          "weight": 0.567,
-          "sourceDate": "2026/09/22",
+          "weight": 0.767,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "IREN US",
           "stockName": "IREN有限公司",
-          "shares": "51,000",
-          "weight": 0.445,
-          "sourceDate": "2026/09/22",
+          "shares": "81,000",
+          "weight": 0.699,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "CRCL US",
           "stockName": "Circle網路集團公司",
           "shares": "20,000",
-          "weight": 0.34,
-          "sourceDate": "2026/09/22",
+          "weight": 0.337,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00409A 官方持股"
+        },
+        {
+          "stockCode": "NOW US",
+          "stockName": "ServiceNow公司",
+          "shares": "10,000",
+          "weight": 0.258,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
           "stockCode": "NBIS US",
           "stockName": "尼比厄斯集團公眾有限公司",
           "shares": "4,500",
-          "weight": 0.191,
-          "sourceDate": "2026/09/22",
+          "weight": 0.187,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         },
         {
-          "stockCode": "CRM US",
-          "stockName": "賽富時公司",
-          "shares": "3,800",
-          "weight": 0.159,
-          "sourceDate": "2026/09/22",
+          "stockCode": "TWLO US",
+          "stockName": "Twilio公司",
+          "shares": "3,500",
+          "weight": 0.187,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00409A 官方持股"
         }
       ]
@@ -18764,7 +18756,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -19218,7 +19210,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -19704,7 +19696,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -20166,7 +20158,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -20651,7 +20643,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -21473,7 +21465,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -21889,8 +21881,8 @@
       "code": "00998A",
       "name": "主動復華金融股息",
       "category": "全球金融主動式",
-      "aumTwd": 5383415236,
-      "aumDate": "2026/09/22",
+      "aumTwd": 5470340798,
+      "aumDate": "2026/09/23",
       "updateCadence": "主動式 ETF 持股每天更新",
       "basicInfo": [
         {
@@ -21911,7 +21903,7 @@
         },
         {
           "label": "官方資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "持股收錄",
@@ -21919,427 +21911,427 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
-        "date": "2026/09/22"
+        "date": "2026/09/23"
       },
       "holdings": [
         {
           "stockCode": "SDLF LN",
           "stockName": "標準人壽公開有限公司",
           "shares": "650,000",
-          "weight": 4.777,
-          "sourceDate": "2026/09/22",
+          "weight": 4.643,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "ABN NA",
           "stockName": "荷蘭銀行公眾有限公司",
           "shares": "140,000",
-          "weight": 4.094,
-          "sourceDate": "2026/09/22",
+          "weight": 4.033,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BOCHGR GA",
           "stockName": "賽普勒斯銀行控股公開有限公司",
           "shares": "540,000",
-          "weight": 3.879,
-          "sourceDate": "2026/09/22",
+          "weight": 3.769,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "AGN NA",
           "stockName": "荷蘭保險公司",
           "shares": "680,000",
-          "weight": 3.592,
-          "sourceDate": "2026/09/22",
+          "weight": 3.508,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "AV/ LN",
           "stockName": "英傑華保險",
           "shares": "630,000",
-          "weight": 3.5,
-          "sourceDate": "2026/09/22",
+          "weight": 3.409,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "TPEIR GA",
           "stockName": "Piraeus Bank SA",
           "shares": "475,000",
-          "weight": 3.318,
-          "sourceDate": "2026/09/22",
+          "weight": 3.193,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "ADM LN",
           "stockName": "Admiral集團公開有限公司",
           "shares": "105,000",
-          "weight": 3.062,
-          "sourceDate": "2026/09/22",
+          "weight": 2.974,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "NWG LN",
           "stockName": "國民西敏集團公開有限公司",
           "shares": "540,000",
-          "weight": 2.953,
-          "sourceDate": "2026/09/22",
+          "weight": 2.843,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "DBK GY",
           "stockName": "德意志銀行",
           "shares": "130,000",
-          "weight": 2.862,
-          "sourceDate": "2026/09/22",
+          "weight": 2.725,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "MNG LN",
           "stockName": "M&G公開有限公司",
           "shares": "1,000,000",
-          "weight": 2.603,
-          "sourceDate": "2026/09/22",
+          "weight": 2.538,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "LLOY LN",
           "stockName": "勞埃德銀行集團",
           "shares": "3,000,000",
-          "weight": 2.557,
-          "sourceDate": "2026/09/22",
+          "weight": 2.489,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "ASRNL NA",
           "stockName": "ASR荷蘭公眾有限公司",
           "shares": "45,000",
-          "weight": 2.218,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "JPM US",
-          "stockName": "摩根大通銀行",
-          "shares": "11,000",
-          "weight": 2.204,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "CHYM US",
-          "stockName": "Chime Financial Inc",
-          "shares": "130,000",
-          "weight": 2.192,
-          "sourceDate": "2026/09/22",
+          "weight": 2.159,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BAMI IM",
           "stockName": "BPM銀行股份公司",
           "shares": "200,000",
-          "weight": 2.171,
-          "sourceDate": "2026/09/22",
+          "weight": 2.157,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "JPM US",
+          "stockName": "摩根大通銀行",
+          "shares": "11,000",
+          "weight": 2.153,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "STAN LN",
           "stockName": "渣打集團有限公司",
           "shares": "120,000",
-          "weight": 2.14,
-          "sourceDate": "2026/09/22",
+          "weight": 2.11,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "CHYM US",
+          "stockName": "Chime Financial Inc",
+          "shares": "130,000",
+          "weight": 1.995,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "UCG IM",
+          "stockName": "裕信銀行",
+          "shares": "36,000",
+          "weight": 1.99,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "EQH US",
           "stockName": "公平控股公司",
           "shares": "65,000",
-          "weight": 1.999,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "GPN US",
-          "stockName": "環匯公司",
-          "shares": "40,000",
-          "weight": 1.998,
-          "sourceDate": "2026/09/22",
+          "weight": 1.97,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BMPS IM",
           "stockName": "義大利西恩那銀行股份公司",
           "shares": "250,000",
-          "weight": 1.998,
-          "sourceDate": "2026/09/22",
+          "weight": 1.969,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "GPN US",
+          "stockName": "環匯公司",
+          "shares": "40,000",
+          "weight": 1.949,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "WFC US",
           "stockName": "富國銀行",
           "shares": "40,000",
-          "weight": 1.96,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "055550 KS",
-          "stockName": "新韓金融集團",
-          "shares": "40,000",
-          "weight": 1.958,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "G IM",
-          "stockName": "忠意保險股份公司",
-          "shares": "65,000",
-          "weight": 1.941,
-          "sourceDate": "2026/09/22",
+          "weight": 1.9,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "INGA NA",
           "stockName": "荷蘭國際集團",
           "shares": "90,000",
-          "weight": 1.924,
-          "sourceDate": "2026/09/22",
+          "weight": 1.893,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "8411 JP",
           "stockName": "瑞穗金融集團",
           "shares": "60,000",
-          "weight": 1.904,
-          "sourceDate": "2026/09/22",
+          "weight": 1.874,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
-          "stockCode": "BLK US",
-          "stockName": "貝萊德公司",
-          "shares": "3,000",
-          "weight": 1.886,
-          "sourceDate": "2026/09/22",
+          "stockCode": "G IM",
+          "stockName": "忠意保險股份公司",
+          "shares": "65,000",
+          "weight": 1.861,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "055550 KS",
+          "stockName": "新韓金融集團",
+          "shares": "40,000",
+          "weight": 1.856,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "7167 JP",
           "stockName": "Mebuki金融集團公司",
           "shares": "300,000",
-          "weight": 1.885,
-          "sourceDate": "2026/09/22",
+          "weight": 1.855,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "BLK US",
+          "stockName": "貝萊德公司",
+          "shares": "3,000",
+          "weight": 1.846,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "CABK SM",
           "stockName": "凱克薩銀行有限責任公司",
           "shares": "200,000",
-          "weight": 1.751,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "UCG IM",
-          "stockName": "裕信銀行",
-          "shares": "30,000",
-          "weight": 1.685,
-          "sourceDate": "2026/09/22",
+          "weight": 1.735,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BNP FP",
           "stockName": "法國巴黎銀行股份有限公司",
           "shares": "24,000",
-          "weight": 1.64,
-          "sourceDate": "2026/09/22",
+          "weight": 1.592,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "LGEN LN",
           "stockName": "法通保險集團公開有限公司",
           "shares": "700,000",
-          "weight": 1.634,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "UNI IM",
-          "stockName": "Unipol保險股份公司",
-          "shares": "85,000",
           "weight": 1.591,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "AMUN FP",
           "stockName": "東方匯理資產管理有限責任公司",
           "shares": "25,000",
-          "weight": 1.564,
-          "sourceDate": "2026/09/22",
+          "weight": 1.519,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "UNI IM",
+          "stockName": "Unipol保險股份公司",
+          "shares": "85,000",
+          "weight": 1.518,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "V US",
           "stockName": "威士卡",
           "shares": "7,000",
-          "weight": 1.493,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "UBS US",
-          "stockName": "瑞銀集團公司",
-          "shares": "50,000",
-          "weight": 1.449,
-          "sourceDate": "2026/09/22",
+          "weight": 1.468,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "MRX US",
           "stockName": "馬雷克斯集團有限公司",
           "shares": "33,000",
-          "weight": 1.413,
-          "sourceDate": "2026/09/22",
+          "weight": 1.37,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "ETE GA",
           "stockName": "希臘國家銀行",
           "shares": "120,000",
-          "weight": 1.406,
-          "sourceDate": "2026/09/22",
+          "weight": 1.354,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "C US",
           "stockName": "花旗集團公司",
           "shares": "17,000",
-          "weight": 1.327,
-          "sourceDate": "2026/09/22",
+          "weight": 1.301,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "HSBA LN",
           "stockName": "匯豐控股有限公司",
           "shares": "110,000",
-          "weight": 1.307,
-          "sourceDate": "2026/09/22",
+          "weight": 1.285,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "8331 JP",
           "stockName": "千葉銀行有限公司",
           "shares": "125,000",
-          "weight": 1.278,
-          "sourceDate": "2026/09/22",
+          "weight": 1.258,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "HOOD US",
           "stockName": "羅賓漢市場公司",
           "shares": "17,000",
-          "weight": 1.245,
-          "sourceDate": "2026/09/22",
+          "weight": 1.21,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "CS FP",
           "stockName": "安盛有限責任公司",
           "shares": "38,000",
-          "weight": 1.125,
-          "sourceDate": "2026/09/22",
+          "weight": 1.087,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "ENX FP",
+          "stockName": "泛歐交易所",
+          "shares": "10,000",
+          "weight": 1.062,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "KBC BB",
           "stockName": "比利時聯合金融集團",
           "shares": "12,000",
-          "weight": 1.076,
-          "sourceDate": "2026/09/22",
+          "weight": 1.05,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "IBKR US",
           "stockName": "盈透證券集團公司",
           "shares": "19,000",
-          "weight": 1.029,
-          "sourceDate": "2026/09/22",
+          "weight": 1.009,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "UBS US",
+          "stockName": "瑞銀集團公司",
+          "shares": "35,000",
+          "weight": 0.969,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "GLE FP",
           "stockName": "法國興業銀行股份有限公司",
           "shares": "20,000",
-          "weight": 0.974,
-          "sourceDate": "2026/09/22",
+          "weight": 0.957,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "8377 JP",
           "stockName": "北北金融集團公司",
           "shares": "25,000",
-          "weight": 0.804,
-          "sourceDate": "2026/09/22",
+          "weight": 0.791,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BNY US",
           "stockName": "紐約梅隆銀行",
           "shares": "9,000",
-          "weight": 0.796,
-          "sourceDate": "2026/09/22",
+          "weight": 0.78,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "8308 JP",
           "stockName": "Resona控股公司",
           "shares": "80,000",
-          "weight": 0.733,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "BARC LN",
-          "stockName": "巴克萊集團",
-          "shares": "200,000",
-          "weight": 0.732,
-          "sourceDate": "2026/09/22",
+          "weight": 0.721,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "8309 JP",
           "stockName": "三井住友信託集團公司",
           "shares": "110,000",
-          "weight": 0.727,
-          "sourceDate": "2026/09/22",
+          "weight": 0.715,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "復華投信 00998A 官方持股"
+        },
+        {
+          "stockCode": "BARC LN",
+          "stockName": "巴克萊集團",
+          "shares": "200,000",
+          "weight": 0.711,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "ARES US",
           "stockName": "戰神管理公司",
           "shares": "9,000",
-          "weight": 0.661,
-          "sourceDate": "2026/09/22",
+          "weight": 0.634,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         },
         {
           "stockCode": "BX US",
           "stockName": "黑石公司",
           "shares": "7,500",
-          "weight": 0.548,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "復華投信 00998A 官方持股"
-        },
-        {
-          "stockCode": "RELY US",
-          "stockName": "Remitly全球公司",
-          "shares": "35,000",
-          "weight": 0.439,
-          "sourceDate": "2026/09/22",
+          "weight": 0.519,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "復華投信 00998A 官方持股"
         }
       ]
@@ -22381,7 +22373,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -22867,7 +22859,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -23209,7 +23201,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -23675,7 +23667,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -24133,7 +24125,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -24627,7 +24619,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -24897,7 +24889,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -25329,8 +25321,8 @@
       "code": "00989A",
       "name": "主動摩根美國科技",
       "category": "美國科技主動式",
-      "aumTwd": 1177136212,
-      "aumDate": "2026/09/23",
+      "aumTwd": 1158043126,
+      "aumDate": "2026/09/24",
       "updateCadence": "主動式 ETF 持股每天更新",
       "basicInfo": [
         {
@@ -25347,7 +25339,7 @@
         },
         {
           "label": "官方資料日",
-          "value": "2026/09/23"
+          "value": "2026/09/24"
         },
         {
           "label": "持股收錄",
@@ -25355,555 +25347,555 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
-        "date": "2026/09/23"
+        "date": "2026/09/24"
       },
       "holdings": [
         {
           "stockCode": "TXG",
           "stockName": "10X GENOMICS INC-CLASS A COM NPV",
           "shares": "2211",
-          "weight": 0.4804561060347365,
-          "sourceDate": "2026/09/23",
+          "weight": 0.45786559417477174,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ADBE",
           "stockName": "ADOBE INC COM USD.0001",
-          "shares": "2273",
-          "weight": 1.4582224659528187,
-          "sourceDate": "2026/09/23",
+          "shares": "1812",
+          "weight": 1.1943423573018126,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "AMD",
           "stockName": "ADVANCED MICRO DEVICES INC",
-          "shares": "1885",
-          "weight": 3.1661193212574448,
-          "sourceDate": "2026/09/23",
+          "shares": "1834",
+          "weight": 3.086821724255889,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ALGM",
           "stockName": "ALLEGRO MICROSYSTEMS INC COM USD.010000000",
           "shares": "5445",
-          "weight": 0.5206429550525117,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5235296803920582,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "GOOG",
           "stockName": "ALPHABET INC COM USD 0.001",
-          "shares": "2494",
-          "weight": 2.3330830804804097,
-          "sourceDate": "2026/09/23",
+          "shares": "2427",
+          "weight": 2.2263900330755044,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "AMZN",
           "stockName": "AMAZON COM INC COM USD0.01",
           "shares": "1437",
-          "weight": 0.9866300182446516,
-          "sourceDate": "2026/09/23",
+          "weight": 0.9809330706972307,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ADI",
           "stockName": "ANALOG DEVICES INC COM USD0.167",
           "shares": "1006",
-          "weight": 1.0574646426169074,
-          "sourceDate": "2026/09/23",
+          "weight": 1.0612817008284716,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ASML",
           "stockName": "ASML HOLDING NV - NY REG SHS EUR0.09 (1 ADR REPS 1 ORD SHR)",
           "shares": "450",
-          "weight": 2.1179735684658385,
-          "sourceDate": "2026/09/23",
+          "weight": 2.1499257721512524,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ALAB",
           "stockName": "ASTERA LABS INC COM USD.000100000",
           "shares": "578",
-          "weight": 0.5656866120061218,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5705549943776446,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TEAM",
           "stockName": "ATLASSIAN CORP PLC-CLASS A COM USD.100000000",
-          "shares": "2412",
-          "weight": 1.2252523744975061,
-          "sourceDate": "2026/09/23",
+          "shares": "2347",
+          "weight": 1.2538293481377654,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ADSK",
           "stockName": "AUTODESK INC COM",
           "shares": "768",
-          "weight": 0.4541763827345412,
-          "sourceDate": "2026/09/23",
+          "weight": 0.45670277270831106,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "XYZ",
           "stockName": "BLOCK INC COM USD.000000100",
-          "shares": "3435",
-          "weight": 0.7171136103278759,
-          "sourceDate": "2026/09/23",
+          "shares": "3199",
+          "weight": 0.6542310377791579,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "BE",
           "stockName": "BLOOM ENERGY CORP- A",
-          "shares": "1696",
-          "weight": 1.2628726021521797,
-          "sourceDate": "2026/09/23",
+          "shares": "1650",
+          "weight": 1.243452463228904,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "AVGO",
           "stockName": "BROADCOM INC COM NPV",
-          "shares": "3703",
-          "weight": 3.634882203346914,
-          "sourceDate": "2026/09/23",
+          "shares": "3643",
+          "weight": 3.5415052099199635,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CDNS",
           "stockName": "CADENCE DESIGN SYSTEMS INC COM USD0.01",
-          "shares": "1018",
-          "weight": 0.8304436615785633,
-          "sourceDate": "2026/09/23",
+          "shares": "958",
+          "weight": 0.8108920790623473,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CBRS",
           "stockName": "CEREBRAS SYSTEMS INC COM USD .00001",
           "shares": "296",
-          "weight": 0.1693004489713209,
-          "sourceDate": "2026/09/23",
+          "weight": 0.1663666653050018,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CIEN",
           "stockName": "CIENA CORP COM USD0.01",
           "shares": "1052",
-          "weight": 1.0440357711669819,
-          "sourceDate": "2026/09/23",
+          "weight": 1.0253414749909755,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "NET",
           "stockName": "CLOUDFLARE INC - CLASS A COM USD.001000000",
-          "shares": "2996",
-          "weight": 2.847789957888068,
-          "sourceDate": "2026/09/23",
+          "shares": "2915",
+          "weight": 2.812553404021501,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CRWV",
           "stockName": "COREWEAVE INC COM USD .000100000",
           "shares": "3070",
-          "weight": 0.7172149912927834,
-          "sourceDate": "2026/09/23",
+          "weight": 0.7305849919616898,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "GLW",
           "stockName": "CORNING INC",
-          "shares": "2486",
-          "weight": 1.0689817356481086,
-          "sourceDate": "2026/09/23",
+          "shares": "2371",
+          "weight": 1.0030357429918373,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CRDO",
           "stockName": "CREDO TECHNOLOGY GROUP HOLDI ORD USD.000050000",
           "shares": "1627",
-          "weight": 0.8436165090671766,
-          "sourceDate": "2026/09/23",
+          "weight": 0.8637951430981509,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CRWD",
           "stockName": "CROWDSTRIKE HOLDINGS INC COM NPV",
-          "shares": "5060",
-          "weight": 3.4071102222790173,
-          "sourceDate": "2026/09/23",
+          "shares": "4972",
+          "weight": 3.574015876472635,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "DOCN",
           "stockName": "DIGITALOCEAN HOLDINGS INC COM USD.000025000",
           "shares": "4175",
-          "weight": 1.6413483973254914,
-          "sourceDate": "2026/09/23",
+          "weight": 1.6144869070920942,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ESTC",
           "stockName": "ELASTIC NV COM USD 0.01",
           "shares": "2871",
-          "weight": 0.6897422846541399,
-          "sourceDate": "2026/09/23",
+          "weight": 0.7176644248255742,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ENTG",
           "stockName": "ENTEGRIS INC COM USD0.01",
           "shares": "1612",
-          "weight": 0.6559182019319274,
-          "sourceDate": "2026/09/23",
+          "weight": 0.6662745184396527,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "FIGR",
           "stockName": "FIGURE TECHNOLOGY SOLUTIONS INC COM NPV",
           "shares": "8670",
-          "weight": 0.8663661821746761,
-          "sourceDate": "2026/09/23",
+          "weight": 0.8229249891165105,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "GENB",
           "stockName": "GENERATE BIOMEDICINES INC COM NPV",
           "shares": "2245",
-          "weight": 0.10554848999072336,
-          "sourceDate": "2026/09/23",
+          "weight": 0.10156380965383842,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "HUBS",
           "stockName": "HUBSPOT INC COM USD0.001",
-          "shares": "2873",
-          "weight": 1.6855608380757214,
-          "sourceDate": "2026/09/23",
+          "shares": "2796",
+          "weight": 1.730676300775348,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ILMN",
           "stockName": "ILLUMINA INC COM USD0.01",
           "shares": "648",
-          "weight": 0.4317888806703366,
-          "sourceDate": "2026/09/23",
+          "weight": 0.45318391096947797,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "INTC",
           "stockName": "INTEL CORP",
-          "shares": "10086",
-          "weight": 3.363887625956409,
-          "sourceDate": "2026/09/23",
+          "shares": "9997",
+          "weight": 3.356392614915448,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "LRCX",
           "stockName": "LAM RESEARCH CORP COM USD.001000000",
-          "shares": "2878",
-          "weight": 2.4098319445260596,
-          "sourceDate": "2026/09/23",
+          "shares": "2801",
+          "weight": 2.357002252318537,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "LMND",
           "stockName": "LEMONADE INC COM USD  0.000010000",
           "shares": "5601",
-          "weight": 0.7192573936320293,
-          "sourceDate": "2026/09/23",
+          "weight": 0.6804084597346852,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "LITE",
           "stockName": "LUMENTUM HOLDINGS INC COM USD0.001",
-          "shares": "665",
-          "weight": 1.6933732579242067,
-          "sourceDate": "2026/09/23",
+          "shares": "647",
+          "weight": 1.6601849253582979,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "MTSI",
           "stockName": "M/A-COM TECHNOLOGY SOLUTIONS H COM USD0.001",
-          "shares": "1023",
-          "weight": 0.7704492069767368,
-          "sourceDate": "2026/09/23",
+          "shares": "958",
+          "weight": 0.7236612995844508,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "META",
           "stockName": "META PLATFORMS INC COM USD.000006",
-          "shares": "1778",
-          "weight": 3.526565568715169,
-          "sourceDate": "2026/09/23",
+          "shares": "1730",
+          "weight": 3.525250657115856,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "MU",
           "stockName": "MICRON TECHNOLOGY",
           "shares": "403",
-          "weight": 1.1895164056477094,
-          "sourceDate": "2026/09/23",
+          "weight": 1.1829429716177948,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "MSFT",
           "stockName": "MICROSOFT CORP",
-          "shares": "1979",
-          "weight": 2.6537901438716425,
-          "sourceDate": "2026/09/23",
+          "shares": "1926",
+          "weight": 2.6402864508191035,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "MDB",
           "stockName": "MONGODB INC COM USD0.001",
           "shares": "657",
-          "weight": 0.7566340915532042,
-          "sourceDate": "2026/09/23",
+          "weight": 0.7707026885594588,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "MPWR",
           "stockName": "MONOLITHIC POWER SYSTEMS INC COM USD0.001",
           "shares": "261",
-          "weight": 0.9703001702015431,
-          "sourceDate": "2026/09/23",
+          "weight": 0.9688198130809508,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "NU",
           "stockName": "NU HOLDINGS LTD/CAYMAN ISL-A ORD USD.000006667",
           "shares": "14586",
-          "weight": 0.5561486692858618,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5440338360214056,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "NVDA",
           "stockName": "NVIDIA CORPORATION",
-          "shares": "7451",
-          "weight": 4.591925917056913,
-          "sourceDate": "2026/09/23",
+          "shares": "7250",
+          "weight": 4.477302174970987,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "OKTA",
           "stockName": "OKTA INC COM NPV",
           "shares": "1041",
-          "weight": 0.5511500626352323,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5854356695935347,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "PLTR",
           "stockName": "PALANTIR TECHNOLOGIES INC COM USD0.001",
           "shares": "2073",
-          "weight": 1.0326163431450022,
-          "sourceDate": "2026/09/23",
+          "weight": 1.0887742869525914,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "PANW",
           "stockName": "PALO ALTO NETWORKS INC COM USD0.0001",
-          "shares": "3316",
-          "weight": 3.3445597017824134,
-          "sourceDate": "2026/09/23",
+          "shares": "3227",
+          "weight": 3.475645759180475,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "RIVN",
           "stockName": "RIVIAN AUTOMOTIVE INC-A COM USD.001000000",
-          "shares": "31258",
-          "weight": 1.274320007550664,
-          "sourceDate": "2026/09/23",
+          "shares": "30417",
+          "weight": 1.2511198224080646,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "HOOD",
           "stockName": "ROBINHOOD MARKETS INC - A COM USD.000100000",
-          "shares": "6266",
-          "weight": 2.0964196791271594,
-          "sourceDate": "2026/09/23",
+          "shares": "6097",
+          "weight": 2.0486763421883136,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ROK",
           "stockName": "ROCKWELL AUTOMATION INC",
-          "shares": "703",
-          "weight": 0.8086635028512741,
-          "sourceDate": "2026/09/23",
+          "shares": "660",
+          "weight": 0.782409443376809,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "CRM",
           "stockName": "SALESFORCE INC",
-          "shares": "4856",
-          "weight": 3.0503356083110624,
-          "sourceDate": "2026/09/23",
+          "shares": "4725",
+          "weight": 3.074144554915306,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SNDK",
           "stockName": "SANDISK CORP/DE COM USD 0.01",
           "shares": "194",
-          "weight": 0.9857670010002209,
-          "sourceDate": "2026/09/23",
+          "weight": 0.965086992411369,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "NOW",
           "stockName": "SERVICENOW INC COM USD0.001",
-          "shares": "4941",
-          "weight": 1.8227489673896806,
-          "sourceDate": "2026/09/23",
+          "shares": "4808",
+          "weight": 1.8536085089736112,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SHOP",
           "stockName": "SHOPIFY INC - CLASS A",
           "shares": "6061",
-          "weight": 2.4112032398829983,
-          "sourceDate": "2026/09/23",
+          "weight": 2.362565403597931,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SNOW",
           "stockName": "SNOWFLAKE INC-CLASS A COM 1.000000000",
-          "shares": "3185",
-          "weight": 2.8867028803587593,
-          "sourceDate": "2026/09/23",
+          "shares": "3099",
+          "weight": 2.8414014102502434,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SPCX",
           "stockName": "SPACE EXPLORATION TECHNOLOGIES CORP COM USD .001",
           "shares": "1951",
-          "weight": 0.8128214687732331,
-          "sourceDate": "2026/09/23",
+          "weight": 0.7926595357796721,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SMCI",
           "stockName": "SUPER MICRO COMPUTER INC",
           "shares": "4049",
-          "weight": 0.45290353327606225,
-          "sourceDate": "2026/09/23",
+          "weight": 0.45949428909955814,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "SYM",
           "stockName": "SYMBOTIC INC COM USD.000100000",
           "shares": "4252",
-          "weight": 0.5160267956381585,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5087306398328382,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TSM",
           "stockName": "TAIWAN SEMICONDUCTOR MFG LTD SPD ADR",
           "shares": "858",
-          "weight": 1.0442804856979457,
-          "sourceDate": "2026/09/23",
+          "weight": 1.049275244675128,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TTWO",
           "stockName": "TAKE-TWO INTERACTIVE SOFTWARE COM USD0.01",
-          "shares": "5087",
-          "weight": 2.8153241108234637,
-          "sourceDate": "2026/09/23",
+          "shares": "4950",
+          "weight": 2.7967852634185926,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TEM",
           "stockName": "TEMPUS AI INC COM USD.000100000",
-          "shares": "5821",
-          "weight": 1.2099016807776193,
-          "sourceDate": "2026/09/23",
+          "shares": "5664",
+          "weight": 1.1879766614909297,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TSLA",
           "stockName": "TESLA INC COM USD0.001",
-          "shares": "2831",
-          "weight": 2.888390543566083,
-          "sourceDate": "2026/09/23",
+          "shares": "2773",
+          "weight": 2.886577251517661,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TXN",
           "stockName": "TEXAS INSTRUMENTS INC",
-          "shares": "1914",
-          "weight": 1.3988115779569612,
-          "sourceDate": "2026/09/23",
+          "shares": "1862",
+          "weight": 1.3901126155227488,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TTMI",
           "stockName": "TTM TECHNOLOGIES INC COM USD0.001",
           "shares": "1484",
-          "weight": 0.5093699572263265,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5113239984328528,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TWLO",
           "stockName": "TWILIO INC - A SHRS COM NPV",
-          "shares": "3142",
-          "weight": 2.407274882324323,
-          "sourceDate": "2026/09/23",
+          "shares": "3057",
+          "weight": 2.4336216765989427,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "TWST",
           "stockName": "TWIST BIOSCIENCE CORP COM USD0.00001",
           "shares": "515",
-          "weight": 0.22825930980704548,
-          "sourceDate": "2026/09/23",
+          "weight": 0.22353683117497303,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "U",
           "stockName": "UNITY SOFTWARE INC COM NPV",
           "shares": "7435",
-          "weight": 0.8630787731173798,
-          "sourceDate": "2026/09/23",
+          "weight": 0.8979086531445807,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "VEEV",
           "stockName": "VEEVA SYSTEMS INC A SHRS COM USD0.00001",
           "shares": "912",
-          "weight": 0.6407328682400606,
-          "sourceDate": "2026/09/23",
+          "weight": 0.6762011393347712,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "VICR",
           "stockName": "VICOR CORP COM USD.010000000",
           "shares": "709",
-          "weight": 0.5122985072877869,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5497822741464985,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "WRBY",
           "stockName": "WARBY PARKER INC-CLASS A COM USD.000100000",
           "shares": "9116",
-          "weight": 0.5631047229120498,
-          "sourceDate": "2026/09/23",
+          "weight": 0.5829130738089627,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         },
         {
           "stockCode": "ZM",
           "stockName": "ZOOM COMMUNICATIONS INC",
-          "shares": "6268",
-          "weight": 1.535052138571029,
-          "sourceDate": "2026/09/23",
+          "shares": "6099",
+          "weight": 1.5349235141783484,
+          "sourceDate": "2026/09/24",
           "sourceTitle": "摩根投信 00989A 官方持股"
         }
       ]
@@ -25915,8 +25907,8 @@
       "code": "00983A",
       "name": "主動中信ARK創新",
       "category": "全球創新主動式",
-      "aumTwd": 1018693227,
-      "aumDate": "2026/09/22",
+      "aumTwd": 999505985,
+      "aumDate": "2026/09/23",
       "updateCadence": "主動式 ETF 持股每天更新",
       "basicInfo": [
         {
@@ -25937,123 +25929,131 @@
         },
         {
           "label": "官方資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "持股收錄",
-          "value": "本次同步 42 檔"
+          "value": "本次同步 43 檔"
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
-        "date": "2026/09/22"
+        "date": "2026/09/23"
       },
       "holdings": [
         {
           "stockCode": "TSLA US",
           "stockName": "特斯拉公司",
           "shares": "7392",
-          "weight": 8.73,
-          "sourceDate": "2026/09/22",
+          "weight": 8.9,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "SPCX US",
           "stockName": "太空探索科技公司",
           "shares": "12688",
-          "weight": 6.1,
-          "sourceDate": "2026/09/22",
+          "weight": 5.97,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "TEM US",
           "stockName": "Tempus AI Inc",
-          "shares": "24794",
-          "weight": 5.95,
-          "sourceDate": "2026/09/22",
+          "shares": "23088",
+          "weight": 5.61,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "CRCL US",
           "stockName": "Circle Internet Group Inc",
           "shares": "17399",
-          "weight": 5.12,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "HOOD US",
-          "stockName": "羅賓漢市場公司",
-          "shares": "12709",
-          "weight": 4.91,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "TWST US",
-          "stockName": "Twist Bioscience Corp",
-          "shares": "9575",
-          "weight": 4.9,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "TXG US",
-          "stockName": "10X Genomics Inc",
-          "shares": "18540",
-          "weight": 4.65,
-          "sourceDate": "2026/09/22",
+          "weight": 5.06,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "COIN US",
           "stockName": "比特幣基地全球公司",
           "shares": "7397",
-          "weight": 4.62,
-          "sourceDate": "2026/09/22",
+          "weight": 4.65,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "HOOD US",
+          "stockName": "羅賓漢市場公司",
+          "shares": "11908",
+          "weight": 4.63,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "TWST US",
+          "stockName": "Twist Bioscience Corp",
+          "shares": "8560",
+          "weight": 4.3,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "TXG US",
+          "stockName": "10X Genomics Inc",
+          "shares": "16232",
+          "weight": 3.89,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "CRSP US",
           "stockName": "CRISPR治療公司",
           "shares": "21782",
-          "weight": 4,
-          "sourceDate": "2026/09/22",
+          "weight": 3.85,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "SHOP US",
           "stockName": "Shopify公司",
           "shares": "8253",
-          "weight": 3.79,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "PLTR US",
-          "stockName": "帕蘭提爾科技公司",
-          "shares": "6058",
-          "weight": 3.48,
-          "sourceDate": "2026/09/22",
+          "weight": 3.72,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "AMD US",
           "stockName": "超微半導體公司",
-          "shares": "1750",
-          "weight": 3.39,
-          "sourceDate": "2026/09/22",
+          "shares": "1683",
+          "weight": 3.28,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "PLTR US",
+          "stockName": "帕蘭提爾科技公司",
+          "shares": "5311",
+          "weight": 3.23,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "TSM US",
           "stockName": "台積電",
           "shares": "1765",
-          "weight": 2.48,
-          "sourceDate": "2026/09/22",
+          "weight": 2.5,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "BLSH US",
+          "stockName": "Bullish",
+          "shares": "19336",
+          "weight": 2.46,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26061,119 +26061,95 @@
           "stockName": "亞馬遜公司",
           "shares": "3097",
           "weight": 2.45,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "BLSH US",
-          "stockName": "Bullish",
-          "shares": "19336",
-          "weight": 2.45,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "BMNR US",
           "stockName": "BitMine Immersion Technologi",
           "shares": "27323",
-          "weight": 2.44,
-          "sourceDate": "2026/09/22",
+          "weight": 2.38,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "NVDA US",
           "stockName": "輝達",
           "shares": "3287",
-          "weight": 2.34,
-          "sourceDate": "2026/09/22",
+          "weight": 2.35,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "ILMN US",
           "stockName": "伊魯米納公司",
-          "shares": "2372",
-          "weight": 1.82,
-          "sourceDate": "2026/09/22",
+          "shares": "2138",
+          "weight": 1.73,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "NTRA US",
           "stockName": "那提拉公司",
-          "shares": "1477",
-          "weight": 1.79,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "BEAM US",
-          "stockName": "光束治療公司",
-          "shares": "18142",
-          "weight": 1.46,
-          "sourceDate": "2026/09/22",
+          "shares": "1329",
+          "weight": 1.65,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "GOOG US",
           "stockName": "Alphabet公司 Class C",
           "shares": "1323",
-          "weight": 1.43,
-          "sourceDate": "2026/09/22",
+          "weight": 1.41,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
-          "stockCode": "WGS US",
-          "stockName": "GeneDx控股公司",
-          "shares": "4975",
+          "stockCode": "BEAM US",
+          "stockName": "光束治療公司",
+          "shares": "18142",
           "weight": 1.4,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "XYZ US",
-          "stockName": "布洛克公司",
-          "shares": "5202",
-          "weight": 1.25,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "NET US",
           "stockName": "Cloudflare公司",
           "shares": "1123",
+          "weight": 1.25,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "XYZ US",
+          "stockName": "布洛克公司",
+          "shares": "5202",
           "weight": 1.23,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "CRWV US",
           "stockName": "CoreWeave Inc",
           "shares": "4387",
-          "weight": 1.18,
-          "sourceDate": "2026/09/22",
+          "weight": 1.21,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "WGS US",
+          "stockName": "GeneDx控股公司",
+          "shares": "4234",
+          "weight": 1.14,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "CBRS US",
           "stockName": "Cerebras Systems Inc",
           "shares": "1655",
-          "weight": 1.09,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "SNOW US",
-          "stockName": "Snowflake公司",
-          "shares": "972",
-          "weight": 1.02,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "DE US",
-          "stockName": "迪爾",
-          "shares": "451",
-          "weight": 0.99,
-          "sourceDate": "2026/09/22",
+          "weight": 1.08,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26181,15 +26157,15 @@
           "stockName": "博通公司",
           "shares": "807",
           "weight": 0.91,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
-          "stockCode": "GOOGL US",
-          "stockName": "Alphabet公司 Class A",
-          "shares": "732",
-          "weight": 0.8,
-          "sourceDate": "2026/09/22",
+          "stockCode": "XE US",
+          "stockName": "X-Energy Inc",
+          "shares": "15126",
+          "weight": 0.79,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26197,31 +26173,31 @@
           "stockName": "禮來公司",
           "shares": "215",
           "weight": 0.78,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
-          "stockCode": "XE US",
-          "stockName": "X-Energy Inc",
-          "shares": "15126",
+          "stockCode": "RXRX US",
+          "stockName": "利可迅生技公司",
+          "shares": "65926",
           "weight": 0.77,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "META US",
           "stockName": "Meta平台公司",
           "shares": "320",
-          "weight": 0.73,
-          "sourceDate": "2026/09/22",
+          "weight": 0.75,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "ACHR US",
           "stockName": "阿徹航空公司",
           "shares": "40714",
-          "weight": 0.72,
-          "sourceDate": "2026/09/22",
+          "weight": 0.74,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26229,15 +26205,7 @@
           "stockName": "克瑞拓斯安全防衛公司",
           "shares": "4883",
           "weight": 0.71,
-          "sourceDate": "2026/09/22",
-          "sourceTitle": "中國信託投信 00983A 官方持股"
-        },
-        {
-          "stockCode": "RXRX US",
-          "stockName": "利可迅生技公司",
-          "shares": "50834",
-          "weight": 0.64,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26245,23 +26213,55 @@
           "stockName": "泰瑞達公司",
           "shares": "491",
           "weight": 0.61,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "NTLA US",
           "stockName": "英特利亞治療公司",
           "shares": "14372",
-          "weight": 0.57,
-          "sourceDate": "2026/09/22",
+          "weight": 0.56,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "RKLB US",
+          "stockName": "火箭實驗室美國公司",
+          "shares": "2410",
+          "weight": 0.54,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "SNOW US",
+          "stockName": "Snowflake公司",
+          "shares": "476",
+          "weight": 0.51,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "DE US",
+          "stockName": "迪爾",
+          "shares": "227",
+          "weight": 0.51,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "中國信託投信 00983A 官方持股"
+        },
+        {
+          "stockCode": "GOOGL US",
+          "stockName": "Alphabet公司 Class A",
+          "shares": "457",
+          "weight": 0.49,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
           "stockCode": "SOFI US",
           "stockName": "SoFi Technologies Inc",
           "shares": "8160",
-          "weight": 0.44,
-          "sourceDate": "2026/09/22",
+          "weight": 0.43,
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26269,7 +26269,7 @@
           "stockName": "Veracyte公司",
           "shares": "814",
           "weight": 0.11,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26277,7 +26277,7 @@
           "stockName": "BWX科技股份有限公司",
           "shares": "108",
           "weight": 0.05,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         },
         {
@@ -26285,7 +26285,7 @@
           "stockName": "Cerus公司",
           "shares": "1209",
           "weight": 0.01,
-          "sourceDate": "2026/09/22",
+          "sourceDate": "2026/09/23",
           "sourceTitle": "中國信託投信 00983A 官方持股"
         }
       ]
@@ -26327,7 +26327,7 @@
         },
         {
           "label": "本次同步",
-          "value": "2026-09-23 18:02:16+08:00"
+          "value": "2026-09-24 12:01:23+08:00"
         }
       ],
       "performance": {
@@ -26583,7 +26583,7 @@
       "code": "0050",
       "name": "元大台灣50",
       "category": "台灣大型權值",
-      "aumTwd": 2463162000000,
+      "aumTwd": 2487982000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -26625,7 +26625,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -27042,7 +27042,7 @@
       "code": "0056",
       "name": "元大高股息",
       "category": "台灣高股息",
-      "aumTwd": 798227000000,
+      "aumTwd": 797294000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -27084,7 +27084,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -27501,7 +27501,7 @@
       "code": "00878",
       "name": "國泰永續高股息",
       "category": "台灣永續高股息",
-      "aumTwd": 661578000000,
+      "aumTwd": 659351000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -27543,7 +27543,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -27800,7 +27800,7 @@
       "code": "00919",
       "name": "群益台灣精選高息",
       "category": "台灣高股息",
-      "aumTwd": 611214000000,
+      "aumTwd": 610894000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -27842,7 +27842,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -28179,7 +28179,7 @@
       "code": "006208",
       "name": "富邦台50",
       "category": "台灣大型權值",
-      "aumTwd": 476118000000,
+      "aumTwd": 480913000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -28221,7 +28221,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -28638,7 +28638,7 @@
       "code": "00631L",
       "name": "元大台灣50正2",
       "category": "台灣50 兩倍槓桿",
-      "aumTwd": 269457000000,
+      "aumTwd": 269277000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -28668,7 +28668,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -28684,7 +28684,7 @@
       "code": "009816",
       "name": "凱基台灣TOP50",
       "category": "台灣大型權值",
-      "aumTwd": 198295000000,
+      "aumTwd": 199837000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -28726,7 +28726,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -29143,7 +29143,7 @@
       "code": "0052",
       "name": "富邦科技",
       "category": "台灣科技",
-      "aumTwd": 165332000000,
+      "aumTwd": 167138000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -29185,7 +29185,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -29778,7 +29778,7 @@
       "code": "00918",
       "name": "大華優利高填息30",
       "category": "台灣高股息",
-      "aumTwd": 156946000000,
+      "aumTwd": 157995000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -29820,7 +29820,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -30077,7 +30077,7 @@
       "code": "00881",
       "name": "國泰台灣科技龍頭",
       "category": "台灣科技",
-      "aumTwd": 156058000000,
+      "aumTwd": 157198000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -30119,7 +30119,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -30376,7 +30376,7 @@
       "code": "00929",
       "name": "復華台灣科技優息",
       "category": "台灣科技高股息",
-      "aumTwd": 155399000000,
+      "aumTwd": 155231000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -30418,7 +30418,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -30835,7 +30835,7 @@
       "code": "00713",
       "name": "元大台灣高息低波",
       "category": "台灣高股息低波動",
-      "aumTwd": 107401000000,
+      "aumTwd": 107328000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -30877,7 +30877,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -31294,7 +31294,7 @@
       "code": "00922",
       "name": "國泰台灣領袖50",
       "category": "台灣大型權值",
-      "aumTwd": 93225000000,
+      "aumTwd": 93869000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -31336,7 +31336,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -31753,8 +31753,8 @@
       "code": "00830",
       "name": "國泰費城半導體",
       "category": "美國半導體",
-      "aumTwd": 76560000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 78396000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -31775,20 +31775,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "88.89 TWD"
+          "value": "87.87 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "88.89 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "87.87 TWD"
       },
       "holdings": []
     },
@@ -31799,7 +31799,7 @@
       "code": "00891",
       "name": "中信關鍵半導體",
       "category": "台灣半導體",
-      "aumTwd": 70138000000,
+      "aumTwd": 70369000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -31841,7 +31841,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -32098,7 +32098,7 @@
       "code": "00940",
       "name": "元大台灣價值高息",
       "category": "台灣價值高股息",
-      "aumTwd": 67073000000,
+      "aumTwd": 67056000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -32140,7 +32140,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -32557,7 +32557,7 @@
       "code": "00692",
       "name": "富邦公司治理",
       "category": "台灣公司治理",
-      "aumTwd": 58899000000,
+      "aumTwd": 59495000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -32599,7 +32599,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -33426,312 +33426,13 @@
       ]
     },
     {
-      "id": "00927",
-      "group": "passiveEtfs",
-      "groupRank": 18,
-      "code": "00927",
-      "name": "群益半導體收益",
-      "category": "台灣半導體",
-      "aumTwd": 53497000000,
-      "aumDate": "2026/09/23",
-      "updateCadence": "每日更新官方淨值；成分股依來源更新",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
-        },
-        {
-          "label": "發行公司",
-          "value": "群益投信"
-        },
-        {
-          "label": "上市日期",
-          "value": "2023/06/06"
-        },
-        {
-          "label": "基金類型",
-          "value": "台灣半導體"
-        },
-        {
-          "label": "官方淨值",
-          "value": "40.01 TWD"
-        },
-        {
-          "label": "淨值資料日",
-          "value": "2026/09/23"
-        },
-        {
-          "label": "成分股資料來源",
-          "value": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "label": "成分股資料日",
-          "value": "2026/07/22"
-        },
-        {
-          "label": "持股收錄",
-          "value": "30 檔"
-        },
-        {
-          "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
-        }
-      ],
-      "performance": {
-        "date": "2026/09/23",
-        "priceOrNav": "40.01 TWD"
-      },
-      "holdings": [
-        {
-          "stockCode": "2303",
-          "stockName": "聯電",
-          "shares": "30,120,000",
-          "weight": 8.3,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6548",
-          "stockName": "長科*",
-          "shares": "15,376,000",
-          "weight": 2.19,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "5347",
-          "stockName": "世界",
-          "shares": "9,515,000",
-          "weight": 3.23,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2441",
-          "stockName": "超豐",
-          "shares": "7,107,000",
-          "weight": 1.8,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "5483",
-          "stockName": "中美晶",
-          "shares": "6,177,000",
-          "weight": 2.87,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2458",
-          "stockName": "義隆",
-          "shares": "5,931,000",
-          "weight": 2.05,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3711",
-          "stockName": "日月光投控",
-          "shares": "5,747,000",
-          "weight": 7.47,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3014",
-          "stockName": "聯陽",
-          "shares": "5,079,000",
-          "weight": 1.34,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3034",
-          "stockName": "聯詠",
-          "shares": "4,664,000",
-          "weight": 4.63,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6239",
-          "stockName": "力成",
-          "shares": "4,318,000",
-          "weight": 2.52,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6147",
-          "stockName": "頎邦",
-          "shares": "4,081,000",
-          "weight": 1.54,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2451",
-          "stockName": "創見",
-          "shares": "3,902,000",
-          "weight": 1.87,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2379",
-          "stockName": "瑞昱",
-          "shares": "3,880,000",
-          "weight": 5.71,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6257",
-          "stockName": "矽格",
-          "shares": "3,806,000",
-          "weight": 1.69,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3264",
-          "stockName": "欣銓",
-          "shares": "3,678,000",
-          "weight": 1.58,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "4961",
-          "stockName": "天鈺",
-          "shares": "3,309,000",
-          "weight": 1.08,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3227",
-          "stockName": "原相",
-          "shares": "3,259,000",
-          "weight": 1.3,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3260",
-          "stockName": "威剛",
-          "shares": "3,170,000",
-          "weight": 2.38,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2330",
-          "stockName": "台積電",
-          "shares": "2,996,000",
-          "weight": 14.25,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "8081",
-          "stockName": "致新",
-          "shares": "2,673,000",
-          "weight": 1.34,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "8016",
-          "stockName": "矽創",
-          "shares": "2,485,000",
-          "weight": 1.48,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3592",
-          "stockName": "瑞鼎",
-          "shares": "2,463,000",
-          "weight": 1.15,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "2454",
-          "stockName": "聯發科",
-          "shares": "1,614,000",
-          "weight": 12.32,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6488",
-          "stockName": "環球晶",
-          "shares": "1,566,000",
-          "weight": 3.85,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "6526",
-          "stockName": "達發",
-          "shares": "1,271,000",
-          "weight": 1.49,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "4966",
-          "stockName": "譜瑞-KY",
-          "shares": "850,000",
-          "weight": 1.03,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "5269",
-          "stockName": "祥碩",
-          "shares": "733,000",
-          "weight": 2.06,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "8299",
-          "stockName": "群聯",
-          "shares": "493,000",
-          "weight": 1.87,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "7769",
-          "stockName": "鴻勁",
-          "shares": "288,000",
-          "weight": 3.66,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        },
-        {
-          "stockCode": "3661",
-          "stockName": "世芯-KY",
-          "shares": "211,000",
-          "weight": 1.5,
-          "sourceDate": "2026/07/22",
-          "sourceTitle": "第三方觀測（使用者指定初始資料）"
-        }
-      ]
-    },
-    {
       "id": "00935",
       "group": "passiveEtfs",
-      "groupRank": 19,
+      "groupRank": 18,
       "code": "00935",
       "name": "野村臺灣創新科技50",
       "category": "台灣科技指數型",
-      "aumTwd": 53330000000,
+      "aumTwd": 53706000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -33789,7 +33490,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -34214,14 +33915,313 @@
       ]
     },
     {
+      "id": "00927",
+      "group": "passiveEtfs",
+      "groupRank": 19,
+      "code": "00927",
+      "name": "群益半導體收益",
+      "category": "台灣半導體",
+      "aumTwd": 53344000000,
+      "aumDate": "2026/09/23",
+      "updateCadence": "每日更新官方淨值；成分股依來源更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
+        },
+        {
+          "label": "發行公司",
+          "value": "群益投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/06/06"
+        },
+        {
+          "label": "基金類型",
+          "value": "台灣半導體"
+        },
+        {
+          "label": "官方淨值",
+          "value": "40.01 TWD"
+        },
+        {
+          "label": "淨值資料日",
+          "value": "2026/09/23"
+        },
+        {
+          "label": "成分股資料來源",
+          "value": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "label": "成分股資料日",
+          "value": "2026/07/22"
+        },
+        {
+          "label": "持股收錄",
+          "value": "30 檔"
+        },
+        {
+          "label": "淨值同步時間",
+          "value": "2026-09-24 12:17:11"
+        }
+      ],
+      "performance": {
+        "date": "2026/09/23",
+        "priceOrNav": "40.01 TWD"
+      },
+      "holdings": [
+        {
+          "stockCode": "2303",
+          "stockName": "聯電",
+          "shares": "30,120,000",
+          "weight": 8.3,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6548",
+          "stockName": "長科*",
+          "shares": "15,376,000",
+          "weight": 2.19,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "5347",
+          "stockName": "世界",
+          "shares": "9,515,000",
+          "weight": 3.23,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2441",
+          "stockName": "超豐",
+          "shares": "7,107,000",
+          "weight": 1.8,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "5483",
+          "stockName": "中美晶",
+          "shares": "6,177,000",
+          "weight": 2.87,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2458",
+          "stockName": "義隆",
+          "shares": "5,931,000",
+          "weight": 2.05,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3711",
+          "stockName": "日月光投控",
+          "shares": "5,747,000",
+          "weight": 7.47,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3014",
+          "stockName": "聯陽",
+          "shares": "5,079,000",
+          "weight": 1.34,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3034",
+          "stockName": "聯詠",
+          "shares": "4,664,000",
+          "weight": 4.63,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6239",
+          "stockName": "力成",
+          "shares": "4,318,000",
+          "weight": 2.52,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6147",
+          "stockName": "頎邦",
+          "shares": "4,081,000",
+          "weight": 1.54,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2451",
+          "stockName": "創見",
+          "shares": "3,902,000",
+          "weight": 1.87,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2379",
+          "stockName": "瑞昱",
+          "shares": "3,880,000",
+          "weight": 5.71,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6257",
+          "stockName": "矽格",
+          "shares": "3,806,000",
+          "weight": 1.69,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3264",
+          "stockName": "欣銓",
+          "shares": "3,678,000",
+          "weight": 1.58,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "4961",
+          "stockName": "天鈺",
+          "shares": "3,309,000",
+          "weight": 1.08,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3227",
+          "stockName": "原相",
+          "shares": "3,259,000",
+          "weight": 1.3,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3260",
+          "stockName": "威剛",
+          "shares": "3,170,000",
+          "weight": 2.38,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2330",
+          "stockName": "台積電",
+          "shares": "2,996,000",
+          "weight": 14.25,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "8081",
+          "stockName": "致新",
+          "shares": "2,673,000",
+          "weight": 1.34,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "8016",
+          "stockName": "矽創",
+          "shares": "2,485,000",
+          "weight": 1.48,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3592",
+          "stockName": "瑞鼎",
+          "shares": "2,463,000",
+          "weight": 1.15,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "2454",
+          "stockName": "聯發科",
+          "shares": "1,614,000",
+          "weight": 12.32,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6488",
+          "stockName": "環球晶",
+          "shares": "1,566,000",
+          "weight": 3.85,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "6526",
+          "stockName": "達發",
+          "shares": "1,271,000",
+          "weight": 1.49,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "4966",
+          "stockName": "譜瑞-KY",
+          "shares": "850,000",
+          "weight": 1.03,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "5269",
+          "stockName": "祥碩",
+          "shares": "733,000",
+          "weight": 2.06,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "8299",
+          "stockName": "群聯",
+          "shares": "493,000",
+          "weight": 1.87,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "7769",
+          "stockName": "鴻勁",
+          "shares": "288,000",
+          "weight": 3.66,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        },
+        {
+          "stockCode": "3661",
+          "stockName": "世芯-KY",
+          "shares": "211,000",
+          "weight": 1.5,
+          "sourceDate": "2026/07/22",
+          "sourceTitle": "第三方觀測（使用者指定初始資料）"
+        }
+      ]
+    },
+    {
       "id": "00712",
       "group": "passiveEtfs",
       "groupRank": 20,
       "code": "00712",
       "name": "復華富時不動產",
       "category": "美國不動產 REITs",
-      "aumTwd": 48128000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 48606000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -34242,20 +34242,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "7.95 TWD"
+          "value": "7.74 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "7.95 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "7.74 TWD"
       },
       "holdings": []
     },
@@ -34266,7 +34266,7 @@
       "code": "00850",
       "name": "元大臺灣ESG永續",
       "category": "台灣 ESG",
-      "aumTwd": 39962000000,
+      "aumTwd": 40138000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -34308,7 +34308,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -35229,7 +35229,7 @@
       "code": "00923",
       "name": "群益台ESG低碳50",
       "category": "台灣 ESG 低碳",
-      "aumTwd": 39665000000,
+      "aumTwd": 39968000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -35271,7 +35271,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -35688,8 +35688,8 @@
       "code": "00757",
       "name": "統一FANG+",
       "category": "美國科技龍頭",
-      "aumTwd": 38564000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 38473000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -35710,20 +35710,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "144.37 TWD"
+          "value": "143.16 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "144.37 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "143.16 TWD"
       },
       "holdings": []
     },
@@ -35734,7 +35734,7 @@
       "code": "00900",
       "name": "富邦特選高股息30",
       "category": "台灣高股息",
-      "aumTwd": 29929000000,
+      "aumTwd": 29677000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -35776,7 +35776,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -36257,8 +36257,8 @@
       "code": "00882",
       "name": "中信中國高股息",
       "category": "中國高股息",
-      "aumTwd": 29418000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 29122000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -36283,15 +36283,15 @@
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
+        "date": "2026/09/23",
         "priceOrNav": "14.75 TWD"
       },
       "holdings": []
@@ -36303,7 +36303,7 @@
       "code": "00939",
       "name": "統一台灣高息動能",
       "category": "台灣高股息動能",
-      "aumTwd": 28282000000,
+      "aumTwd": 28225000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -36345,7 +36345,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -36724,7 +36724,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37213,7 +37213,7 @@
       "code": "00915",
       "name": "凱基優選高股息30",
       "category": "台灣優選高股息",
-      "aumTwd": 16814000000,
+      "aumTwd": 16807000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37243,7 +37243,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37259,8 +37259,8 @@
       "code": "00893",
       "name": "國泰智能電動車",
       "category": "全球電動車",
-      "aumTwd": 16331000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 16384000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -37281,20 +37281,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "46.30 TWD"
+          "value": "45.94 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "46.30 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "45.94 TWD"
       },
       "holdings": []
     },
@@ -37305,7 +37305,7 @@
       "code": "00961",
       "name": "FT臺灣永續高息",
       "category": "台灣永續高息",
-      "aumTwd": 14576000000,
+      "aumTwd": 14873000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37335,7 +37335,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37351,7 +37351,7 @@
       "code": "00896",
       "name": "中信綠能及電動車",
       "category": "台灣綠能電動車",
-      "aumTwd": 14119000000,
+      "aumTwd": 14150000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37381,7 +37381,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37397,7 +37397,7 @@
       "code": "00892",
       "name": "富邦台灣半導體",
       "category": "台灣半導體指數型",
-      "aumTwd": 13921000000,
+      "aumTwd": 13975000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37455,7 +37455,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37726,7 +37726,7 @@
       "code": "00934",
       "name": "中信成長高股息",
       "category": "台灣成長高股息",
-      "aumTwd": 12754000000,
+      "aumTwd": 12792000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37756,7 +37756,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37772,7 +37772,7 @@
       "code": "00735",
       "name": "國泰臺韓科技",
       "category": "台韓科技",
-      "aumTwd": 12451000000,
+      "aumTwd": 12600000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37802,7 +37802,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -37818,8 +37818,8 @@
       "code": "00947",
       "name": "台新臺灣IC設計",
       "category": "台灣 IC 設計",
-      "aumTwd": 11436000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 11540000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -37840,32 +37840,78 @@
         },
         {
           "label": "官方淨值",
-          "value": "40.57 TWD"
+          "value": "40.87 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "40.57 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "40.87 TWD"
+      },
+      "holdings": []
+    },
+    {
+      "id": "00941",
+      "group": "passiveEtfs",
+      "groupRank": 36,
+      "code": "00941",
+      "name": "中信上游半導體",
+      "category": "全球上游半導體",
+      "aumTwd": 11345000000,
+      "aumDate": "2026/09/23",
+      "updateCadence": "每日更新官方淨值；成分股依來源更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
+        },
+        {
+          "label": "發行公司",
+          "value": "中國信託投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2024/03/15"
+        },
+        {
+          "label": "基金類型",
+          "value": "全球上游半導體"
+        },
+        {
+          "label": "官方淨值",
+          "value": "24.99 TWD"
+        },
+        {
+          "label": "淨值資料日",
+          "value": "2026/09/23"
+        },
+        {
+          "label": "淨值同步時間",
+          "value": "2026-09-24 12:17:11"
+        }
+      ],
+      "performance": {
+        "date": "2026/09/23",
+        "priceOrNav": "24.99 TWD"
       },
       "holdings": []
     },
     {
       "id": "009820",
       "group": "passiveEtfs",
-      "groupRank": 36,
+      "groupRank": 37,
       "code": "009820",
       "name": "元大納斯達克精選",
       "category": "美國那斯達克",
-      "aumTwd": 11372000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 11227000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -37886,31 +37932,31 @@
         },
         {
           "label": "官方淨值",
-          "value": "10.55 TWD"
+          "value": "10.45 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "10.55 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "10.45 TWD"
       },
       "holdings": []
     },
     {
       "id": "009802",
       "group": "passiveEtfs",
-      "groupRank": 37,
+      "groupRank": 38,
       "code": "009802",
       "name": "富邦旗艦50",
       "category": "台灣因子投資",
-      "aumTwd": 11251000000,
+      "aumTwd": 11002000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -37940,58 +37986,12 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
         "date": "2026/09/23",
         "priceOrNav": "20.26 TWD"
-      },
-      "holdings": []
-    },
-    {
-      "id": "00941",
-      "group": "passiveEtfs",
-      "groupRank": 38,
-      "code": "00941",
-      "name": "中信上游半導體",
-      "category": "全球上游半導體",
-      "aumTwd": 11194000000,
-      "aumDate": "2026/09/22",
-      "updateCadence": "每日更新官方淨值；成分股依來源更新",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
-        },
-        {
-          "label": "發行公司",
-          "value": "中國信託投信"
-        },
-        {
-          "label": "上市日期",
-          "value": "2024/03/15"
-        },
-        {
-          "label": "基金類型",
-          "value": "全球上游半導體"
-        },
-        {
-          "label": "官方淨值",
-          "value": "24.97 TWD"
-        },
-        {
-          "label": "淨值資料日",
-          "value": "2026/09/22"
-        },
-        {
-          "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
-        }
-      ],
-      "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "24.97 TWD"
       },
       "holdings": []
     },
@@ -38002,8 +38002,8 @@
       "code": "00965",
       "name": "元大航太防衛科技",
       "category": "全球航太防衛",
-      "aumTwd": 10999000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 10977000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38024,20 +38024,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "25.41 TWD"
+          "value": "25.40 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "25.41 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "25.40 TWD"
       },
       "holdings": []
     },
@@ -38048,7 +38048,7 @@
       "code": "00905",
       "name": "FT臺灣SMART",
       "category": "台灣因子投資",
-      "aumTwd": 9896000000,
+      "aumTwd": 9993000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -38078,7 +38078,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38088,14 +38088,60 @@
       "holdings": []
     },
     {
-      "id": "009828",
+      "id": "00876",
       "group": "passiveEtfs",
       "groupRank": 41,
+      "code": "00876",
+      "name": "元大全球5G",
+      "category": "全球 5G",
+      "aumTwd": 8479000000,
+      "aumDate": "2026/09/23",
+      "updateCadence": "每日更新官方淨值；成分股依來源更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
+        },
+        {
+          "label": "發行公司",
+          "value": "元大投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2020/07/07"
+        },
+        {
+          "label": "基金類型",
+          "value": "全球 5G"
+        },
+        {
+          "label": "官方淨值",
+          "value": "89.79 TWD"
+        },
+        {
+          "label": "淨值資料日",
+          "value": "2026/09/23"
+        },
+        {
+          "label": "淨值同步時間",
+          "value": "2026-09-24 12:17:11"
+        }
+      ],
+      "performance": {
+        "date": "2026/09/23",
+        "priceOrNav": "89.79 TWD"
+      },
+      "holdings": []
+    },
+    {
+      "id": "009828",
+      "group": "passiveEtfs",
+      "groupRank": 42,
       "code": "009828",
       "name": "中信台日韓PCB",
       "category": "台日韓 PCB 供應鏈",
       "aumTwd": 8467000000,
-      "aumDate": "2026/09/22",
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38120,62 +38166,16 @@
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
+        "date": "2026/09/23",
         "priceOrNav": "9.36 TWD"
-      },
-      "holdings": []
-    },
-    {
-      "id": "00876",
-      "group": "passiveEtfs",
-      "groupRank": 42,
-      "code": "00876",
-      "name": "元大全球5G",
-      "category": "全球 5G",
-      "aumTwd": 8394000000,
-      "aumDate": "2026/09/22",
-      "updateCadence": "每日更新官方淨值；成分股依來源更新",
-      "basicInfo": [
-        {
-          "label": "資料來源",
-          "value": "臺灣證券交易所 ETF e添富每日盤後淨值"
-        },
-        {
-          "label": "發行公司",
-          "value": "元大投信"
-        },
-        {
-          "label": "上市日期",
-          "value": "2020/07/07"
-        },
-        {
-          "label": "基金類型",
-          "value": "全球 5G"
-        },
-        {
-          "label": "官方淨值",
-          "value": "90.18 TWD"
-        },
-        {
-          "label": "淨值資料日",
-          "value": "2026/09/22"
-        },
-        {
-          "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
-        }
-      ],
-      "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "90.18 TWD"
       },
       "holdings": []
     },
@@ -38186,8 +38186,8 @@
       "code": "009821",
       "name": "野村稀土關鍵資源",
       "category": "全球稀土關鍵資源",
-      "aumTwd": 7465000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 7581000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38208,20 +38208,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "14.40 TWD"
+          "value": "13.98 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "14.40 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "13.98 TWD"
       },
       "holdings": []
     },
@@ -38232,8 +38232,8 @@
       "code": "00895",
       "name": "富邦未來車",
       "category": "全球未來車",
-      "aumTwd": 7430000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 7460000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38254,20 +38254,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "52.20 TWD"
+          "value": "52.08 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "52.20 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "52.08 TWD"
       },
       "holdings": []
     },
@@ -38278,7 +38278,7 @@
       "code": "00894",
       "name": "中信小資高價30",
       "category": "台灣高價股",
-      "aumTwd": 7381000000,
+      "aumTwd": 7438000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -38308,7 +38308,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38354,7 +38354,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38370,7 +38370,7 @@
       "code": "00690",
       "name": "兆豐藍籌30",
       "category": "台灣大型權值",
-      "aumTwd": 6999000000,
+      "aumTwd": 7036000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -38400,7 +38400,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38416,8 +38416,8 @@
       "code": "00904",
       "name": "新光臺灣半導體30",
       "category": "台灣半導體指數型",
-      "aumTwd": 6807000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 6859000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38454,11 +38454,11 @@
         },
         {
           "label": "官方淨值",
-          "value": "43.46 TWD"
+          "value": "43.80 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "成分股資料來源",
@@ -38474,12 +38474,12 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "43.46 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "43.80 TWD"
       },
       "assetClasses": [
         {
@@ -38745,7 +38745,7 @@
       "code": "00946",
       "name": "群益科技高息成長",
       "category": "台灣科技高股息",
-      "aumTwd": 6768000000,
+      "aumTwd": 6770000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -38775,7 +38775,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38791,8 +38791,8 @@
       "code": "00910",
       "name": "第一金太空衛星",
       "category": "全球太空衛星",
-      "aumTwd": 6618000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 6597000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38813,20 +38813,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "59.20 TWD"
+          "value": "57.89 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "59.20 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "57.89 TWD"
       },
       "holdings": []
     },
@@ -38837,7 +38837,7 @@
       "code": "009803",
       "name": "玉山市值動能50",
       "category": "台灣市值動能",
-      "aumTwd": 6242000000,
+      "aumTwd": 6274000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -38867,7 +38867,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -38883,8 +38883,8 @@
       "code": "00770",
       "name": "國泰北美科技",
       "category": "美國北美科技",
-      "aumTwd": 6098000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 6119000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38905,20 +38905,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "65.47 TWD"
+          "value": "65.03 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "65.47 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "65.03 TWD"
       },
       "holdings": []
     },
@@ -38929,8 +38929,8 @@
       "code": "00909",
       "name": "國泰數位支付服務",
       "category": "全球數位支付",
-      "aumTwd": 5262000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 5307000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -38951,20 +38951,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "52.70 TWD"
+          "value": "51.14 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "52.70 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "51.14 TWD"
       },
       "holdings": []
     },
@@ -38975,7 +38975,7 @@
       "code": "00952",
       "name": "凱基台灣AI50",
       "category": "台灣 AI 50",
-      "aumTwd": 4537000000,
+      "aumTwd": 4536000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39005,7 +39005,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39021,7 +39021,7 @@
       "code": "00733",
       "name": "富邦臺灣中小",
       "category": "台灣中小型",
-      "aumTwd": 4390000000,
+      "aumTwd": 4372000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39051,7 +39051,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39067,8 +39067,8 @@
       "code": "00936",
       "name": "台新永續高息中小",
       "category": "台灣永續高息中小",
-      "aumTwd": 4163000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 4157000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -39089,20 +39089,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "21.59 TWD"
+          "value": "21.56 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "21.59 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "21.56 TWD"
       },
       "holdings": []
     },
@@ -39114,7 +39114,7 @@
       "name": "台新日本半導體",
       "category": "日本半導體",
       "aumTwd": 4154000000,
-      "aumDate": "2026/09/22",
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -39139,15 +39139,15 @@
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
+        "date": "2026/09/23",
         "priceOrNav": "17.02 TWD"
       },
       "holdings": []
@@ -39159,7 +39159,7 @@
       "code": "00930",
       "name": "永豐ESG低碳高息",
       "category": "台灣 ESG 低碳高息",
-      "aumTwd": 3955000000,
+      "aumTwd": 3821000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39189,7 +39189,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39205,8 +39205,8 @@
       "code": "009829",
       "name": "大華韓國KOSPI50",
       "category": "韓國大型權值",
-      "aumTwd": 3549000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 3539000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -39227,20 +39227,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "11.00 TWD"
+          "value": "11.14 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "11.00 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "11.14 TWD"
       },
       "holdings": []
     },
@@ -39251,7 +39251,7 @@
       "code": "009804",
       "name": "聯邦台精彩50",
       "category": "台灣大型權值",
-      "aumTwd": 3481000000,
+      "aumTwd": 3502000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39281,7 +39281,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39297,7 +39297,7 @@
       "code": "00913",
       "name": "兆豐台灣晶圓製造",
       "category": "台灣半導體指數型",
-      "aumTwd": 3049000000,
+      "aumTwd": 3046000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39367,7 +39367,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39644,7 +39644,7 @@
       "code": "00901",
       "name": "永豐智能車供應鏈",
       "category": "台灣智能車供應鏈",
-      "aumTwd": 3021000000,
+      "aumTwd": 3042000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39674,7 +39674,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39690,8 +39690,8 @@
       "code": "00902",
       "name": "中信電池及儲能",
       "category": "全球電池儲能",
-      "aumTwd": 2813000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 2825000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -39712,20 +39712,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "12.61 TWD"
+          "value": "12.48 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "12.61 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "12.48 TWD"
       },
       "holdings": []
     },
@@ -39736,7 +39736,7 @@
       "code": "00728",
       "name": "第一金工業30",
       "category": "台灣工業 30",
-      "aumTwd": 2793000000,
+      "aumTwd": 2797000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39766,7 +39766,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39782,8 +39782,8 @@
       "code": "00926",
       "name": "凱基全球菁英55",
       "category": "全球菁英 55",
-      "aumTwd": 2767000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 2740000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -39804,20 +39804,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "26.74 TWD"
+          "value": "26.48 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "26.74 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "26.48 TWD"
       },
       "holdings": []
     },
@@ -39828,7 +39828,7 @@
       "code": "00907",
       "name": "永豐優息存股",
       "category": "台灣優息存股",
-      "aumTwd": 2701000000,
+      "aumTwd": 2691000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39858,7 +39858,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39874,7 +39874,7 @@
       "code": "0053",
       "name": "元大電子",
       "category": "台灣科技",
-      "aumTwd": 2631000000,
+      "aumTwd": 2659000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39904,7 +39904,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39920,7 +39920,7 @@
       "code": "00912",
       "name": "中信臺灣智慧50",
       "category": "台灣因子投資",
-      "aumTwd": 2125000000,
+      "aumTwd": 2139000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39950,7 +39950,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -39966,7 +39966,7 @@
       "code": "006203",
       "name": "元大MSCI台灣",
       "category": "台灣大型權值",
-      "aumTwd": 2070000000,
+      "aumTwd": 2089000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -39996,7 +39996,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40012,7 +40012,7 @@
       "code": "00730",
       "name": "富邦臺灣優質高息",
       "category": "台灣優質高股息",
-      "aumTwd": 1999000000,
+      "aumTwd": 2018000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40042,7 +40042,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40058,7 +40058,7 @@
       "code": "00731",
       "name": "復華富時高息低波",
       "category": "台灣高息低波動",
-      "aumTwd": 1998000000,
+      "aumTwd": 1992000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40088,7 +40088,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40104,7 +40104,7 @@
       "code": "00932",
       "name": "兆豐永續高息等權",
       "category": "台灣永續高息等權",
-      "aumTwd": 1891000000,
+      "aumTwd": 1892000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40134,7 +40134,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40150,8 +40150,8 @@
       "code": "00911",
       "name": "兆豐洲際半導體",
       "category": "全球半導體",
-      "aumTwd": 1821000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 1745000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40172,20 +40172,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "57.40 TWD"
+          "value": "56.69 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "57.40 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "56.69 TWD"
       },
       "holdings": []
     },
@@ -40196,8 +40196,8 @@
       "code": "00962",
       "name": "台新AI優息動能",
       "category": "台灣 AI 高股息",
-      "aumTwd": 1624000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 1617000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40218,20 +40218,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "15.05 TWD"
+          "value": "14.98 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "15.05 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "14.98 TWD"
       },
       "holdings": []
     },
@@ -40242,8 +40242,8 @@
       "code": "00963",
       "name": "中信全球高股息",
       "category": "全球高股息",
-      "aumTwd": 1528000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 1532000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40264,20 +40264,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "12.67 TWD"
+          "value": "12.53 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "12.67 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "12.53 TWD"
       },
       "holdings": []
     },
@@ -40288,7 +40288,7 @@
       "code": "00921",
       "name": "兆豐龍頭等權重",
       "category": "台灣龍頭等權重",
-      "aumTwd": 1360000000,
+      "aumTwd": 1355000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40318,7 +40318,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40334,7 +40334,7 @@
       "code": "009808",
       "name": "華南永昌優選50",
       "category": "台灣全市場",
-      "aumTwd": 1257000000,
+      "aumTwd": 1265000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40364,7 +40364,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40380,7 +40380,7 @@
       "code": "00944",
       "name": "野村趨勢動能高息",
       "category": "台灣趨勢動能高息",
-      "aumTwd": 1174000000,
+      "aumTwd": 1171000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40410,7 +40410,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40426,8 +40426,8 @@
       "code": "00964",
       "name": "中信亞太高股息",
       "category": "亞太高股息",
-      "aumTwd": 1056000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 1048000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40448,20 +40448,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "14.74 TWD"
+          "value": "14.62 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "14.74 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "14.62 TWD"
       },
       "holdings": []
     },
@@ -40473,7 +40473,7 @@
       "name": "富邦元宇宙",
       "category": "全球元宇宙",
       "aumTwd": 1042000000,
-      "aumDate": "2026/09/22",
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40494,20 +40494,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "22.31 TWD"
+          "value": "22.13 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "22.31 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "22.13 TWD"
       },
       "holdings": []
     },
@@ -40518,8 +40518,8 @@
       "code": "00971",
       "name": "野村美國研發龍頭",
       "category": "美國研發龍頭",
-      "aumTwd": 988000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 963000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40540,20 +40540,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "17.94 TWD"
+          "value": "17.78 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "17.94 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "17.78 TWD"
       },
       "holdings": []
     },
@@ -40564,8 +40564,8 @@
       "code": "00737",
       "name": "國泰AI機器人",
       "category": "全球 AI 機器人",
-      "aumTwd": 931000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 930000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40586,20 +40586,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "41.27 TWD"
+          "value": "41.13 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "41.27 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "41.13 TWD"
       },
       "holdings": []
     },
@@ -40610,8 +40610,8 @@
       "code": "00875",
       "name": "國泰網路資安",
       "category": "全球網路資安",
-      "aumTwd": 927000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 895000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40632,20 +40632,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "57.76 TWD"
+          "value": "58.51 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "57.76 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "58.51 TWD"
       },
       "holdings": []
     },
@@ -40656,7 +40656,7 @@
       "code": "00943",
       "name": "兆豐電子高息等權",
       "category": "台灣電子高息等權",
-      "aumTwd": 849000000,
+      "aumTwd": 848000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40686,7 +40686,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40702,7 +40702,7 @@
       "code": "009809",
       "name": "富邦淨零ESG50",
       "category": "台灣 ESG 低碳",
-      "aumTwd": 621000000,
+      "aumTwd": 625000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40732,7 +40732,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40748,7 +40748,7 @@
       "code": "0057",
       "name": "富邦摩台",
       "category": "台灣大型權值",
-      "aumTwd": 508000000,
+      "aumTwd": 512000000,
       "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
@@ -40778,7 +40778,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40795,7 +40795,7 @@
       "name": "中信日經高股息",
       "category": "日本高股息",
       "aumTwd": 445000000,
-      "aumDate": "2026/09/22",
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40820,15 +40820,15 @@
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
+        "date": "2026/09/23",
         "priceOrNav": "13.65 TWD"
       },
       "holdings": []
@@ -40840,8 +40840,8 @@
       "code": "00851",
       "name": "台新全球AI",
       "category": "全球 AI",
-      "aumTwd": 406000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 407000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40862,20 +40862,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "73.73 TWD"
+          "value": "73.44 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "73.73 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "73.44 TWD"
       },
       "holdings": []
     },
@@ -40916,7 +40916,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -40932,8 +40932,8 @@
       "code": "00771",
       "name": "元大US高息特別股",
       "category": "美國高息特別股",
-      "aumTwd": 217000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 216000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -40954,20 +40954,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "15.18 TWD"
+          "value": "15.12 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "15.18 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "15.12 TWD"
       },
       "holdings": []
     },
@@ -40978,8 +40978,8 @@
       "code": "00702",
       "name": "國泰標普低波高息",
       "category": "美國標普低波高息",
-      "aumTwd": 160000000,
-      "aumDate": "2026/09/22",
+      "aumTwd": 159000000,
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -41000,20 +41000,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "23.76 TWD"
+          "value": "23.55 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "23.76 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "23.55 TWD"
       },
       "holdings": []
     },
@@ -41053,7 +41053,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
@@ -41069,7 +41069,7 @@
       "code": "00877",
       "name": "FH中國5G",
       "category": "中國 5G",
-      "aumDate": "2026/09/22",
+      "aumDate": "2026/09/23",
       "updateCadence": "每日更新官方淨值；成分股依來源更新",
       "basicInfo": [
         {
@@ -41090,20 +41090,20 @@
         },
         {
           "label": "官方淨值",
-          "value": "39.05 TWD"
+          "value": "38.75 TWD"
         },
         {
           "label": "淨值資料日",
-          "value": "2026/09/22"
+          "value": "2026/09/23"
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
-        "date": "2026/09/22",
-        "priceOrNav": "39.05 TWD"
+        "date": "2026/09/23",
+        "priceOrNav": "38.75 TWD"
       },
       "holdings": []
     },
@@ -41143,7 +41143,7 @@
         },
         {
           "label": "淨值同步時間",
-          "value": "2026-09-23 18:17:01"
+          "value": "2026-09-24 12:17:11"
         }
       ],
       "performance": {
