@@ -1116,6 +1116,13 @@ async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
         or len(tracker_references) != int(seed.get("trackerReferenceCount", -1))
     ):
         raise ValueError("Complete trackerReferences are required before database import")
+    fund_profiles = seed.get("fundProfiles")
+    if (
+        not isinstance(fund_profiles, list)
+        or len(fund_profiles) != int(seed.get("fundProfileCount", -1))
+        or not fund_profiles
+    ):
+        raise ValueError("Complete fundProfiles are required before database import")
     async with pool.acquire() as conn:
         exists = await conn.fetchval(
             "SELECT 1 FROM popostock_sync_runs WHERE version = $1", version
@@ -1253,6 +1260,14 @@ async def import_seed(pool: asyncpg.Pool, seed: dict[str, Any]) -> bool:
                         """,
                         asset_rows,
                     )
+
+            # The seed is authoritative for which funds exist. Profiles are
+            # upserted above, so a fund dropped from the seed would otherwise
+            # linger forever; holdings and asset classes cascade with it.
+            await conn.execute(
+                "DELETE FROM popostock_fund_profiles WHERE symbol <> ALL($1::text[])",
+                [str(item["code"]).upper() for item in fund_profiles],
+            )
 
             await conn.execute("DELETE FROM popostock_tracker_holdings")
             await conn.execute("DELETE FROM popostock_tracker_items")
