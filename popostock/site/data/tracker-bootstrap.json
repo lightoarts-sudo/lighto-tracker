@@ -42200,9 +42200,41 @@
       "holdings": []
     },
     {
-      "id": "00877",
+      "id": "00662",
       "group": "passiveEtfs",
       "groupRank": 93,
+      "code": "00662",
+      "name": "富邦NASDAQ",
+      "category": "美國那斯達克100",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "富邦投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2016/06/24"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國那斯達克100"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
+      "id": "00877",
+      "group": "passiveEtfs",
+      "groupRank": 94,
       "code": "00877",
       "name": "FH中國5G",
       "category": "中國 5G",
@@ -42245,9 +42277,41 @@
       "holdings": []
     },
     {
+      "id": "00924",
+      "group": "passiveEtfs",
+      "groupRank": 95,
+      "code": "00924",
+      "name": "復華S&P500成長",
+      "category": "美國標普500成長",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "復華投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2023/04/26"
+        },
+        {
+          "label": "基金類型",
+          "value": "美國標普500成長"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
+      "holdings": []
+    },
+    {
       "id": "00928",
       "group": "passiveEtfs",
-      "groupRank": 94,
+      "groupRank": 96,
       "code": "00928",
       "name": "中信上櫃ESG 30",
       "category": "台灣上櫃 ESG",
@@ -42287,6 +42351,38 @@
         "date": "2026/09/24",
         "priceOrNav": "33.57 TWD"
       },
+      "holdings": []
+    },
+    {
+      "id": "009826",
+      "group": "passiveEtfs",
+      "groupRank": 97,
+      "code": "009826",
+      "name": "貝萊德世界股票",
+      "category": "全球世界股票",
+      "updateCadence": "每日淨值；持股依官方揭露更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "臺灣證券交易所 ETF e添富"
+        },
+        {
+          "label": "發行公司",
+          "value": "貝萊德投信"
+        },
+        {
+          "label": "上市日期",
+          "value": "2026/08/03"
+        },
+        {
+          "label": "基金類型",
+          "value": "全球世界股票"
+        },
+        {
+          "label": "官方淨值",
+          "value": "等待官方同步"
+        }
+      ],
       "holdings": []
     }
   ],
@@ -43628,6 +43724,30 @@
       "createdAt": "2026-07-22"
     },
     {
+      "id": "ref-passive-nav-00924",
+      "targetKey": "item:00924",
+      "title": "00924 復華S&P500成長 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00924",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-00662",
+      "targetKey": "item:00662",
+      "title": "00662 富邦NASDAQ 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/00662",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "ref-passive-nav-009826",
+      "targetKey": "item:009826",
+      "title": "009826 貝萊德世界股票 官方每日淨值",
+      "url": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/009826",
+      "note": "官方基本資料、資產規模、每日盤後淨值與折溢價",
+      "createdAt": "2026-07-22"
+    },
+    {
       "id": "ref-passive-holdings-bootstrap-0050",
       "targetKey": "item:0050",
       "title": "0050 元大台灣50 成分股初始快照",
@@ -44282,6 +44402,27 @@
       "id": "ref-passive-holdings-bootstrap-009828",
       "targetKey": "item:009828",
       "title": "009828 中信台日韓PCB 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00924",
+      "targetKey": "item:00924",
+      "title": "00924 復華S&P500成長 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-00662",
+      "targetKey": "item:00662",
+      "title": "00662 富邦NASDAQ 成分股初始快照",
+      "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "ref-passive-holdings-bootstrap-009826",
+      "targetKey": "item:009826",
+      "title": "009826 貝萊德世界股票 成分股初始快照",
       "note": "使用者指定第三方初始資料；每日排程不以此取代投信官網",
       "createdAt": "2026-07-23"
     }
