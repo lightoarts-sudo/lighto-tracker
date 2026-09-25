@@ -1,9 +1,12 @@
 /*
  * PoPoStock 績效排行 custom date range.
  *
- * The release page offers fixed presets only (1 週 … 3 年). This adds a date
- * pair next to them and rewrites the existing ranking table and summary in
- * place, so a custom range reads as the same table rather than a second one.
+ * The release table shows all eight preset periods side by side (see
+ * scripts/patch-popostock-performance-matrix.mjs). This adds a date pair next
+ * to the preset buttons and, once applied, rewrites the ranking table and
+ * summary in place with one extra column — 自訂區間 — placed first among the
+ * return columns and used as the sort key, so it reads as the same table
+ * rather than a second one.
  *
  * The return uses the same rule as the published ranking: the last official
  * value on or before each endpoint, taken from data/performance-series.json
@@ -20,10 +23,12 @@
 
 
   var SERIES_FILE = "data/performance-series.json";
+  var RANKING_FILE = "data/performance-ranking.json";
   var PANEL_ID = "performance-custom-range";
   var CONTROL_ID = "performance-custom-range-control";
   var BANNER_ID = "performance-custom-range-banner";
   var seriesPromise = null;
+  var rankingPromise = null;
   var activeRange = null;
 
   function baseUrl() {
@@ -45,6 +50,22 @@
         throw error;
       });
     return seriesPromise;
+  }
+
+  /* The eight preset columns are already computed on the server; reusing them
+     keeps every number identical to the table this one replaces. */
+  function loadRanking() {
+    if (rankingPromise) return rankingPromise;
+    rankingPromise = fetch(baseUrl() + "/" + RANKING_FILE, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        return response.json();
+      })
+      .catch(function (error) {
+        rankingPromise = null;
+        throw error;
+      });
+    return rankingPromise;
   }
 
   /* Last official value on or before the date; null when the series starts later. */
@@ -70,9 +91,13 @@
     passiveEtfs: "被動式 ETF",
   };
 
-  function rank(payload, from, to) {
+  function rank(payload, ranking, from, to) {
     var rows = [];
     var skipped = [];
+    var presets = {};
+    ((ranking && ranking.instruments) || []).forEach(function (item) {
+      presets[item.code] = item.returns || {};
+    });
     (payload.instruments || []).forEach(function (item) {
       var values = item.values || [];
       var start = valueAsOf(values, from);
@@ -92,6 +117,7 @@
         endDate: end[0],
         endValue: end[1],
         returnPct: (end[1] / start[1] - 1) * 100,
+        presets: presets[item.code] || {},
       });
     });
     var scope = currentScope();
@@ -118,7 +144,10 @@
       // The preset grid is repeat(8,minmax(82px,1fr)), so as a flex item it
       // would stretch across the whole row and push this control onto the
       // next line. Sizing it to content leaves room beside 3 年.
-      ".pcr-row>.performance-periods{flex:0 1 auto;min-width:0}" +
+      ".pcr-row>.performance-periods{flex:0 1 auto;min-width:0;max-width:100%}" +
+      // 手機上預設區間是 4 欄的格線（最小 92px），整列 388px 寬；不夾住寬度
+      // 它會把整個績效面板撐寬，右邊的「基金」「被動式 ETF」就被裁掉。
+      ".pcr-row{max-width:100%}" +
       "#" + CONTROL_ID + "{flex:0 0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px}" +
       "#" + CONTROL_ID + " .pcr-field{display:grid;gap:4px}" +
       "#" + CONTROL_ID + " .pcr-field span{color:#667483;font-size:12px;font-weight:800}" +
@@ -144,28 +173,11 @@
 
       "@media(max-width:720px){.pcr-row{gap:9px}#" + CONTROL_ID + "{width:100%}#" + CONTROL_ID + " .pcr-field{flex:1 1 42%}#" + CONTROL_ID + " input[type=date]{width:100%}}" +
       /*
-       * 手機版的績效排行只留「名次 · 標的 · 報酬」。站台的通用手機表格會把每一格
-       * 攤成「標籤＋值」的兩欄卡片，七個欄位就變成四行高的區塊，一個螢幕只看得到
-       * 兩三名，排行榜失去意義。類型、起算日、最新資料日、最新淨值在手機上都是
-       * 桌機才需要的佐證欄位，收起來後一頁能看十幾名。
-       *
-       * 用 nth-child 而非 data-label：React 的表格沒有帶 data-label 屬性，
-       * 兩張表（React 與本檔自訂區間）欄位順序相同，以位置對齊才涵蓋得到兩者。
+       * 手機版的欄位收合與橫向捲動改由 index.html 的
+       * popostock-performance-matrix 樣式統一處理，兩張表（React 與本檔自訂
+       * 區間）用同一組 class，不再需要在這裡用 nth-child 各自對齊。
        */
-      "@media(max-width:720px){" +
-      ".performance-table tbody tr{grid-template-columns:auto minmax(0,1fr) auto;align-items:center}" +
-      // 多帶一層 tr 是為了蓋過站台給前兩欄的淡藍底：桌機是七欄時的分區色，
-      // 手機只剩三欄會變成一張卡左深右白，看起來像沒對齊。
-      ".performance-table tbody tr td:nth-child(3)," +
-      ".performance-table tbody tr td:nth-child(5)," +
-      ".performance-table tbody tr td:nth-child(6)," +
-      ".performance-table tbody tr td:nth-child(7){display:none}" +
-      ".performance-table tbody tr td{border-right:0;border-bottom:0;padding:11px 10px;background:#fff}" +
-      ".performance-table tbody tr td:before{display:none}" +
-      ".performance-table tbody tr td:nth-child(4){justify-items:end;text-align:right;font-size:16px}" +
-      ".performance-table tbody tr td.performance-rank{width:auto;min-width:26px;font-size:15px}" +
-      ".performance-table tbody tr .performance-instrument{gap:1px}" +
-      "}";
+      "";
     document.head.appendChild(style);
   }
 
@@ -230,9 +242,9 @@
   function reapply() {
     if (!activeRange) return;
     var range = activeRange;
-    loadSeries()
-      .then(function (payload) {
-        render(payload, range.from, range.to);
+    Promise.all([loadSeries(), loadRanking()])
+      .then(function (loaded) {
+        render(loaded[0], loaded[1], range.from, range.to);
       })
       .catch(function () {
         restore();
@@ -254,12 +266,43 @@
     return mount;
   }
 
-  function render(payload, from, to) {
+  /* Our rows are our own nodes, so clicking an instrument forwards the click
+     to React's matching button in the table we hid — the detail view opens
+     exactly as it does from the preset table. */
+  function openInstrument(code) {
+    var buttons = document.querySelectorAll(
+      ".performance-panel .performance-table .performance-instrument",
+    );
+    for (var index = 0; index < buttons.length; index += 1) {
+      if (buttons[index].closest("#" + PANEL_ID)) continue;
+      var small = buttons[index].querySelector("small");
+      if (small && small.textContent.trim() === code) {
+        buttons[index].click();
+        return;
+      }
+    }
+  }
+
+  function returnCell(label, value, extra) {
+    if (value === null || value === undefined) {
+      return (
+        '<td data-label="' + label + '" class="performance-period-col' +
+        (extra || "") + ' performance-return is-blank">–</td>'
+      );
+    }
+    return (
+      '<td data-label="' + label + '" class="performance-period-col' +
+      (extra || "") + " performance-return is-" +
+      (value >= 0 ? "positive" : "negative") + '">' + percent(value) + "</td>"
+    );
+  }
+
+  function render(payload, ranking, from, to) {
     activeRange = { from: from, to: to };
     document.body.classList.add("pcr-custom");
     var mount = mountPoint();
     if (!mount) return;
-    var result = rank(payload, from, to);
+    var result = rank(payload, ranking, from, to);
 
     if (!result.rows.length) {
       restore();
@@ -273,6 +316,11 @@
     reactBlocks().forEach(function (node) {
       node.style.display = "none";
     });
+
+    var periodKeys = (ranking && ranking.periods)
+      ? Object.keys(ranking.periods)
+      : [];
+    var periodLabels = (ranking && ranking.periods) || {};
 
     var top = result.rows[0];
     var rising = result.rows.filter(function (row) {
@@ -293,31 +341,50 @@
       '<div id="' + BANNER_ID + '">自訂區間 ' + from + " ~ " + to +
       (result.skipped.length ? " · " + result.skipped.length + " 檔資料不足已排除" : "") +
       '　<button type="button" class="pcr-reset">回到預設區間</button></div>' +
-      '<div class="table-scroll"><table class="performance-table"><thead><tr>' +
-      "<th>排名</th><th>標的</th><th>類型</th><th>區間報酬</th>" +
-      "<th>起算日</th><th>最新資料日</th><th>最新淨值／收盤價</th></tr></thead><tbody>" +
+      '<div class="table-scroll performance-table-scroll">' +
+      '<table class="performance-table"><thead><tr>' +
+      "<th>排名</th><th>標的</th><th>類型</th>" +
+      '<th class="performance-period-col is-active">自訂區間</th>' +
+      periodKeys
+        .map(function (key) {
+          return '<th class="performance-period-col">' + periodLabels[key] + "</th>";
+        })
+        .join("") +
+      "</tr></thead><tbody>" +
       result.rows
         .map(function (row, index) {
           return (
             "<tr>" +
             '<td data-label="排名" class="performance-rank">' + (index + 1) + "</td>" +
-            '<td data-label="標的"><span class="performance-instrument">' +
-            "<strong>" + row.name + "</strong><small>" + row.code + "</small></span></td>" +
+            '<td data-label="標的"><button type="button" class="performance-instrument" ' +
+            'data-pcr-code="' + row.code + '">' +
+            "<strong>" + row.name + "</strong><small>" + row.code + "</small></button></td>" +
             '<td data-label="類型"><span class="performance-group is-' +
             (GROUP_CLASS[row.group] || "funds") + '">' + row.group + "</span></td>" +
-            '<td data-label="區間報酬" class="performance-return is-' +
-            (row.returnPct >= 0 ? "positive" : "negative") + '">' +
-            percent(row.returnPct) + "</td>" +
-            '<td data-label="起算日">' + row.startDate + "</td>" +
-            '<td data-label="最新資料日">' + row.endDate + "</td>" +
-            '<td data-label="最新淨值／收盤價">' + row.endValue +
-            " <small>" + row.valueType + "</small></td></tr>"
+            returnCell("自訂區間", row.returnPct, " is-active") +
+            periodKeys
+              .map(function (key) {
+                var entry = row.presets[key];
+                return returnCell(
+                  periodLabels[key],
+                  entry ? entry.returnPct : null,
+                  "",
+                );
+              })
+              .join("") +
+            "</tr>"
           );
         })
         .join("") +
       "</tbody></table></div>";
 
     mount.querySelector(".pcr-reset").addEventListener("click", restore);
+    mount.addEventListener("click", function (event) {
+      var button = event.target.closest
+        ? event.target.closest("[data-pcr-code]")
+        : null;
+      if (button) openInstrument(button.getAttribute("data-pcr-code"));
+    });
   }
 
   function buildControl(defaultTo) {
@@ -348,9 +415,9 @@
       }
       apply.disabled = true;
       apply.textContent = "計算中…";
-      loadSeries()
-        .then(function (payload) {
-          render(payload, fromValue, toValue);
+      Promise.all([loadSeries(), loadRanking()])
+        .then(function (loaded) {
+          render(loaded[0], loaded[1], fromValue, toValue);
         })
         .catch(function () {
           warn(panel, "區間資料載入失敗，請稍後重試。");

@@ -32,10 +32,10 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-3dd4c2df.js");
+      await import("/popostock/assets/index-01fbfc98.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
-    <script src="popostock-url-state.js?v=895d2c48" defer data-popostock-url-state></script>
+    <script src="popostock-url-state.js?v=4c720a94" defer data-popostock-url-state></script>
     <style id="popostock-layout-override">
 /* 美股大盤區塊：標題放圖表上方（與手機版一致） */
 .taiex-header{flex-direction:column !important;align-items:stretch !important;gap:14px !important}
@@ -90,7 +90,7 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 </style>
 <script src="consensus-stock-kline.js?v=148163fb" defer data-popostock-consensus-stock-kline></script>
 <script src="active-etf-position-record.js?v=d7192d7e" defer data-popostock-active-etf-position></script>
-<script src="performance-custom-range.js?v=7039254e" defer data-popostock-performance-range></script>
+<script src="performance-custom-range.js?v=6a6e24f5" defer data-popostock-performance-range></script>
 <script src="weight-leader-gap.js?v=e8538429" defer data-popostock-weight-gap></script>
 <script src="sponsor-link.js?v=e06529f9" defer data-popostock-sponsor></script>
 <script src="dividend-schedule.js?v=e5da4276" defer data-popostock-dividend></script>
@@ -101,6 +101,75 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 <script src="active-etf-derivatives.js?v=4981aa80" defer data-popostock-derivatives></script>
 <script src="us-forward-eps-chart.js?v=cc54da1e" defer></script>
 <script src="active-etf-flow-chart.js?v=4115b87d" defer data-popostock-active-flow></script>
+<style id="popostock-performance-matrix">
+/* 八個期間並列，欄位變多，所以縮排距、數字靠右並用等寬數字避免跳動。 */
+.performance-table{min-width:1220px}
+.performance-table th,.performance-table td{padding:9px 11px}
+.performance-table th.performance-period-col{padding:0;text-align:right}
+.performance-table .performance-period-sort{width:100%;padding:9px 11px;border:0;
+  background:0 0;color:inherit;font:inherit;font-weight:850;text-align:right;
+  white-space:nowrap;cursor:pointer}
+.performance-table .performance-period-sort:hover{color:var(--gold,#ffd43b);
+  text-decoration:underline;text-underline-offset:3px}
+.performance-table td.performance-period-col{text-align:right;white-space:nowrap;
+  font-variant-numeric:tabular-nums;font-weight:900}
+/* 被選中的期間＝目前的排序依據，整欄（含標題）標示出來。表頭是深藍底白字，
+   所以標題用淡白底＋金色字，不能沿用內文那個淺藍底（白字會看不見）。 */
+.performance-table th.performance-period-col.is-active{
+  background:rgba(255,255,255,.16);color:var(--gold,#ffd43b)}
+.performance-table th.performance-period-col.is-active .performance-period-sort{
+  color:var(--gold,#ffd43b);text-decoration:underline;text-underline-offset:3px}
+.performance-table td.performance-period-col.is-active{background:#eef4fb}
+.performance-table .performance-return.is-blank{color:var(--muted);font-weight:750}
+
+@media (width<=720px){
+  /* 站台的手機表格會把每一格攤成「標籤＋值」的卡片，11 欄會變成十幾行高的區塊。
+     這裡改回真正的表格＋橫向捲動，並把排名與標的釘在左側，捲到右邊仍看得出是誰。
+     sticky 需要 separate，collapse 下邊框不會跟著移動。 */
+  .performance-table-scroll{overflow-x:auto !important;overflow-y:visible !important;
+    -webkit-overflow-scrolling:touch}
+  .performance-table{min-width:880px !important;border-collapse:separate !important;
+    border-spacing:0 !important;font-size:13px}
+  .performance-table thead{display:table-header-group !important}
+  .performance-table tbody{display:table-row-group !important;gap:0 !important}
+  .performance-table tbody tr{display:table-row !important;border:0 !important;
+    border-radius:0 !important;overflow:visible !important}
+  .performance-table th,.performance-table td{display:table-cell !important;
+    border-right:0 !important;border-bottom:1px solid var(--line) !important;
+    padding:8px 9px !important;white-space:nowrap !important;
+    align-content:unset !important}
+  /* separate 之後每一格要自己補底色，不然釘住的欄位會透出下方的內容。
+     表頭沿用深藍（白字），內容用白底。 */
+  .performance-table td{background:#fff}
+  .performance-table th{background:var(--navy,#06275f)}
+  .performance-table td:before{display:none !important}
+  .performance-table th.performance-period-col{padding:0 !important}
+  .performance-table .performance-period-sort{padding:8px 9px;font-size:12.5px}
+  .performance-table th:nth-child(1),.performance-table td:nth-child(1),
+  .performance-table th:nth-child(2),.performance-table td:nth-child(2){
+    position:sticky;z-index:2}
+  .performance-table th:nth-child(1),.performance-table td:nth-child(1){
+    left:0;width:38px !important;min-width:38px}
+  /* 名稱欄要夾住寬度並允許斷行，否則長基金名在 nowrap 下會把釘住的欄位
+     撐到半個螢幕，右邊的期間欄位就沒空間了。 */
+  .performance-table th:nth-child(2),.performance-table td:nth-child(2){
+    left:38px;width:134px;min-width:134px;max-width:134px;
+    white-space:normal !important;box-shadow:1px 0 0 var(--line)}
+  .performance-table td:nth-child(2) .performance-instrument strong,
+  .performance-table td:nth-child(2) .performance-instrument small{
+    white-space:normal;overflow-wrap:anywhere;line-height:1.3}
+  /* 表頭是深藍底白字，釘住的兩欄標題要保留深藍，否則白字落在淺底上看不見。 */
+  .performance-table th:nth-child(1),.performance-table th:nth-child(2){
+    background:var(--navy,#06275f) !important}
+  .performance-table td:nth-child(1),.performance-table td:nth-child(2){
+    background:#f6f9fd !important}
+  .performance-table .performance-instrument strong,
+  .performance-table .performance-instrument small{font-size:12.5px}
+  .performance-table td.performance-period-col.is-active{background:#eef4fb !important}
+  .performance-table th.performance-period-col.is-active{
+    background:rgba(255,255,255,.16) !important}
+}
+</style>
 </head>
   <body>
     <div id="root"></div>
