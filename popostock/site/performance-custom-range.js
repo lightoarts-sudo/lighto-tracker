@@ -105,9 +105,16 @@
 
   var SCOPE_GROUP = GROUP_CLASS;
 
-  function currentScope() {
-    var active = document.querySelector(".scope-switch button.is-active");
-    return active ? SCOPE_GROUP[active.textContent.trim()] || null : null;
+  /* 分類是多選的：回傳目前勾選的 group 陣列，三個都勾（＝全部）時回傳 null
+     表示不必過濾。「全部」那顆按鈕的文字不在 SCOPE_GROUP 裡，會自然被略過。 */
+  function currentScopes() {
+    var groups = [];
+    var buttons = document.querySelectorAll(".scope-switch button.is-active");
+    for (var index = 0; index < buttons.length; index += 1) {
+      var key = SCOPE_GROUP[buttons[index].textContent.replace(/^✓\s*/, "").trim()];
+      if (key && groups.indexOf(key) === -1) groups.push(key);
+    }
+    return groups.length && groups.length < 3 ? groups : null;
   }
 
   function sortValue(row, key) {
@@ -140,10 +147,10 @@
         presets: presets[item.code] || {},
       });
     });
-    var scope = currentScope();
-    var scoped = scope
+    var scopes = currentScopes();
+    var scoped = scopes
       ? rows.filter(function (row) {
-          return row.groupKey === scope;
+          return scopes.indexOf(row.groupKey) !== -1;
         })
       : rows;
     // Instruments without a value for the sorted column always go last, in

@@ -32,7 +32,7 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-b3af8c94.js");
+      await import("/popostock/assets/index-e4bd40f0.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js?v=4c720a94" defer data-popostock-url-state></script>
@@ -90,7 +90,7 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 </style>
 <script src="consensus-stock-kline.js?v=148163fb" defer data-popostock-consensus-stock-kline></script>
 <script src="active-etf-position-record.js?v=d7192d7e" defer data-popostock-active-etf-position></script>
-<script src="performance-custom-range.js?v=9bacc592" defer data-popostock-performance-range></script>
+<script src="performance-custom-range.js?v=67928311" defer data-popostock-performance-range></script>
 <script src="weight-leader-gap.js?v=e8538429" defer data-popostock-weight-gap></script>
 <script src="sponsor-link.js?v=e06529f9" defer data-popostock-sponsor></script>
 <script src="dividend-schedule.js?v=e5da4276" defer data-popostock-dividend></script>
@@ -129,6 +129,14 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 .performance-table .performance-return.is-blank{color:var(--muted);font-weight:750}
 /* 期間按鈕列移除後，控制列只剩分類切換與日期控制一行。 */
 .performance-controls{display:block}
+/* 分類改多選：全選時四顆會同時亮，整條變成一塊深藍就看不出差別。
+   個別分類用淺藍底深藍字並加一個勾，「全部」維持深藍實心。 */
+.performance-panel .scope-switch button.is-active{
+  background:#dce7f6 !important;color:#12295c !important}
+.performance-panel .scope-switch button.is-active:not(:first-child):before{
+  content:"✓ ";font-weight:900}
+.performance-panel .scope-switch button:first-child.is-active{
+  background:var(--navy) !important;color:var(--gold) !important}
 
 @media (width<=720px){
   /* 站台的手機表格會把每一格攤成「標籤＋值」的卡片，11 欄會變成十幾行高的區塊。
