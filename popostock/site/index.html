@@ -32,7 +32,7 @@
       } catch (error) {
         console.warn("Tracker API unavailable; using static fallback", error);
       }
-      await import("/popostock/assets/index-01fbfc98.js");
+      await import("/popostock/assets/index-43106eab.js");
     </script>
     <link rel="stylesheet" crossorigin href="/popostock/assets/index-f9954122.css">
     <script src="popostock-url-state.js?v=4c720a94" defer data-popostock-url-state></script>
@@ -90,7 +90,7 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 </style>
 <script src="consensus-stock-kline.js?v=148163fb" defer data-popostock-consensus-stock-kline></script>
 <script src="active-etf-position-record.js?v=d7192d7e" defer data-popostock-active-etf-position></script>
-<script src="performance-custom-range.js?v=6a6e24f5" defer data-popostock-performance-range></script>
+<script src="performance-custom-range.js?v=9bacc592" defer data-popostock-performance-range></script>
 <script src="weight-leader-gap.js?v=e8538429" defer data-popostock-weight-gap></script>
 <script src="sponsor-link.js?v=e06529f9" defer data-popostock-sponsor></script>
 <script src="dividend-schedule.js?v=e5da4276" defer data-popostock-dividend></script>
@@ -106,21 +106,29 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
 .performance-table{min-width:1220px}
 .performance-table th,.performance-table td{padding:9px 11px}
 .performance-table th.performance-period-col{padding:0;text-align:right}
-.performance-table .performance-period-sort{width:100%;padding:9px 11px;border:0;
-  background:0 0;color:inherit;font:inherit;font-weight:850;text-align:right;
-  white-space:nowrap;cursor:pointer}
+.performance-table .performance-period-sort{display:flex;justify-content:flex-end;
+  align-items:center;gap:5px;width:100%;padding:9px 11px;border:0;background:0 0;
+  color:inherit;font:inherit;font-weight:850;text-align:right;white-space:nowrap;
+  cursor:pointer}
 .performance-table .performance-period-sort:hover{color:var(--gold,#ffd43b);
   text-decoration:underline;text-underline-offset:3px}
-.performance-table td.performance-period-col{text-align:right;white-space:nowrap;
-  font-variant-numeric:tabular-nums;font-weight:900}
+/* 未選中的欄位給一個淡的 ↕ 提示可以點，選中的才是實心方向箭頭。 */
+.performance-sort-arrow{font-size:12px;line-height:1;opacity:.45}
+.performance-table th.performance-period-col:hover .performance-sort-arrow{opacity:.8}
 /* 被選中的期間＝目前的排序依據，整欄（含標題）標示出來。表頭是深藍底白字，
    所以標題用淡白底＋金色字，不能沿用內文那個淺藍底（白字會看不見）。 */
 .performance-table th.performance-period-col.is-active{
   background:rgba(255,255,255,.16);color:var(--gold,#ffd43b)}
 .performance-table th.performance-period-col.is-active .performance-period-sort{
   color:var(--gold,#ffd43b);text-decoration:underline;text-underline-offset:3px}
+.performance-table th.performance-period-col.is-active .performance-sort-arrow{
+  opacity:1;font-size:13px}
+.performance-table td.performance-period-col{text-align:right;white-space:nowrap;
+  font-variant-numeric:tabular-nums;font-weight:900}
 .performance-table td.performance-period-col.is-active{background:#eef4fb}
 .performance-table .performance-return.is-blank{color:var(--muted);font-weight:750}
+/* 期間按鈕列移除後，控制列只剩分類切換與日期控制一行。 */
+.performance-controls{display:block}
 
 @media (width<=720px){
   /* 站台的手機表格會把每一格攤成「標籤＋值」的卡片，11 欄會變成十幾行高的區塊。
@@ -163,8 +171,6 @@ details.return-distribution>summary.return-distribution-heading:focus-visible{ou
     background:var(--navy,#06275f) !important}
   .performance-table td:nth-child(1),.performance-table td:nth-child(2){
     background:#f6f9fd !important}
-  .performance-table .performance-instrument strong,
-  .performance-table .performance-instrument small{font-size:12.5px}
   .performance-table td.performance-period-col.is-active{background:#eef4fb !important}
   .performance-table th.performance-period-col.is-active{
     background:rgba(255,255,255,.16) !important}
