@@ -11,7 +11,7 @@
  *
  * While the custom column is showing, every column is still sortable: this
  * copy owns its own sort state and re-renders itself, so clicking 1 年 sorts
- * by 1 年 without dropping the custom column. Only 回到預設區間 removes it.
+ * by 1 年 without dropping the custom column. Only 清除自訂區間 removes it.
  *
  * The return uses the same rule as the published ranking: the last official
  * value on or before each endpoint, taken from data/performance-series.json
@@ -397,7 +397,7 @@
       (median === null ? "-" : percent(median)) + "</strong></article></div>" +
       '<div id="' + BANNER_ID + '">自訂區間 ' + from + " ~ " + to +
       (result.skipped.length ? " · " + result.skipped.length + " 檔資料不足已排除" : "") +
-      '　<button type="button" class="pcr-reset">回到預設區間</button></div>' +
+      '　<button type="button" class="pcr-reset">清除自訂區間</button></div>' +
       '<div class="table-scroll performance-table-scroll">' +
       '<table class="performance-table"><thead><tr>' +
       "<th>排名</th><th>標的</th><th>類型</th>" +
