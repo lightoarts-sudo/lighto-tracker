@@ -5,8 +5,8 @@
  * scripts/patch-popostock-performance-matrix.mjs）。這支腳本在分類切換旁邊加上
  *
  *   1. 排名篩選：勾選一到多個期間 ＋ 選前 10／20／30／40／50 名，只留下在
- *      「任何一個」勾選期間進入前 N 名的標的。勾兩個期間是聯集不是交集──
- *      交集通常只剩兩三檔，看不出東西。
+ *      「每一個」勾選期間都進入前 N 名的標的（交集）。勾愈多條件愈嚴，很容易
+ *      一檔都不剩，所以沒有結果時要明確告訴使用者是條件太緊，不是壞掉。
  *   2. 自訂區間：一組起訖日，算出來的報酬成為最前面的一欄。
  *
  * 只要其中一個生效，就把 React 那張表與摘要藏起來，改畫一張欄位相同的表；
@@ -187,11 +187,15 @@
     return { rows: rows, skipped: skipped };
   }
 
-  /* 在勾選的任一期間進入前 N 名就留下（聯集）。排名是在已經套用分類之後的
-     範圍內算的，跟畫面上看到的名次一致。 */
+  /* 每一個勾選的期間都要進入前 N 名才留下（交集）。排名是在已經套用分類之後的
+     範圍內算的，跟畫面上看到的名次一致；某個期間沒有資料的標的，自然不會出現在
+     該期間的前 N 名裡，也就被排除。 */
   function applyRankFilter(rows) {
     if (!rankFilterOn()) return rows;
-    var keep = {};
+    // 每個期間的前 N 名都要在同一個母體（分類篩選後的全部標的）裡算。拿上一輪
+    // 篩剩的結果再取前 N 名的話，第二個條件幾乎一定全數通過，交集會退化成只看
+    // 第一個期間。
+    var hits = {};
     rankPeriods.forEach(function (key) {
       rows
         .filter(function (row) {
@@ -202,11 +206,11 @@
         })
         .slice(0, rankTop)
         .forEach(function (row) {
-          keep[row.code] = true;
+          hits[row.code] = (hits[row.code] || 0) + 1;
         });
     });
     return rows.filter(function (row) {
-      return keep[row.code];
+      return hits[row.code] === rankPeriods.length;
     });
   }
 
@@ -441,8 +445,8 @@
         return periodLabels[key] || key;
       });
       lines.push(
-        "<div>只列出在 " + names.join("、") + " 進入前 " + rankTop + " 名的標的" +
-        (names.length > 1 ? "（任一符合即列入）" : "") +
+        "<div>只列出在 " + names.join("、") + " 都進入前 " + rankTop + " 名的標的" +
+        (names.length > 1 ? "（每個區間都要符合）" : "") +
         '<button type="button" class="prf-clear">清除排名篩選</button></div>',
       );
     }
@@ -469,7 +473,10 @@
       });
       mount.innerHTML =
         banner(periodLabels, result.skipped) +
-        '<p class="pcr-warn-box">目前的條件沒有符合的標的。放寬名次、多勾幾個區間，或改一下分類。</p>';
+        '<p class="pcr-warn-box">沒有標的同時符合所有勾選的區間。' +
+        (rankFilterOn() && rankPeriods.length > 1
+          ? "勾選的區間愈多條件愈嚴，試著減少區間或放寬名次。"
+          : "試著放寬名次，或改一下分類。") + "</p>";
       return;
     }
 
