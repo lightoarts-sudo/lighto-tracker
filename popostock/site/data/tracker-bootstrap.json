@@ -10992,9 +10992,238 @@
       "ytdReturn": 93.9465
     },
     {
-      "id": "sitca-nom004",
+      "id": "cnyes-nom003",
       "group": "funds",
       "groupRank": 43,
+      "code": "NOM003",
+      "name": "野村中小基金-累積類型",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-24",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "野村中小基金-累積類型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Nomura Taiwan Small Cap Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3207Y5"
+        },
+        {
+          "label": "基金統編",
+          "value": "18488469A"
+        },
+        {
+          "label": "成立日期",
+          "value": "2001-04-11"
+        },
+        {
+          "label": "基金規模",
+          "value": "327.88 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Qiu Cui Xin"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR5"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "臺灣中小企業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-24"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-24",
+        "priceOrNav": "654.88 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [
+        {
+          "stockName": "川湖",
+          "weight": 9.18,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台光電",
+          "weight": 8.38,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯發科",
+          "weight": 6.1,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "健策",
+          "weight": 5.88,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "欣興",
+          "weight": 5.75,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 4.95,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "國巨*",
+          "weight": 4.91,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 4.38,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯亞",
+          "weight": 4.34,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "穎崴",
+          "weight": 4.33,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "川湖",
+              "weight": 9.18,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台光電",
+              "weight": 8.38,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯發科",
+              "weight": 6.1,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "健策",
+              "weight": 5.88,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "欣興",
+              "weight": 5.75,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 4.95,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "國巨*",
+              "weight": 4.91,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 4.38,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯亞",
+              "weight": 4.34,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "穎崴",
+              "weight": 4.33,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村中小基金-累積類型 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32008/",
+        "retrievedAt": "2026-09-25T06:11:32+00:00",
+        "cnyesId": "A32008",
+        "sitcaTaxId": "18488469A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "holdingsDate": "2026-06-30",
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM003",
+        "holdingsSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM003",
+        "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
+      },
+      "ytdReturn": 125.5252
+    },
+    {
+      "id": "sitca-nom004",
+      "group": "funds",
+      "groupRank": 44,
       "code": "NOM004",
       "name": "野村鴻運基金",
       "category": "台灣中小型股票",
@@ -11226,7 +11455,7 @@
     {
       "id": "sitca-nom006",
       "group": "funds",
-      "groupRank": 44,
+      "groupRank": 45,
       "code": "NOM006",
       "name": "野村台灣運籌基金",
       "category": "台灣中小型股票",
@@ -11456,9 +11685,238 @@
       "ytdReturn": 121.0676
     },
     {
+      "id": "cnyes-nom008",
+      "group": "funds",
+      "groupRank": 46,
+      "code": "NOM008",
+      "name": "野村積極成長基金",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-24",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "野村積極成長基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Nomura Taiwan Aggressive Growth Selection Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T3223Y2"
+        },
+        {
+          "label": "基金統編",
+          "value": "01031564"
+        },
+        {
+          "label": "成立日期",
+          "value": "1994-01-12"
+        },
+        {
+          "label": "基金規模",
+          "value": "64.18 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "野村證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Ye Ying Juan"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.5%"
+        },
+        {
+          "label": "保管機構",
+          "value": "台北富邦商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-24"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-24",
+        "priceOrNav": "166.59 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [
+        {
+          "stockName": "川湖",
+          "weight": 8.88,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台光電",
+          "weight": 8.76,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "欣興",
+          "weight": 8.24,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "金像電",
+          "weight": 6.59,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 6.47,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "健策",
+          "weight": 6.31,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "鴻勁",
+          "weight": 5.98,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "穎崴",
+          "weight": 5.67,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台達電",
+          "weight": 4.94,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 3.75,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "野村積極成長基金 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "川湖",
+              "weight": 8.88,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台光電",
+              "weight": 8.76,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "欣興",
+              "weight": 8.24,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "金像電",
+              "weight": 6.59,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 6.47,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "健策",
+              "weight": 6.31,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "鴻勁",
+              "weight": 5.98,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "穎崴",
+              "weight": 5.67,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台達電",
+              "weight": 4.94,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 3.75,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "野村積極成長基金 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A32021/",
+        "retrievedAt": "2026-09-25T06:11:32+00:00",
+        "cnyesId": "A32021",
+        "sitcaTaxId": "01031564",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "holdingsDate": "2026-06-30",
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM008",
+        "holdingsSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM008",
+        "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
+      },
+      "ytdReturn": 98.7236
+    },
+    {
       "id": "sitca-nom011",
       "group": "funds",
-      "groupRank": 45,
+      "groupRank": 47,
       "code": "NOM011",
       "name": "野村成長基金",
       "category": "台灣中小型股票",
@@ -11690,7 +12148,7 @@
     {
       "id": "cnyes-nom012",
       "group": "funds",
-      "groupRank": 46,
+      "groupRank": 48,
       "code": "NOM012",
       "name": "野村高科技基金-累積類型",
       "category": "行業股票 - 科技",
@@ -11922,7 +12380,7 @@
     {
       "id": "schroder-taiwan-lohas-smid-a",
       "group": "funds",
-      "groupRank": 47,
+      "groupRank": 49,
       "code": "SCH004",
       "name": "施羅德台灣樂活中小基金-A類型",
       "category": "台灣中小型股票",
@@ -12175,7 +12633,7 @@
     {
       "id": "cnyes-spf01",
       "group": "funds",
-      "groupRank": 48,
+      "groupRank": 50,
       "code": "SPF01",
       "name": "永豐領航科技基金",
       "category": "行業股票 - 科技",
@@ -12407,7 +12865,7 @@
     {
       "id": "cnyes-tsi01",
       "group": "funds",
-      "groupRank": 49,
+      "groupRank": 51,
       "code": "TSI01",
       "name": "台新創新科技基金",
       "category": "行業股票 - 科技",
@@ -12639,7 +13097,7 @@
     {
       "id": "cnyes-tsi02",
       "group": "funds",
-      "groupRank": 50,
+      "groupRank": 52,
       "code": "TSI02",
       "name": "台新2000高科技基金",
       "category": "行業股票 - 科技",
@@ -12867,6 +13325,693 @@
         "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
       },
       "ytdReturn": 103.6349
+    },
+    {
+      "id": "cnyes-tst018",
+      "group": "funds",
+      "groupRank": 53,
+      "code": "TST018",
+      "name": "台新主流基金",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-24",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "台新主流基金"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Taishin Mainstream Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T4706Y5"
+        },
+        {
+          "label": "基金統編",
+          "value": "48858663A"
+        },
+        {
+          "label": "成立日期",
+          "value": "2007-02-08"
+        },
+        {
+          "label": "基金規模",
+          "value": "33.93 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "台新證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Huang Qian Yun"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "第一商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-24"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-24",
+        "priceOrNav": "198.04 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [
+        {
+          "stockName": "台光電",
+          "weight": 8.32,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "欣興",
+          "weight": 8.01,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台燿",
+          "weight": 7.88,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 7.03,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 6.44,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "雍智科技",
+          "weight": 4.34,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "金居",
+          "weight": 4.29,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "創意",
+          "weight": 3.88,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "國巨*",
+          "weight": 3.75,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "南亞科",
+          "weight": 3.49,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "台新主流基金 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "台光電",
+              "weight": 8.32,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "欣興",
+              "weight": 8.01,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台燿",
+              "weight": 7.88,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 7.03,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 6.44,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "雍智科技",
+              "weight": 4.34,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "金居",
+              "weight": 4.29,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "創意",
+              "weight": 3.88,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "國巨*",
+              "weight": 3.75,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "南亞科",
+              "weight": 3.49,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "台新主流基金 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A47006/",
+        "retrievedAt": "2026-09-25T06:11:32+00:00",
+        "cnyesId": "A47006",
+        "sitcaTaxId": "48858663A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "holdingsDate": "2026-06-30",
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/TST018",
+        "holdingsSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/TST018",
+        "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
+      },
+      "ytdReturn": 105.1378
+    },
+    {
+      "id": "cnyes-uni001",
+      "group": "funds",
+      "groupRank": 54,
+      "code": "UNI001",
+      "name": "統一全天候基金-A類型",
+      "category": "台灣中小型股票",
+      "aumDate": "2026-09-24",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "統一全天候基金-A類型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "UPAMC All Weather-A"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0902Y4"
+        },
+        {
+          "label": "基金統編",
+          "value": "01031699A"
+        },
+        {
+          "label": "成立日期",
+          "value": "1994-02-18"
+        },
+        {
+          "label": "基金規模",
+          "value": "204.78 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "統一證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Chen Yi Ting"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣中小型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.2%"
+        },
+        {
+          "label": "保管機構",
+          "value": "第一商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-24"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-24",
+        "priceOrNav": "976.3 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [
+        {
+          "stockName": "台光電",
+          "weight": 9.36,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "欣興",
+          "weight": 9.16,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "國巨*",
+          "weight": 7.59,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 7.34,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "奇鋐",
+          "weight": 6.25,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯發科",
+          "weight": 5.86,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台達電",
+          "weight": 4.45,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 4.23,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "南電",
+          "weight": 3.93,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯電",
+          "weight": 3.91,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "台光電",
+              "weight": 9.36,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "欣興",
+              "weight": 9.16,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "國巨*",
+              "weight": 7.59,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 7.34,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "奇鋐",
+              "weight": 6.25,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯發科",
+              "weight": 5.86,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台達電",
+              "weight": 4.45,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 4.23,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "南電",
+              "weight": 3.93,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯電",
+              "weight": 3.91,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "統一全天候基金-A類型 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A09002/",
+        "retrievedAt": "2026-09-25T06:11:32+00:00",
+        "cnyesId": "A09002",
+        "sitcaTaxId": "01031699A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "holdingsDate": "2026-06-30",
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI001",
+        "holdingsSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI001",
+        "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
+      },
+      "ytdReturn": 95.2756
+    },
+    {
+      "id": "cnyes-yui069",
+      "group": "funds",
+      "groupRank": 55,
+      "code": "YUI069",
+      "name": "元大卓越基金-新台幣A類型",
+      "category": "台灣大型股票",
+      "aumDate": "2026-09-24",
+      "updateCadence": "基金淨值每日更新（公會）；歷史淨值由鉅亨網回補",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "鉅亨網基金資料（Morningstar 授權）"
+        },
+        {
+          "label": "官方全名",
+          "value": "元大卓越基金-新台幣A類型"
+        },
+        {
+          "label": "英文名稱",
+          "value": "Yuanta Excellence Equity Fund"
+        },
+        {
+          "label": "ISIN Code",
+          "value": "TW000T0504Y8"
+        },
+        {
+          "label": "基金統編",
+          "value": "92026219A"
+        },
+        {
+          "label": "成立日期",
+          "value": "1995-11-22"
+        },
+        {
+          "label": "基金規模",
+          "value": "155.04 億 TWD"
+        },
+        {
+          "label": "基金公司",
+          "value": "元大證券投資信託股份有限公司"
+        },
+        {
+          "label": "基金經理人",
+          "value": "Li Zhen Nan"
+        },
+        {
+          "label": "基金組別",
+          "value": "台灣大型股票"
+        },
+        {
+          "label": "投資區域",
+          "value": "Taiwan"
+        },
+        {
+          "label": "風險收益等級",
+          "value": "RR4"
+        },
+        {
+          "label": "配息頻率",
+          "value": "不配息"
+        },
+        {
+          "label": "經理費",
+          "value": "1.6%"
+        },
+        {
+          "label": "保管機構",
+          "value": "聯邦商業銀行股份有限公司"
+        },
+        {
+          "label": "最新淨值資料日",
+          "value": "2026-09-24"
+        },
+        {
+          "label": "持股揭露",
+          "value": "本檔未取得成分股來源，僅追蹤淨值"
+        }
+      ],
+      "performance": {
+        "date": "2026-09-24",
+        "priceOrNav": "244.88 TWD"
+      },
+      "assetClasses": [],
+      "holdings": [
+        {
+          "stockName": "欣興",
+          "weight": 9.59,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台積電",
+          "weight": 7.97,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "旺矽",
+          "weight": 6.52,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "日月光投控",
+          "weight": 6.02,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "創意",
+          "weight": 5.22,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯發科",
+          "weight": 5.03,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "聯亞",
+          "weight": 3.77,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "群聯",
+          "weight": 3.32,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "鴻勁",
+          "weight": 3.29,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        },
+        {
+          "stockName": "台達電",
+          "weight": 3.17,
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+        }
+      ],
+      "holdingHistory": [
+        {
+          "period": "2026 Q2",
+          "sourceDate": "2026-06-30",
+          "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar",
+          "holdings": [
+            {
+              "stockName": "欣興",
+              "weight": 9.59,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台積電",
+              "weight": 7.97,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "旺矽",
+              "weight": 6.52,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "日月光投控",
+              "weight": 6.02,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "創意",
+              "weight": 5.22,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯發科",
+              "weight": 5.03,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "聯亞",
+              "weight": 3.77,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "群聯",
+              "weight": 3.32,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "鴻勁",
+              "weight": 3.29,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            },
+            {
+              "stockName": "台達電",
+              "weight": 3.17,
+              "sourceDate": "2026-06-30",
+              "sourceTitle": "元大卓越基金-新台幣A類型 / FundRich・Morningstar"
+            }
+          ]
+        }
+      ],
+      "sourceMetadata": {
+        "sourceTitle": "鉅亨網基金資料（Morningstar 授權）",
+        "sourceUrl": "https://fund.cnyes.com/detail/A05005/",
+        "retrievedAt": "2026-09-25T06:11:32+00:00",
+        "cnyesId": "A05005",
+        "sitcaTaxId": "92026219A",
+        "note": "每日淨值仍以投信投顧公會為準；本來源只負責回補歷史與基本資料。",
+        "holdingsDate": "2026-06-30",
+        "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI069",
+        "holdingsSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI069",
+        "holdingsSourceTitle": "FundRich・Morningstar 前十大持股"
+      },
+      "ytdReturn": 113.925
     },
     {
       "id": "00981a",

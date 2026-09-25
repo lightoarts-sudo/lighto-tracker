@@ -1,6 +1,26 @@
 {
   "retrievedAt": "2026-09-24T13:00:10+00:00",
   "funds": {
+    "051023": {
+      "date": "2026-09-23",
+      "nav": 4.145,
+      "sourceUrl": "https://www.lionglobalinvestors.com/en/fund.html?officialNav=SKFS",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/051023",
+      "registrySourceTitle": "Lion Global Investors 官方歷史淨值 API",
+      "registrySourceUrl": "https://api.lionglobalinvestors.com/fhistorical",
+      "officialUrl": "https://www.lionglobalinvestors.com/en/fund.html?officialNav=SKFS",
+      "isin": "SG9999002356",
+      "officialFundCode": "SKFS"
+    },
+    "ABL01": {
+      "date": "2026-09-24",
+      "nav": 266.41,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "97997635A",
+      "sitcaFundCode": "DDO01"
+    },
     "ALI005": {
       "date": "2026-09-24",
       "nav": 335.07,
@@ -28,101 +48,14 @@
       "sitcaTaxId": "48997911",
       "sitcaFundCode": "DDO07"
     },
-    "YUANTA1013": {
+    "CAP01": {
       "date": "2026-09-24",
-      "nav": 191.7,
-      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1013",
+      "nav": 190.15,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "17139204A",
-      "sitcaFundCode": "DDO13"
-    },
-    "YUANTA1003": {
-      "date": "2026-09-24",
-      "nav": 151.1,
-      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1003",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "92001765A",
-      "sitcaFundCode": "DDO03"
-    },
-    "YUANTA1009": {
-      "date": "2026-09-24",
-      "nav": 231.44,
-      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1009",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "83863951A",
-      "sitcaFundCode": "DDO09"
-    },
-    "UNI33": {
-      "date": "2026-09-24",
-      "nav": 236.37,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/value/33",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "97977878",
+      "sitcaTaxId": "19339782A",
       "sitcaFundCode": "DDO05"
-    },
-    "UNI023": {
-      "date": "2026-09-24",
-      "nav": 813.36,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/23",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI023",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "73990253",
-      "sitcaFundCode": "DDO10"
-    },
-    "NOM015": {
-      "date": "2026-09-24",
-      "nav": 508.91,
-      "sourceUrl": "https://money.nomurafunds.com.tw/funds/superior",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM015",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "19330754A",
-      "sitcaFundCode": "DDO01"
-    },
-    "YUI089": {
-      "date": "2026-09-24",
-      "nav": 55.49,
-      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1202",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI089",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "76959044A",
-      "sitcaFundCode": "DDO42"
-    },
-    "CSI097": {
-      "date": "2026-09-24",
-      "nav": 89.3,
-      "sourceUrl": "https://www.cathaysite.com.tw/fund-details/FCL",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/CSI097",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "88090934A",
-      "sitcaFundCode": "DDO27"
-    },
-    "NBG061": {
-      "date": "2026-09-24",
-      "nav": 100.22,
-      "sourceUrl": "https://www.nb.com/handlers/documents.ashx?item_id=3ace381a-aae1-444b-9472-86a0c8d729d4",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NBG061",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "42532205A",
-      "sitcaFundCode": "DDO01"
-    },
-    "UNI026": {
-      "date": "2026-09-24",
-      "nav": 687.75,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/26",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI026",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "92002244",
-      "sitcaFundCode": "DDO02"
     },
     "CSI002": {
       "date": "2026-09-24",
@@ -134,15 +67,33 @@
       "sitcaTaxId": "01031874A",
       "sitcaFundCode": "DDO12"
     },
-    "UNI002": {
+    "CSI003": {
       "date": "2026-09-24",
-      "nav": 254.86,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/2",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI002",
+      "nav": 296.13,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "17605622A",
-      "sitcaFundCode": "DDO11"
+      "sitcaTaxId": "14705562",
+      "sitcaFundCode": "DDO07"
+    },
+    "CSI097": {
+      "date": "2026-09-24",
+      "nav": 89.3,
+      "sourceUrl": "https://www.cathaysite.com.tw/fund-details/FCL",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/CSI097",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "88090934A",
+      "sitcaFundCode": "DDO27"
+    },
+    "ESI002": {
+      "date": "2026-09-24",
+      "nav": 707.4,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "92003102",
+      "sitcaFundCode": "DDO03"
     },
     "ESI217": {
       "date": "2026-09-23",
@@ -154,26 +105,59 @@
       "sitcaTaxId": "00516761B",
       "sitcaFundCode": "DIOI4"
     },
-    "051023": {
-      "date": "2026-09-23",
-      "nav": 4.145,
-      "sourceUrl": "https://www.lionglobalinvestors.com/en/fund.html?officialNav=SKFS",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/051023",
-      "registrySourceTitle": "Lion Global Investors 官方歷史淨值 API",
-      "registrySourceUrl": "https://api.lionglobalinvestors.com/fhistorical",
-      "officialUrl": "https://www.lionglobalinvestors.com/en/fund.html?officialNav=SKFS",
-      "isin": "SG9999002356",
-      "officialFundCode": "SKFS"
-    },
-    "YUI064": {
+    "ESU01": {
       "date": "2026-09-24",
-      "nav": 148.39,
-      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1008",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI064",
+      "nav": 288.83,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "81584335A",
+      "sitcaTaxId": "92013967A",
+      "sitcaFundCode": "DDO02"
+    },
+    "ESU02": {
+      "date": "2026-09-24",
+      "nav": 209.64,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "73990649",
+      "sitcaFundCode": "DDO07"
+    },
+    "FHI001": {
+      "date": "2026-09-24",
+      "nav": 130.57,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "81587889",
+      "sitcaFundCode": "DDO01"
+    },
+    "FHI003": {
+      "date": "2026-09-24",
+      "nav": 466.11,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "73998086",
+      "sitcaFundCode": "DDO03"
+    },
+    "FHI008": {
+      "date": "2026-09-24",
+      "nav": 462.82,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "18488279",
       "sitcaFundCode": "DDO08"
+    },
+    "FHI028": {
+      "date": "2026-09-23",
+      "nav": 21.26,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "26276235",
+      "sitcaFundCode": "DIO16"
     },
     "FHI039": {
       "date": "2026-09-23",
@@ -185,61 +169,40 @@
       "sitcaTaxId": "42400078A",
       "sitcaFundCode": "DIO48"
     },
-    "UNI006": {
-      "date": "2026-09-23",
-      "nav": 138.34,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/nav/",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI006",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "26318517",
-      "sitcaFundCode": "DIO07"
-    },
-    "UNI027": {
+    "FHW01": {
       "date": "2026-09-24",
-      "nav": 675.84,
-      "sourceUrl": "https://www.ezmoney.com.tw/funds/nav/",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI027",
+      "nav": 208.21,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "92012762",
-      "sitcaFundCode": "DDO03"
+      "sitcaTaxId": "21759676A",
+      "sitcaFundCode": "DDO12"
     },
-    "SCH004": {
+    "FIR01": {
       "date": "2026-09-24",
-      "nav": 210.87,
-      "sourceUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/",
-      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH004",
+      "nav": 248.91,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "48948834A",
+      "sitcaTaxId": "73989002A",
       "sitcaFundCode": "DDO09"
     },
-    "NOM006": {
+    "FIR02": {
       "date": "2026-09-24",
-      "nav": 496.12,
+      "nav": 272.19,
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "00988316",
-      "sitcaFundCode": "DDO07"
+      "sitcaTaxId": "19341318",
+      "sitcaFundCode": "DDO11"
     },
-    "NOM004": {
+    "FRK01": {
       "date": "2026-09-24",
-      "nav": 312.08,
+      "nav": 204.28,
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "00968493",
-      "sitcaFundCode": "DDO18"
-    },
-    "NOM011": {
-      "date": "2026-09-24",
-      "nav": 449.87,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "17146752",
+      "sitcaTaxId": "26310297",
       "sitcaFundCode": "DDO03"
     },
     "FUB02": {
@@ -287,51 +250,6 @@
       "sitcaTaxId": "80892778",
       "sitcaFundCode": "DDO03"
     },
-    "ABL01": {
-      "date": "2026-09-24",
-      "nav": 266.41,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "97997635A",
-      "sitcaFundCode": "DDO01"
-    },
-    "FIR01": {
-      "date": "2026-09-24",
-      "nav": 248.91,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "73989002A",
-      "sitcaFundCode": "DDO09"
-    },
-    "FHW01": {
-      "date": "2026-09-24",
-      "nav": 208.21,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "21759676A",
-      "sitcaFundCode": "DDO12"
-    },
-    "ESU01": {
-      "date": "2026-09-24",
-      "nav": 288.83,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "92013967A",
-      "sitcaFundCode": "DDO02"
-    },
-    "ESU02": {
-      "date": "2026-09-24",
-      "nav": 209.64,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "73990649",
-      "sitcaFundCode": "DDO07"
-    },
     "JPM01": {
       "date": "2026-09-24",
       "nav": 478.3,
@@ -340,6 +258,108 @@
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "sitcaTaxId": "92012025A",
       "sitcaFundCode": "DDO02"
+    },
+    "NBG061": {
+      "date": "2026-09-24",
+      "nav": 100.22,
+      "sourceUrl": "https://www.nb.com/handlers/documents.ashx?item_id=3ace381a-aae1-444b-9472-86a0c8d729d4",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NBG061",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "42532205A",
+      "sitcaFundCode": "DDO01"
+    },
+    "NOM002": {
+      "date": "2026-09-24",
+      "nav": 231.32,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "18037937",
+      "sitcaFundCode": "DDO05"
+    },
+    "NOM003": {
+      "date": "2026-09-24",
+      "nav": 654.88,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "18488469A",
+      "sitcaFundCode": "DDO06"
+    },
+    "NOM004": {
+      "date": "2026-09-24",
+      "nav": 312.08,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "00968493",
+      "sitcaFundCode": "DDO18"
+    },
+    "NOM006": {
+      "date": "2026-09-24",
+      "nav": 496.12,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "00988316",
+      "sitcaFundCode": "DDO07"
+    },
+    "NOM008": {
+      "date": "2026-09-24",
+      "nav": 166.59,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "01031564",
+      "sitcaFundCode": "DDO09"
+    },
+    "NOM011": {
+      "date": "2026-09-24",
+      "nav": 449.87,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "17146752",
+      "sitcaFundCode": "DDO03"
+    },
+    "NOM012": {
+      "date": "2026-09-24",
+      "nav": 127.38,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "17600534A",
+      "sitcaFundCode": "DDO12"
+    },
+    "NOM015": {
+      "date": "2026-09-24",
+      "nav": 508.91,
+      "sourceUrl": "https://money.nomurafunds.com.tw/funds/superior",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/NOM015",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "19330754A",
+      "sitcaFundCode": "DDO01"
+    },
+    "SCH004": {
+      "date": "2026-09-24",
+      "nav": 210.87,
+      "sourceUrl": "https://www.schroders.com/zh-tw/tw/individual/fund-centre/",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/SCH004",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "48948834A",
+      "sitcaFundCode": "DDO09"
+    },
+    "SPF01": {
+      "date": "2026-09-24",
+      "nav": 181.85,
+      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "73992013",
+      "sitcaFundCode": "DDO15"
     },
     "TSI01": {
       "date": "2026-09-24",
@@ -359,113 +379,138 @@
       "sitcaTaxId": "17602821A",
       "sitcaFundCode": "DDO30"
     },
-    "NOM002": {
+    "TST018": {
       "date": "2026-09-24",
-      "nav": 231.32,
+      "nav": 198.04,
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "18037937",
-      "sitcaFundCode": "DDO05"
-    },
-    "NOM012": {
-      "date": "2026-09-24",
-      "nav": 127.38,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "17600534A",
-      "sitcaFundCode": "DDO12"
-    },
-    "FRK01": {
-      "date": "2026-09-24",
-      "nav": 204.28,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "26310297",
-      "sitcaFundCode": "DDO03"
-    },
-    "ESI002": {
-      "date": "2026-09-24",
-      "nav": 707.4,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "92003102",
-      "sitcaFundCode": "DDO03"
-    },
-    "CSI003": {
-      "date": "2026-09-24",
-      "nav": 296.13,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "14705562",
-      "sitcaFundCode": "DDO07"
-    },
-    "FIR02": {
-      "date": "2026-09-24",
-      "nav": 272.19,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "19341318",
+      "sitcaTaxId": "48858663A",
       "sitcaFundCode": "DDO11"
     },
-    "SPF01": {
+    "UNI001": {
       "date": "2026-09-24",
-      "nav": 181.85,
+      "nav": 976.3,
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "73992013",
-      "sitcaFundCode": "DDO15"
-    },
-    "CAP01": {
-      "date": "2026-09-24",
-      "nav": 190.15,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "19339782A",
-      "sitcaFundCode": "DDO05"
-    },
-    "FHI003": {
-      "date": "2026-09-24",
-      "nav": 466.11,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "73998086",
-      "sitcaFundCode": "DDO03"
-    },
-    "FHI001": {
-      "date": "2026-09-24",
-      "nav": 130.57,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
-      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "81587889",
+      "sitcaTaxId": "01031699A",
       "sitcaFundCode": "DDO01"
     },
-    "FHI008": {
+    "UNI002": {
       "date": "2026-09-24",
-      "nav": 462.82,
-      "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "nav": 254.86,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/2",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI002",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "18488279",
+      "sitcaTaxId": "17605622A",
+      "sitcaFundCode": "DDO11"
+    },
+    "UNI006": {
+      "date": "2026-09-23",
+      "nav": 138.34,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/nav/",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI006",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "26318517",
+      "sitcaFundCode": "DIO07"
+    },
+    "UNI023": {
+      "date": "2026-09-24",
+      "nav": 813.36,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/23",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI023",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "73990253",
+      "sitcaFundCode": "DDO10"
+    },
+    "UNI026": {
+      "date": "2026-09-24",
+      "nav": 687.75,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/info/26",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI026",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "92002244",
+      "sitcaFundCode": "DDO02"
+    },
+    "UNI027": {
+      "date": "2026-09-24",
+      "nav": 675.84,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/nav/",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/UNI027",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "92012762",
+      "sitcaFundCode": "DDO03"
+    },
+    "UNI33": {
+      "date": "2026-09-24",
+      "nav": 236.37,
+      "sourceUrl": "https://www.ezmoney.com.tw/funds/value/33",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "97977878",
+      "sitcaFundCode": "DDO05"
+    },
+    "YUANTA1003": {
+      "date": "2026-09-24",
+      "nav": 151.1,
+      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1003",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "92001765A",
+      "sitcaFundCode": "DDO03"
+    },
+    "YUANTA1009": {
+      "date": "2026-09-24",
+      "nav": 231.44,
+      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1009",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "83863951A",
+      "sitcaFundCode": "DDO09"
+    },
+    "YUANTA1013": {
+      "date": "2026-09-24",
+      "nav": 191.7,
+      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1013",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "17139204A",
+      "sitcaFundCode": "DDO13"
+    },
+    "YUI064": {
+      "date": "2026-09-24",
+      "nav": 148.39,
+      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1008",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI064",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "81584335A",
       "sitcaFundCode": "DDO08"
     },
-    "FHI028": {
-      "date": "2026-09-23",
-      "nav": 21.26,
+    "YUI069": {
+      "date": "2026-09-24",
+      "nav": 244.88,
       "sourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
       "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
       "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
-      "sitcaTaxId": "26276235",
-      "sitcaFundCode": "DIO16"
+      "sitcaTaxId": "92026219A",
+      "sitcaFundCode": "DDO04"
+    },
+    "YUI089": {
+      "date": "2026-09-24",
+      "nav": 55.49,
+      "sourceUrl": "https://www.yuantafunds.com/myfund/information/1202",
+      "bootstrapSourceUrl": "https://www.fundrich.com.tw/fundCenter/fundOverview/fundContent/YUI089",
+      "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
+      "registrySourceUrl": "https://www.sitca.org.tw/MemberK0000/F/03/nav.csv",
+      "sitcaTaxId": "76959044A",
+      "sitcaFundCode": "DDO42"
     }
   },
   "registrySourceTitle": "投信投顧公會「證券投資信託基金每日淨值」",
