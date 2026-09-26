@@ -127,13 +127,11 @@
     "issuer": "統一投信",
     "listingDate": "2026-08-26",
     "officialUrl": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=64YTW&tabName=asset#asset",
-    "historyPoints": 0,
-    "historyStart": null,
-    "historyEnd": null,
-    "missingOfficialMonths": [
-      "2026-09"
-    ],
-    "syncError": "official market data temporarily unavailable"
+    "market": "TPEX",
+    "historyPoints": 22,
+    "historyStart": "2026-08-26",
+    "historyEnd": "2026-09-24",
+    "missingOfficialMonths": []
   },
   {
     "code": "00980A",

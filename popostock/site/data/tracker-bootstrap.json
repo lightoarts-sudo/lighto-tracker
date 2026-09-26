@@ -24318,9 +24318,311 @@
       ]
     },
     {
-      "id": "00404a",
+      "id": "00411a",
       "group": "activeEtfs",
       "groupRank": 23,
+      "code": "00411A",
+      "name": "主動統一前沿科技",
+      "category": "全球科技主動式",
+      "aumTwd": 4603688840,
+      "aumDate": "2026/09/23",
+      "updateCadence": "主動式 ETF 持股每天更新",
+      "basicInfo": [
+        {
+          "label": "資料來源",
+          "value": "統一投信官方產品頁"
+        },
+        {
+          "label": "發行公司",
+          "value": "統一投信"
+        },
+        {
+          "label": "市場行情",
+          "value": "臺灣證券交易所每日成交資訊"
+        },
+        {
+          "label": "官方資料日",
+          "value": "2026/09/23"
+        },
+        {
+          "label": "官網更新時間",
+          "value": "2026/09/24 16:30"
+        },
+        {
+          "label": "持股收錄",
+          "value": "本次同步 32 檔"
+        },
+        {
+          "label": "本次同步",
+          "value": "2026-09-25 18:02:32+08:00"
+        }
+      ],
+      "performance": {
+        "date": "2026/09/23"
+      },
+      "holdings": [
+        {
+          "stockCode": "BE US",
+          "stockName": "BLOOM ENERGY CORP- A",
+          "shares": "47392",
+          "weight": 8.98,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SPCX US",
+          "stockName": "SPACE EXPLORATION TECHN-CL A",
+          "shares": "76874",
+          "weight": 7.85,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NVDA US",
+          "stockName": "NVIDIA CORP(輝達公司)",
+          "shares": "50262",
+          "weight": 7.8,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "LITE US",
+          "stockName": "LUMENTUM HOLDINGS INC",
+          "shares": "11924",
+          "weight": 7.69,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "PLTR US",
+          "stockName": "PALANTIR TECHNOLOGIES INC-A",
+          "shares": "51297",
+          "weight": 6.77,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3443",
+          "stockName": "創意",
+          "shares": "33000",
+          "weight": 6.01,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "8996",
+          "stockName": "高力",
+          "shares": "162000",
+          "weight": 5.42,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "CRWD US",
+          "stockName": "CROWDSTRIKE HOLDINGS INC - A",
+          "shares": "27377",
+          "weight": 4.95,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "AMD US",
+          "stockName": "ADVANCED MICRO DEVICES.amd us(超微半導體公司)",
+          "shares": "11664",
+          "weight": 4.93,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NBIS US",
+          "stockName": "NEBIUS GROUP NV",
+          "shares": "29091",
+          "weight": 4.54,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NET US",
+          "stockName": "CLOUDFLARE INC - CLASS A",
+          "shares": "14742",
+          "weight": 3.58,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "ANET US",
+          "stockName": "ARISTA NETWORKS INC.anet us",
+          "shares": "23297",
+          "weight": 3.26,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SNOW US",
+          "stockName": "SNOWFLAKE INC-CLASS A(Snowflake公司)",
+          "shares": "14081",
+          "weight": 3.25,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "MU US",
+          "stockName": "MICRON TECHNOLOGY INC",
+          "shares": "4104",
+          "weight": 3.03,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "NTSK US",
+          "stockName": "NETSKOPE INC-CL A",
+          "shares": "210458",
+          "weight": 2.69,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "6669",
+          "stockName": "緯穎",
+          "shares": "57518",
+          "weight": 2.63,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "581A JP",
+          "stockName": "GO INC",
+          "shares": "179700",
+          "weight": 2.49,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "4062 JP",
+          "stockName": "IBIDEN CO LTD",
+          "shares": "24700",
+          "weight": 2.11,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "285A JP",
+          "stockName": "KIOXIA HOLDINGS CORP",
+          "shares": "6400",
+          "weight": 1.52,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "TSLA US",
+          "stockName": "TESLA INC(特斯拉公司)",
+          "shares": "5690",
+          "weight": 1.49,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "GOOGL US",
+          "stockName": "ALPHABET INC-CL A(Alphabet公司)",
+          "shares": "5309",
+          "weight": 1.23,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "4979",
+          "stockName": "華星光",
+          "shares": "59000",
+          "weight": 0.76,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3017",
+          "stockName": "奇鋐",
+          "shares": "8000",
+          "weight": 0.6,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SMTC US",
+          "stockName": "SEMTECH CORP",
+          "shares": "5123",
+          "weight": 0.6,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "DELL US",
+          "stockName": "DELL INC",
+          "shares": "1116",
+          "weight": 0.42,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "MSFT US",
+          "stockName": "MICROSOFT CORP(微軟公司)",
+          "shares": "1183",
+          "weight": 0.41,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "SITM US",
+          "stockName": "SITIME CORP",
+          "shares": "951",
+          "weight": 0.4,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "IONQ US",
+          "stockName": "IONQ INC",
+          "shares": "12501",
+          "weight": 0.37,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "AMZN US",
+          "stockName": "AMAZON.COM INC(亞馬遜公司)",
+          "shares": "2107",
+          "weight": 0.36,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "3037",
+          "stockName": "欣興",
+          "shares": "14000",
+          "weight": 0.35,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "RKLB US",
+          "stockName": "ROCKET LAB USA INC",
+          "shares": "7119",
+          "weight": 0.34,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        },
+        {
+          "stockCode": "STX US",
+          "stockName": "SEAGATE TECHNOLOGY",
+          "shares": "411",
+          "weight": 0.26,
+          "sourceDate": "2026/09/23",
+          "sourceTitle": "統一投信 00411A 官方持股"
+        }
+      ]
+    },
+    {
+      "id": "00404a",
+      "group": "activeEtfs",
+      "groupRank": 24,
       "code": "00404A",
       "name": "主動聯博動能50",
       "category": "台灣收益主動式",
@@ -24790,7 +25092,7 @@
     {
       "id": "00996a",
       "group": "activeEtfs",
-      "groupRank": 24,
+      "groupRank": 25,
       "code": "00996A",
       "name": "主動兆豐台灣豐收",
       "category": "台灣股票主動式",
@@ -25248,7 +25550,7 @@
     {
       "id": "00401a",
       "group": "activeEtfs",
-      "groupRank": 25,
+      "groupRank": 26,
       "code": "00401A",
       "name": "主動摩根台灣鑫收",
       "category": "台灣收益主動式",
@@ -25738,7 +26040,7 @@
     {
       "id": "00987a",
       "group": "activeEtfs",
-      "groupRank": 26,
+      "groupRank": 27,
       "code": "00987A",
       "name": "主動台新優勢成長",
       "category": "台灣成長主動式",
@@ -26016,7 +26318,7 @@
     {
       "id": "00408a",
       "group": "activeEtfs",
-      "groupRank": 27,
+      "groupRank": 28,
       "code": "00408A",
       "name": "主動第一金優股息",
       "category": "台灣高股息主動式",
@@ -26462,7 +26764,7 @@
     {
       "id": "00989a",
       "group": "activeEtfs",
-      "groupRank": 28,
+      "groupRank": 29,
       "code": "00989A",
       "name": "主動摩根美國科技",
       "category": "美國科技主動式",
@@ -27048,7 +27350,7 @@
     {
       "id": "00983a",
       "group": "activeEtfs",
-      "groupRank": 29,
+      "groupRank": 30,
       "code": "00983A",
       "name": "主動中信ARK創新",
       "category": "全球創新主動式",
@@ -27438,7 +27740,7 @@
     {
       "id": "00410a",
       "group": "activeEtfs",
-      "groupRank": 30,
+      "groupRank": 31,
       "code": "00410A",
       "name": "主動永豐科技趨勢",
       "category": "台灣股票主動式",
@@ -42728,6 +43030,14 @@
       "targetKey": "item:00409a",
       "title": "復華投信 00409A 官方資料",
       "url": "https://www.fhtrust.com.tw/ETF/etf_detail/ETF26",
+      "note": "官方基本資料、規模與持股來源",
+      "createdAt": "2026-07-16"
+    },
+    {
+      "id": "ref-00411a-official",
+      "targetKey": "item:00411a",
+      "title": "統一投信 00411A 官方資料",
+      "url": "https://www.ezmoney.com.tw/ETF/Fund/Info?fundCode=64YTW&tabName=asset#asset",
       "note": "官方基本資料、規模與持股來源",
       "createdAt": "2026-07-16"
     },
