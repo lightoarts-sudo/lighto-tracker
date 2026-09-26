@@ -1,13 +1,13 @@
 {
   "date": "2026-09-24",
-  "generatedAt": "2026-09-26T12:02:00+08:00",
+  "generatedAt": "2026-09-26T18:02:48+08:00",
   "methodology": "合計加減碼張數 × 1,000 ×（當日最高價＋最低價）÷ 2",
   "closePriceMethodology": "收盤價金額僅保留於 closeAmountTwd 供資料稽核",
   "coverage": {
     "trackedEtfCount": 31,
-    "comparableEtfCount": 22,
+    "comparableEtfCount": 21,
     "baselineEtfCount": 0,
-    "pendingEtfCount": 9,
+    "pendingEtfCount": 10,
     "futureEtfCount": 0,
     "comparableEtfs": [
       "00400A",
@@ -24,7 +24,6 @@
       "00984A",
       "00985A",
       "00987A",
-      "00989A",
       "00991A",
       "00992A",
       "00993A",
@@ -41,6 +40,7 @@
       "00411A",
       "00983A",
       "00988A",
+      "00989A",
       "00990A",
       "00997A",
       "00998A"
